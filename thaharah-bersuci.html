@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thaharah — Bersuci dalam Islam</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Amiri:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+
+:root{
+  /* Water palette */
+  --water:    #e8f6fb;
+  --pool:     #d0edf8;
+  --teal:     #0e8fa8;
+  --teal-d:   #0a6e82;
+  --teal-lt:  #4ab8d0;
+  --teal-pale:#c0e8f4;
+  --sage:     #2d7a5e;
+  --sage-d:   #1f5c44;
+  --sage-lt:  #5aaa88;
+  --sage-pale:#c8eadb;
+  --cream:    #fafaf6;
+  --paper:    #f5f3ec;
+  --paper-d:  #ebe7da;
+  --gold:     #c8960c;
+  --gold-lt:  #e0b030;
+  --gold-pale:#fef8e0;
+  --ink:      #12201a;
+  --ink-mid:  #243828;
+  --ink-soft: #4a6858;
+  --rust:     #a84428;
+  --rust-pale:#fdeee8;
+  --b-teal:   rgba(14,143,168,.15);
+  --b-sage:   rgba(45,122,94,.15);
+  --b-gold:   rgba(200,150,12,.18);
+}
+
+html{scroll-behavior:smooth;}
+
+body{
+  background:var(--cream);
+  font-family:'Lora',Georgia,serif;
+  color:var(--ink);
+  overflow-x:hidden;
+}
+
+/* ════════════════════
+   HERO
+════════════════════ */
+.hero{
+  background:linear-gradient(160deg,
+    #062a38 0%,var(--teal-d) 35%,var(--sage-d) 65%,#0a2418 100%);
+  min-height:100vh;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;
+  padding:80px 24px 100px;
+  position:relative;overflow:hidden;
+}
+
+/* Ripple circles */
+.ripples{position:absolute;inset:0;pointer-events:none;}
+.rp{
+  position:absolute;border-radius:50%;border:1px solid rgba(255,255,255,.06);
+  left:50%;top:50%;transform:translate(-50%,-50%);
+  animation:rpOut var(--rt,8s) ease-out infinite;
+}
+@keyframes rpOut{
+  0%  {opacity:.5;transform:translate(-50%,-50%) scale(.4);}
+  100%{opacity:0; transform:translate(-50%,-50%) scale(1.6);}
+}
+
+/* Water-flow texture */
+.hero::after{
+  content:'';position:absolute;inset:0;
+  background:
+    repeating-linear-gradient(100deg,
+      transparent 0,transparent 40px,
+      rgba(255,255,255,.015) 40px,rgba(255,255,255,.015) 41px),
+    repeating-linear-gradient(80deg,
+      transparent 0,transparent 60px,
+      rgba(255,255,255,.01) 60px,rgba(255,255,255,.01) 61px);
+  pointer-events:none;
+}
+
+.hero-inner{position:relative;z-index:2;max-width:700px;}
+
+.hero-drop{
+  font-family:'Amiri',serif;
+  font-size:clamp(1.4rem,4vw,2.5rem);
+  color:rgba(255,255,255,.9);
+  line-height:1.8;margin-bottom:12px;
+  animation:dropIn 1.4s ease both;
+}
+
+.hero-eye{
+  font-family:'DM Sans',sans-serif;
+  font-weight:500;
+  font-size:clamp(.6rem,1.5vw,.75rem);
+  letter-spacing:5px;text-transform:uppercase;
+  color:rgba(255,255,255,.45);
+  margin-bottom:18px;
+  animation:dropIn 1.4s ease both .2s;
+}
+
+.hero-title{
+  font-family:'Lora',serif;font-weight:700;
+  font-size:clamp(2.6rem,8vw,5.5rem);
+  line-height:1.05;letter-spacing:-1px;
+  color:#fff;margin-bottom:8px;
+  animation:dropIn 1.4s ease both .05s;
+}
+
+.hero-ar{
+  font-family:'Amiri',serif;
+  font-size:clamp(1.3rem,3.5vw,2rem);
+  color:rgba(200,240,230,.7);
+  line-height:2;margin-bottom:24px;
+  animation:dropIn 1.4s ease both .25s;
+}
+
+.hero-rule{
+  display:flex;align-items:center;justify-content:center;gap:14px;
+  margin:16px auto 28px;
+  animation:dropIn 1.4s ease both .35s;
+}
+.hero-rule span{width:70px;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.2));}
+.hero-rule span:last-child{background:linear-gradient(90deg,rgba(255,255,255,.2),transparent);}
+.hero-rule em{color:rgba(74,184,208,.8);font-style:normal;letter-spacing:6px;}
+
+.hero-verse{
+  max-width:540px;margin:0 auto;
+  padding:20px 28px;
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.12);
+  backdrop-filter:blur(8px);
+  animation:dropIn 1.4s ease both .45s;
+}
+.hv-ar{font-family:'Amiri',serif;font-size:clamp(1rem,2.5vw,1.35rem);color:rgba(200,240,230,.9);line-height:2.2;direction:rtl;margin-bottom:8px;}
+.hv-id{font-style:italic;font-size:.82rem;color:rgba(255,255,255,.55);line-height:1.7;}
+
+@keyframes dropIn{
+  from{opacity:0;transform:translateY(14px);}
+  to  {opacity:1;transform:translateY(0);}
+}
+
+/* ════════════════════
+   LAYOUT
+════════════════════ */
+.body-wrap{max-width:820px;margin:0 auto;padding:0 16px 80px;}
+
+/* ════════════════════
+   BAB HEADER
+════════════════════ */
+.bab{
+  margin:56px 0 0;
+  padding:0;
+}
+
+.bab-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:4px 14px;
+  font-family:'DM Sans',sans-serif;
+  font-weight:600;
+  font-size:.6rem;letter-spacing:4px;text-transform:uppercase;
+  margin-bottom:14px;
+}
+.bt-teal{background:rgba(14,143,168,.1);color:var(--teal-d);border:1px solid var(--b-teal);}
+.bt-sage{background:rgba(45,122,94,.1);color:var(--sage-d);border:1px solid var(--b-sage);}
+.bt-gold{background:rgba(200,150,12,.1);color:var(--gold);border:1px solid var(--b-gold);}
+.bt-rust{background:rgba(168,68,40,.1);color:var(--rust);border:1px solid rgba(168,68,40,.2);}
+
+.bab-ar{
+  font-family:'Amiri',serif;
+  font-size:clamp(1.2rem,3vw,1.8rem);
+  line-height:1.9;margin-bottom:5px;
+}
+.bar-teal{color:var(--teal-d);}
+.bar-sage{color:var(--sage-d);}
+.bar-gold{color:var(--gold);}
+.bar-rust{color:var(--rust);}
+
+.bab-title{
+  font-family:'Lora',serif;font-weight:700;
+  font-size:clamp(1.3rem,3.5vw,2rem);
+  line-height:1.25;margin-bottom:6px;
+  color:var(--ink);
+}
+
+.bab-rule{
+  width:50px;height:2px;
+  margin:12px 0 24px;
+}
+.br-teal{background:var(--teal);}
+.br-sage{background:var(--sage);}
+.br-gold{background:var(--gold);}
+.br-rust{background:var(--rust);}
+
+/* ════════════════════
+   PROSE
+════════════════════ */
+.prose p{
+  font-size:clamp(.97rem,2.2vw,1.06rem);
+  line-height:2;color:var(--ink-mid);
+  margin-bottom:16px;text-align:justify;
+}
+.prose p.lead{
+  font-style:italic;color:var(--teal-d);
+  font-size:clamp(1rem,2.3vw,1.12rem);line-height:1.9;
+}
+.prose.sage-lead p.lead{color:var(--sage-d);}
+.prose.gold-lead p.lead{color:var(--gold);}
+
+.prose p:first-of-type:not(.lead)::first-letter{
+  font-family:'Lora',serif;font-weight:700;
+  font-size:3.8em;line-height:.72;
+  float:left;margin:8px 10px 0 0;
+}
+.prose.teal-fl p:first-of-type:not(.lead)::first-letter{color:var(--teal-d);}
+.prose.sage-fl p:first-of-type:not(.lead)::first-letter{color:var(--sage-d);}
+.prose.gold-fl p:first-of-type:not(.lead)::first-letter{color:var(--gold);}
+
+/* ════════════════════
+   DALIL
+════════════════════ */
+.dalil{
+  margin:24px 0;
+  border-left:4px solid;
+  padding:18px 20px 14px;
+}
+.dalil-teal{border-color:var(--teal);background:linear-gradient(135deg,var(--water),#f8fcfe);}
+.dalil-sage{border-color:var(--sage);background:linear-gradient(135deg,var(--sage-pale)20%,#f5faf8);}
+.dalil-gold{border-color:var(--gold);background:var(--gold-pale);}
+.dalil-rust{border-color:var(--rust);background:var(--rust-pale);}
+
+.dalil-tag{
+  font-family:'DM Sans',sans-serif;font-weight:600;
+  font-size:.6rem;letter-spacing:3px;text-transform:uppercase;
+  margin-bottom:10px;display:flex;align-items:center;gap:8px;
+}
+.dalil-tag::after{content:'';flex:1;height:1px;}
+.dt-teal{color:var(--teal-d);}
+.dt-teal::after{background:linear-gradient(90deg,var(--b-teal),transparent);}
+.dt-sage{color:var(--sage-d);}
+.dt-sage::after{background:linear-gradient(90deg,var(--b-sage),transparent);}
+.dt-gold{color:var(--gold);}
+.dt-gold::after{background:linear-gradient(90deg,var(--b-gold),transparent);}
+.dt-rust{color:var(--rust);}
+.dt-rust::after{background:linear-gradient(90deg,rgba(168,68,40,.18),transparent);}
+
+.dalil-ar{
+  font-family:'Amiri',serif;
+  font-size:clamp(1.1rem,2.8vw,1.5rem);
+  line-height:2.2;direction:rtl;text-align:right;
+  margin-bottom:12px;padding-bottom:10px;
+}
+.dar-teal{color:var(--teal-d);border-bottom:1px dashed var(--b-teal);}
+.dar-sage{color:var(--sage-d);border-bottom:1px dashed var(--b-sage);}
+.dar-gold{color:var(--gold);border-bottom:1px dashed var(--b-gold);}
+.dar-rust{color:var(--rust);border-bottom:1px dashed rgba(168,68,40,.2);}
+
+.dalil-trans{font-style:italic;font-size:.91rem;line-height:1.8;color:var(--ink-soft);margin-bottom:7px;}
+.dalil-ref{
+  font-family:'DM Sans',sans-serif;font-weight:600;
+  font-size:.6rem;letter-spacing:2px;text-transform:uppercase;
+}
+.dr-teal{color:var(--teal-d);}
+.dr-sage{color:var(--sage-d);}
+.dr-gold{color:var(--gold);}
+.dr-rust{color:var(--rust);}
+
+/* ════════════════════
+   RESPONSIVE TABLE SYSTEM
+   Cards on mobile, table on desktop
+════════════════════ */
+
+/* ── Stack table (always vertical list) ── */
+.tbl-wrap{margin:24px 0;overflow:hidden;}
+
+/* Desktop table */
+.tbl{
+  width:100%;
+  border-collapse:collapse;
+  font-size:.88rem;
+  table-layout:fixed;
+}
+.tbl thead tr{color:#fff;}
+.tbl.thead-teal thead tr{background:var(--teal-d);}
+.tbl.thead-sage thead tr{background:var(--sage-d);}
+.tbl.thead-gold thead tr{background:#8a6408;}
+.tbl.thead-rust thead tr{background:var(--rust);}
+
+.tbl thead th{
+  padding:10px 12px;text-align:left;
+  font-family:'DM Sans',sans-serif;
+  font-size:.6rem;font-weight:600;
+  letter-spacing:3px;text-transform:uppercase;
+  word-break:keep-all;
+}
+.tbl tbody tr{border-bottom:1px solid rgba(0,0,0,.07);}
+.tbl tbody tr:nth-child(even){background:rgba(0,0,0,.025);}
+.tbl tbody tr:nth-child(odd){background:#fff;}
+.tbl td{
+  padding:10px 12px;
+  line-height:1.65;color:var(--ink-mid);
+  vertical-align:top;
+  word-break:break-word;
+}
+.tbl td:first-child{font-weight:600;color:var(--ink);}
+
+/* Badge inside table */
+.tbadge{
+  display:inline-block;padding:2px 8px;
+  font-family:'DM Sans',sans-serif;font-size:.58rem;
+  font-weight:600;letter-spacing:1.5px;text-transform:uppercase;
+  white-space:nowrap;
+}
+.tb-teal{background:rgba(14,143,168,.12);color:var(--teal-d);border:1px solid var(--b-teal);}
+.tb-sage{background:rgba(45,122,94,.12);color:var(--sage-d);border:1px solid var(--b-sage);}
+.tb-gold{background:rgba(200,150,12,.12);color:var(--gold);border:1px solid var(--b-gold);}
+.tb-rust{background:rgba(168,68,40,.1);color:var(--rust);border:1px solid rgba(168,68,40,.2);}
+.tb-gray{background:rgba(0,0,0,.06);color:var(--ink-soft);border:1px solid rgba(0,0,0,.1);}
+
+/* Mobile: convert table to stacked cards */
+@media(max-width:620px){
+  .tbl,.tbl thead,.tbl tbody,.tbl th,.tbl td,.tbl tr{display:block;width:100%;}
+  .tbl thead{display:none;}
+  .tbl tbody tr{
+    background:#fff!important;
+    border:1px solid rgba(0,0,0,.08);
+    margin-bottom:8px;
+    padding:14px 14px 10px;
+  }
+  .tbl td{
+    padding:5px 0 5px;
+    border:none;
+    display:grid;
+    grid-template-columns:100px 1fr;
+    gap:6px;
+    align-items:start;
+  }
+  .tbl td::before{
+    content:attr(data-label);
+    font-family:'DM Sans',sans-serif;
+    font-size:.58rem;font-weight:600;
+    letter-spacing:2px;text-transform:uppercase;
+    padding-top:2px;
+    flex-shrink:0;
+  }
+  .tbl.thead-teal td::before{color:var(--teal-d);}
+  .tbl.thead-sage td::before{color:var(--sage-d);}
+  .tbl.thead-gold td::before{color:var(--gold);}
+  .tbl.thead-rust td::before{color:var(--rust);}
+  .tbl td:first-child{font-weight:700;font-size:.95rem;}
+}
+
+/* ════════════════════
+   ITEM LIST (numbered)
+════════════════════ */
+.item-list{margin:20px 0;}
+.item{
+  display:flex;gap:0;
+  border:1px solid rgba(0,0,0,.07);
+  margin-bottom:5px;overflow:hidden;
+  background:#fff;
+}
+.item-num{
+  flex-shrink:0;width:46px;
+  display:flex;align-items:flex-start;justify-content:center;
+  font-family:'Lora',serif;font-weight:700;
+  font-size:1.2rem;padding:14px 0 0;
+}
+.in-teal{color:var(--teal-d);background:var(--teal-pale);}
+.in-sage{color:var(--sage-d);background:var(--sage-pale);}
+.in-gold{color:var(--gold);background:var(--gold-pale);}
+.in-rust{color:var(--rust);background:var(--rust-pale);}
+
+.item-body{flex:1;padding:13px 16px;}
+.item-title{font-family:'Lora',serif;font-weight:700;font-size:.97rem;margin-bottom:3px;color:var(--ink);}
+.item-ar{font-family:'Amiri',serif;font-size:1rem;direction:rtl;text-align:right;margin-bottom:5px;line-height:1.9;color:rgba(0,0,0,.35);}
+.item-desc{font-size:.84rem;line-height:1.7;font-style:italic;color:var(--ink-soft);}
+.item-ref{
+  font-family:'DM Sans',sans-serif;font-weight:600;
+  font-size:.58rem;letter-spacing:2px;text-transform:uppercase;
+  margin-top:7px;display:block;
+}
+.ir-teal{color:var(--teal-d);}
+.ir-sage{color:var(--sage-d);}
+.ir-gold{color:var(--gold);}
+
+/* ════════════════════
+   HIGHLIGHT BOX
+════════════════════ */
+.hl{margin:24px 0;padding:20px 22px;}
+.hl-teal{background:var(--water);border:1px solid var(--b-teal);border-left:4px solid var(--teal);}
+.hl-sage{background:var(--sage-pale);background:rgba(200,234,219,.4);border:1px solid var(--b-sage);border-left:4px solid var(--sage);}
+.hl-gold{background:var(--gold-pale);border:1px solid var(--b-gold);border-left:4px solid var(--gold);}
+.hl-rust{background:var(--rust-pale);border:1px solid rgba(168,68,40,.15);border-left:4px solid var(--rust);}
+.hl-dark{background:var(--ink);border:none;padding:24px 26px;}
+
+.hl-label{
+  font-family:'DM Sans',sans-serif;font-weight:600;
+  font-size:.6rem;letter-spacing:3px;text-transform:uppercase;
+  margin-bottom:10px;
+}
+.hll-teal{color:var(--teal-d);}
+.hll-sage{color:var(--sage-d);}
+.hll-gold{color:var(--gold);}
+.hll-rust{color:var(--rust);}
+.hll-white{color:rgba(255,255,255,.5);}
+
+.hl-ar{
+  font-family:'Amiri',serif;
+  font-size:clamp(1.05rem,2.5vw,1.4rem);
+  line-height:2;margin-bottom:8px;
+}
+.hlar-teal{color:var(--teal-d);}
+.hlar-sage{color:var(--sage-d);}
+.hlar-gold{color:var(--gold);}
+.hlar-white{color:rgba(255,255,255,.95);}
+
+.hl-trans{font-style:italic;font-size:.9rem;line-height:1.8;margin-bottom:6px;}
+.hlt-teal{color:var(--ink-soft);}
+.hlt-sage{color:var(--ink-soft);}
+.hlt-gold{color:var(--sepia,#5a4828);}
+.hlt-white{color:rgba(255,255,255,.75);}
+
+.hl-ref{
+  font-family:'DM Sans',sans-serif;font-weight:600;
+  font-size:.6rem;letter-spacing:2px;text-transform:uppercase;
+}
+.hlr-teal{color:var(--teal);}
+.hlr-sage{color:var(--sage);}
+.hlr-gold{color:var(--gold);}
+.hlr-white{color:rgba(255,255,255,.4);}
+
+/* ════════════════════
+   SECTION DIVIDER
+════════════════════ */
+.bab-sep{
+  margin:32px 0 0;
+  border:none;border-top:1px solid rgba(0,0,0,.08);
+}
+
+/* ════════════════════
+   STEP LIST (wudhu steps)
+════════════════════ */
+.steps{margin:20px 0;}
+.step{
+  display:flex;gap:16px;margin-bottom:8px;
+  background:#fff;border:1px solid rgba(0,0,0,.07);
+  padding:14px 16px;
+}
+.step-n{
+  flex-shrink:0;
+  width:32px;height:32px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'DM Sans',sans-serif;font-weight:700;
+  font-size:.82rem;color:#fff;margin-top:2px;
+}
+.sn-teal{background:var(--teal-d);}
+.sn-sage{background:var(--sage-d);}
+.step-body{flex:1;}
+.step-title{font-family:'Lora',serif;font-weight:700;font-size:.97rem;margin-bottom:2px;color:var(--ink);}
+.step-ar{font-family:'Amiri',serif;font-size:.95rem;direction:rtl;text-align:right;margin-bottom:4px;line-height:1.85;color:rgba(0,0,0,.35);}
+.step-desc{font-size:.83rem;line-height:1.65;color:var(--ink-soft);font-style:italic;}
+.step-fard{
+  display:inline-block;margin-top:5px;
+  font-family:'DM Sans',sans-serif;font-size:.55rem;font-weight:600;
+  letter-spacing:2px;text-transform:uppercase;
+  padding:2px 7px;
+}
+.sf-fard{background:rgba(14,143,168,.1);color:var(--teal-d);border:1px solid var(--b-teal);}
+.sf-sunah{background:rgba(45,122,94,.1);color:var(--sage-d);border:1px solid var(--b-sage);}
+
+/* ════════════════════
+   PENUTUP
+════════════════════ */
+.penutup{
+  background:linear-gradient(160deg,var(--teal-d) 0%,var(--sage-d) 100%);
+  padding:64px 28px 72px;
+  text-align:center;position:relative;overflow:hidden;
+  margin-top:56px;
+}
+.penutup::before{
+  content:'';position:absolute;inset:0;
+  background:repeating-linear-gradient(100deg,transparent 0,transparent 40px,rgba(255,255,255,.02) 40px,rgba(255,255,255,.02) 41px);
+  pointer-events:none;
+}
+.penutup-inner{max-width:560px;margin:0 auto;position:relative;z-index:1;}
+.penutup-ar{font-family:'Amiri',serif;font-size:clamp(1.4rem,4vw,2.4rem);color:#fff;line-height:2;margin-bottom:12px;text-shadow:0 0 20px rgba(0,0,0,.2);}
+.penutup-div{width:60px;height:2px;background:rgba(255,255,255,.3);margin:16px auto;}
+.penutup-p{font-style:italic;font-size:clamp(.88rem,2vw,1.02rem);color:rgba(255,255,255,.8);line-height:1.9;margin-bottom:10px;}
+.penutup-ref{font-family:'DM Sans',sans-serif;font-weight:600;font-size:.58rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.45);}
+.penutup-footer{margin-top:36px;padding-top:20px;border-top:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+.penutup-footer .logo{font-family:'Amiri',serif;font-size:1.1rem;color:rgba(255,255,255,.45);}
+.penutup-footer .tag{font-family:'DM Sans',sans-serif;font-weight:600;font-size:.55rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.25);}
+
+/* ════════════════════
+   RESPONSIVE
+════════════════════ */
+@media(max-width:600px){
+  .body-wrap{padding:0 14px 60px;}
+  .hero{padding:60px 20px 80px;}
+  .hl{padding:16px 16px;}
+  .penutup{padding:48px 18px 56px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ════ HERO ════ -->
+<section class="hero">
+  <div class="ripples">
+    <div class="rp" style="width:300px;height:300px;--rt:7s;animation-delay:0s;"></div>
+    <div class="rp" style="width:560px;height:560px;--rt:7s;animation-delay:1.8s;"></div>
+    <div class="rp" style="width:820px;height:820px;--rt:7s;animation-delay:3.6s;"></div>
+    <div class="rp" style="width:1100px;height:1100px;--rt:7s;animation-delay:5.4s;"></div>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-drop">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
+    <p class="hero-eye">Panduan Fiqh Berdalil · Al-Qur'an &amp; Hadis Shahih</p>
+    <h1 class="hero-title">Thaharah</h1>
+    <div class="hero-ar">الطَّهَارَةُ — Bersuci dalam Islam</div>
+    <div class="hero-rule">
+      <span></span><em>💧 💧 💧</em><span></span>
+    </div>
+    <div class="hero-verse">
+      <div class="hv-ar">إِنَّ اللَّهَ يُحِبُّ التَّوَّابِينَ وَيُحِبُّ الْمُتَطَهِّرِينَ</div>
+      <div class="hv-id">"Sesungguhnya Allah menyukai orang-orang yang bertobat dan menyukai orang-orang yang mensucikan diri."<br><em style="color:rgba(200,240,230,.45)">— QS. Al-Baqarah: 222</em></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ BODY ════ -->
+<div class="body-wrap">
+
+  <!-- ── PROLOG ── -->
+  <div class="bab">
+    <div class="bab-tag bt-teal">✦ Pembuka</div>
+    <div class="bab-ar bar-teal">مُقَدِّمَةٌ فِي الطَّهَارَةِ</div>
+    <h2 class="bab-title">Pengantar: Thaharah, Kunci Ibadah</h2>
+    <div class="bab-rule br-teal"></div>
+
+    <div class="prose teal-fl">
+      <p class="lead">Thaharah — bersuci — adalah pintu masuk yang wajib dilalui sebelum seseorang dapat mendirikan shalat, menyentuh mushaf Al-Qur'an, atau melaksanakan ibadah-ibadah tertentu lainnya. Ia bukan sekadar kebersihan fisik, melainkan ibadah tersendiri yang memiliki hukum, syarat, dan keutamaannya sendiri.</p>
+      <p>Nabi ﷺ bersabda bahwa bersuci adalah setengah dari iman. Para ulama fiqh menempatkan pembahasan thaharah sebagai bab pertama dalam hampir seluruh kitab fiqh — karena tanpa thaharah yang benar, shalat tidak sah dan seluruh ibadah yang mensyaratkan kesucian pun gugur.</p>
+    </div>
+
+    <div class="dalil dalil-teal">
+      <div class="dalil-tag dt-teal">📜 HR. Muslim — Thaharah Setengah Iman</div>
+      <div class="dalil-ar dar-teal">الطُّهُورُ شَطْرُ الْإِيمَانِ</div>
+      <div class="dalil-trans">"Bersuci adalah setengah dari iman."</div>
+      <div class="dalil-ref dr-teal">HR. Muslim (223) — dari Abu Malik Al-Asy'ari radhiyallahu 'anhu</div>
+    </div>
+  </div>
+
+  <hr class="bab-sep">
+
+  <!-- ══════════════════════════════════
+       BAB I: PEMBAGIAN AIR
+  ══════════════════════════════════ -->
+  <div class="bab">
+    <div class="bab-tag bt-teal">✦ Bab Pertama</div>
+    <div class="bab-ar bar-teal">أَقْسَامُ الْمِيَاهِ</div>
+    <h2 class="bab-title">Pembagian Air dalam Fiqh Thaharah</h2>
+    <div class="bab-rule br-teal"></div>
+
+    <div class="prose teal-fl">
+      <p>Air adalah media utama bersuci dalam Islam. Para ulama fiqh membagi air menjadi beberapa kategori berdasarkan kesucian dan kemampuannya untuk menyucikan.</p>
+    </div>
+
+    <!-- Tabel Air — responsif -->
+    <div class="tbl-wrap">
+      <table class="tbl thead-teal">
+        <thead>
+          <tr>
+            <th style="width:28%">Jenis Air</th>
+            <th style="width:20%">Status</th>
+            <th style="width:52%">Penjelasan &amp; Contoh</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="Jenis Air">Air Mutlak (Thahir Muthahir)</td>
+            <td data-label="Status"><span class="tbadge tb-teal">Sah &amp; Menyucikan</span></td>
+            <td data-label="Penjelasan">Air yang masih berada pada sifat aslinya — air hujan, air sumur, air sungai, air laut, air salju, air embun, air mata air. Ini adalah air yang wajib digunakan untuk bersuci.</td>
+          </tr>
+          <tr>
+            <td data-label="Jenis Air">Air Musta'mal (Bekas Pakai)</td>
+            <td data-label="Status"><span class="tbadge tb-gold">Diperselisihkan</span></td>
+            <td data-label="Penjelasan">Air yang sudah digunakan untuk bersuci (wudhu/mandi wajib). Jumhur (Syafi'i, Hanbali): tidak sah untuk bersuci lagi. Hanafi &amp; Maliki: sah selama belum berubah sifatnya.</td>
+          </tr>
+          <tr>
+            <td data-label="Jenis Air">Air Mutanajjis</td>
+            <td data-label="Status"><span class="tbadge tb-rust">Tidak Sah</span></td>
+            <td data-label="Penjelasan">Air yang terkena najis dan berubah salah satu sifatnya (warna, bau, atau rasa). Tidak boleh digunakan untuk bersuci dan tidak boleh diminum.</td>
+          </tr>
+          <tr>
+            <td data-label="Jenis Air">Air Sedikit Terkena Najis</td>
+            <td data-label="Status"><span class="tbadge tb-rust">Tidak Sah</span></td>
+            <td data-label="Penjelasan">Air yang kurang dari dua qullah (~216 liter) yang terkena najis walau tidak berubah sifatnya — menurut Syafi'i dihukumi najis. Hanafi: dinilai dari perubahan sifat bukan ukuran.</td>
+          </tr>
+          <tr>
+            <td data-label="Jenis Air">Air Musyammas (Dipanaskan Matahari)</td>
+            <td data-label="Status"><span class="tbadge tb-teal">Sah</span></td>
+            <td data-label="Penjelasan">Air yang dipanaskan dalam wadah logam oleh sinar matahari. Secara hukum sah untuk bersuci, namun sebagian ulama memakruhkannya karena alasan kesehatan.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="dalil dalil-teal">
+      <div class="dalil-tag dt-teal">📜 HR. Abu Dawud &amp; Tirmidzi — Air Laut Suci</div>
+      <div class="dalil-ar dar-teal">هُوَ الطَّهُورُ مَاؤُهُ الْحِلُّ مَيْتَتُهُ</div>
+      <div class="dalil-trans">"(Air laut) itu adalah air yang suci lagi menyucikan, dan halal bangkainya (ikan dan hewan laut)."</div>
+      <div class="dalil-ref dr-teal">HR. Abu Dawud (83), Tirmidzi (69), Nasā'i (59) — dari Abu Hurairah — Shahih</div>
+    </div>
+
+    <div class="dalil dalil-teal">
+      <div class="dalil-tag dt-teal">📜 HR. Abu Dawud — Dua Qullah</div>
+      <div class="dalil-ar dar-teal">إِذَا كَانَ الْمَاءُ قُلَّتَيْنِ لَمْ يَحْمِلِ الْخَبَثَ</div>
+      <div class="dalil-trans">"Apabila air mencapai dua qullah, ia tidak membawa (tidak terpengaruh) kotoran (najis)."</div>
+      <div class="dalil-ref dr-teal">HR. Abu Dawud (63), Tirmidzi (67), Ibnu Majah (517) — dari Ibnu Umar — Shahih</div>
+    </div>
+  </div>
+
+  <hr class="bab-sep">
+
+  <!-- ══════════════════════════════════
+       BAB II: NAJIS
+  ══════════════════════════════════ -->
+  <div class="bab">
+    <div class="bab-tag bt-sage">✦ Bab Kedua</div>
+    <div class="bab-ar bar-sage">النَّجَاسَةُ وَأَنْوَاعُهَا</div>
+    <h2 class="bab-title">Najis: Jenis &amp; Cara Mensucikannya</h2>
+    <div class="bab-rule br-sage"></div>
+
+    <div class="prose sage-fl">
+      <p>Najis adalah sesuatu yang dihukumi kotor oleh syariat sehingga harus dibersihkan sebelum melaksanakan ibadah yang mensyaratkan kesucian. Para ulama membagi najis menjadi tiga tingkatan berdasarkan cara mensucikannya.</p>
+    </div>
+
+    <!-- Tabel Jenis Najis -->
+    <div class="tbl-wrap">
+      <table class="tbl thead-sage">
+        <thead>
+          <tr>
+            <th style="width:22%">Tingkatan</th>
+            <th style="width:30%">Contoh Najis</th>
+            <th style="width:48%">Cara Mensucikan</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="Tingkatan"><span class="tbadge tb-rust">Mughallazah</span><br><em style="font-size:.78rem;font-weight:400;">(Najis Berat)</em></td>
+            <td data-label="Contoh Najis">Jilatan anjing dan babi beserta keturunannya</td>
+            <td data-label="Cara Mensucikan">Dicuci 7 kali, salah satunya dengan tanah (atau sabun pengganti tanah menurut sebagian ulama). Dalil: HR. Muslim (279).</td>
+          </tr>
+          <tr>
+            <td data-label="Tingkatan"><span class="tbadge tb-gold">Mukhaffafah</span><br><em style="font-size:.78rem;font-weight:400;">(Najis Ringan)</em></td>
+            <td data-label="Contoh Najis">Air kencing bayi laki-laki yang belum makan selain ASI (usia &lt;2 tahun)</td>
+            <td data-label="Cara Mensucikan">Cukup dipercikkan air ke seluruh bagian yang terkena. Dalil: HR. Abu Dawud (376) &amp; Ibnu Majah (526).</td>
+          </tr>
+          <tr>
+            <td data-label="Tingkatan"><span class="tbadge tb-teal">Mutawassithah</span><br><em style="font-size:.78rem;font-weight:400;">(Najis Sedang)</em></td>
+            <td data-label="Contoh Najis">Air kencing, tinja manusia &amp; hewan, darah, nanah, bangkai, khamr, air liur anjing (selain jilatan)</td>
+            <td data-label="Cara Mensucikan">Hilangkan wujud (benda)nya terlebih dahulu, lalu cuci dengan air mengalir hingga hilang warna, bau, dan rasanya. Cukup sekali cuci menurut jumhur.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="dalil dalil-sage">
+      <div class="dalil-tag dt-sage">📜 HR. Muslim — Najis Anjing</div>
+      <div class="dalil-ar dar-sage">طَهُورُ إِنَاءِ أَحَدِكُمْ إِذَا وَلَغَ فِيهِ الْكَلْبُ أَنْ يَغْسِلَهُ سَبْعَ مَرَّاتٍ أُولَاهُنَّ بِالتُّرَابِ</div>
+      <div class="dalil-trans">"Sucinya bejana salah seorang dari kalian apabila dijilat anjing adalah dengan mencucinya tujuh kali, yang pertamanya dengan tanah."</div>
+      <div class="dalil-ref dr-sage">HR. Muslim (279) — dari Abu Hurairah radhiyallahu 'anhu</div>
+    </div>
+
+    <div class="dalil dalil-sage">
+      <div class="dalil-tag dt-sage">📜 HR. Abu Dawud — Kencing Bayi Laki-laki</div>
+      <div class="dalil-ar dar-sage">يُغْسَلُ مِنْ بَوْلِ الْجَارِيَةِ وَيُرَشُّ مِنْ بَوْلِ الْغُلَامِ</div>
+      <div class="dalil-trans">"(Pakaian) dicuci dari kencing bayi perempuan, dan diperciki (saja) dari kencing bayi laki-laki."</div>
+      <div class="dalil-ref dr-sage">HR. Abu Dawud (376) &amp; Ibnu Majah (526) — dari Ali bin Abi Thalib — Shahih</div>
+    </div>
+
+    <!-- Najis yang dimaafkan -->
+    <div class="hl hl-sage" style="margin-top:24px;">
+      <div class="hl-label hll-sage">✦ Najis yang Dimaafkan (Ma'fu)</div>
+      <div class="hl-trans hlt-sage">Beberapa hal dikategorikan najis namun dimaafkan karena sangat sulit dihindari: darah atau nanah sedikit yang tidak mengubah air (menurut Hanafi), bekas kencing yang sangat sedikit tidak kasat mata, tanah jalanan yang mengandung najis sedikit. Patokannya: sesuatu yang tidak bisa dihindari dan sangat menyulitkan bila diharuskan bersuci setiap saat.</div>
+      <div class="hl-ref hlr-sage">Fiqh Al-Islami wa Adillatuhu — Wahbah Az-Zuhaili</div>
+    </div>
+  </div>
+
+  <hr class="bab-sep">
+
+  <!-- ══════════════════════════════════
+       BAB III: WUDHU
+  ══════════════════════════════════ -->
+  <div class="bab">
+    <div class="bab-tag bt-teal">✦ Bab Ketiga</div>
+    <div class="bab-ar bar-teal">الْوُضُوءُ — فَرَائِضُهُ وَسُنَنُهُ</div>
+    <h2 class="bab-title">Wudhu: Rukun, Sunnah &amp; Tata Caranya</h2>
+    <div class="bab-rule br-teal"></div>
+
+    <div class="prose teal-fl">
+      <p class="lead">Wudhu adalah bersuci dari hadats kecil menggunakan air untuk anggota tubuh tertentu dengan cara dan urutan yang ditetapkan syariat. Ia adalah syarat sah shalat yang paling utama.</p>
+    </div>
+
+    <div class="dalil dalil-teal">
+      <div class="dalil-tag dt-teal">📖 QS. Al-Mā'idah: 6 — Perintah Wudhu</div>
+      <div class="dalil-ar dar-teal">يَٰٓأَيُّهَا الَّذِينَ آمَنُوٓا إِذَا قُمْتُمْ إِلَى الصَّلَاةِ فَاغْسِلُوا وُجُوهَكُمْ وَأَيْدِيَكُمْ إِلَى الْمَرَافِقِ وَامْسَحُوا بِرُءُوسِكُمْ وَأَرْجُلَكُمْ إِلَى الْكَعْبَيْنِ</div>
+      <div class="dalil-trans">"Wahai orang-orang yang beriman! Apabila kamu hendak melaksanakan shalat, maka basuhlah wajahmu dan tanganmu sampai ke siku, usaplah kepalamu dan (basuh) kedua kakimu sampai kedua mata kaki."</div>
+      <div class="dalil-ref dr-teal">QS. Al-Mā'idah (5): 6</div>
+    </div>
+
+    <!-- Tata Cara Wudhu — Steps -->
+    <p style="font-family:'DM Sans',sans-serif;font-weight:600;font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--teal-d);margin:24px 0 12px;">Tata Cara Wudhu Lengkap (Fardhu + Sunnah)</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-n sn-teal">1</div>
+        <div class="step-body">
+          <div class="step-title">Niat dalam Hati</div>
+          <div class="step-desc">Niat berwudhu untuk menghilangkan hadats kecil guna shalat atau ibadah yang memerlukan wudhu. Niat cukup dalam hati — tidak perlu dilafadzkan menurut pendapat yang kuat.</div>
+          <span class="step-fard sf-fard">Fardhu</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-n sn-sage">2</div>
+        <div class="step-body">
+          <div class="step-title">Membaca Bismillah</div>
+          <div class="step-desc">Dianjurkan membaca "Bismillah" sebelum memulai wudhu. Sebagian ulama (Hanbali) mewajibkannya.</div>
+          <span class="step-fard sf-sunah">Sunnah / Wajib (Hanbali)</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-n sn-sage">3</div>
+        <div class="step-body">
+          <div class="step-title">Mencuci Kedua Telapak Tangan (3×)</div>
+          <div class="step-ar">غَسْلُ الْكَفَّيْنِ ثَلَاثًا</div>
+          <div class="step-desc">Membasuh kedua telapak tangan hingga pergelangan, termasuk sela-sela jari, tiga kali.</div>
+          <span class="step-fard sf-sunah">Sunnah</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-n sn-sage">4</div>
+        <div class="step-body">
+          <div class="step-title">Berkumur &amp; Istinsyaq (3×)</div>
+          <div class="step-ar">الْمَضْمَضَةُ وَالاِسْتِنْشَاقُ</div>
+          <div class="step-desc">Berkumur (memutar air dalam mulut) lalu menghirup air ke hidung dan menghembuskannya. Disunahkan dilakukan bersama-sama dalam tiga cidukan.</div>
+          <span class="step-fard sf-sunah">Sunnah (Syafi'i) / Wajib (Hanbali)</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-n sn-teal">5</div>
+        <div class="step-body">
+          <div class="step-title">Membasuh Wajah (1–3×)</div>
+          <div class="step-ar">غَسْلُ الْوَجْهِ</div>
+          <div class="step-desc">Membasuh seluruh wajah — dari batas tumbuh rambut kepala hingga dagu, dari telinga kanan ke kiri. Wajib sekali, sunnah tiga kali.</div>
+          <span class="step-fard sf-fard">Fardhu</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-n sn-teal">6</div>
+        <div class="step-body">
+          <div class="step-title">Membasuh Kedua Tangan sampai Siku (1–3×)</div>
+          <div class="step-ar">غَسْلُ الْيَدَيْنِ إِلَى الْمِرْفَقَيْنِ</div>
+          <div class="step-desc">Dimulai dari kanan lalu kiri. Membasuh hingga mencakup siku — siku wajib ikut dibasuh.</div>
+          <span class="step-fard sf-fard">Fardhu</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-n sn-teal">7</div>
+        <div class="step-body">
+          <div class="step-title">Mengusap Kepala (1×)</div>
+          <div class="step-ar">مَسْحُ الرَّأْسِ</div>
+          <div class="step-desc">Mengusap kepala dengan tangan basah — paling sedikit sebagian kepala (Syafi'i), seluruh kepala (Hanbali). Disunahkan dari depan ke belakang lalu kembali ke depan.</div>
+          <span class="step-fard sf-fard">Fardhu</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-n sn-sage">8</div>
+        <div class="step-body">
+          <div class="step-title">Mengusap Kedua Telinga (1×)</div>
+          <div class="step-ar">مَسْحُ الْأُذُنَيْنِ</div>
+          <div class="step-desc">Mengusap bagian dalam dan luar kedua telinga dengan air. Disunahkan menggunakan air baru (bukan sisa usapan kepala).</div>
+          <span class="step-fard sf-sunah">Sunnah</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-n sn-teal">9</div>
+        <div class="step-body">
+          <div class="step-title">Membasuh Kedua Kaki sampai Mata Kaki (1–3×)</div>
+          <div class="step-ar">غَسْلُ الرِّجْلَيْنِ إِلَى الْكَعْبَيْنِ</div>
+          <div class="step-desc">Dimulai dari kanan lalu kiri, termasuk mata kaki. Disunahkan menggosok sela-sela jari kaki dengan kelingking.</div>
+          <span class="step-fard sf-fard">Fardhu</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-n sn-sage">10</div>
+        <div class="step-body">
+          <div class="step-title">Tertib (Berurutan) &amp; Muwalah (Bersambung)</div>
+          <div class="step-ar">التَّرْتِيبُ وَالْمُوَالَاةُ</div>
+          <div class="step-desc">Urutan wudhu harus sesuai yang disebutkan dalam QS. Al-Mā'idah: 6. Tidak boleh ada jeda panjang di antara anggota wudhu hingga yang pertama mengering (menurut Syafi'i dan Hanbali).</div>
+          <span class="step-fard sf-fard">Fardhu</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hal yang Membatalkan Wudhu -->
+    <p style="font-family:'DM Sans',sans-serif;font-weight:600;font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--teal-d);margin:28px 0 12px;">Hal-Hal yang Membatalkan Wudhu</p>
+
+    <div class="tbl-wrap">
+      <table class="tbl thead-teal">
+        <thead>
+          <tr>
+            <th style="width:35%">Pembatal</th>
+            <th style="width:65%">Keterangan &amp; Dalil</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="Pembatal">Keluarnya sesuatu dari dua jalan (qubul &amp; dubur)</td>
+            <td data-label="Keterangan">Air kencing, tinja, angin (kentut), mani, madzi, wadi — semuanya membatalkan wudhu. Dalil: QS. Al-Mā'idah: 6 dan ijma' ulama.</td>
+          </tr>
+          <tr>
+            <td data-label="Pembatal">Hilangnya akal (tidur nyenyak, pingsan, mabuk)</td>
+            <td data-label="Keterangan">Tidur dalam posisi yang tidak menetapkan dubur (tidur bersandar atau duduk kuat) tidak membatalkan menurut sebagian ulama. HR. Ahmad: "Mata adalah batas (penjaga) dubur, maka siapa yang tidur hendaklah berwudhu."</td>
+          </tr>
+          <tr>
+            <td data-label="Pembatal">Menyentuh kemaluan dengan telapak tangan</td>
+            <td data-label="Keterangan">Menurut Syafi'i dan Maliki: membatalkan wudhu. Menurut Hanafi dan pendapat lain: tidak batal. HR. Abu Dawud (181): "Barangsiapa menyentuh kemaluannya hendaklah berwudhu."</td>
+          </tr>
+          <tr>
+            <td data-label="Pembatal">Memakan daging unta</td>
+            <td data-label="Keterangan">Hanya menurut Hanbali dan sebagian ulama berdasarkan hadis shahih: "Berwudhulah dari memakan daging unta." — HR. Muslim (360).</td>
+          </tr>
+          <tr>
+            <td data-label="Pembatal">Murtad</td>
+            <td data-label="Keterangan">Keluar dari Islam membatalkan seluruh ibadah termasuk wudhu, berdasarkan QS. Az-Zumar: 65.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <hr class="bab-sep">
+
+  <!-- ══════════════════════════════════
+       BAB IV: MANDI WAJIB
+  ══════════════════════════════════ -->
+  <div class="bab">
+    <div class="bab-tag bt-sage">✦ Bab Keempat</div>
+    <div class="bab-ar bar-sage">الْغُسْلُ — مَوْجِبَاتُهُ وَفَرَائِضُهُ</div>
+    <h2 class="bab-title">Mandi Wajib (Ghusl): Sebab &amp; Tata Caranya</h2>
+    <div class="bab-rule br-sage"></div>
+
+    <div class="prose sage-fl">
+      <p>Ghusl adalah bersuci dari hadats besar dengan membasahi seluruh tubuh dari ujung rambut hingga ujung kaki menggunakan air suci.</p>
+    </div>
+
+    <p style="font-family:'DM Sans',sans-serif;font-weight:600;font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--sage-d);margin:0 0 12px;">Sebab-Sebab yang Mewajibkan Mandi</p>
+
+    <div class="tbl-wrap">
+      <table class="tbl thead-sage">
+        <thead>
+          <tr>
+            <th style="width:30%">Sebab</th>
+            <th style="width:20%">Berlaku untuk</th>
+            <th style="width:50%">Dalil</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="Sebab">Keluarnya mani disertai syahwat (janabah)</td>
+            <td data-label="Berlaku untuk">Laki-laki &amp; Perempuan</td>
+            <td data-label="Dalil">QS. Al-Mā'idah: 6 &amp; HR. Bukhari (248): "Jika dua khitan bertemu (jima'), maka wajib mandi."</td>
+          </tr>
+          <tr>
+            <td data-label="Sebab">Jima' (berhubungan badan) walau tidak keluar mani</td>
+            <td data-label="Berlaku untuk">Laki-laki &amp; Perempuan</td>
+            <td data-label="Dalil">HR. Muslim (349): Wajib mandi setelah jima' meski tidak keluar mani.</td>
+          </tr>
+          <tr>
+            <td data-label="Sebab">Selesai haidh</td>
+            <td data-label="Berlaku untuk">Perempuan</td>
+            <td data-label="Dalil">QS. Al-Baqarah: 222 &amp; HR. Bukhari (315).</td>
+          </tr>
+          <tr>
+            <td data-label="Sebab">Selesai nifas (darah setelah melahirkan)</td>
+            <td data-label="Berlaku untuk">Perempuan</td>
+            <td data-label="Dalil">Ijma' ulama berdasarkan qiyas atas haidh.</td>
+          </tr>
+          <tr>
+            <td data-label="Sebab">Wiladah (melahirkan) walau tidak ada darah</td>
+            <td data-label="Berlaku untuk">Perempuan</td>
+            <td data-label="Dalil">Pendapat Syafi'i &amp; Hanbali berdasarkan keluarnya sesuatu dari rahim.</td>
+          </tr>
+          <tr>
+            <td data-label="Sebab">Meninggal dunia (dimandikan)</td>
+            <td data-label="Berlaku untuk">Setiap Muslim</td>
+            <td data-label="Dalil">HR. Bukhari (1195): Nabi ﷺ memerintahkan memandikan jenazah.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="dalil dalil-sage" style="margin-top:8px;">
+      <div class="dalil-tag dt-sage">📖 QS. Al-Mā'idah: 6 — Perintah Mandi Janabah</div>
+      <div class="dalil-ar dar-sage">وَإِن كُنتُمْ جُنُبًا فَاطَّهَّرُوا</div>
+      <div class="dalil-trans">"Dan jika kamu dalam keadaan junub maka mandilah (untuk bersuci)."</div>
+      <div class="dalil-ref dr-sage">QS. Al-Mā'idah (5): 6</div>
+    </div>
+
+    <!-- Cara Mandi Wajib -->
+    <p style="font-family:'DM Sans',sans-serif;font-weight:600;font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--sage-d);margin:24px 0 12px;">Tata Cara Mandi Wajib</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-n sn-teal">1</div>
+        <div class="step-body">
+          <div class="step-title">Niat</div>
+          <div class="step-desc">Niat mandi wajib untuk menghilangkan hadats besar (janabah, haidh, atau nifas). Niat cukup dalam hati.</div>
+          <span class="step-fard sf-fard">Fardhu</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-n sn-sage">2</div>
+        <div class="step-body">
+          <div class="step-title">Membaca Bismillah &amp; Mencuci Tangan</div>
+          <div class="step-desc">Sunnah mengawali dengan Bismillah lalu mencuci kedua tangan tiga kali sebelum memasukkannya ke wadah air.</div>
+          <span class="step-fard sf-sunah">Sunnah</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-n sn-sage">3</div>
+        <div class="step-body">
+          <div class="step-title">Membersihkan Kemaluan &amp; Kotoran</div>
+          <div class="step-desc">Membersihkan kemaluan dan anggota tubuh yang terkena najis terlebih dahulu sebelum membasahi seluruh badan.</div>
+          <span class="step-fard sf-sunah">Sunnah (persiapan)</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-n sn-sage">4</div>
+        <div class="step-body">
+          <div class="step-title">Berwudhu Terlebih Dahulu</div>
+          <div class="step-desc">Disunahkan berwudhu lengkap sebelum mandi wajib, berdasarkan hadis 'Aisyah tentang cara mandi Nabi ﷺ (HR. Bukhari 272).</div>
+          <span class="step-fard sf-sunah">Sunnah</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-n sn-teal">5</div>
+        <div class="step-body">
+          <div class="step-title">Menuangkan Air ke Kepala (3× sambil menggosok pangkal rambut)</div>
+          <div class="step-ar">إِفَاضَةُ الْمَاءِ عَلَى الرَّأْسِ ثَلَاثًا</div>
+          <div class="step-desc">Menuangkan air ke kepala tiga kali sambil memastikan air meresap sampai ke pangkal rambut dan kulit kepala.</div>
+          <span class="step-fard sf-fard">Fardhu (mencapai akar rambut)</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-n sn-teal">6</div>
+        <div class="step-body">
+          <div class="step-title">Membasahi Seluruh Tubuh Merata</div>
+          <div class="step-ar">تَعْمِيمُ الْمَاءِ عَلَى جَمِيعِ الْبَدَنِ</div>
+          <div class="step-desc">Memastikan air mencapai seluruh bagian tubuh termasuk lipatan-lipatan, pusar, ketiak, sela-sela jari tangan dan kaki, bagian belakang lutut, dll.</div>
+          <span class="step-fard sf-fard">Fardhu</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="bab-sep">
+
+  <!-- ══════════════════════════════════
+       BAB V: TAYAMMUM
+  ══════════════════════════════════ -->
+  <div class="bab">
+    <div class="bab-tag bt-gold">✦ Bab Kelima</div>
+    <div class="bab-ar bar-gold">التَّيَمُّمُ — شُرُوطُهُ وَكَيْفِيَّتُهُ</div>
+    <h2 class="bab-title">Tayammum: Pengganti Wudhu &amp; Mandi Wajib</h2>
+    <div class="bab-rule br-gold"></div>
+
+    <div class="prose gold-fl">
+      <p class="lead">Tayammum adalah kemurahan Allah — pengganti wudhu dan mandi wajib menggunakan tanah/debu yang suci ketika air tidak tersedia atau penggunaannya membahayakan kesehatan. Islam adalah agama kemudahan.</p>
+    </div>
+
+    <div class="dalil dalil-gold">
+      <div class="dalil-tag dt-gold">📖 QS. An-Nisā': 43 — Kebolehan Tayammum</div>
+      <div class="dalil-ar dar-gold">وَإِن كُنتُم مَّرْضَىٰٓ أَوْ عَلَىٰ سَفَرٍ أَوْ جَاءَ أَحَدٌ مِّنكُم مِّنَ الْغَائِطِ أَوْ لَٰمَسْتُمُ النِّسَاءَ فَلَمْ تَجِدُوا مَاءً فَتَيَمَّمُوا صَعِيدًا طَيِّبًا</div>
+      <div class="dalil-trans">"Dan jika kamu sakit atau dalam perjalanan, atau kembali dari tempat buang air, atau menyentuh perempuan, lalu kamu tidak mendapat air, maka bertayammumlah dengan tanah yang baik (suci)."</div>
+      <div class="dalil-ref dr-gold">QS. An-Nisā' (4): 43 &amp; QS. Al-Mā'idah (5): 6</div>
+    </div>
+
+    <!-- Syarat Tayammum -->
+    <div class="tbl-wrap">
+      <table class="tbl thead-gold">
+        <thead>
+          <tr>
+            <th style="width:32%">Syarat / Kondisi</th>
+            <th style="width:68%">Penjelasan</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="Syarat">Tidak ada air</td>
+            <td data-label="Penjelasan">Telah berusaha mencari air namun tidak menemukan, atau air ada namun sangat jauh (lebih dari 1 mil menurut sebagian ulama) sehingga dikhawatirkan melewatkan waktu shalat.</td>
+          </tr>
+          <tr>
+            <td data-label="Syarat">Tidak mampu menggunakan air</td>
+            <td data-label="Penjelasan">Sakit yang dikhawatirkan memperparah kondisi, cuaca sangat dingin yang membahayakan jiwa jika memakai air, atau luka yang tidak boleh terkena air.</td>
+          </tr>
+          <tr>
+            <td data-label="Syarat">Menggunakan sha'id (tanah/debu)</td>
+            <td data-label="Penjelasan">Permukaan tanah atau batu yang berdebu. Menurut Hanafi boleh menggunakan benda padat dari bumi (batu, kayu). Menurut Syafi'i harus ada debu yang menempel di tangan.</td>
+          </tr>
+          <tr>
+            <td data-label="Syarat">Masuk waktu shalat</td>
+            <td data-label="Penjelasan">Menurut jumhur, tayammum baru dilakukan setelah masuk waktu shalat yang akan dikerjakan.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Cara Tayammum -->
+    <p style="font-family:'DM Sans',sans-serif;font-weight:600;font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin:20px 0 12px;">Cara Bertayammum</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-n" style="background:var(--gold);width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'DM Sans',sans-serif;font-weight:700;font-size:.82rem;color:#fff;margin-top:2px;flex-shrink:0;">1</div>
+        <div class="step-body">
+          <div class="step-title">Niat Tayammum</div>
+          <div class="step-desc">Niat bertayammum sebagai pengganti wudhu (atau mandi wajib) untuk mengerjakan shalat.</div>
+          <span class="step-fard sf-fard">Fardhu</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-n" style="background:var(--gold);width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'DM Sans',sans-serif;font-weight:700;font-size:.82rem;color:#fff;margin-top:2px;flex-shrink:0;">2</div>
+        <div class="step-body">
+          <div class="step-title">Menepuk Debu Satu Kali</div>
+          <div class="step-ar">ضَرْبَةٌ وَاحِدَةٌ</div>
+          <div class="step-desc">Menepukkan kedua telapak tangan ke permukaan tanah/debu yang suci satu kali, lalu meniupnya ringan.</div>
+          <span class="step-fard sf-fard">Fardhu</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-n" style="background:var(--gold);width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'DM Sans',sans-serif;font-weight:700;font-size:.82rem;color:#fff;margin-top:2px;flex-shrink:0;">3</div>
+        <div class="step-body">
+          <div class="step-title">Mengusap Wajah</div>
+          <div class="step-ar">مَسْحُ الْوَجْهِ</div>
+          <div class="step-desc">Mengusapkan kedua telapak tangan ke seluruh wajah sekali.</div>
+          <span class="step-fard sf-fard">Fardhu</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-n" style="background:var(--gold);width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'DM Sans',sans-serif;font-weight:700;font-size:.82rem;color:#fff;margin-top:2px;flex-shrink:0;">4</div>
+        <div class="step-body">
+          <div class="step-title">Mengusap Kedua Tangan sampai Pergelangan</div>
+          <div class="step-ar">مَسْحُ الْيَدَيْنِ إِلَى الرُّسْغَيْنِ</div>
+          <div class="step-desc">Mengusap punggung tangan kiri dengan telapak tangan kanan dan sebaliknya hingga pergelangan (bukan sampai siku — berbeda dengan wudhu).</div>
+          <span class="step-fard sf-fard">Fardhu</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="dalil dalil-gold">
+      <div class="dalil-tag dt-gold">📜 HR. Bukhari &amp; Muslim — Kemudahan Tayammum</div>
+      <div class="dalil-ar dar-gold">جُعِلَتْ لِيَ الْأَرْضُ مَسْجِدًا وَطَهُورًا فَأَيُّمَا رَجُلٍ مِنْ أُمَّتِي أَدْرَكَتْهُ الصَّلَاةُ فَلْيُصَلِّ</div>
+      <div class="dalil-trans">"Bumi dijadikan untukku sebagai masjid (tempat shalat) dan alat bersuci. Maka di mana saja seseorang dari umatku mendapati waktu shalat, hendaklah ia shalat (di sana)."</div>
+      <div class="dalil-ref dr-gold">HR. Bukhari (335) &amp; Muslim (521) — dari Jabir bin Abdillah radhiyallahu 'anhu</div>
+    </div>
+  </div>
+
+  <hr class="bab-sep">
+
+  <!-- ══════════════════════════════════
+       BAB VI: HAIDH, NIFAS, ISTIHADHAH
+  ══════════════════════════════════ -->
+  <div class="bab">
+    <div class="bab-tag bt-rust">✦ Bab Keenam</div>
+    <div class="bab-ar bar-rust">الْحَيْضُ وَالنِّفَاسُ وَالاِسْتِحَاضَةُ</div>
+    <h2 class="bab-title">Haidh, Nifas &amp; Istihadhah</h2>
+    <div class="bab-rule br-rust"></div>
+
+    <div class="prose">
+      <p>Ketiga kondisi ini khusus berkaitan dengan wanita dan memiliki hukum thaharah tersendiri yang sangat penting untuk dipahami.</p>
+    </div>
+
+    <div class="tbl-wrap">
+      <table class="tbl thead-rust">
+        <thead>
+          <tr>
+            <th style="width:20%">Kondisi</th>
+            <th style="width:25%">Definisi &amp; Durasi</th>
+            <th style="width:55%">Hukum yang Terkait</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="Kondisi"><strong>Haidh</strong><br>(Menstruasi)</td>
+            <td data-label="Definisi">Darah alami yang keluar dari rahim wanita sehat. Min 1 hari, umumnya 6–7 hari, maks 15 hari (Syafi'i). Tidak ada batas minimum yang shahih menurut Hanbali.</td>
+            <td data-label="Hukum">❌ Shalat (tidak wajib qadha) · ❌ Puasa (wajib qadha) · ❌ Membaca/menyentuh Mushaf (diperselisihkan) · ❌ Thawaf · ❌ Jima' · ✅ Dzikir &amp; doa tetap boleh. Wajib mandi setelah suci. Dalil: QS. Al-Baqarah: 222 &amp; HR. Bukhari (315).</td>
+          </tr>
+          <tr>
+            <td data-label="Kondisi"><strong>Nifas</strong><br>(Pasca melahirkan)</td>
+            <td data-label="Definisi">Darah yang keluar setelah melahirkan. Tidak ada batas minimum. Umumnya 40 hari, maksimum 60 hari (Hanbali) atau tidak ada batas pasti (Syafi'i).</td>
+            <td data-label="Hukum">Sama dengan haidh: ❌ Shalat (tidak wajib qadha) · ❌ Puasa (wajib qadha) · ❌ Jima' · ✅ Wajib mandi setelah darah berhenti. Ijma' ulama.</td>
+          </tr>
+          <tr>
+            <td data-label="Kondisi"><strong>Istihadhah</strong><br>(Darah Penyakit)</td>
+            <td data-label="Definisi">Darah yang keluar di luar waktu haidh/nifas, atau melebihi batas maksimalnya. Ini adalah darah penyakit/gangguan, bukan haidh.</td>
+            <td data-label="Hukum">✅ Wajib shalat (tidak boleh ditinggalkan) · ✅ Boleh puasa · Wudhu setiap waktu shalat. Hadis Fathimah binti Abi Hubaisy: "Itu hanyalah urat, bukan haidh." — HR. Bukhari (306).</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="dalil dalil-rust">
+      <div class="dalil-tag dt-rust">📖 QS. Al-Baqarah: 222 — Larangan Jima' saat Haidh</div>
+      <div class="dalil-ar dar-rust">وَيَسْأَلُونَكَ عَنِ الْمَحِيضِ ۖ قُلْ هُوَ أَذًى فَاعْتَزِلُوا النِّسَاءَ فِي الْمَحِيضِ</div>
+      <div class="dalil-trans">"Dan mereka menanyakan kepadamu tentang haidh. Katakanlah: 'Itu adalah sesuatu yang kotor.' Karena itu jauhilah istri pada waktu haidh."</div>
+      <div class="dalil-ref dr-rust">QS. Al-Baqarah (2): 222</div>
+    </div>
+  </div>
+
+  <hr class="bab-sep">
+
+  <!-- ══════════════════════════════════
+       BAB VII: KEUTAMAAN THAHARAH
+  ══════════════════════════════════ -->
+  <div class="bab">
+    <div class="bab-tag bt-teal">✦ Bab Ketujuh</div>
+    <div class="bab-ar bar-teal">فَضَائِلُ الطَّهَارَةِ</div>
+    <h2 class="bab-title">Keutamaan Bersuci dalam Islam</h2>
+    <div class="bab-rule br-teal"></div>
+
+    <div class="item-list">
+      <div class="item">
+        <div class="item-num in-teal">1</div>
+        <div class="item-body">
+          <div class="item-title">Tanda Keimanan</div>
+          <div class="item-ar">الطُّهُورُ شَطْرُ الْإِيمَانِ</div>
+          <div class="item-desc">"Bersuci adalah setengah dari iman." Thaharah bukan sekadar kebersihan fisik — ia adalah cermin iman, karena seorang mukmin yang peduli akan kebersihan bathin (dari dosa) akan peduli pula pada kebersihan lahir.</div>
+          <span class="item-ref ir-teal">HR. Muslim (223)</span>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item-num in-teal">2</div>
+        <div class="item-body">
+          <div class="item-title">Dicintai Allah</div>
+          <div class="item-ar">إِنَّ اللَّهَ يُحِبُّ التَّوَّابِينَ وَيُحِبُّ الْمُتَطَهِّرِينَ</div>
+          <div class="item-desc">"Sesungguhnya Allah menyukai orang-orang yang bertobat dan menyukai orang-orang yang mensucikan diri." Bersuci membawa kecintaan Allah — dan tidak ada keutamaan yang lebih tinggi dari itu.</div>
+          <span class="item-ref ir-teal">QS. Al-Baqarah (2): 222</span>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item-num in-teal">3</div>
+        <div class="item-body">
+          <div class="item-title">Cahaya di Hari Kiamat</div>
+          <div class="item-ar">سِيمَاهُمْ فِي وُجُوهِهِمْ مِنْ أَثَرِ السُّجُودِ</div>
+          <div class="item-desc">"Bekas wudhu adalah cahaya (nūr) di Hari Kiamat. Orang-orang yang berwudhu akan dipanggil sebagai ghurral muhajjalīn — bercahaya wajah dan anggota tubuhnya karena bekas wudhu." Nabi ﷺ bersabda: "Umatku akan dipanggil pada Hari Kiamat dalam keadaan bercahaya karena bekas wudhu."</div>
+          <span class="item-ref ir-teal">HR. Muslim (246) — dari Abu Hurairah</span>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item-num in-sage">4</div>
+        <div class="item-body">
+          <div class="item-title">Penggugur Dosa-Dosa Kecil</div>
+          <div class="item-ar">مَنْ تَوَضَّأَ فَأَحْسَنَ الْوُضُوءَ خَرَجَتْ خَطَايَاهُ</div>
+          <div class="item-desc">"Barangsiapa berwudhu dengan sempurna, keluarlah dosa-dosanya dari seluruh tubuhnya — bahkan dari bawah kuku-kukunya." Setiap anggota wudhu yang dibasuh, dosa-dosa yang dilakukan anggota tubuh itu terhapus.</div>
+          <span class="item-ref ir-sage">HR. Muslim (245) — dari 'Utsman bin Affan</span>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item-num in-sage">5</div>
+        <div class="item-body">
+          <div class="item-title">Doa setelah Wudhu membuka 8 Pintu Surga</div>
+          <div class="item-ar">مَنْ تَوَضَّأَ فَأَحْسَنَ الْوُضُوءَ ثُمَّ قَالَ… فُتِحَتْ لَهُ أَبْوَابُ الْجَنَّةِ الثَّمَانِيَةُ</div>
+          <div class="item-desc">"Barangsiapa berwudhu dengan sempurna kemudian membaca (syahadat setelah wudhu), maka dibuka baginya delapan pintu surga — ia boleh masuk dari mana saja ia mau." Doa setelah wudhu: Asyhadu allā ilāha illallāh wahdahu lā syarīka lah, wa asyhadu anna Muhammadan 'abduhu wa rasūluh.</div>
+          <span class="item-ref ir-sage">HR. Muslim (234) — dari 'Umar bin Khattab</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hl hl-dark">
+      <div class="hl-ar hlar-white">اَللَّهُمَّ اجْعَلْنِي مِنَ التَّوَّابِينَ وَاجْعَلْنِي مِنَ الْمُتَطَهِّرِينَ</div>
+      <div class="hl-trans hlt-white">"Ya Allah, jadikanlah aku termasuk orang-orang yang bertobat, dan jadikanlah aku termasuk orang-orang yang menyucikan diri."</div>
+      <div class="hl-ref hlr-white">Doa yang dianjurkan setelah berwudhu — HR. Tirmidzi (55) — Shahih</div>
+    </div>
+  </div>
+
+</div><!-- end body-wrap -->
+
+<!-- ════ PENUTUP ════ -->
+<div class="penutup">
+  <div class="penutup-inner">
+    <div class="penutup-ar">وَاللَّهُ يُحِبُّ الْمُتَطَهِّرِينَ</div>
+    <div class="penutup-div"></div>
+    <p class="penutup-p">"Dan Allah menyukai orang-orang yang menyucikan diri." Thaharah bukan beban — ia adalah jalan menuju kecintaan Allah. Setiap tetes air yang mengalir dalam wudhu, setiap langkah menuju tempat bersuci, adalah ibadah yang Allah catat dan gandakan pahalanya.</p>
+    <p class="penutup-p" style="margin-top:10px;">Semoga kita termasuk golongan <em>ghurral muhajjalīn</em> — orang-orang yang bercahaya di Hari Kiamat karena senantiasa menjaga kesucian. Āmīn.</p>
+    <div class="penutup-div"></div>
+    <div class="dalil" style="text-align:left;background:rgba(255,255,255,.12);border-left:4px solid rgba(255,255,255,.4);margin:0;">
+      <div class="dalil-tag" style="color:rgba(255,255,255,.6);">📜 Doa Masuk Kamar Mandi · HR. Bukhari &amp; Muslim</div>
+      <div class="dalil-ar" style="color:#fff;border-bottom:1px dashed rgba(255,255,255,.2);">اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْخُبُثِ وَالْخَبَائِثِ</div>
+      <div class="dalil-trans" style="color:rgba(255,255,255,.75);">"Ya Allah, aku berlindung kepada-Mu dari setan laki-laki dan setan perempuan."</div>
+      <div class="dalil-ref" style="color:rgba(255,255,255,.5);">HR. Bukhari (142) &amp; Muslim (375) — dibaca saat masuk kamar mandi</div>
+    </div>
+    <div class="penutup-footer">
+      <div class="logo">الطَّهَارَةُ</div>
+      <div class="tag">وَاللّٰهُ أَعْلَمُ بِالصَّوَابِ · Semoga Bermanfaat</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

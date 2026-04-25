@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ummahatul Mukminin — Istri-Istri Nabi Muhammad ﷺ</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --gold-dark: #8B6914;
+    --cream: #FAF5EB;
+    --dark: #1A1208;
+    --brown: #4A2C0A;
+    --text: #2D1F0A;
+    --muted: #7A6040;
+    --green-dark: #1B3A2D;
+    --green: #2D5A3D;
+    --accent: #8B3A1A;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Lato', sans-serif;
+    background-color: var(--cream);
+    color: var(--text);
+    line-height: 1.8;
+    overflow-x: hidden;
+  }
+
+  /* ── ORNAMENT PATTERN ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 20%, rgba(201,168,76,0.06) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(27,58,45,0.06) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 4rem 2rem;
+    background: linear-gradient(160deg, var(--green-dark) 0%, #0D2218 50%, var(--brown) 100%);
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C9A84C' fill-opacity='0.07'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.4;
+  }
+
+  .hero-geometric {
+    position: absolute;
+    width: 500px; height: 500px;
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 50%;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    animation: rotateSlow 60s linear infinite;
+  }
+  .hero-geometric::before {
+    content: '';
+    position: absolute;
+    inset: 20px;
+    border: 1px solid rgba(201,168,76,0.1);
+    border-radius: 50%;
+  }
+  .hero-geometric::after {
+    content: '';
+    position: absolute;
+    inset: 50px;
+    border: 1px solid rgba(201,168,76,0.08);
+    border-radius: 50%;
+  }
+
+  @keyframes rotateSlow { to { transform: translate(-50%, -50%) rotate(360deg); } }
+
+  .hero-content { position: relative; z-index: 1; }
+
+  .bismillah {
+    font-family: 'Amiri', serif;
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    color: var(--gold);
+    letter-spacing: 0.05em;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 0 40px rgba(201,168,76,0.4);
+    animation: fadeUp 1s ease both;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 1rem;
+    opacity: 0.8;
+    animation: fadeUp 1s 0.2s ease both;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 6vw, 4.5rem);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.15;
+    margin-bottom: 0.5rem;
+    animation: fadeUp 1s 0.3s ease both;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .hero-sub {
+    font-size: clamp(0.95rem, 2vw, 1.15rem);
+    color: rgba(255,255,255,0.6);
+    max-width: 520px;
+    margin: 1.5rem auto 2.5rem;
+    animation: fadeUp 1s 0.5s ease both;
+  }
+
+  .hero-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
+    animation: fadeUp 1s 0.6s ease both;
+  }
+  .hero-divider span { width: 60px; height: 1px; background: var(--gold); opacity: 0.5; }
+  .hero-divider .star { color: var(--gold); font-size: 1.2rem; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── SCROLL CUE ── */
+  .scroll-cue {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(255,255,255,0.4);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    animation: fadeUp 1s 1s ease both;
+  }
+  .scroll-cue .arrow {
+    width: 20px; height: 20px;
+    border-right: 1px solid rgba(201,168,76,0.5);
+    border-bottom: 1px solid rgba(201,168,76,0.5);
+    transform: rotate(45deg);
+    animation: bounce 2s ease infinite;
+  }
+  @keyframes bounce {
+    0%, 100% { transform: rotate(45deg) translateY(0); }
+    50% { transform: rotate(45deg) translateY(6px); }
+  }
+
+  /* ── INTRO SECTION ── */
+  .intro {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+    text-align: center;
+  }
+
+  .section-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold-dark);
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .intro h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 700;
+    color: var(--brown);
+    margin-bottom: 1.5rem;
+    line-height: 1.3;
+  }
+
+  .intro p {
+    font-size: 1.05rem;
+    color: var(--muted);
+    max-width: 680px;
+    margin: 0 auto 1.2rem;
+  }
+
+  .ayat-box {
+    background: linear-gradient(135deg, var(--green-dark), #0F2419);
+    border-left: 3px solid var(--gold);
+    border-radius: 4px 12px 12px 4px;
+    padding: 2rem 2.5rem;
+    margin: 2.5rem auto;
+    max-width: 700px;
+    text-align: right;
+  }
+
+  .ayat-arabic {
+    font-family: 'Amiri', serif;
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
+    color: var(--gold-light);
+    line-height: 2.2;
+    margin-bottom: 1rem;
+    direction: rtl;
+  }
+
+  .ayat-latin {
+    font-style: italic;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.5);
+    text-align: left;
+    margin-bottom: 0.5rem;
+  }
+
+  .ayat-source {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    text-align: left;
+    text-transform: uppercase;
+  }
+
+  /* ── WIVES GRID ── */
+  .wives-section {
+    padding: 3rem 1.5rem 6rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .wives-section > h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+    text-align: center;
+    color: var(--brown);
+    margin-bottom: 0.5rem;
+  }
+
+  .wives-section > p.subtitle {
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.95rem;
+    margin-bottom: 3.5rem;
+  }
+
+  .wives-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+  }
+
+  .wife-card {
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(74,44,10,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+  }
+
+  .wife-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 48px rgba(74,44,10,0.14);
+  }
+
+  .card-header {
+    padding: 2rem 2rem 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-header::before {
+    content: '';
+    position: absolute;
+    top: -30px; right: -30px;
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    opacity: 0.08;
+  }
+
+  .card-number {
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    opacity: 0.5;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  .card-name-ar {
+    font-family: 'Amiri', serif;
+    font-size: 1.5rem;
+    margin-bottom: 0.2rem;
+    direction: rtl;
+    text-align: right;
+  }
+
+  .card-name-id {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+  }
+
+  .card-epithet {
+    font-size: 0.8rem;
+    font-style: italic;
+    opacity: 0.65;
+    letter-spacing: 0.05em;
+  }
+
+  .card-body {
+    padding: 0 2rem 1.5rem;
+    font-size: 0.92rem;
+    color: #4A3820;
+    line-height: 1.75;
+  }
+
+  .card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    padding: 0 2rem 1rem;
+  }
+
+  .tag {
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.6rem;
+    border-radius: 100px;
+    font-weight: 700;
+  }
+
+  .card-hadith {
+    margin: 0 2rem 1.5rem;
+    padding: 1rem 1.2rem;
+    border-radius: 8px;
+    background: var(--cream);
+    font-size: 0.85rem;
+    font-style: italic;
+    color: var(--muted);
+    border-left: 3px solid var(--gold);
+    position: relative;
+  }
+
+  .card-hadith::before {
+    content: '"';
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    color: var(--gold);
+    opacity: 0.3;
+    position: absolute;
+    top: -0.5rem;
+    left: 0.8rem;
+    line-height: 1;
+  }
+
+  .card-hadith p { padding-left: 1rem; }
+  .card-hadith .source { font-style: normal; font-size: 0.75rem; color: var(--gold-dark); font-weight: 700; margin-top: 0.4rem; padding-left: 1rem; }
+
+  /* Card color themes */
+  .theme-teal .card-header { background: linear-gradient(135deg, #1B3A2D, #2D5A3D); }
+  .theme-teal .card-header * { color: #fff; }
+  .theme-teal .card-header .card-name-ar { color: var(--gold-light); }
+  .theme-teal .card-header::before { background: var(--gold); }
+  .theme-teal .tag { background: #e0f0e8; color: #1B3A2D; }
+
+  .theme-amber .card-header { background: linear-gradient(135deg, #6B3A00, #A05A00); }
+  .theme-amber .card-header * { color: #fff; }
+  .theme-amber .card-header .card-name-ar { color: var(--gold-light); }
+  .theme-amber .card-header::before { background: var(--gold-light); }
+  .theme-amber .tag { background: #fdf0d5; color: #6B3A00; }
+
+  .theme-maroon .card-header { background: linear-gradient(135deg, #5A1A00, #8B2800); }
+  .theme-maroon .card-header * { color: #fff; }
+  .theme-maroon .card-header .card-name-ar { color: var(--gold-light); }
+  .theme-maroon .card-header::before { background: rgba(255,200,100,0.5); }
+  .theme-maroon .tag { background: #fde8e0; color: #5A1A00; }
+
+  .theme-navy .card-header { background: linear-gradient(135deg, #0D1F3C, #1A3566); }
+  .theme-navy .card-header * { color: #fff; }
+  .theme-navy .card-header .card-name-ar { color: var(--gold-light); }
+  .theme-navy .card-header::before { background: var(--gold); }
+  .theme-navy .tag { background: #e3eaf7; color: #0D1F3C; }
+
+  .theme-sage .card-header { background: linear-gradient(135deg, #2A3D1E, #4A6A38); }
+  .theme-sage .card-header * { color: #fff; }
+  .theme-sage .card-header .card-name-ar { color: var(--gold-light); }
+  .theme-sage .card-header::before { background: var(--gold); }
+  .theme-sage .tag { background: #eaf0e2; color: #2A3D1E; }
+
+  .theme-plum .card-header { background: linear-gradient(135deg, #2D1040, #5A2080); }
+  .theme-plum .card-header * { color: #fff; }
+  .theme-plum .card-header .card-name-ar { color: var(--gold-light); }
+  .theme-plum .card-header::before { background: var(--gold); }
+  .theme-plum .tag { background: #ede0f5; color: #2D1040; }
+
+  /* ── CLOSING ── */
+  .closing {
+    background: linear-gradient(160deg, var(--green-dark), #0A1A10);
+    color: #fff;
+    text-align: center;
+    padding: 6rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .closing::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C9A84C' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.6;
+  }
+
+  .closing-content { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+
+  .closing h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+    color: var(--gold-light);
+    margin-bottom: 1.5rem;
+  }
+
+  .closing p { color: rgba(255,255,255,0.65); font-size: 1rem; margin-bottom: 1rem; }
+
+  .closing-arabic {
+    font-family: 'Amiri', serif;
+    font-size: clamp(1.4rem, 3.5vw, 2rem);
+    color: var(--gold);
+    margin: 2rem 0 0.5rem;
+    direction: rtl;
+    line-height: 2;
+  }
+
+  .closing-trans { font-style: italic; color: rgba(255,255,255,0.5); font-size: 0.9rem; }
+
+  .ornament-line {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
+    margin: 2.5rem 0;
+  }
+  .ornament-line .line { flex: 1; max-width: 100px; height: 1px; background: linear-gradient(to right, transparent, var(--gold)); }
+  .ornament-line .line.rev { background: linear-gradient(to left, transparent, var(--gold)); }
+  .ornament-line .diamond {
+    width: 8px; height: 8px;
+    background: var(--gold);
+    transform: rotate(45deg);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark);
+    color: rgba(255,255,255,0.3);
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+  }
+
+  footer span { color: var(--gold); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    .wives-grid { grid-template-columns: 1fr; }
+    .ayat-box { padding: 1.5rem; }
+    .card-header { padding: 1.5rem 1.5rem 1rem; }
+    .card-body, .card-tags, .card-hadith { padding-left: 1.5rem; padding-right: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-geometric"></div>
+  <div class="hero-content">
+    <p class="bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
+    <p class="hero-eyebrow">Mengenal Para Ibu Kaum Mukmin</p>
+    <h1>Ummahatul<br><em>Mukminin</em></h1>
+    <p class="hero-sub">Istri-istri Nabi Muhammad ﷺ adalah wanita-wanita mulia yang Allah sebut sebagai ibu bagi seluruh kaum Mukmin, teladan sepanjang zaman.</p>
+    <div class="hero-divider">
+      <span></span>
+      <div class="star">✦</div>
+      <span></span>
+    </div>
+  </div>
+  <div class="scroll-cue">
+    <p>Gulir ke bawah</p>
+    <div class="arrow"></div>
+  </div>
+</header>
+
+<!-- INTRO -->
+<section class="intro">
+  <span class="section-label">Landasan Al-Qur'an</span>
+  <h2>Ibu Seluruh Kaum Mukminin</h2>
+  <p>Allah Ta'ala telah memberikan kemuliaan luar biasa kepada para istri Nabi ﷺ dengan menjadikan mereka sebagai ibu seluruh umat Islam, sebagaimana firman-Nya:</p>
+
+  <div class="ayat-box">
+    <p class="ayat-arabic">النَّبِيُّ أَوْلَىٰ بِالْمُؤْمِنِينَ مِنْ أَنفُسِهِمْ ۖ وَأَزْوَاجُهُ أُمَّهَاتُهُمْ</p>
+    <p class="ayat-latin">"An-Nabiyyu awlā bil-mu'minīna min anfusihim, wa azwājuhū ummahātuhum."</p>
+    <p class="ayat-source">QS. Al-Ahzab: 6</p>
+  </div>
+
+  <p>"Nabi itu lebih utama bagi orang-orang Mukmin daripada diri mereka sendiri, dan istri-istrinya adalah ibu-ibu mereka." Ayat mulia ini menegaskan kedudukan agung para Ummahatul Mukminin dalam Islam.</p>
+</section>
+
+<!-- WIVES GRID -->
+<section class="wives-section">
+  <h2>Para Ummahatul Mukminin</h2>
+  <p class="subtitle">Berdasarkan Al-Qur'an, Hadis Shahih, dan Sirah Nabawiyah</p>
+
+  <div class="wives-grid">
+
+    <!-- 1. KHADIJAH -->
+    <div class="wife-card theme-teal">
+      <div class="card-header">
+        <span class="card-number">01</span>
+        <p class="card-name-ar">خَدِيجَةُ بِنْتُ خُوَيْلِدٍ</p>
+        <h3 class="card-name-id">Khadijah binti Khuwailid</h3>
+        <p class="card-epithet">Ummul Mukminin Pertama & Al-Kubra (Yang Agung)</p>
+      </div>
+      <div class="card-tags">
+        <span class="tag">Menikah ±595 M</span>
+        <span class="tag">Istri Pertama</span>
+        <span class="tag">Wafat 619 M</span>
+      </div>
+      <div class="card-body">
+        <p>Khadijah adalah wanita pertama yang beriman kepada Rasulullah ﷺ. Seorang janda kaya raya dari Mekah yang mulia nasabnya. Beliau menikah dengan Nabi pada usia 40 tahun, sementara Nabi berusia 25 tahun. Selama 25 tahun pernikahan mereka, Rasulullah ﷺ tidak menikah dengan wanita lain.</p>
+        <p>Dari pernikahan ini lahir anak-anak Nabi: Al-Qasim, Abdullah, Zainab, Ruqayyah, Ummu Kultsum, dan Fatimah Az-Zahra.</p>
+      </div>
+      <div class="card-hadith">
+        <p>"Demi Allah, Allah tidak memberiku ganti yang lebih baik darinya. Ia beriman kepadaku ketika orang-orang mengingkariku, membenarkanku ketika orang-orang mendustakanku, dan membantuku dengan hartanya ketika orang-orang tidak memberiku apa pun."</p>
+        <p class="source">— HR. Ahmad & Al-Hakim (Shahih)</p>
+      </div>
+    </div>
+
+    <!-- 2. SAUDAH -->
+    <div class="wife-card theme-amber">
+      <div class="card-header">
+        <span class="card-number">02</span>
+        <p class="card-name-ar">سَوْدَةُ بِنْتُ زَمْعَةَ</p>
+        <h3 class="card-name-id">Saudah binti Zam'ah</h3>
+        <p class="card-epithet">Istri Kedua, Penghibur Duka Nabi</p>
+      </div>
+      <div class="card-tags">
+        <span class="tag">Menikah ±620 M</span>
+        <span class="tag">Janda Mulia</span>
+      </div>
+      <div class="card-body">
+        <p>Saudah adalah istri pertama yang dinikahi Nabi setelah wafatnya Khadijah. Ia seorang janda dari As-Sakran bin Amr yang wafat setelah hijrah ke Habasyah. Saudah dikenal dengan sifatnya yang periang, penghibur, dan penuh kasih sayang kepada Nabi ﷺ.</p>
+        <p>Ia pernah menghibahkan giliran malamnya kepada Aisyah karena kecintaannya kepada Nabi dan keinginannya agar tetap menjadi istrinya hingga hari kiamat agar bisa bersama Nabi di surga.</p>
+      </div>
+      <div class="card-hadith">
+        <p>Aisyah berkata: "Aku tidak pernah cemburu kepada siapa pun dari istri-istri Nabi seperti cemburuku kepada Khadijah... dan kepada Saudah karena Rasulullah ﷺ sangat menyayanginya."</p>
+        <p class="source">— HR. Bukhari & Muslim</p>
+      </div>
+    </div>
+
+    <!-- 3. AISYAH -->
+    <div class="wife-card theme-maroon">
+      <div class="card-header">
+        <span class="card-number">03</span>
+        <p class="card-name-ar">عَائِشَةُ بِنْتُ أَبِي بَكْرٍ</p>
+        <h3 class="card-name-id">Aisyah binti Abu Bakar</h3>
+        <p class="card-epithet">Ash-Shiddiqah — Sang Pewaris Ilmu</p>
+      </div>
+      <div class="card-tags">
+        <span class="tag">Menikah ±622 M</span>
+        <span class="tag">Favorit Nabi</span>
+        <span class="tag">Perawi Hadis Terbanyak</span>
+      </div>
+      <div class="card-body">
+        <p>Aisyah adalah putri sahabat terdekat Nabi, Abu Bakar Ash-Shiddiq. Ia merupakan satu-satunya istri Nabi yang dinikahi dalam keadaan gadis. Beliau adalah Ummul Mukminin yang paling banyak meriwayatkan hadis — lebih dari 2.000 hadis — sehingga menjadi sumber ilmu fikih dan syariat bagi umat Islam.</p>
+        <p>Allah menurunkan wahyu tentang kesuciannya (QS. An-Nur: 11–20) setelah peristiwa Al-Ifk (tuduhan bohong). Rasulullah ﷺ wafat di pangkuannya.</p>
+      </div>
+      <div class="card-hadith">
+        <p>"Keutamaan Aisyah atas wanita-wanita lain seperti keutamaan tsarid (makanan) atas makanan-makanan lainnya."</p>
+        <p class="source">— HR. Bukhari & Muslim</p>
+      </div>
+    </div>
+
+    <!-- 4. HAFSAH -->
+    <div class="wife-card theme-navy">
+      <div class="card-header">
+        <span class="card-number">04</span>
+        <p class="card-name-ar">حَفْصَةُ بِنْتُ عُمَرَ</p>
+        <h3 class="card-name-id">Hafsah binti Umar</h3>
+        <p class="card-epithet">Penjaga Mushaf Al-Qur'an</p>
+      </div>
+      <div class="card-tags">
+        <span class="tag">Menikah ±625 M</span>
+        <span class="tag">Putri Umar bin Khattab</span>
+      </div>
+      <div class="card-body">
+        <p>Hafsah adalah putri Umar bin Khattab, Amirul Mukminin. Ia merupakan janda dari Khunais bin Hudzafah yang gugur dalam Perang Badar. Hafsah dikenal sebagai wanita yang cerdas, sering berpuasa, dan rajin beribadah.</p>
+        <p>Keistimewaan terbesarnya: mushaf Al-Qur'an yang dikumpulkan pada masa Abu Bakar Ash-Shiddiq disimpan di rumahnya, sehingga ia mendapat julukan "Hafizhatul Qur'an" (penjaga Al-Qur'an).</p>
+      </div>
+      <div class="card-hadith">
+        <p>Malaikat Jibril berkata kepada Umar bin Khattab: "Hafsah adalah wanita yang banyak berpuasa dan shalat malam, dan ia adalah istrimu di surga."</p>
+        <p class="source">— HR. Ibnu Asakir & Al-Hakim</p>
+      </div>
+    </div>
+
+    <!-- 5. UMMU SALAMAH -->
+    <div class="wife-card theme-sage">
+      <div class="card-header">
+        <span class="card-number">05</span>
+        <p class="card-name-ar">أُمُّ سَلَمَةَ هِنْدٌ بِنْتُ أَبِي أُمَيَّةَ</p>
+        <h3 class="card-name-id">Ummu Salamah (Hindun binti Abi Umayyah)</h3>
+        <p class="card-epithet">Wanita Sabar & Bijaksana</p>
+      </div>
+      <div class="card-tags">
+        <span class="tag">Menikah ±626 M</span>
+        <span class="tag">Perawi Hadis</span>
+        <span class="tag">Musyawariah Nabi</span>
+      </div>
+      <div class="card-body">
+        <p>Ummu Salamah adalah janda dari Abu Salamah, seorang sahabat mulia yang gugur akibat luka perang. Ia dikenal sebagai wanita yang paling banyak meriwayatkan hadis setelah Aisyah, dengan lebih dari 300 hadis.</p>
+        <p>Ia dikenal bijaksana. Ketika pasukan enggan memotong rambut usai Perjanjian Hudaibiyah, Ummu Salamah memberi saran kepada Nabi agar memulainya sendiri, dan para sahabat pun mengikuti. Ia wafat di usia sangat tua, setelah Yazid menjadi khalifah.</p>
+      </div>
+      <div class="card-hadith">
+        <p>"Tidak ada wanita yang lebih bersabar dari Ummu Salamah dalam musibah yang menimpanya." Ketika suaminya wafat, ia mengucapkan: "Innā lillāhi wa innā ilaihi rāji'ūn..."</p>
+        <p class="source">— HR. Muslim</p>
+      </div>
+    </div>
+
+    <!-- 6. ZAINAB BINTI JAHSY -->
+    <div class="wife-card theme-plum">
+      <div class="card-header">
+        <span class="card-number">06</span>
+        <p class="card-name-ar">زَيْنَبُ بِنْتُ جَحْشٍ</p>
+        <h3 class="card-name-id">Zainab binti Jahsy</h3>
+        <p class="card-epithet">Dinikahkan Langsung oleh Allah dari Langit</p>
+      </div>
+      <div class="card-tags">
+        <span class="tag">Menikah ±627 M</span>
+        <span class="tag">Pernikahan Via Al-Qur'an</span>
+      </div>
+      <div class="card-body">
+        <p>Zainab adalah sepupu Nabi ﷺ. Awalnya ia dinikahkan dengan Zaid bin Haritsah (anak angkat Nabi), namun pernikahan itu tidak harmonis dan berakhir dengan perceraian. Kemudian Allah memerintahkan Nabi untuk menikahinya, sekaligus menghapus tradisi jahiliyah yang mengharamkan menikahi mantan istri anak angkat.</p>
+        <p>Allah menurunkan firman-Nya dalam QS. Al-Ahzab: 37 tentang pernikahan ini, sehingga Zainab sering membanggakan dirinya: "Allah yang menikahkanku dari atas langit ketujuh."</p>
+      </div>
+      <div class="card-hadith">
+        <p>Zainab berkata kepada istri-istri Nabi lainnya: "Kalian dinikahkan oleh keluarga kalian, sedangkan aku dinikahkan oleh Allah dari atas langit yang ketujuh."</p>
+        <p class="source">— HR. Bukhari</p>
+      </div>
+    </div>
+
+    <!-- 7. JUWAIRIYAH -->
+    <div class="wife-card theme-teal">
+      <div class="card-header">
+        <span class="card-number">07</span>
+        <p class="card-name-ar">جُوَيْرِيَّةُ بِنْتُ الْحَارِثِ</p>
+        <h3 class="card-name-id">Juwairiyah binti Al-Harits</h3>
+        <p class="card-epithet">Berkah bagi Kaum Muslimin</p>
+      </div>
+      <div class="card-tags">
+        <span class="tag">Menikah ±628 M</span>
+        <span class="tag">Putri Kepala Suku Bani Mustaliq</span>
+      </div>
+      <div class="card-body">
+        <p>Juwairiyah adalah putri Al-Harits, kepala suku Bani Mustaliq. Ia ditawan dalam Perang Bani Mustaliq dan meminta bantuan Nabi ﷺ untuk melunasi uang tebusan pembebasannya. Nabi ﷺ kemudian membebaskannya dan menikahinya.</p>
+        <p>Pernikahan ini membawa berkah luar biasa: para sahabat membebaskan semua tawanan dari Bani Mustaliq karena hormat pada hubungan keluarga mereka dengan Nabi. Aisyah berkata: "Tidak ada wanita yang lebih besar berkahnya bagi kaumnya dari Juwairiyah."</p>
+      </div>
+      <div class="card-hadith">
+        <p>Aisyah berkata: "Aku tidak mengetahui ada seorang wanita yang lebih besar berkahnya bagi kaumnya dari Juwairiyah binti Al-Harits."</p>
+        <p class="source">— HR. Abu Dawud & Ahmad (Shahih)</p>
+      </div>
+    </div>
+
+    <!-- 8. UMMU HABIBAH -->
+    <div class="wife-card theme-amber">
+      <div class="card-header">
+        <span class="card-number">08</span>
+        <p class="card-name-ar">أُمُّ حَبِيبَةَ رَمْلَةُ بِنْتُ أَبِي سُفْيَانَ</p>
+        <h3 class="card-name-id">Ummu Habibah (Ramlah binti Abi Sufyan)</h3>
+        <p class="card-epithet">Keteguhan Iman di Tengah Ujian Berat</p>
+      </div>
+      <div class="card-tags">
+        <span class="tag">Menikah ±628 M</span>
+        <span class="tag">Putri Abu Sufyan</span>
+      </div>
+      <div class="card-body">
+        <p>Ummu Habibah adalah putri Abu Sufyan, pemimpin Quraisy yang ketika itu masih musuh Islam. Ia berhijrah ke Habasyah bersama suaminya, Ubaidullah bin Jahsy. Namun di Habasyah, suaminya murtad dan menjadi Kristen, lalu meninggal.</p>
+        <p>Ummu Habibah tetap teguh dalam Islam sendirian di negeri asing. Allah menghiburnya: Nabi ﷺ melamarnya melalui Raja Najasyi, dan maharnya sebesar 400 dinar dibayarkan oleh sang raja sebagai bentuk penghormatan.</p>
+      </div>
+      <div class="card-hadith">
+        <p>Ketika Abu Sufyan mengunjungi Madinah dan hendak duduk di tikar Nabi, Ummu Habibah melipat tikarnya sambil berkata: "Tikar ini milik Rasulullah ﷺ, engkau seorang musyrik — tidak layak duduk di atasnya."</p>
+        <p class="source">— HR. Abu Dawud (Hasan)</p>
+      </div>
+    </div>
+
+    <!-- 9. SHAFIYYAH -->
+    <div class="wife-card theme-maroon">
+      <div class="card-header">
+        <span class="card-number">09</span>
+        <p class="card-name-ar">صَفِيَّةُ بِنْتُ حُيَيٍّ</p>
+        <h3 class="card-name-id">Shafiyyah binti Huyay</h3>
+        <p class="card-epithet">Putri Pemimpin Bani Nadhir</p>
+      </div>
+      <div class="card-tags">
+        <span class="tag">Menikah 628 M</span>
+        <span class="tag">Keturunan Nabi Harun</span>
+      </div>
+      <div class="card-body">
+        <p>Shafiyyah adalah putri Huyay bin Akhtab, pemimpin Bani Nadhir dari kaum Yahudi Khaibar. Ia ditawan setelah Perang Khaibar. Nabi ﷺ membebaskan dan menikahinya, dengan memerdekakan dirinya sebagai maharnya. Pernikahan ini merupakan tanda Islam yang agung dan inklusif.</p>
+        <p>Shafiyyah masuk Islam dengan ketulusan hati. Ia dikenal sebagai wanita yang sabar dan terhormat. Nasabnya tersambung kepada Nabi Harun alaihissalam, sehingga ia berasal dari keturunan para nabi.</p>
+      </div>
+      <div class="card-hadith">
+        <p>Nabi ﷺ bersabda kepada Shafiyyah: "Jika seseorang menghinamu karena Yahudi, katakanlah: 'Ayahku Harun, pamanku Musa, dan suamiku Muhammad.'"</p>
+        <p class="source">— HR. Tirmidzi (Hasan)</p>
+      </div>
+    </div>
+
+    <!-- 10. MAIMUNAH -->
+    <div class="wife-card theme-navy">
+      <div class="card-header">
+        <span class="card-number">10</span>
+        <p class="card-name-ar">مَيْمُونَةُ بِنْتُ الْحَارِثِ</p>
+        <h3 class="card-name-id">Maimunah binti Al-Harits</h3>
+        <p class="card-epithet">Istri Terakhir Rasulullah ﷺ</p>
+      </div>
+      <div class="card-tags">
+        <span class="tag">Menikah 629 M</span>
+        <span class="tag">Istri Terakhir</span>
+        <span class="tag">Wafat 63 H</span>
+      </div>
+      <div class="card-body">
+        <p>Maimunah adalah istri terakhir yang dinikahi Rasulullah ﷺ, pada masa Umrah Qadha tahun 7 H. Ia adalah bibi dari Khalid bin Walid dan Ibnu Abbas. Pernikahannya menjadi pintu masuk dua tokoh besar Islam ke dalam keluarga Nabi.</p>
+        <p>Ia dikenal sebagai wanita yang salehah, dermawan, dan sangat taat beribadah. Ibnu Abbas meriwayatkan banyak hadis melalui bibinya ini. Maimunah wafat di Sarif, tempat di mana ia dinikahkan, dan dimakamkan di sana.</p>
+      </div>
+      <div class="card-hadith">
+        <p>Ibnu Abbas berkata: "Maimunah menghibahkan dirinya kepada Nabi ﷺ." Maka turunlah ayat: "Dan perempuan mukmin yang menghibahkan dirinya kepada Nabi..." (QS. Al-Ahzab: 50).</p>
+        <p class="source">— HR. Bukhari</p>
+      </div>
+    </div>
+
+    <!-- 11. ZAINAB BINTI KHUZAIMAH -->
+    <div class="wife-card theme-sage">
+      <div class="card-header">
+        <span class="card-number">11</span>
+        <p class="card-name-ar">زَيْنَبُ بِنْتُ خُزَيْمَةَ</p>
+        <h3 class="card-name-id">Zainab binti Khuzaimah</h3>
+        <p class="card-epithet">Ummul Masakin — Ibu Kaum Miskin</p>
+      </div>
+      <div class="card-tags">
+        <span class="tag">Menikah ±625 M</span>
+        <span class="tag">Wafat ±625 M</span>
+        <span class="tag">Singkat Bersamanya</span>
+      </div>
+      <div class="card-body">
+        <p>Zainab binti Khuzaimah berasal dari Bani Hilal. Ia dijuluki "Ummul Masakin" (Ibu Kaum Miskin) bahkan sebelum masuk Islam karena kedermawanan dan kepeduliannya yang luar biasa kepada fakir miskin. Suaminya Ubaidah bin Al-Harits gugur dalam Perang Badar.</p>
+        <p>Nabi ﷺ menikahinya untuk menghormati janda syuhada dan mengakui kebaikannya. Namun pernikahan mereka sangat singkat — Zainab wafat hanya dua atau tiga bulan setelah pernikahan. Ia adalah satu-satunya istri Nabi yang wafat semasa hidupnya selain Khadijah.</p>
+      </div>
+      <div class="card-hadith">
+        <p>Ia dikenal semasa jahiliyah maupun Islam dengan julukan "Ummul Masakin" karena sangat banyak memberi makan dan menyantuni orang-orang fakir dan miskin.</p>
+        <p class="source">— Sirah Ibnu Hisyam & Thabaqat Ibnu Sa'd</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CLOSING -->
+<section class="closing">
+  <div class="closing-content">
+    <div class="ornament-line">
+      <div class="line rev"></div>
+      <div class="diamond"></div>
+      <div class="line"></div>
+    </div>
+
+    <h2>Pelajaran dari Para Ummahatul Mukminin</h2>
+    <p>Kehidupan para istri Nabi ﷺ mengajarkan kita tentang keteguhan iman, kesabaran dalam ujian, kecerdasan ilmu, kedermawanan harta, dan keluhuran akhlak. Mereka adalah teladan bagi seluruh wanita Muslim hingga hari kiamat.</p>
+    <p>Allah Ta'ala juga menurunkan ayat khusus tentang mereka dalam QS. Al-Ahzab: 28–33, menjelaskan pilihan dan kewajiban mereka yang lebih berat dari wanita biasa.</p>
+
+    <div class="ayat-box" style="margin-top:2.5rem; background: rgba(27,58,45,0.5); border: 1px solid rgba(201,168,76,0.3);">
+      <p class="ayat-arabic">يَا نِسَاءَ النَّبِيِّ لَسْتُنَّ كَأَحَدٍ مِّنَ النِّسَاءِ</p>
+      <p class="ayat-latin">"Yā nisā'an-nabiyyi lastunna ka-ahadin minan-nisā'..."</p>
+      <p class="ayat-source">QS. Al-Ahzab: 32 — "Wahai istri-istri Nabi, kamu tidaklah seperti wanita biasa..."</p>
+    </div>
+
+    <div class="ornament-line" style="margin-top:3rem">
+      <div class="line rev"></div>
+      <div class="diamond"></div>
+      <div class="line"></div>
+    </div>
+
+    <p class="closing-arabic">اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ</p>
+    <p class="closing-trans">"Ya Allah, limpahkanlah shalawat kepada Muhammad dan kepada keluarga Muhammad."</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Disusun berdasarkan <span>Al-Qur'an Al-Karim</span>, <span>Shahih Bukhari</span>, <span>Shahih Muslim</span>, <span>Sirah Ibnu Hisyam</span>, dan <span>Thabaqat Ibnu Sa'd</span></p>
+  <p style="margin-top:0.5rem">Semoga bermanfaat dan menjadi amal jariyah. <span>رضي الله عنهن</span></p>
+</footer>
+
+</body>
+</html>

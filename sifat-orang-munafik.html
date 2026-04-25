@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sifat Orang Munafik</title>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400;1,600&family=Amiri:ital,wght@0,400;0,700;1,400&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+
+:root{
+  --void:      #03030a;
+  --shadow:    #08080f;
+  --dusk:      #0e0d18;
+  --twilight:  #14121f;
+  --veil:      #1c1a2c;
+  --mask:      #252338;
+  --purple:    #4a3870;
+  --violet:    #6b4fa8;
+  --silver:    #a8a8c0;
+  --silver-lt: #d0d0e8;
+  --white:     #ece8f8;
+  --pale:      #f4f2fa;
+  --warn:      #b8920a;
+  --warn-lt:   #d4b030;
+  --warn-pale: #fdf5d0;
+  --rust:      #8a2020;
+  --crimson:   #b83030;
+  --paper:     #f0ead8;
+  --paper-d:   #e4dcc8;
+  --ink:       #1a1610;
+  --ink-mid:   #2e2818;
+  --sepia:     #6a5830;
+  --b-silver:  rgba(168,168,192,0.15);
+  --b-purple:  rgba(74,56,112,0.25);
+  --b-warn:    rgba(184,144,10,0.2);
+}
+
+html{scroll-behavior:smooth;}
+body{background:var(--void);font-family:'Spectral',Georgia,serif;color:var(--white);overflow-x:hidden;}
+
+/* ══════════════════════
+   HERO — CRACKED MIRROR
+══════════════════════ */
+.hero{
+  min-height:100vh;
+  position:relative;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;
+  padding:80px 28px 100px;
+  overflow:hidden;
+}
+
+.hero-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 70% 50% at 30% 40%, rgba(74,56,112,0.3) 0%,transparent 60%),
+    radial-gradient(ellipse 70% 50% at 70% 60%, rgba(22,18,40,0.8) 0%,transparent 60%),
+    radial-gradient(ellipse 100% 60% at 50% 100%,rgba(8,8,20,0.9) 0%,transparent 60%),
+    linear-gradient(160deg,var(--void) 0%,var(--shadow) 40%,var(--dusk) 70%,var(--veil) 100%);
+}
+
+/* Crack lines SVG overlay */
+.hero-cracks{
+  position:absolute;inset:0;pointer-events:none;
+  background-image:
+    linear-gradient(23deg,transparent 49.5%,rgba(168,168,192,0.06) 49.5%,rgba(168,168,192,0.06) 50.5%,transparent 50.5%),
+    linear-gradient(67deg,transparent 49.5%,rgba(168,168,192,0.04) 49.5%,rgba(168,168,192,0.04) 50.5%,transparent 50.5%),
+    linear-gradient(145deg,transparent 49.5%,rgba(168,168,192,0.05) 49.5%,rgba(168,168,192,0.05) 50.5%,transparent 50.5%),
+    linear-gradient(200deg,transparent 49.5%,rgba(168,168,192,0.04) 49.5%,rgba(168,168,192,0.04) 50.5%,transparent 50.5%);
+}
+
+/* Floating dust particles */
+.dust{position:absolute;inset:0;pointer-events:none;}
+.dust-p{
+  position:absolute;border-radius:50%;
+  background:var(--silver);
+  animation:dustDrift var(--d,10s) ease-in-out infinite;
+  opacity:0;
+}
+@keyframes dustDrift{
+  0%  {opacity:0;transform:translate(0,0);}
+  20% {opacity:var(--o,.3);}
+  80% {opacity:var(--o,.2);}
+  100%{opacity:0;transform:translate(var(--tx,20px),var(--ty,-60px));}
+}
+
+/* Two-face mask decoration */
+.mask-deco{
+  position:absolute;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  width:min(500px,90vw);height:min(500px,90vw);
+  border-radius:50%;
+  background:radial-gradient(circle at 30% 40%,rgba(74,56,112,0.12) 0%,transparent 50%),
+             radial-gradient(circle at 70% 60%,rgba(107,79,168,0.08) 0%,transparent 50%);
+  border:1px solid rgba(168,168,192,0.05);
+  pointer-events:none;
+}
+
+.hero-inner{position:relative;z-index:2;max-width:740px;}
+
+.hero-bismillah{
+  font-family:'Amiri',serif;
+  font-size:clamp(1.5rem,4vw,2.6rem);
+  color:rgba(184,144,10,0.75);
+  text-shadow:0 0 30px rgba(184,144,10,0.3);
+  line-height:1.9;margin-bottom:16px;
+  animation:veilRise 1.8s ease both;
+}
+
+.hero-eyebrow{
+  font-family:'Syncopate',sans-serif;
+  font-size:clamp(0.5rem,1.3vw,0.68rem);
+  letter-spacing:7px;text-transform:uppercase;
+  color:rgba(168,168,192,0.45);
+  margin-bottom:20px;
+  animation:veilRise 1.8s ease both 0.2s;
+}
+
+.hero-title{
+  font-family:'Spectral',serif;
+  font-weight:800;
+  font-size:clamp(2.8rem,8vw,6.5rem);
+  line-height:1.0;letter-spacing:-2px;
+  margin-bottom:10px;
+  background:linear-gradient(160deg,var(--pale) 0%,var(--silver-lt) 35%,var(--purple) 70%,rgba(74,56,112,0.8) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  animation:veilRise 1.8s ease both 0.1s;
+}
+
+.hero-arabic{
+  font-family:'Amiri',serif;
+  font-size:clamp(1.3rem,3.5vw,2.2rem);
+  color:rgba(168,168,192,0.6);
+  line-height:2;margin-bottom:24px;
+  animation:veilRise 1.8s ease both 0.3s;
+}
+
+.hero-divider{
+  display:flex;align-items:center;justify-content:center;gap:16px;
+  margin:16px auto 28px;
+  animation:veilRise 1.8s ease both 0.4s;
+}
+.hero-divider span{width:80px;height:1px;background:linear-gradient(90deg,transparent,rgba(168,168,192,0.2));}
+.hero-divider span:last-child{background:linear-gradient(90deg,rgba(168,168,192,0.2),transparent);}
+.hero-divider em{color:var(--purple);font-style:normal;letter-spacing:8px;font-size:0.8rem;}
+
+.hero-verse{
+  max-width:560px;margin:0 auto;
+  padding:22px 30px;
+  background:rgba(8,8,20,0.7);
+  border:1px solid rgba(74,56,112,0.3);
+  backdrop-filter:blur(8px);
+  animation:veilRise 1.8s ease both 0.5s;
+}
+.hero-verse-ar{
+  font-family:'Amiri',serif;
+  font-size:clamp(1rem,2.5vw,1.35rem);
+  color:var(--warn-lt);line-height:2.2;direction:rtl;margin-bottom:10px;
+}
+.hero-verse-id{font-style:italic;font-size:0.82rem;color:rgba(168,168,192,0.55);}
+
+@keyframes veilRise{
+  from{opacity:0;transform:translateY(16px);filter:blur(4px);}
+  to  {opacity:1;transform:translateY(0);filter:blur(0);}
+}
+
+/* ══════════════════════
+   CONTENT SYSTEM
+══════════════════════ */
+/* Dark sections */
+.sec-dark{
+  background:var(--shadow);
+  padding:64px 28px 56px;
+  position:relative;overflow:hidden;
+  border-top:1px solid var(--b-silver);
+}
+.sec-dark::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 40% at 50% 0%,rgba(74,56,112,0.15) 0%,transparent 70%);
+  pointer-events:none;
+}
+
+/* Parchment sections */
+.sec-paper{
+  background:var(--paper);
+  color:var(--ink);
+  padding:64px 28px 56px;
+  position:relative;
+  border-top:5px solid var(--veil);
+}
+.sec-paper::before{
+  content:'';position:absolute;inset:0;
+  background-image:repeating-linear-gradient(0deg,transparent,transparent 27px,rgba(26,22,16,0.04) 27px,rgba(26,22,16,0.04) 28px);
+  pointer-events:none;
+}
+
+/* Warning sections (rust) */
+.sec-warn{
+  background:linear-gradient(180deg,var(--dusk) 0%,var(--twilight) 100%);
+  padding:64px 28px 56px;
+  position:relative;overflow:hidden;
+  border-top:1px solid rgba(138,32,32,0.3);
+}
+.sec-warn::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 40% at 50% 0%,rgba(138,32,32,0.1) 0%,transparent 70%);
+  pointer-events:none;
+}
+
+.inner{max-width:880px;margin:0 auto;position:relative;z-index:1;}
+
+/* ══════════════════════
+   SECTION HEADERS
+══════════════════════ */
+.sh{text-align:center;margin-bottom:44px;}
+
+.sh-badge{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:5px 18px;
+  font-family:'Syncopate',sans-serif;
+  font-size:0.58rem;font-weight:700;
+  letter-spacing:5px;text-transform:uppercase;
+  margin-bottom:16px;
+}
+.badge-dark{background:rgba(74,56,112,0.25);color:var(--violet);border:1px solid var(--b-purple);}
+.badge-warn{background:rgba(138,32,32,0.2);color:var(--crimson);border:1px solid rgba(138,32,32,0.3);}
+.badge-paper{background:rgba(26,22,16,0.1);color:var(--sepia);border:1px solid rgba(106,88,48,0.3);}
+.badge-gold{background:rgba(184,144,10,0.15);color:var(--warn);border:1px solid var(--b-warn);}
+
+.sh-ar{
+  font-family:'Amiri',serif;
+  font-size:clamp(1.3rem,3.5vw,2rem);line-height:1.9;margin-bottom:6px;
+}
+.shar-dark{color:var(--warn-lt);}
+.shar-warn{color:var(--crimson);}
+.shar-paper{color:var(--rust);}
+
+.sh-title{
+  font-family:'Spectral',serif;font-weight:700;
+  font-size:clamp(1.4rem,3.8vw,2.3rem);line-height:1.2;margin-bottom:8px;
+}
+.shtitle-dark{color:var(--white);}
+.shtitle-warn{color:#ffe0d0;}
+.shtitle-paper{color:var(--ink);}
+
+.sh-rule{width:56px;height:2px;margin:14px auto 0;}
+.rule-dark{background:var(--violet);}
+.rule-warn{background:var(--crimson);}
+.rule-paper{background:var(--rust);}
+
+.sh-sub{font-style:italic;font-size:clamp(0.87rem,2vw,1rem);line-height:1.8;max-width:560px;margin:14px auto 0;opacity:.7;}
+
+/* ══════════════════════
+   PROSE
+══════════════════════ */
+.prose p{font-size:clamp(.97rem,2.2vw,1.08rem);line-height:2;margin-bottom:16px;text-align:justify;}
+.prose-dark p{color:rgba(220,215,240,.82);}
+.prose-warn p{color:rgba(245,225,215,.82);}
+.prose-paper p{color:var(--ink-mid);}
+
+.prose-dark p.lead{color:var(--silver-lt);font-style:italic;font-size:clamp(1rem,2.3vw,1.15rem);}
+.prose-warn p.lead{color:#ffd8c8;font-style:italic;}
+.prose-paper p.lead{color:var(--rust);font-style:italic;font-size:clamp(1rem,2.3vw,1.15rem);}
+
+.prose-paper p:first-of-type:not(.lead)::first-letter{font-family:'Spectral',serif;font-weight:700;font-size:4em;line-height:.72;float:left;margin:10px 12px 0 0;color:var(--rust);}
+.prose-dark p:first-of-type:not(.lead)::first-letter{font-family:'Spectral',serif;font-weight:700;font-size:4em;line-height:.72;float:left;margin:10px 12px 0 0;color:var(--violet);}
+.prose-warn p:first-of-type:not(.lead)::first-letter{font-family:'Spectral',serif;font-weight:700;font-size:4em;line-height:.72;float:left;margin:10px 12px 0 0;color:var(--crimson);}
+
+/* ══════════════════════
+   DALIL
+══════════════════════ */
+.dalil{margin:26px 0;display:grid;grid-template-columns:4px 1fr;}
+.dalil-dark{background:rgba(8,8,20,.85);border:1px solid var(--b-purple);}
+.dalil-warn{background:rgba(14,10,24,.9);border:1px solid rgba(138,32,32,.2);}
+.dalil-paper{background:var(--paper-d);border:1px solid rgba(106,88,48,.2);}
+
+.dbar-dark{background:var(--violet);}
+.dbar-warn{background:var(--crimson);}
+.dbar-paper{background:var(--rust);}
+
+.dbody{padding:20px 22px 16px;}
+
+.dtag{font-family:'Syncopate',sans-serif;font-size:.58rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;margin-bottom:11px;display:flex;align-items:center;gap:10px;}
+.dtag::after{content:'';flex:1;height:1px;}
+.dtag-dark{color:var(--warn);}
+.dtag-dark::after{background:linear-gradient(90deg,rgba(184,144,10,.3),transparent);}
+.dtag-warn{color:var(--crimson);}
+.dtag-warn::after{background:linear-gradient(90deg,rgba(138,32,32,.3),transparent);}
+.dtag-paper{color:var(--rust);}
+.dtag-paper::after{background:linear-gradient(90deg,rgba(138,32,32,.25),transparent);}
+
+.dar{font-family:'Amiri',serif;font-size:clamp(1.1rem,2.8vw,1.55rem);line-height:2.2;direction:rtl;text-align:right;margin-bottom:12px;padding-bottom:11px;}
+.dar-dark{color:var(--warn-lt);border-bottom:1px dashed rgba(184,144,10,.18);}
+.dar-warn{color:#ff9090;border-bottom:1px dashed rgba(184,80,80,.2);}
+.dar-paper{color:var(--rust);border-bottom:1px dashed rgba(138,32,32,.2);}
+
+.dtrans{font-style:italic;font-size:.92rem;line-height:1.8;margin-bottom:7px;}
+.dtrans-dark{color:rgba(208,208,232,.78);}
+.dtrans-warn{color:rgba(245,210,200,.78);}
+.dtrans-paper{color:var(--ink-mid);}
+
+.dref{font-family:'Syncopate',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;}
+.dref-dark{color:var(--violet);}
+.dref-warn{color:var(--crimson);}
+.dref-paper{color:var(--rust);}
+
+/* ══════════════════════
+   TANDA-TANDA GRID (MASK CARDS)
+══════════════════════ */
+.mask-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;margin:28px 0;border:1px solid var(--b-purple);overflow:hidden;}
+
+.mask-card{padding:24px 22px;position:relative;overflow:hidden;background:rgba(12,10,22,.9);}
+.mask-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;}
+.mask-card.card-v::before{background:var(--violet);}
+.mask-card.card-w::before{background:var(--warn);}
+.mask-card.card-r::before{background:var(--crimson);}
+
+.mask-num{
+  font-family:'Syncopate',sans-serif;font-weight:700;
+  font-size:2.5rem;line-height:1;
+  opacity:.08;position:absolute;top:12px;right:16px;
+  color:var(--silver);
+}
+
+.mask-icon{font-size:1.6rem;margin-bottom:12px;display:block;}
+
+.mask-title{font-family:'Spectral',serif;font-weight:700;font-size:1rem;margin-bottom:6px;}
+.mt-v{color:var(--silver-lt);}
+.mt-w{color:var(--warn-lt);}
+.mt-r{color:#ff9090;}
+
+.mask-ar{font-family:'Amiri',serif;font-size:1.1rem;color:rgba(168,168,192,.5);direction:rtl;text-align:right;margin-bottom:8px;line-height:1.9;}
+
+.mask-desc{font-size:.82rem;line-height:1.65;font-style:italic;}
+.md-v{color:rgba(208,208,232,.62);}
+.md-w{color:rgba(245,220,175,.62);}
+.md-r{color:rgba(245,200,190,.62);}
+
+.mask-dalil{font-size:.7rem;font-family:'Syncopate',sans-serif;letter-spacing:1.5px;margin-top:10px;padding:6px 10px;display:inline-block;}
+.mdalil-v{background:rgba(107,79,168,.15);color:var(--violet);border:1px solid rgba(107,79,168,.2);}
+.mdalil-w{background:rgba(184,144,10,.1);color:var(--warn);border:1px solid rgba(184,144,10,.2);}
+.mdalil-r{background:rgba(184,48,48,.1);color:var(--crimson);border:1px solid rgba(184,48,48,.2);}
+
+/* ══════════════════════
+   DUAL PANEL (two-faced)
+══════════════════════ */
+.dual{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin:28px 0;overflow:hidden;}
+@media(max-width:640px){.dual{grid-template-columns:1fr;}}
+
+.dual-side{padding:24px 22px;}
+.dual-l{background:rgba(14,12,24,.9);border:1px solid var(--b-purple);border-right:none;}
+.dual-r{background:rgba(20,10,10,.9);border:1px solid rgba(138,32,32,.2);}
+@media(max-width:640px){.dual-l{border-right:1px solid var(--b-purple);border-bottom:none;}.dual-r{border-top:none;}}
+
+.dual-label{font-family:'Syncopate',sans-serif;font-size:.58rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;margin-bottom:12px;}
+.dl-v{color:var(--violet);}
+.dl-r{color:var(--crimson);}
+
+.dual-title{font-family:'Spectral',serif;font-weight:700;font-size:1.1rem;margin-bottom:10px;}
+.dt-v{color:var(--silver-lt);}
+.dt-r{color:#ffd0d0;}
+
+.dual-body{font-size:.88rem;line-height:1.85;font-style:italic;}
+.db-v{color:rgba(208,208,232,.7);}
+.db-r{color:rgba(245,205,195,.7);}
+
+/* ══════════════════════
+   BANNER
+══════════════════════ */
+.banner{margin:32px 0;padding:28px 32px;text-align:center;position:relative;overflow:hidden;}
+.banner-dark{background:linear-gradient(135deg,rgba(74,56,112,.25),rgba(37,35,56,.25));border:1px solid var(--b-purple);}
+.banner-warn{background:linear-gradient(135deg,rgba(138,32,32,.25),rgba(14,10,24,.3));border:1px solid rgba(138,32,32,.3);}
+.banner-gold{background:linear-gradient(135deg,rgba(184,144,10,.15),rgba(14,12,24,.2));border:1px solid var(--b-warn);}
+
+.bnar{font-family:'Amiri',serif;font-size:clamp(1.1rem,2.8vw,1.55rem);line-height:2;margin-bottom:10px;position:relative;z-index:1;}
+.bnar-dark{color:var(--warn-lt);}
+.bnar-warn{color:#ff9090;}
+.bnar-gold{color:var(--warn-lt);}
+
+.bnid{font-style:italic;font-size:.88rem;line-height:1.75;position:relative;z-index:1;}
+.bnid-dark{color:rgba(208,208,232,.7);}
+.bnid-warn{color:rgba(245,210,200,.7);}
+.bnid-gold{color:rgba(245,230,180,.7);}
+
+.bnref{font-family:'Syncopate',sans-serif;font-size:.58rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-top:8px;position:relative;z-index:1;}
+.bnref-dark{color:rgba(107,79,168,.65);}
+.bnref-warn{color:rgba(184,48,48,.7);}
+.bnref-gold{color:rgba(184,144,10,.6);}
+
+/* ══════════════════════
+   HUKUM TABLE
+══════════════════════ */
+.hukum-table{width:100%;border-collapse:collapse;margin:28px 0;font-size:.88rem;}
+.hukum-table thead tr{background:var(--veil);}
+.hukum-table thead th{padding:12px 14px;text-align:left;font-family:'Syncopate',sans-serif;font-size:.58rem;letter-spacing:3px;text-transform:uppercase;font-weight:700;color:var(--silver);}
+.hukum-table tbody tr{border-bottom:1px solid var(--b-silver);}
+.hukum-table tbody tr:nth-child(even){background:rgba(14,13,24,.6);}
+.hukum-table tbody tr:nth-child(odd){background:rgba(8,8,20,.6);}
+.hukum-table td{padding:11px 14px;line-height:1.6;vertical-align:top;}
+.hukum-table td:first-child{color:var(--silver-lt);font-weight:600;}
+.hukum-table td:not(:first-child){color:rgba(208,208,232,.75);}
+
+.badge-h{display:inline-block;padding:2px 9px;font-family:'Syncopate',sans-serif;font-size:.55rem;letter-spacing:2px;text-transform:uppercase;font-weight:700;}
+.bh-dark{background:rgba(74,56,112,.3);color:var(--violet);border:1px solid var(--b-purple);}
+.bh-warn{background:rgba(138,32,32,.25);color:var(--crimson);border:1px solid rgba(138,32,32,.3);}
+.bh-gold{background:rgba(184,144,10,.15);color:var(--warn);border:1px solid var(--b-warn);}
+.bh-gray{background:rgba(80,80,100,.2);color:var(--silver);border:1px solid rgba(100,100,130,.2);}
+
+/* ══════════════════════
+   JENIS NIFAQ (accordion-style)
+══════════════════════ */
+.nifaq-list{margin:28px 0;}
+.nifaq-item{border:1px solid var(--b-purple);margin-bottom:6px;overflow:hidden;}
+.nifaq-head{
+  display:flex;align-items:flex-start;gap:0;
+  background:rgba(14,13,24,.95);
+}
+.nifaq-num{
+  flex-shrink:0;width:52px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Spectral',serif;font-weight:700;font-size:1.4rem;
+  padding:16px;
+}
+.nn-v{color:var(--violet);background:rgba(74,56,112,.2);}
+.nn-w{color:var(--warn);background:rgba(184,144,10,.1);}
+.nn-r{color:var(--crimson);background:rgba(138,32,32,.15);}
+
+.nifaq-body{flex:1;padding:14px 18px;}
+.nifaq-title{font-family:'Spectral',serif;font-weight:700;font-size:.98rem;margin-bottom:4px;}
+.nt-v{color:var(--silver-lt);}
+.nt-w{color:var(--warn-lt);}
+.nt-r{color:#ffc8c8;}
+.nifaq-ar{font-family:'Amiri',serif;font-size:1rem;direction:rtl;text-align:right;margin-bottom:6px;color:rgba(168,168,192,.5);}
+.nifaq-desc{font-size:.84rem;line-height:1.7;font-style:italic;}
+.nd-v{color:rgba(208,208,232,.65);}
+.nd-w{color:rgba(245,215,165,.65);}
+.nd-r{color:rgba(245,200,195,.65);}
+.nifaq-ref{font-family:'Syncopate',sans-serif;font-size:.58rem;font-weight:700;letter-spacing:2px;margin-top:8px;display:block;}
+.nr-v{color:var(--violet);}
+.nr-w{color:var(--warn);}
+.nr-r{color:var(--crimson);}
+
+/* ══════════════════════
+   PENUTUP
+══════════════════════ */
+.penutup{
+  background:linear-gradient(180deg,var(--dusk) 0%,var(--void) 100%);
+  padding:72px 28px 80px;
+  text-align:center;position:relative;overflow:hidden;
+}
+.penutup::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 50% 50% at 50% 0%,rgba(74,56,112,.15) 0%,transparent 70%),
+    radial-gradient(ellipse 50% 50% at 50% 100%,rgba(138,32,32,.1) 0%,transparent 70%);
+  pointer-events:none;
+}
+.penutup::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--violet),transparent);}
+
+.penutup-inner{max-width:640px;margin:0 auto;position:relative;z-index:1;}
+.penutup-ar{font-family:'Amiri',serif;font-size:clamp(1.5rem,4vw,2.6rem);color:var(--warn-lt);line-height:2;text-shadow:0 0 20px rgba(184,144,10,.3);margin-bottom:14px;}
+.penutup-div{width:80px;height:1px;background:linear-gradient(90deg,transparent,var(--violet),transparent);margin:18px auto;}
+.penutup-p{font-style:italic;font-size:clamp(.9rem,2vw,1.05rem);color:rgba(220,215,240,.72);line-height:1.9;margin-bottom:12px;}
+.penutup-ref{font-family:'Syncopate',sans-serif;font-size:.58rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(107,79,168,.55);}
+.penutup-footer{margin-top:40px;padding-top:22px;border-top:1px solid rgba(255,255,255,.04);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+.penutup-footer .logo{font-family:'Amiri',serif;font-size:1.1rem;color:rgba(184,144,10,.35);}
+.penutup-footer .tag{font-family:'Syncopate',sans-serif;font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.12);}
+
+/* ══════════════════════
+   SEPARATOR
+══════════════════════ */
+.sep{text-align:center;padding:14px 0;background:var(--void);}
+.sep span{color:rgba(74,56,112,.4);letter-spacing:12px;font-size:.75rem;}
+
+/* ══════════════════════
+   RESPONSIVE
+══════════════════════ */
+@media(max-width:600px){
+  .sec-dark,.sec-paper,.sec-warn{padding:44px 18px 40px;}
+  .mask-grid{grid-template-columns:1fr;}
+  .banner{padding:20px 18px;}
+  .penutup{padding:52px 18px 56px;}
+  .hukum-table thead th,.hukum-table td{padding:9px 10px;}
+  .mask-num{display:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════ HERO ══════ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-cracks"></div>
+  <div class="mask-deco"></div>
+  <div class="dust" id="dust"></div>
+
+  <div class="hero-inner">
+    <div class="hero-bismillah">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
+    <p class="hero-eyebrow">Naskah Berdalil Al-Qur'an &amp; Hadis · Kajian Fiqh &amp; Akidah</p>
+    <h1 class="hero-title">Sifat Orang<br>Munafik</h1>
+    <div class="hero-arabic">صِفَاتُ الْمُنَافِقِينَ وَأَحْكَامُهُمْ</div>
+    <div class="hero-divider">
+      <span></span><em>◈ ◈ ◈</em><span></span>
+    </div>
+    <div class="hero-verse">
+      <div class="hero-verse-ar">إِنَّ الْمُنَافِقِينَ فِي الدَّرْكِ الْأَسْفَلِ مِنَ النَّارِ وَلَن تَجِدَ لَهُمْ نَصِيرًا</div>
+      <div class="hero-verse-id">"Sesungguhnya orang-orang munafik itu (ditempatkan) pada tingkatan yang paling bawah dari Neraka, dan kamu tidak akan mendapatkan seorang penolongpun bagi mereka."<br><em style="color:rgba(184,144,10,.5)">— QS. An-Nisā': 145</em></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ PROLOG ══════ -->
+<section class="sec-dark">
+  <div class="inner">
+    <div class="sh">
+      <div class="sh-badge badge-dark">✦ Pembuka</div>
+      <div class="sh-ar shar-dark">مُقَدِّمَةٌ — مَنِ الْمُنَافِقُ؟</div>
+      <h2 class="sh-title shtitle-dark">Siapakah Orang Munafik?</h2>
+      <div class="sh-rule rule-dark"></div>
+    </div>
+    <div class="prose prose-dark">
+      <p class="lead">Musuh terbesar umat Islam bukan selalu yang datang dengan pedang tehunus di depan pintu. Kadang ia datang dengan senyum hangat, ucapan yang manis, dan baris pertama shalatnya yang terlihat khusyuk. Inilah orang munafik — musuh dalam selimut yang paling berbahaya sepanjang sejarah.</p>
+      <p>Kemunafikan (<em>nifāq</em>) dalam terminologi Islam merujuk kepada kondisi seseorang yang menampakkan iman di luar namun menyembunyikan kekafiran atau kedurhakaan di dalam. Ia adalah dua wajah dalam satu tubuh — sebuah pemisahan fatal antara apa yang diucapkan lidah dan apa yang diyakini hati.</p>
+      <p>Al-Qur'an menurunkan sebuah surat khusus yang dinamai "Al-Munafiqun" (Orang-orang Munafik). Dan dalam surah Al-Baqarah, tidak kurang dari 13 ayat awal membahas karakter mereka secara mendetail — lebih panjang dari pembahasan tentang orang kafir. Ini menunjukkan betapa seriusnya ancaman kemunafikan bagi tubuh umat Islam.</p>
+    </div>
+
+    <div class="dalil dalil-dark">
+      <div class="dbar-dark"></div>
+      <div class="dbody">
+        <div class="dtag dtag-dark">📖 QS. Al-Baqarah: 8–10 — Definisi Munafik</div>
+        <div class="dar dar-dark">وَمِنَ النَّاسِ مَن يَقُولُ آمَنَّا بِاللَّهِ وَبِالْيَوْمِ الْآخِرِ وَمَا هُم بِمُؤْمِنِينَ ۝ يُخَادِعُونَ اللَّهَ وَالَّذِينَ آمَنُوا وَمَا يَخْدَعُونَ إِلَّا أَنفُسَهُمْ وَمَا يَشْعُرُونَ ۝ فِي قُلُوبِهِم مَّرَضٌ فَزَادَهُمُ اللَّهُ مَرَضًا</div>
+        <div class="dtrans dtrans-dark">"Di antara manusia ada yang berkata: 'Kami beriman kepada Allah dan hari akhir,' padahal mereka bukan orang-orang yang beriman. Mereka menipu Allah dan orang-orang yang beriman, padahal mereka hanya menipu diri sendiri sedang mereka tidak menyadarinya. Dalam hati mereka ada penyakit, lalu Allah menambah penyakitnya itu."</div>
+        <div class="dref dref-dark">QS. Al-Baqarah (2): 8–10</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"><span>◈ ◈ ◈</span></div>
+
+<!-- ══════ BAB I: DUA JENIS NIFAQ ══════ -->
+<section class="sec-paper">
+  <div class="inner">
+    <div class="sh">
+      <div class="sh-badge badge-paper">✦ Bab Pertama</div>
+      <div class="sh-ar shar-paper">نَوْعَا النِّفَاقِ</div>
+      <h2 class="sh-title shtitle-paper">Dua Jenis Kemunafikan</h2>
+      <div class="sh-rule rule-paper"></div>
+      <p class="sh-sub" style="color:var(--sepia);">Para ulama membagi nifaq menjadi dua kategori besar — keduanya berbahaya, namun berbeda hukum dan tingkat keparahannya.</p>
+    </div>
+
+    <div class="dual">
+      <div class="dual-side dual-l">
+        <div class="dual-label dl-v">✦ Jenis Pertama</div>
+        <div class="dual-title dt-v">نِفَاقٌ اعْتِقَادِيٌّ<br>Nifaq Akidah (I'tiqādi)</div>
+        <div class="dual-body db-v">Kemunafikan dalam keyakinan — seseorang menampakkan Islam di mulut namun hatinya menolak, membenci, atau mengingkari Islam. Inilah kemunafikan para sahabat zaman Nabi ﷺ seperti Abdullah bin Ubay dan kelompoknya. Mereka shalat bersama kaum Muslimin namun merencanakan pengkhianatan dari dalam. Hukumnya: kafir sejati di sisi Allah, dan tempat mereka adalah tingkatan terbawah Neraka. Di dunia, mereka diperlakukan sebagai Muslim (karena lidah mengucapkan syahadat) namun kelak dipastikan binasa.</div>
+      </div>
+      <div class="dual-side dual-r">
+        <div class="dual-label dl-r">⚠ Jenis Kedua</div>
+        <div class="dual-title dt-r">نِفَاقٌ عَمَلِيٌّ<br>Nifaq Amali (Perilaku)</div>
+        <div class="dual-body db-r">Kemunafikan dalam perilaku — seseorang yang beriman namun memiliki sifat-sifat munafik dalam kehidupannya: berdusta, berkhianat, mengingkari janji, berlaku curang dalam berselisih. Kemunafikan jenis ini tidak menjadikan pelakunya kafir, namun ia adalah dosa besar yang menghantarkan kepada kemunafikan sempurna apabila tidak segera ditaubati. Inilah yang paling relevan untuk muhasabah diri setiap Muslim.</div>
+      </div>
+    </div>
+
+    <div class="dalil dalil-paper">
+      <div class="dbar-paper"></div>
+      <div class="dbody">
+        <div class="dtag dtag-paper">📖 QS. An-Nisā': 145 — Tempat Munafik Akidah</div>
+        <div class="dar dar-paper">إِنَّ الْمُنَافِقِينَ فِي الدَّرْكِ الْأَسْفَلِ مِنَ النَّارِ وَلَن تَجِدَ لَهُمْ نَصِيرًا</div>
+        <div class="dtrans dtrans-paper">"Sesungguhnya orang-orang munafik itu (ditempatkan) pada tingkatan yang paling bawah dari Neraka, dan kamu tidak akan mendapatkan seorang penolong pun bagi mereka."</div>
+        <div class="dref dref-paper">QS. An-Nisā' (4): 145</div>
+      </div>
+    </div>
+
+    <div class="prose prose-paper" style="margin-top:28px;">
+      <p>Ibnu Qayyim Al-Jauziyyah rahimahullah dalam <em>Mukhtashar Iqādzul Himam</em> menjelaskan: kemunafikan akidah lebih berbahaya dari kekafiran terang-terangan, karena pelakunya mampu merusak dari dalam tanpa bisa diketahui. Inilah mengapa Al-Qur'an berulang kali memperingatkan umat Islam agar waspada terhadap tanda-tanda mereka, bukan untuk menghakimi individu, melainkan untuk melindungi komunitas.</p>
+    </div>
+  </div>
+</section>
+
+<div class="sep"><span>◈ ◈ ◈</span></div>
+
+<!-- ══════ BAB II: SIFAT-SIFAT MUNAFIK ══════ -->
+<section class="sec-dark">
+  <div class="inner">
+    <div class="sh">
+      <div class="sh-badge badge-dark">✦ Bab Kedua</div>
+      <div class="sh-ar shar-dark">عَلَامَاتُ الْمُنَافِقِينَ مِنَ الْقُرْآنِ وَالسُّنَّةِ</div>
+      <h2 class="sh-title shtitle-dark">Tanda-Tanda Munafik: Al-Qur'an & Hadis</h2>
+      <div class="sh-rule rule-dark"></div>
+    </div>
+
+    <!-- Tanda dari Hadis Masyhur -->
+    <div class="sh" style="text-align:left;margin-bottom:20px;">
+      <div class="sh-ar shar-dark" style="font-size:1.3rem;">أَوَّلًا: مِنَ السُّنَّةِ — الْعَلَامَاتُ الْأَرْبَعُ</div>
+    </div>
+
+    <div class="dalil dalil-dark">
+      <div class="dbar-dark"></div>
+      <div class="dbody">
+        <div class="dtag dtag-dark">📜 HR. Bukhari &amp; Muslim — Tanda Munafik yang Paling Terkenal</div>
+        <div class="dar dar-dark">آيَةُ الْمُنَافِقِ ثَلَاثٌ إِذَا حَدَّثَ كَذَبَ وَإِذَا وَعَدَ أَخْلَفَ وَإِذَا اؤْتُمِنَ خَانَ</div>
+        <div class="dtrans dtrans-dark">"Tanda munafik ada tiga: apabila berbicara ia berdusta, apabila berjanji ia mengingkari, dan apabila diberi amanah ia berkhianat."</div>
+        <div class="dref dref-dark">HR. Bukhari (33) &amp; Muslim (59) — dari Abu Hurairah radhiyallahu 'anhu</div>
+      </div>
+    </div>
+
+    <div class="dalil dalil-dark">
+      <div class="dbar-dark"></div>
+      <div class="dbody">
+        <div class="dtag dtag-dark">📜 HR. Bukhari &amp; Muslim — Tambahan Tanda Keempat</div>
+        <div class="dar dar-dark">وَإِذَا خَاصَمَ فَجَرَ</div>
+        <div class="dtrans dtrans-dark">"Dan apabila berselisih (bersengketa) ia berlaku curang (berbuat keji / melampaui batas)." — Ini adalah riwayat tambahan yang melengkapi menjadi empat tanda.</div>
+        <div class="dref dref-dark">HR. Bukhari (34) &amp; Muslim (58) — dari Abdullah bin Amr radhiyallahu 'anhu</div>
+      </div>
+    </div>
+
+    <!-- 4 tanda utama dalam kartu -->
+    <div class="mask-grid" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr));">
+      <div class="mask-card card-v">
+        <div class="mask-num">1</div>
+        <span class="mask-icon">🗣️</span>
+        <div class="mask-title mt-v">Berdusta ketika Bicara</div>
+        <div class="mask-ar">إِذَا حَدَّثَ كَذَبَ</div>
+        <div class="mask-desc md-v">Kebohongan bukan sekadar salah satu dosa — ia adalah fondasi kemunafikan. Orang munafik menjadikan dusta sebagai alat bertahan dan berkuasa.</div>
+        <span class="mask-dalil mdalil-v">HR. Bukhari (33)</span>
+      </div>
+      <div class="mask-card card-v">
+        <div class="mask-num">2</div>
+        <span class="mask-icon">🤝</span>
+        <div class="mask-title mt-v">Mengingkari Janji</div>
+        <div class="mask-ar">إِذَا وَعَدَ أَخْلَفَ</div>
+        <div class="mask-desc md-v">Janji adalah kontrak antara dua jiwa. Orang munafik membuat janji bukan untuk ditepati, melainkan sebagai alat memanipulasi.</div>
+        <span class="mask-dalil mdalil-v">HR. Bukhari (33)</span>
+      </div>
+      <div class="mask-card card-w">
+        <div class="mask-num">3</div>
+        <span class="mask-icon">⚠️</span>
+        <div class="mask-title mt-w">Berkhianat dalam Amanah</div>
+        <div class="mask-ar">إِذَا اؤْتُمِنَ خَانَ</div>
+        <div class="mask-desc md-w">Amanah — kepercayaan yang diberikan — dikhianati. Ini mencakup amanah harta, rahasia, jabatan, rumah tangga, dan kepercayaan sesama.</div>
+        <span class="mask-dalil mdalil-w">HR. Bukhari (33)</span>
+      </div>
+      <div class="mask-card card-w">
+        <div class="mask-num">4</div>
+        <span class="mask-icon">⚖️</span>
+        <div class="mask-title mt-w">Berlaku Curang dalam Sengketa</div>
+        <div class="mask-ar">إِذَا خَاصَمَ فَجَرَ</div>
+        <div class="mask-desc md-w">Ketika berselisih, tidak ada batasan yang ia jaga — melampaui kebenaran, membolak-balik fakta, dan menghalalkan segala cara untuk menang.</div>
+        <span class="mask-dalil mdalil-w">HR. Bukhari (34)</span>
+      </div>
+    </div>
+
+    <!-- Tanda dari Al-Qur'an -->
+    <div class="sh" style="text-align:left;margin:48px 0 20px;">
+      <div class="sh-ar shar-dark" style="font-size:1.3rem;">ثَانِيًا: مِنَ الْقُرْآنِ الْكَرِيمِ — عَلَامَاتٌ تَفْصِيلِيَّةٌ</div>
+      <h3 class="sh-title shtitle-dark" style="font-size:1.3rem;">Tanda-Tanda Munafik Menurut Al-Qur'an</h3>
+    </div>
+
+    <div class="nifaq-list">
+      <!-- 1 -->
+      <div class="nifaq-item">
+        <div class="nifaq-head">
+          <div class="nifaq-num nn-v">١</div>
+          <div class="nifaq-body">
+            <div class="nifaq-title nt-v">Merasa Cukup Pintar untuk Menentang — Kibr dan Istihzā'</div>
+            <div class="nifaq-ar">وَإِذَا قِيلَ لَهُمْ لَا تُفْسِدُوا فِي الْأَرْضِ قَالُوا إِنَّمَا نَحْنُ مُصْلِحُونَ</div>
+            <div class="nifaq-desc nd-v">"Dan apabila dikatakan kepada mereka: 'Janganlah berbuat kerusakan di bumi!' mereka menjawab: 'Sesungguhnya kami justru orang-orang yang melakukan perbaikan.'" Orang munafik tidak pernah mengakui kerusakannya — mereka selalu punya justifikasi, selalu merasa lebih tahu, dan menolak nasihat dengan kepala tegak.</div>
+            <span class="nifaq-ref nr-v">QS. Al-Baqarah (2): 11</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2 -->
+      <div class="nifaq-item">
+        <div class="nifaq-head">
+          <div class="nifaq-num nn-v">٢</div>
+          <div class="nifaq-body">
+            <div class="nifaq-title nt-v">Dua Wajah — Bermuka Manis di Hadapan Mukmin, Bersekutu dengan Musuh</div>
+            <div class="nifaq-ar">وَإِذَا لَقُوا الَّذِينَ آمَنُوا قَالُوا آمَنَّا وَإِذَا خَلَوْا إِلَىٰ شَيَاطِينِهِمْ قَالُوا إِنَّا مَعَكُمْ</div>
+            <div class="nifaq-desc nd-v">"Dan apabila mereka bertemu orang-orang yang beriman, mereka berkata: 'Kami beriman.' Namun apabila mereka kembali kepada setan-setan mereka, mereka berkata: 'Sesungguhnya kami bersama kalian.'" Inilah hakikat dua muka — loyalitas mereka tidak kepada kebenaran, melainkan kepada kepentingan sesaat.</div>
+            <span class="nifaq-ref nr-v">QS. Al-Baqarah (2): 14</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 -->
+      <div class="nifaq-item">
+        <div class="nifaq-head">
+          <div class="nifaq-num nn-w">٣</div>
+          <div class="nifaq-body">
+            <div class="nifaq-title nt-w">Malas dan Enggan dalam Beribadah — Terutama Shalat</div>
+            <div class="nifaq-ar">وَإِذَا قَامُوا إِلَى الصَّلَاةِ قَامُوا كُسَالَىٰ يُرَاءُونَ النَّاسَ وَلَا يَذْكُرُونَ اللَّهَ إِلَّا قَلِيلًا</div>
+            <div class="nifaq-desc nd-w">"Dan apabila mereka berdiri untuk shalat mereka berdiri dengan malas. Mereka riya' (pamer) kepada manusia dan tidak mengingat Allah kecuali sedikit." Shalat adalah tolok ukur utama. Orang munafik tidak merasakan keagungan shalat karena hatinya kosong dari keimanan — ia shalat hanya agar dilihat orang, bukan untuk menghadap Allah.</div>
+            <span class="nifaq-ref nr-w">QS. An-Nisā' (4): 142</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4 -->
+      <div class="nifaq-item">
+        <div class="nifaq-head">
+          <div class="nifaq-num nn-w">٤</div>
+          <div class="nifaq-body">
+            <div class="nifaq-title nt-w">Menyuruh Kemungkaran &amp; Mencegah Kebaikan</div>
+            <div class="nifaq-ar">الْمُنَافِقُونَ وَالْمُنَافِقَاتُ بَعْضُهُم مِّن بَعْضٍ يَأْمُرُونَ بِالْمُنكَرِ وَيَنْهَوْنَ عَنِ الْمَعْرُوفِ</div>
+            <div class="nifaq-desc nd-w">"Orang-orang munafik laki-laki dan perempuan, satu dengan yang lain saling menyuruh yang mungkar dan mencegah yang ma'ruf." Ini adalah kebalikan sempurna dari sifat orang beriman (QS. At-Tawbah: 71 yang menyuruh ma'ruf dan mencegah mungkar). Komunitas munafik saling menguatkan dalam kejahatan.</div>
+            <span class="nifaq-ref nr-w">QS. At-Tawbah (9): 67</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5 -->
+      <div class="nifaq-item">
+        <div class="nifaq-head">
+          <div class="nifaq-num nn-r">٥</div>
+          <div class="nifaq-body">
+            <div class="nifaq-title nt-r">Menyebarkan Berita Dusta &amp; Menimbulkan Kepanikan</div>
+            <div class="nifaq-ar">وَإِذَا جَاءَهُمْ أَمْرٌ مِّنَ الْأَمْنِ أَوِ الْخَوْفِ أَذَاعُوا بِهِ</div>
+            <div class="nifaq-desc nd-r">"Dan apabila sampai kepada mereka suatu berita tentang keamanan ataupun ketakutan, mereka langsung menyiarkannya." Orang munafik adalah penyebar fitnah pertama — meneruskan berita sebelum diverifikasi, menghembuskan kepanikan, dan mengacaukan barisan umat.</div>
+            <span class="nifaq-ref nr-r">QS. An-Nisā' (4): 83</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6 -->
+      <div class="nifaq-item">
+        <div class="nifaq-head">
+          <div class="nifaq-num nn-r">٦</div>
+          <div class="nifaq-body">
+            <div class="nifaq-title nt-r">Bersumpah Palsu untuk Melindungi Diri</div>
+            <div class="nifaq-ar">اتَّخَذُوا أَيْمَانَهُمْ جُنَّةً فَصَدُّوا عَن سَبِيلِ اللَّهِ</div>
+            <div class="nifaq-desc nd-r">"Mereka menjadikan sumpah-sumpah mereka sebagai perisai, lalu mereka menghalangi (manusia) dari jalan Allah." Sumpah demi Allah adalah sesuatu yang sakral. Namun orang munafik menjadikannya alat manipulasi — bersumpah dengan nama Allah untuk menipu dan berlindung dari konsekuensi.</div>
+            <span class="nifaq-ref nr-r">QS. Al-Munāfiqūn (63): 2</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7 -->
+      <div class="nifaq-item">
+        <div class="nifaq-head">
+          <div class="nifaq-num nn-r">٧</div>
+          <div class="nifaq-body">
+            <div class="nifaq-title nt-r">Lari dari Jihad &amp; Membuat Alasan Palsu</div>
+            <div class="nifaq-ar">وَلَوْ أَرَادُوا الْخُرُوجَ لَأَعَدُّوا لَهُ عُدَّةً وَلَٰكِن كَرِهَ اللَّهُ انبِعَاثَهُمْ</div>
+            <div class="nifaq-desc nd-r">"Dan kalau mereka mau berangkat (berjihad), tentu mereka menyiapkan persiapan untuk itu; tetapi Allah tidak menyukai keberangkatan mereka maka Allah melemahkan keinginan mereka." Orang munafik tidak mau berkorban untuk umat — mereka hanya mau menikmati keamanan yang dihasilkan pengorbanan orang lain.</div>
+            <span class="nifaq-ref nr-r">QS. At-Tawbah (9): 46</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8 -->
+      <div class="nifaq-item">
+        <div class="nifaq-head">
+          <div class="nifaq-num nn-r">٨</div>
+          <div class="nifaq-body">
+            <div class="nifaq-title nt-r">Kikir dalam Berinfak — dan Menyesal ketika Terpaksa</div>
+            <div class="nifaq-ar">وَلَا يُنفِقُونَ إِلَّا وَهُمْ كَارِهُونَ</div>
+            <div class="nifaq-desc nd-r">"Dan mereka tidak berinfak melainkan dalam keadaan terpaksa." Infak adalah cerminan iman — orang beriman memberikan dengan senang hati karena ia percaya kepada Allah. Orang munafik memberikan hanya karena tekanan sosial, dan hatinya menyesali setiap sen yang keluar.</div>
+            <span class="nifaq-ref nr-r">QS. At-Tawbah (9): 54</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"><span>◈ ◈ ◈</span></div>
+
+<!-- ══════ BAB III: SIFAT LANJUTAN + HADIS ══════ -->
+<section class="sec-paper">
+  <div class="inner">
+    <div class="sh">
+      <div class="sh-badge badge-paper">✦ Bab Ketiga</div>
+      <div class="sh-ar shar-paper">مَزِيدٌ مِنَ الصِّفَاتِ — مِنَ السُّنَّةِ</div>
+      <h2 class="sh-title shtitle-paper">Sifat Lanjutan dari Hadis Nabi ﷺ</h2>
+      <div class="sh-rule rule-paper"></div>
+    </div>
+
+    <div class="mask-grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr));">
+      <div class="mask-card card-v" style="background:rgba(240,234,216,.95);">
+        <div class="mask-num" style="color:rgba(26,22,16,.2);">9</div>
+        <span class="mask-icon">😤</span>
+        <div class="mask-title" style="color:var(--rust);">Angkuh terhadap Kebenaran</div>
+        <div class="mask-ar" style="color:rgba(26,22,16,.4);">الْكِبْرُ وَالِاسْتِكْبَارُ</div>
+        <div class="mask-desc" style="color:var(--sepia);">Menolak nasihat ulama, merasa lebih tahu dari orang berilmu, dan tidak pernah menerima kritik sebagai kebenaran.</div>
+        <span class="mask-dalil" style="background:rgba(138,32,32,.1);color:var(--rust);border:1px solid rgba(138,32,32,.2);">QS. Al-Baqarah: 11</span>
+      </div>
+
+      <div class="mask-card card-w" style="background:rgba(240,234,216,.95);">
+        <div class="mask-num" style="color:rgba(26,22,16,.2);">10</div>
+        <span class="mask-icon">🎭</span>
+        <div class="mask-title" style="color:var(--warn);">Riya' dalam Beribadah</div>
+        <div class="mask-ar" style="color:rgba(26,22,16,.4);">الرِّيَاءُ وَالسُّمْعَةُ</div>
+        <div class="mask-desc" style="color:var(--sepia);">Ibadah dilakukan untuk dipandang manusia, bukan karena Allah. Shalat di masjid ketika ada yang melihat, absen ketika sendirian.</div>
+        <span class="mask-dalil" style="background:rgba(184,144,10,.1);color:var(--warn);border:1px solid rgba(184,144,10,.2);">QS. An-Nisā': 142</span>
+      </div>
+
+      <div class="mask-card card-r" style="background:rgba(240,234,216,.95);">
+        <div class="mask-num" style="color:rgba(26,22,16,.2);">11</div>
+        <span class="mask-icon">👂</span>
+        <div class="mask-title" style="color:var(--crimson);">Tidak Pernah Menyebut Allah kecuali Sedikit</div>
+        <div class="mask-ar" style="color:rgba(26,22,16,.4);">لَا يَذْكُرُونَ اللَّهَ إِلَّا قَلِيلًا</div>
+        <div class="mask-desc" style="color:var(--sepia);">Dzikir, doa, dan hubungan dengan Allah sangat minim — karena hati yang tidak beriman tidak merasakan kebutuhan untuk mengingat Allah.</div>
+        <span class="mask-dalil" style="background:rgba(138,32,32,.1);color:var(--crimson);border:1px solid rgba(138,32,32,.2);">QS. An-Nisā': 142</span>
+      </div>
+
+      <div class="mask-card card-v" style="background:rgba(240,234,216,.95);">
+        <div class="mask-num" style="color:rgba(26,22,16,.2);">12</div>
+        <span class="mask-icon">🐺</span>
+        <div class="mask-title" style="color:var(--rust);">Bersekutu dengan Orang Kafir Melawan Mukmin</div>
+        <div class="mask-ar" style="color:rgba(26,22,16,.4);">مُوَالَاةُ الْكُفَّارِ ضِدَّ الْمُسْلِمِينَ</div>
+        <div class="mask-desc" style="color:var(--sepia);">Loyalitas sejati mereka bukan kepada umat Islam melainkan kepada pihak yang mereka anggap lebih menguntungkan secara duniawi.</div>
+        <span class="mask-dalil" style="background:rgba(138,32,32,.1);color:var(--rust);border:1px solid rgba(138,32,32,.2);">QS. Al-Baqarah: 14</span>
+      </div>
+    </div>
+
+    <div class="dalil dalil-paper" style="margin-top:32px;">
+      <div class="dbar-paper"></div>
+      <div class="dbody">
+        <div class="dtag dtag-paper">📜 HR. Bukhari — Shalat yang Paling Berat bagi Munafik</div>
+        <div class="dar dar-paper">إِنَّ أَثْقَلَ صَلَاةٍ عَلَى الْمُنَافِقِينَ صَلَاةُ الْعِشَاءِ وَصَلَاةُ الْفَجْرِ وَلَوْ يَعْلَمُونَ مَا فِيهِمَا لَأَتَوْهُمَا وَلَوْ حَبْوًا</div>
+        <div class="dtrans dtrans-paper">"Sesungguhnya shalat yang paling berat bagi orang-orang munafik adalah shalat Isya dan shalat Subuh. Seandainya mereka mengetahui apa (keutamaan) yang ada di dalamnya, niscaya mereka mendatanginya meskipun dengan merangkak."</div>
+        <div class="dref dref-paper">HR. Bukhari (657) &amp; Muslim (651) — dari Abu Hurairah radhiyallahu 'anhu</div>
+      </div>
+    </div>
+
+    <div class="dalil dalil-paper">
+      <div class="dbar-paper"></div>
+      <div class="dbody">
+        <div class="dtag dtag-paper">📜 HR. Muslim — Takut Disebut Munafik</div>
+        <div class="dar dar-paper">مَا كُنْتُ أَخْشَى عَلَى أَحَدٍ مِنَ الصَّحَابَةِ إِلَّا ابْنَ أُمِّ عَبْدٍ وَمَا أَعْرِفُ مُنَافِقًا إِلَّا مَنْ جَاهَدَ نَفْسَهُ</div>
+        <div class="dtrans dtrans-paper">Umar bin Khattab radhiyallahu 'anhu berkata kepada Hudzaifah (pemegang rahasia nama-nama munafik): "Apakah aku termasuk mereka?" Hudzaifah menjawab: "Tidak, dan aku tidak akan mengatakannya kepada siapa pun setelahmu." — Para sahabat terbaik pun takut terhadap kemunafikan diri sendiri. Ini adalah tanda orang beriman yang hakiki.</div>
+        <div class="dref dref-paper">Atsar Shahih — Riwayat Al-Bukhari dalam Adab Al-Mufrad &amp; Muslim</div>
+      </div>
+    </div>
+
+    <div class="banner banner-gold" style="background:rgba(245,235,200,.95);border:1px solid rgba(184,144,10,.3);">
+      <div class="bnar" style="color:var(--warn);">أَرْبَعٌ مَنْ كُنَّ فِيهِ كَانَ مُنَافِقًا خَالِصًا</div>
+      <div class="bnid" style="color:var(--sepia);">"Empat hal — barangsiapa memiliki semuanya maka ia adalah munafik sejati: apabila berbicara berdusta, apabila berjanji mengingkari, apabila berselisih berlaku curang, dan apabila diberi amanah berkhianat. Barangsiapa memiliki salah satu sifat ini, berarti dalam dirinya ada satu sifat kemunafikan hingga ia meninggalkannya."</div>
+      <div class="bnref" style="color:var(--warn);">HR. Bukhari (34) &amp; Muslim (58) — dari Abdullah bin Amr radhiyallahu 'anhu</div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"><span>◈ ◈ ◈</span></div>
+
+<!-- ══════ BAB IV: HUKUM YANG TERKAIT ══════ -->
+<section class="sec-warn">
+  <div class="inner">
+    <div class="sh">
+      <div class="sh-badge badge-warn">⚠ Bab Keempat</div>
+      <div class="sh-ar shar-warn">أَحْكَامُ الْمُنَافِقِينَ فِي الشَّرِيعَةِ</div>
+      <h2 class="sh-title shtitle-warn">Hukum-Hukum yang Terkait dengan Munafik</h2>
+      <div class="sh-rule rule-warn"></div>
+      <p class="sh-sub" style="color:rgba(245,210,200,.65);">Para ulama fiqh dan akidah membahas hukum-hukum ini secara rinci — di dunia dan di akhirat, dalam ibadah dan muamalah.</p>
+    </div>
+
+    <table class="hukum-table">
+      <thead>
+        <tr>
+          <th>Aspek Hukum</th>
+          <th>Munafik Akidah (I'tiqādi)</th>
+          <th>Munafik Amali (Perilaku)</th>
+          <th>Dasar Dalil</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Status Iman</td>
+          <td><span class="badge-h bh-warn">Kafir di sisi Allah</span></td>
+          <td><span class="badge-h bh-gold">Muslim dengan dosa besar</span></td>
+          <td>QS. An-Nisā': 145; HR. Bukhari (33)</td>
+        </tr>
+        <tr>
+          <td>Perlakuan di Dunia</td>
+          <td><span class="badge-h bh-gray">Diperlakukan sbg Muslim</span></td>
+          <td><span class="badge-h bh-gray">Diperlakukan sbg Muslim</span></td>
+          <td>Hukum zhahir — berdasar amalan lahir</td>
+        </tr>
+        <tr>
+          <td>Hak Shalat Jenazah</td>
+          <td><span class="badge-h bh-warn">Tidak dishalatkan jika diketahui pasti</span></td>
+          <td><span class="badge-h bh-gold">Dishalatkan seperti Muslim biasa</span></td>
+          <td>Nabi ﷺ dilarang menshalati Abdullah bin Ubay — QS. At-Tawbah: 84</td>
+        </tr>
+        <tr>
+          <td>Hak Dikuburkan di Pemakaman Muslim</td>
+          <td><span class="badge-h bh-warn">Diperselisihkan ulama</span></td>
+          <td><span class="badge-h bh-gold">Ya, seperti Muslim lainnya</span></td>
+          <td>Berdasarkan zahir hukum Islam</td>
+        </tr>
+        <tr>
+          <td>Tempat di Akhirat</td>
+          <td><span class="badge-h bh-warn">Dasar neraka terbawah (Hāwiyah)</span></td>
+          <td><span class="badge-h bh-gold">Tergantung amal — mungkin diampuni</span></td>
+          <td>QS. An-Nisā': 145; QS. Az-Zumar: 53</td>
+        </tr>
+        <tr>
+          <td>Doa Nabi ﷺ untuknya</td>
+          <td><span class="badge-h bh-warn">Nabi dilarang mendoakan ampunan</span></td>
+          <td><span class="badge-h bh-gold">Boleh didoakan dan diberi nasihat</span></td>
+          <td>QS. At-Tawbah (9): 80 &amp; 84</td>
+        </tr>
+        <tr>
+          <td>Tobat dan Penerimaan</td>
+          <td><span class="badge-h bh-dark">Diterima jika tobat nasuha sebelum mati</span></td>
+          <td><span class="badge-h bh-dark">Diterima kapan saja sebelum mati</span></td>
+          <td>QS. An-Nisā': 146; QS. Az-Zumar: 53</td>
+        </tr>
+        <tr>
+          <td>Sikap Muslim terhadapnya</td>
+          <td><span class="badge-h bh-gray">Tidak menyebut nama individu</span></td>
+          <td><span class="badge-h bh-gold">Nasihati, jangan ghibah</span></td>
+          <td>Prinsip: hukum berdasar zahir, bathin milik Allah</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="dalil dalil-warn">
+      <div class="dbar-warn"></div>
+      <div class="dbody">
+        <div class="dtag dtag-warn">📖 QS. At-Tawbah: 84 — Larangan Menshalati Munafik yang Diketahui</div>
+        <div class="dar dar-warn">وَلَا تُصَلِّ عَلَىٰ أَحَدٍ مِّنْهُم مَّاتَ أَبَدًا وَلَا تَقُمْ عَلَىٰ قَبْرِهِ ۖ إِنَّهُمْ كَفَرُوا بِاللَّهِ وَرَسُولِهِ وَمَاتُوا وَهُمْ فَاسِقُونَ</div>
+        <div class="dtrans dtrans-warn">"Dan janganlah engkau (Muhammad) menshalati seseorang yang mati di antara mereka (orang-orang munafik) selama-lamanya dan janganlah engkau berdiri (mendoakan) di atas kuburnya. Sesungguhnya mereka kafir kepada Allah dan Rasul-Nya dan mereka mati dalam keadaan fasik."</div>
+        <div class="dref dref-warn">QS. At-Tawbah (9): 84 — Turun setelah wafatnya Abdullah bin Ubay bin Salul</div>
+      </div>
+    </div>
+
+    <div class="dalil dalil-warn">
+      <div class="dbar-warn"></div>
+      <div class="dbody">
+        <div class="dtag dtag-warn">📖 QS. An-Nisā': 146 — Pintu Tobat tetap Terbuka</div>
+        <div class="dar dar-warn">إِلَّا الَّذِينَ تَابُوا وَأَصْلَحُوا وَاعْتَصَمُوا بِاللَّهِ وَأَخْلَصُوا دِينَهُمْ لِلَّهِ فَأُولَٰئِكَ مَعَ الْمُؤْمِنِينَ</div>
+        <div class="dtrans dtrans-warn">"Kecuali orang-orang yang tobat dan memperbaiki diri dan berpegang teguh kepada (agama) Allah dan dengan tulus ikhlas (menjalankan) agama mereka karena Allah. Maka mereka itu bersama orang-orang yang beriman."</div>
+        <div class="dref dref-warn">QS. An-Nisā' (4): 146 — Ayat langsung setelah ayat 145 tentang neraka terbawah</div>
+      </div>
+    </div>
+
+    <div class="banner banner-warn">
+      <div class="bnar bnar-warn">نَحْنُ نَحْكُمُ بِالظَّاهِرِ وَاللَّهُ يَتَوَلَّى السَّرَائِرَ</div>
+      <div class="bnid bnid-warn">"Kami menghukumi berdasarkan yang zahir (tampak), sedangkan Allah yang mengurusi rahasia hati." — Prinsip fundamental ini ditekankan para ulama: tidak seorang pun berhak menghakimi seseorang sebagai munafik berdasarkan prasangka. Kemunafikan akidah hanya Allah yang tahu pasti. Yang bisa dilakukan seorang Muslim adalah: menjauh dari sifat-sifat munafik dalam dirinya sendiri, bukan sibuk menuduh orang lain.</div>
+      <div class="bnref bnref-warn">Kaidah Ushul Fiqh — Ijma' Para Ulama</div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"><span>◈ ◈ ◈</span></div>
+
+<!-- ══════ BAB V: MUHASABAH DIRI ══════ -->
+<section class="sec-dark">
+  <div class="inner">
+    <div class="sh">
+      <div class="sh-badge badge-gold">✦ Bab Kelima</div>
+      <div class="sh-ar shar-dark">مُحَاسَبَةُ النَّفْسِ — الْخَوْفُ مِنَ النِّفَاقِ</div>
+      <h2 class="sh-title shtitle-dark">Muhasabah Diri: Takut kepada Kemunafikan dalam Diri Sendiri</h2>
+      <div class="sh-rule rule-dark"></div>
+    </div>
+
+    <div class="prose prose-dark">
+      <p class="lead">Orang yang paling berbahaya adalah orang yang merasa dirinya pasti bukan munafik. Justru para sahabat terbaik Rasulullah ﷺ — orang-orang yang dijamin masuk surga — selalu khawatir akan kemunafikan dalam diri mereka sendiri.</p>
+      <p>Hasan Al-Bashri rahimahullah berkata: "Tidak ada yang takut kepada kemunafikan kecuali orang beriman, dan tidak ada yang merasa aman darinya kecuali orang munafik." Ini adalah paradoks yang mengajarkan: semakin kita takut menjadi munafik, semakin jauh kita darinya. Semakin kita merasa yakin tidak munafik, semakin kita perlu waspada.</p>
+      <p>Imam Al-Bukhari meriwayatkan: Abu Bakar Ash-Shiddiq — sahabat terdekat Nabi ﷺ — pernah berkata kepada Hudzaifah ibnul Yaman (pemegang rahasia daftar nama munafik): "Apakah Rasulullah ﷺ menyebutkan namaku dalam daftar itu?" Inilah tingkatan kekhawatiran seorang Shiddiq terhadap dirinya sendiri.</p>
+    </div>
+
+    <div class="dalil dalil-dark">
+      <div class="dbar-dark"></div>
+      <div class="dbody">
+        <div class="dtag dtag-dark">📜 Atsar Umar bin Khattab — Takut Kemunafikan</div>
+        <div class="dar dar-dark">اللَّهُمَّ إِنْ كُنْتَ كَتَبْتَنِي عِنْدَكَ مُنَافِقًا فَامْحُنِي وَاكْتُبْنِي مُؤْمِنًا</div>
+        <div class="dtrans dtrans-dark">"Ya Allah, jika Engkau telah mencatatku di sisi-Mu sebagai munafik, maka hapuslah aku (dari catatan itu) dan catatlah aku sebagai orang beriman." — Doa yang dipanjatkan Umar bin Khattab radhiyallahu 'anhu — Amirul Mukminin yang dijamin masuk surga — sebagai bentuk muhasabah diri yang mendalam.</div>
+        <div class="dref dref-dark">Atsar Shahih — Riwayat dari Umar bin Khattab radhiyallahu 'anhu</div>
+      </div>
+    </div>
+
+    <!-- Checklist muhasabah -->
+    <div class="sh" style="text-align:left;margin:40px 0 20px;">
+      <div class="sh-ar shar-dark" style="font-size:1.3rem;">مِرْآةُ الْمُحَاسَبَةِ — تَفَقَّدْ نَفْسَكَ</div>
+      <h3 class="sh-title shtitle-dark" style="font-size:1.2rem;">Cermin Muhasabah: Periksa Dirimu Sendiri</h3>
+    </div>
+
+    <div class="mask-grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr));">
+      <div class="mask-card card-v">
+        <span class="mask-icon">🪞</span>
+        <div class="mask-title mt-v">Apakah lisanmu jujur?</div>
+        <div class="mask-desc md-v">Periksa: apakah kamu berbohong dalam percakapan sehari-hari — meskipun kecil? Kebohongan kecil yang dibiasakan adalah benih kemunafikan amali.</div>
+      </div>
+      <div class="mask-card card-v">
+        <span class="mask-icon">🤲</span>
+        <div class="mask-title mt-v">Apakah ibadahmu tulus?</div>
+        <div class="mask-desc md-v">Apakah shalatmu sama kualitasnya ketika sendirian dan ketika dilihat orang? Apakah sedekahmu diam-diam atau hanya ketika ada yang menyaksikan?</div>
+      </div>
+      <div class="mask-card card-w">
+        <span class="mask-icon">📋</span>
+        <div class="mask-title mt-w">Apakah janjimu ditepati?</div>
+        <div class="mask-desc md-w">Hitung berapa janji yang kamu buat dan berapa yang ditepati — kepada orang tua, pasangan, teman, dan karyawan. Janji adalah hutang.</div>
+      </div>
+      <div class="mask-card card-w">
+        <span class="mask-icon">🏦</span>
+        <div class="mask-title mt-w">Apakah amanahmu dijaga?</div>
+        <div class="mask-desc md-w">Apakah jabatan, harta titipan, rahasia yang dipercayakan, dan kepercayaan orang lain kamu jaga dengan baik — atau kamu manfaatkan?</div>
+      </div>
+    </div>
+
+    <div class="banner banner-dark" style="margin-top:32px;">
+      <div class="bnar bnar-dark">فَلَا تَغُرَّنَّكُمُ الْحَيَاةُ الدُّنْيَا وَلَا يَغُرَّنَّكُم بِاللَّهِ الْغَرُورُ</div>
+      <div class="bnid bnid-dark">"Maka sekali-kali janganlah kehidupan dunia memperdaya kamu, dan sekali-kali janganlah setan yang pandai menipu memperdayakan kamu tentang Allah." — Kemunafikan sering bersemi dari kecintaan berlebihan pada dunia: jabatan, harta, dan pandangan manusia lebih dicintai dari keridhaan Allah. Obatnya: kembali kepada keikhlasan, tobat, dan mendekatkan diri kepada Allah.</div>
+      <div class="bnref bnref-dark">QS. Luqmān (31): 33</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ PENUTUP ══════ -->
+<div class="penutup">
+  <div class="penutup-inner">
+
+    <div class="penutup-ar">اللَّهُمَّ إِنَّا نَعُوذُ بِكَ مِنَ النِّفَاقِ وَالشِّقَاقِ</div>
+    <div class="penutup-div"></div>
+
+    <p class="penutup-p">"Ya Allah, sesungguhnya kami berlindung kepada-Mu dari kemunafikan dan perselisihan."</p>
+    <p class="penutup-ref">Doa yang dianjurkan para ulama berdasarkan riwayat dari para Salaf</p>
+
+    <div class="penutup-div"></div>
+
+    <p class="penutup-p">Naskah ini bukan untuk mengajak kita menunjuk-nunjuk dan melabeli orang lain sebagai munafik. Para ulama tegas menyatakan: vonis kemunafikan akidah hanyalah hak Allah, dan tidak boleh sembarangan dilontarkan. Yang wajib adalah muhasabah diri — memeriksa apakah sifat-sifat tersebut ada dalam diri kita sendiri.</p>
+
+    <p class="penutup-p" style="margin-top:12px;">Orang beriman yang takut kepada kemunafikan adalah orang yang menjaga lisannya dari dusta, menepati janjinya, menjaga amanah, berlaku adil dalam berselisih, tulus dalam beribadah, dan tidak menampakkan sesuatu yang berbeda dari apa yang ada di dalam hatinya. Semoga Allah menjaga kita semua dari segala bentuk kemunafikan. Āmīn.</p>
+
+    <div class="penutup-div"></div>
+
+    <div class="dalil dalil-dark" style="text-align:left;">
+      <div class="dbar-dark"></div>
+      <div class="dbody">
+        <div class="dtag dtag-dark">📜 Doa Berlindung dari Kemunafikan · HR. Muslim</div>
+        <div class="dar dar-dark">اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْكُفْرِ وَالْفَقْرِ وَأَعُوذُ بِكَ مِنْ عَذَابِ الْقَبْرِ لَا إِلَهَ إِلَّا أَنْتَ</div>
+        <div class="dtrans dtrans-dark">"Ya Allah, sesungguhnya aku berlindung kepada-Mu dari kekafiran dan kefakiran, dan aku berlindung kepada-Mu dari azab kubur. Tidak ada sesembahan yang berhak disembah selain Engkau."</div>
+        <div class="dref dref-dark">HR. Abu Dawud (5090) &amp; An-Nasā'i — dari Anas bin Malik — Shahih</div>
+      </div>
+    </div>
+
+    <div class="penutup-footer">
+      <div class="logo">صِفَاتُ الْمُنَافِقِينَ</div>
+      <div class="tag">وَاللّٰهُ أَعْلَمُ بِالصَّوَابِ · Semoga Bermanfaat</div>
+    </div>
+  </div>
+</div>
+
+<script>
+// Dust particles
+const wrap = document.getElementById('dust');
+for(let i=0;i<50;i++){
+  const p=document.createElement('div');
+  p.className='dust-p';
+  const sz=Math.random()*2+0.5;
+  p.style.cssText=`
+    width:${sz}px;height:${sz}px;
+    left:${Math.random()*100}%;
+    top:${Math.random()*100}%;
+    --d:${(Math.random()*12+6).toFixed(1)}s;
+    --o:${(Math.random()*.4+.1).toFixed(2)};
+    --tx:${(Math.random()*40-20).toFixed(0)}px;
+    --ty:${(Math.random()*-80-20).toFixed(0)}px;
+    animation-delay:${(Math.random()*12).toFixed(1)}s;
+  `;
+  wrap.appendChild(p);
+}
+</script>
+</body>
+</html>

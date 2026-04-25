@@ -1,0 +1,1352 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fiqih Wanita — Panduan Lengkap Berdasarkan Al-Qur'an & Hadis</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --rose:       #8B2252;
+  --rose-light: #C4547E;
+  --rose-pale:  #F7E8EF;
+  --rose-dark:  #5A0F35;
+  --gold:       #B8860B;
+  --gold-light: #D4A843;
+  --gold-pale:  #FDF6E3;
+  --cream:      #FDF9F4;
+  --ink:        #1C0E18;
+  --text:       #3D1F30;
+  --muted:      #8A6070;
+  --white:      #FFFFFF;
+  --border:     rgba(139,34,82,0.12);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+
+/* ── NOISE TEXTURE OVERLAY ── */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.4;
+}
+
+/* ═══════════════════════════════
+   NAVIGATION
+═══════════════════════════════ */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2.5rem;
+  background: rgba(253,249,244,0.88);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--rose-dark);
+  letter-spacing: 0.05em;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--rose); }
+
+@media (max-width: 640px) {
+  nav { padding: 1rem 1.2rem; }
+  .nav-links { display: none; }
+}
+
+/* ═══════════════════════════════
+   HERO
+═══════════════════════════════ */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+  overflow: hidden;
+  padding-top: 70px;
+}
+
+@media (max-width: 768px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-visual { display: none; }
+}
+
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5rem 3.5rem 5rem 4rem;
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .hero-left { padding: 3rem 1.5rem; }
+}
+
+.hero-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--rose);
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  animation: slideIn 0.8s 0.2s ease forwards;
+}
+
+.hero-kicker::before {
+  content: '';
+  width: 28px; height: 1px;
+  background: var(--rose);
+}
+
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3rem, 5.5vw, 5.5rem);
+  font-weight: 300;
+  line-height: 1.05;
+  color: var(--ink);
+  margin-bottom: 1rem;
+  opacity: 0;
+  animation: slideIn 0.8s 0.35s ease forwards;
+}
+
+.hero h1 strong {
+  font-weight: 700;
+  color: var(--rose-dark);
+  font-style: italic;
+}
+
+.hero-arabic {
+  font-family: 'Amiri', serif;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  color: var(--gold);
+  direction: rtl;
+  margin: 1.2rem 0;
+  opacity: 0;
+  animation: slideIn 0.8s 0.5s ease forwards;
+}
+
+.hero-desc {
+  font-size: 1rem;
+  color: var(--muted);
+  max-width: 420px;
+  margin-bottom: 2.5rem;
+  opacity: 0;
+  animation: slideIn 0.8s 0.65s ease forwards;
+}
+
+.hero-stats {
+  display: flex;
+  gap: 2.5rem;
+  opacity: 0;
+  animation: slideIn 0.8s 0.8s ease forwards;
+}
+
+.stat-item { }
+.stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--rose-dark);
+  line-height: 1;
+}
+.stat-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 0.2rem;
+}
+
+.hero-visual {
+  position: relative;
+  background: linear-gradient(160deg, var(--rose-dark) 0%, #3D0825 60%, #1C0E18 100%);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-visual::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23B8860B' fill-opacity='0.06'%3E%3Cpath d='M50 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10s-10-4.477-10-10 4.477-10 10-10zM10 10c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10S0 25.523 0 20s4.477-10 10-10z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.visual-mandala {
+  position: relative;
+  width: 380px; height: 380px;
+}
+
+.mandala-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(212,168,67,0.2);
+}
+
+.mandala-ring:nth-child(1) { inset: 0; animation: spin 80s linear infinite; }
+.mandala-ring:nth-child(2) { inset: 30px; border-color: rgba(212,168,67,0.15); animation: spin 60s linear infinite reverse; }
+.mandala-ring:nth-child(3) { inset: 70px; border-color: rgba(212,168,67,0.12); animation: spin 40s linear infinite; }
+.mandala-ring:nth-child(4) { inset: 110px; border-color: rgba(212,168,67,0.18); animation: spin 30s linear infinite reverse; }
+.mandala-ring:nth-child(5) { inset: 150px; border-color: rgba(212,168,67,0.25); }
+
+.mandala-center {
+  position: absolute;
+  inset: 50%;
+  transform: translate(-50%, -50%);
+  width: 120px; height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(184,134,11,0.1);
+  border-radius: 50%;
+  border: 1px solid rgba(212,168,67,0.3);
+}
+
+.mandala-center span {
+  font-family: 'Amiri', serif;
+  font-size: 2rem;
+  color: var(--gold-light);
+  text-shadow: 0 0 30px rgba(212,168,67,0.5);
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* ═══════════════════════════════
+   SECTION COMMON
+═══════════════════════════════ */
+.section {
+  padding: 6rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.section-tag {
+  display: inline-block;
+  font-size: 0.68rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--rose);
+  background: var(--rose-pale);
+  padding: 0.3rem 1rem;
+  border-radius: 100px;
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.2;
+  margin-bottom: 0.8rem;
+}
+
+.section-title em { color: var(--rose); font-style: italic; }
+
+.section-sub {
+  font-size: 0.95rem;
+  color: var(--muted);
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+/* ═══════════════════════════════
+   AYAT STRIP
+═══════════════════════════════ */
+.ayat-strip {
+  background: linear-gradient(135deg, var(--rose-dark), #2A0418);
+  padding: 4rem 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.ayat-strip::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(184,134,11,0.08) 0%, transparent 70%);
+}
+
+.ayat-strip-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.ayat-strip-arabic {
+  font-family: 'Amiri', serif;
+  font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+  color: var(--gold-light);
+  direction: rtl;
+  line-height: 2.2;
+  margin-bottom: 1.2rem;
+}
+
+.ayat-strip-trans {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-style: italic;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 0.6rem;
+}
+
+.ayat-strip-ref {
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* ═══════════════════════════════
+   TOPIC CARDS (Bab Fiqih)
+═══════════════════════════════ */
+.topics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1.5rem;
+}
+
+.topic-card {
+  background: var(--white);
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  cursor: default;
+}
+
+.topic-card:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 20px 60px rgba(139,34,82,0.12);
+  border-color: rgba(139,34,82,0.25);
+}
+
+.topic-card-header {
+  padding: 1.8rem 2rem 1.4rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.topic-icon {
+  width: 52px; height: 52px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.topic-meta { flex: 1; }
+
+.topic-num {
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.2rem;
+}
+
+.topic-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  margin-bottom: 0.1rem;
+}
+
+.topic-arabic {
+  font-family: 'Amiri', serif;
+  font-size: 1rem;
+  color: var(--gold);
+  direction: rtl;
+}
+
+.topic-body {
+  padding: 1.4rem 2rem;
+  font-size: 0.9rem;
+  color: #5A3540;
+  line-height: 1.75;
+}
+
+.topic-body p { margin-bottom: 0.8rem; }
+.topic-body p:last-child { margin-bottom: 0; }
+
+.topic-items {
+  margin: 0.8rem 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.topic-items li {
+  padding: 0.4rem 0 0.4rem 1.4rem;
+  position: relative;
+  font-size: 0.88rem;
+  color: #5A3540;
+  border-bottom: 1px dashed rgba(139,34,82,0.08);
+}
+
+.topic-items li:last-child { border-bottom: none; }
+
+.topic-items li::before {
+  content: '◆';
+  position: absolute;
+  left: 0;
+  font-size: 0.4rem;
+  top: 0.65rem;
+  color: var(--rose);
+}
+
+.topic-dalil {
+  margin: 0 2rem 1.5rem;
+  background: linear-gradient(135deg, #FDF0F5, #FDF6EC);
+  border-radius: 10px;
+  padding: 1rem 1.2rem;
+  border-left: 3px solid var(--rose);
+  font-size: 0.84rem;
+}
+
+.topic-dalil .dalil-arabic {
+  font-family: 'Amiri', serif;
+  font-size: 1rem;
+  color: var(--rose-dark);
+  direction: rtl;
+  text-align: right;
+  margin-bottom: 0.4rem;
+  line-height: 2;
+}
+
+.topic-dalil .dalil-trans {
+  font-style: italic;
+  color: var(--muted);
+  font-size: 0.82rem;
+  margin-bottom: 0.3rem;
+}
+
+.topic-dalil .dalil-src {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+}
+
+/* Color variants */
+.c-rose .topic-icon { background: #FCEEF4; }
+.c-gold .topic-icon { background: #FDF6E3; }
+.c-teal .topic-icon { background: #E6F4EF; }
+.c-indigo .topic-icon { background: #EEF0FA; }
+.c-sage .topic-icon { background: #EDF4EC; }
+.c-plum .topic-icon { background: #F0ECF8; }
+.c-copper .topic-icon { background: #FAF0E8; }
+.c-ocean .topic-icon { background: #E8F3F8; }
+
+/* ═══════════════════════════════
+   HIGHLIGHT BANNER
+═══════════════════════════════ */
+.highlight-banner {
+  background: var(--rose-pale);
+  border: 1px solid rgba(139,34,82,0.15);
+  border-radius: 20px;
+  padding: 3rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  margin: 3rem 0;
+}
+
+@media (max-width: 768px) {
+  .highlight-banner { grid-template-columns: 1fr; gap: 1.5rem; }
+}
+
+.highlight-banner h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  color: var(--rose-dark);
+  margin-bottom: 0.8rem;
+  line-height: 1.3;
+}
+
+.highlight-banner p { font-size: 0.92rem; color: var(--muted); margin-bottom: 0.8rem; }
+
+.highlight-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.h-stat {
+  background: white;
+  border-radius: 12px;
+  padding: 1.2rem;
+  text-align: center;
+  border: 1px solid rgba(139,34,82,0.1);
+}
+
+.h-stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--rose);
+  line-height: 1;
+}
+
+.h-stat-label {
+  font-size: 0.72rem;
+  color: var(--muted);
+  margin-top: 0.3rem;
+  letter-spacing: 0.05em;
+}
+
+/* ═══════════════════════════════
+   MASALAH KHUSUS TABLE
+═══════════════════════════════ */
+.masalah-section {
+  background: white;
+  border-radius: 24px;
+  padding: 3rem;
+  border: 1px solid var(--border);
+  margin: 2rem 0;
+}
+
+@media (max-width: 640px) { .masalah-section { padding: 1.5rem; } }
+
+.masalah-section h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem;
+  color: var(--ink);
+  margin-bottom: 0.4rem;
+}
+
+.masalah-section > p {
+  font-size: 0.88rem;
+  color: var(--muted);
+  margin-bottom: 2rem;
+}
+
+.masalah-table { width: 100%; border-collapse: collapse; }
+
+.masalah-table th {
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--rose);
+  background: var(--rose-pale);
+  padding: 0.75rem 1rem;
+  text-align: left;
+}
+
+.masalah-table th:first-child { border-radius: 8px 0 0 8px; }
+.masalah-table th:last-child { border-radius: 0 8px 8px 0; }
+
+.masalah-table td {
+  padding: 1rem;
+  font-size: 0.88rem;
+  color: var(--text);
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+
+.masalah-table tr:last-child td { border-bottom: none; }
+.masalah-table tr:hover td { background: rgba(139,34,82,0.02); }
+
+.badge {
+  display: inline-block;
+  padding: 0.2rem 0.7rem;
+  border-radius: 100px;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.badge-wajib { background: #fdeaea; color: #8B1010; }
+.badge-sunnah { background: #e8f4ea; color: #1A6B2A; }
+.badge-haram { background: #f7eaea; color: #7A1515; }
+.badge-mubah { background: #e8eef8; color: #1A3080; }
+.badge-makruh { background: #faf3e0; color: #7A5500; }
+
+@media (max-width: 640px) {
+  .masalah-table { display: block; overflow-x: auto; }
+}
+
+/* ═══════════════════════════════
+   ACCORDION (Shalat Wanita)
+═══════════════════════════════ */
+.accordion-wrap { display: flex; flex-direction: column; gap: 0.75rem; }
+
+.accordion-item {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+
+.accordion-item.open { box-shadow: 0 4px 20px rgba(139,34,82,0.08); }
+
+.accordion-trigger {
+  width: 100%;
+  padding: 1.3rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  text-align: left;
+}
+
+.accordion-trigger:hover { background: rgba(139,34,82,0.02); }
+
+.acc-icon {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  background: var(--rose-pale);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.acc-title {
+  flex: 1;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.acc-arrow {
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: var(--rose-pale);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  color: var(--rose);
+  transition: transform 0.3s;
+  flex-shrink: 0;
+}
+
+.accordion-item.open .acc-arrow { transform: rotate(180deg); }
+
+.accordion-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.accordion-item.open .accordion-body { max-height: 1000px; }
+
+.accordion-content {
+  padding: 0 1.5rem 1.5rem;
+  font-size: 0.9rem;
+  color: #5A3540;
+  line-height: 1.8;
+}
+
+.accordion-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 0.8rem 0;
+}
+
+.accordion-content ul li {
+  padding: 0.35rem 0 0.35rem 1.4rem;
+  position: relative;
+  border-bottom: 1px dashed var(--border);
+  font-size: 0.88rem;
+}
+
+.accordion-content ul li:last-child { border-bottom: none; }
+
+.accordion-content ul li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  font-size: 0.4rem;
+  top: 0.65rem;
+  color: var(--rose);
+}
+
+/* ═══════════════════════════════
+   CLOSING
+═══════════════════════════════ */
+.closing {
+  background: linear-gradient(160deg, var(--rose-dark) 0%, #1C0E18 100%);
+  padding: 6rem 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.closing::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(184,134,11,0.12) 0%, transparent 60%);
+}
+
+.closing-inner { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
+
+.closing h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 300;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.closing h2 em { color: var(--gold-light); font-style: italic; }
+
+.closing p { color: rgba(255,255,255,0.55); font-size: 0.95rem; margin-bottom: 0.8rem; }
+
+.closing-arabic {
+  font-family: 'Amiri', serif;
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  color: var(--gold-light);
+  direction: rtl;
+  margin: 2.5rem 0 0.5rem;
+  line-height: 2;
+}
+
+.closing-trans { font-size: 0.88rem; font-style: italic; color: rgba(255,255,255,0.45); }
+
+.ornament {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+  margin: 2rem 0;
+}
+.ornament .line { flex: 1; max-width: 80px; height: 1px; background: linear-gradient(to right, transparent, rgba(184,134,11,0.5)); }
+.ornament .line.r { background: linear-gradient(to left, transparent, rgba(184,134,11,0.5)); }
+.ornament .gem { width: 6px; height: 6px; background: var(--gold); transform: rotate(45deg); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--ink);
+  color: rgba(255,255,255,0.3);
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+}
+footer em { color: var(--gold); font-style: normal; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">Fiqih Wanita</div>
+  <ul class="nav-links">
+    <li><a href="#thaharah">Thaharah</a></li>
+    <li><a href="#shalat">Shalat</a></li>
+    <li><a href="#puasa">Puasa</a></li>
+    <li><a href="#munakahat">Munakahat</a></li>
+    <li><a href="#lainnya">Lainnya</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-left">
+    <p class="hero-kicker">Panduan Hukum Islam untuk Wanita</p>
+    <h1>Fiqih<br><strong>Wanita</strong><br>Muslimah</h1>
+    <p class="hero-arabic">فِقْهُ الْمَرْأَةِ الْمُسْلِمَةِ</p>
+    <p class="hero-desc">Panduan lengkap hukum Islam yang berkaitan dengan kehidupan wanita muslimah — dari thaharah, ibadah, hingga muamalah — berdasarkan Al-Qur'an dan Hadis shahih.</p>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">8</div>
+        <div class="stat-label">Bab Utama</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">40+</div>
+        <div class="stat-label">Masalah Fiqih</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">Shahih</div>
+        <div class="stat-label">Sumber Dalil</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="visual-mandala">
+      <div class="mandala-ring"></div>
+      <div class="mandala-ring"></div>
+      <div class="mandala-ring"></div>
+      <div class="mandala-ring"></div>
+      <div class="mandala-ring"></div>
+      <div class="mandala-center"><span>♀</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- AYAT PEMBUKA -->
+<div class="ayat-strip">
+  <div class="ayat-strip-inner">
+    <p class="ayat-strip-arabic">وَالْمُؤْمِنُونَ وَالْمُؤْمِنَاتُ بَعْضُهُمْ أَوْلِيَاءُ بَعْضٍ ۚ يَأْمُرُونَ بِالْمَعْرُوفِ وَيَنْهَوْنَ عَنِ الْمُنكَرِ</p>
+    <p class="ayat-strip-trans">"Dan orang-orang mukmin laki-laki dan perempuan, sebagian mereka menjadi penolong bagi sebagian yang lain. Mereka menyuruh berbuat yang makruf dan mencegah dari yang mungkar."</p>
+    <p class="ayat-strip-ref">QS. At-Taubah: 71</p>
+  </div>
+</div>
+
+<!-- BAB FIQIH UTAMA -->
+<section class="section" id="thaharah">
+  <div class="section-header">
+    <span class="section-tag">Bab-Bab Fiqih</span>
+    <h2 class="section-title">Hukum-Hukum <em>Khusus Wanita</em></h2>
+    <p class="section-sub">Islam memiliki hukum-hukum yang memperhatikan kekhususan kondisi wanita dengan penuh hikmah dan kasih sayang.</p>
+  </div>
+
+  <div class="topics-grid">
+
+    <!-- 1. HAID -->
+    <div class="topic-card c-rose">
+      <div class="topic-card-header">
+        <div class="topic-icon">🌙</div>
+        <div class="topic-meta">
+          <p class="topic-num">Bab 01 — Thaharah</p>
+          <h3 class="topic-title">Haid (Menstruasi)</h3>
+          <p class="topic-arabic">الْحَيْضُ</p>
+        </div>
+      </div>
+      <div class="topic-body">
+        <p>Haid adalah darah yang keluar dari rahim wanita yang sehat secara alami, bukan karena sakit atau melahirkan, pada waktu-waktu tertentu.</p>
+        <ul class="topic-items">
+          <li>Minimal: 1 hari 1 malam (mayoritas ulama); tidak ada batas minimal (Imam Ahmad)</li>
+          <li>Maksimal: 15 hari menurut Syafi'iyyah dan Hanabilah</li>
+          <li>Umumnya: 6–7 hari berdasarkan hadis riwayat Abu Dawud</li>
+          <li>Warna darah: hitam pekat, merah, cokelat, kuning, keruh</li>
+        </ul>
+      </div>
+      <div class="topic-dalil">
+        <p class="dalil-arabic">وَيَسْأَلُونَكَ عَنِ الْمَحِيضِ ۖ قُلْ هُوَ أَذًى فَاعْتَزِلُوا النِّسَاءَ فِي الْمَحِيضِ</p>
+        <p class="dalil-trans">"Mereka bertanya tentang haid. Katakanlah: itu adalah suatu kotoran, maka jauhilah istri saat haid..."</p>
+        <p class="dalil-src">QS. Al-Baqarah: 222</p>
+      </div>
+    </div>
+
+    <!-- 2. NIFAS -->
+    <div class="topic-card c-gold">
+      <div class="topic-card-header">
+        <div class="topic-icon">🤱</div>
+        <div class="topic-meta">
+          <p class="topic-num">Bab 02 — Thaharah</p>
+          <h3 class="topic-title">Nifas (Darah Nifas)</h3>
+          <p class="topic-arabic">النِّفَاسُ</p>
+        </div>
+      </div>
+      <div class="topic-body">
+        <p>Nifas adalah darah yang keluar setelah melahirkan. Hukum-hukumnya serupa dengan haid dalam hal larangan shalat, puasa, berhubungan suami-istri, dan kewajiban mandi besar.</p>
+        <ul class="topic-items">
+          <li>Tidak ada batas minimal: jika berhenti setelah 1 hari, wajib mandi dan shalat</li>
+          <li>Maksimal: 40 hari menurut mayoritas ulama (HR. Abu Dawud & Tirmidzi)</li>
+          <li>Jika melebihi 40 hari: dihukumi istihadhah (penyakit)</li>
+          <li>Wanita hamil yang keguguran: jika janin sudah berbentuk, maka berlaku hukum nifas</li>
+        </ul>
+      </div>
+      <div class="topic-dalil">
+        <p class="dalil-arabic">كَانَتِ النُّفَسَاءُ عَلَى عَهْدِ رَسُولِ اللَّهِ ﷺ تَجْلِسُ أَرْبَعِينَ يَوْمًا</p>
+        <p class="dalil-trans">"Wanita nifas di masa Rasulullah ﷺ duduk (tidak shalat) selama 40 hari."</p>
+        <p class="dalil-src">HR. Abu Dawud & Tirmidzi (Hasan)</p>
+      </div>
+    </div>
+
+    <!-- 3. ISTIHADHAH -->
+    <div class="topic-card c-teal">
+      <div class="topic-card-header">
+        <div class="topic-icon">💊</div>
+        <div class="topic-meta">
+          <p class="topic-num">Bab 03 — Thaharah</p>
+          <h3 class="topic-title">Istihadhah</h3>
+          <p class="topic-arabic">الاِسْتِحَاضَةُ</p>
+        </div>
+      </div>
+      <div class="topic-body">
+        <p>Istihadhah adalah darah yang keluar bukan pada masa haid yang normal, misalnya lebih dari batas maksimal haid. Wanita yang mengalami istihadhah tetap wajib shalat dan berpuasa.</p>
+        <ul class="topic-items">
+          <li>Hukumnya seperti wanita suci dalam hal ibadah</li>
+          <li>Wajib berwudhu setiap kali hendak shalat</li>
+          <li>Boleh berhubungan suami-istri (mayoritas ulama)</li>
+          <li>Cara membedakan: warna, bau, dan kekentalan darah</li>
+        </ul>
+      </div>
+      <div class="topic-dalil">
+        <p class="dalil-arabic">إِنَّمَا ذَلِكِ عِرْقٌ، وَلَيْسَتْ بِالْحَيْضَةِ، فَإِذَا أَقْبَلَتِ الْحَيْضَةُ فَاتْرُكِي الصَّلَاةَ</p>
+        <p class="dalil-trans">"Sesungguhnya itu hanyalah (darah dari) urat, bukan haid. Jika haid datang, tinggalkan shalat."</p>
+        <p class="dalil-src">HR. Bukhari & Muslim</p>
+      </div>
+    </div>
+
+    <!-- 4. SHALAT WANITA -->
+    <div class="topic-card c-indigo" id="shalat">
+      <div class="topic-card-header">
+        <div class="topic-icon">🕌</div>
+        <div class="topic-meta">
+          <p class="topic-num">Bab 04 — Ibadah</p>
+          <h3 class="topic-title">Shalat Wanita</h3>
+          <p class="topic-arabic">صَلَاةُ الْمَرْأَةِ</p>
+        </div>
+      </div>
+      <div class="topic-body">
+        <p>Shalat wanita pada dasarnya sama dengan shalat laki-laki. Perbedaan yang ada bersifat teknis berdasarkan dalil-dalil shahih.</p>
+        <ul class="topic-items">
+          <li>Shalat di rumah lebih utama dari shalat di masjid (HR. Ahmad — Shahih)</li>
+          <li>Wajib menutup seluruh aurat kecuali wajah dan telapak tangan</li>
+          <li>Boleh menjadi imam bagi sesama wanita</li>
+          <li>Wanita haid tidak shalat dan tidak mengqadha (HR. Bukhari)</li>
+          <li>Shalat Jumat tidak wajib bagi wanita namun sah jika dilakukan</li>
+        </ul>
+      </div>
+      <div class="topic-dalil">
+        <p class="dalil-arabic">صَلَاةُ الْمَرْأَةِ فِي بَيْتِهَا أَفْضَلُ مِنْ صَلَاتِهَا فِي حُجْرَتِهَا</p>
+        <p class="dalil-trans">"Shalat wanita di dalam rumahnya lebih utama daripada shalatnya di ruang tamunya."</p>
+        <p class="dalil-src">HR. Abu Dawud (Shahih)</p>
+      </div>
+    </div>
+
+    <!-- 5. PUASA WANITA -->
+    <div class="topic-card c-sage" id="puasa">
+      <div class="topic-card-header">
+        <div class="topic-icon">🌅</div>
+        <div class="topic-meta">
+          <p class="topic-num">Bab 05 — Ibadah</p>
+          <h3 class="topic-title">Puasa Wanita</h3>
+          <p class="topic-arabic">صَوْمُ الْمَرْأَةِ</p>
+        </div>
+      </div>
+      <div class="topic-body">
+        <p>Puasa Ramadhan wajib atas setiap wanita muslimah yang baligh, berakal, dan mampu. Ada beberapa kekhususan yang berkaitan dengan kondisi wanita.</p>
+        <ul class="topic-items">
+          <li>Wanita haid dan nifas tidak boleh berpuasa dan wajib mengqadha</li>
+          <li>Wanita hamil dan menyusui: boleh tidak puasa dan wajib qadha (+ kaffarah menurut sebagian ulama)</li>
+          <li>Wanita tidak boleh puasa sunnah tanpa izin suami jika suami hadir</li>
+          <li>Wanita yang lemah karena tua boleh tidak puasa dan membayar fidyah</li>
+        </ul>
+      </div>
+      <div class="topic-dalil">
+        <p class="dalil-arabic">أَلَيْسَ إِذَا حَاضَتْ لَمْ تُصَلِّ وَلَمْ تَصُمْ؟ فَذَلِكَ نُقْصَانُ دِينِهَا</p>
+        <p class="dalil-trans">"Bukankah apabila ia haid ia tidak shalat dan tidak puasa? Itulah kekurangan agamanya." (dalam konteks penjelasan, bukan celaan)</p>
+        <p class="dalil-src">HR. Bukhari & Muslim</p>
+      </div>
+    </div>
+
+    <!-- 6. AURAT & HIJAB -->
+    <div class="topic-card c-plum">
+      <div class="topic-card-header">
+        <div class="topic-icon">🧕</div>
+        <div class="topic-meta">
+          <p class="topic-num">Bab 06 — Akhlak & Pakaian</p>
+          <h3 class="topic-title">Aurat & Hijab Wanita</h3>
+          <p class="topic-arabic">عَوْرَةُ الْمَرْأَةِ وَالْحِجَابُ</p>
+        </div>
+      </div>
+      <div class="topic-body">
+        <p>Islam mewajibkan wanita menutup aurat sebagai bentuk kemuliaan dan perlindungan. Hijab adalah kewajiban yang disebutkan secara eksplisit dalam Al-Qur'an.</p>
+        <ul class="topic-items">
+          <li>Aurat wanita di hadapan laki-laki ajnabi: seluruh tubuh (mayoritas ulama)</li>
+          <li>Aurat di hadapan sesama wanita muslimah: antara pusar dan lutut</li>
+          <li>Wajib menutup kepala, leher, dan dada (QS. An-Nur: 31)</li>
+          <li>Pakaian tidak boleh transparan, ketat, atau menyerupai laki-laki</li>
+          <li>Wajah: boleh dibuka menurut mayoritas; wajib ditutup menurut sebagian ulama</li>
+        </ul>
+      </div>
+      <div class="topic-dalil">
+        <p class="dalil-arabic">وَلْيَضْرِبْنَ بِخُمُرِهِنَّ عَلَىٰ جُيُوبِهِنَّ</p>
+        <p class="dalil-trans">"...Dan hendaklah mereka menutupkan kain kerudung ke dadanya..."</p>
+        <p class="dalil-src">QS. An-Nur: 31</p>
+      </div>
+    </div>
+
+    <!-- 7. NIKAH -->
+    <div class="topic-card c-copper" id="munakahat">
+      <div class="topic-card-header">
+        <div class="topic-icon">💍</div>
+        <div class="topic-meta">
+          <p class="topic-num">Bab 07 — Munakahat</p>
+          <h3 class="topic-title">Pernikahan Wanita</h3>
+          <p class="topic-arabic">نِكَاحُ الْمَرْأَةِ</p>
+        </div>
+      </div>
+      <div class="topic-body">
+        <p>Islam memberikan hak-hak penuh kepada wanita dalam pernikahan — hak memilih pasangan, hak mendapatkan mahar, nafkah, dan diperlakukan dengan baik.</p>
+        <ul class="topic-items">
+          <li>Wanita wajib mendapat persetujuan (izin) dalam pernikahan — tidak boleh dipaksa</li>
+          <li>Wali laki-laki (ayah/saudara) diperlukan sebagai syarat sah nikah</li>
+          <li>Mahar adalah hak mutlak wanita, tidak boleh diambil tanpa kerelaan</li>
+          <li>Wanita tidak boleh menikah dengan laki-laki non-Muslim</li>
+          <li>Hak khulu': wanita bisa meminta cerai dengan mengembalikan mahar</li>
+        </ul>
+      </div>
+      <div class="topic-dalil">
+        <p class="dalil-arabic">لَا تُنْكَحُ الْأَيِّمُ حَتَّى تُسْتَأْمَرَ، وَلَا تُنْكَحُ الْبِكْرُ حَتَّى تُسْتَأْذَنَ</p>
+        <p class="dalil-trans">"Janda tidak boleh dinikahkan sebelum dimintai pendapat, dan gadis tidak boleh dinikahkan sebelum dimintai izin."</p>
+        <p class="dalil-src">HR. Bukhari & Muslim</p>
+      </div>
+    </div>
+
+    <!-- 8. HAK WANITA -->
+    <div class="topic-card c-ocean" id="lainnya">
+      <div class="topic-card-header">
+        <div class="topic-icon">⚖️</div>
+        <div class="topic-meta">
+          <p class="topic-num">Bab 08 — Hak & Kewajiban</p>
+          <h3 class="topic-title">Hak-Hak Wanita dalam Islam</h3>
+          <p class="topic-arabic">حُقُوقُ الْمَرْأَةِ</p>
+        </div>
+      </div>
+      <div class="topic-body">
+        <p>Islam adalah agama pertama yang memberikan hak-hak komprehensif kepada wanita — hak kepemilikan, hak waris, hak bekerja, dan kesetaraan di hadapan hukum.</p>
+        <ul class="topic-items">
+          <li>Hak memiliki dan mengelola harta sendiri secara mandiri</li>
+          <li>Hak mendapat nafkah dari suami (sandang, pangan, papan, pengobatan)</li>
+          <li>Hak mendapat warisan (QS. An-Nisa: 7)</li>
+          <li>Hak bersaksi dalam perkara tertentu</li>
+          <li>Hak berpendapat dan menyampaikan nasihat</li>
+          <li>Hak mendapat pendidikan dan ilmu agama</li>
+        </ul>
+      </div>
+      <div class="topic-dalil">
+        <p class="dalil-arabic">لِلرِّجَالِ نَصِيبٌ مِّمَّا تَرَكَ الْوَالِدَانِ وَالْأَقْرَبُونَ وَلِلنِّسَاءِ نَصِيبٌ</p>
+        <p class="dalil-trans">"Bagi laki-laki ada bagian dari harta peninggalan ibu-bapak... dan bagi perempuan ada bagian (pula)..."</p>
+        <p class="dalil-src">QS. An-Nisa: 7</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- HIGHLIGHT BANNER -->
+  <div class="highlight-banner">
+    <div>
+      <span class="section-tag">Keistimewaan</span>
+      <h3>Wanita Muslimah di Mata Islam</h3>
+      <p>Islam mengangkat derajat wanita dari keterpurukan masa jahiliyah. Rasulullah ﷺ bersabda: <em>"Sebaik-baik kalian adalah yang paling baik terhadap istrinya."</em></p>
+      <p>Dan: <em>"Surga berada di bawah telapak kaki ibu."</em> — Penghormatan tertinggi kepada wanita sebagai ibu.</p>
+    </div>
+    <div class="highlight-stats">
+      <div class="h-stat">
+        <div class="h-stat-num">4×</div>
+        <div class="h-stat-label">Hak Ibu lebih besar dari Ayah (HR. Bukhari)</div>
+      </div>
+      <div class="h-stat">
+        <div class="h-stat-num">1/2</div>
+        <div class="h-stat-label">Bagian waris (dengan hikmah tanggungan nafkah)</div>
+      </div>
+      <div class="h-stat">
+        <div class="h-stat-num">= </div>
+        <div class="h-stat-label">Setara pahala ibadah dengan laki-laki (QS. Al-Ahzab: 35)</div>
+      </div>
+      <div class="h-stat">
+        <div class="h-stat-num">♾</div>
+        <div class="h-stat-label">Pahala ibu yang menyusui setiap tegukan (HR. Thabrani)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MASALAH KHUSUS TABLE -->
+<section class="section" style="padding-top: 0;">
+  <div class="masalah-section">
+    <h3>Ringkasan Hukum Berdasarkan Kondisi</h3>
+    <p>Status boleh/tidak bolehnya berbagai ibadah berdasarkan kondisi wanita</p>
+    <div style="overflow-x:auto;">
+      <table class="masalah-table">
+        <thead>
+          <tr>
+            <th>Ibadah / Aktivitas</th>
+            <th>Suci</th>
+            <th>Haid</th>
+            <th>Nifas</th>
+            <th>Istihadhah</th>
+            <th>Hamil/Menyusui</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Shalat Fardhu</strong></td>
+            <td><span class="badge badge-wajib">Wajib</span></td>
+            <td><span class="badge badge-haram">Haram</span></td>
+            <td><span class="badge badge-haram">Haram</span></td>
+            <td><span class="badge badge-wajib">Wajib</span></td>
+            <td><span class="badge badge-wajib">Wajib</span></td>
+          </tr>
+          <tr>
+            <td><strong>Puasa Ramadhan</strong></td>
+            <td><span class="badge badge-wajib">Wajib</span></td>
+            <td><span class="badge badge-haram">Haram</span></td>
+            <td><span class="badge badge-haram">Haram</span></td>
+            <td><span class="badge badge-wajib">Wajib</span></td>
+            <td><span class="badge badge-mubah">Boleh/Qadha</span></td>
+          </tr>
+          <tr>
+            <td><strong>Membaca Al-Qur'an</strong></td>
+            <td><span class="badge badge-sunnah">Sunnah</span></td>
+            <td><span class="badge badge-makruh">Khilaf*</span></td>
+            <td><span class="badge badge-makruh">Khilaf*</span></td>
+            <td><span class="badge badge-sunnah">Boleh</span></td>
+            <td><span class="badge badge-sunnah">Boleh</span></td>
+          </tr>
+          <tr>
+            <td><strong>Memegang Mushaf</strong></td>
+            <td><span class="badge badge-mubah">Boleh (suci)</span></td>
+            <td><span class="badge badge-haram">Tidak Boleh</span></td>
+            <td><span class="badge badge-haram">Tidak Boleh</span></td>
+            <td><span class="badge badge-mubah">Boleh</span></td>
+            <td><span class="badge badge-mubah">Boleh</span></td>
+          </tr>
+          <tr>
+            <td><strong>Tawaf di Ka'bah</strong></td>
+            <td><span class="badge badge-wajib">Wajib (jika haji)</span></td>
+            <td><span class="badge badge-haram">Tidak Boleh</span></td>
+            <td><span class="badge badge-haram">Tidak Boleh</span></td>
+            <td><span class="badge badge-sunnah">Boleh</span></td>
+            <td><span class="badge badge-mubah">Boleh</span></td>
+          </tr>
+          <tr>
+            <td><strong>Berhubungan Suami-Istri</strong></td>
+            <td><span class="badge badge-mubah">Mubah</span></td>
+            <td><span class="badge badge-haram">Haram</span></td>
+            <td><span class="badge badge-haram">Haram</span></td>
+            <td><span class="badge badge-mubah">Boleh</span></td>
+            <td><span class="badge badge-mubah">Boleh</span></td>
+          </tr>
+          <tr>
+            <td><strong>Dzikir & Doa</strong></td>
+            <td><span class="badge badge-sunnah">Sunnah</span></td>
+            <td><span class="badge badge-sunnah">Boleh</span></td>
+            <td><span class="badge badge-sunnah">Boleh</span></td>
+            <td><span class="badge badge-sunnah">Boleh</span></td>
+            <td><span class="badge badge-sunnah">Boleh</span></td>
+          </tr>
+          <tr>
+            <td><strong>Shalat Jenazah</strong></td>
+            <td><span class="badge badge-mubah">Boleh</span></td>
+            <td><span class="badge badge-haram">Tidak Boleh</span></td>
+            <td><span class="badge badge-haram">Tidak Boleh</span></td>
+            <td><span class="badge badge-mubah">Boleh</span></td>
+            <td><span class="badge badge-mubah">Boleh</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:1rem; font-size:0.78rem; color:var(--muted);">*Khilaf = terdapat perbedaan pendapat di antara ulama; yang lebih kuat menurut Ibnu Taimiyah: boleh membaca tanpa memegang mushaf.</p>
+  </div>
+</section>
+
+<!-- ACCORDION SHALAT -->
+<section class="section" style="padding-top: 0;">
+  <div class="section-header">
+    <span class="section-tag">Detail Fikih</span>
+    <h2 class="section-title">Masalah <em>Shalat Wanita</em></h2>
+    <p class="section-sub">Beberapa masalah fiqih shalat yang sering ditanyakan oleh wanita muslimah.</p>
+  </div>
+
+  <div class="accordion-wrap">
+
+    <div class="accordion-item open">
+      <button class="accordion-trigger" onclick="toggleAcc(this)">
+        <div class="acc-icon">🧎</div>
+        <span class="acc-title">Gerakan Shalat yang Berbeda untuk Wanita</span>
+        <span class="acc-arrow">▼</span>
+      </button>
+      <div class="accordion-body">
+        <div class="accordion-content">
+          <p>Sebagian ulama (Hanafiyyah) berpendapat ada perbedaan gerakan shalat wanita, namun pendapat yang lebih kuat (Syafi'iyyah, Malikiyyah, Hanabilah) adalah shalat wanita sama dengan laki-laki. Dalilnya:</p>
+          <ul>
+            <li>Rasulullah ﷺ bersabda: "Shalatlah sebagaimana kalian melihat aku shalat." — HR. Bukhari (umum untuk semua)</li>
+            <li>Tidak ada hadis shahih yang menyebut perbedaan gerakan shalat antara laki-laki dan wanita secara spesifik</li>
+            <li>Sujud wanita: merapatkan perut ke paha adalah anjuran (sunnah), bukan kewajiban</li>
+            <li>Posisi tangan dalam shalat: sama dengan laki-laki menurut pendapat yang kuat</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-trigger" onclick="toggleAcc(this)">
+        <div class="acc-icon">🕋</div>
+        <span class="acc-title">Wanita Menjadi Imam Shalat</span>
+        <span class="acc-arrow">▼</span>
+      </button>
+      <div class="accordion-body">
+        <div class="accordion-content">
+          <p>Wanita boleh menjadi imam bagi sesama wanita. Hal ini berdasarkan hadis shahih:</p>
+          <ul>
+            <li>Ummu Waraqah pernah diperintahkan Rasulullah ﷺ untuk mengimami penghuni rumahnya — HR. Abu Dawud (Shahih)</li>
+            <li>Posisi imam wanita: berdiri di tengah-tengah shaf, tidak di depan</li>
+            <li>Wanita tidak boleh mengimami laki-laki dalam shalat — ijma' ulama</li>
+            <li>Jika ada laki-laki hadir meski seorang, ia yang menjadi imam</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-trigger" onclick="toggleAcc(this)">
+        <div class="acc-icon">🔔</div>
+        <span class="acc-title">Adzan & Iqamah untuk Wanita</span>
+        <span class="acc-arrow">▼</span>
+      </button>
+      <div class="accordion-body">
+        <div class="accordion-content">
+          <p>Para ulama berbeda pendapat tentang adzan dan iqamah bagi wanita:</p>
+          <ul>
+            <li>Mayoritas ulama: wanita tidak disyariatkan adzan (tidak sunnah) karena adzan adalah syiar publik</li>
+            <li>Iqamah bagi wanita: diperbolehkan menurut sebagian ulama (Syafi'i, Ahmad)</li>
+            <li>Wanita tidak boleh mengeraskan suaranya di hadapan laki-laki ajnabi — berdasarkan prinsip umum</li>
+            <li>Jika shalat sendirian di rumah: boleh iqamah, dan ini sunnah menurut Syafi'iyyah</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-trigger" onclick="toggleAcc(this)">
+        <div class="acc-icon">🌙</div>
+        <span class="acc-title">Shalat Wanita saat Hamil & Menyusui</span>
+        <span class="acc-arrow">▼</span>
+      </button>
+      <div class="accordion-body">
+        <div class="accordion-content">
+          <p>Tidak ada keringanan khusus meninggalkan shalat karena hamil atau menyusui. Namun ada kemudahan:</p>
+          <ul>
+            <li>Boleh shalat sambil duduk jika tidak mampu berdiri karena kehamilan</li>
+            <li>Boleh menjamak shalat jika dalam keadaan darurat atau sangat repot</li>
+            <li>Wajib tetap shalat selama tidak haid atau nifas</li>
+            <li>Jika terpaksa shalat sambil menggendong bayi yang suci: diperbolehkan berdasarkan hadis Rasulullah ﷺ (HR. Bukhari)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-trigger" onclick="toggleAcc(this)">
+        <div class="acc-icon">🕌</div>
+        <span class="acc-title">Wanita Shalat di Masjid</span>
+        <span class="acc-arrow">▼</span>
+      </button>
+      <div class="accordion-body">
+        <div class="accordion-content">
+          <p>Hukum wanita ke masjid adalah boleh, bahkan Rasulullah ﷺ melarang mencegah wanita ke masjid:</p>
+          <ul>
+            <li>"Janganlah kalian melarang hamba-hamba wanita Allah dari masjid-masjid Allah." — HR. Bukhari & Muslim</li>
+            <li>Shalat di rumah tetap lebih utama bagi wanita (HR. Ahmad — Shahih)</li>
+            <li>Wanita harus berhijab sempurna saat ke masjid, tidak memakai wangi-wangian</li>
+            <li>Shaf wanita paling belakang adalah yang terbaik (HR. Muslim)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CLOSING -->
+<section class="closing">
+  <div class="closing-inner">
+    <div class="ornament">
+      <div class="line r"></div>
+      <div class="gem"></div>
+      <div class="ornament" style="margin:0; gap:0.4rem;">
+        <div class="gem"></div>
+      </div>
+      <div class="gem"></div>
+      <div class="line"></div>
+    </div>
+
+    <h2>Islam Memuliakan<br><em>Wanita Muslimah</em></h2>
+    <p>Allah Ta'ala menciptakan hukum-hukum yang memperhatikan kekhususan dan keistimewaan wanita. Setiap hukum mengandung hikmah yang mendalam — bukan beban, melainkan kemuliaan.</p>
+    <p>Wanita yang taat menjalankan syariat Allah, menjaga kehormatannya, dan memiliki ilmu agama yang kuat adalah sebaik-baik perhiasan dunia.</p>
+
+    <div class="ayat-strip-arabic" style="color: var(--gold-light); margin: 2rem 0 0.5rem;">
+      إِنَّ الْمُسْلِمِينَ وَالْمُسْلِمَاتِ... أَعَدَّ اللَّهُ لَهُم مَّغْفِرَةً وَأَجْرًا عَظِيمًا
+    </div>
+    <p class="closing-trans">"Sesungguhnya laki-laki dan perempuan Muslim... Allah telah menyediakan untuk mereka ampunan dan pahala yang besar." — QS. Al-Ahzab: 35</p>
+
+    <div class="ornament" style="margin-top:3rem">
+      <div class="line r"></div>
+      <div class="gem"></div>
+      <div class="line"></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Disusun berdasarkan <em>Al-Qur'an Al-Karim</em> · <em>Shahih Bukhari & Muslim</em> · <em>Fiqhus Sunnah (Sayyid Sabiq)</em> · <em>Al-Mughni (Ibnu Qudamah)</em> · <em>Al-Majmu' (An-Nawawi)</em></p>
+  <p style="margin-top:0.5rem">Pelajaran ini bersifat umum. Untuk masalah khusus, konsultasikan kepada ulama terpercaya. <em>رضي الله عنهن</em></p>
+</footer>
+
+<script>
+function toggleAcc(btn) {
+  const item = btn.closest('.accordion-item');
+  const isOpen = item.classList.contains('open');
+  // close all
+  document.querySelectorAll('.accordion-item.open').forEach(el => el.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+</script>
+
+</body>
+</html>

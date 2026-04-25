@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shalat Musafir & Qashar — Panduan Fiqh Perjalanan</title>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Amiri:ital,wght@0,400;0,700;1,400&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+
+:root{
+  /* Journey/Desert palette */
+  --sand:     #faf3e0;
+  --sand-d:   #f2e4c0;
+  --sand-dd:  #e8d4a0;
+  --ocher:    #d4860a;
+  --ocher-d:  #a86208;
+  --ocher-lt: #e8a030;
+  --ocher-p:  #fef5dc;
+  --sienna:   #c04428;
+  --sienna-d: #962010;
+  --sienna-lt:#e06040;
+  --sienna-p: #fde8e0;
+  --teal:     #1a7868;
+  --teal-d:   #0e5850;
+  --teal-lt:  #2a9a88;
+  --teal-p:   #e0f4f0;
+  --slate:    #2a3848;
+  --slate-lt: #3a5068;
+  --night:    #0c1820;
+  --night-mid:#18283a;
+  --cream:    #fdfaf4;
+  --paper:    #f8f2e4;
+  --paper-d:  #f0e6cc;
+  --paper-dd: #e4d4b0;
+  --ink:      #1a1408;
+  --ink-mid:  #2c2010;
+  --ink-soft: #5a4828;
+  --b-ocher:  rgba(212,134,10,.18);
+  --b-sienna: rgba(192,68,40,.18);
+  --b-teal:   rgba(26,120,104,.18);
+  --b-slate:  rgba(42,56,72,.15);
+  --b-ink:    rgba(26,20,8,.12);
+}
+
+html{scroll-behavior:smooth;}
+body{background:var(--cream);font-family:'Bitter',Georgia,serif;color:var(--ink);overflow-x:hidden;}
+
+/* ══════════════════════
+   HERO — DESERT JOURNEY
+══════════════════════ */
+.hero{
+  min-height:100vh;
+  position:relative;
+  background:linear-gradient(160deg,
+    var(--night) 0%,var(--night-mid) 30%,
+    #2a1808 55%,#3a2010 70%,#241808 100%);
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;
+  padding:80px 24px 100px;
+  overflow:hidden;
+}
+
+/* Horizon glow */
+.hero-horizon{
+  position:absolute;bottom:0;left:0;right:0;
+  height:45%;
+  background:linear-gradient(0deg,
+    rgba(212,134,10,.18) 0%,
+    rgba(192,68,40,.1) 30%,
+    transparent 70%);
+  pointer-events:none;
+}
+
+/* Desert dune silhouette */
+.hero-dune{
+  position:absolute;bottom:0;left:0;right:0;
+  height:160px;
+  background:
+    radial-gradient(ellipse 60% 100% at 20% 100%,rgba(42,24,8,.9) 0%,transparent 70%),
+    radial-gradient(ellipse 70% 100% at 75% 100%,rgba(50,28,10,.85) 0%,transparent 70%),
+    radial-gradient(ellipse 50% 80% at 50% 100%,rgba(36,20,6,.7) 0%,transparent 65%);
+  pointer-events:none;
+}
+
+/* Star dots */
+.hero-stars{position:absolute;inset:0;pointer-events:none;}
+.hstar{
+  position:absolute;border-radius:50%;
+  background:#fff;
+  animation:starTwink var(--std,3s) ease-in-out infinite alternate;
+}
+@keyframes starTwink{from{opacity:var(--sto,.3);}to{opacity:calc(var(--sto,.3)*2.5);}}
+
+/* Moving camel silhouette dots */
+.hero-path{
+  position:absolute;
+  bottom:40px;left:0;right:0;
+  height:2px;
+  background:linear-gradient(90deg,transparent,rgba(212,134,10,.15),rgba(212,134,10,.3),rgba(212,134,10,.15),transparent);
+  pointer-events:none;
+}
+
+.hero-inner{position:relative;z-index:2;max-width:740px;}
+
+.hero-bismillah{
+  font-family:'Amiri',serif;
+  font-size:clamp(1.5rem,4vw,2.6rem);
+  color:var(--ocher-lt);
+  text-shadow:0 0 30px rgba(212,134,10,.4);
+  line-height:1.9;margin-bottom:14px;
+  animation:riseHorizon 1.6s ease both;
+}
+
+.hero-kicker{
+  font-family:'Work Sans',sans-serif;font-weight:500;
+  font-size:clamp(.6rem,1.4vw,.75rem);
+  letter-spacing:6px;text-transform:uppercase;
+  color:rgba(232,160,48,.5);
+  margin-bottom:18px;
+  animation:riseHorizon 1.6s ease both .2s;
+}
+
+.hero-title{
+  font-family:'Bitter',serif;font-weight:700;
+  font-size:clamp(2.5rem,7.5vw,5.8rem);
+  line-height:1.05;letter-spacing:-1px;
+  color:#fff;margin-bottom:8px;
+  animation:riseHorizon 1.6s ease both .07s;
+}
+
+.hero-title-sub{
+  display:block;
+  font-size:.6em;font-weight:400;font-style:italic;
+  color:var(--ocher-lt);letter-spacing:.5px;
+  margin-top:4px;
+}
+
+.hero-ar{
+  font-family:'Amiri',serif;
+  font-size:clamp(1.2rem,3vw,1.9rem);
+  color:rgba(232,160,48,.65);
+  line-height:2;margin-bottom:24px;
+  animation:riseHorizon 1.6s ease both .28s;
+}
+
+.hero-rule{
+  display:flex;align-items:center;justify-content:center;gap:14px;
+  margin:14px auto 28px;
+  animation:riseHorizon 1.6s ease both .38s;
+}
+.hero-rule span{width:80px;height:1px;background:linear-gradient(90deg,transparent,rgba(212,134,10,.3));}
+.hero-rule span:last-child{background:linear-gradient(90deg,rgba(212,134,10,.3),transparent);}
+.hero-rule em{color:var(--sienna-lt);font-style:normal;letter-spacing:6px;font-size:.9rem;}
+
+.hero-verse{
+  max-width:560px;margin:0 auto;
+  padding:22px 30px;
+  background:rgba(12,24,32,.6);
+  border:1px solid rgba(212,134,10,.22);
+  backdrop-filter:blur(8px);
+  animation:riseHorizon 1.6s ease both .48s;
+}
+.hv-ar{font-family:'Amiri',serif;font-size:clamp(1rem,2.5vw,1.38rem);color:var(--ocher-lt);line-height:2.2;direction:rtl;margin-bottom:10px;}
+.hv-id{font-style:italic;font-size:.82rem;color:rgba(200,170,100,.6);line-height:1.7;}
+
+@keyframes riseHorizon{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+
+/* ══════════════════════
+   BODY WRAP
+══════════════════════ */
+.body-wrap{max-width:840px;margin:0 auto;padding:0 16px 80px;}
+
+/* ══════════════════════
+   CHAPTER BARS
+══════════════════════ */
+.chbar{
+  display:flex;align-items:stretch;
+  margin:52px 0 0;
+  position:relative;z-index:1;
+}
+
+.chbar-stripe{width:6px;flex-shrink:0;}
+.cs-ocher{background:var(--ocher);}
+.cs-sienna{background:var(--sienna);}
+.cs-teal{background:var(--teal);}
+.cs-slate{background:var(--slate);}
+.cs-night{background:var(--night-mid);}
+
+.chbar-body{flex:1;padding:18px 22px;}
+.cb-ocher{background:var(--ocher-p);border:1px solid var(--b-ocher);border-left:none;}
+.cb-sienna{background:var(--sienna-p);border:1px solid var(--b-sienna);border-left:none;}
+.cb-teal{background:var(--teal-p);border:1px solid var(--b-teal);border-left:none;}
+.cb-slate{background:#f0f4f8;border:1px solid var(--b-slate);border-left:none;}
+.cb-night{background:var(--night);border:1px solid rgba(212,134,10,.2);border-left:none;}
+
+.chbar-tag{
+  font-family:'Work Sans',sans-serif;font-weight:700;
+  font-size:.6rem;letter-spacing:4px;text-transform:uppercase;
+  margin-bottom:6px;
+}
+.ct-ocher{color:var(--ocher-d);}
+.ct-sienna{color:var(--sienna-d);}
+.ct-teal{color:var(--teal-d);}
+.ct-slate{color:var(--slate);}
+.ct-night{color:var(--ocher);}
+
+.chbar-ar{
+  font-family:'Amiri',serif;
+  font-size:clamp(1.1rem,3vw,1.6rem);
+  line-height:1.8;margin-bottom:4px;
+}
+.car-ocher{color:var(--ocher-d);}
+.car-sienna{color:var(--sienna-d);}
+.car-teal{color:var(--teal-d);}
+.car-slate{color:var(--slate);}
+.car-night{color:var(--ocher-lt);}
+
+.chbar-title{
+  font-family:'Bitter',serif;font-weight:700;
+  font-size:clamp(1.1rem,3vw,1.7rem);
+  line-height:1.25;
+}
+.cht-ocher{color:var(--ocher-d);}
+.cht-sienna{color:var(--sienna-d);}
+.cht-teal{color:var(--teal-d);}
+.cht-slate{color:var(--slate);}
+.cht-night{color:rgba(240,220,170,.95);}
+
+/* ══════════════════════
+   SECTIONS
+══════════════════════ */
+.sec{padding:32px 0 28px;border-bottom:1px solid var(--b-ink);}
+.sec:last-child{border-bottom:none;}
+
+/* ══════════════════════
+   PROSE
+══════════════════════ */
+.prose p{font-size:clamp(.97rem,2.2vw,1.07rem);line-height:2.05;color:var(--ink-mid);margin-bottom:16px;text-align:justify;}
+.prose p.lead{font-style:italic;color:var(--ocher-d);font-size:clamp(1rem,2.3vw,1.1rem);line-height:1.9;}
+.prose.sienna-lead p.lead{color:var(--sienna-d);}
+.prose.teal-lead p.lead{color:var(--teal-d);}
+.prose.slate-lead p.lead{color:var(--slate-lt);}
+
+.prose p:first-of-type:not(.lead)::first-letter{
+  font-family:'Bitter',serif;font-weight:700;
+  font-size:3.8em;line-height:.72;
+  float:left;margin:10px 10px 0 0;
+}
+.prose.fl-ocher p:first-of-type:not(.lead)::first-letter{color:var(--ocher);}
+.prose.fl-sienna p:first-of-type:not(.lead)::first-letter{color:var(--sienna);}
+.prose.fl-teal p:first-of-type:not(.lead)::first-letter{color:var(--teal);}
+
+/* ══════════════════════
+   DALIL
+══════════════════════ */
+.dalil{margin:22px 0;display:grid;grid-template-columns:4px 1fr;}
+.dalil-o{background:var(--ocher-p);border:1px solid var(--b-ocher);}
+.dalil-s{background:var(--sienna-p);border:1px solid var(--b-sienna);}
+.dalil-t{background:var(--teal-p);border:1px solid var(--b-teal);}
+.dalil-sl{background:#f0f4f8;border:1px solid var(--b-slate);}
+.dalil-dk{background:rgba(255,255,255,.05);border:1px solid rgba(212,134,10,.2);}
+
+.dbar-o{background:var(--ocher);}
+.dbar-s{background:var(--sienna);}
+.dbar-t{background:var(--teal);}
+.dbar-sl{background:var(--slate);}
+.dbar-dk{background:var(--ocher);}
+
+.dbody{padding:18px 20px 14px;}
+
+.dtag{font-family:'Work Sans',sans-serif;font-weight:700;font-size:.6rem;letter-spacing:4px;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:10px;}
+.dtag::after{content:'';flex:1;height:1px;}
+.dtag-o{color:var(--ocher-d);}
+.dtag-o::after{background:linear-gradient(90deg,var(--b-ocher),transparent);}
+.dtag-s{color:var(--sienna-d);}
+.dtag-s::after{background:linear-gradient(90deg,var(--b-sienna),transparent);}
+.dtag-t{color:var(--teal-d);}
+.dtag-t::after{background:linear-gradient(90deg,var(--b-teal),transparent);}
+.dtag-sl{color:var(--slate);}
+.dtag-sl::after{background:linear-gradient(90deg,var(--b-slate),transparent);}
+.dtag-dk{color:var(--ocher);}
+.dtag-dk::after{background:linear-gradient(90deg,rgba(212,134,10,.25),transparent);}
+
+.dar{font-family:'Amiri',serif;font-size:clamp(1.1rem,2.8vw,1.52rem);line-height:2.2;direction:rtl;text-align:right;margin-bottom:12px;padding-bottom:10px;}
+.dar-o{color:var(--ocher-d);border-bottom:1px dashed var(--b-ocher);}
+.dar-s{color:var(--sienna-d);border-bottom:1px dashed var(--b-sienna);}
+.dar-t{color:var(--teal-d);border-bottom:1px dashed var(--b-teal);}
+.dar-sl{color:var(--slate);border-bottom:1px dashed var(--b-slate);}
+.dar-dk{color:var(--ocher-lt);border-bottom:1px dashed rgba(212,134,10,.2);}
+
+.dtrans{font-style:italic;font-size:.91rem;line-height:1.8;color:var(--ink-soft);margin-bottom:7px;}
+.dtrans-dk{color:rgba(220,195,150,.78);}
+.dref{font-family:'Work Sans',sans-serif;font-weight:700;font-size:.62rem;letter-spacing:2px;text-transform:uppercase;}
+.dref-o{color:var(--ocher-d);}
+.dref-s{color:var(--sienna-d);}
+.dref-t{color:var(--teal-d);}
+.dref-sl{color:var(--slate);}
+.dref-dk{color:var(--ocher);}
+
+/* ══════════════════════
+   HIGHLIGHT BOX
+══════════════════════ */
+.hl{margin:20px 0;padding:18px 20px;}
+.hl-ocher{background:var(--ocher-p);border-left:4px solid var(--ocher);border:1px solid var(--b-ocher);border-left:4px solid var(--ocher);}
+.hl-sienna{background:var(--sienna-p);border:1px solid var(--b-sienna);border-left:4px solid var(--sienna);}
+.hl-teal{background:var(--teal-p);border:1px solid var(--b-teal);border-left:4px solid var(--teal);}
+.hl-slate{background:#f0f4f8;border:1px solid var(--b-slate);border-left:4px solid var(--slate);}
+.hl-night{background:var(--night);color:rgba(240,220,170,.9);padding:20px 22px;}
+
+.hl-label{font-family:'Work Sans',sans-serif;font-weight:700;font-size:.6rem;letter-spacing:3px;text-transform:uppercase;margin-bottom:9px;}
+.hll-o{color:var(--ocher-d);}
+.hll-s{color:var(--sienna-d);}
+.hll-t{color:var(--teal-d);}
+.hll-sl{color:var(--slate);}
+.hll-night{color:rgba(232,160,48,.6);}
+
+.hl-ar{font-family:'Amiri',serif;font-size:clamp(1.05rem,2.5vw,1.4rem);line-height:2;margin-bottom:8px;}
+.hlar-o{color:var(--ocher-d);}
+.hlar-s{color:var(--sienna-d);}
+.hlar-t{color:var(--teal-d);}
+.hlar-night{color:var(--ocher-lt);}
+
+.hl-trans{font-style:italic;font-size:.9rem;line-height:1.8;margin-bottom:6px;}
+.hlt-warm{color:var(--ink-soft);}
+.hlt-night{color:rgba(220,195,150,.78);}
+
+.hl-ref{font-family:'Work Sans',sans-serif;font-weight:700;font-size:.6rem;letter-spacing:2px;text-transform:uppercase;}
+.hlr-o{color:var(--ocher);}
+.hlr-s{color:var(--sienna);}
+.hlr-t{color:var(--teal);}
+.hlr-sl{color:var(--slate);}
+.hlr-night{color:rgba(212,134,10,.55);}
+
+/* ══════════════════════
+   STEP LIST
+══════════════════════ */
+.step-list{margin:18px 0;}
+.step-item{display:flex;gap:0;margin-bottom:5px;border:1px solid;overflow:hidden;background:var(--cream);}
+
+.step-num{flex-shrink:0;width:48px;display:flex;align-items:flex-start;justify-content:center;font-family:'Bitter',serif;font-weight:700;font-size:1.3rem;padding:12px 0 0;}
+.sn-o{color:var(--ocher-d);background:var(--ocher-p);border-right:1px solid var(--b-ocher);}
+.sn-s{color:var(--sienna-d);background:var(--sienna-p);border-right:1px solid var(--b-sienna);}
+.sn-t{color:var(--teal-d);background:var(--teal-p);border-right:1px solid var(--b-teal);}
+.sn-sl{color:var(--slate);background:#f0f4f8;border-right:1px solid var(--b-slate);}
+
+.si-o{border-color:var(--b-ocher);}
+.si-s{border-color:var(--b-sienna);}
+.si-t{border-color:var(--b-teal);}
+.si-sl{border-color:var(--b-slate);}
+
+.step-body{flex:1;padding:12px 16px;}
+.step-title{font-family:'Bitter',serif;font-weight:700;font-size:.96rem;margin-bottom:3px;color:var(--ink);}
+.step-ar{font-family:'Amiri',serif;font-size:.96rem;direction:rtl;text-align:right;margin-bottom:4px;line-height:1.85;color:rgba(0,0,0,.28);}
+.step-desc{font-size:.84rem;line-height:1.7;font-style:italic;color:var(--ink-soft);}
+
+.step-badge{display:inline-block;margin-top:6px;font-family:'Work Sans',sans-serif;font-size:.56rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:2px 8px;}
+.sbdg-o{background:var(--ocher-p);color:var(--ocher-d);border:1px solid var(--b-ocher);}
+.sbdg-s{background:var(--sienna-p);color:var(--sienna-d);border:1px solid var(--b-sienna);}
+.sbdg-t{background:var(--teal-p);color:var(--teal-d);border:1px solid var(--b-teal);}
+.sbdg-gray{background:rgba(0,0,0,.05);color:var(--ink-soft);border:1px solid rgba(0,0,0,.1);}
+
+/* ══════════════════════
+   RESPONSIVE TABLE
+══════════════════════ */
+.tbl-wrap{margin:20px 0;overflow:hidden;}
+.tbl{width:100%;border-collapse:collapse;font-size:.87rem;table-layout:fixed;}
+.tbl thead tr{color:#fff;}
+.tbl.th-o thead tr{background:var(--ocher-d);}
+.tbl.th-s thead tr{background:var(--sienna-d);}
+.tbl.th-t thead tr{background:var(--teal-d);}
+.tbl.th-sl thead tr{background:var(--slate);}
+.tbl.th-n thead tr{background:var(--night-mid);}
+.tbl thead th{padding:10px 12px;text-align:left;font-family:'Work Sans',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;}
+.tbl tbody tr{border-bottom:1px solid rgba(0,0,0,.07);}
+.tbl tbody tr:nth-child(even){background:rgba(0,0,0,.025);}
+.tbl tbody tr:nth-child(odd){background:var(--cream);}
+.tbl td{padding:10px 12px;line-height:1.65;color:var(--ink-mid);vertical-align:top;word-break:break-word;}
+.tbl td:first-child{font-weight:600;color:var(--ink);}
+
+.tbdg{display:inline-block;padding:2px 8px;font-family:'Work Sans',sans-serif;font-size:.57rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;white-space:nowrap;}
+.tbdg-o{background:var(--ocher-p);color:var(--ocher-d);border:1px solid var(--b-ocher);}
+.tbdg-s{background:var(--sienna-p);color:var(--sienna-d);border:1px solid var(--b-sienna);}
+.tbdg-t{background:var(--teal-p);color:var(--teal-d);border:1px solid var(--b-teal);}
+.tbdg-sl{background:#e8eef4;color:var(--slate);border:1px solid var(--b-slate);}
+.tbdg-gray{background:rgba(0,0,0,.06);color:var(--ink-soft);border:1px solid rgba(0,0,0,.1);}
+
+@media(max-width:600px){
+  .tbl,.tbl thead,.tbl tbody,.tbl th,.tbl td,.tbl tr{display:block;width:100%;}
+  .tbl thead{display:none;}
+  .tbl tbody tr{background:var(--cream)!important;border:1px solid rgba(0,0,0,.08);margin-bottom:8px;padding:12px 14px 10px;}
+  .tbl td{padding:4px 0 4px;border:none;display:grid;grid-template-columns:88px 1fr;gap:6px;align-items:start;}
+  .tbl td::before{content:attr(data-label);font-family:'Work Sans',sans-serif;font-size:.58rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding-top:2px;}
+  .tbl.th-o td::before{color:var(--ocher-d);}
+  .tbl.th-s td::before{color:var(--sienna-d);}
+  .tbl.th-t td::before{color:var(--teal-d);}
+  .tbl.th-sl td::before{color:var(--slate);}
+  .tbl.th-n td::before{color:var(--ocher);}
+  .tbl td:first-child{font-weight:700;font-size:.93rem;}
+}
+
+/* ══════════════════════
+   FEAT GRID
+══════════════════════ */
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:6px;margin:18px 0;}
+.feat{padding:18px 16px;border:1px solid;border-top:3px solid;}
+.feat-o{background:var(--cream);border-color:var(--b-ocher);border-top-color:var(--ocher);}
+.feat-s{background:var(--cream);border-color:var(--b-sienna);border-top-color:var(--sienna);}
+.feat-t{background:var(--cream);border-color:var(--b-teal);border-top-color:var(--teal);}
+.feat-sl{background:var(--cream);border-color:var(--b-slate);border-top-color:var(--slate);}
+.feat-icon{font-size:1.6rem;margin-bottom:9px;display:block;}
+.feat-title{font-family:'Bitter',serif;font-weight:700;font-size:.96rem;margin-bottom:4px;color:var(--ink);}
+.feat-desc{font-size:.82rem;line-height:1.65;font-style:italic;color:var(--ink-soft);}
+.feat-ref{font-family:'Work Sans',sans-serif;font-weight:700;font-size:.58rem;letter-spacing:2px;text-transform:uppercase;margin-top:8px;display:block;color:var(--ink-soft);}
+
+/* ══════════════════════
+   BANNER
+══════════════════════ */
+.banner{margin:22px 0;padding:22px 24px;text-align:center;}
+.banner-ocher{background:var(--ocher);color:#fff;}
+.banner-sienna{background:var(--sienna);color:#fff;}
+.banner-teal{background:var(--teal);color:#fff;}
+.banner-slate{background:var(--slate);color:#fff;}
+.banner-warm{background:var(--ocher-p);border:1px solid var(--b-ocher);}
+.banner-night{background:var(--night);border:1px solid rgba(212,134,10,.2);}
+
+.ban-ar{font-family:'Amiri',serif;font-size:clamp(1.05rem,2.5vw,1.45rem);line-height:2;margin-bottom:9px;}
+.bnar-w{color:#fff;}
+.bnar-o{color:var(--ocher-d);}
+.bnar-dk{color:var(--ocher-lt);}
+
+.ban-id{font-style:italic;font-size:.89rem;line-height:1.78;margin-bottom:6px;}
+.bnid-w{color:rgba(255,255,255,.88);}
+.bnid-o{color:var(--ink-soft);}
+.bnid-dk{color:rgba(220,195,150,.72);}
+
+.ban-ref{font-family:'Work Sans',sans-serif;font-weight:700;font-size:.6rem;letter-spacing:3px;text-transform:uppercase;margin-top:7px;}
+.bnref-w{color:rgba(255,255,255,.5);}
+.bnref-o{color:var(--ocher-d);}
+.bnref-dk{color:rgba(212,134,10,.45);}
+
+/* ══════════════════════
+   KHILAF BOX
+══════════════════════ */
+.khilaf{margin:20px 0;border:1px solid var(--b-ocher);overflow:hidden;}
+.khilaf-head{background:var(--ocher-d);color:#fff;padding:10px 16px;font-family:'Work Sans',sans-serif;font-weight:700;font-size:.6rem;letter-spacing:4px;text-transform:uppercase;}
+.khilaf-body{background:var(--ocher-p);}
+.khilaf-item{padding:12px 16px;border-bottom:1px solid var(--b-ocher);}
+.khilaf-item:last-child{border-bottom:none;}
+.ki-madzhab{font-family:'Work Sans',sans-serif;font-weight:700;font-size:.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--ocher-d);margin-bottom:4px;}
+.ki-pendapat{font-size:.9rem;line-height:1.7;color:var(--ink-mid);}
+.ki-dalil{font-size:.76rem;font-style:italic;color:var(--ink-soft);margin-top:5px;}
+
+/* ══════════════════════
+   PENUTUP
+══════════════════════ */
+.penutup{
+  background:linear-gradient(160deg,var(--night-mid) 0%,var(--night) 100%);
+  padding:64px 24px 72px;
+  text-align:center;position:relative;overflow:hidden;
+  margin-top:56px;
+}
+.penutup::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 40% at 50% 0%,rgba(212,134,10,.1) 0%,transparent 70%);
+  pointer-events:none;
+}
+.penutup::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--ocher),transparent);}
+.penutup-inner{max-width:560px;margin:0 auto;position:relative;z-index:1;}
+.penutup-ar{font-family:'Amiri',serif;font-size:clamp(1.4rem,4vw,2.4rem);color:var(--ocher-lt);line-height:2;text-shadow:0 0 20px rgba(212,134,10,.3);margin-bottom:12px;}
+.penutup-div{width:70px;height:1px;background:linear-gradient(90deg,transparent,var(--ocher-d),transparent);margin:16px auto;}
+.penutup-p{font-style:italic;font-size:clamp(.9rem,2vw,1.03rem);color:rgba(220,190,140,.72);line-height:1.92;margin-bottom:10px;}
+.penutup-ref{font-family:'Work Sans',sans-serif;font-weight:700;font-size:.6rem;letter-spacing:3px;text-transform:uppercase;color:rgba(212,134,10,.45);}
+.penutup-footer{margin-top:36px;padding-top:20px;border-top:1px solid rgba(255,255,255,.05);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+.penutup-footer .logo{font-family:'Amiri',serif;font-size:1.1rem;color:rgba(212,134,10,.35);}
+.penutup-footer .tag{font-family:'Work Sans',sans-serif;font-weight:600;font-size:.55rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.12);}
+
+/* ══════════════════════
+   RESPONSIVE
+══════════════════════ */
+@media(max-width:600px){
+  .body-wrap{padding:0 14px 60px;}
+  .hero{padding:56px 20px 80px;}
+  .chbar-body{padding:14px 16px;}
+  .hl,.banner{padding:16px 16px;}
+  .penutup{padding:44px 18px 54px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════ HERO ══════ -->
+<section class="hero">
+  <div class="hero-horizon"></div>
+  <div class="hero-dune"></div>
+  <div class="hero-stars" id="stars"></div>
+  <div class="hero-path"></div>
+
+  <div class="hero-inner">
+    <div class="hero-bismillah">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
+    <p class="hero-kicker">Panduan Fiqh Perjalanan · Berdalil Al-Qur'an &amp; Hadis Shahih</p>
+    <h1 class="hero-title">
+      Shalat Musafir
+      <span class="hero-title-sub">&amp; Shalat Qashar</span>
+    </h1>
+    <div class="hero-ar">صَلَاةُ الْمُسَافِرِ وَالْقَصْرِ</div>
+    <div class="hero-rule">
+      <span></span><em>🌙 ✦ 🌙</em><span></span>
+    </div>
+    <div class="hero-verse">
+      <div class="hv-ar">وَإِذَا ضَرَبْتُمْ فِي الْأَرْضِ فَلَيْسَ عَلَيْكُمْ جُنَاحٌ أَن تَقْصُرُوا مِنَ الصَّلَاةِ</div>
+      <div class="hv-id">"Dan apabila kamu bepergian di bumi, maka tidaklah mengapa kamu men-qashar shalat."<br><em style="color:rgba(200,160,80,.45)">— QS. An-Nisā': 101</em></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ BODY ══════ -->
+<div class="body-wrap">
+
+<!-- ── PROLOG ── -->
+<div class="chbar">
+  <div class="chbar-stripe cs-ocher"></div>
+  <div class="chbar-body cb-ocher">
+    <div class="chbar-tag ct-ocher">✦ Pembuka</div>
+    <div class="chbar-ar car-ocher">مُقَدِّمَةٌ — رَحْمَةُ اللَّهِ لِلْمُسَافِرِ</div>
+    <div class="chbar-title cht-ocher">Kemurahan Allah bagi Musafir</div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="prose fl-ocher">
+    <p class="lead">Islam adalah agama yang meringankan, bukan mempersulit. Ketika seorang Muslim harus meninggalkan rumahnya — menempuh perjalanan jauh dengan segala lelah dan tantangannya — Allah memberikan keringanan (rukhshah) yang luar biasa: boleh memperpendek shalat, boleh menggabungkan dua shalat, dan dibebaskan dari kewajiban puasa Ramadhan.</p>
+    <p>Rukhshah ini bukan sekadar kemurahan semata. Ia adalah cerminan dari sifat Allah yang <em>Maha Mengetahui</em> kondisi hamba-Nya. Allah tahu bahwa perjalanan menguras tenaga dan pikiran, bahwa musafir tidak memiliki kenyamanan rumah, bahwa waktu perjalanan tidak selalu bisa diprediksi. Maka diturunkan-lah keringanan ini sebagai rahmat yang nyata.</p>
+  </div>
+
+  <div class="dalil dalil-o">
+    <div class="dbar-o"></div>
+    <div class="dbody">
+      <div class="dtag dtag-o">📖 QS. An-Nisā': 101 — Kebolehan Qashar</div>
+      <div class="dar dar-o">وَإِذَا ضَرَبْتُمْ فِي الْأَرْضِ فَلَيْسَ عَلَيْكُمْ جُنَاحٌ أَن تَقْصُرُوا مِنَ الصَّلَاةِ إِنْ خِفْتُمْ أَن يَفْتِنَكُمُ الَّذِينَ كَفَرُوا</div>
+      <div class="dtrans">Dan apabila kamu bepergian di bumi, maka tidaklah mengapa kamu men-qashar shalat, jika kamu takut diserang orang-orang kafir."</div>
+      <div class="dref dref-o">QS. An-Nisā' (4): 101</div>
+    </div>
+  </div>
+
+  <div class="dalil dalil-o">
+    <div class="dbar-o"></div>
+    <div class="dbody">
+      <div class="dtag dtag-o">📜 HR. Muslim — Qashar Bukan Hanya saat Khawatir</div>
+      <div class="dar dar-o">سَأَلْتُ يَعْلَى بْنَ أُمَيَّةَ عَنْ قَوْلِ اللَّهِ (إِنْ خِفْتُمْ) قَالَ عُمَرُ عَجِبْتُ مِمَّا عَجِبْتَ مِنْهُ فَسَأَلْتُ رَسُولَ اللَّهِ ﷺ فَقَالَ صَدَقَةٌ تَصَدَّقَ اللَّهُ بِهَا عَلَيْكُمْ فَاقْبَلُوا صَدَقَتَهُ</div>
+      <div class="dtrans">"Ya'la bin Umayyah bertanya kepada Umar tentang ayat 'jika kamu takut'. Umar berkata: 'Aku pun pernah heran sepertimu, lalu aku tanyakan kepada Rasulullah ﷺ. Beliau menjawab: Ini adalah sedekah yang Allah berikan kepadamu, maka terimalah sedekah-Nya.'"</div>
+      <div class="dref dref-o">HR. Muslim (686) — dari Ya'la bin Umayyah radhiyallahu 'anhu</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ BAB I: SIAPA MUSAFIR? ══════ -->
+<div class="chbar">
+  <div class="chbar-stripe cs-ocher"></div>
+  <div class="chbar-body cb-ocher">
+    <div class="chbar-tag ct-ocher">✦ Bab Pertama</div>
+    <div class="chbar-ar car-ocher">مَنِ الْمُسَافِرُ؟ وَشُرُوطُ الْقَصْرِ</div>
+    <div class="chbar-title cht-ocher">Siapakah Musafir? Syarat-Syarat Qashar</div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="prose fl-ocher">
+    <p>Tidak setiap orang yang keluar rumah disebut musafir dalam fiqh Islam. Ada kriteria dan syarat yang ditetapkan para ulama berdasarkan Al-Qur'an dan hadis untuk menentukan kapan seseorang berhak menyebut dirinya musafir dan mengambil rukhshah safar.</p>
+  </div>
+
+  <!-- Jarak minimum — khilaf -->
+  <p style="font-family:'Work Sans',sans-serif;font-weight:700;font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--ocher-d);margin:0 0 12px;">Jarak Minimum Safar — Perbedaan Pendapat Ulama</p>
+
+  <div class="khilaf">
+    <div class="khilaf-head">✦ Ikhtilaf Ulama tentang Jarak Minimum Safar</div>
+    <div class="khilaf-body">
+      <div class="khilaf-item">
+        <div class="ki-madzhab">Jumhur (Syafi'i, Maliki, Hanbali)</div>
+        <div class="ki-pendapat">Jarak minimum <strong>2 marhalah = ±89 km</strong> (atau 4 barid = 48 mil). Ini setara perjalanan dua hari jalan kaki pada zaman dahulu. Inilah pendapat yang paling banyak dipegang.</div>
+        <div class="ki-dalil">Berdasarkan atsar Ibnu Abbas &amp; Ibnu Umar; HR. Bukhari (1089): "Nabi ﷺ men-qashar shalat dalam perjalanan 3 mil atau farsakh."</div>
+      </div>
+      <div class="khilaf-item">
+        <div class="ki-madzhab">Hanafi</div>
+        <div class="ki-pendapat">Jarak minimum <strong>3 marhalah = ±133 km</strong> (3 hari perjalanan). Lebih ketat dari jumhur.</div>
+        <div class="ki-dalil">Berdasarkan penafsiran hadis tentang perjalanan tiga hari dan larangan membuka khuff lebih dari tiga hari bagi musafir.</div>
+      </div>
+      <div class="khilaf-item">
+        <div class="ki-madzhab">Ibnu Taimiyyah &amp; Ibnu Al-Qayyim (Dikuatkan Ibnu Utsaimin)</div>
+        <div class="ki-pendapat"><strong>Tidak ada batasan jarak tertentu.</strong> Yang menjadi patokan adalah kebiasaan masyarakat setempat menyebut sesuatu sebagai "safar" atau tidak. Jika masyarakat menyebutnya perjalanan (bukan sekadar jalan-jalan), maka berlaku rukhshah.</div>
+        <div class="ki-dalil">Tidak ada hadis yang secara tegas menyebut jarak minimum dengan sanad yang kuat. Pendapat ini semakin relevan di era modern dengan kendaraan cepat.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Syarat-syarat Qashar -->
+  <p style="font-family:'Work Sans',sans-serif;font-weight:700;font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--ocher-d);margin:24px 0 12px;">Syarat-Syarat Kebolehan Qashar</p>
+
+  <div class="step-list">
+    <div class="step-item si-o">
+      <div class="step-num sn-o">1</div>
+      <div class="step-body">
+        <div class="step-title">Perjalanan Mencapai Jarak Minimum Safar</div>
+        <div class="step-desc">Jarak perjalanan harus memenuhi batas minimum yang ditetapkan (±89 km menurut jumhur). Jika di bawah itu, tidak ada qashar.</div>
+        <span class="step-badge sbdg-o">Wajib</span>
+      </div>
+    </div>
+    <div class="step-item si-o">
+      <div class="step-num sn-o">2</div>
+      <div class="step-body">
+        <div class="step-title">Perjalanan Bukan untuk Tujuan Maksiat</div>
+        <div class="step-desc">Safar harus untuk tujuan yang mubah atau lebih. Safar untuk bermaksiat — seperti bepergian untuk berzina atau merampok — tidak berhak mendapat rukhshah menurut Syafi'i dan Hanbali. Hanafi dan Maliki memperbolehkan qashar.</div>
+        <span class="step-badge sbdg-o">Syarat (Syafi'i &amp; Hanbali)</span>
+      </div>
+    </div>
+    <div class="step-item si-o">
+      <div class="step-num sn-o">3</div>
+      <div class="step-body">
+        <div class="step-title">Sudah Meninggalkan Wilayah Tempat Tinggal</div>
+        <div class="step-desc">Qashar baru boleh dilakukan setelah benar-benar meninggalkan batas kota/desa tempat tinggal — bukan sebelum keluar dari perbatasan pemukiman tempat tinggalnya.</div>
+        <span class="step-badge sbdg-o">Wajib</span>
+      </div>
+    </div>
+    <div class="step-item si-o">
+      <div class="step-num sn-o">4</div>
+      <div class="step-body">
+        <div class="step-title">Berniat Safar — Bukan Sekadar Jalan-Jalan Dekat</div>
+        <div class="step-desc">Harus ada niat untuk melakukan safar (perjalanan yang dimaksud fiqh). Seseorang yang keluar kota untuk keperluan singkat yang tidak dianggap "perjalanan" oleh 'urf (kebiasaan setempat) tidak berhak qashar.</div>
+        <span class="step-badge sbdg-o">Wajib</span>
+      </div>
+    </div>
+    <div class="step-item si-o">
+      <div class="step-num sn-o">5</div>
+      <div class="step-body">
+        <div class="step-title">Shalat Fardhu yang Bisa di-Qashar</div>
+        <div class="step-desc">Qashar hanya berlaku untuk shalat yang 4 rakaat: Zhuhur, Ashar, dan Isya. Shalat Subuh (2 rakaat) dan Maghrib (3 rakaat) tidak bisa di-qashar.</div>
+        <span class="step-badge sbdg-o">Wajib</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ BAB II: CARA QASHAR ══════ -->
+<div class="chbar">
+  <div class="chbar-stripe cs-sienna"></div>
+  <div class="chbar-body cb-sienna">
+    <div class="chbar-tag ct-sienna">✦ Bab Kedua</div>
+    <div class="chbar-ar car-sienna">كَيْفِيَّةُ الْقَصْرِ</div>
+    <div class="chbar-title cht-sienna">Cara Shalat Qashar: Rakaat &amp; Tata Caranya</div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="prose fl-sienna">
+    <p class="lead">Qashar secara harfiah berarti "memendekkan." Dalam shalat, qashar berarti mempersingkat shalat 4 rakaat menjadi 2 rakaat. Ini adalah rukhshah yang diperintahkan Allah dan dicontohkan langsung oleh Nabi ﷺ.</p>
+  </div>
+
+  <!-- Tabel Perubahan Rakaat -->
+  <div class="tbl-wrap">
+    <table class="tbl th-s">
+      <thead>
+        <tr>
+          <th style="width:25%">Shalat</th>
+          <th style="width:20%">Biasa</th>
+          <th style="width:20%">Qashar</th>
+          <th style="width:35%">Keterangan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Shalat">Zhuhur</td>
+          <td data-label="Biasa">4 rakaat</td>
+          <td data-label="Qashar"><span class="tbdg tbdg-s">2 rakaat</span></td>
+          <td data-label="Keterangan">Di-qashar menjadi 2 rakaat. Boleh dijamak dengan Ashar.</td>
+        </tr>
+        <tr>
+          <td data-label="Shalat">Ashar</td>
+          <td data-label="Biasa">4 rakaat</td>
+          <td data-label="Qashar"><span class="tbdg tbdg-s">2 rakaat</span></td>
+          <td data-label="Keterangan">Di-qashar menjadi 2 rakaat. Boleh dijamak dengan Zhuhur.</td>
+        </tr>
+        <tr>
+          <td data-label="Shalat">Maghrib</td>
+          <td data-label="Biasa">3 rakaat</td>
+          <td data-label="Qashar"><span class="tbdg tbdg-gray">Tetap 3</span></td>
+          <td data-label="Keterangan">Tidak bisa di-qashar. Tetap 3 rakaat. Boleh dijamak dengan Isya.</td>
+        </tr>
+        <tr>
+          <td data-label="Shalat">Isya</td>
+          <td data-label="Biasa">4 rakaat</td>
+          <td data-label="Qashar"><span class="tbdg tbdg-s">2 rakaat</span></td>
+          <td data-label="Keterangan">Di-qashar menjadi 2 rakaat. Boleh dijamak dengan Maghrib.</td>
+        </tr>
+        <tr>
+          <td data-label="Shalat">Subuh</td>
+          <td data-label="Biasa">2 rakaat</td>
+          <td data-label="Qashar"><span class="tbdg tbdg-gray">Tetap 2</span></td>
+          <td data-label="Keterangan">Tidak bisa di-qashar karena sudah 2 rakaat. Tidak boleh dijamak.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="dalil dalil-s">
+    <div class="dbar-s"></div>
+    <div class="dbody">
+      <div class="dtag dtag-s">📜 HR. Bukhari &amp; Muslim — Nabi ﷺ Shalat 2 Rakaat saat Safar</div>
+      <div class="dar dar-s">كَانَ رَسُولُ اللَّهِ ﷺ إِذَا سَافَرَ صَلَّى رَكْعَتَيْنِ</div>
+      <div class="dtrans">"Rasulullah ﷺ apabila bepergian, beliau shalat dua rakaat."</div>
+      <div class="dref dref-s">HR. Bukhari (1101) &amp; Muslim (689) — dari Ibnu Umar radhiyallahu 'anhu</div>
+    </div>
+  </div>
+
+  <!-- Hukum Qashar: Wajib, Afdhal, atau Boleh? -->
+  <p style="font-family:'Work Sans',sans-serif;font-weight:700;font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--sienna-d);margin:20px 0 12px;">Hukum Qashar: Wajib, Sunnah, atau Boleh?</p>
+
+  <div class="khilaf">
+    <div class="khilaf-head" style="background:var(--sienna-d);">✦ Ikhtilaf Ulama tentang Hukum Qashar</div>
+    <div class="khilaf-body" style="background:var(--sienna-p);">
+      <div class="khilaf-item" style="border-color:var(--b-sienna);">
+        <div class="ki-madzhab" style="color:var(--sienna-d);">Jumhur (Syafi'i, Maliki) — Sunnah Muakkadah</div>
+        <div class="ki-pendapat">Qashar adalah sunnah yang sangat dianjurkan (muakkadah). Boleh memilih shalat penuh (itmam) namun qashar lebih utama. Jika makmum masbuk di belakang imam mukim yang shalat penuh, makmum musafir wajib mengikuti 4 rakaat.</div>
+        <div class="ki-dalil">Berdasarkan: sesekali Nabi ﷺ shalat 4 rakaat saat safar (HR. Abu Dawud 1229). Namun ini sangat jarang.</div>
+      </div>
+      <div class="khilaf-item" style="border-color:var(--b-sienna);">
+        <div class="ki-madzhab" style="color:var(--sienna-d);">Hanafi — Wajib (Azimah)</div>
+        <div class="ki-pendapat">Qashar adalah wajib bagi musafir yang memenuhi syarat. Jika shalat 4 rakaat saat safar, shalat sah namun ia berdosa karena meninggalkan yang wajib. Tasyahhud awal di rakaat ke-2 menjadi wajib juga.</div>
+        <div class="ki-dalil">Berdasarkan: Ibnu Umar berkata "Shalat safar 2 rakaat — ini sempurna, bukan qashar." — HR. Nasā'i (1454).</div>
+      </div>
+      <div class="khilaf-item" style="border-color:var(--b-sienna);">
+        <div class="ki-madzhab" style="color:var(--sienna-d);">Hanbali — Sunnah, tapi Meninggalkannya Makruh</div>
+        <div class="ki-pendapat">Qashar sunnah muakkadah, namun meninggalkannya (shalat penuh saat safar tanpa uzur) adalah makruh. Qashar lebih utama karena ini adalah "sedekah Allah" yang seharusnya diterima.</div>
+        <div class="ki-dalil">Berdasarkan hadis: "Ini adalah sedekah yang Allah berikan, maka terimalah sedekah-Nya." — HR. Muslim (686).</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hl hl-sienna" style="margin-top:16px;">
+    <div class="hl-label hll-s">✦ Kesimpulan Praktis</div>
+    <div class="hl-trans hlt-warm">Qashar adalah rukhshah (keringanan) yang Allah berikan dan sangat dianjurkan untuk dilaksanakan. Nabi ﷺ bersabda: "Sesungguhnya Allah suka apabila rukhshah-Nya dilaksanakan sebagaimana Dia benci apabila kemaksiatan-Nya dilakukan." — HR. Ahmad (5866) &amp; Ibnu Hibban — Shahih. Maka sebaik-baik sikap musafir adalah menerima keringanan ini dengan penuh syukur.</div>
+  </div>
+</div>
+
+<!-- ══════ BAB III: JAMAK SHALAT ══════ -->
+<div class="chbar">
+  <div class="chbar-stripe cs-teal"></div>
+  <div class="chbar-body cb-teal">
+    <div class="chbar-tag ct-teal">✦ Bab Ketiga</div>
+    <div class="chbar-ar car-teal">الْجَمْعُ بَيْنَ الصَّلَاتَيْنِ</div>
+    <div class="chbar-title cht-teal">Jamak Shalat: Menggabungkan Dua Shalat</div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="prose fl-teal">
+    <p class="lead">Selain qashar, musafir juga mendapat keringanan untuk menjamak (menggabungkan) dua shalat dalam satu waktu. Ada dua jenis jamak: <strong>jamak taqdim</strong> (mengerjakan shalat yang kedua di waktu yang pertama) dan <strong>jamak ta'khir</strong> (mengerjakan shalat yang pertama di waktu yang kedua).</p>
+  </div>
+
+  <!-- Jenis-jenis jamak -->
+  <div class="tbl-wrap">
+    <table class="tbl th-t">
+      <thead>
+        <tr>
+          <th style="width:22%">Jenis</th>
+          <th style="width:22%">Penjelasan</th>
+          <th style="width:30%">Contoh</th>
+          <th style="width:26%">Waktu Pelaksanaan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Jenis">Jamak Taqdim</td>
+          <td data-label="Penjelasan">Shalat yang kedua dimajukan ke waktu yang pertama</td>
+          <td data-label="Contoh">Shalat Zhuhur + Ashar keduanya dikerjakan di waktu Zhuhur<br>Shalat Maghrib + Isya keduanya di waktu Maghrib</td>
+          <td data-label="Waktu">Setelah masuk waktu shalat pertama hingga sebelum waktu shalat kedua masuk</td>
+        </tr>
+        <tr>
+          <td data-label="Jenis">Jamak Ta'khir</td>
+          <td data-label="Penjelasan">Shalat yang pertama ditunda ke waktu yang kedua</td>
+          <td data-label="Contoh">Shalat Zhuhur + Ashar keduanya dikerjakan di waktu Ashar<br>Shalat Maghrib + Isya keduanya di waktu Isya</td>
+          <td data-label="Waktu">Setelah masuk waktu shalat kedua, dikerjakan sebelum waktu kedua habis</td>
+        </tr>
+        <tr>
+          <td data-label="Jenis">Shalat yang Bisa Dijamak</td>
+          <td data-label="Penjelasan">Hanya dua pasang shalat</td>
+          <td data-label="Contoh">1) Zhuhur &amp; Ashar (dijamak satu sama lain)<br>2) Maghrib &amp; Isya (dijamak satu sama lain)<br>⚠ Subuh tidak boleh dijamak dengan apapun</td>
+          <td data-label="Waktu">Tidak boleh mencampur pasangan yang berbeda (misal: Ashar dengan Maghrib)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="dalil dalil-t">
+    <div class="dbar-t"></div>
+    <div class="dbody">
+      <div class="dtag dtag-t">📜 HR. Bukhari &amp; Muslim — Nabi ﷺ Menjamak saat Perjalanan</div>
+      <div class="dar dar-t">كَانَ النَّبِيُّ ﷺ إِذَا أَرَادَ أَنْ يَجْمَعَ بَيْنَ الصَّلَاتَيْنِ فِي السَّفَرِ أَخَّرَ الظُّهْرَ حَتَّى يَدْخُلَ أَوَّلُ وَقْتِ الْعَصْرِ ثُمَّ يَجْمَعُ بَيْنَهُمَا</div>
+      <div class="dtrans">"Apabila Nabi ﷺ ingin menjamak dua shalat dalam perjalanan, beliau mengakhirkan Zhuhur hingga masuk awal waktu Ashar, kemudian menjamak keduanya."</div>
+      <div class="dref dref-t">HR. Bukhari (1107) &amp; Muslim (703) — dari Muadz bin Jabal radhiyallahu 'anhu</div>
+    </div>
+  </div>
+
+  <!-- Syarat Jamak -->
+  <p style="font-family:'Work Sans',sans-serif;font-weight:700;font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--teal-d);margin:20px 0 12px;">Syarat-Syarat Jamak Shalat</p>
+
+  <div class="step-list">
+    <div class="step-item si-t">
+      <div class="step-num sn-t">1</div>
+      <div class="step-body">
+        <div class="step-title">Niat Jamak (saat Shalat Pertama)</div>
+        <div class="step-desc">Untuk jamak taqdim, wajib berniat jamak ketika mengerjakan shalat pertama. Menurut Syafi'i: niat harus ada sebelum salam shalat pertama.</div>
+        <span class="step-badge sbdg-t">Wajib (Syafi'i &amp; Hanbali)</span>
+      </div>
+    </div>
+    <div class="step-item si-t">
+      <div class="step-num sn-t">2</div>
+      <div class="step-body">
+        <div class="step-title">Berurutan (Muwalah) antara Dua Shalat</div>
+        <div class="step-desc">Jarak antara shalat pertama dan kedua tidak boleh terlalu lama. Boleh diselingi wudhu, iqamah, atau istirahat singkat — tapi tidak boleh tertidur lama atau mengerjakan kegiatan lain yang panjang.</div>
+        <span class="step-badge sbdg-t">Syarat Jamak Taqdim</span>
+      </div>
+    </div>
+    <div class="step-item si-t">
+      <div class="step-num sn-t">3</div>
+      <div class="step-body">
+        <div class="step-title">Status Safar Berlanjut saat Shalat Pertama dan Kedua</div>
+        <div class="step-desc">Untuk jamak taqdim, status musafir harus masih berlaku saat mengerjakan kedua shalat. Jika tiba di tujuan setelah shalat pertama, shalat kedua wajib dikerjakan di waktunya sendiri.</div>
+        <span class="step-badge sbdg-t">Syarat Jamak Taqdim</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Boleh jamak tanpa safar? -->
+  <div class="hl hl-teal" style="margin-top:18px;">
+    <div class="hl-label hll-t">✦ Apakah Jamak Boleh Selain karena Safar?</div>
+    <div class="hl-trans hlt-warm">Ya — menurut hadis Ibnu Abbas (HR. Muslim 705): Nabi ﷺ pernah menjamak Zhuhur-Ashar dan Maghrib-Isya <strong>di Madinah tanpa safar dan tanpa hujan</strong>. Para ulama berbeda pendapat tentang alasannya. Jumhur menyebutkan boleh jamak karena: <strong>safar, hujan lebat, sakit, hajat yang mendesak</strong> (menurut Hanbali dan sebagian ulama kontemporer). Syafi'i membatasi: safar dan hujan saja.</div>
+    <div class="hl-ref hlr-t">HR. Muslim (705) — dari Ibnu Abbas radhiyallahu 'anhu</div>
+  </div>
+</div>
+
+<!-- ══════ BAB IV: BERAPA LAMA BOLEH QASHAR ══════ -->
+<div class="chbar">
+  <div class="chbar-stripe cs-slate"></div>
+  <div class="chbar-body cb-slate">
+    <div class="chbar-tag ct-slate">✦ Bab Keempat</div>
+    <div class="chbar-ar car-slate">مُدَّةُ الْقَصْرِ — إِلَى مَتَى؟</div>
+    <div class="chbar-title cht-slate">Berapa Lama Boleh Qashar? Musafir yang Menetap</div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="prose fl-teal">
+    <p class="lead">Pertanyaan yang sering muncul di zaman modern: bagaimana jika musafir tinggal lama di kota tujuan — apakah ia masih boleh qashar? Para ulama berbeda pendapat karena Nabi ﷺ memberikan contoh yang bervariasi dalam berbagai hadis.</p>
+  </div>
+
+  <div class="tbl-wrap">
+    <table class="tbl th-sl">
+      <thead>
+        <tr>
+          <th style="width:25%">Madzhab</th>
+          <th style="width:22%">Batas Lama Menetap</th>
+          <th style="width:53%">Penjelasan &amp; Dalil</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Madzhab">Syafi'i</td>
+          <td data-label="Batas"><span class="tbdg tbdg-sl">4 hari</span></td>
+          <td data-label="Penjelasan">Jika berniat menetap lebih dari 4 hari (tidak termasuk hari tiba dan berangkat), wajib shalat penuh (itman). Jika tidak punya rencana pasti, boleh terus qashar.</td>
+        </tr>
+        <tr>
+          <td data-label="Madzhab">Hanbali</td>
+          <td data-label="Batas"><span class="tbdg tbdg-sl">4 hari</span></td>
+          <td data-label="Penjelasan">Sama dengan Syafi'i. Lebih dari 4 hari dengan niat menetap = wajib itman. Berdasarkan: Nabi ﷺ menetap di Makkah 4 hari saat Fathu Makkah sambil qashar.</td>
+        </tr>
+        <tr>
+          <td data-label="Madzhab">Maliki</td>
+          <td data-label="Batas"><span class="tbdg tbdg-sl">4 hari</span></td>
+          <td data-label="Penjelasan">Sama, namun hitungan berbeda: 4 hari tidak termasuk hari tiba dan tidak termasuk hari berangkat (lebih longgar sedikit dalam praktiknya).</td>
+        </tr>
+        <tr>
+          <td data-label="Madzhab">Hanafi</td>
+          <td data-label="Batas"><span class="tbdg tbdg-sl">15 hari</span></td>
+          <td data-label="Penjelasan">Jika berniat menetap kurang dari 15 hari, masih boleh qashar. Jika 15 hari atau lebih, wajib itman. Ini pendapat paling longgar — relevan untuk musafir bisnis jangka menengah.</td>
+        </tr>
+        <tr>
+          <td data-label="Madzhab">Pendapat Kuat (Ibnu Taimiyyah)</td>
+          <td data-label="Batas"><span class="tbdg tbdg-o">Tanpa Batas Tertentu</span></td>
+          <td data-label="Penjelasan">Selama seseorang masih dalam posisi "musafir" menurut 'urf (adat setempat) dan tidak memiliki rumah/tempat tinggal tetap di tempat itu, ia boleh terus qashar. Ibnu Taimiyyah qashar selama berbulan-bulan dalam kampanye jihad. Ini pendapat yang dipilih banyak ulama kontemporer.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="dalil dalil-sl">
+    <div class="dbar-sl"></div>
+    <div class="dbody">
+      <div class="dtag dtag-sl">📜 HR. Bukhari — Nabi ﷺ Qashar di Makkah selama 4 Hari</div>
+      <div class="dar dar-sl">أَقَامَ النَّبِيُّ ﷺ تِسْعَةَ عَشَرَ يَوْمًا يُصَلِّي رَكْعَتَيْنِ</div>
+      <div class="dtrans">"Nabi ﷺ menetap 19 hari sambil shalat 2 rakaat (qashar)." — Dalam riwayat lain: 17 hari. Ini terjadi saat Pembebasan Makkah. Ibnu Abbas berkata: "Barangsiapa menetap 19 hari ia qashar; lebih dari itu, ia sempurnakan."</div>
+      <div class="dref dref-sl">HR. Bukhari (1080) — dari Ibnu Abbas radhiyallahu 'anhu</div>
+    </div>
+  </div>
+
+  <!-- Situasi-situasi khusus -->
+  <p style="font-family:'Work Sans',sans-serif;font-weight:700;font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--slate);margin:20px 0 12px;">Situasi Khusus yang Sering Ditanyakan</p>
+
+  <div class="feat-grid">
+    <div class="feat feat-sl">
+      <span class="feat-icon">✈️</span>
+      <div class="feat-title">Perjalanan dengan Pesawat</div>
+      <div class="feat-desc">Jarak ditempuh dalam hitungan jam, bukan hari. Patokan tetap jarak fisik — bukan waktu tempuh. Jika jarak ≥89 km (atau menurut 'urf dianggap "perjalanan"), rukhshah berlaku sejak meninggalkan kota asal.</div>
+      <span class="feat-ref">Fatwa kontemporer — berbasis pendapat jumhur</span>
+    </div>
+    <div class="feat feat-sl">
+      <span class="feat-icon">🏨</span>
+      <div class="feat-title">Tinggal di Hotel untuk Kerja</div>
+      <div class="feat-desc">Pekerja yang ditempatkan di kota lain sementara (proyek, dinas) tanpa membawa keluarga dan tanpa berencana menetap — masih dianggap musafir selama belum memiliki "hunian tetap" di kota itu. Boleh qashar selama statusnya demikian menurut pendapat Ibnu Taimiyyah.</div>
+      <span class="feat-ref">Pendapat Ibnu Taimiyyah &amp; Ibnu Utsaimin</span>
+    </div>
+    <div class="feat feat-sl">
+      <span class="feat-icon">🎓</span>
+      <div class="feat-title">Mahasiswa Perantauan</div>
+      <div class="feat-desc">Mahasiswa yang tinggal di kota lain untuk belajar — sebagian besar ulama menyebutnya sudah bermukim (muqim), sehingga wajib shalat penuh. Kecuali jika masih dalam perjalanan atau sedang pulang kampung.</div>
+      <span class="feat-ref">Pendapat jumhur ulama kontemporer</span>
+    </div>
+    <div class="feat feat-sl">
+      <span class="feat-icon">🚢</span>
+      <div class="feat-title">Pelaut / Kru Kapal</div>
+      <div class="feat-desc">Jika kapal terus berlayar dan mereka tidak memiliki "tempat mukim tetap" di manapun selama pelayaran, mereka dianggap musafir terus dan boleh qashar. Berlabuh sementara di pelabuhan tidak otomatis menggugurkan status safar.</div>
+      <span class="feat-ref">Fiqh Al-Islami wa Adillatuhu — Wahbah Az-Zuhaili</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ BAB V: SHALAT DI KENDARAAN ══════ -->
+<div class="chbar">
+  <div class="chbar-stripe cs-ocher"></div>
+  <div class="chbar-body cb-ocher">
+    <div class="chbar-tag ct-ocher">✦ Bab Kelima</div>
+    <div class="chbar-ar car-ocher">الصَّلَاةُ فِي وَسَائِلِ النَّقْلِ</div>
+    <div class="chbar-title cht-ocher">Shalat di Atas Kendaraan: Pesawat, Bus &amp; Kapal</div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="prose fl-ocher">
+    <p>Sering terjadi: seseorang sedang dalam perjalanan panjang dan waktu shalat masuk, namun kendaraan tidak berhenti. Bagaimana hukumnya shalat di atas kendaraan yang bergerak?</p>
+  </div>
+
+  <div class="step-list">
+    <div class="step-item si-o">
+      <div class="step-num sn-o">1</div>
+      <div class="step-body">
+        <div class="step-title">Usahakan Turun dan Shalat di Tanah</div>
+        <div class="step-desc">Jika kendaraan bisa berhenti dan ada kesempatan turun, wajib turun dan shalat di tanah menghadap kiblat dengan sempurna. Shalat di atas kendaraan saat bisa turun adalah makruh atau tidak sah menurut sebagian ulama.</div>
+        <span class="step-badge sbdg-o">Utama</span>
+      </div>
+    </div>
+    <div class="step-item si-o">
+      <div class="step-num sn-o">2</div>
+      <div class="step-body">
+        <div class="step-title">Jika Tidak Bisa Turun — Shalat di Kendaraan</div>
+        <div class="step-desc">Jika tidak bisa turun (pesawat yang sedang terbang, kapal di laut, bus yang tidak bisa berhenti), boleh shalat di tempat duduk. Usahakan menghadap kiblat saat takbiratul ihram. Lakukan rukuk dan sujud dengan isyarat kepala semampunya.</div>
+        <span class="step-badge sbdg-o">Boleh</span>
+      </div>
+    </div>
+    <div class="step-item si-o">
+      <div class="step-num sn-o">3</div>
+      <div class="step-body">
+        <div class="step-title">Arah Kiblat di Kendaraan</div>
+        <div class="step-desc">Saat takbiratul ihram usahakan menghadap kiblat — setelahnya boleh mengikuti arah kendaraan. Jika tidak tahu arah kiblat, bertaharri (berijtihad menentukan arah). Jika keliru pun dan tidak ada cara mengetahuinya, shalat tetap sah.</div>
+        <span class="step-badge sbdg-gray">Penting</span>
+      </div>
+    </div>
+    <div class="step-item si-o">
+      <div class="step-num sn-o">4</div>
+      <div class="step-body">
+        <div class="step-title">Shalat Sunnah di Kendaraan — Lebih Longgar</div>
+        <div class="step-desc">Shalat sunnah (rawatib, tahajud, dll.) boleh dikerjakan di kendaraan ke arah manapun kendaraan menghadap — tanpa perlu menghadap kiblat. Ini adalah rukhshah khusus yang lebih longgar dari shalat fardhu.</div>
+        <span class="step-badge sbdg-t">Rukhshah</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="dalil dalil-o">
+    <div class="dbar-o"></div>
+    <div class="dbody">
+      <div class="dtag dtag-o">📜 HR. Bukhari &amp; Muslim — Nabi ﷺ Shalat Sunnah di Atas Kendaraan</div>
+      <div class="dar dar-o">كَانَ رَسُولُ اللَّهِ ﷺ يُصَلِّي عَلَى رَاحِلَتِهِ فِي السَّفَرِ نَافِلَةً أَيْنَمَا تَوَجَّهَتْ بِهِ</div>
+      <div class="dtrans">"Rasulullah ﷺ biasa mengerjakan shalat sunnah di atas untanya saat bepergian, ke mana pun unta itu menghadap."</div>
+      <div class="dref dref-o">HR. Bukhari (1105) &amp; Muslim (700) — dari Ibnu Umar radhiyallahu 'anhu</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ BAB VI: MAKMUM MUSAFIR DI BELAKANG IMAM MUKIM ══════ -->
+<div class="chbar">
+  <div class="chbar-stripe cs-teal"></div>
+  <div class="chbar-body cb-teal">
+    <div class="chbar-tag ct-teal">✦ Bab Keenam</div>
+    <div class="chbar-ar car-teal">الْمُسَافِرُ خَلْفَ الْإِمَامِ الْمُقِيمِ</div>
+    <div class="chbar-title cht-teal">Musafir Menjadi Makmum di Belakang Imam Mukim</div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="prose fl-teal">
+    <p>Situasi yang sangat sering terjadi: musafir masuk masjid dan mendapati imam mukim (orang yang tidak sedang safar) sedang memimpin shalat fardhu dengan 4 rakaat penuh. Apakah musafir tetap mengikuti imam sampai selesai, atau ia salam setelah 2 rakaat?</p>
+  </div>
+
+  <div class="hl hl-teal">
+    <div class="hl-label hll-t">✦ Hukum: Wajib Mengikuti Imam Sampai Selesai</div>
+    <div class="hl-ar hlar-t">إِذَا أَمَّ أَحَدُكُمُ النَّاسَ فَلْيُخَفِّفْ وَإِذَا صَلَّى وَحْدَهُ فَلْيُصَلِّ كَيْفَ شَاءَ</div>
+    <div class="hl-trans hlt-warm">Musafir yang menjadi makmum di belakang imam mukim <strong>wajib mengikuti 4 rakaat penuh</strong> — sama seperti imam. Ia tidak boleh salam lebih awal di rakaat ke-2. Dalil: "Imam dijadikan untuk diikuti, maka janganlah kalian menyalahinya." — HR. Bukhari (722). Dan hadis riwayat Musnad Imam Ahmad: Utsman radhiyallahu 'anhu shalat 4 rakaat di Mina dan Ibnu Mas'ud mengikutinya meski awalnya berbeda pendapat.</div>
+    <div class="hl-ref hlr-t">HR. Bukhari (722) &amp; Muslim (411) · Ijma' ulama empat madzhab</div>
+  </div>
+
+  <div class="tbl-wrap">
+    <table class="tbl th-t">
+      <thead>
+        <tr>
+          <th style="width:30%">Situasi</th>
+          <th style="width:35%">Hukum</th>
+          <th style="width:35%">Catatan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Situasi">Musafir makmum di belakang imam mukim (4 rakaat)</td>
+          <td data-label="Hukum"><span class="tbdg tbdg-t">Ikuti 4 rakaat penuh</span></td>
+          <td data-label="Catatan">Shalat sah dan gugur kewajiban shalat musafir itu. Tidak dianggap melanggar qashar karena mengikuti imam.</td>
+        </tr>
+        <tr>
+          <td data-label="Situasi">Imam mukim makmum di belakang musafir (2 rakaat)</td>
+          <td data-label="Hukum"><span class="tbdg tbdg-o">Imam salam, makmum mukim lanjutkan sendiri</span></td>
+          <td data-label="Catatan">Musafir imam salam setelah 2 rakaat. Makmum mukim langsung berdiri melanjutkan 2 rakaat sisanya secara mandiri tanpa imam baru.</td>
+        </tr>
+        <tr>
+          <td data-label="Situasi">Musafir masbuk (ketinggalan sebagian shalat) di belakang imam mukim</td>
+          <td data-label="Hukum"><span class="tbdg tbdg-t">Ikuti imam, lalu qadha sendiri</span></td>
+          <td data-label="Catatan">Setelah imam salam, musafir berdiri dan mengqadha rakaat yang tertinggal — namun apakah ia qadha 2 atau 4 rakaat total? Jumhur: ia qadha agar total menjadi 4 rakaat (karena sudah niat 4 rakaat bersama imam). Pendapat lain: qadha agar total 2 rakaat saja.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══════ BAB VII: KEUTAMAAN & DALIL TAMBAHAN ══════ -->
+<div class="chbar">
+  <div class="chbar-stripe cs-night"></div>
+  <div class="chbar-body cb-night">
+    <div class="chbar-tag ct-night">✦ Bab Ketujuh</div>
+    <div class="chbar-ar car-night">فَضَائِلُ الصَّلَاةِ فِي السَّفَرِ</div>
+    <div class="chbar-title cht-night">Keutamaan Menjaga Shalat dalam Perjalanan</div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="hl hl-night">
+    <div class="hl-label hll-night">📜 HR. Muslim — Pahala Shalat Musafir Lebih Besar</div>
+    <div class="hl-ar hlar-night">إِذَا مَرِضَ الْعَبْدُ أَوْ سَافَرَ كُتِبَ لَهُ مِثْلُ مَا كَانَ يَعْمَلُ مُقِيمًا صَحِيحًا</div>
+    <div class="hl-trans hlt-night">"Apabila seorang hamba sakit atau bepergian, dituliskan baginya (pahala) seperti apa yang biasa ia kerjakan ketika mukim dan sehat." — Ini adalah kabar gembira luar biasa: musafir yang biasanya shalat tahajud, shalat rawatib, atau amalan lainnya — jika dalam perjalanan ia tidak bisa mengerjakannya, pahalanya tetap dicatat penuh oleh Allah.</div>
+    <div class="hl-ref hlr-night">HR. Bukhari (2996) — dari Abu Musa Al-Asy'ari radhiyallahu 'anhu</div>
+  </div>
+
+  <div class="feat-grid">
+    <div class="feat feat-o">
+      <span class="feat-icon">🌙</span>
+      <div class="feat-title">Shalat Rawatib Musafir</div>
+      <div class="feat-desc">Nabi ﷺ meninggalkan semua shalat rawatib saat safar kecuali dua hal: shalat sunnah sebelum Subuh (qabliyah Subuh) dan shalat witir. Keduanya tetap dikerjakan beliau meski dalam perjalanan.</div>
+      <span class="feat-ref">HR. Bukhari (1100) &amp; Muslim (689)</span>
+    </div>
+    <div class="feat feat-s">
+      <span class="feat-icon">📿</span>
+      <div class="feat-title">Shalat Dhuha dalam Perjalanan</div>
+      <div class="feat-desc">Nabi ﷺ pernah mengerjakan Shalat Dhuha saat perjalanan — khususnya saat memasuki Makkah. Shalat ini tidak gugur kewajiban mengerjakannya hanya karena safar.</div>
+      <span class="feat-ref">HR. Bukhari (1176) &amp; Muslim (336)</span>
+    </div>
+    <div class="feat feat-t">
+      <span class="feat-icon">🤲</span>
+      <div class="feat-title">Doa Musafir Mustajab</div>
+      <div class="feat-desc">Nabi ﷺ menyebutkan tiga doa yang tidak tertolak, salah satunya: doa musafir. Ini menjadikan perjalanan sebagai kesempatan emas untuk memperbanyak doa dan memohon kepada Allah.</div>
+      <span class="feat-ref">HR. Abu Dawud (1536) &amp; Tirmidzi (1905) — Hasan</span>
+    </div>
+    <div class="feat feat-sl">
+      <span class="feat-icon">🧳</span>
+      <div class="feat-title">Doa Keluar Rumah untuk Perjalanan</div>
+      <div class="feat-desc">"Bismillah, tawakkaltu 'alallah, lā hawla wa lā quwwata illā billāh" — doa yang diajarkan Nabi ﷺ ketika keluar rumah. Malaikat berkata kepada orang yang membacanya: 'Kamu diberi petunjuk, dicukupkan, dan dilindungi.'</div>
+      <span class="feat-ref">HR. Abu Dawud (5095) &amp; Tirmidzi (3426) — Shahih</span>
+    </div>
+  </div>
+
+  <div class="banner banner-ocher">
+    <div class="ban-ar bnar-w">اللَّهُمَّ أَنْتَ الصَّاحِبُ فِي السَّفَرِ وَالْخَلِيفَةُ فِي الْأَهْلِ</div>
+    <div class="ban-id bnid-w">"Ya Allah, Engkaulah Teman dalam perjalanan dan Pengganti (penjaga) atas keluarga (yang ditinggalkan)." — Doa yang diajarkan Nabi ﷺ kepada para musafir. Membaca ini adalah menyerahkan diri dan keluarga kepada penjagaan Allah Yang Maha Kuasa.</div>
+    <div class="ban-ref bnref-w">HR. Muslim (1342) — dari Ibnu Umar radhiyallahu 'anhu</div>
+  </div>
+</div>
+
+<!-- ══════ RINGKASAN PRAKTIS ══════ -->
+<div class="chbar">
+  <div class="chbar-stripe cs-sienna"></div>
+  <div class="chbar-body cb-sienna">
+    <div class="chbar-tag ct-sienna">✦ Penutup</div>
+    <div class="chbar-ar car-sienna">خُلَاصَةٌ عَمَلِيَّةٌ</div>
+    <div class="chbar-title cht-sienna">Ringkasan Praktis: Panduan Cepat Musafir</div>
+  </div>
+</div>
+
+<div class="sec" style="border-bottom:none;">
+  <div class="tbl-wrap">
+    <table class="tbl th-n">
+      <thead>
+        <tr>
+          <th style="width:28%">Pertanyaan</th>
+          <th style="width:72%">Jawaban Ringkas</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Pertanyaan">Kapan boleh mulai qashar?</td>
+          <td data-label="Jawaban">Setelah meninggalkan batas kota/desa tempat tinggal, dan jarak perjalanan ≥89 km (jumhur) atau dianggap "safar" oleh masyarakat setempat.</td>
+        </tr>
+        <tr>
+          <td data-label="Pertanyaan">Shalat apa saja yang di-qashar?</td>
+          <td data-label="Jawaban">Zhuhur (4→2), Ashar (4→2), Isya (4→2). Maghrib dan Subuh tidak di-qashar.</td>
+        </tr>
+        <tr>
+          <td data-label="Pertanyaan">Bolehkah qashar sekaligus jamak?</td>
+          <td data-label="Jawaban">Boleh. Contoh: Zhuhur 2 rakaat + Ashar 2 rakaat dikerjakan di waktu Zhuhur (jamak taqdim dengan qashar).</td>
+        </tr>
+        <tr>
+          <td data-label="Pertanyaan">Berapa lama boleh qashar di kota tujuan?</td>
+          <td data-label="Jawaban">Jika berniat menetap &gt;4 hari: wajib itman (jumhur). Jika tidak berniat menetap lama: boleh terus qashar selama masih dianggap musafir.</td>
+        </tr>
+        <tr>
+          <td data-label="Pertanyaan">Musafir ikut imam mukim (4 rakaat)?</td>
+          <td data-label="Jawaban">Wajib ikuti 4 rakaat sampai selesai — tidak boleh salam sendiri di rakaat ke-2.</td>
+        </tr>
+        <tr>
+          <td data-label="Pertanyaan">Boleh jamak tanpa qashar?</td>
+          <td data-label="Jawaban">Boleh. Contoh: Zhuhur 4 rakaat + Ashar 4 rakaat dijamak taqdim. Qashar dan jamak adalah dua rukhshah yang boleh dikombinasikan atau diambil salah satunya.</td>
+        </tr>
+        <tr>
+          <td data-label="Pertanyaan">Shalat di pesawat yang sedang terbang?</td>
+          <td data-label="Jawaban">Boleh shalat di tempat duduk dengan isyarat jika tidak bisa berdiri/sujud. Usahakan menghadap kiblat saat takbiratul ihram.</td>
+        </tr>
+        <tr>
+          <td data-label="Pertanyaan">Apakah shalat sunnah rawatib gugur saat safar?</td>
+          <td data-label="Jawaban">Nabi ﷺ meninggalkan rawatib saat safar kecuali qabliyah Subuh dan witir. Namun jika dikerjakan, tidak berdosa — dan pahala amalan rutin tetap dicatat meski tidak dikerjakan.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+</div><!-- end body-wrap -->
+
+<!-- ══════ PENUTUP ══════ -->
+<div class="penutup">
+  <div class="penutup-inner">
+    <div class="penutup-ar">يُرِيدُ اللَّهُ بِكُمُ الْيُسْرَ وَلَا يُرِيدُ بِكُمُ الْعُسْرَ</div>
+    <div class="penutup-div"></div>
+    <p class="penutup-p">"Allah menghendaki kemudahan bagimu, dan tidak menghendaki kesukaran bagimu." — QS. Al-Baqarah: 185. Inilah jiwa dari seluruh rukhshah safar: Allah Maha Mengetahui kondisi hamba-Nya, dan Ia tidak pernah ingin mempersulit.</p>
+    <p class="penutup-p" style="margin-top:10px;">Maka ketika kamu sedang dalam perjalanan — lelah, jauh dari rumah, tidak tahu kapan bisa istirahat — ingatlah bahwa Allah sendiri yang memberikan keringanan ini. Terimalah "sedekah" dari Allah ini dengan syukur, dan tetaplah menjaga shalat dalam kondisi apapun.</p>
+    <div class="penutup-div"></div>
+    <div class="dalil dalil-dk" style="text-align:left;">
+      <div class="dbar-dk"></div>
+      <div class="dbody">
+        <div class="dtag dtag-dk">📜 Doa Memasuki Kota Tujuan · HR. Muslim</div>
+        <div class="dar dar-dk">اللَّهُمَّ رَبَّ السَّمَاوَاتِ السَّبْعِ وَمَا أَظْلَلْنَ وَرَبَّ الْأَرَضِينَ السَّبْعِ وَمَا أَقْلَلْنَ أَسْأَلُكَ خَيْرَ هَذِهِ الْقَرْيَةِ وَخَيْرَ أَهْلِهَا وَأَعُوذُ بِكَ مِنْ شَرِّهَا</div>
+        <div class="dtrans dtrans-dk">"Ya Allah, Tuhan langit yang tujuh dan apa yang dinaunginya, Tuhan bumi yang tujuh dan apa yang dibawanya — aku memohon kepada-Mu kebaikan kota ini dan kebaikan penduduknya, dan aku berlindung kepada-Mu dari keburukannya."</div>
+        <div class="dref dref-dk">HR. Ibnu Hibban (2694) &amp; Al-Hakim — Doa tiba di kota tujuan — Shahih</div>
+      </div>
+    </div>
+    <div class="penutup-footer">
+      <div class="logo">صَلَاةُ الْمُسَافِرِ</div>
+      <div class="tag">وَاللّٰهُ أَعْلَمُ بِالصَّوَابِ · Semoga Bermanfaat</div>
+    </div>
+  </div>
+</div>
+
+<script>
+// Star field
+const sf = document.getElementById('stars');
+for(let i=0;i<180;i++){
+  const s=document.createElement('div');
+  s.className='hstar';
+  const sz=Math.random()*1.8+.3;
+  s.style.cssText=`
+    width:${sz}px;height:${sz}px;
+    left:${Math.random()*100}%;
+    top:${Math.random()*75}%;
+    --std:${(Math.random()*4+2).toFixed(1)}s;
+    --sto:${(Math.random()*.5+.1).toFixed(2)};
+    animation-delay:${(Math.random()*5).toFixed(1)}s;
+    ${Math.random()<.05?'background:rgba(232,160,48,.9);':''}
+  `;
+  sf.appendChild(s);
+}
+</script>
+</body>
+</html>

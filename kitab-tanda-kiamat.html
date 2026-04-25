@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kitab Tanda-Tanda Hari Kiamat</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Amiri:ital,wght@0,400;0,700;1,400&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --void:    #05030a;
+  --charcoal:#0c0810;
+  --ash:     #14101a;
+  --smoke:   #1e1825;
+  --ember:   #8b1a00;
+  --flame:   #c43200;
+  --fire:    #e84e00;
+  --orange:  #f07030;
+  --gold:    #d4a520;
+  --gold-lt: #f0c840;
+  --gold-pale:#fdf5d0;
+  --bone:    #f5f0e4;
+  --parchment:#ede4cc;
+  --parchment-d:#ddd0b0;
+  --sepia:   #6a5030;
+  --ink:     #1a1208;
+  --ink-mid: #2e2010;
+  --border-d:rgba(212,165,32,0.15);
+  --border-l:rgba(26,18,8,0.15);
+}
+
+html { scroll-behavior:smooth; }
+
+body {
+  background: var(--void);
+  font-family: 'EB Garamond', Georgia, serif;
+  color: var(--bone);
+  overflow-x: hidden;
+}
+
+/* ═══ HERO ═══ */
+.hero {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 80px 28px 100px;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 100% 60% at 50% 100%, rgba(139,26,0,0.6) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 40% at 50% 80%,  rgba(196,50,0,0.3) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 60% at 20% 50%,  rgba(139,26,0,0.2) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 60% at 80% 50%,  rgba(139,26,0,0.2) 0%, transparent 60%),
+    linear-gradient(180deg, var(--void) 0%, var(--charcoal) 50%, #180a00 100%);
+}
+
+/* Cracked earth texture */
+.hero-crack {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    repeating-linear-gradient(87deg, transparent 0, transparent 80px, rgba(139,26,0,0.07) 80px, rgba(139,26,0,0.07) 81px),
+    repeating-linear-gradient(3deg,  transparent 0, transparent 60px, rgba(139,26,0,0.05) 60px, rgba(139,26,0,0.05) 61px);
+}
+
+/* Floating embers */
+.embers { position:absolute; inset:0; pointer-events:none; }
+.ember-p {
+  position: absolute;
+  border-radius: 50%;
+  animation: emberFloat var(--d,6s) ease-in-out infinite;
+  opacity: 0;
+}
+@keyframes emberFloat {
+  0%   { opacity:0; transform:translateY(0) scale(0.6) rotate(0deg); }
+  20%  { opacity:var(--o,0.8); }
+  80%  { opacity:var(--o,0.5); }
+  100% { opacity:0; transform:translateY(-160px) scale(1.4) rotate(180deg); }
+}
+
+.hero-inner { position:relative; z-index:2; max-width:800px; }
+
+.hero-top-ar {
+  font-family: 'Amiri', serif;
+  font-size: clamp(1.4rem,4vw,2.4rem);
+  color: var(--gold);
+  text-shadow: 0 0 30px rgba(212,165,32,0.5);
+  line-height: 1.9;
+  margin-bottom: 16px;
+  animation: burnIn 2s ease both;
+}
+
+.hero-kicker {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(0.55rem,1.5vw,0.75rem);
+  letter-spacing: 6px;
+  color: rgba(240,112,48,0.7);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  animation: burnIn 2s ease both 0.2s;
+}
+
+.hero-title {
+  font-family: 'Cinzel', serif;
+  font-weight: 900;
+  font-size: clamp(2.2rem,7vw,5.5rem);
+  line-height: 1.05;
+  letter-spacing: -1px;
+  background: linear-gradient(160deg, #ffffff 0%, var(--gold-lt) 40%, var(--orange) 75%, #8b2000 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 10px;
+  animation: burnIn 2s ease both 0.1s;
+}
+
+.hero-sub {
+  font-family: 'Amiri', serif;
+  font-size: clamp(1.1rem,2.8vw,1.8rem);
+  color: rgba(212,165,32,0.65);
+  line-height: 2;
+  margin-bottom: 30px;
+  animation: burnIn 2s ease both 0.3s;
+}
+
+.hero-rule {
+  display: flex; align-items:center; justify-content:center; gap:14px;
+  margin: 18px auto 28px;
+  animation: burnIn 2s ease both 0.4s;
+}
+.hero-rule span { width:100px; height:1px; background:linear-gradient(90deg,transparent,rgba(212,165,32,0.4)); }
+.hero-rule span:last-child { background:linear-gradient(90deg,rgba(212,165,32,0.4),transparent); }
+.hero-rule em { color:var(--flame); font-style:normal; letter-spacing:8px; font-size:0.85rem; }
+
+.hero-verse {
+  max-width: 580px; margin: 0 auto;
+  padding: 24px 32px;
+  border: 1px solid rgba(212,165,32,0.2);
+  background: rgba(12,8,16,0.7);
+  backdrop-filter: blur(8px);
+  animation: burnIn 2s ease both 0.5s;
+}
+.hero-verse-ar {
+  font-family:'Amiri',serif;
+  font-size:clamp(1rem,2.5vw,1.4rem);
+  color:var(--gold);
+  line-height:2.2; direction:rtl;
+  margin-bottom:10px;
+}
+.hero-verse-id {
+  font-style:italic; font-size:0.83rem;
+  color:rgba(240,200,160,0.65);
+}
+
+@keyframes burnIn {
+  from { opacity:0; filter:blur(3px); transform:translateY(12px); }
+  to   { opacity:1; filter:blur(0);   transform:translateY(0); }
+}
+
+/* ═══ TIMELINE WRAPPER ═══ */
+.timeline-body {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 22px 80px;
+  position: relative;
+}
+
+/* Vertical spine */
+.timeline-body::before {
+  content:'';
+  position: absolute;
+  left: 50%;
+  top: 0; bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg,
+    transparent 0%,
+    rgba(139,26,0,0.4) 5%,
+    rgba(196,50,0,0.6) 20%,
+    rgba(212,165,32,0.4) 50%,
+    rgba(196,50,0,0.6) 80%,
+    rgba(139,26,0,0.4) 95%,
+    transparent 100%);
+  transform: translateX(-50%);
+}
+
+@media(max-width:700px){
+  .timeline-body::before { left:24px; }
+}
+
+/* ═══ ERA HEADER ═══ */
+.era {
+  text-align: center;
+  padding: 60px 20px 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.era-ornament {
+  display: inline-flex; align-items:center; gap:12px;
+  margin-bottom: 14px;
+}
+.era-ornament span { width:60px; height:1px; }
+.era-ornament em { font-size:1.1rem; font-style:normal; }
+
+.era-tag {
+  font-family:'Cinzel', serif;
+  font-size:clamp(0.55rem,1.4vw,0.7rem);
+  letter-spacing:6px; text-transform:uppercase;
+  margin-bottom:10px;
+}
+
+.era-arabic {
+  font-family:'Amiri',serif;
+  font-size:clamp(1.2rem,3vw,2rem);
+  line-height:1.9;
+  margin-bottom:6px;
+}
+
+.era-title {
+  font-family:'Cinzel',serif;
+  font-weight:700;
+  font-size:clamp(1.5rem,4vw,2.8rem);
+  line-height:1.2;
+  margin-bottom:8px;
+}
+
+.era-desc {
+  font-style:italic;
+  font-size:clamp(0.9rem,2vw,1.05rem);
+  line-height:1.8; max-width:560px; margin:0 auto;
+  opacity:0.75;
+}
+
+/* Era color themes */
+.era-fitna .era-ornament span { background:linear-gradient(90deg,transparent,rgba(212,165,32,0.5)); }
+.era-fitna .era-ornament span:last-child { background:linear-gradient(90deg,rgba(212,165,32,0.5),transparent); }
+.era-fitna .era-ornament em { color:var(--gold); }
+.era-fitna .era-tag { color:rgba(212,165,32,0.6); }
+.era-fitna .era-arabic { color:var(--gold); }
+.era-fitna .era-title { color:var(--bone); }
+.era-fitna .era-desc { color:rgba(245,240,228,0.7); }
+
+.era-kubra .era-ornament span { background:linear-gradient(90deg,transparent,rgba(232,78,0,0.6)); }
+.era-kubra .era-ornament span:last-child { background:linear-gradient(90deg,rgba(232,78,0,0.6),transparent); }
+.era-kubra .era-ornament em { color:var(--fire); }
+.era-kubra .era-tag { color:rgba(232,78,0,0.7); }
+.era-kubra .era-arabic { color:var(--fire); }
+.era-kubra .era-title { color:var(--bone); }
+.era-kubra .era-desc { color:rgba(245,240,228,0.7); }
+
+.era-qiyamah .era-ornament span { background:linear-gradient(90deg,transparent,rgba(196,50,0,0.8)); }
+.era-qiyamah .era-ornament span:last-child { background:linear-gradient(90deg,rgba(196,50,0,0.8),transparent); }
+.era-qiyamah .era-ornament em { color:var(--flame); }
+.era-qiyamah .era-tag { color:rgba(196,50,0,0.8); }
+.era-qiyamah .era-arabic { color:var(--flame); text-shadow:0 0 20px rgba(196,50,0,0.4); }
+.era-qiyamah .era-title { background:linear-gradient(135deg,#ffffff,var(--flame),#8b1a00); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+
+/* ═══ TIMELINE ITEM ═══ */
+.t-item {
+  display: grid;
+  grid-template-columns: 1fr 60px 1fr;
+  gap: 0 0;
+  margin: 0 0 8px;
+  align-items: start;
+  position: relative;
+  z-index: 2;
+}
+
+/* Odd items: content left, empty right */
+.t-item.left .t-content { grid-column:1; grid-row:1; padding-right:32px; text-align:right; }
+.t-item.left .t-node   { grid-column:2; grid-row:1; }
+.t-item.left .t-empty  { grid-column:3; grid-row:1; }
+
+/* Even items: empty left, content right */
+.t-item.right .t-empty  { grid-column:1; grid-row:1; }
+.t-item.right .t-node   { grid-column:2; grid-row:1; }
+.t-item.right .t-content{ grid-column:3; grid-row:1; padding-left:32px; text-align:left; }
+
+@media(max-width:700px){
+  .t-item { grid-template-columns: 48px 1fr; }
+  .t-item.left .t-content,
+  .t-item.right .t-content { grid-column:2; padding-left:20px; padding-right:0; text-align:left; }
+  .t-item.left .t-node,
+  .t-item.right .t-node { grid-column:1; }
+  .t-item.left .t-empty,
+  .t-item.right .t-empty { display:none; }
+}
+
+/* Node (the dot on the line) */
+.t-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 18px;
+}
+
+.t-dot {
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  border: 2px solid;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 3;
+}
+
+.t-dot::after {
+  content:'';
+  position:absolute;
+  inset:-4px;
+  border-radius:50%;
+  opacity:0.3;
+  animation: pulseDot 2.5s ease-in-out infinite;
+}
+
+@keyframes pulseDot {
+  0%,100% { transform:scale(1); opacity:0.3; }
+  50% { transform:scale(1.5); opacity:0; }
+}
+
+/* Dot color themes */
+.dot-gold { background:var(--gold); border-color:var(--gold-lt); }
+.dot-gold::after { background:var(--gold); }
+.dot-fire { background:var(--fire); border-color:var(--orange); }
+.dot-fire::after { background:var(--fire); }
+.dot-flame { background:var(--flame); border-color:var(--fire); }
+.dot-flame::after { background:var(--flame); }
+.dot-ember { background:var(--ember); border-color:var(--flame); }
+.dot-ember::after { background:var(--ember); }
+.dot-white { background:#fff; border-color:var(--gold-lt); }
+.dot-white::after { background:#fff; }
+
+/* Number badge */
+.t-num {
+  font-family:'Cinzel',serif;
+  font-size:0.55rem;
+  letter-spacing:1px;
+  margin-top:6px;
+  padding:2px 7px;
+  border-radius:2px;
+}
+.num-gold { background:rgba(212,165,32,0.15); color:var(--gold); border:1px solid rgba(212,165,32,0.3); }
+.num-fire { background:rgba(232,78,0,0.15); color:var(--fire); border:1px solid rgba(232,78,0,0.3); }
+.num-flame { background:rgba(196,50,0,0.15); color:var(--flame); border:1px solid rgba(196,50,0,0.3); }
+.num-white { background:rgba(255,255,255,0.1); color:#fff; border:1px solid rgba(255,255,255,0.3); }
+
+/* Content card */
+.t-content {
+  padding-top: 14px;
+  padding-bottom: 28px;
+}
+
+.t-card {
+  padding: 18px 22px;
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Dark card (default) */
+.card-dark {
+  background: linear-gradient(135deg, rgba(14,10,20,0.95), rgba(22,16,30,0.9));
+  border: 1px solid var(--border-d);
+}
+.card-dark:hover { border-color:rgba(212,165,32,0.3); }
+
+/* Fire card */
+.card-fire {
+  background: linear-gradient(135deg, rgba(20,8,4,0.95), rgba(30,14,6,0.9));
+  border: 1px solid rgba(232,78,0,0.2);
+}
+.card-fire:hover { border-color:rgba(232,78,0,0.4); }
+
+/* Flame card (most intense) */
+.card-flame {
+  background: linear-gradient(135deg, rgba(22,4,0,0.97), rgba(32,8,2,0.9));
+  border: 1px solid rgba(196,50,0,0.3);
+}
+
+.t-card-ar {
+  font-family:'Amiri',serif;
+  font-size:clamp(0.95rem,2.2vw,1.25rem);
+  line-height:2;
+  direction:rtl;
+  margin-bottom:8px;
+  padding-bottom:8px;
+}
+.card-dark .t-card-ar { color:var(--gold); border-bottom:1px dashed rgba(212,165,32,0.15); }
+.card-fire .t-card-ar { color:var(--orange); border-bottom:1px dashed rgba(232,78,0,0.15); }
+.card-flame .t-card-ar { color:var(--flame); border-bottom:1px dashed rgba(196,50,0,0.2); }
+
+.t-card-title {
+  font-family:'Cinzel',serif;
+  font-weight:600;
+  font-size:clamp(0.85rem,2vw,1.05rem);
+  margin-bottom:6px;
+  letter-spacing:0.3px;
+}
+.card-dark .t-card-title { color:var(--bone); }
+.card-fire .t-card-title { color:#ffdec8; }
+.card-flame .t-card-title { color:#ffe0d0; }
+
+.t-card-body {
+  font-size:clamp(0.82rem,1.8vw,0.95rem);
+  line-height:1.85;
+  margin-bottom:10px;
+}
+.card-dark .t-card-body { color:rgba(245,240,228,0.72); }
+.card-fire .t-card-body { color:rgba(255,220,192,0.72); }
+.card-flame .t-card-body { color:rgba(255,210,190,0.72); }
+
+.t-dalil {
+  font-size:0.72rem;
+  font-style:italic;
+  padding:8px 12px;
+  border-radius:1px;
+  line-height:1.6;
+}
+.card-dark .t-dalil { background:rgba(212,165,32,0.07); color:rgba(212,165,32,0.7); border-left:2px solid rgba(212,165,32,0.3); }
+.card-fire .t-dalil { background:rgba(232,78,0,0.07); color:rgba(240,160,100,0.8); border-left:2px solid rgba(232,78,0,0.3); }
+.card-flame .t-dalil { background:rgba(196,50,0,0.1); color:rgba(240,140,80,0.85); border-left:2px solid rgba(196,50,0,0.4); }
+
+/* ═══ LIGHT SECTION (paper) ═══ */
+.section-paper {
+  background: var(--parchment);
+  color: var(--ink);
+  padding: 56px 28px 48px;
+  border-top: 6px solid var(--ember);
+  border-bottom: 6px solid var(--ember);
+  position: relative;
+}
+.section-paper::before {
+  content:'';
+  position:absolute; inset:0;
+  background-image:repeating-linear-gradient(0deg,transparent,transparent 27px,rgba(26,18,8,0.04) 27px,rgba(26,18,8,0.04) 28px);
+  pointer-events:none;
+}
+
+.paper-inner { max-width:820px; margin:0 auto; position:relative; z-index:1; }
+
+.paper-header {
+  text-align:center;
+  margin-bottom:36px;
+}
+.paper-tag {
+  font-family:'Cinzel',serif;
+  font-size:0.62rem; letter-spacing:5px; text-transform:uppercase;
+  color:var(--ember); margin-bottom:12px;
+}
+.paper-ar {
+  font-family:'Amiri',serif;
+  font-size:clamp(1.2rem,3vw,1.9rem);
+  color:var(--ember); line-height:1.9; margin-bottom:6px;
+}
+.paper-title {
+  font-family:'Cinzel',serif;
+  font-weight:700;
+  font-size:clamp(1.3rem,3.5vw,2.2rem);
+  color:var(--ink); line-height:1.25;
+}
+.paper-rule {
+  width:60px; height:2px;
+  background:var(--ember); margin:14px auto 0;
+}
+
+.paper-prose p {
+  font-size:clamp(0.97rem,2.2vw,1.08rem);
+  line-height:2; color:var(--ink-mid);
+  margin-bottom:16px; text-align:justify;
+}
+.paper-prose p.lead {
+  font-style:italic; color:var(--ember);
+  font-size:clamp(1rem,2.3vw,1.18rem); line-height:1.85;
+}
+.paper-prose p:first-of-type:not(.lead)::first-letter {
+  font-family:'Cinzel',serif; font-weight:700;
+  font-size:4em; line-height:0.72;
+  float:left; margin:10px 12px 0 0; color:var(--ember);
+}
+
+.paper-dalil {
+  margin:24px 0;
+  display:grid; grid-template-columns:4px 1fr;
+  background:var(--parchment-d);
+  border:1px solid rgba(139,26,0,0.2);
+}
+.paper-dalil-bar { background:var(--ember); }
+.paper-dalil-body { padding:18px 20px 14px; }
+.paper-dalil-tag {
+  font-family:'Cinzel',serif;
+  font-size:0.58rem; letter-spacing:4px; text-transform:uppercase;
+  color:var(--ember); margin-bottom:10px;
+  display:flex; align-items:center; gap:10px;
+}
+.paper-dalil-tag::after { content:''; flex:1; height:1px; background:linear-gradient(90deg,rgba(139,26,0,0.3),transparent); }
+.paper-dalil-ar {
+  font-family:'Amiri',serif;
+  font-size:clamp(1.05rem,2.5vw,1.45rem);
+  color:var(--ember); line-height:2.2; direction:rtl; text-align:right;
+  margin-bottom:12px; padding-bottom:10px;
+  border-bottom:1px dashed rgba(139,26,0,0.2);
+}
+.paper-dalil-trans { font-style:italic; font-size:0.9rem; line-height:1.8; color:var(--sepia); margin-bottom:7px; }
+.paper-dalil-ref { font-family:'Cinzel',serif; font-size:0.6rem; letter-spacing:2px; text-transform:uppercase; color:var(--ember); }
+
+/* ═══ KUBRA BANNER ═══ */
+.kubra-banner {
+  text-align:center;
+  padding:32px 28px;
+  margin:0;
+  background:linear-gradient(180deg, #0c0810 0%, #1a0200 50%, #0c0810 100%);
+  border-top:1px solid rgba(196,50,0,0.3);
+  border-bottom:1px solid rgba(196,50,0,0.3);
+  position:relative; overflow:hidden;
+}
+.kubra-banner::before {
+  content:'';
+  position:absolute; inset:0;
+  background:radial-gradient(ellipse 60% 60% at 50% 50%, rgba(139,26,0,0.25),transparent);
+}
+.kubra-banner-ar {
+  font-family:'Amiri',serif;
+  font-size:clamp(1.5rem,4vw,2.5rem);
+  color:var(--flame);
+  text-shadow:0 0 30px rgba(196,50,0,0.5);
+  line-height:2; margin-bottom:10px;
+  position:relative; z-index:1;
+}
+.kubra-banner-id {
+  font-style:italic; font-size:0.9rem;
+  color:rgba(245,240,228,0.65); line-height:1.8;
+  position:relative; z-index:1;
+}
+.kubra-banner-ref {
+  margin-top:8px;
+  font-family:'Cinzel',serif;
+  font-size:0.58rem; letter-spacing:3px; text-transform:uppercase;
+  color:rgba(196,50,0,0.6);
+  position:relative; z-index:1;
+}
+
+/* ═══ QIYAMAH FINAL ═══ */
+.qiyamah-section {
+  background: linear-gradient(180deg, var(--charcoal) 0%, #200400 40%, #400800 70%, #0c0810 100%);
+  padding: 64px 28px 80px;
+  position: relative; overflow:hidden;
+}
+.qiyamah-section::before {
+  content:'';
+  position:absolute; inset:0;
+  background:
+    radial-gradient(ellipse 80% 40% at 50% 30%, rgba(196,50,0,0.2) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 60% at 20% 80%, rgba(139,26,0,0.15) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 60% at 80% 80%, rgba(139,26,0,0.15) 0%, transparent 60%);
+  pointer-events:none;
+}
+
+.qiyamah-inner {
+  max-width:820px; margin:0 auto;
+  position:relative; z-index:1;
+}
+
+/* ═══ SEPARATOR ═══ */
+.sep-dark {
+  text-align:center; padding:20px 0;
+  background:var(--void);
+}
+.sep-dark span { color:rgba(139,26,0,0.5); letter-spacing:12px; font-size:0.8rem; }
+
+/* ═══ PENUTUP ═══ */
+.penutup {
+  background:linear-gradient(180deg, #0c0810 0%, var(--void) 100%);
+  padding:72px 28px 80px;
+  text-align:center; position:relative; overflow:hidden;
+}
+.penutup::before {
+  content:'';
+  position:absolute; inset:0;
+  background:radial-gradient(ellipse 50% 50% at 50% 0%, rgba(139,26,0,0.2) 0%, transparent 70%);
+}
+.penutup::after {
+  content:''; position:absolute;
+  bottom:0; left:0; right:0; height:3px;
+  background:linear-gradient(90deg,transparent,var(--ember),transparent);
+}
+.penutup-inner { position:relative; z-index:1; max-width:620px; margin:0 auto; }
+.penutup-ar {
+  font-family:'Amiri',serif;
+  font-size:clamp(1.4rem,4vw,2.6rem);
+  color:var(--gold); line-height:2;
+  text-shadow:0 0 20px rgba(212,165,32,0.3);
+  margin-bottom:14px;
+}
+.penutup-div { width:80px; height:1px; background:linear-gradient(90deg,transparent,var(--gold-dim,#a88830),transparent); margin:18px auto; }
+.penutup-p { font-style:italic; color:rgba(245,240,228,0.7); font-size:clamp(0.9rem,2vw,1.05rem); line-height:1.9; margin-bottom:12px; }
+.penutup-ref { font-family:'Cinzel',serif; font-size:0.6rem; letter-spacing:3px; text-transform:uppercase; color:rgba(212,165,32,0.5); }
+.penutup-footer { margin-top:40px; padding-top:22px; border-top:1px solid rgba(255,255,255,0.05); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px; }
+.penutup-footer .logo { font-family:'Amiri',serif; font-size:1.1rem; color:rgba(212,165,32,0.4); }
+.penutup-footer .tag { font-family:'Cinzel',serif; font-size:0.58rem; letter-spacing:3px; text-transform:uppercase; color:rgba(255,255,255,0.15); }
+
+/* ═══ RESPONSIVE ═══ */
+@media(max-width:580px){
+  .section-paper { padding:40px 18px 36px; }
+  .qiyamah-section { padding:44px 18px 56px; }
+  .penutup { padding:52px 18px 60px; }
+  .t-card { padding:14px 16px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-crack"></div>
+  <div class="embers" id="embers"></div>
+
+  <div class="hero-inner">
+    <div class="hero-top-ar">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
+    <p class="hero-kicker">Naskah Berdalil Al-Qur'an &amp; Hadis · Berurutan Lengkap</p>
+    <h1 class="hero-title">Kitab Tanda-Tanda<br>Hari Kiamat</h1>
+    <div class="hero-sub">أَشْرَاطُ السَّاعَةِ وَالْفِتَنُ</div>
+    <div class="hero-rule">
+      <span></span><em>☽ ✦ ☽</em><span></span>
+    </div>
+    <div class="hero-verse">
+      <div class="hero-verse-ar">فَهَلْ يَنظُرُونَ إِلَّا السَّاعَةَ أَن تَأْتِيَهُم بَغْتَةً ۖ فَقَدْ جَاءَ أَشْرَاطُهَا</div>
+      <div class="hero-verse-id">"Maka tidaklah yang mereka tunggu-tunggu melainkan Hari Kiamat yang datang tiba-tiba, sedang tanda-tandanya telah datang."<br><em style="color:rgba(212,165,32,0.55)">— QS. Muhammad: 18</em></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROLOG PAPER ═══ -->
+<section class="section-paper">
+  <div class="paper-inner">
+    <div class="paper-header">
+      <div class="paper-tag">✦ Mukadimah</div>
+      <div class="paper-ar">مُقَدِّمَةٌ فِي أَشْرَاطِ السَّاعَةِ</div>
+      <h2 class="paper-title">Pengantar: Membaca Tanda-Tanda Zaman</h2>
+      <div class="paper-rule"></div>
+    </div>
+    <div class="paper-prose">
+      <p class="lead">Rasulullah ﷺ adalah manusia yang paling mengetahui apa yang akan terjadi setelah beliau wafat. Dengan bimbingan wahyu, beliau menyebutkan tanda-tanda Hari Kiamat satu per satu — dari yang kecil hingga yang besar, dari yang sudah terjadi, yang sedang terjadi, hingga yang belum.</p>
+      <p>Para ulama membagi tanda-tanda kiamat menjadi dua: <strong>Asyrāthus Sā'ah ash-Shughrā</strong> (tanda-tanda kecil) yang sebagian besar sudah terjadi dan terus berlanjut, dan <strong>Asyrāthus Sā'ah al-Kubrā</strong> (tanda-tanda besar) yang bila satu muncul, yang lain akan menyusul seperti biji-biji tasbih yang putus untaiannya. Naskah ini menyusunnya secara berurutan — dari fitnah awal hingga tiupan sangkakala terakhir.</p>
+    </div>
+
+    <div class="paper-dalil">
+      <div class="paper-dalil-bar"></div>
+      <div class="paper-dalil-body">
+        <div class="paper-dalil-tag">📖 QS. Muhammad: 18</div>
+        <div class="paper-dalil-ar">فَهَلْ يَنظُرُونَ إِلَّا السَّاعَةَ أَن تَأْتِيَهُم بَغْتَةً ۖ فَقَدْ جَاءَ أَشْرَاطُهَا</div>
+        <div class="paper-dalil-trans">"Maka tidaklah yang mereka tunggu-tunggu melainkan Hari Kiamat yang datang tiba-tiba, sedang tanda-tandanya telah datang."</div>
+        <div class="paper-dalil-ref">QS. Muhammad (47): 18</div>
+      </div>
+    </div>
+
+    <div class="paper-dalil">
+      <div class="paper-dalil-bar"></div>
+      <div class="paper-dalil-body">
+        <div class="paper-dalil-tag">📜 HR. Bukhari &amp; Muslim — Tanda-Tanda Disebutkan Bersamaan</div>
+        <div class="paper-dalil-ar">بُعِثْتُ أَنَا وَالسَّاعَةُ كَهَاتَيْنِ وَأَشَارَ بِالسَّبَّابَةِ وَالْوُسْطَى</div>
+        <div class="paper-dalil-trans">"Aku diutus dan Hari Kiamat seperti dua jari ini — sambil beliau menunjuk jari telunjuk dan jari tengah (berdampingan, hanya selisih sedikit)."</div>
+        <div class="paper-dalil-ref">HR. Bukhari (6504) &amp; Muslim (2950) — dari Sahal bin Sa'd radhiyallahu 'anhu</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sep-dark"><span>⌁ ⌁ ⌁</span></div>
+
+<!-- ═══ BAGIAN I: TANDA KECIL ═══ -->
+<div class="timeline-body">
+
+  <div class="era era-fitna">
+    <div class="era-ornament">
+      <span></span><em>🔥</em><span></span>
+    </div>
+    <div class="era-tag">✦ Bagian Pertama</div>
+    <div class="era-arabic">أَشْرَاطُ السَّاعَةِ الصُّغْرَى</div>
+    <h2 class="era-title">Tanda-Tanda Kecil Kiamat</h2>
+    <p class="era-desc">Yang telah terjadi, yang sedang berlangsung, dan yang masih akan datang — fitnah demi fitnah.</p>
+  </div>
+
+  <!-- 1 -->
+  <div class="t-item left">
+    <div class="t-content">
+      <div class="t-card card-dark">
+        <div class="t-card-ar">وَفَاةُ النَّبِيِّ ﷺ</div>
+        <div class="t-card-title">Wafatnya Nabi Muhammad ﷺ</div>
+        <div class="t-card-body">Rasulullah ﷺ sendiri menyebut wafatnya sebagai tanda pertama dan paling utama dari dimulainya era akhir zaman. Setelah beliau tiada, pintu kenabian tertutup untuk selamanya, dan fitnah demi fitnah mulai bermunculan.</div>
+        <div class="t-dalil">"Aku adalah tanda kiamat yang paling pertama." — HR. Muslim (2951) dari Anas bin Malik</div>
+      </div>
+    </div>
+    <div class="t-node"><div class="t-dot dot-gold"></div><div class="t-num num-gold">01</div></div>
+    <div class="t-empty"></div>
+  </div>
+
+  <!-- 2 -->
+  <div class="t-item right">
+    <div class="t-empty"></div>
+    <div class="t-node"><div class="t-dot dot-gold"></div><div class="t-num num-gold">02</div></div>
+    <div class="t-content">
+      <div class="t-card card-dark">
+        <div class="t-card-ar">فَتْحُ بَيْتِ الْمَقْدِسِ</div>
+        <div class="t-card-title">Penaklukan Baitul Maqdis (Jerusalem)</div>
+        <div class="t-card-body">Disebutkan Nabi ﷺ sebagai salah satu tanda awal. Telah terjadi pada masa Khalifah Umar bin Khattab radhiyallahu 'anhu pada tahun 15 H / 636 M.</div>
+        <div class="t-dalil">"Pembukaan Baitul Maqdis, kemudian wabah yang akan merenggut banyak jiwa…" — HR. Bukhari (3176) dari 'Auf bin Malik</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3 -->
+  <div class="t-item left">
+    <div class="t-content">
+      <div class="t-card card-dark">
+        <div class="t-card-ar">الطَّاعُونُ وَالْوَبَاءُ</div>
+        <div class="t-card-title">Wabah Penyakit yang Meluas (Tha'un)</div>
+        <div class="t-card-body">Nabi ﷺ menyebut wabah besar sebagai tanda yang mengikuti pembukaan Baitul Maqdis. Wabah Amwas pernah menewaskan puluhan ribu jiwa pada zaman para sahabat. Dan sejarah terus berulang.</div>
+        <div class="t-dalil">"…kemudian terjadi wabah yang menimpa kalian dan kambing-kambing kalian…" — HR. Bukhari (3176)</div>
+      </div>
+    </div>
+    <div class="t-node"><div class="t-dot dot-gold"></div><div class="t-num num-gold">03</div></div>
+    <div class="t-empty"></div>
+  </div>
+
+  <!-- 4 -->
+  <div class="t-item right">
+    <div class="t-empty"></div>
+    <div class="t-node"><div class="t-dot dot-gold"></div><div class="t-num num-gold">04</div></div>
+    <div class="t-content">
+      <div class="t-card card-dark">
+        <div class="t-card-ar">كَثْرَةُ الْأَمْوَالِ وَالْفِتَنُ بِهَا</div>
+        <div class="t-card-title">Melimpahnya Harta &amp; Fitnah Kekayaan</div>
+        <div class="t-card-body">Nabi ﷺ menyebutkan bahwa harta akan berlimpah hingga seseorang bingung kepada siapa ia bersedekah karena orang-orang sudah merasa cukup. Saat itu fitnah harta menjadi yang paling berbahaya.</div>
+        <div class="t-dalil">"Hampir-hampir harta melimpah hingga seorang lelaki membawa zakatnya berkeliling namun tidak menemukan orang yang mau menerimanya." — HR. Bukhari (1411)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5 -->
+  <div class="t-item left">
+    <div class="t-content">
+      <div class="t-card card-dark">
+        <div class="t-card-ar">ظُهُورُ الْفِتَنِ وَكَثْرَةُ الْهَرْجِ</div>
+        <div class="t-card-title">Munculnya Fitnah &amp; Meluasnya Pembunuhan (Al-Harj)</div>
+        <div class="t-card-body">Nabi ﷺ bersabda bahwa akan datang masa di mana pembunuhan menyebar luas — bahkan orang yang membunuh tidak tahu mengapa ia membunuh, dan yang terbunuh tidak tahu mengapa ia dibunuh. Para ulama menafsirkan ini sebagai perang saudara dan kekacauan massal.</div>
+        <div class="t-dalil">"Di antara tanda kiamat adalah meluasnya al-harj (pembunuhan)." — HR. Bukhari (7060) dari Abu Hurairah</div>
+      </div>
+    </div>
+    <div class="t-node"><div class="t-dot dot-gold"></div><div class="t-num num-gold">05</div></div>
+    <div class="t-empty"></div>
+  </div>
+
+  <!-- 6 -->
+  <div class="t-item right">
+    <div class="t-empty"></div>
+    <div class="t-node"><div class="t-dot dot-gold"></div><div class="t-num num-gold">06</div></div>
+    <div class="t-content">
+      <div class="t-card card-dark">
+        <div class="t-card-ar">تَقَارُبُ الزَّمَانِ وَقِلَّةُ الْبَرَكَةِ</div>
+        <div class="t-card-title">Waktu Terasa Semakin Singkat &amp; Berkurangnya Barakah</div>
+        <div class="t-card-body">Salah satu tanda yang paling dirasakan umat akhir zaman: waktu terasa berlalu sangat cepat. Setahun terasa seperti sebulan, sebulan terasa seperti sepekan, dan sepekan terasa seperti sehari. Para ulama menafsirkan ini secara literal (waktu memang memendek barakahnya) maupun secara maknawi.</div>
+        <div class="t-dalil">"Tidak akan terjadi kiamat hingga waktu terasa menjadi pendek, sehingga setahun terasa seperti sebulan..." — HR. Tirmidzi (2332) dari Anas</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7 -->
+  <div class="t-item left">
+    <div class="t-content">
+      <div class="t-card card-dark">
+        <div class="t-card-ar">ظُهُورُ الْجَهْلِ وَرَفْعُ الْعِلْمِ</div>
+        <div class="t-card-title">Ilmu Dicabut &amp; Kejahilan Merajalela</div>
+        <div class="t-card-body">Nabi ﷺ menjelaskan bahwa ilmu tidak dicabut Allah sekaligus dari dada manusia, melainkan dicabut melalui wafatnya para ulama — satu per satu. Ketika ulama habis, yang tersisa hanyalah orang-orang bodoh yang ditanya, lalu mereka berfatwa tanpa ilmu sehingga mereka sesat dan menyesatkan.</div>
+        <div class="t-dalil">"Sesungguhnya Allah tidak mencabut ilmu dengan cara meraupnya sekaligus dari manusia, tetapi Allah mencabut ilmu dengan mewafatkan para ulama..." — HR. Bukhari (100)</div>
+      </div>
+    </div>
+    <div class="t-node"><div class="t-dot dot-gold"></div><div class="t-num num-gold">07</div></div>
+    <div class="t-empty"></div>
+  </div>
+
+  <!-- 8 -->
+  <div class="t-item right">
+    <div class="t-empty"></div>
+    <div class="t-node"><div class="t-dot dot-gold"></div><div class="t-num num-gold">08</div></div>
+    <div class="t-content">
+      <div class="t-card card-dark">
+        <div class="t-card-ar">كَثْرَةُ الزِّنَا وَالْخَمْرِ وَالْمَعَازِفِ</div>
+        <div class="t-card-title">Meluasnya Zina, Khamr, dan Musik (Ma'azif)</div>
+        <div class="t-card-body">Nabi ﷺ menyebutkan bahwa umatnya akan menghalalkan zina, sutra bagi lelaki, khamr, dan alat musik — dan ini menjadi tanda dekatnya kiamat. Fitnah moral dan pembalikan nilai-nilai menjadi ciri zaman akhir.</div>
+        <div class="t-dalil">"Sungguh akan ada dari umatku kaum yang menghalalkan zina, sutra, khamr, dan alat-alat musik." — HR. Bukhari (5590)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 9 -->
+  <div class="t-item left">
+    <div class="t-content">
+      <div class="t-card card-dark">
+        <div class="t-card-ar">الشُّحُّ وَتَقَارُبُ الْأَسْوَاقِ</div>
+        <div class="t-card-title">Pelit &amp; Persaingan Pasar yang Kejam</div>
+        <div class="t-card-body">Nabi ﷺ bersabda akan datang masa di mana sifat kikir merebak di mana-mana, pasar-pasar saling berdekatan (persaingan bisnis keras tanpa etika), dan setiap orang hanya peduli dirinya sendiri.</div>
+        <div class="t-dalil">"Di antara tanda-tanda kiamat: meluasnya sifat kikir, terputusnya silaturrahmi, dan merebaknya sifat keji." — HR. Ahmad dari Ibnu Mas'ud</div>
+      </div>
+    </div>
+    <div class="t-node"><div class="t-dot dot-gold"></div><div class="t-num num-gold">09</div></div>
+    <div class="t-empty"></div>
+  </div>
+
+  <!-- 10 -->
+  <div class="t-item right">
+    <div class="t-empty"></div>
+    <div class="t-node"><div class="t-dot dot-gold"></div><div class="t-num num-gold">10</div></div>
+    <div class="t-content">
+      <div class="t-card card-dark">
+        <div class="t-card-ar">الْفِتْنَةُ الدَّجَّالِيَّةُ فِي الْإِعْلَامِ</div>
+        <div class="t-card-title">Fitnah Kebohongan &amp; Banyaknya Para Pendusta</div>
+        <div class="t-card-body">Nabi ﷺ menyebutkan bahwa akan muncul banyak dajjal (pendusta) dan nabi palsu — lebih dari tiga puluh orang — sebelum kiamat. Para ulama menyebutkan bahwa ini mencakup pemimpin dan tokoh yang menipu umat dengan kebohongan yang dihiasi kebenaran.</div>
+        <div class="t-dalil">"Tidak akan terjadi kiamat hingga muncul sekitar 30 dajjal (pendusta besar), setiap mereka mengaku dirinya utusan Allah." — HR. Abu Dawud (4333)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 11 -->
+  <div class="t-item left">
+    <div class="t-content">
+      <div class="t-card card-dark">
+        <div class="t-card-ar">تَطَاوُلُ الرُّعَاةِ فِي الْبُنْيَانِ</div>
+        <div class="t-card-title">Orang Tak Beralas Kaki Berlomba Membangun Gedung Tinggi</div>
+        <div class="t-card-body">Dalam hadis Jibril yang masyhur, ketika Jibril 'alaihissalam bertanya tentang tanda kiamat, Nabi ﷺ menyebutkan: "Engkau akan melihat orang yang tidak beralas kaki, tidak berpakaian, miskin, pengembala kambing berlomba-lomba meninggikan bangunan." Para ulama melihat ini terwujud pada bangsa-bangsa gurun yang kini berlomba membangun gedung tertinggi dunia.</div>
+        <div class="t-dalil">"…dan engkau melihat orang-orang tak bersandal, telanjang, miskin, penggembala kambing, berlomba-lomba dalam meninggikan bangunan." — HR. Muslim (8), Hadis Jibril</div>
+      </div>
+    </div>
+    <div class="t-node"><div class="t-dot dot-gold"></div><div class="t-num num-gold">11</div></div>
+    <div class="t-empty"></div>
+  </div>
+
+  <!-- 12 -->
+  <div class="t-item right">
+    <div class="t-empty"></div>
+    <div class="t-node"><div class="t-dot dot-gold"></div><div class="t-num num-gold">12</div></div>
+    <div class="t-content">
+      <div class="t-card card-dark">
+        <div class="t-card-ar">ظُهُورُ الْفِتَنِ كَقِطَعِ اللَّيْلِ</div>
+        <div class="t-card-title">Fitnah Seperti Potongan Malam yang Gelap</div>
+        <div class="t-card-body">Nabi ﷺ menyebutkan akan datang fitnah-fitnah yang sangat gelap, susul-menyusul. Seseorang yang melewatinya dalam keadaan Muslim, di pagi hari sudah menjadi kafir — atau di sore hari Muslim, di pagi harinya sudah menjadi kafir — karena ia menjual agamanya dengan secuil harta dunia.</div>
+        <div class="t-dalil">"Bersegeralah beramal sebelum datangnya fitnah-fitnah seperti potongan malam yang gelap — seseorang menjadi mukmin di pagi hari dan kafir di sore hari…" — HR. Muslim (118)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 13 -->
+  <div class="t-item left">
+    <div class="t-content">
+      <div class="t-card card-dark">
+        <div class="t-card-ar">قِتَالُ التُّرْكِ وَالْفِتَنُ الْكُبْرَى قَبْلَ الْمَلَاحِمِ</div>
+        <div class="t-card-title">Fitnah Besar &amp; Al-Malāhim (Peperangan Besar)</div>
+        <div class="t-card-body">Nabi ﷺ menyebutkan akan ada <em>al-malāhim</em> — peperangan besar yang belum pernah ada sebelumnya. Di antara tanda mendekatinya masa itu adalah perang besar di wilayah Syam (Levant) yang akan mempertemukan pasukan besar. Ini sering dikaitkan dengan perang akhir zaman sebelum kemunculan Dajjal.</div>
+        <div class="t-dalil">"Al-Malhamah al-Kubra, pembebasan Al-Quds, kemudian kemunculan Dajjal — semua dalam jangka 7 tahun." — HR. Abu Dawud (4295)</div>
+      </div>
+    </div>
+    <div class="t-node"><div class="t-dot dot-gold"></div><div class="t-num num-gold">13</div></div>
+    <div class="t-empty"></div>
+  </div>
+
+  <!-- 14 -->
+  <div class="t-item right">
+    <div class="t-empty"></div>
+    <div class="t-node"><div class="t-dot dot-gold"></div><div class="t-num num-gold">14</div></div>
+    <div class="t-content">
+      <div class="t-card card-dark">
+        <div class="t-card-ar">ظُهُورُ نَارٍ مِنَ الْحِجَازِ</div>
+        <div class="t-card-title">Api Besar dari Hijaz yang Menerangi Leher Unta di Bushra</div>
+        <div class="t-card-body">Nabi ﷺ menyebutkan bahwa sebelum tanda-tanda besar, akan keluar api dari tanah Hijaz (Jazirah Arab) yang cahayanya mampu menerangi leher-leher unta di Bushra (wilayah Syam/Suriah). Para ulama menghubungkan ini dengan letusan gunung berapi di Madinah pada 654 H / 1256 M yang terdokumentasi sejarah.</div>
+        <div class="t-dalil">"Tidak akan terjadi kiamat hingga keluar api dari bumi Hijaz yang menerangi leher unta di Bushra." — HR. Bukhari (7118) &amp; Muslim (2902)</div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end timeline-body bagian 1 -->
+
+<!-- BANNER PERALIHAN KE TANDA BESAR -->
+<div class="kubra-banner">
+  <div class="kubra-banner-ar">إِذَا خَرَجَتْ أُمْسِكَتْ عَنْهَا التَّوْبَةُ</div>
+  <div class="kubra-banner-id">"Apabila (tanda-tanda besar itu) telah keluar, maka tobat tidak lagi diterima." — Ketika tanda-tanda besar muncul, pintu tobat menutup. Maka bertobalah sebelum terlambat.</div>
+  <div class="kubra-banner-ref">HR. Muslim (2947) — dari Abu Hurairah radhiyallahu 'anhu</div>
+</div>
+
+<!-- ═══ BAGIAN II: TANDA BESAR ═══ -->
+<div class="timeline-body">
+
+  <div class="era era-kubra">
+    <div class="era-ornament">
+      <span></span><em>⚡</em><span></span>
+    </div>
+    <div class="era-tag">✦ Bagian Kedua</div>
+    <div class="era-arabic">أَشْرَاطُ السَّاعَةِ الْكُبْرَى</div>
+    <h2 class="era-title">Tanda-Tanda Besar Kiamat</h2>
+    <p class="era-desc">Sepuluh tanda besar — bila satu muncul, yang lain menyusul cepat seperti untaian tasbih yang putus.</p>
+  </div>
+
+  <!-- TANDA BESAR 1: DAJJAL -->
+  <div class="t-item left">
+    <div class="t-content">
+      <div class="t-card card-fire">
+        <div class="t-card-ar">خُرُوجُ الدَّجَّالِ</div>
+        <div class="t-card-title">1. Keluarnya Al-Masih Ad-Dajjal</div>
+        <div class="t-card-body">Dajjal — pendusta terbesar yang pernah ada — akan keluar dari timur (antara Irak dan Khurasan). Ia memiliki satu mata buta sebelah kanannya, di antara kedua matanya tertulis 'K-F-R' (kafir) yang bisa dibaca oleh setiap mukmin. Ia akan mengaku sebagai Tuhan dan memiliki kemampuan luar biasa: membawa surga dan neraka (yang sesungguhnya kebalikannya), menghidupkan sesuatu, dan menguasai perbendaharaan bumi. Ia akan tinggal di bumi selama 40 hari — satu hari seperti setahun, satu hari seperti sebulan, satu hari seperti sepekan, dan selebihnya seperti hari biasa. Makkah dan Madinah tidak bisa dimasuki Dajjal.</div>
+        <div class="t-dalil">"Tidak ada satu pun fitnah yang lebih besar dari fitnah Dajjal sejak Allah menciptakan Adam hingga Hari Kiamat." — HR. Muslim (2946)</div>
+      </div>
+    </div>
+    <div class="t-node"><div class="t-dot dot-fire"></div><div class="t-num num-fire">I</div></div>
+    <div class="t-empty"></div>
+  </div>
+
+  <!-- TANDA BESAR 2: ISA -->
+  <div class="t-item right">
+    <div class="t-empty"></div>
+    <div class="t-node"><div class="t-dot dot-fire"></div><div class="t-num num-fire">II</div></div>
+    <div class="t-content">
+      <div class="t-card card-fire">
+        <div class="t-card-ar">نُزُولُ عِيسَى ابْنِ مَرْيَمَ</div>
+        <div class="t-card-title">2. Turunnya Nabi Isa 'Alaihissalam</div>
+        <div class="t-card-body">Nabi Isa 'alaihissalam akan turun di menara putih sebelah timur Damaskus, mengenakan dua pakaian berwarna kuning kemerahan, meletakkan tangannya di sayap dua malaikat. Ia akan membunuh Dajjal dengan tombaknya di Babu Ludd (Lydda, Palestina). Setelah itu beliau akan menegakkan keadilan, menghancurkan salib, membunuh babi, menghapus jizyah, dan beliau akan menikah, memiliki keturunan, dan wafat serta dikuburkan di Madinah di sisi makam Nabi ﷺ.</div>
+        <div class="t-dalil">"Demi Dzat yang jiwaku ada di tangan-Nya, sungguh Ibnu Maryam (Isa) akan turun di tengah-tengah kalian sebagai hakim yang adil..." — HR. Bukhari (3448) &amp; Muslim (155)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TANDA BESAR 3: YA'JUJ MA'JUJ -->
+  <div class="t-item left">
+    <div class="t-content">
+      <div class="t-card card-fire">
+        <div class="t-card-ar">خُرُوجُ يَأْجُوجَ وَمَأْجُوجَ</div>
+        <div class="t-card-title">3. Keluarnya Ya'juj dan Ma'juj</div>
+        <div class="t-card-body">Setelah Nabi Isa membunuh Dajjal, Allah akan membuka tembok Ya'juj dan Ma'juj. Mereka akan keluar bak banjir — melanda mana-mana, meminum habis Danau Tiberias (Laut Galilea), membuat kerusakan besar di muka bumi. Nabi Isa dan para pengikutnya yang beriman akan berlindung di Gunung Thursina. Ya'juj dan Ma'juj akan mati akibat ulat yang Allah kirimkan di leher mereka. Bumi kemudian dibersihkan oleh hujan lebat.</div>
+        <div class="t-dalil">"Ya'juj dan Ma'juj dibuka dindingnya: 'Dan mereka meluncur dari setiap ketinggian dengan cepat.'" — HR. Muslim (2937); QS. Al-Anbiyā': 96</div>
+      </div>
+    </div>
+    <div class="t-node"><div class="t-dot dot-fire"></div><div class="t-num num-fire">III</div></div>
+    <div class="t-empty"></div>
+  </div>
+
+  <!-- TANDA BESAR 4: IMAM MAHDI -->
+  <div class="t-item right">
+    <div class="t-empty"></div>
+    <div class="t-node"><div class="t-dot dot-fire"></div><div class="t-num num-fire">IV</div></div>
+    <div class="t-content">
+      <div class="t-card card-fire">
+        <div class="t-card-ar">خُرُوجُ الْمَهْدِيِّ</div>
+        <div class="t-card-title">4. Kemunculan Al-Imam Al-Mahdi</div>
+        <div class="t-card-body">Sebelum atau bersamaan dengan turunnya Nabi Isa, akan muncul Al-Mahdi — pemimpin dari keturunan Nabi ﷺ (Bani Fatimah) bernama Muhammad bin Abdullah, dengan tanda hitam di pipinya, hidung mancung. Ia akan memimpin kaum muslimin, menegakkan keadilan, mengisi bumi yang tadinya penuh kezaliman dengan keadilan. Nabi Isa akan shalat di belakangnya sebagai makmum. Ia akan memimpin selama 7 atau 8 tahun menurut berbagai riwayat.</div>
+        <div class="t-dalil">"Al-Mahdi dari golonganku, dari keturunan Fatimah." — HR. Abu Dawud (4284) &amp; Ibnu Majah (4086) — Shahih</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TANDA BESAR 5: KHUSUF -->
+  <div class="t-item left">
+    <div class="t-content">
+      <div class="t-card card-flame">
+        <div class="t-card-ar">ثَلَاثَةُ خُسُوفٍ</div>
+        <div class="t-card-title">5. Tiga Gempa Besar yang Menenggelamkan (Khusuf)</div>
+        <div class="t-card-body">Nabi ﷺ menyebutkan akan terjadi tiga khusuf (amblesnya bumi / gempa dahsyat yang menenggelamkan): satu di timur, satu di barat, dan satu di Jazirah Arab. Ini bukan gempa biasa — melainkan bumi yang menelan wilayah beserta penghuninya, sebagai hukuman atas kezaliman yang merajalela.</div>
+        <div class="t-dalil">"Di antara tanda-tanda kiamat: tiga khusuf — khusuf di timur, khusuf di barat, dan khusuf di Jazirah Arab." — HR. Muslim (2901)</div>
+      </div>
+    </div>
+    <div class="t-node"><div class="t-dot dot-flame"></div><div class="t-num num-flame">V</div></div>
+    <div class="t-empty"></div>
+  </div>
+
+  <!-- TANDA BESAR 6: ASAP -->
+  <div class="t-item right">
+    <div class="t-empty"></div>
+    <div class="t-node"><div class="t-dot dot-flame"></div><div class="t-num num-flame">VI</div></div>
+    <div class="t-content">
+      <div class="t-card card-flame">
+        <div class="t-card-ar">الدُّخَانُ</div>
+        <div class="t-card-title">6. Ad-Dukhān — Asap Besar yang Menyelimuti Bumi</div>
+        <div class="t-card-body">Allah berfirman tentang asap besar yang akan datang dan menyelimuti manusia — ini adalah azab yang menyakitkan. Orang beriman akan merasakan seperti pilek, sedangkan orang kafir akan mati kesakitan karenanya. Para ulama berbeda pendapat apakah ini sudah terjadi atau belum, namun jumhur menyatakannya sebagai tanda besar yang belum terjadi.</div>
+        <div class="t-dalil">فَارْتَقِبْ يَوْمَ تَأْتِي السَّمَاءُ بِدُخَانٍ مُّبِينٍ ۝ يَغْشَى النَّاسَ هَٰذَا عَذَابٌ أَلِيمٌ — QS. Ad-Dukhān (44): 10–11</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TANDA BESAR 7: DABBAH -->
+  <div class="t-item left">
+    <div class="t-content">
+      <div class="t-card card-flame">
+        <div class="t-card-ar">خُرُوجُ الدَّابَّةِ</div>
+        <div class="t-card-title">7. Keluarnya Ad-Dābbah (Binatang Bumi)</div>
+        <div class="t-card-body">Akan keluar seekor makhluk dari bumi yang akan berbicara kepada manusia. Ia membawa tongkat Nabi Musa dan cincin Nabi Sulaiman — ia akan menandai wajah orang beriman dengan cahaya (nūr) dan wajah orang kafir dengan kegelapan. Dengan begitu manusia terbagi jelas: mukmin dan kafir. Inilah saat pintu tobat benar-benar tertutup.</div>
+        <div class="t-dalil">وَإِذَا وَقَعَ الْقَوْلُ عَلَيْهِمْ أَخْرَجْنَا لَهُمْ دَابَّةً مِّنَ الْأَرْضِ تُكَلِّمُهُمْ — QS. An-Naml (27): 82; HR. Tirmidzi (2183)</div>
+      </div>
+    </div>
+    <div class="t-node"><div class="t-dot dot-flame"></div><div class="t-num num-flame">VII</div></div>
+    <div class="t-empty"></div>
+  </div>
+
+  <!-- TANDA BESAR 8: MATAHARI DARI BARAT -->
+  <div class="t-item right">
+    <div class="t-empty"></div>
+    <div class="t-node"><div class="t-dot dot-flame"></div><div class="t-num num-flame">VIII</div></div>
+    <div class="t-content">
+      <div class="t-card card-flame">
+        <div class="t-card-ar">طُلُوعُ الشَّمْسِ مِنَ الْمَغْرِبِ</div>
+        <div class="t-card-title">8. Matahari Terbit dari Barat</div>
+        <div class="t-card-body">Inilah tanda yang paling terkenal dan paling dramatis. Matahari akan terbit dari barat — dan pada saat itulah pintu tobat resmi ditutup. Barangsiapa yang pada hari itu belum beriman, imannya tidak akan diterima lagi. Nabi ﷺ bersabda ini adalah saat di mana "iman seseorang yang belum pernah beriman tidak akan bermanfaat".</div>
+        <div class="t-dalil">"Tidak akan terjadi kiamat hingga matahari terbit dari barat. Apabila ia telah terbit dan orang-orang melihatnya, maka semua orang beriman — tapi saat itu iman tidak lagi bermanfaat bagi jiwa yang belum beriman sebelumnya." — HR. Bukhari (4636) &amp; Muslim (157)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TANDA BESAR 9: API -->
+  <div class="t-item left">
+    <div class="t-content">
+      <div class="t-card card-flame">
+        <div class="t-card-ar">النَّارُ الَّتِي تَحْشُرُ النَّاسَ</div>
+        <div class="t-card-title">9. Api yang Menggiring Manusia ke Mahsyar</div>
+        <div class="t-card-body">Tanda terakhir sebelum kiamat benar-benar tiba: sebuah api besar akan keluar dari Yaman, menggiring seluruh manusia yang tersisa ke Padang Mahsyar (tempat berkumpul). Api ini akan memisahkan manusia — siapa yang tertinggal akan terbakar, siapa yang berjalan ke depan akan selamat untuk sementara. Dengan ini dimulailah prosesi Hari Kebangkitan.</div>
+        <div class="t-dalil">"…dan api yang keluar dari ujung Aden menggiring manusia — ia bermalam bersama mereka saat mereka bermalam, dan siang bersama mereka saat mereka siang hari." — HR. Muslim (2901)</div>
+      </div>
+    </div>
+    <div class="t-node"><div class="t-dot dot-ember"></div><div class="t-num num-flame">IX</div></div>
+    <div class="t-empty"></div>
+  </div>
+
+  <!-- TANDA BESAR 10: RIH YAMAN -->
+  <div class="t-item right">
+    <div class="t-empty"></div>
+    <div class="t-node"><div class="t-dot dot-ember"></div><div class="t-num num-flame">X</div></div>
+    <div class="t-content">
+      <div class="t-card card-flame">
+        <div class="t-card-ar">رِيحٌ تَقْبِضُ أَرْوَاحَ الْمُؤْمِنِينَ</div>
+        <div class="t-card-title">10. Angin Lembut yang Mencabut Roh Setiap Mukmin</div>
+        <div class="t-card-body">Sebelum kiamat besar tiba, Allah mengirimkan angin dingin lembut dari Yaman yang akan mencabut roh setiap orang yang di hatinya ada iman walau sebiji sawi. Akibatnya, tidak ada satu pun mukmin yang tersisa di muka bumi. Yang hidup hanyalah orang-orang jahat yang tidak punya iman sama sekali — dan kepada merekalah kiamat benar-benar tiba.</div>
+        <div class="t-dalil">"Allah akan mengirimkan angin dari Yaman yang lebih lembut dari sutra, tidak meninggalkan seorang pun yang di hatinya ada iman sebesar biji sawi kecuali Dia cabut ruhnya." — HR. Muslim (2940)</div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end timeline bagian 2 -->
+
+<!-- ═══ BAGIAN III: HARI KIAMAT ═══ -->
+<section class="qiyamah-section">
+  <div class="qiyamah-inner">
+
+    <div class="era era-qiyamah" style="padding-top:0;">
+      <div class="era-ornament">
+        <span></span><em>💀</em><span></span>
+      </div>
+      <div class="era-tag" style="color:rgba(232,78,0,0.8);">✦ Bagian Ketiga — Puncak</div>
+      <div class="era-arabic" style="color:var(--flame);">يَوْمُ الْقِيَامَةِ الْعُظْمَى</div>
+      <h2 class="era-title">Hari Kiamat Tiba</h2>
+      <p class="era-desc" style="color:rgba(255,200,170,0.7);">Ketika sangkakala ditiup dan langit terbelah — inilah akhir dari seluruh kehidupan dunia.</p>
+    </div>
+
+    <div class="paper-dalil" style="background:rgba(22,4,0,0.8);border-color:rgba(196,50,0,0.25);margin:0 0 28px;">
+      <div class="paper-dalil-bar" style="background:var(--flame);"></div>
+      <div class="paper-dalil-body">
+        <div class="paper-dalil-tag" style="color:var(--flame);">📖 QS. Az-Zumar: 68</div>
+        <div class="paper-dalil-ar" style="color:var(--flame);">وَنُفِخَ فِي الصُّورِ فَصَعِقَ مَن فِي السَّمَاوَاتِ وَمَن فِي الْأَرْضِ إِلَّا مَن شَاءَ اللَّهُ ۖ ثُمَّ نُفِخَ فِيهِ أُخْرَىٰ فَإِذَا هُم قِيَامٌ يَنظُرُونَ</div>
+        <div class="paper-dalil-trans" style="color:rgba(255,200,170,0.8);">"Dan sangkakala pun ditiupkan, maka matilah semua yang di langit dan di bumi kecuali siapa yang dikehendaki Allah. Kemudian ditiupkan sangkakala itu sekali lagi, maka tiba-tiba mereka berdiri menunggu (putusan Allah)."</div>
+        <div class="paper-dalil-ref" style="color:var(--flame);">QS. Az-Zumar (39): 68</div>
+      </div>
+    </div>
+
+    <!-- Timeline kiamat hari itu -->
+    <div class="timeline-body" style="padding:0;">
+
+      <div class="t-item left">
+        <div class="t-content">
+          <div class="t-card card-flame">
+            <div class="t-card-ar">النَّفْخَةُ الْأُولَى — نَفْخَةُ الصَّعْقِ</div>
+            <div class="t-card-title">Tiupan Pertama: Nafkhatus Sha'q — Kematian Semesta</div>
+            <div class="t-card-body">Israfil 'alaihissalam meniupkan sangkakala untuk pertama kalinya. Seketika itu, seluruh makhluk yang masih hidup — manusia, jin, binatang, malaikat (kecuali yang dikecualikan Allah) — mati serentak. Langit terbelah, gunung-gunung beterbangan seperti debu, lautan meluap dan menyala. Inilah kematian semesta.</div>
+            <div class="t-dalil">QS. Az-Zumar: 68 · QS. Al-Haqqah: 13–15 · QS. Al-Wāqi'ah: 1–6</div>
+          </div>
+        </div>
+        <div class="t-node"><div class="t-dot dot-white"></div><div class="t-num num-white">α</div></div>
+        <div class="t-empty"></div>
+      </div>
+
+      <div class="t-item right">
+        <div class="t-empty"></div>
+        <div class="t-node"><div class="t-dot dot-white"></div><div class="t-num num-white">β</div></div>
+        <div class="t-content">
+          <div class="t-card card-flame">
+            <div class="t-card-ar">النَّفْخَةُ الثَّانِيَةُ — نَفْخَةُ الْبَعْثِ</div>
+            <div class="t-card-title">Tiupan Kedua: Nafkhatul Ba'ts — Kebangkitan Semua Makhluk</div>
+            <div class="t-card-body">Setelah masa yang Allah tentukan (disebutkan 40 — apakah hari, bulan, atau tahun, Allah lebih mengetahui), Israfil meniup kembali sangkakala. Seluruh manusia sejak Adam 'alaihissalam hingga manusia terakhir bangkit dari kubur mereka, berlari menuju panggilan Allah. Ini adalah Ba'ts — Hari Kebangkitan.</div>
+            <div class="t-dalil">QS. Az-Zumar: 68 · QS. Yāsin: 51–52 · HR. Bukhari (4814) dari Abu Hurairah</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="t-item left">
+        <div class="t-content">
+          <div class="t-card card-flame">
+            <div class="t-card-ar">الْمَحْشَرُ — الْوُقُوفُ فِي الشَّمْسِ</div>
+            <div class="t-card-title">Padang Mahsyar — Berdiri di Bawah Terik Matahari</div>
+            <div class="t-card-body">Seluruh manusia berkumpul di Padang Mahsyar — tanah putih yang rata, tidak ada pohon, tidak ada tempat berlindung. Matahari didekatkan hingga berjarak satu mil. Manusia tenggelam dalam keringat mereka sendiri: ada yang sampai mata kaki, pinggang, dada, bahkan ada yang tenggelam total. Lamanya menunggu: lima puluh ribu tahun bagi yang seolah hanya seperti shalat Ashar bagi orang beriman.</div>
+            <div class="t-dalil">"Manusia dikumpulkan pada Hari Kiamat di atas tanah putih yang merah seperti roti bundar yang bersih, tidak ada tanda apapun bagi siapapun." — HR. Bukhari (6521) &amp; Muslim (2790)</div>
+          </div>
+        </div>
+        <div class="t-node"><div class="t-dot dot-white"></div><div class="t-num num-white">γ</div></div>
+        <div class="t-empty"></div>
+      </div>
+
+      <div class="t-item right">
+        <div class="t-empty"></div>
+        <div class="t-node"><div class="t-dot dot-white"></div><div class="t-num num-white">δ</div></div>
+        <div class="t-content">
+          <div class="t-card card-flame">
+            <div class="t-card-ar">الْمِيزَانُ وَالْحِسَابُ</div>
+            <div class="t-card-title">Al-Hisab &amp; Al-Mizan — Perhitungan dan Timbangan Amal</div>
+            <div class="t-card-body">Setiap manusia mempertanggungjawabkan seluruh amalnya — tidak ada yang tersembunyi. Amal baik dan buruk ditimbang dalam Mizan yang Allah tentukan. Barangsiapa berat timbangan kebaikannya, ia beruntung. Barangsiapa ringan, ia merugi. Kitab amal dibagikan — orang beriman menerima dari kanan, orang kafir dari kiri atau dari belakang. Syafaat diberikan bagi yang dikehendaki Allah.</div>
+            <div class="t-dalil">فَمَن ثَقُلَتْ مَوَازِينُهُ فَأُولَئِكَ هُمُ الْمُفْلِحُونَ ۝ وَمَنْ خَفَّتْ مَوَازِينُهُ فَأُولَئِكَ الَّذِينَ خَسِرُوا أَنفُسَهُمْ — QS. Al-Mu'minūn: 102–103</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="t-item left">
+        <div class="t-content">
+          <div class="t-card card-flame">
+            <div class="t-card-ar">الصِّرَاطُ — الْجِسْرُ عَلَى جَهَنَّمَ</div>
+            <div class="t-card-title">As-Shirāth — Jembatan di Atas Neraka Jahannam</div>
+            <div class="t-card-body">Setelah hisab, seluruh manusia harus melewati Shirāth — jembatan yang dipasang di atas Jahannam, lebih tipis dari rambut dan lebih tajam dari pedang. Orang beriman akan melewatinya sesuai amalnya: ada yang seperti kilat, ada seperti angin, ada seperti berlari, ada seperti berjalan, ada seperti merangkak — dan ada yang jatuh ke Jahannam. Para malaikat berdiri di sisi-sisinya dengan pengait.</div>
+            <div class="t-dalil">"Lalu dipasanglah jembatan di atas Jahannam dan syafaatku diizinkan. Aku berdoa: Ya Allah, selamatkan, selamatkan..." — HR. Bukhari (7439) &amp; Muslim (183)</div>
+          </div>
+        </div>
+        <div class="t-node"><div class="t-dot dot-white"></div><div class="t-num num-white">ε</div></div>
+        <div class="t-empty"></div>
+      </div>
+
+      <div class="t-item right">
+        <div class="t-empty"></div>
+        <div class="t-node"><div class="t-dot dot-white"></div><div class="t-num num-white">ζ</div></div>
+        <div class="t-content">
+          <div class="t-card card-flame">
+            <div class="t-card-ar">الْجَنَّةُ وَجَهَنَّمُ — الْقَرَارُ الْأَبَدِيُّ</div>
+            <div class="t-card-title">Surga dan Neraka — Tempat Tinggal Abadi</div>
+            <div class="t-card-body">Setelah Shirāth, manusia terbagi dua untuk selamanya. Orang beriman masuk ke Surga dengan segala kenikmatannya yang tidak pernah terlintas di benak manusia manapun. Orang kafir masuk ke Neraka yang azabnya tiada henti. Kemudian didatangkan Maut dalam rupa seekor domba — disembelih di antara Surga dan Neraka. Lalu dikumandangkan: "Wahai penghuni Surga — kekekalan tanpa kematian! Wahai penghuni Neraka — kekekalan tanpa kematian!"</div>
+            <div class="t-dalil">"Ketika penghuni Surga telah masuk Surga dan penghuni Neraka telah masuk Neraka, Maut didatangkan lalu disembelih di antara keduanya, kemudian diserukan: wahai penghuni Surga, kekekalan tanpa kematian! Wahai penghuni Neraka, kekekalan tanpa kematian!" — HR. Bukhari (6544) &amp; Muslim (2850)</div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end inner timeline kiamat -->
+  </div>
+</section>
+
+<!-- ═══ PENUTUP ═══ -->
+<div class="penutup">
+  <div class="penutup-inner">
+
+    <div class="penutup-ar">فَمَن زُحْزِحَ عَنِ النَّارِ وَأُدْخِلَ الْجَنَّةَ فَقَدْ فَازَ</div>
+    <div class="penutup-div"></div>
+
+    <p class="penutup-p">"Barangsiapa dijauhkan dari Neraka dan dimasukkan ke dalam Surga, maka sungguh ia telah beruntung."</p>
+    <p class="penutup-ref">QS. Āli 'Imrān (3): 185</p>
+
+    <div class="penutup-div"></div>
+
+    <p class="penutup-p">Tanda-tanda itu bukan untuk menakut-nakuti — ia adalah peta yang Allah dan Rasul-Nya berikan agar kita tidak tersesat di jalan yang panjang ini. Setiap tanda yang muncul adalah pengingat: waktu semakin dekat, bekal semakin menipis, dan pertanyaan terbesarnya adalah — apakah kita sudah siap?</p>
+
+    <p class="penutup-p" style="margin-top:12px;">Jadikan pengetahuan ini bukan sekadar ilmu di kepala — jadikan ia cahaya yang menggerakkan kaki untuk lebih banyak beribadah, lebih sering beristighfar, lebih serius mempersiapkan diri menghadap Allah Yang Maha Mengetahui segala yang tersembunyi.</p>
+
+    <div class="penutup-div"></div>
+
+    <div class="paper-dalil" style="background:rgba(12,8,16,0.8);border-color:rgba(212,165,32,0.2);text-align:left;">
+      <div class="paper-dalil-bar"></div>
+      <div class="paper-dalil-body">
+        <div class="paper-dalil-tag" style="color:var(--gold);">📜 Doa Perlindungan dari Fitnah · HR. Bukhari &amp; Muslim</div>
+        <div class="paper-dalil-ar" style="color:var(--gold);">اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ عَذَابِ جَهَنَّمَ وَمِنْ عَذَابِ الْقَبْرِ وَمِنْ فِتْنَةِ الْمَحْيَا وَالْمَمَاتِ وَمِنْ شَرِّ فِتْنَةِ الْمَسِيحِ الدَّجَّالِ</div>
+        <div class="paper-dalil-trans" style="color:rgba(245,240,228,0.75);">"Ya Allah, aku berlindung kepada-Mu dari azab Jahannam, azab kubur, fitnah kehidupan dan kematian, dan dari keburukan fitnah Al-Masih Ad-Dajjal."</div>
+        <div class="paper-dalil-ref" style="color:var(--gold);">HR. Bukhari (1377) &amp; Muslim (588) — Dibaca setiap selesai Tasyahhud akhir sebelum salam</div>
+      </div>
+    </div>
+
+    <div class="penutup-footer">
+      <div class="logo">أَشْرَاطُ السَّاعَةِ</div>
+      <div class="tag">وَاللّٰهُ أَعْلَمُ بِالصَّوَابِ · Semoga Bermanfaat</div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// Floating embers
+const wrap = document.getElementById('embers');
+const colors = ['#d4a520','#e84e00','#f07030','#c43200','#ff8040'];
+for (let i = 0; i < 60; i++) {
+  const p = document.createElement('div');
+  p.className = 'ember-p';
+  const size = Math.random() * 4 + 1;
+  const color = colors[Math.floor(Math.random() * colors.length)];
+  p.style.cssText = `
+    width:${size}px; height:${size}px;
+    background:${color};
+    left:${Math.random()*100}%;
+    bottom:${Math.random()*30}%;
+    --d:${(Math.random()*8+4).toFixed(1)}s;
+    --o:${(Math.random()*0.6+0.2).toFixed(2)};
+    animation-delay:${(Math.random()*10).toFixed(1)}s;
+    box-shadow:0 0 ${size*2}px ${color};
+  `;
+  wrap.appendChild(p);
+}
+</script>
+</body>
+</html>

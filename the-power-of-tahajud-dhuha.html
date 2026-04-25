@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Power of Tahajud & Dhuha</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,600;1,400&family=Cinzel+Decorative:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #c9a84c;
+    --gold-light: #f0d080;
+    --gold-pale: #fdf3d0;
+    --dark: #1a1208;
+    --ink: #2c1f08;
+    --parchment: #faf5e8;
+    --parchment-dark: #f0e6c8;
+    --green-deep: #1a3a2a;
+    --green-mid: #2d5a3d;
+    --cream: #fffdf5;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background-color: var(--dark);
+    background-image:
+      radial-gradient(ellipse at 20% 20%, rgba(201,168,76,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 80%, rgba(45,90,61,0.15) 0%, transparent 60%);
+    font-family: 'Lora', Georgia, serif;
+    color: var(--ink);
+    min-height: 100vh;
+  }
+
+  /* ── COVER ── */
+  .cover {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 24px;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 50% 40%, rgba(201,168,76,0.12) 0%, transparent 65%),
+      linear-gradient(180deg, #1a1208 0%, #0d1a10 50%, #1a1208 100%);
+  }
+
+  .star-field {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .star {
+    position: absolute;
+    background: #fff;
+    border-radius: 50%;
+    animation: twinkle var(--d, 3s) ease-in-out infinite alternate;
+    opacity: var(--o, 0.6);
+  }
+
+  @keyframes twinkle {
+    from { opacity: var(--o, 0.4); transform: scale(1); }
+    to   { opacity: calc(var(--o, 0.4) * 1.8); transform: scale(1.3); }
+  }
+
+  .moon {
+    position: absolute;
+    top: 60px;
+    right: 80px;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #fdf3d0, #c9a84c);
+    box-shadow: 0 0 40px rgba(201,168,76,0.5), 0 0 80px rgba(201,168,76,0.2);
+    animation: moonGlow 4s ease-in-out infinite alternate;
+  }
+
+  @keyframes moonGlow {
+    from { box-shadow: 0 0 40px rgba(201,168,76,0.5), 0 0 80px rgba(201,168,76,0.2); }
+    to   { box-shadow: 0 0 60px rgba(201,168,76,0.7), 0 0 120px rgba(201,168,76,0.3); }
+  }
+
+  .sun-rise {
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: radial-gradient(circle at center, #fff7e0, #f5a623, #e07b00);
+    box-shadow: 0 0 60px rgba(245,166,35,0.4), 0 0 120px rgba(245,166,35,0.2);
+    opacity: 0.6;
+  }
+
+  .cover-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+  }
+
+  .arabic-header {
+    font-family: 'Amiri', serif;
+    font-size: clamp(2rem, 6vw, 4rem);
+    color: var(--gold-light);
+    text-shadow: 0 0 20px rgba(201,168,76,0.6);
+    line-height: 1.6;
+    margin-bottom: 8px;
+    animation: fadeInDown 1.2s ease both;
+  }
+
+  .ornament {
+    color: var(--gold);
+    font-size: 1.6rem;
+    letter-spacing: 8px;
+    margin: 16px 0;
+    animation: fadeIn 1.5s ease both 0.3s;
+  }
+
+  .cover-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(1.4rem, 4vw, 2.6rem);
+    color: var(--gold-light);
+    text-shadow: 0 2px 20px rgba(201,168,76,0.5);
+    line-height: 1.3;
+    margin-bottom: 12px;
+    animation: fadeInDown 1.2s ease both 0.2s;
+  }
+
+  .cover-subtitle {
+    font-family: 'Lora', serif;
+    font-size: clamp(0.9rem, 2.5vw, 1.15rem);
+    color: rgba(240,208,128,0.75);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+    animation: fadeIn 1.5s ease both 0.5s;
+  }
+
+  .divider {
+    width: 200px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 20px auto;
+    animation: expandWidth 1.5s ease both 0.6s;
+  }
+
+  .cover-verse {
+    font-family: 'Amiri', serif;
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    color: rgba(240,208,128,0.85);
+    line-height: 2;
+    margin: 24px auto;
+    max-width: 520px;
+    padding: 20px 28px;
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 4px;
+    background: rgba(201,168,76,0.05);
+    animation: fadeIn 1.5s ease both 0.8s;
+  }
+
+  .cover-verse-id {
+    font-size: 0.85rem;
+    color: rgba(240,208,128,0.55);
+    font-style: italic;
+    margin-top: 6px;
+    font-family: 'Lora', serif;
+  }
+
+  @keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  @keyframes expandWidth {
+    from { width: 0; }
+    to   { width: 200px; }
+  }
+
+  /* ── CONTENT WRAPPER ── */
+  .content-wrap {
+    background: var(--parchment);
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 0 0 80px;
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 31px, rgba(201,168,76,0.07) 31px, rgba(201,168,76,0.07) 32px);
+    position: relative;
+  }
+
+  .content-wrap::before,
+  .content-wrap::after {
+    content: '';
+    display: block;
+    height: 12px;
+    background: linear-gradient(90deg, var(--green-deep), var(--gold), var(--green-deep));
+  }
+
+  /* ── CHAPTER ── */
+  .chapter {
+    padding: 48px 40px 32px;
+    border-bottom: 1px solid rgba(201,168,76,0.25);
+  }
+
+  @media (max-width: 600px) {
+    .chapter { padding: 32px 20px 24px; }
+  }
+
+  .chapter-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--green-deep);
+    color: var(--gold-light);
+    font-family: 'Lora', serif;
+    font-size: 0.75rem;
+    font-style: italic;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border-radius: 2px;
+    margin-bottom: 20px;
+  }
+
+  .chapter-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(1.2rem, 3.5vw, 1.9rem);
+    color: var(--green-deep);
+    line-height: 1.3;
+    margin-bottom: 8px;
+  }
+
+  .chapter-arabic {
+    font-family: 'Amiri', serif;
+    font-size: clamp(1.3rem, 3vw, 1.7rem);
+    color: var(--gold);
+    margin-bottom: 24px;
+    line-height: 1.8;
+  }
+
+  /* ── PROSE ── */
+  .prose p {
+    font-size: clamp(0.95rem, 2.2vw, 1.07rem);
+    line-height: 1.95;
+    color: #2c1f08;
+    margin-bottom: 18px;
+    text-align: justify;
+    hyphens: auto;
+  }
+
+  .prose p:first-of-type::first-letter {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 3.5em;
+    color: var(--green-deep);
+    float: left;
+    line-height: 0.75;
+    margin: 8px 10px 0 0;
+    text-shadow: 2px 2px 0 rgba(201,168,76,0.4);
+  }
+
+  /* ── DALIL BOX ── */
+  .dalil {
+    margin: 28px 0;
+    background: linear-gradient(135deg, #fff9ec, #fdf5e0);
+    border: 1px solid rgba(201,168,76,0.45);
+    border-left: 5px solid var(--gold);
+    border-radius: 0 6px 6px 0;
+    padding: 24px 28px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .dalil::before {
+    content: '❝';
+    position: absolute;
+    top: 8px;
+    right: 16px;
+    font-size: 5rem;
+    color: rgba(201,168,76,0.12);
+    line-height: 1;
+  }
+
+  .dalil-label {
+    font-size: 0.72rem;
+    font-family: 'Lora', serif;
+    font-style: italic;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+
+  .dalil-arabic {
+    font-family: 'Amiri', serif;
+    font-size: clamp(1.2rem, 3vw, 1.6rem);
+    color: var(--green-deep);
+    line-height: 2;
+    text-align: right;
+    direction: rtl;
+    margin-bottom: 14px;
+    padding-bottom: 12px;
+    border-bottom: 1px dashed rgba(201,168,76,0.35);
+  }
+
+  .dalil-trans {
+    font-style: italic;
+    font-size: 0.95rem;
+    color: #4a3510;
+    line-height: 1.75;
+    margin-bottom: 8px;
+  }
+
+  .dalil-source {
+    font-size: 0.78rem;
+    color: var(--gold);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── SCENE ── */
+  .scene {
+    background: linear-gradient(135deg, #f5f0e8, #ede5d0);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 6px;
+    padding: 28px 32px;
+    margin: 28px 0;
+    position: relative;
+  }
+
+  .scene::before {
+    content: attr(data-icon);
+    position: absolute;
+    top: -18px;
+    left: 28px;
+    font-size: 2rem;
+    background: var(--parchment);
+    padding: 0 8px;
+  }
+
+  .scene-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 0.95rem;
+    color: var(--green-deep);
+    letter-spacing: 1px;
+    margin-bottom: 14px;
+  }
+
+  .scene p {
+    font-size: 0.97rem;
+    line-height: 1.9;
+    color: #3a2810;
+    margin-bottom: 12px;
+  }
+
+  /* ── HIGHLIGHT ── */
+  .highlight {
+    background: var(--green-deep);
+    color: var(--gold-light);
+    padding: 20px 28px;
+    border-radius: 4px;
+    margin: 28px 0;
+    font-family: 'Amiri', serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+    line-height: 1.8;
+    text-align: center;
+  }
+
+  .highlight small {
+    display: block;
+    font-family: 'Lora', serif;
+    font-size: 0.78rem;
+    font-style: italic;
+    color: rgba(240,208,128,0.65);
+    margin-top: 6px;
+    letter-spacing: 1px;
+  }
+
+  /* ── CLOSING ── */
+  .closing {
+    text-align: center;
+    padding: 48px 32px;
+    background: linear-gradient(180deg, var(--parchment) 0%, #ede5c8 100%);
+  }
+
+  .closing .arabic-big {
+    font-family: 'Amiri', serif;
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    color: var(--gold);
+    line-height: 1.6;
+    text-shadow: 0 2px 10px rgba(201,168,76,0.3);
+    margin-bottom: 12px;
+  }
+
+  .closing p {
+    font-style: italic;
+    color: #5a4020;
+    font-size: 1rem;
+    line-height: 1.8;
+    max-width: 500px;
+    margin: 12px auto;
+  }
+
+  /* ── CHAPTER DIVIDER ── */
+  .ch-divider {
+    text-align: center;
+    color: var(--gold);
+    letter-spacing: 12px;
+    font-size: 1.1rem;
+    padding: 16px 0;
+    opacity: 0.6;
+  }
+
+  /* ── SECTION NUMBER ── */
+  .section-num {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+
+  .section-num .num {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--green-deep);
+    color: var(--gold-light);
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .section-num .label {
+    font-family: 'Lora', serif;
+    font-size: 0.82rem;
+    color: #7a5c28;
+    font-style: italic;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 480px) {
+    .moon { width: 60px; height: 60px; top: 30px; right: 24px; }
+    .dalil { padding: 18px 18px; }
+    .scene { padding: 22px 18px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════ COVER ══════════════ -->
+<section class="cover">
+  <div class="star-field" id="stars"></div>
+  <div class="moon"></div>
+  <div class="sun-rise"></div>
+
+  <div class="cover-inner">
+    <div class="arabic-header">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
+    <div class="ornament">✦ ✦ ✦</div>
+    <h1 class="cover-title">The Power of<br>Tahajud & Dhuha</h1>
+    <p class="cover-subtitle">Naskah Inspirasi Islami · Berdasarkan Al-Qur'an & Hadis</p>
+    <div class="divider"></div>
+    <div class="cover-verse">
+      وَمِنَ الَّيْلِ فَتَهَجَّدْ بِهِۦ نَافِلَةً لَّكَ عَسَىٰٓ أَن يَبْعَثَكَ رَبُّكَ مَقَامًا مَّحْمُودًا
+      <div class="cover-verse-id">— QS. Al-Isrā': 79</div>
+    </div>
+    <div class="ornament">❧ ❧ ❧</div>
+  </div>
+</section>
+
+<!-- ══════════════ CONTENT ══════════════ -->
+<main class="content-wrap">
+
+  <!-- ── PROLOG ── -->
+  <article class="chapter">
+    <div class="chapter-badge">✦ Prolog</div>
+    <h2 class="chapter-title">Di Antara Gelap dan Fajar</h2>
+    <div class="chapter-arabic">اَللّٰهُ نُوْرُ السَّمٰوٰتِ وَالْاَرْضِ</div>
+
+    <div class="prose">
+      <p>
+        Ada dua waktu paling sunyi dalam sehari — saat malam masih mencekam dalam kegelapannya, dan saat fajar baru saja membelah langit. Di dua titik itulah Allah subhānahu wa ta'āla memanggil hamba-hamba-Nya yang sungguh-sungguh mencari-Nya. Bukan dengan suara keras. Bukan dengan gempita dunia. Melainkan dengan sunyi yang penuh, dengan kesempatan yang hanya diberikan kepada jiwa-jiwa yang rela bangkit.
+      </p>
+      <p>
+        Inilah kisah tentang dua amalan yang tampak sederhana, namun menyimpan kekuatan yang mengubah nasib, menenangkan hati, membuka pintu rezeki, dan mengangkat derajat seorang hamba di sisi Rabb-nya. Kisah tentang <strong>Tahajud</strong> dan <strong>Dhuha</strong>.
+      </p>
+    </div>
+  </article>
+
+  <div class="ch-divider">✦ ✦ ✦</div>
+
+  <!-- ══ BAB I: TAHAJUD ══ -->
+  <article class="chapter">
+    <div class="chapter-badge">Bagian Pertama</div>
+    <h2 class="chapter-title">Tahajud — Percakapan Rahasia di Sepertiga Malam</h2>
+
+    <div class="prose">
+      <p>
+        Jam menunjukkan pukul 02.30 dini hari. Seorang lelaki bernama Hasan bangkit dari tempat tidurnya. Kakinya dingin menyentuh lantai. Matanya berat. Namun hatinya — hatinya bergejolak dengan kerinduan yang tidak bisa ia jelaskan. Ia berwudhu, menghamparkan sajadah, dan berdiri di hadapan Rabb semesta alam.
+      </p>
+    </div>
+
+    <div class="dalil">
+      <div class="dalil-label">📖 Dalil Al-Qur'an · QS. Al-Isrā': 79</div>
+      <div class="dalil-arabic">وَمِنَ الَّيْلِ فَتَهَجَّدْ بِهِۦ نَافِلَةً لَّكَ ۖ عَسَىٰٓ أَن يَبْعَثَكَ رَبُّكَ مَقَامًا مَّحْمُودًا</div>
+      <div class="dalil-trans">"Dan pada sebagian malam, lakukanlah shalat tahajud sebagai suatu ibadah tambahan bagimu; mudah-mudahan Tuhanmu mengangkatmu ke tempat yang terpuji."</div>
+      <div class="dalil-source">QS. Al-Isrā' (17): 79</div>
+    </div>
+
+    <div class="prose">
+      <p>
+        <em>Maqāman mahmūdā</em> — kedudukan yang terpuji. Para ulama tafsir, di antaranya Ibnu Katsir, menafsirkan ayat ini bahwa Allah menjanjikan kedudukan tertinggi di akhirat bagi mereka yang menjaga tahajud. Namun bukan hanya akhirat — di dunia pun, orang yang konsisten tahajud merasakan ketenangan jiwa, kejernihan pikiran, dan keberkahan yang tidak mampu dijelaskan oleh nalar semata.
+      </p>
+    </div>
+
+    <div class="scene" data-icon="🌙">
+      <div class="scene-title">Adab Turun-Nya Allah di Sepertiga Malam</div>
+      <p>
+        Hasan teringat sebuah hadis yang pernah dibacanya. Ia perlahan membacanya kembali dalam hati, dan air matanya menetes. Betapa dekatnya Allah kepada hamba-Nya yang bangkit di saat manusia lain terlelap.
+      </p>
+    </div>
+
+    <div class="dalil">
+      <div class="dalil-label">📜 Dalil Hadis · HR. Bukhari & Muslim</div>
+      <div class="dalil-arabic">يَنْزِلُ رَبُّنَا تَبَارَكَ وَتَعَالَى كُلَّ لَيْلَةٍ إِلَى السَّمَاءِ الدُّنْيَا حِينَ يَبْقَى ثُلُثُ اللَّيْلِ الآخِرُ يَقُولُ مَنْ يَدْعُونِي فَأَسْتَجِيبَ لَهُ مَنْ يَسْأَلُنِي فَأُعْطِيَهُ مَنْ يَسْتَغْفِرُنِي فَأَغْفِرَ لَهُ</div>
+      <div class="dalil-trans">"Rabb kita Yang Maha Berkah lagi Maha Tinggi turun ke langit dunia setiap malam ketika tersisa sepertiga malam terakhir, seraya berfirman: 'Siapa yang berdoa kepada-Ku, akan Aku kabulkan. Siapa yang meminta kepada-Ku, akan Aku beri. Siapa yang beristighfar kepada-Ku, akan Aku ampuni.'"</div>
+      <div class="dalil-source">HR. Bukhari (no. 1145) & Muslim (no. 758), dari Abu Hurairah radhiyallahu 'anhu</div>
+    </div>
+
+    <div class="section-num">
+      <div class="num">1</div>
+      <div class="label">Keutamaan Orang yang Bertahajud</div>
+    </div>
+
+    <div class="prose">
+      <p>
+        Dalam sujud panjangnya, Hasan berbisik. Ia tidak meminta hal-hal besar. Ia hanya meminta agar hatinya tetap istiqamah, agar keluarganya diberi kesehatan, agar dosa-dosanya yang menumpuk diampuni. Dan di sinilah keajaiban itu bekerja — bukan selalu dalam bentuk yang terlihat, tetapi dalam bentuk ketenangan yang Allah titipkan ke dalam dada orang yang mau berbicara kepada-Nya di kala manusia lain memilih tidur.
+      </p>
+    </div>
+
+    <div class="dalil">
+      <div class="dalil-label">📜 Dalil Hadis · HR. Muslim</div>
+      <div class="dalil-arabic">أَفْضَلُ الصَّلاَةِ بَعْدَ الصَّلاَةِ الْمَكْتُوبَةِ الصَّلاَةُ فِى جَوْفِ اللَّيْلِ</div>
+      <div class="dalil-trans">"Shalat yang paling utama setelah shalat fardhu adalah shalat di tengah malam (tahajud)."</div>
+      <div class="dalil-source">HR. Muslim (no. 1163), dari Abu Hurairah radhiyallahu 'anhu</div>
+    </div>
+
+    <div class="dalil">
+      <div class="dalil-label">📖 Dalil Al-Qur'an · QS. Az-Zariyat: 17–18</div>
+      <div class="dalil-arabic">كَانُوا۟ قَلِيلًا مِّنَ الَّيْلِ مَا يَهْجَعُونَ ۞ وَبِالْأَسْحَارِ هُمْ يَسْتَغْفِرُونَ</div>
+      <div class="dalil-trans">"Mereka sedikit sekali tidur di waktu malam, dan di akhir-akhir malam mereka memohon ampun (kepada Allah)."</div>
+      <div class="dalil-source">QS. Az-Zariyāt (51): 17–18</div>
+    </div>
+
+    <div class="highlight">
+      اِنَّ نَاشِئَةَ الَّيْلِ هِيَ اَشَدُّ وَطْـًٔا وَّاَقْوَمُ قِيْلًا
+      <small>"Sesungguhnya bangun malam itu lebih kuat (mengisi jiwa) dan lebih tepat (untuk khusyuk dalam berdoa)." — QS. Al-Muzzammil: 6</small>
+    </div>
+
+    <div class="section-num">
+      <div class="num">2</div>
+      <div class="label">Buah Manis Sang Mutahajjid</div>
+    </div>
+
+    <div class="prose">
+      <p>
+        Enam bulan berlalu. Usaha Hasan yang hampir bangkrut perlahan bangkit kembali. Bukan karena mukjizat yang tiba-tiba — melainkan karena pikirannya menjadi lebih jernih, keputusannya lebih bijak, dan pintu-pintu yang tadinya tertutup mulai terbuka satu per satu. Ia tahu — bukan dia yang membuka pintu-pintu itu. Dia hanya bermunajat. Allah-lah yang menggerakkan segalanya.
+      </p>
+      <p>
+        Para sahabat Rasulullah ﷺ pun demikian. Abdullah bin Umar radhiyallahu 'anhuma tidak pernah melewatkan tahajud, bahkan saat bepergian. Ibnu Mas'ud berkata tentang orang yang meninggalkan tahajud karena terlena dunia, "Setan telah kencing di telinganya." Begitu seriusnya mereka memandang shalat malam.
+      </p>
+    </div>
+
+    <div class="dalil">
+      <div class="dalil-label">📜 Dalil Hadis · HR. Ibnu Majah</div>
+      <div class="dalil-arabic">عَلَيْكُمْ بِقِيَامِ اللَّيْلِ فَإِنَّهُ دَأَبُ الصَّالِحِينَ قَبْلَكُمْ وَإِنَّ قِيَامَ اللَّيْلِ قُرْبَةٌ إِلَى اللَّهِ وَمَنْهَاةٌ عَنِ الإِثْمِ وَتَكْفِيرٌ لِلسَّيِّئَاتِ وَمَطْرَدَةٌ لِلدَّاءِ عَنِ الْجَسَدِ</div>
+      <div class="dalil-trans">"Hendaklah kalian qiyamul lail (shalat malam), karena itu adalah kebiasaan orang-orang saleh sebelum kalian. Sesungguhnya qiyamul lail itu mendekatkan diri kepada Allah, mencegah dari dosa, menghapus kesalahan, dan mengusir penyakit dari badan."</div>
+      <div class="dalil-source">HR. Tirmidzi (no. 3549) & Ibnu Majah, dishahihkan Al-Albani</div>
+    </div>
+  </article>
+
+  <div class="ch-divider">✦ ✦ ✦</div>
+
+  <!-- ══ BAB II: DHUHA ══ -->
+  <article class="chapter">
+    <div class="chapter-badge">Bagian Kedua</div>
+    <h2 class="chapter-title">Dhuha — Saat Matahari Menyambut Rezeki</h2>
+
+    <div class="prose">
+      <p>
+        Pagi itu, Siti baru saja menyelesaikan shalat Subuhnya. Ia tidak langsung beranjak — masih duduk berdzikir hingga matahari mulai meninggi. Lalu, ketika sinar matahari sudah setinggi satu atau dua tombak — kira-kira 15–20 menit setelah matahari terbit — ia bangkit dan mengerjakan shalat Dhuha. Dua rakaat pertama, lalu dua rakaat lagi. Sederhana. Tapi penuh harap.
+      </p>
+    </div>
+
+    <div class="dalil">
+      <div class="dalil-label">📖 Dalil Al-Qur'an · QS. Adh-Dhuhā: 1–3</div>
+      <div class="dalil-arabic">وَالضُّحَىٰ ۞ وَالَّيْلِ إِذَا سَجَىٰ ۞ مَا وَدَّعَكَ رَبُّكَ وَمَا قَلَىٰ</div>
+      <div class="dalil-trans">"Demi waktu dhuha, dan demi malam apabila telah sunyi. Tuhanmu tidak meninggalkan engkau (Muhammad) dan tidak pula membencimu."</div>
+      <div class="dalil-source">QS. Adh-Dhuhā (93): 1–3</div>
+    </div>
+
+    <div class="prose">
+      <p>
+        Betapa Allah mengangkat sumpah demi waktu dhuha! Ini bukan sekadar penghormatan biasa — ini adalah isyarat agung bahwa waktu dhuha memiliki kedudukan luar biasa di sisi-Nya. Dan Rasulullah ﷺ mewasiatkan kepada para sahabatnya untuk tidak melewatkan waktu yang diberkahi ini.
+      </p>
+    </div>
+
+    <div class="dalil">
+      <div class="dalil-label">📜 Wasiat Nabi ﷺ · HR. Bukhari & Muslim</div>
+      <div class="dalil-arabic">أَوْصَانِي خَلِيلِي بِثَلاَثٍ لاَ أَدَعُهُنَّ حَتَّى أَمُوتَ صَوْمِ ثَلاَثَةِ أَيَّامٍ مِنْ كُلِّ شَهْرٍ وَصَلاَةِ الضُّحَى وَنَوْمٍ عَلَى وِتْرٍ</div>
+      <div class="dalil-trans">"Kekasihku (Nabi ﷺ) mewasiatkan kepadaku tiga perkara yang tidak akan aku tinggalkan sampai aku mati: puasa tiga hari setiap bulan, shalat Dhuha, dan tidur dalam keadaan sudah witir."</div>
+      <div class="dalil-source">HR. Bukhari (no. 1178) & Muslim (no. 721), dari Abu Hurairah radhiyallahu 'anhu</div>
+    </div>
+
+    <div class="section-num">
+      <div class="num">3</div>
+      <div class="label">Shadaqah 360 Sendi dan Gantinya</div>
+    </div>
+
+    <div class="prose">
+      <p>
+        Suatu pagi, Siti teringat sebuah hadis yang membuatnya terharu. Bahwa setiap sendi tubuh manusia memiliki kewajiban bersedekah setiap harinya — dan dua rakaat Dhuha sudah mencukupkan seluruhnya. Betapa murahnya Allah. Betapa ringannya jalan yang Ia bukakan.
+      </p>
+    </div>
+
+    <div class="dalil">
+      <div class="dalil-label">📜 Dalil Hadis · HR. Muslim</div>
+      <div class="dalil-arabic">يُصْبِحُ عَلَى كُلِّ سُلاَمَى مِنْ أَحَدِكُمْ صَدَقَةٌ … وَيُجْزِئُ مِنْ ذَلِكَ رَكْعَتَانِ يَرْكَعُهُمَا مِنَ الضُّحَى</div>
+      <div class="dalil-trans">"Setiap persendian dari salah seorang di antara kalian harus dikeluarkan sedekahnya setiap pagi … dan yang mencukupi semua itu adalah dua rakaat yang ia kerjakan pada waktu Dhuha."</div>
+      <div class="dalil-source">HR. Muslim (no. 720), dari Abu Dzar radhiyallahu 'anhu</div>
+    </div>
+
+    <div class="section-num">
+      <div class="num">4</div>
+      <div class="label">Pintu Rezeki yang Dijamin Allah</div>
+    </div>
+
+    <div class="scene" data-icon="☀️">
+      <div class="scene-title">Kisah Siti: Pintu yang Terbuka</div>
+      <p>
+        Tiga tahun Siti mengamalkan Dhuha setiap hari — minimal dua rakaat, kadang empat, kadang delapan. Di tahun pertama, usaha kecilnya di bidang kerajinan tangan mulai dikenal tetangga. Di tahun kedua, ia mendapat pesanan dari luar kota. Di tahun ketiga, tokonya online-nya dibanjiri orderan. Ia tidak pernah tahu pasti apakah semua itu "gara-gara" Dhuha. Tapi ia tahu satu hal — ia tidak pernah merasa sendirian dalam perjuangannya. Ada tangan yang ia pegang, dan tangan itu milik Allah.
+      </p>
+    </div>
+
+    <div class="dalil">
+      <div class="dalil-label">📜 Dalil Hadis Qudsi · HR. Ahmad & Abu Dawud</div>
+      <div class="dalil-arabic">يَا ابْنَ آدَمَ ارْكَعْ لِي أَرْبَعَ رَكَعَاتٍ مِنْ أَوَّلِ النَّهَارِ أَكْفِكَ آخِرَهُ</div>
+      <div class="dalil-trans">"Wahai anak Adam, kerjakanlah shalat empat rakaat (Dhuha) untuk-Ku di awal siang, maka Aku akan mencukupimu di akhir siangmu (seluruh urusanmu)."</div>
+      <div class="dalil-source">HR. Ahmad (no. 22382) & Abu Dawud (no. 1289), dari Nu'aim bin Hammar radhiyallahu 'anhu — Hadis Shahih</div>
+    </div>
+
+    <div class="prose">
+      <p>
+        Inilah janji Allah yang terucap langsung dalam hadis qudsi — Allah sendiri yang berfirman, bukan sekadar perantaraan malaikat atau nabi. Jaminan Allah untuk orang yang mau menyediakan waktu beberapa menit di pagi hari. Subhānallāh.
+      </p>
+    </div>
+
+    <div class="dalil">
+      <div class="dalil-label">📜 Dalil Hadis · HR. Tirmidzi</div>
+      <div class="dalil-arabic">صَلاَةُ الأَوَّابِينَ حِينَ تَرْمَضُ الْفِصَالُ</div>
+      <div class="dalil-trans">"Shalat awwabin (orang-orang yang kembali taat) adalah ketika anak unta merasakan panasnya matahari (yaitu waktu Dhuha)."</div>
+      <div class="dalil-source">HR. Muslim (no. 748), dari Zaid bin Arqam radhiyallahu 'anhu</div>
+    </div>
+  </article>
+
+  <div class="ch-divider">✦ ✦ ✦</div>
+
+  <!-- ══ BAB III: KOMBINASI ══ -->
+  <article class="chapter">
+    <div class="chapter-badge">Bagian Ketiga</div>
+    <h2 class="chapter-title">Ketika Tahajud dan Dhuha Berpadu</h2>
+
+    <div class="prose">
+      <p>
+        Hasan dan Siti akhirnya menikah. Dua jiwa yang sama-sama tumbuh dalam kebiasaan menjaga malam dan pagi. Rumah tangga mereka tidak luput dari ujian — ada saatnya ekonomi sulit, ada saatnya perbedaan pendapat. Tapi ada satu hal yang selalu menjadi perekat mereka: sajadah yang tergelar di sepertiga malam, dan sujud syukur di waktu Dhuha.
+      </p>
+      <p>
+        Kombinasi tahajud dan Dhuha bukan sekadar ibadah ganda — ini adalah membangun ritme hidup seorang mukmin. Malam untuk bermunajat dan memohon. Pagi untuk bersyukur dan bergerak. Keduanya menjaga hati tetap terhubung dengan langit, sementara kaki tetap berpijak di bumi dan terus berusaha.
+      </p>
+    </div>
+
+    <div class="dalil">
+      <div class="dalil-label">📖 Dalil Al-Qur'an · QS. Ali 'Imran: 17</div>
+      <div class="dalil-arabic">وَالصَّابِرِينَ وَالصَّادِقِينَ وَالْقَانِتِينَ وَالْمُنفِقِينَ وَالْمُسْتَغْفِرِينَ بِالْأَسْحَارِ</div>
+      <div class="dalil-trans">"(Yaitu) orang-orang yang sabar, yang benar, yang tetap taat, yang menginfakkan hartanya, dan yang memohon ampunan di waktu sebelum fajar (sahur)."</div>
+      <div class="dalil-source">QS. Āli 'Imrān (3): 17</div>
+    </div>
+
+    <div class="dalil">
+      <div class="dalil-label">📜 Sifat Hamba Allah Yang Terpuji · QS. Al-Furqan: 64</div>
+      <div class="dalil-arabic">وَالَّذِينَ يَبِيتُونَ لِرَبِّهِمْ سُجَّدًا وَقِيَامًا</div>
+      <div class="dalil-trans">"Dan orang-orang yang melewati malam hari dengan bersujud dan berdiri untuk Tuhan mereka."</div>
+      <div class="dalil-source">QS. Al-Furqān (25): 64</div>
+    </div>
+
+    <div class="highlight">
+      مَنْ صَلَّى الضُّحَى ثِنْتَيْ عَشْرَةَ رَكْعَةً بَنَى اللَّهُ لَهُ قَصْرًا مِنْ ذَهَبٍ فِى الْجَنَّةِ
+      <small>"Barangsiapa shalat Dhuha dua belas rakaat, Allah akan membangunkan baginya istana emas di surga." — HR. Tirmidzi & Ibnu Majah (Hasan)</small>
+    </div>
+  </article>
+
+  <div class="ch-divider">✦ ✦ ✦</div>
+
+  <!-- ══ EPILOG ══ -->
+  <article class="chapter">
+    <div class="chapter-badge">✦ Epilog</div>
+    <h2 class="chapter-title">Mulailah Malam Ini</h2>
+
+    <div class="prose">
+      <p>
+        Kisah Hasan dan Siti bukan dongeng. Di sekitar kita, ada banyak orang yang merasakan hal yang sama. Mereka bukan orang-orang luar biasa yang terlahir dengan iman sempurna. Mereka hanya orang-orang biasa yang memilih bangkit di saat orang lain memilih tetap tidur. Yang memilih bersujud di saat orang lain memilih bermalas-malasan.
+      </p>
+      <p>
+        Tahajud dan Dhuha tidak meminta banyak. Tahajud: dua rakaat saja sudah cukup untuk memulai. Dhuha: dua rakaat di pagi hari. Tapi konsistensinya — itulah yang mengubah segalanya. Karena Allah lebih mencintai amalan yang sedikit namun terus-menerus, daripada amalan yang banyak namun terputus.
+      </p>
+    </div>
+
+    <div class="dalil">
+      <div class="dalil-label">📜 Amalan Terbaik · HR. Bukhari & Muslim</div>
+      <div class="dalil-arabic">أَحَبُّ الأَعْمَالِ إِلَى اللَّهِ أَدْوَمُهَا وَإِنْ قَلَّ</div>
+      <div class="dalil-trans">"Amalan yang paling dicintai Allah adalah yang paling terus-menerus dikerjakan meskipun sedikit."</div>
+      <div class="dalil-source">HR. Bukhari (no. 6465) & Muslim (no. 783), dari 'Aisyah radhiyallahu 'anha</div>
+    </div>
+
+    <div class="prose">
+      <p>
+        Malam ini, jangan biarkan alarm subuh hanya menjadi rutinitas. Gunakan sisa malam sebelumnya untuk berbicara kepada Allah. Dan saat pagi tiba, sambut rezeki dengan dua rakaat Dhuha yang ikhlas. Karena dua waktu itulah — gelap sepertiga malam dan terang pagi hari — Allah membuka tangan-Nya lebar-lebar untuk hamba-hamba yang mau datang.
+      </p>
+    </div>
+  </article>
+
+  <!-- ══ CLOSING ══ -->
+  <div class="closing">
+    <div class="arabic-big">اللَّهُمَّ أَعِنِّي عَلَى ذِكْرِكَ وَشُكْرِكَ وَحُسْنِ عِبَادَتِكَ</div>
+    <div class="divider" style="background: linear-gradient(90deg, transparent, var(--gold), transparent); width:200px; height:1px; margin:20px auto;"></div>
+    <p><em>"Ya Allah, tolonglah aku untuk mengingat-Mu, bersyukur kepada-Mu, dan beribadah dengan sebaik-baiknya kepada-Mu."</em></p>
+    <p style="margin-top:16px; font-size:0.82rem; color:#8a6a30; letter-spacing:1px;">— HR. Abu Dawud (no. 1522), Doa yang diajarkan Nabi ﷺ kepada Mu'adz bin Jabal —</p>
+    <div style="margin-top:32px; color:var(--green-deep); font-family:'Cinzel Decorative',serif; font-size:0.85rem; letter-spacing:2px;">
+      وَاللّٰهُ أَعْلَمُ بِالصَّوَابِ
+    </div>
+    <p style="margin-top:8px; font-size:0.8rem; color:#a07840;">Semoga bermanfaat · Barakallahu fiikum</p>
+  </div>
+
+</main>
+
+<script>
+  // Generate stars
+  const field = document.getElementById('stars');
+  for (let i = 0; i < 120; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    const size = Math.random() * 2.5 + 0.5;
+    s.style.cssText = `
+      width:${size}px; height:${size}px;
+      top:${Math.random()*100}%;
+      left:${Math.random()*100}%;
+      --d:${(Math.random()*4+2).toFixed(1)}s;
+      --o:${(Math.random()*0.5+0.2).toFixed(2)};
+      animation-delay:${(Math.random()*5).toFixed(1)}s;
+    `;
+    field.appendChild(s);
+  }
+</script>
+</body>
+</html>

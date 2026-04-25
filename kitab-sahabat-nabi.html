@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kitab Sahabat Nabi ﷺ</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,800;0,900;1,400;1,700&family=Amiri:ital,wght@0,400;0,700;1,400&family=Jost:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+
+:root{
+  /* Arabia sandstone palette */
+  --sandstone: #f0e6cc;
+  --sand:      #e8d8b4;
+  --sand-d:    #d4c090;
+  --ocher:     #c8940a;
+  --ocher-d:   #a07008;
+  --ocher-lt:  #e0aa20;
+  --ocher-pale:#fdf5d8;
+  --terra:     #8a3820;
+  --terra-d:   #6a2810;
+  --terra-lt:  #b85030;
+  --terra-pale:#fde8e0;
+  --umber:     #5a3010;
+  --umber-lt:  #8a5830;
+  --charcoal:  #1a1008;
+  --charcoal2: #241808;
+  --charcoal3: #2e2010;
+  --night:     #0c0804;
+  --cream:     #faf6ec;
+  --ivory:     #f5f0e4;
+  --parch:     #ede5cc;
+  --parch-d:   #e0d4b4;
+  --b-ocher:   rgba(200,148,10,.2);
+  --b-terra:   rgba(138,56,32,.18);
+  --b-umber:   rgba(90,48,16,.15);
+  --b-ink:     rgba(26,16,8,.12);
+}
+
+html{scroll-behavior:smooth;}
+body{background:var(--cream);font-family:'Playfair Display',Georgia,serif;color:var(--charcoal);overflow-x:hidden;}
+
+/* ══════════════════════════
+   HERO — EPIC INSCRIPTION
+══════════════════════════ */
+.hero{
+  min-height:100vh;
+  position:relative;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 30%,rgba(90,48,16,.3) 0%,transparent 65%),
+    radial-gradient(ellipse 60% 40% at 20% 80%,rgba(138,56,32,.2) 0%,transparent 60%),
+    radial-gradient(ellipse 100% 40% at 50% 100%,rgba(12,8,4,.95) 0%,transparent 55%),
+    linear-gradient(160deg,var(--night) 0%,var(--charcoal) 25%,var(--charcoal2) 50%,var(--umber) 75%,#3a2010 100%);
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;
+  padding:80px 24px 120px;
+  overflow:hidden;
+}
+
+/* Stone texture lines */
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background-image:
+    repeating-linear-gradient(90deg,transparent 0,transparent 3px,rgba(255,255,255,.012) 3px,rgba(255,255,255,.012) 4px),
+    repeating-linear-gradient(0deg,transparent 0,transparent 48px,rgba(255,255,255,.015) 48px,rgba(255,255,255,.015) 49px);
+  pointer-events:none;
+}
+
+/* Gold dust particles */
+.dust-field{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
+.dust-p{
+  position:absolute;border-radius:50%;
+  background:var(--ocher);
+  animation:dustDrift var(--dd,10s) ease-in-out infinite;
+  opacity:0;
+}
+@keyframes dustDrift{
+  0%  {opacity:0;transform:translate(0,0) scale(.5);}
+  20% {opacity:var(--do,.6);}
+  80% {opacity:var(--do,.4);}
+  100%{opacity:0;transform:translate(var(--dx,20px),var(--dy,-60px)) scale(1.2);}
+}
+
+/* Top ornament border */
+.hero-top-border{
+  position:absolute;top:0;left:0;right:0;
+  height:6px;
+  background:linear-gradient(90deg,
+    var(--night),var(--terra),var(--ocher),var(--ocher-lt),var(--ocher),var(--terra),var(--night));
+}
+
+/* Bottom silhouette */
+.hero-bottom{
+  position:absolute;bottom:0;left:0;right:0;
+  height:120px;
+  background:linear-gradient(0deg,rgba(12,8,4,.95) 0%,transparent 100%);
+  pointer-events:none;
+}
+
+.hero-inner{position:relative;z-index:2;max-width:780px;}
+
+.hero-ornament-top{
+  font-family:'Amiri',serif;
+  font-size:clamp(1.5rem,3.5vw,2.4rem);
+  color:rgba(200,148,10,.5);
+  letter-spacing:8px;margin-bottom:16px;
+  animation:carve 2s ease both;
+}
+
+.hero-bismillah{
+  font-family:'Amiri',serif;
+  font-size:clamp(1.7rem,4.5vw,3.2rem);
+  color:var(--ocher-lt);
+  text-shadow:0 2px 20px rgba(200,148,10,.4),0 0 60px rgba(200,148,10,.15);
+  line-height:1.9;margin-bottom:16px;
+  animation:carve 2s ease both .1s;
+}
+
+.hero-kicker{
+  font-family:'Jost',sans-serif;font-weight:300;
+  font-size:clamp(.6rem,1.4vw,.75rem);
+  letter-spacing:8px;text-transform:uppercase;
+  color:rgba(200,148,10,.45);
+  margin-bottom:22px;
+  animation:carve 2s ease both .22s;
+}
+
+.hero-title{
+  font-family:'Playfair Display',serif;font-weight:900;
+  font-size:clamp(2.8rem,8.5vw,7rem);
+  line-height:1.02;letter-spacing:-1px;
+  background:linear-gradient(160deg,var(--sandstone) 0%,var(--ocher-lt) 35%,var(--sand) 65%,rgba(200,148,10,.7) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  margin-bottom:6px;
+  animation:carve 2s ease both .06s;
+}
+
+.hero-subtitle{
+  font-family:'Playfair Display',serif;font-weight:400;font-style:italic;
+  font-size:clamp(1rem,2.5vw,1.7rem);
+  color:rgba(200,148,10,.55);
+  letter-spacing:2px;margin-bottom:26px;
+  animation:carve 2s ease both .3s;
+}
+
+.hero-ar-main{
+  font-family:'Amiri',serif;
+  font-size:clamp(1.2rem,3vw,2rem);
+  color:rgba(224,210,168,.65);
+  line-height:2;margin-bottom:28px;
+  animation:carve 2s ease both .28s;
+}
+
+.hero-rule{
+  display:flex;align-items:center;justify-content:center;gap:14px;
+  margin:0 auto 28px;
+  animation:carve 2s ease both .38s;
+}
+.hero-rule span{width:80px;height:1px;background:linear-gradient(90deg,transparent,rgba(200,148,10,.3));}
+.hero-rule span:last-child{background:linear-gradient(90deg,rgba(200,148,10,.3),transparent);}
+.hero-rule em{color:rgba(138,56,32,.7);font-style:normal;letter-spacing:6px;font-size:.9rem;}
+
+.hero-verse{
+  max-width:580px;margin:0 auto;
+  padding:22px 32px;
+  background:rgba(12,8,4,.65);
+  border:1px solid rgba(200,148,10,.22);
+  backdrop-filter:blur(8px);
+  animation:carve 2s ease both .48s;
+}
+.hv-ar{font-family:'Amiri',serif;font-size:clamp(1rem,2.5vw,1.38rem);color:var(--ocher-lt);line-height:2.2;direction:rtl;margin-bottom:10px;}
+.hv-id{font-style:italic;font-size:.82rem;color:rgba(200,170,100,.55);line-height:1.7;font-weight:400;}
+
+@keyframes carve{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+
+/* ══════════════════════════
+   CONTENT
+══════════════════════════ */
+.body-wrap{max-width:880px;margin:0 auto;padding:0 16px 80px;}
+
+/* ── Chapter Markers ── */
+.chapter{
+  margin:52px 0 0;
+  position:relative;overflow:hidden;
+  padding:20px 24px 18px;
+}
+.chapter::before{
+  content:'';position:absolute;inset:0;
+  pointer-events:none;
+}
+.ch-dark{
+  background:var(--charcoal);
+  color:var(--sandstone);
+}
+.ch-terra{
+  background:var(--terra-d);
+  color:var(--sandstone);
+}
+.ch-ocher{
+  background:var(--ocher-d);
+  color:var(--charcoal);
+}
+.ch-stone{
+  background:var(--parch);
+  color:var(--charcoal);
+  border:2px solid var(--charcoal);
+}
+
+.ch-flex{display:flex;align-items:center;gap:20px;}
+.ch-num{
+  flex-shrink:0;
+  font-family:'Playfair Display',serif;font-weight:900;
+  font-size:3rem;line-height:1;
+  opacity:.2;
+}
+.ch-content{}
+.ch-tag{
+  font-family:'Jost',sans-serif;font-weight:600;
+  font-size:.6rem;letter-spacing:5px;text-transform:uppercase;
+  margin-bottom:5px;opacity:.7;
+}
+.ch-ar{font-family:'Amiri',serif;font-size:clamp(1.1rem,2.8vw,1.6rem);line-height:1.8;margin-bottom:3px;}
+.ch-title{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(1.1rem,2.8vw,1.7rem);line-height:1.2;}
+
+/* ── Sections ── */
+.sec{padding:28px 0 22px;border-bottom:1px solid var(--b-ink);}
+.sec:last-child{border-bottom:none;}
+
+/* ── Prose ── */
+.prose p{font-size:clamp(.97rem,2.1vw,1.07rem);line-height:2.05;color:var(--charcoal3);margin-bottom:16px;text-align:justify;}
+.prose p.lead{font-style:italic;color:var(--terra-d);font-size:clamp(1rem,2.2vw,1.1rem);line-height:1.9;}
+.prose p:first-of-type:not(.lead)::first-letter{font-family:'Playfair Display',serif;font-weight:900;font-size:4em;line-height:.72;float:left;margin:8px 12px 0 0;color:var(--terra);}
+
+/* ── DALIL ── */
+.dalil{margin:24px 0;display:grid;grid-template-columns:4px 1fr;}
+.dalil-t{background:var(--terra-pale);border:1px solid var(--b-terra);}
+.dalil-o{background:var(--ocher-pale);border:1px solid var(--b-ocher);}
+.dalil-d{background:var(--charcoal);border:1px solid rgba(200,148,10,.18);}
+.dalil-s{background:var(--parch);border:1px solid var(--b-umber);}
+
+.dbar-t{background:var(--terra);}
+.dbar-o{background:var(--ocher);}
+.dbar-d{background:var(--ocher);}
+.dbar-s{background:var(--umber);}
+
+.dbody{padding:18px 20px 14px;}
+.dtag{font-family:'Jost',sans-serif;font-weight:700;font-size:.6rem;letter-spacing:4px;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:10px;}
+.dtag::after{content:'';flex:1;height:1px;}
+.dtag-t{color:var(--terra-d);}
+.dtag-t::after{background:linear-gradient(90deg,var(--b-terra),transparent);}
+.dtag-o{color:var(--ocher-d);}
+.dtag-o::after{background:linear-gradient(90deg,var(--b-ocher),transparent);}
+.dtag-d{color:var(--ocher);}
+.dtag-d::after{background:linear-gradient(90deg,rgba(200,148,10,.25),transparent);}
+.dtag-s{color:var(--umber);}
+.dtag-s::after{background:linear-gradient(90deg,var(--b-umber),transparent);}
+
+.dar{font-family:'Amiri',serif;font-size:clamp(1.1rem,2.8vw,1.52rem);line-height:2.2;direction:rtl;text-align:right;margin-bottom:12px;padding-bottom:10px;}
+.dar-t{color:var(--terra-d);border-bottom:1px dashed var(--b-terra);}
+.dar-o{color:var(--ocher-d);border-bottom:1px dashed var(--b-ocher);}
+.dar-d{color:var(--ocher-lt);border-bottom:1px dashed rgba(200,148,10,.18);}
+.dar-s{color:var(--umber);border-bottom:1px dashed var(--b-umber);}
+
+.dtrans{font-style:italic;font-size:.92rem;line-height:1.8;color:var(--charcoal3);margin-bottom:7px;}
+.dtrans-d{color:rgba(224,210,168,.78);}
+.dref{font-family:'Jost',sans-serif;font-weight:700;font-size:.62rem;letter-spacing:2px;text-transform:uppercase;}
+.dref-t{color:var(--terra);}
+.dref-o{color:var(--ocher-d);}
+.dref-d{color:var(--ocher);}
+.dref-s{color:var(--umber);}
+
+/* ══════════════════════════
+   SAHABAT PROFILE CARDS
+══════════════════════════ */
+.sahabat-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:3px;
+  margin:24px 0;
+}
+
+.sahabat-card{
+  background:var(--ivory);
+  border:1px solid var(--b-umber);
+  position:relative;overflow:hidden;
+  transition:box-shadow .2s;
+}
+
+/* Colored left accent per type */
+.scard-abubakar{border-left:5px solid #4a6890;}
+.scard-umar    {border-left:5px solid #3a7840;}
+.scard-utsman  {border-left:5px solid #704020;}
+.scard-ali     {border-left:5px solid #204878;}
+.scard-gold    {border-left:5px solid var(--ocher);}
+.scard-terra   {border-left:5px solid var(--terra);}
+.scard-sage    {border-left:5px solid #3a6840;}
+.scard-stone   {border-left:5px solid var(--umber);}
+
+/* Decorative number */
+.sc-bg-num{
+  position:absolute;bottom:-10px;right:10px;
+  font-family:'Playfair Display',serif;font-weight:900;
+  font-size:5rem;line-height:1;
+  color:rgba(26,16,8,.06);
+  pointer-events:none;
+  user-select:none;
+}
+
+.sc-body{padding:20px 18px 16px;}
+
+.sc-header{margin-bottom:12px;}
+.sc-role{
+  font-family:'Jost',sans-serif;font-weight:600;
+  font-size:.6rem;letter-spacing:3px;text-transform:uppercase;
+  margin-bottom:6px;
+}
+.sr-abubakar{color:#4a6890;}
+.sr-umar    {color:#3a7840;}
+.sr-utsman  {color:#704020;}
+.sr-ali     {color:#204878;}
+.sr-gold    {color:var(--ocher-d);}
+.sr-terra   {color:var(--terra);}
+.sr-sage    {color:#3a6840;}
+.sr-stone   {color:var(--umber);}
+
+.sc-ar{
+  font-family:'Amiri',serif;
+  font-size:clamp(1.2rem,3vw,1.6rem);
+  line-height:1.7;margin-bottom:3px;
+  color:var(--charcoal);
+}
+
+.sc-name{
+  font-family:'Playfair Display',serif;font-weight:700;
+  font-size:clamp(1rem,2.3vw,1.25rem);
+  color:var(--charcoal);
+  margin-bottom:4px;line-height:1.3;
+}
+
+.sc-epithet{
+  font-family:'Playfair Display',serif;font-style:italic;font-weight:400;
+  font-size:.88rem;color:var(--umber-lt);
+  margin-bottom:12px;
+}
+
+.sc-bio{
+  font-size:.87rem;line-height:1.78;
+  color:var(--charcoal3);
+  font-style:italic;
+  margin-bottom:10px;
+}
+
+.sc-fact{
+  font-family:'Jost',sans-serif;font-weight:400;
+  font-size:.78rem;line-height:1.7;
+  color:var(--charcoal3);
+  padding:8px 10px;
+  border-left:2px solid;
+  margin-top:8px;
+}
+.sf-abubakar{background:rgba(74,104,144,.06);border-left-color:#4a6890;}
+.sf-umar    {background:rgba(58,120,64,.06);border-left-color:#3a7840;}
+.sf-utsman  {background:rgba(112,64,32,.06);border-left-color:#704020;}
+.sf-ali     {background:rgba(32,72,120,.06);border-left-color:#204878;}
+.sf-gold    {background:var(--ocher-pale);border-left-color:var(--ocher);}
+.sf-terra   {background:var(--terra-pale);border-left-color:var(--terra);}
+.sf-sage    {background:rgba(58,104,64,.06);border-left-color:#3a6840;}
+.sf-stone   {background:rgba(90,48,16,.06);border-left-color:var(--umber);}
+
+.sc-dalil{
+  font-family:'Jost',sans-serif;font-weight:700;
+  font-size:.58rem;letter-spacing:2px;text-transform:uppercase;
+  margin-top:10px;display:block;
+  color:var(--umber-lt);
+}
+
+/* ══════════════════════════
+   KHULAFAUR RASYIDIN TABLE
+══════════════════════════ */
+.tbl-wrap{margin:22px 0;overflow:hidden;}
+.tbl{width:100%;border-collapse:collapse;font-size:.87rem;table-layout:fixed;}
+.tbl.th-dark thead tr{background:var(--charcoal);color:var(--sandstone);}
+.tbl.th-terra thead tr{background:var(--terra-d);color:var(--sandstone);}
+.tbl.th-ocher thead tr{background:var(--ocher-d);color:var(--charcoal);}
+.tbl thead th{padding:10px 12px;text-align:left;font-family:'Jost',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;}
+.tbl tbody tr{border-bottom:1px solid var(--b-ink);}
+.tbl tbody tr:nth-child(even){background:rgba(200,148,10,.04);}
+.tbl tbody tr:nth-child(odd){background:var(--cream);}
+.tbl td{padding:10px 12px;line-height:1.65;color:var(--charcoal3);vertical-align:top;word-break:break-word;}
+.tbl td:first-child{font-weight:700;color:var(--charcoal);}
+
+.tbdg{display:inline-block;padding:2px 8px;font-family:'Jost',sans-serif;font-size:.57rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;white-space:nowrap;}
+.tbdg-o{background:var(--ocher-pale);color:var(--ocher-d);border:1px solid var(--b-ocher);}
+.tbdg-t{background:var(--terra-pale);color:var(--terra-d);border:1px solid var(--b-terra);}
+.tbdg-d{background:rgba(26,16,8,.08);color:var(--charcoal2);border:1px solid var(--b-ink);}
+.tbdg-s{background:rgba(90,48,16,.08);color:var(--umber);border:1px solid var(--b-umber);}
+
+@media(max-width:590px){
+  .tbl,.tbl thead,.tbl tbody,.tbl th,.tbl td,.tbl tr{display:block;width:100%;}
+  .tbl thead{display:none;}
+  .tbl tbody tr{background:var(--cream)!important;border:1px solid var(--b-ink);margin-bottom:8px;padding:12px 14px 10px;}
+  .tbl td{padding:4px 0 4px;border:none;display:grid;grid-template-columns:88px 1fr;gap:6px;align-items:start;}
+  .tbl td::before{content:attr(data-label);font-family:'Jost',sans-serif;font-size:.58rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding-top:2px;color:var(--terra-d);}
+  .tbl.th-ocher td::before{color:var(--ocher-d);}
+  .tbl td:first-child{font-weight:700;font-size:.93rem;}
+}
+
+/* ══════════════════════════
+   HIGHLIGHT / BANNER
+══════════════════════════ */
+.hl{margin:20px 0;padding:18px 20px;}
+.hl-ocher{background:var(--ocher-pale);border:1px solid var(--b-ocher);border-left:4px solid var(--ocher);}
+.hl-terra{background:var(--terra-pale);border:1px solid var(--b-terra);border-left:4px solid var(--terra);}
+.hl-dark{background:var(--charcoal);padding:22px 24px;}
+.hl-stone{background:var(--parch);border:1px solid var(--b-umber);border-left:4px solid var(--umber);}
+
+.hl-label{font-family:'Jost',sans-serif;font-weight:700;font-size:.6rem;letter-spacing:3px;text-transform:uppercase;margin-bottom:9px;}
+.hll-o{color:var(--ocher-d);}
+.hll-t{color:var(--terra-d);}
+.hll-w{color:rgba(200,148,10,.55);}
+.hll-s{color:var(--umber);}
+
+.hl-ar{font-family:'Amiri',serif;font-size:clamp(1.05rem,2.5vw,1.4rem);line-height:2;margin-bottom:8px;}
+.hlar-o{color:var(--ocher-d);}
+.hlar-t{color:var(--terra-d);}
+.hlar-w{color:var(--ocher-lt);}
+.hlar-s{color:var(--umber);}
+
+.hl-trans{font-style:italic;font-size:.9rem;line-height:1.8;margin-bottom:6px;color:var(--charcoal3);}
+.hlt-d{color:rgba(224,210,168,.78);}
+
+.hl-ref{font-family:'Jost',sans-serif;font-weight:700;font-size:.6rem;letter-spacing:2px;text-transform:uppercase;}
+.hlr-o{color:var(--ocher);}
+.hlr-t{color:var(--terra);}
+.hlr-w{color:rgba(200,148,10,.45);}
+.hlr-s{color:var(--umber);}
+
+.banner{margin:26px 0;padding:24px 28px;text-align:center;position:relative;overflow:hidden;}
+.banner-dark{background:var(--charcoal);}
+.banner-terra{background:var(--terra-d);color:var(--sandstone);}
+.banner-ocher{background:var(--ocher-d);color:var(--charcoal);}
+.banner-parch{background:var(--parch-d);border:2px solid var(--charcoal);}
+
+.ban-ar{font-family:'Amiri',serif;font-size:clamp(1.1rem,2.8vw,1.5rem);line-height:2;margin-bottom:10px;}
+.bnar-lt{color:var(--ocher-lt);}
+.bnar-sand{color:var(--sandstone);}
+.bnar-dark{color:var(--charcoal);}
+
+.ban-id{font-style:italic;font-size:.9rem;line-height:1.78;margin-bottom:6px;}
+.bnid-lt{color:rgba(224,210,168,.75);}
+.bnid-sand{color:rgba(240,230,204,.9);}
+.bnid-dark{color:rgba(26,16,8,.75);}
+
+.ban-ref{font-family:'Jost',sans-serif;font-weight:700;font-size:.6rem;letter-spacing:3px;text-transform:uppercase;margin-top:7px;}
+.bnref-dim{color:rgba(200,148,10,.45);}
+.bnref-sand{color:rgba(240,230,204,.45);}
+.bnref-dark{color:rgba(26,16,8,.45);}
+
+/* ══════════════════════════
+   SEPARATOR
+══════════════════════════ */
+.sep{text-align:center;padding:14px 0;background:var(--parch-d);border-top:1px solid var(--b-umber);border-bottom:1px solid var(--b-umber);}
+.sep span{color:var(--umber-lt);letter-spacing:12px;font-size:.7rem;opacity:.5;}
+
+/* ══════════════════════════
+   PENUTUP
+══════════════════════════ */
+.penutup{
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 0%,rgba(90,48,16,.3) 0%,transparent 70%),
+    linear-gradient(180deg,var(--charcoal2) 0%,var(--charcoal) 50%,var(--night) 100%);
+  padding:72px 24px 80px;text-align:center;
+  position:relative;overflow:hidden;margin-top:56px;
+}
+.penutup::after{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--night),var(--terra),var(--ocher),var(--ocher-lt),var(--ocher),var(--terra),var(--night));}
+.penutup-inner{max-width:600px;margin:0 auto;position:relative;z-index:1;}
+.penutup-ar{font-family:'Amiri',serif;font-size:clamp(1.5rem,4vw,2.6rem);color:var(--ocher-lt);line-height:2;text-shadow:0 0 20px rgba(200,148,10,.3);margin-bottom:14px;}
+.penutup-div{width:80px;height:1px;background:linear-gradient(90deg,transparent,var(--ocher),transparent);margin:18px auto;}
+.penutup-p{font-style:italic;font-size:clamp(.9rem,2vw,1.05rem);color:rgba(224,210,168,.72);line-height:1.92;margin-bottom:12px;}
+.penutup-ref{font-family:'Jost',sans-serif;font-weight:700;font-size:.6rem;letter-spacing:3px;text-transform:uppercase;color:rgba(200,148,10,.4);}
+.penutup-footer{margin-top:40px;padding-top:22px;border-top:1px solid rgba(255,255,255,.04);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+.penutup-footer .logo{font-family:'Amiri',serif;font-size:1.1rem;color:rgba(200,148,10,.35);}
+.penutup-footer .tag{font-family:'Jost',sans-serif;font-weight:700;font-size:.55rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.12);}
+
+@media(max-width:600px){
+  .body-wrap{padding:0 14px 60px;}
+  .hero{padding:56px 20px 80px;}
+  .chapter{padding:16px 18px;}
+  .hl,.banner{padding:16px 16px;}
+  .penutup{padding:48px 18px 56px;}
+  .sahabat-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════ HERO ══════ -->
+<section class="hero">
+  <div class="hero-top-border"></div>
+  <div class="hero-bottom"></div>
+  <div class="dust-field" id="dust"></div>
+
+  <div class="hero-inner">
+    <div class="hero-ornament-top">✦ ❖ ✦</div>
+    <div class="hero-bismillah">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
+    <p class="hero-kicker">Sejarah Islam · Berdalil Al-Qur'an &amp; Hadis Shahih · Siri Biografi Sahabat</p>
+    <h1 class="hero-title">Kitab Sahabat<br>Nabi ﷺ</h1>
+    <div class="hero-subtitle">كِتَابُ الصَّحَابَةِ الْكِرَامِ</div>
+    <div class="hero-ar-main">رَضِيَ اللَّهُ عَنْهُمْ وَرَضُوا عَنْهُ</div>
+    <div class="hero-rule">
+      <span></span><em>❖ ❖ ❖</em><span></span>
+    </div>
+    <div class="hero-verse">
+      <div class="hv-ar">وَالسَّابِقُونَ الْأَوَّلُونَ مِنَ الْمُهَاجِرِينَ وَالْأَنصَارِ وَالَّذِينَ اتَّبَعُوهُم بِإِحْسَانٍ رَّضِيَ اللَّهُ عَنْهُمْ وَرَضُوا عَنْهُ</div>
+      <div class="hv-id">"Dan orang-orang yang terdahulu lagi yang pertama-tama (masuk Islam) di antara orang-orang Muhajirin dan Anshar serta orang-orang yang mengikuti mereka dengan baik, Allah ridha kepada mereka dan mereka pun ridha kepada Allah."<br><em style="color:rgba(200,148,10,.4)">— QS. At-Tawbah: 100</em></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ BODY ══════ -->
+<div class="body-wrap">
+
+<!-- ══ PROLOG ══ -->
+<div class="chapter ch-dark">
+  <div class="ch-flex">
+    <div class="ch-num" style="color:rgba(200,148,10,.2);">0</div>
+    <div class="ch-content">
+      <div class="ch-tag" style="color:rgba(200,148,10,.6);">✦ Pembuka</div>
+      <div class="ch-ar" style="color:var(--ocher-lt);">مَنِ الصَّحَابِيُّ؟ وَلِمَاذَا نُحِبُّهُمْ؟</div>
+      <div class="ch-title" style="color:var(--sandstone);">Siapakah Sahabat Nabi? Mengapa Kita Mencintai Mereka?</div>
+    </div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="prose">
+    <p class="lead">Tidak ada generasi manusia dalam sejarah Islam yang menanggung beban paling berat sekaligus mencapai ketinggian paling agung selain para sahabat Nabi ﷺ. Mereka adalah orang-orang yang pertama kali mendengar kalimat tauhid langsung dari bibir Nabi ﷺ, yang mengorbankan harta, keluarga, kampung halaman — bahkan nyawa — demi menegakkan agama ini.</p>
+    <p>Para ulama mendefinisikan sahabat sebagai: setiap Muslim yang pernah bertemu Nabi ﷺ dalam keadaan beriman, dan meninggal dalam keadaan Islam. Mereka adalah manusia-manusia biasa yang pilihan Allah jatuhkan kepada mereka untuk menjadi penyaksi, pembawa, dan penyebar risalah Islam kepada seluruh umat manusia setelahnya.</p>
+    <p>Mencintai para sahabat adalah bagian dari akidah Ahlus Sunnah wal Jama'ah. Mencela salah satu dari mereka adalah dosa besar yang dilarang keras oleh Nabi ﷺ. Karena melalui tangan-tangan merekalah Al-Qur'an sampai kepada kita, sunnah Nabi ﷺ terjaga, dan agama Islam tersebar ke seluruh penjuru dunia.</p>
+  </div>
+
+  <div class="dalil dalil-t">
+    <div class="dbar-t"></div>
+    <div class="dbody">
+      <div class="dtag dtag-t">📜 HR. Bukhari &amp; Muslim — Larangan Mencela Sahabat</div>
+      <div class="dar dar-t">لَا تَسُبُّوا أَصْحَابِي فَلَوْ أَنَّ أَحَدَكُمْ أَنْفَقَ مِثْلَ أُحُدٍ ذَهَبًا مَا بَلَغَ مُدَّ أَحَدِهِمْ وَلَا نَصِيفَهُ</div>
+      <div class="dtrans">"Janganlah kalian mencela sahabat-sahabatku. Demi (Allah) yang jiwaku berada di tangan-Nya, seandainya salah seorang dari kalian menginfakkan emas sebesar Gunung Uhud, niscaya tidak akan menyamai satu mud (infak) salah seorang dari mereka, tidak pula setengahnya."</div>
+      <div class="dref dref-t">HR. Bukhari (3673) &amp; Muslim (2541) — dari Abu Hurairah radhiyallahu 'anhu</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ BAB I: KHULAFAUR RASYIDIN ══ -->
+<div class="chapter ch-terra">
+  <div class="ch-flex">
+    <div class="ch-num">I</div>
+    <div class="ch-content">
+      <div class="ch-tag">✦ Bab Pertama</div>
+      <div class="ch-ar">الْخُلَفَاءُ الرَّاشِدُونَ الْأَرْبَعَةُ</div>
+      <div class="ch-title">Empat Khalifah Rasyidin — Para Penerus Terbaik</div>
+    </div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="prose">
+    <p class="lead">Nabi ﷺ bersabda: "Ikutilah sunnahku dan sunnah Khulafaur Rasyidin yang mendapat petunjuk setelahku. Peganglah ia dengan kuat, gigitlah dengan geraham kalian." Empat khalifah ini adalah puncak dari seluruh sahabat — manusia-manusia terbaik setelah para nabi.</p>
+  </div>
+
+  <div class="sahabat-grid">
+    <!-- Abu Bakar -->
+    <div class="sahabat-card scard-abubakar">
+      <div class="sc-bg-num">١</div>
+      <div class="sc-body">
+        <div class="sc-header">
+          <div class="sc-role sr-abubakar">✦ Khalifah Pertama · 11–13 H</div>
+          <div class="sc-ar">أَبُو بَكْرٍ الصِّدِّيقُ</div>
+          <div class="sc-name">Abu Bakar Ash-Shiddiq</div>
+          <div class="sc-epithet">رضي الله عنه — "Shiddiq" · Al-'Atiq · Tsāniya Tsnayn</div>
+        </div>
+        <div class="sc-bio">Manusia terbaik dalam umat ini setelah para nabi. Orang pertama yang beriman di kalangan pria dewasa. Mendampingi Nabi ﷺ dalam setiap ujian besar — hijrah di Gua Tsur, perang Badar, dan seluruh fase kritis dakwah. Ketika Nabi ﷺ wafat, ia yang memimpin dan meneguhkan umat yang hampir porak-poranda. Masa khilafahnya 2 tahun 3 bulan — namun melampaui ibadah banyak orang seumur hidup.</div>
+        <div class="sc-fact sf-abubakar">Nabi ﷺ bersabda: "Jika aku boleh mengambil khalil (kekasih paling intim) di antara manusia, niscaya aku ambil Abu Bakar." — HR. Bukhari (3654)</div>
+        <span class="sc-dalil">Gelar "Ash-Shiddiq" diberikan karena membenarkan Isra' Mi'raj · HR. Al-Hakim</span>
+      </div>
+    </div>
+
+    <!-- Umar -->
+    <div class="sahabat-card scard-umar">
+      <div class="sc-bg-num">٢</div>
+      <div class="sc-body">
+        <div class="sc-header">
+          <div class="sc-role sr-umar">✦ Khalifah Kedua · 13–23 H</div>
+          <div class="sc-ar">عُمَرُ بْنُ الْخَطَّابِ الْفَارُوقُ</div>
+          <div class="sc-name">Umar bin Khattab Al-Faruq</div>
+          <div class="sc-epithet">رضي الله عنه — "Al-Faruq" Pemisah Hak dan Batil</div>
+        </div>
+        <div class="sc-bio">Keislaman Umar pada tahun ke-6 kenabian menjadi titik balik — dakwah yang semula bersembunyi menjadi terang-terangan. Seorang pemimpin yang adil dan tegas yang ditakuti seluruh bangsa. Menaklukkan Persia, Romawi, Mesir, Syam dalam 10 tahun. Membangun sistem pemerintahan, baitul mal, dan catatan sipil pertama dalam Islam. Wafat terbunuh saat sedang mengimami shalat Subuh.</div>
+        <div class="sc-fact sf-umar">Nabi ﷺ bersabda: "Jika ada nabi setelahku, ia adalah Umar." Juga: "Allah meletakkan kebenaran di lidah dan hati Umar." — HR. Tirmidzi (3682)</div>
+        <span class="sc-dalil">Gelar "Al-Faruq" diberikan Nabi ﷺ karena keislamannya memisahkan haq dan batil</span>
+      </div>
+    </div>
+
+    <!-- Utsman -->
+    <div class="sahabat-card scard-utsman">
+      <div class="sc-bg-num">٣</div>
+      <div class="sc-body">
+        <div class="sc-header">
+          <div class="sc-role sr-utsman">✦ Khalifah Ketiga · 23–35 H</div>
+          <div class="sc-ar">عُثْمَانُ بْنُ عَفَّانَ ذُو النُّورَيْنِ</div>
+          <div class="sc-name">Utsman bin Affan Dzun-Nurayn</div>
+          <div class="sc-epithet">رضي الله عنه — "Dzun-Nurayn" Pemilik Dua Cahaya</div>
+        </div>
+        <div class="sc-bio">Orang yang menikahi dua putri Nabi ﷺ secara berurutan: Ruqayyah, kemudian Ummu Kultsum — sehingga dijuluki "Dzun-Nurayn" (pemilik dua cahaya). Salah satu orang terkaya Makkah yang menyedekahkan hartanya tanpa batas untuk Islam. Di tangannya Al-Qur'an dikumpulkan dalam satu mushaf resmi yang disebarkan ke seluruh wilayah Islam — mushaf yang kita baca hingga hari ini.</div>
+        <div class="sc-fact sf-utsman">Nabi ﷺ bersabda: "Orang yang paling pemalu dalam umatku adalah Utsman." Dan malaikat pun malu kepadanya. — HR. Muslim (2401)</div>
+        <span class="sc-dalil">Penghimpun Mushaf Utsmani · HR. Bukhari (4987)</span>
+      </div>
+    </div>
+
+    <!-- Ali -->
+    <div class="sahabat-card scard-ali">
+      <div class="sc-bg-num">٤</div>
+      <div class="sc-body">
+        <div class="sc-header">
+          <div class="sc-role sr-ali">✦ Khalifah Keempat · 35–40 H</div>
+          <div class="sc-ar">عَلِيُّ بْنُ أَبِي طَالِبٍ كَرَّمَ اللَّهُ وَجْهَهُ</div>
+          <div class="sc-name">Ali bin Abi Thalib</div>
+          <div class="sc-epithet">كرم الله وجهه — Sepupu &amp; Menantu Nabi ﷺ</div>
+        </div>
+        <div class="sc-bio">Orang pertama yang beriman dari kalangan anak-anak. Dibesarkan dalam rumah tangga Nabi ﷺ. Menikahi Fatimah Az-Zahra — putri tercinta Nabi ﷺ. Singa Allah di medan perang — pahlawan Badar, Uhud, Khandaq, dan Khaibar. Salah satu ahli fiqh dan qadhi (hakim) terbaik di kalangan sahabat. Nabi ﷺ bersabda: "Aku kota ilmu dan Ali pintunya."</div>
+        <div class="sc-fact sf-ali">Nabi ﷺ bersabda kepada Ali: "Kedudukanmu di sisiku seperti kedudukan Harun di sisi Musa, kecuali tidak ada nabi setelahku." — HR. Bukhari (3706)</div>
+        <span class="sc-dalil">HR. Bukhari (3706) &amp; Muslim (2404)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="dalil dalil-t">
+    <div class="dbar-t"></div>
+    <div class="dbody">
+      <div class="dtag dtag-t">📜 HR. Abu Dawud &amp; Tirmidzi — Ikuti Sunnah Khulafaur Rasyidin</div>
+      <div class="dar dar-t">عَلَيْكُمْ بِسُنَّتِي وَسُنَّةِ الْخُلَفَاءِ الرَّاشِدِينَ الْمَهْدِيِّينَ مِنْ بَعْدِي عَضُّوا عَلَيْهَا بِالنَّوَاجِذِ</div>
+      <div class="dtrans">"Ikutilah sunnahku dan sunnah Khulafaur Rasyidin yang mendapat petunjuk setelahku. Peganglah ia erat-erat, gigitlah dengan geraham kalian."</div>
+      <div class="dref dref-t">HR. Abu Dawud (4607) &amp; Tirmidzi (2676) — Shahih</div>
+    </div>
+  </div>
+
+  <!-- Tabel Khulafaur Rasyidin -->
+  <div class="tbl-wrap">
+    <table class="tbl th-terra">
+      <thead>
+        <tr>
+          <th style="width:20%">Khalifah</th>
+          <th style="width:15%">Masa</th>
+          <th style="width:20%">Gelar &amp; Keistimewaan</th>
+          <th style="width:45%">Pencapaian Utama</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Khalifah">Abu Bakar Ash-Shiddiq</td>
+          <td data-label="Masa">11–13 H (2 tahun)</td>
+          <td data-label="Gelar"><span class="tbdg tbdg-d">Ash-Shiddiq</span> <span class="tbdg tbdg-d">Al-'Atiq</span></td>
+          <td data-label="Pencapaian">Memadamkan pemberontakan Musailamah Al-Kadzdzab &amp; para murtad (Riddah). Mengumpulkan Al-Qur'an pertama kali. Menaklukkan sebagian Persia &amp; Syam.</td>
+        </tr>
+        <tr>
+          <td data-label="Khalifah">Umar bin Khattab</td>
+          <td data-label="Masa">13–23 H (10 tahun)</td>
+          <td data-label="Gelar"><span class="tbdg tbdg-d">Al-Faruq</span> <span class="tbdg tbdg-d">Amirul Mukminin</span></td>
+          <td data-label="Pencapaian">Penaklukan Persia, Romawi, Mesir, Palestina. Mendirikan Baitul Mal, kalender Hijriyah, sistem provinsi, polisi Islam, dan gaji tentara.</td>
+        </tr>
+        <tr>
+          <td data-label="Khalifah">Utsman bin Affan</td>
+          <td data-label="Masa">23–35 H (12 tahun)</td>
+          <td data-label="Gelar"><span class="tbdg tbdg-d">Dzun-Nurayn</span></td>
+          <td data-label="Pencapaian">Kodifikasi Mushaf Utsmani. Penaklukan Siprus, Afrika Utara, Armenia. Perluasan Masjidil Haram &amp; Masjid Nabawi.</td>
+        </tr>
+        <tr>
+          <td data-label="Khalifah">Ali bin Abi Thalib</td>
+          <td data-label="Masa">35–40 H (5 tahun)</td>
+          <td data-label="Gelar"><span class="tbdg tbdg-d">Karramallahu Wajhah</span></td>
+          <td data-label="Pencapaian">Menghadapi fitnah internal umat Islam pertama (perang Jamal &amp; Shiffin). Ahli fiqh dan khatib terbaik. Pindah ibu kota ke Kufah.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══ BAB II: SEPULUH YANG DIJAMIN SURGA ══ -->
+<div class="chapter ch-ocher">
+  <div class="ch-flex">
+    <div class="ch-num" style="color:rgba(26,16,8,.15);">II</div>
+    <div class="ch-content">
+      <div class="ch-tag" style="color:rgba(26,16,8,.6);">✦ Bab Kedua</div>
+      <div class="ch-ar" style="color:var(--charcoal);">الْعَشَرَةُ الْمُبَشَّرُونَ بِالْجَنَّةِ</div>
+      <div class="ch-title" style="color:var(--charcoal);">Al-'Asyarah Al-Mubassyarūn — Sepuluh yang Dijamin Surga</div>
+    </div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="prose">
+    <p class="lead">Nabi ﷺ menyebutkan sepuluh sahabat secara langsung dalam satu hadis yang shahih, menjamin bahwa mereka semua akan masuk surga. Ini adalah kehormatan tertinggi yang pernah diberikan kepada manusia di dunia ini.</p>
+  </div>
+
+  <div class="dalil dalil-o">
+    <div class="dbar-o"></div>
+    <div class="dbody">
+      <div class="dtag dtag-o">📜 HR. Abu Dawud &amp; Tirmidzi — Sepuluh yang Dijamin Surga</div>
+      <div class="dar dar-o">أَبُو بَكْرٍ فِي الْجَنَّةِ وَعُمَرُ فِي الْجَنَّةِ وَعُثْمَانُ فِي الْجَنَّةِ وَعَلِيٌّ فِي الْجَنَّةِ وَطَلْحَةُ فِي الْجَنَّةِ وَالزُّبَيْرُ فِي الْجَنَّةِ وَعَبْدُالرَّحْمَنِ بْنُ عَوْفٍ فِي الْجَنَّةِ وَسَعْدُ بْنُ أَبِي وَقَّاصٍ فِي الْجَنَّةِ وَسَعِيدُ بْنُ زَيْدٍ فِي الْجَنَّةِ وَأَبُو عُبَيْدَةَ بْنُ الْجَرَّاحِ فِي الْجَنَّةِ</div>
+      <div class="dtrans">"Abu Bakar di surga, Umar di surga, Utsman di surga, Ali di surga, Thalhah di surga, Az-Zubair di surga, Abdurrahman bin Auf di surga, Sa'd bin Abi Waqqash di surga, Sa'id bin Zaid di surga, dan Abu Ubaidah bin Al-Jarrah di surga."</div>
+      <div class="dref dref-o">HR. Abu Dawud (4649), Tirmidzi (3748) — dari Sa'id bin Zaid radhiyallahu 'anhu — Shahih</div>
+    </div>
+  </div>
+
+  <!-- 6 sahabat selain Khulafaur Rasyidin -->
+  <div class="sahabat-grid">
+
+    <div class="sahabat-card scard-gold">
+      <div class="sc-bg-num">٥</div>
+      <div class="sc-body">
+        <div class="sc-role sr-gold">✦ Al-'Asyarah · No. 5</div>
+        <div class="sc-ar">طَلْحَةُ بْنُ عُبَيْدِ اللَّهِ</div>
+        <div class="sc-name">Thalhah bin Ubaidillah</div>
+        <div class="sc-epithet">رضي الله عنه — "Thalhah Al-Fayyādh" (yang dermawan)</div>
+        <div class="sc-bio">Pahlawan Uhud yang melindungi Nabi ﷺ dengan tubuhnya sendiri hingga jari-jarinya putus. Nabi ﷺ bersabda: "Barangsiapa ingin melihat syahid yang berjalan di muka bumi, lihatlah Thalhah." Salah satu orang terkaya Madinah yang berinfak tanpa batas.</div>
+        <div class="sc-fact sf-gold">Tangan Thalhah lumpuh setelah Uhud karena menutupi tubuh Nabi ﷺ dari anak panah musuh. — Sirah Ibnu Hisyam</div>
+        <span class="sc-dalil">HR. Tirmidzi (3739) — "Syahid yang berjalan di bumi"</span>
+      </div>
+    </div>
+
+    <div class="sahabat-card scard-gold">
+      <div class="sc-bg-num">٦</div>
+      <div class="sc-body">
+        <div class="sc-role sr-gold">✦ Al-'Asyarah · No. 6</div>
+        <div class="sc-ar">الزُّبَيْرُ بْنُ الْعَوَّامِ</div>
+        <div class="sc-name">Az-Zubair bin Al-Awwam</div>
+        <div class="sc-epithet">رضي الله عنه — "Ḥawārī Rasūlillāh" (pembela setia)</div>
+        <div class="sc-bio">Orang pertama yang menghunus pedang di jalan Allah. Anak bibi Nabi ﷺ (Shafiyyah). Hadir di seluruh perang besar Islam. Nabi ﷺ menyebutnya "Ḥawārī-ku dari umat ini." Panglima perang yang tidak pernah kalah semasa hidupnya.</div>
+        <div class="sc-fact sf-gold">"Az-Zubair adalah hawariku dari umatku." — HR. Bukhari (2846) · Ia juga digelari "orang yang mengepakkan dua sayap" karena keberaniannya.</div>
+        <span class="sc-dalil">HR. Bukhari (2846)</span>
+      </div>
+    </div>
+
+    <div class="sahabat-card scard-terra">
+      <div class="sc-bg-num">٧</div>
+      <div class="sc-body">
+        <div class="sc-role sr-terra">✦ Al-'Asyarah · No. 7</div>
+        <div class="sc-ar">عَبْدُالرَّحْمَنِ بْنُ عَوْفٍ</div>
+        <div class="sc-name">Abdurrahman bin Auf</div>
+        <div class="sc-epithet">رضي الله عنه — Saudagar terkaya yang tetap zuhud</div>
+        <div class="sc-bio">Salah satu sahabat paling kaya yang menyedekahkan seluruh kekayaannya berkali-kali. Saat hijrah ke Madinah dengan tanpa bawaan apapun, dalam waktu singkat menjadi pedagang sukses berkat kecerdasan dan keberkahannya. Menjadi imam shalat hingga Nabi ﷺ ikut menjadi makmum di belakangnya.</div>
+        <div class="sc-fact sf-terra">Ia pernah menyedekahkan kafilah dagang berisi 700 unta lengkap dengan isinya. — Sirah &amp; Thabaqat Ibnu Sa'd</div>
+        <span class="sc-dalil">HR. Bukhari (2048) — kisah dagang di Madinah</span>
+      </div>
+    </div>
+
+    <div class="sahabat-card scard-terra">
+      <div class="sc-bg-num">٨</div>
+      <div class="sc-body">
+        <div class="sc-role sr-terra">✦ Al-'Asyarah · No. 8</div>
+        <div class="sc-ar">سَعْدُ بْنُ أَبِي وَقَّاصٍ</div>
+        <div class="sc-name">Sa'd bin Abi Waqqash</div>
+        <div class="sc-epithet">رضي الله عنه — Panglima penakluk Persia</div>
+        <div class="sc-bio">Orang yang pertama kali memanah di jalan Allah. Pahlawan Perang Qadisiyyah yang menghancurkan kekaisaran Persia. Nabi ﷺ mendoakan: "Ya Allah, tepatkanlah panahnya dan kabulkanlah doanya." — Doa ini menjadikan Sa'd orang yang paling mustajab doanya di antara para sahabat.</div>
+        <div class="sc-fact sf-terra">"Aku memanah 1.000 anak panah di jalan Allah sebelum Al-Qur'an diturunkan ayat tentang panah." — Sa'd bin Abi Waqqash. HR. Abu Ya'la.</div>
+        <span class="sc-dalil">HR. Bukhari (3727) — orang pertama memanah di jalan Allah</span>
+      </div>
+    </div>
+
+    <div class="sahabat-card scard-sage">
+      <div class="sc-bg-num">٩</div>
+      <div class="sc-body">
+        <div class="sc-role sr-sage">✦ Al-'Asyarah · No. 9</div>
+        <div class="sc-ar">سَعِيدُ بْنُ زَيْدٍ</div>
+        <div class="sc-name">Sa'id bin Zaid</div>
+        <div class="sc-epithet">رضي الله عنه — Pelopor dakwah di Makkah</div>
+        <div class="sc-bio">Memeluk Islam pada masa sangat awal — bahkan sebelum Nabi ﷺ resmi menerima wahyu di Gua Hira menurut sebagian riwayat. Salah satu dari kelompok pertama yang masuk Islam bersama istrinya, Fatimah binti Khattab. Ia adalah ipar Umar bin Khattab sekaligus tokoh yang keislamannya turut mempengaruhi keislaman Umar.</div>
+        <div class="sc-fact sf-sage">Sa'id adalah menantu dari Umar bin Khattab sekaligus mertua Umar. Keislamannya adalah bagian dari perjalanan keislaman Umar. — Sirah Ibnu Hisyam</div>
+        <span class="sc-dalil">HR. Abu Dawud (4649) — disebutkan dalam hadis 10 dijamin surga</span>
+      </div>
+    </div>
+
+    <div class="sahabat-card scard-sage">
+      <div class="sc-bg-num">١٠</div>
+      <div class="sc-body">
+        <div class="sc-role sr-sage">✦ Al-'Asyarah · No. 10</div>
+        <div class="sc-ar">أَبُو عُبَيْدَةَ عَامِرُ بْنُ الْجَرَّاحِ</div>
+        <div class="sc-name">Abu Ubaidah bin Al-Jarrah</div>
+        <div class="sc-epithet">رضي الله عنه — "Amīn hādzihil-Ummah" Kepercayaan Umat</div>
+        <div class="sc-bio">Nabi ﷺ menyebutnya: "Setiap umat memiliki orang kepercayaan, dan kepercayaan umat ini adalah Abu Ubaidah." Panglima agung yang menaklukkan Syam. Orang yang mencabut dua kawat besi yang menancap di pipi Nabi ﷺ saat Uhud dengan gigitannya hingga dua giginya sendiri tanggal.</div>
+        <div class="sc-fact sf-sage">"Amīn hādzihil-Ummah" — gelar yang diberikan Nabi ﷺ langsung. Tidak ada sahabat lain yang mendapat gelar ini. — HR. Bukhari (3744)</div>
+        <span class="sc-dalil">HR. Bukhari (3744) — "Kepercayaan umat ini"</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ BAB III: SAHABAT ISTIMEWA LAINNYA ══ -->
+<div class="sep"><span>❖ ❖ ❖</span></div>
+
+<div class="chapter ch-dark">
+  <div class="ch-flex">
+    <div class="ch-num" style="color:rgba(200,148,10,.15);">III</div>
+    <div class="ch-content">
+      <div class="ch-tag" style="color:rgba(200,148,10,.55);">✦ Bab Ketiga</div>
+      <div class="ch-ar" style="color:var(--ocher-lt);">أَعْلَامُ الصَّحَابَةِ الْكِرَامِ</div>
+      <div class="ch-title" style="color:var(--sandstone);">Tokoh-Tokoh Sahabat yang Istimewa</div>
+    </div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="sahabat-grid">
+
+    <!-- Khadijah -->
+    <div class="sahabat-card scard-terra">
+      <div class="sc-body">
+        <div class="sc-role sr-terra">✦ Ummul Mukminin Pertama</div>
+        <div class="sc-ar">خَدِيجَةُ بِنْتُ خُوَيْلِدٍ</div>
+        <div class="sc-name">Khadijah binti Khuwailid</div>
+        <div class="sc-epithet">رضي الله عنها — Istri pertama &amp; terkasih Nabi ﷺ</div>
+        <div class="sc-bio">Wanita pertama yang beriman kepada Nabi ﷺ. Selama 25 tahun menjadi sandaran Nabi ﷺ. Mengorbankan seluruh kekayaannya untuk dakwah Islam. Nabi ﷺ selalu mengenangnya dengan penuh kasih bahkan setelah ia wafat hingga membuat Aisyah cemburu kepada beliau yang sudah tiada.</div>
+        <div class="sc-fact sf-terra">Allah menyampaikan salam kepada Khadijah melalui Jibril, dan menjanjikan sebuah rumah dari mutiara di surga untuknya. — HR. Bukhari (3820)</div>
+        <span class="sc-dalil">HR. Bukhari (3820) · Salam Allah melalui Jibril</span>
+      </div>
+    </div>
+
+    <!-- Bilal -->
+    <div class="sahabat-card scard-stone">
+      <div class="sc-body">
+        <div class="sc-role sr-stone">✦ Muadzin Pertama Islam</div>
+        <div class="sc-ar">بِلَالُ بْنُ رَبَاحٍ الْحَبَشِيُّ</div>
+        <div class="sc-name">Bilal bin Rabah Al-Habashi</div>
+        <div class="sc-epithet">رضي الله عنه — "Sayyid Al-Muadzdzinīn"</div>
+        <div class="sc-bio">Budak Habasyah yang disiksa di atas pasir panas Makkah: diletakkan batu besar di dadanya agar meninggalkan Islam. Namun mulutnya hanya berucap: "Aḥad, Aḥad" (Satu, Satu). Abu Bakar membelinya dan memerdekakan. Suaranya yang indah menjadikannya muadzin pertama Islam. Nabi ﷺ mendengar suara sandalnya di surga saat Mi'raj.</div>
+        <div class="sc-fact sf-stone">Nabi ﷺ mendengar langkah sandal Bilal di surga saat Mi'raj dan bertanya. Bilal menjawab: "Aku selalu shalat sunnah dua rakaat setelah wudhu." — HR. Bukhari (1149)</div>
+        <span class="sc-dalil">HR. Bukhari (1149) — langkah sandal di surga</span>
+      </div>
+    </div>
+
+    <!-- Salman Al-Farisi -->
+    <div class="sahabat-card scard-stone">
+      <div class="sc-body">
+        <div class="sc-role sr-stone">✦ Ahlul Bait secara Spiritual</div>
+        <div class="sc-ar">سَلْمَانُ الْفَارِسِيُّ</div>
+        <div class="sc-name">Salman Al-Farisi</div>
+        <div class="sc-epithet">رضي الله عنه — "Salmān minnā Ahlal-Bayt"</div>
+        <div class="sc-bio">Seorang Persia yang meninggalkan agama Majusi, menjelajahi Arab selama bertahun-tahun mencari kebenaran, sampai akhirnya menemukan Nabi ﷺ di Madinah. Penggagas strategi Khandaq (parit) yang menyelamatkan Madinah. Nabi ﷺ bersabda: "Salman termasuk bagian dari kami Ahlul Bait." — suatu penghormatan yang luar biasa.</div>
+        <div class="sc-fact sf-stone">"Salmān minnā Ahlal-Bayt" — Nabi ﷺ memuliakan Salman dengan menjadikannya bagian dari keluarga beliau. — HR. Al-Hakim — Shahih</div>
+        <span class="sc-dalil">HR. Al-Hakim · QS. Al-Jumu'ah: 3 ditafsirkan tentang Salman</span>
+      </div>
+    </div>
+
+    <!-- Abu Hurairah -->
+    <div class="sahabat-card scard-ocher" style="border-left:5px solid var(--ocher);">
+      <div class="sc-body">
+        <div class="sc-role" style="color:var(--ocher-d);">✦ Perawi Hadis Terbanyak</div>
+        <div class="sc-ar">أَبُو هُرَيْرَةَ الدَّوْسِيُّ</div>
+        <div class="sc-name">Abu Hurairah Ad-Dawsi</div>
+        <div class="sc-epithet">رضي الله عنه — 5.374 hadis diriwayatkan</div>
+        <div class="sc-bio">Masuk Islam pada tahun ke-7 H (Perang Khaibar) dan hanya bersama Nabi ﷺ sekitar 3 tahun — namun meriwayatkan lebih banyak hadis dari siapapun. Ia mendedikasikan hidupnya untuk mengikuti Nabi ﷺ ke mana pun, sementara sahabat lain sibuk berdagang. Nabi ﷺ mendoakan agar ia tidak melupakan hadis, dan seumur hidupnya tidak pernah lupa.</div>
+        <div class="sc-fact sf-gold">Nabi ﷺ menggelar selendang dan memintanya memeluknya. Sejak itu Abu Hurairah tidak pernah lupa satupun hadis. — HR. Bukhari (119)</div>
+        <span class="sc-dalil">HR. Bukhari (119) · 5.374 hadis tercatat dalam kutubus sittah</span>
+      </div>
+    </div>
+
+    <!-- Abdullah bin Masud -->
+    <div class="sahabat-card scard-gold">
+      <div class="sc-body">
+        <div class="sc-role sr-gold">✦ Pakar Al-Qur'an Pertama</div>
+        <div class="sc-ar">عَبْدُاللَّهِ بْنُ مَسْعُودٍ</div>
+        <div class="sc-name">Abdullah bin Mas'ud</div>
+        <div class="sc-epithet">رضي الله عنه — Orang pertama baca Al-Qur'an terang-terangan di Makkah</div>
+        <div class="sc-bio">Pemuda kurus yang berani membaca Al-Qur'an dengan suara keras di depan Ka'bah — tindakan yang membuatnya dipukuli Quraisy hingga berdarah. Pakar fiqh dan tafsir Kufah. Salah satu dari empat orang yang Nabi ﷺ perintahkan sahabat untuk belajar Al-Qur'an dari mereka. Bacaan dan riwayatnya menjadi salah satu sumber utama ilmu Islam.</div>
+        <div class="sc-fact sf-gold">Nabi ﷺ bersabda: "Ambillah Al-Qur'an dari empat orang: dari Ibnu Mas'ud..." — HR. Bukhari (3758) · Disebutkan pertama.</div>
+        <span class="sc-dalil">HR. Bukhari (3758) — empat perawi Al-Qur'an utama</span>
+      </div>
+    </div>
+
+    <!-- Aisyah -->
+    <div class="sahabat-card scard-terra">
+      <div class="sc-body">
+        <div class="sc-role sr-terra">✦ Ummul Mukminin &amp; Ulama Terbesar</div>
+        <div class="sc-ar">عَائِشَةُ بِنْتُ أَبِي بَكْرٍ</div>
+        <div class="sc-name">'Aisyah binti Abu Bakar</div>
+        <div class="sc-epithet">رضي الله عنها — "Ḥumairā'" · Ulama perempuan terbesar</div>
+        <div class="sc-bio">Istri paling dicintai Nabi ﷺ di antara para ummahatul mukminin setelah Khadijah wafat. Satu-satunya wanita yang Nabi ﷺ menerima wahyu saat berada di selimut bersamanya. Ulama besar yang mengoreksi fatwa para sahabat — banyak ulama sahabat belajar fiqh dari beliau. Meriwayatkan 2.210 hadis. Wafat di Madinah pada 57/58 H.</div>
+        <div class="sc-fact sf-terra">Nabi ﷺ bersabda: "Keutamaan Aisyah atas wanita lain seperti keutamaan tsarid (makanan terbaik) atas makanan-makanan lain." — HR. Bukhari (3769)</div>
+        <span class="sc-dalil">HR. Bukhari (3769) · 2.210 hadis diriwayatkan darinya</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ BAB IV: MUQARRABUN NABI ══ -->
+<div class="sep"><span>❖ ❖ ❖</span></div>
+
+<div class="chapter ch-stone">
+  <div class="ch-flex">
+    <div class="ch-num" style="color:rgba(26,16,8,.08);">IV</div>
+    <div class="ch-content">
+      <div class="ch-tag" style="color:var(--terra);">✦ Bab Keempat</div>
+      <div class="ch-ar" style="color:var(--terra-d);">خَصَائِصُ الصَّحَابَةِ وَأَحْكَامُ مَحَبَّتِهِمْ</div>
+      <div class="ch-title" style="color:var(--charcoal);">Keistimewaan Sahabat &amp; Hukum Mencintai Mereka</div>
+    </div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="prose">
+    <p class="lead">Para sahabat memiliki kedudukan yang tidak dimiliki generasi manapun setelah mereka. Mereka menyaksikan wahyu turun, mereka bertanya langsung kepada Nabi ﷺ, dan mereka adalah mata rantai pertama dalam penyampaian Islam kepada seluruh umat manusia.</p>
+  </div>
+
+  <!-- Sifat-sifat istimewa -->
+  <div class="tbl-wrap">
+    <table class="tbl th-dark">
+      <thead>
+        <tr>
+          <th style="width:25%">Keistimewaan</th>
+          <th style="width:45%">Penjelasan</th>
+          <th style="width:30%">Dalil</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Keistimewaan">Penyaksi Wahyu Langsung</td>
+          <td data-label="Penjelasan">Mereka mendengar, melihat, dan berinteraksi langsung dengan Nabi ﷺ — sumber wahyu. Pemahamannya tentang Islam tidak bisa ditandingi generasi manapun.</td>
+          <td data-label="Dalil">QS. Al-Baqarah: 143 — "Kalian adalah umat yang terbaik."</td>
+        </tr>
+        <tr>
+          <td data-label="Keistimewaan">Keadilan ('Adālah) Sahabat</td>
+          <td data-label="Penjelasan">Ulama hadis sepakat: seluruh sahabat adalah 'adl (dapat dipercaya periwayatannya) karena Allah sendiri yang memuji mereka dalam Al-Qur'an dan Nabi ﷺ dalam hadis-hadis sahih.</td>
+          <td data-label="Dalil">QS. At-Tawbah: 100 · QS. Al-Fath: 29</td>
+        </tr>
+        <tr>
+          <td data-label="Keistimewaan">Generasi Terbaik Umat</td>
+          <td data-label="Penjelasan">"Sebaik-baik umat adalah generasiku, kemudian yang mengikuti mereka, kemudian yang mengikuti mereka." — HR. Bukhari (3651)</td>
+          <td data-label="Dalil">HR. Bukhari (3651) &amp; Muslim (2533)</td>
+        </tr>
+        <tr>
+          <td data-label="Keistimewaan">Mencintai Mereka adalah Iman</td>
+          <td data-label="Penjelasan">"Tanda keimanan adalah mencintai Anshar. Tanda kemunafikan adalah membenci Anshar." — Mencintai seluruh sahabat adalah bagian dari akidah Ahlus Sunnah wal Jama'ah.</td>
+          <td data-label="Dalil">HR. Bukhari (17) &amp; Muslim (74)</td>
+        </tr>
+        <tr>
+          <td data-label="Keistimewaan">Shalat bersama mereka lebih utama</td>
+          <td data-label="Penjelasan">"Seandainya salah seorang dari kalian menginfakkan emas sebesar Gunung Uhud, tidak akan menyamai satu mud (infak) salah seorang dari mereka, tidak pula setengahnya." — Derajat mereka tidak tertandingi.</td>
+          <td data-label="Dalil">HR. Bukhari (3673) &amp; Muslim (2541)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="dalil dalil-o">
+    <div class="dbar-o"></div>
+    <div class="dbody">
+      <div class="dtag dtag-o">📖 QS. Al-Fath: 29 — Gambaran Para Sahabat</div>
+      <div class="dar dar-o">مُّحَمَّدٌ رَّسُولُ اللَّهِ ۚ وَالَّذِينَ مَعَهُ أَشِدَّاءُ عَلَى الْكُفَّارِ رُحَمَاءُ بَيْنَهُمْ تَرَاهُمْ رُكَّعًا سُجَّدًا يَبْتَغُونَ فَضْلًا مِّنَ اللَّهِ وَرِضْوَانًا</div>
+      <div class="dtrans">"Muhammad adalah utusan Allah, dan orang-orang yang bersama dia bersikap keras terhadap orang-orang kafir, tetapi berkasih sayang sesama mereka. Kamu melihat mereka ruku' dan sujud mencari karunia Allah dan keridhaan-Nya."</div>
+      <div class="dref dref-o">QS. Al-Fath (48): 29 — Penggambaran Allah atas para sahabat Nabi ﷺ</div>
+    </div>
+  </div>
+
+  <!-- Keutamaan generasi -->
+  <div class="banner banner-dark">
+    <div class="ban-ar bnar-lt">خَيْرُ النَّاسِ قَرْنِي ثُمَّ الَّذِينَ يَلُونَهُمْ ثُمَّ الَّذِينَ يَلُونَهُمْ</div>
+    <div class="ban-id bnid-lt">"Sebaik-baik manusia adalah generasiku (para sahabat), kemudian generasi yang mengikuti mereka (tabi'in), kemudian generasi yang mengikuti mereka (tabi'ut tabi'in)." — Tiga generasi emas Islam yang menjadi tolok ukur kebenaran dalam memahami agama ini.</div>
+    <div class="ban-ref bnref-dim">HR. Bukhari (3651) &amp; Muslim (2533) — dari Abdullah bin Mas'ud radhiyallahu 'anhu</div>
+  </div>
+</div>
+
+<!-- ══ BAB V: ANSHAR & MUHAJIRIN ══ -->
+<div class="chapter ch-terra">
+  <div class="ch-flex">
+    <div class="ch-num">V</div>
+    <div class="ch-content">
+      <div class="ch-tag">✦ Bab Kelima</div>
+      <div class="ch-ar">الْمُهَاجِرُونَ وَالْأَنْصَارُ</div>
+      <div class="ch-title">Muhajirin &amp; Anshar — Persaudaraan Paling Agung dalam Sejarah</div>
+    </div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="prose">
+    <p class="lead">Ketika Nabi ﷺ tiba di Madinah, ia menyaksikan dua kelompok manusia: para Muhajirin yang datang tanpa apa-apa kecuali iman di dada, dan Anshar yang membuka tangan, hati, dan rumah mereka. Nabi ﷺ mempersaudarakan keduanya — dan persaudaraan itu menjadi fondasi peradaban Islam pertama.</p>
+    <p>Para Anshar membagi hartanya secara harfiah dengan saudara Muhajirin mereka — bukan sekadar memberi sedikit sisa, melainkan membagi dua yang terbaik yang mereka miliki. Al-Qur'an mengabadikan kemuliaan mereka dalam QS. Al-Hasyr: 9 — salah satu ayat paling mengharukan dalam sejarah Islam.</p>
+  </div>
+
+  <div class="dalil dalil-d">
+    <div class="dbar-d"></div>
+    <div class="dbody">
+      <div class="dtag dtag-d">📖 QS. Al-Hasyr: 9 — Kemuliaan Anshar</div>
+      <div class="dar dar-d">وَيُؤْثِرُونَ عَلَىٰ أَنفُسِهِمْ وَلَوْ كَانَ بِهِمْ خَصَاصَةٌ ۚ وَمَن يُوقَ شُحَّ نَفْسِهِ فَأُولَٰئِكَ هُمُ الْمُفْلِحُونَ</div>
+      <div class="dtrans dtrans-d">"Dan mereka mengutamakan (orang-orang Muhajirin) atas diri mereka sendiri, meskipun mereka juga membutuhkan. Dan barangsiapa dijaga dirinya dari kekikiran, maka mereka itulah orang-orang yang beruntung."</div>
+      <div class="dref dref-d">QS. Al-Hasyr (59): 9 — Gambaran kemuliaan Anshar yang mengutamakan Muhajirin</div>
+    </div>
+  </div>
+
+  <div class="hl hl-dark">
+    <div class="hl-label hll-w">✦ Sa'd bin Rabi' — Kisah Itsar yang Paling Mengharukan</div>
+    <div class="hl-ar hlar-w">آخِ بَيْنِي وَبَيْنَكَ أَعْطَيْتُكَ نِصْفَ مَالِي وَانْظُرْ أَيَّ زَوْجَتَيَّ أَعْجَبَتْكَ</div>
+    <div class="hl-trans" style="color:rgba(224,210,168,.78);">"Jadilah saudaraku. Aku berikan kepadamu setengah hartaku. Dan lihatlah mana di antara dua istriku yang lebih kau sukai (maka aku akan menceraikannya untukmu)." — Sa'd bin Rabi' Al-Anshari berkata kepada Abdurrahman bin Auf, saudaranya dari Muhajirin. Abdurrahman menolak dengan sopan: "Tunjukkan saja aku jalan ke pasar."</div>
+    <div class="hl-ref hlr-w">HR. Bukhari (2049) — Kisah itsar Anshar yang diabadikan sejarah</div>
+  </div>
+
+  <div class="tbl-wrap">
+    <table class="tbl th-ocher">
+      <thead>
+        <tr>
+          <th style="width:25%">Aspek</th>
+          <th style="width:37%">Muhajirin</th>
+          <th style="width:38%">Anshar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Aspek">Asal</td>
+          <td data-label="Muhajirin">Makkah &amp; berbagai kota, hijrah ke Madinah</td>
+          <td data-label="Anshar">Suku Aus &amp; Khazraj, penduduk asli Madinah</td>
+        </tr>
+        <tr>
+          <td data-label="Aspek">Pengorbanan Utama</td>
+          <td data-label="Muhajirin">Meninggalkan harta, keluarga, tanah kelahiran demi iman</td>
+          <td data-label="Anshar">Membagi harta, rumah, dan bahkan pasangan untuk saudara Muhajirin</td>
+        </tr>
+        <tr>
+          <td data-label="Aspek">Pujian Allah</td>
+          <td data-label="Muhajirin">QS. Al-Baqarah: 218 — "Yang beriman, berhijrah, dan berjihad..."</td>
+          <td data-label="Anshar">QS. Al-Hasyr: 9 — "Mereka mengutamakan saudaranya meski diri sendiri membutuhkan."</td>
+        </tr>
+        <tr>
+          <td data-label="Aspek">Doa Nabi ﷺ</td>
+          <td data-label="Muhajirin">"Ya Allah, ampunilah Muhajirin dan Anshar." — HR. Bukhari</td>
+          <td data-label="Anshar">"Tanda iman adalah mencintai Anshar. Tanda munafik adalah membenci Anshar." — HR. Bukhari (17)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══ BAB VI: BUAH MENCINTAI SAHABAT ══ -->
+<div class="chapter ch-dark">
+  <div class="ch-flex">
+    <div class="ch-num" style="color:rgba(200,148,10,.15);">VI</div>
+    <div class="ch-content">
+      <div class="ch-tag" style="color:rgba(200,148,10,.55);">✦ Bab Keenam</div>
+      <div class="ch-ar" style="color:var(--ocher-lt);">ثِمَارُ مَحَبَّةِ الصَّحَابَةِ</div>
+      <div class="ch-title" style="color:var(--sandstone);">Buah Manis Mencintai Para Sahabat Nabi ﷺ</div>
+    </div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="prose">
+    <p class="lead">Mencintai para sahabat bukan sekadar perasaan nostalgia historis. Ia adalah akidah yang hidup, sikap yang aktif, dan kecintaan yang menghasilkan buah nyata dalam kehidupan seorang mukmin.</p>
+  </div>
+
+  <div class="sahabat-grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr));">
+    <div class="sahabat-card" style="border-left:4px solid var(--ocher);background:var(--ivory);">
+      <div class="sc-body">
+        <span style="font-size:1.6rem;display:block;margin-bottom:8px;">📖</span>
+        <div class="sc-name" style="font-size:.95rem;">Menjaga Keaslian Islam</div>
+        <div class="sc-bio">Mencintai dan mengikuti sahabat berarti menjaga Islam sebagaimana ia pertama kali diajarkan — tanpa penambahan dan pengurangan. Mereka adalah perisai antara kita dan penyimpangan.</div>
+        <span class="sc-dalil">HR. Abu Dawud (4607) — "Ikuti sunnah Khulafaur Rasyidin"</span>
+      </div>
+    </div>
+    <div class="sahabat-card" style="border-left:4px solid var(--terra);background:var(--ivory);">
+      <div class="sc-body">
+        <span style="font-size:1.6rem;display:block;margin-bottom:8px;">🤝</span>
+        <div class="sc-name" style="font-size:.95rem;">Meneladani Ukhuwwah Sejati</div>
+        <div class="sc-bio">Persaudaraan Muhajirin-Anshar adalah standar ukhuwwah Islam yang sesungguhnya — mengutamakan saudaranya meski diri sendiri membutuhkan. Kisah-kisah mereka menginspirasi praktik nyata.</div>
+        <span class="sc-dalil">QS. Al-Hasyr: 9 — "Mereka mengutamakan atas diri sendiri"</span>
+      </div>
+    </div>
+    <div class="sahabat-card" style="border-left:4px solid var(--umber);background:var(--ivory);">
+      <div class="sc-body">
+        <span style="font-size:1.6rem;display:block;margin-bottom:8px;">⚖️</span>
+        <div class="sc-name" style="font-size:.95rem;">Referensi Fiqh yang Kuat</div>
+        <div class="sc-bio">Ijma' (kesepakatan) sahabat adalah sumber hukum Islam ketiga setelah Al-Qur'an dan Sunnah. Fatwa mereka menjadi panduan yang dipelajari para ulama hingga hari ini dalam semua madzhab.</div>
+        <span class="sc-dalil">Ushul Fiqh — Ijma' Sahabat sebagai Hujjah</span>
+      </div>
+    </div>
+    <div class="sahabat-card" style="border-left:4px solid var(--ocher);background:var(--ivory);">
+      <div class="sc-body">
+        <span style="font-size:1.6rem;display:block;margin-bottom:8px;">🌟</span>
+        <div class="sc-name" style="font-size:.95rem;">Bersama Nabi ﷺ di Akhirat</div>
+        <div class="sc-bio">Seorang lelaki datang kepada Nabi ﷺ dan bertanya: "Kapan kiamat?" Nabi balik bertanya: "Apa yang kamu siapkan untuk itu?" Ia menjawab: "Cinta kepada Allah dan Rasul-Nya." Nabi ﷺ bersabda: "Kamu bersama siapa yang kamu cintai."</div>
+        <span class="sc-dalil">HR. Bukhari (6171) &amp; Muslim (2639) — "Kamu bersama siapa yang kamu cintai"</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="banner banner-terra">
+    <div class="ban-ar bnar-sand">اَلْمَرْءُ مَعَ مَنْ أَحَبَّ</div>
+    <div class="ban-id bnid-sand">"Seseorang (di akhirat) akan bersama siapa yang ia cintai." — Anas bin Malik radhiyallahu 'anhu berkata: "Tidak ada yang membuat kami bergembira sebagaimana kata-kata Nabi ﷺ ini, karena aku mencintai Nabi ﷺ, Abu Bakar, dan Umar — dan aku berharap bersama mereka meskipun amalku tidak seperti amal mereka."</div>
+    <div class="ban-ref bnref-sand">HR. Bukhari (6171) &amp; Muslim (2639) — dari Anas bin Malik radhiyallahu 'anhu</div>
+  </div>
+</div>
+
+</div><!-- end body-wrap -->
+
+<!-- ══════ PENUTUP ══════ -->
+<div class="penutup">
+  <div class="penutup-inner">
+    <div class="penutup-ar">رَضِيَ اللَّهُ عَنِ الصَّحَابَةِ الْكِرَامِ أَجْمَعِينَ</div>
+    <div class="penutup-div"></div>
+    <p class="penutup-p">"Semoga Allah meridhai seluruh para sahabat yang mulia." — Mereka adalah manusia-manusia yang menanggung beban terberat: menjadi penyaksi pertama risalah paling agung dalam sejarah, mempertahankannya dengan darah, menyebarkannya ke seluruh penjuru dunia, dan meneruskannya kepada kita dengan keutuhan yang sempurna.</p>
+    <p class="penutup-p" style="margin-top:12px;">Setiap kali kita membaca Al-Qur'an, itu adalah Al-Qur'an yang mereka hafal dan tulis. Setiap kali kita shalat, itu adalah shalat yang mereka pelajari dan ajarkan. Setiap hukum Islam yang kita amalkan, itu adalah hukum yang mereka tanyakan, pahami, dan sampaikan. Kita berhutang kepada mereka — dan cara terbaik membayarnya adalah dengan mencintai, mendoakan, dan mengikuti jejak mereka.</p>
+    <div class="penutup-div"></div>
+    <div class="dalil dalil-d" style="text-align:left;">
+      <div class="dbar-d"></div>
+      <div class="dbody">
+        <div class="dtag dtag-d">📜 Doa untuk Para Sahabat Nabi ﷺ</div>
+        <div class="dar dar-d">رَبَّنَا اغْفِرْ لَنَا وَلِإِخْوَانِنَا الَّذِينَ سَبَقُونَا بِالْإِيمَانِ وَلَا تَجْعَلْ فِي قُلُوبِنَا غِلًّا لِّلَّذِينَ آمَنُوا رَبَّنَا إِنَّكَ رَءُوفٌ رَّحِيمٌ</div>
+        <div class="dtrans dtrans-d">"Ya Tuhan kami, ampunilah kami dan saudara-saudara kami yang telah beriman lebih dahulu dari kami, dan janganlah Engkau tanamkan kedengkian dalam hati kami terhadap orang-orang yang beriman. Ya Tuhan kami, sungguh Engkau Maha Penyantun lagi Maha Penyayang."</div>
+        <div class="dref dref-d">QS. Al-Hasyr (59): 10 — Doa yang diajarkan Allah untuk mendoakan para sahabat Nabi ﷺ</div>
+      </div>
+    </div>
+    <div class="penutup-footer">
+      <div class="logo">الصَّحَابَةُ الْكِرَامُ</div>
+      <div class="tag">رَضِيَ اللَّهُ عَنْهُمْ أَجْمَعِينَ · Semoga Bermanfaat</div>
+    </div>
+  </div>
+</div>
+
+<script>
+// Gold dust particles in hero
+const df = document.getElementById('dust');
+for(let i=0;i<60;i++){
+  const p=document.createElement('div');
+  p.className='dust-p';
+  const sz=Math.random()*3+.5;
+  p.style.cssText=`
+    width:${sz}px;height:${sz}px;
+    left:${Math.random()*100}%;
+    top:${Math.random()*100}%;
+    --dd:${(Math.random()*10+6).toFixed(1)}s;
+    --do:${(Math.random()*.5+.1).toFixed(2)};
+    --dx:${(Math.random()*40-20).toFixed(0)}px;
+    --dy:${(Math.random()*-80-20).toFixed(0)}px;
+    animation-delay:${(Math.random()*12).toFixed(1)}s;
+  `;
+  df.appendChild(p);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sidratul Muntaha</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Amiri:ital,wght@0,400;0,700;1,400&family=Marcellus&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+
+:root{
+  --cosmos:   #020508;
+  --deep:     #040b12;
+  --midnight: #061020;
+  --navy:     #081830;
+  --indigo:   #0c2848;
+  --sapphire: #103860;
+  --azure:    #1a5898;
+  --sky:      #2878c8;
+  --frost:    #c8e8ff;
+  --white:    #eef6ff;
+  --ivory:    #faf8f0;
+  --gold:     #d4b840;
+  --gold-lt:  #f0d060;
+  --gold-pale:#fdf8e0;
+  --amber:    #c89020;
+  --silver:   #a8c8e8;
+  --silver-lt:#d0e8f8;
+  --rose:     #e8c0c8;  /* very faint warm */
+  --paper:    #f5f0e4;
+  --paper-d:  #ede5cc;
+  --ink:      #0e1820;
+  --ink-mid:  #1c2c3c;
+  --ink-soft: #3a5068;
+  --sepia:    #5a4828;
+  --b-gold:   rgba(212,184,64,.18);
+  --b-silver: rgba(168,200,232,.15);
+  --b-white:  rgba(238,246,255,.1);
+}
+
+html{scroll-behavior:smooth;}
+body{background:var(--cosmos);font-family:'Cormorant',Georgia,serif;color:var(--white);overflow-x:hidden;}
+
+/* ═══════════════════════════════
+   CANVAS — animated cosmos
+═══════════════════════════════ */
+#cosmos-canvas{
+  position:fixed;inset:0;z-index:0;pointer-events:none;
+}
+
+/* ═══════════════════════════════
+   HERO — the tree
+═══════════════════════════════ */
+.hero{
+  min-height:100vh;
+  position:relative;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;
+  padding:80px 28px 100px;
+  overflow:hidden;
+  z-index:1;
+}
+
+/* Layered nebula background */
+.hero-nebula{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 40%,  rgba(8,24,48,.9)  0%,transparent 65%),
+    radial-gradient(ellipse 50% 70% at 20% 80%,  rgba(12,40,96,.3)  0%,transparent 60%),
+    radial-gradient(ellipse 50% 70% at 80% 20%,  rgba(12,40,96,.25) 0%,transparent 60%),
+    radial-gradient(ellipse 100% 50% at 50% 100%,rgba(4,11,18,.95)  0%,transparent 60%),
+    linear-gradient(180deg,var(--cosmos) 0%,var(--deep) 30%,var(--midnight) 60%,var(--navy) 100%);
+}
+
+/* Central light pillar */
+.hero-pillar{
+  position:absolute;
+  left:50%;top:0;bottom:0;
+  width:2px;
+  transform:translateX(-50%);
+  background:linear-gradient(180deg,
+    transparent 0%,
+    rgba(212,184,64,.04) 20%,
+    rgba(212,184,64,.15) 45%,
+    rgba(248,220,96,.4)  55%,
+    rgba(212,184,64,.15) 65%,
+    rgba(212,184,64,.04) 80%,
+    transparent 100%);
+  filter:blur(1px);
+  pointer-events:none;
+}
+
+/* Glow halo at tree position */
+.hero-halo{
+  position:absolute;
+  top:42%;left:50%;
+  transform:translate(-50%,-50%);
+  width:min(600px,90vw);
+  height:min(600px,90vw);
+  border-radius:50%;
+  background:radial-gradient(circle,
+    rgba(248,220,96,.08) 0%,
+    rgba(212,184,64,.05) 25%,
+    rgba(24,88,200,.06)  50%,
+    transparent 70%);
+  animation:haloPulse 6s ease-in-out infinite alternate;
+  pointer-events:none;
+}
+@keyframes haloPulse{
+  from{transform:translate(-50%,-50%) scale(1);   opacity:.6;}
+  to  {transform:translate(-50%,-50%) scale(1.12);opacity:1;}
+}
+
+/* SVG Tree illustration */
+.tree-svg-wrap{
+  position:absolute;
+  top:50%;left:50%;
+  transform:translate(-50%,-52%);
+  width:min(520px,80vw);
+  pointer-events:none;
+  z-index:1;
+  opacity:.18;
+  filter:blur(.5px);
+}
+.tree-svg-wrap svg{width:100%;height:auto;}
+
+/* Floating leaf-lights */
+.leaf-lights{position:absolute;inset:0;pointer-events:none;z-index:2;}
+.leaf{
+  position:absolute;
+  border-radius:50%;
+  animation:leafFloat var(--ld,8s) ease-in-out infinite;
+  opacity:0;
+}
+@keyframes leafFloat{
+  0%  {opacity:0;transform:translate(0,0) scale(.6);}
+  15% {opacity:var(--lo,.7);}
+  85% {opacity:var(--lo,.5);}
+  100%{opacity:0;transform:translate(var(--lx,0px),var(--ly,-80px)) scale(1.2);}
+}
+
+/* Hero content */
+.hero-inner{position:relative;z-index:3;max-width:780px;}
+
+.hero-bismillah{
+  font-family:'Amiri',serif;
+  font-size:clamp(1.5rem,4vw,2.6rem);
+  color:var(--gold);
+  text-shadow:0 0 40px rgba(212,184,64,.5),0 0 80px rgba(212,184,64,.2);
+  line-height:1.9;margin-bottom:14px;
+  animation:ascend 2s ease both;
+}
+
+.hero-eyebrow{
+  font-family:'Marcellus',serif;
+  font-size:clamp(.6rem,1.4vw,.78rem);
+  letter-spacing:6px;text-transform:uppercase;
+  color:rgba(168,200,232,.45);
+  margin-bottom:20px;
+  animation:ascend 2s ease both .2s;
+}
+
+.hero-title{
+  font-family:'Cormorant',serif;
+  font-weight:700;
+  font-size:clamp(3rem,9vw,7rem);
+  line-height:1.0;letter-spacing:-2px;
+  background:linear-gradient(160deg,#ffffff 0%,var(--gold-lt) 30%,var(--frost) 60%,var(--silver) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  margin-bottom:8px;
+  animation:ascend 2s ease both .1s;
+}
+
+.hero-subtitle{
+  font-family:'Cormorant',serif;
+  font-style:italic;font-weight:300;
+  font-size:clamp(1.1rem,2.8vw,1.8rem);
+  color:rgba(200,232,255,.6);
+  margin-bottom:28px;
+  animation:ascend 2s ease both .3s;
+}
+
+.hero-arabic{
+  font-family:'Amiri',serif;
+  font-size:clamp(1.2rem,3vw,2rem);
+  color:rgba(212,184,64,.7);
+  line-height:2;margin-bottom:24px;
+  animation:ascend 2s ease both .25s;
+}
+
+.hero-verse-wrap{
+  max-width:560px;margin:0 auto;
+  padding:22px 30px;
+  border:1px solid rgba(212,184,64,.2);
+  background:rgba(4,11,18,.7);
+  backdrop-filter:blur(10px);
+  animation:ascend 2s ease both .45s;
+}
+.hero-verse-ar{
+  font-family:'Amiri',serif;
+  font-size:clamp(1rem,2.5vw,1.35rem);
+  color:var(--gold);line-height:2.2;direction:rtl;margin-bottom:10px;
+}
+.hero-verse-id{font-style:italic;font-size:.83rem;color:rgba(168,200,232,.6);line-height:1.7;}
+
+@keyframes ascend{
+  from{opacity:0;transform:translateY(18px);filter:blur(4px);}
+  to  {opacity:1;transform:translateY(0);filter:blur(0);}
+}
+
+/* ═══════════════════════════════
+   SCROLL INDICATOR
+═══════════════════════════════ */
+.scroll-down{
+  position:absolute;bottom:36px;left:50%;transform:translateX(-50%);
+  z-index:3;display:flex;flex-direction:column;align-items:center;gap:8px;
+  color:rgba(168,200,232,.35);
+  font-family:'Marcellus',serif;font-size:.62rem;letter-spacing:4px;text-transform:uppercase;
+  animation:ascend 2s ease both .8s;
+}
+.scroll-down::after{
+  content:'';width:1px;height:40px;
+  background:linear-gradient(180deg,rgba(212,184,64,.4),transparent);
+  animation:lineGrow 2s ease-in-out infinite;
+}
+@keyframes lineGrow{
+  0%,100%{opacity:.4;transform:scaleY(1);}
+  50%{opacity:.8;transform:scaleY(1.2);}
+}
+
+/* ═══════════════════════════════
+   CONTENT SECTIONS
+═══════════════════════════════ */
+.sec{position:relative;z-index:1;}
+
+/* Dark cosmic section */
+.sec-cosmos{
+  background:linear-gradient(180deg,var(--midnight) 0%,var(--navy) 100%);
+  padding:64px 28px 56px;
+  border-top:1px solid var(--b-silver);
+}
+.sec-cosmos::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 40% at 50% 0%,rgba(16,56,96,.25) 0%,transparent 70%);
+  pointer-events:none;
+}
+
+/* Light parchment section */
+.sec-light{
+  background:var(--paper);
+  color:var(--ink);
+  padding:64px 28px 56px;
+  border-top:5px solid var(--indigo);
+  position:relative;
+}
+.sec-light::before{
+  content:'';position:absolute;inset:0;
+  background-image:repeating-linear-gradient(0deg,transparent,transparent 27px,rgba(14,24,32,.04) 27px,rgba(14,24,32,.04) 28px);
+  pointer-events:none;
+}
+
+/* Golden ascent section */
+.sec-gold{
+  background:linear-gradient(180deg,var(--deep) 0%,var(--cosmos) 100%);
+  padding:64px 28px 56px;
+  border-top:1px solid rgba(212,184,64,.15);
+  position:relative;
+}
+.sec-gold::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 70% 50% at 50% 0%,rgba(212,184,64,.06) 0%,transparent 70%);
+  pointer-events:none;
+}
+
+.inner{max-width:880px;margin:0 auto;position:relative;z-index:1;}
+
+/* ═══════════════════════════════
+   SECTION HEADERS
+═══════════════════════════════ */
+.sh{text-align:center;margin-bottom:44px;}
+
+.sh-badge{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:5px 18px;
+  font-family:'Marcellus',serif;
+  font-size:.62rem;letter-spacing:5px;text-transform:uppercase;
+  margin-bottom:16px;
+}
+.badge-cosmos{background:rgba(16,56,96,.4);color:var(--silver);border:1px solid var(--b-silver);}
+.badge-gold{background:rgba(212,184,64,.12);color:var(--gold);border:1px solid var(--b-gold);}
+.badge-paper{background:rgba(14,24,32,.08);color:var(--ink-soft);border:1px solid rgba(14,24,32,.15);}
+
+.sh-ar{
+  font-family:'Amiri',serif;
+  font-size:clamp(1.3rem,3.5vw,2rem);line-height:1.9;margin-bottom:6px;
+}
+.shar-cosmos{color:var(--gold);}
+.shar-paper{color:var(--sapphire);}
+
+.sh-title{
+  font-family:'Cormorant',serif;font-weight:700;
+  font-size:clamp(1.4rem,3.8vw,2.3rem);line-height:1.2;margin-bottom:8px;
+}
+.shtitle-cosmos{color:var(--white);}
+.shtitle-paper{color:var(--ink);}
+
+.sh-rule{width:60px;height:2px;margin:14px auto 0;}
+.rule-cosmos{background:var(--azure);}
+.rule-paper{background:var(--sapphire);}
+.rule-gold{background:var(--gold);}
+
+.sh-sub{font-style:italic;font-size:clamp(.87rem,2vw,1rem);line-height:1.8;max-width:560px;margin:14px auto 0;opacity:.7;}
+
+/* ═══════════════════════════════
+   PROSE
+═══════════════════════════════ */
+.prose p{font-size:clamp(.97rem,2.2vw,1.1rem);line-height:2.05;margin-bottom:17px;text-align:justify;}
+.prose-cosmos p{color:rgba(220,235,255,.82);}
+.prose-light p{color:var(--ink-mid);}
+.prose-gold p{color:rgba(220,235,255,.82);}
+
+.prose-cosmos p.lead{color:var(--silver-lt);font-style:italic;font-size:clamp(1rem,2.3vw,1.18rem);line-height:1.88;}
+.prose-light p.lead{color:var(--sapphire);font-style:italic;font-size:clamp(1rem,2.3vw,1.18rem);}
+.prose-gold p.lead{color:var(--gold-lt);font-style:italic;font-size:clamp(1rem,2.3vw,1.15rem);}
+
+.prose-cosmos p:first-of-type:not(.lead)::first-letter{font-family:'Cormorant',serif;font-weight:700;font-size:4.2em;line-height:.72;float:left;margin:10px 12px 0 0;color:var(--gold);}
+.prose-light p:first-of-type:not(.lead)::first-letter{font-family:'Cormorant',serif;font-weight:700;font-size:4.2em;line-height:.72;float:left;margin:10px 12px 0 0;color:var(--sapphire);}
+.prose-gold p:first-of-type:not(.lead)::first-letter{font-family:'Cormorant',serif;font-weight:700;font-size:4.2em;line-height:.72;float:left;margin:10px 12px 0 0;color:var(--gold);}
+
+/* ═══════════════════════════════
+   DALIL
+═══════════════════════════════ */
+.dalil{margin:28px 0;display:grid;grid-template-columns:4px 1fr;}
+.dalil-cosmos{background:rgba(6,16,32,.85);border:1px solid var(--b-silver);}
+.dalil-light{background:var(--paper-d);border:1px solid rgba(14,24,32,.15);}
+.dalil-gold{background:rgba(4,8,16,.9);border:1px solid var(--b-gold);}
+
+.dbar-cosmos{background:var(--azure);}
+.dbar-light{background:var(--sapphire);}
+.dbar-gold{background:var(--gold);}
+
+.dbody{padding:20px 24px 16px;}
+
+.dtag{font-family:'Marcellus',serif;font-size:.6rem;letter-spacing:4px;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:10px;}
+.dtag::after{content:'';flex:1;height:1px;}
+.dtag-cosmos{color:var(--silver);}
+.dtag-cosmos::after{background:linear-gradient(90deg,rgba(168,200,232,.3),transparent);}
+.dtag-light{color:var(--sapphire);}
+.dtag-light::after{background:linear-gradient(90deg,rgba(16,56,96,.3),transparent);}
+.dtag-gold{color:var(--gold);}
+.dtag-gold::after{background:linear-gradient(90deg,rgba(212,184,64,.3),transparent);}
+
+.dar{font-family:'Amiri',serif;font-size:clamp(1.1rem,2.8vw,1.58rem);line-height:2.2;direction:rtl;text-align:right;margin-bottom:13px;padding-bottom:12px;}
+.dar-cosmos{color:var(--gold);border-bottom:1px dashed rgba(212,184,64,.18);}
+.dar-light{color:var(--sapphire);border-bottom:1px dashed rgba(16,56,96,.2);}
+.dar-gold{color:var(--gold-lt);border-bottom:1px dashed rgba(240,208,96,.18);}
+
+.dtrans{font-style:italic;font-size:.93rem;line-height:1.8;margin-bottom:8px;}
+.dtrans-cosmos{color:rgba(208,228,252,.78);}
+.dtrans-light{color:var(--ink-soft);}
+.dtrans-gold{color:rgba(220,235,255,.78);}
+
+.dref{font-family:'Marcellus',serif;font-size:.62rem;letter-spacing:2px;text-transform:uppercase;}
+.dref-cosmos{color:var(--azure);}
+.dref-light{color:var(--sapphire);}
+.dref-gold{color:var(--amber);}
+
+/* ═══════════════════════════════
+   ISRA MIRAJ TIMELINE
+═══════════════════════════════ */
+.journey{position:relative;padding:0 0 20px;margin:32px 0;}
+
+/* Vertical line */
+.journey::before{
+  content:'';
+  position:absolute;
+  left:28px;top:0;bottom:0;width:2px;
+  background:linear-gradient(180deg,
+    transparent 0%,
+    rgba(212,184,64,.3) 10%,
+    rgba(212,184,64,.5) 50%,
+    rgba(168,200,232,.4) 80%,
+    transparent 100%);
+}
+@media(min-width:640px){
+  .journey::before{left:50%;transform:translateX(-50%);}
+}
+
+.journey-step{
+  display:flex;gap:20px;
+  margin-bottom:12px;
+  position:relative;
+}
+@media(min-width:640px){
+  .journey-step{width:calc(50% - 30px);}
+  .journey-step.step-left{margin-left:0;margin-right:auto;padding-right:0;}
+  .journey-step.step-right{margin-left:auto;margin-right:0;padding-left:0;flex-direction:row-reverse;}
+}
+
+.j-dot{
+  flex-shrink:0;width:18px;height:18px;border-radius:50%;
+  border:2px solid;margin-top:16px;position:relative;z-index:2;
+}
+.j-dot::after{content:'';position:absolute;inset:-4px;border-radius:50%;opacity:.3;animation:jDotPulse 3s ease-in-out infinite;}
+@keyframes jDotPulse{0%,100%{transform:scale(1);opacity:.3;}50%{transform:scale(1.6);opacity:0;}}
+
+.jd-gold{background:var(--gold);border-color:var(--gold-lt);}
+.jd-gold::after{background:var(--gold);}
+.jd-azure{background:var(--azure);border-color:var(--sky);}
+.jd-azure::after{background:var(--azure);}
+.jd-white{background:#fff;border-color:var(--silver-lt);}
+.jd-white::after{background:#fff;}
+
+.j-card{
+  flex:1;padding:16px 20px;
+  border:1px solid;border-radius:2px;
+}
+.jcard-gold{background:rgba(6,16,32,.9);border-color:rgba(212,184,64,.2);}
+.jcard-azure{background:rgba(6,16,32,.9);border-color:rgba(26,88,152,.25);}
+.jcard-white{background:rgba(8,24,48,.95);border-color:rgba(238,246,255,.12);}
+
+.j-langit{font-family:'Marcellus',serif;font-size:.6rem;letter-spacing:3px;text-transform:uppercase;margin-bottom:6px;}
+.jl-gold{color:var(--gold);}
+.jl-azure{color:var(--sky);}
+.jl-white{color:var(--silver);}
+
+.j-title{font-family:'Cormorant',serif;font-weight:600;font-size:.97rem;margin-bottom:4px;}
+.jt-gold{color:var(--white);}
+.jt-azure{color:var(--frost);}
+.jt-white{color:var(--silver-lt);}
+
+.j-desc{font-size:.82rem;line-height:1.7;font-style:italic;}
+.jdesc-gold{color:rgba(200,220,248,.65);}
+.jdesc-azure{color:rgba(190,215,245,.65);}
+.jdesc-white{color:rgba(208,232,255,.6);}
+
+/* ═══════════════════════════════
+   FEATURE CARDS (Sidrah Features)
+═══════════════════════════════ */
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:2px;margin:28px 0;}
+
+.feat{padding:24px 22px;position:relative;overflow:hidden;}
+.feat-cosmos{background:rgba(6,16,32,.95);border:1px solid var(--b-silver);border-top:2px solid var(--azure);}
+.feat-gold{background:rgba(4,8,18,.97);border:1px solid var(--b-gold);border-top:2px solid var(--gold);}
+
+.feat-icon{font-size:1.8rem;margin-bottom:12px;display:block;}
+
+.feat-title{font-family:'Cormorant',serif;font-weight:700;font-size:1.05rem;margin-bottom:6px;line-height:1.3;}
+.ft-cosmos{color:var(--silver-lt);}
+.ft-gold{color:var(--gold-lt);}
+
+.feat-ar{font-family:'Amiri',serif;font-size:1rem;direction:rtl;text-align:right;margin-bottom:8px;line-height:1.9;opacity:.5;}
+.far-cosmos{color:var(--silver);}
+.far-gold{color:var(--gold);}
+
+.feat-desc{font-size:.83rem;line-height:1.68;font-style:italic;}
+.fd-cosmos{color:rgba(200,225,252,.6);}
+.fd-gold{color:rgba(240,220,160,.6);}
+
+.feat-ref{font-family:'Marcellus',serif;font-size:.6rem;letter-spacing:2px;text-transform:uppercase;margin-top:10px;display:block;}
+.fr-cosmos{color:var(--azure);}
+.fr-gold{color:var(--amber);}
+
+/* ═══════════════════════════════
+   BANNER / CALLOUT
+═══════════════════════════════ */
+.banner{margin:32px 0;padding:28px 34px;text-align:center;position:relative;overflow:hidden;}
+.banner-cosmos{background:linear-gradient(135deg,rgba(16,56,96,.3),rgba(8,24,48,.4));border:1px solid var(--b-silver);}
+.banner-gold{background:linear-gradient(135deg,rgba(212,184,64,.1),rgba(8,16,32,.2));border:1px solid var(--b-gold);}
+.banner-light{background:var(--paper-d);border:1px solid rgba(14,24,32,.15);}
+
+.bnar{font-family:'Amiri',serif;font-size:clamp(1.1rem,2.8vw,1.55rem);line-height:2;margin-bottom:10px;position:relative;z-index:1;}
+.bnar-cosmos{color:var(--gold);}
+.bnar-gold{color:var(--gold-lt);}
+.bnar-light{color:var(--sapphire);}
+
+.bnid{font-style:italic;font-size:.9rem;line-height:1.78;position:relative;z-index:1;}
+.bnid-cosmos{color:rgba(200,225,252,.7);}
+.bnid-gold{color:rgba(240,220,160,.7);}
+.bnid-light{color:var(--ink-soft);}
+
+.bnref{font-family:'Marcellus',serif;font-size:.6rem;letter-spacing:3px;text-transform:uppercase;margin-top:8px;position:relative;z-index:1;}
+.bnref-cosmos{color:rgba(26,88,152,.65);}
+.bnref-gold{color:rgba(212,184,64,.55);}
+.bnref-light{color:var(--ink-soft);}
+
+/* ═══════════════════════════════
+   QUOTE PULL
+═══════════════════════════════ */
+.pull{
+  margin:32px 0;padding:28px 32px;
+  border-top:3px solid;
+  position:relative;
+}
+.pull-cosmos{border-color:var(--azure);background:rgba(6,16,32,.7);}
+.pull-gold{border-color:var(--gold);background:rgba(4,8,16,.8);}
+.pull-light{border-color:var(--sapphire);background:var(--paper-d);}
+
+.pull p{font-family:'Cormorant',serif;font-size:clamp(1.15rem,2.8vw,1.55rem);font-style:italic;line-height:1.68;margin-bottom:10px;}
+.pullp-cosmos{color:var(--silver-lt);}
+.pullp-gold{color:var(--gold-lt);}
+.pullp-light{color:var(--sapphire);}
+
+.pull cite{font-family:'Marcellus',serif;font-size:.62rem;letter-spacing:3px;text-transform:uppercase;}
+.pullc-cosmos{color:var(--azure);}
+.pullc-gold{color:var(--amber);}
+.pullc-light{color:var(--sapphire);}
+
+/* ═══════════════════════════════
+   SEPARATOR
+═══════════════════════════════ */
+.sep{text-align:center;padding:16px 0;background:var(--cosmos);position:relative;z-index:1;}
+.sep span{color:rgba(26,88,152,.4);letter-spacing:12px;font-size:.75rem;}
+
+/* ═══════════════════════════════
+   PENUTUP
+═══════════════════════════════ */
+.penutup{
+  background:linear-gradient(180deg,var(--midnight) 0%,var(--cosmos) 100%);
+  padding:72px 28px 80px;text-align:center;
+  position:relative;overflow:hidden;z-index:1;
+}
+.penutup::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 0%,rgba(16,56,96,.2) 0%,transparent 70%),
+    radial-gradient(ellipse 50% 40% at 50% 50%,rgba(212,184,64,.04) 0%,transparent 70%);
+  pointer-events:none;
+}
+.penutup::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--azure),transparent);}
+
+.penutup-inner{max-width:640px;margin:0 auto;position:relative;z-index:1;}
+.penutup-ar{font-family:'Amiri',serif;font-size:clamp(1.5rem,4vw,2.7rem);color:var(--gold);line-height:2;text-shadow:0 0 30px rgba(212,184,64,.35);margin-bottom:14px;}
+.penutup-div{width:80px;height:1px;background:linear-gradient(90deg,transparent,var(--azure),transparent);margin:18px auto;}
+.penutup-p{font-style:italic;font-size:clamp(.9rem,2vw,1.05rem);color:rgba(208,228,252,.7);line-height:1.92;margin-bottom:12px;}
+.penutup-ref{font-family:'Marcellus',serif;font-size:.6rem;letter-spacing:3px;text-transform:uppercase;color:rgba(26,88,152,.55);}
+.penutup-footer{margin-top:40px;padding-top:22px;border-top:1px solid rgba(255,255,255,.04);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+.penutup-footer .logo{font-family:'Amiri',serif;font-size:1.1rem;color:rgba(212,184,64,.35);}
+.penutup-footer .tag{font-family:'Marcellus',serif;font-size:.58rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.12);}
+
+/* ═══════════════════════════════
+   RESPONSIVE
+═══════════════════════════════ */
+@media(max-width:600px){
+  .sec-cosmos,.sec-light,.sec-gold{padding:44px 18px 40px;}
+  .banner{padding:20px 18px;}
+  .pull{padding:20px 20px;}
+  .penutup{padding:52px 18px 60px;}
+  .dbody{padding:16px 16px 12px;}
+}
+</style>
+</head>
+<body>
+
+<canvas id="cosmos-canvas"></canvas>
+
+<!-- ═══════ HERO ═══════ -->
+<section class="hero">
+  <div class="hero-nebula"></div>
+  <div class="hero-pillar"></div>
+  <div class="hero-halo"></div>
+
+  <!-- Stylized tree (CSS-only) -->
+  <div class="tree-svg-wrap">
+    <svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+      <!-- Trunk -->
+      <line x1="200" y1="480" x2="200" y2="260" stroke="rgba(212,184,64,0.8)" stroke-width="3"/>
+      <!-- Main branches -->
+      <line x1="200" y1="300" x2="120" y2="200" stroke="rgba(212,184,64,0.6)" stroke-width="2"/>
+      <line x1="200" y1="300" x2="280" y2="200" stroke="rgba(212,184,64,0.6)" stroke-width="2"/>
+      <line x1="200" y1="270" x2="100" y2="160" stroke="rgba(212,184,64,0.5)" stroke-width="1.5"/>
+      <line x1="200" y1="270" x2="300" y2="160" stroke="rgba(212,184,64,0.5)" stroke-width="1.5"/>
+      <line x1="200" y1="260" x2="60"  y2="130" stroke="rgba(212,184,64,0.4)" stroke-width="1.2"/>
+      <line x1="200" y1="260" x2="340" y2="130" stroke="rgba(212,184,64,0.4)" stroke-width="1.2"/>
+      <!-- Sub branches -->
+      <line x1="120" y1="200" x2="80"  y2="150" stroke="rgba(200,220,255,0.35)" stroke-width="1"/>
+      <line x1="120" y1="200" x2="140" y2="140" stroke="rgba(200,220,255,0.35)" stroke-width="1"/>
+      <line x1="280" y1="200" x2="260" y2="140" stroke="rgba(200,220,255,0.35)" stroke-width="1"/>
+      <line x1="280" y1="200" x2="320" y2="150" stroke="rgba(200,220,255,0.35)" stroke-width="1"/>
+      <!-- Leaf clusters (circles) -->
+      <circle cx="200" cy="240" r="55" fill="rgba(212,184,64,0.06)" stroke="rgba(212,184,64,0.2)" stroke-width="1"/>
+      <circle cx="200" cy="240" r="35" fill="rgba(212,184,64,0.04)" stroke="rgba(212,184,64,0.15)" stroke-width="1"/>
+      <circle cx="100" cy="140" r="38" fill="rgba(200,220,255,0.05)" stroke="rgba(200,220,255,0.15)" stroke-width="1"/>
+      <circle cx="300" cy="140" r="38" fill="rgba(200,220,255,0.05)" stroke="rgba(200,220,255,0.15)" stroke-width="1"/>
+      <circle cx="60"  cy="110" r="28" fill="rgba(200,220,255,0.04)" stroke="rgba(200,220,255,0.1)" stroke-width="1"/>
+      <circle cx="340" cy="110" r="28" fill="rgba(200,220,255,0.04)" stroke="rgba(200,220,255,0.1)" stroke-width="1"/>
+      <!-- Tiny leaf dots -->
+      <circle cx="80"  cy="150" r="4" fill="rgba(212,184,64,0.5)"/>
+      <circle cx="140" cy="140" r="4" fill="rgba(212,184,64,0.5)"/>
+      <circle cx="260" cy="140" r="4" fill="rgba(212,184,64,0.5)"/>
+      <circle cx="320" cy="150" r="4" fill="rgba(212,184,64,0.5)"/>
+      <circle cx="60"  cy="130" r="3" fill="rgba(200,220,255,0.6)"/>
+      <circle cx="340" cy="130" r="3" fill="rgba(200,220,255,0.6)"/>
+      <circle cx="170" cy="220" r="3" fill="rgba(248,220,100,0.7)"/>
+      <circle cx="230" cy="215" r="3" fill="rgba(248,220,100,0.7)"/>
+      <circle cx="200" cy="205" r="4" fill="rgba(248,220,100,0.8)"/>
+      <!-- Roots -->
+      <line x1="200" y1="480" x2="160" y2="500" stroke="rgba(212,184,64,0.3)" stroke-width="1.5"/>
+      <line x1="200" y1="480" x2="240" y2="500" stroke="rgba(212,184,64,0.3)" stroke-width="1.5"/>
+      <line x1="200" y1="480" x2="130" y2="495" stroke="rgba(212,184,64,0.2)" stroke-width="1"/>
+      <line x1="200" y1="480" x2="270" y2="495" stroke="rgba(212,184,64,0.2)" stroke-width="1"/>
+    </svg>
+  </div>
+
+  <div class="leaf-lights" id="leaves"></div>
+
+  <div class="hero-inner">
+    <div class="hero-bismillah">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
+    <p class="hero-eyebrow">Naskah Berdalil Al-Qur'an &amp; Hadis Shahih · Kajian Akidah &amp; Tafsir</p>
+    <h1 class="hero-title">Sidratul<br>Muntaha</h1>
+    <div class="hero-subtitle">Pohon Agung di Ujung Langit Ketujuh</div>
+    <div class="hero-arabic">سِدْرَةُ الْمُنْتَهَى</div>
+    <div class="hero-verse-wrap">
+      <div class="hero-verse-ar">عِندَ سِدْرَةِ الْمُنتَهَىٰ ۝ عِندَهَا جَنَّةُ الْمَأْوَىٰ ۝ إِذْ يَغْشَى السِّدْرَةَ مَا يَغْشَىٰ</div>
+      <div class="hero-verse-id">"Di sisi Sidratul Muntaha. Di dekatnya terdapat Surga Al-Ma'wa. (Muhammad melihat Jibril) ketika Sidratul Muntaha diliputi oleh sesuatu yang meliputinya."<br><em style="color:rgba(212,184,64,.5)">— QS. An-Najm: 14–16</em></div>
+    </div>
+  </div>
+  <div class="scroll-down">Baca</div>
+</section>
+
+<!-- ═══════ PROLOG ═══════ -->
+<section class="sec sec-cosmos">
+  <div class="inner">
+    <div class="sh">
+      <div class="sh-badge badge-cosmos">✦ Pembuka</div>
+      <div class="sh-ar shar-cosmos">مَا سِدْرَةُ الْمُنْتَهَى؟</div>
+      <h2 class="sh-title shtitle-cosmos">Apakah Sidratul Muntaha?</h2>
+      <div class="sh-rule rule-cosmos"></div>
+    </div>
+    <div class="prose prose-cosmos">
+      <p class="lead">Di puncak langit ketujuh, di batas terjauh yang pernah dicapai oleh makhluk mana pun, berdiri sebuah pohon yang tidak ada duanya di seluruh alam semesta. Ia bukan sekadar pohon. Ia adalah penanda batas antara alam makhluk dan alam yang hanya milik Allah — batas di mana ilmu segala makhluk pun berakhir, di mana catatan amal manusia naik dan berhenti, di mana malaikat-malaikat terbaik pun tidak melampauinya.</p>
+      <p>Inilah <em>Sidratul Muntaha</em> — secara harfiah berarti "Pohon Bidara di Titik Terjauh." Disebutkan dalam Al-Qur'an, digambarkan dalam hadis-hadis shahih, dan menjadi salah satu pemandangan paling agung yang disaksikan Nabi Muhammad ﷺ pada malam Isra' Mi'raj — malam perjalanan melampaui seluruh batas alam.</p>
+      <p>Nama <em>Sidrah</em> berasal dari pohon bidara (Ziziphus) — pohon yang dikenal rindang, tempat orang berteduh di padang pasir. Namun Sidratul Muntaha bukan bidara biasa. Ia adalah pohon kosmis yang skalanya melampaui imajinasi — satu daunnya saja cukup menaungi seluruh umat manusia.</p>
+    </div>
+
+    <div class="dalil dalil-cosmos">
+      <div class="dbar-cosmos"></div>
+      <div class="dbody">
+        <div class="dtag dtag-cosmos">📖 QS. An-Najm: 13–18 — Ayat Utama tentang Sidratul Muntaha</div>
+        <div class="dar dar-cosmos">وَلَقَدْ رَآهُ نَزْلَةً أُخْرَىٰ ۝ عِندَ سِدْرَةِ الْمُنتَهَىٰ ۝ عِندَهَا جَنَّةُ الْمَأْوَىٰ ۝ إِذْ يَغْشَى السِّدْرَةَ مَا يَغْشَىٰ ۝ مَا زَاغَ الْبَصَرُ وَمَا طَغَىٰ ۝ لَقَدْ رَأَىٰ مِنْ آيَاتِ رَبِّهِ الْكُبْرَى</div>
+        <div class="dtrans dtrans-cosmos">"Dan sungguh, dia (Muhammad) telah melihatnya (Jibril) pada waktu yang lain, di sisi Sidratul Muntaha. Di dekatnya terdapat Surga tempat tinggal (Al-Ma'wa). (Muhammad melihat Jibril) ketika Sidratul Muntaha diliputi oleh sesuatu yang meliputinya. Penglihatannya tidak berpaling dan tidak pula melampaui. Sungguh, dia telah melihat sebagian tanda-tanda (kebesaran) Tuhannya yang paling besar."</div>
+        <div class="dref dref-cosmos">QS. An-Najm (53): 13–18</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"><span>✦ ✦ ✦</span></div>
+
+<!-- ═══════ BAB I: LOKASI & SIFAT ═══════ -->
+<section class="sec sec-light">
+  <div class="inner">
+    <div class="sh">
+      <div class="sh-badge badge-paper">✦ Bab Pertama</div>
+      <div class="sh-ar shar-paper">مَكَانُهَا وَصِفَتُهَا</div>
+      <h2 class="sh-title shtitle-paper">Lokasi &amp; Sifat Sidratul Muntaha</h2>
+      <div class="sh-rule rule-paper"></div>
+      <p class="sh-sub" style="color:var(--ink-soft);">Para ulama tafsir dan hadis menyusun gambaran Sidratul Muntaha dari berbagai riwayat shahih yang saling melengkapi.</p>
+    </div>
+
+    <!-- Feat grid lokasi -->
+    <div class="feat-grid" style="gap:1px;margin-bottom:0;">
+      <div class="feat" style="background:rgba(20,24,32,.04);border:1px solid rgba(14,24,32,.12);border-top:2px solid var(--sapphire);">
+        <span class="feat-icon">🌌</span>
+        <div class="feat-title" style="color:var(--sapphire);">Di Langit Ketujuh</div>
+        <div class="feat-desc" style="color:var(--ink-soft);">Sidratul Muntaha berada di langit ketujuh — lapisan langit tertinggi yang pernah dicapai Nabi ﷺ dalam Mi'raj. Di sinilah batas alam makhluk berakhir.</div>
+        <span class="feat-ref" style="color:var(--sapphire);">HR. Bukhari (3207) &amp; Muslim (163)</span>
+      </div>
+      <div class="feat" style="background:rgba(20,24,32,.04);border:1px solid rgba(14,24,32,.12);border-top:2px solid var(--sapphire);">
+        <span class="feat-icon">🛑</span>
+        <div class="feat-title" style="color:var(--sapphire);">Batas Ilmu Makhluk</div>
+        <div class="feat-desc" style="color:var(--ink-soft);">Dinamai "Muntaha" (puncak/batas) karena di sanalah segala ilmu makhluk berakhir — tidak ada makhluk yang melampaui batas ini kecuali Nabi ﷺ pada malam Mi'raj.</div>
+        <span class="feat-ref" style="color:var(--sapphire);">Tafsir Ibnu Katsir atas QS. An-Najm</span>
+      </div>
+      <div class="feat" style="background:rgba(20,24,32,.04);border:1px solid rgba(14,24,32,.12);border-top:2px solid var(--sapphire);">
+        <span class="feat-icon">📜</span>
+        <div class="feat-title" style="color:var(--sapphire);">Tempat Naik Amal &amp; Takdir</div>
+        <div class="feat-desc" style="color:var(--ink-soft);">Ke sinilah amal para hamba naik dan diterima. Dari sini pula takdir dan perintah Allah turun ke alam bawah. Ia adalah persimpangan antara bumi dan 'Arsy.</div>
+        <span class="feat-ref" style="color:var(--sapphire);">HR. Muslim (163) — dari Anas bin Malik</span>
+      </div>
+      <div class="feat" style="background:rgba(20,24,32,.04);border:1px solid rgba(14,24,32,.12);border-top:2px solid var(--sapphire);">
+        <span class="feat-icon">🏠</span>
+        <div class="feat-title" style="color:var(--sapphire);">Berdekatan dengan Surga Al-Ma'wa</div>
+        <div class="feat-desc" style="color:var(--ink-soft);">Al-Qur'an secara eksplisit menyebutkan: di dekat Sidratul Muntaha terdapat Surga Al-Ma'wa — salah satu tingkatan surga yang disebutkan dalam Al-Qur'an.</div>
+        <span class="feat-ref" style="color:var(--sapphire);">QS. An-Najm (53): 15</span>
+      </div>
+    </div>
+
+    <div class="dalil dalil-light" style="margin-top:28px;">
+      <div class="dbar-light"></div>
+      <div class="dbody">
+        <div class="dtag dtag-light">📜 HR. Bukhari &amp; Muslim — Gambaran Pohon dari Nabi ﷺ</div>
+        <div class="dar dar-light">فَإِذَا نَبِقُهَا مِثْلُ قِلَالِ هَجَرَ وَإِذَا وَرَقُهَا مِثْلُ آذَانِ الْفِيَلَةِ</div>
+        <div class="dtrans dtrans-light">"Buah-buahannya (nabiq) seperti guci-guci besar Hajar (wadah air besar dari daerah Hajar di Arabia), dan daun-daunnya seperti telinga-telinga gajah."</div>
+        <div class="dref dref-light">HR. Muslim (173) — dari Abdullah bin Mas'ud radhiyallahu 'anhu — Shahih</div>
+      </div>
+    </div>
+
+    <div class="prose prose-light">
+      <p>Para ulama menjelaskan bahwa perbandingan ini bukan sekadar gambaran ukuran — ia adalah cara Nabi ﷺ menggambarkan sesuatu yang luar biasa besar dalam bahasa yang bisa dipahami manusia. Guci Hajar adalah wadah air terbesar yang dikenal masyarakat Arab saat itu. Telinga gajah adalah daun terlebar yang bisa dibayangkan. Maka bayangkan: sebuah pohon yang buahnya sebesar guci raksasa, dan daunnya seluas telinga gajah — kemudian gandakan skalanya jauh melampaui imajinasi.</p>
+    </div>
+
+    <div class="dalil dalil-light">
+      <div class="dbar-light"></div>
+      <div class="dbody">
+        <div class="dtag dtag-light">📜 HR. Tirmidzi — Satu Daun Menaungi Seluruh Makhluk</div>
+        <div class="dar dar-light">لَوْ أَنَّ وَرَقَةً مِنْهَا سَقَطَتْ لأَضَاءَتْ لأَهْلِ الأَرْضِ</div>
+        <div class="dtrans dtrans-light">"Seandainya sehelai daun darinya jatuh, niscaya ia menerangi seluruh penduduk bumi." — Dalam riwayat lain: "Satu daunnya mencukupi untuk menaungi seluruh umat (makhluk)."</div>
+        <div class="dref dref-light">HR. Tirmidzi (3283) — dari Anas bin Malik — Hasan</div>
+      </div>
+    </div>
+
+    <div class="pull pull-light">
+      <p class="pullp-light">"Sidratul Muntaha adalah pohon bidara besar di langit ketujuh — ke sanalah segala sesuatu yang naik dari bumi berakhir dan tidak melewatinya, dan ke sanalah turun apa yang diturunkan dari atasnya dan tidak melewatinya."</p>
+      <cite class="pullc-light">Ibnu 'Abbas radhiyallahu 'anhuma — Tafsir QS. An-Najm</cite>
+    </div>
+  </div>
+</section>
+
+<div class="sep"><span>✦ ✦ ✦</span></div>
+
+<!-- ═══════ BAB II: ISRA MIRAJ — PERJALANAN KE SANA ═══════ -->
+<section class="sec sec-cosmos">
+  <div class="inner">
+    <div class="sh">
+      <div class="sh-badge badge-cosmos">✦ Bab Kedua</div>
+      <div class="sh-ar shar-cosmos">رِحْلَةُ الْمِعْرَاجِ — الطَّرِيقُ إِلَى السِّدْرَةِ</div>
+      <h2 class="sh-title shtitle-cosmos">Perjalanan Mi'raj Menuju Sidratul Muntaha</h2>
+      <div class="sh-rule rule-cosmos"></div>
+      <p class="sh-sub" style="color:rgba(168,200,232,.55);">Nabi ﷺ melewati tujuh langit satu per satu, berjumpa para nabi, sebelum akhirnya mencapai Sidratul Muntaha — batas tertinggi.</p>
+    </div>
+
+    <!-- Journey timeline -->
+    <div class="journey">
+      <div class="journey-step step-left">
+        <div class="j-dot jd-gold"></div>
+        <div class="j-card jcard-gold">
+          <div class="j-langit jl-gold">✦ Awal Perjalanan</div>
+          <div class="j-title jt-gold">Dari Makkah — Masjidil Aqsha</div>
+          <div class="j-desc jdesc-gold">Isra' dimulai dari Masjidil Haram ke Masjidil Aqsha dengan Buraq. Di sana Nabi ﷺ mengimami seluruh para nabi dalam shalat. Kemudian Mi'raj dimulai.</div>
+        </div>
+      </div>
+
+      <div class="journey-step step-right">
+        <div class="j-dot jd-azure"></div>
+        <div class="j-card jcard-azure">
+          <div class="j-langit jl-azure">Langit Pertama</div>
+          <div class="j-title jt-azure">Nabi Adam 'Alaihissalam</div>
+          <div class="j-desc jdesc-azure">Nabi ﷺ disambut Adam — bapak seluruh manusia. Di sisi kanannya para ahli surga, di sisi kirinya para ahli neraka. Adam tertawa melihat kanan, menangis melihat kiri.</div>
+        </div>
+      </div>
+
+      <div class="journey-step step-left">
+        <div class="j-dot jd-azure"></div>
+        <div class="j-card jcard-azure">
+          <div class="j-langit jl-azure">Langit Kedua</div>
+          <div class="j-title jt-azure">Nabi Isa &amp; Nabi Yahya 'Alaihimassalam</div>
+          <div class="j-desc jdesc-azure">Dua sepupu dari satu ibu — keduanya menyambut Nabi ﷺ dengan penuh kegembiraan dan mendoakan keberkahan.</div>
+        </div>
+      </div>
+
+      <div class="journey-step step-right">
+        <div class="j-dot jd-azure"></div>
+        <div class="j-card jcard-azure">
+          <div class="j-langit jl-azure">Langit Ketiga</div>
+          <div class="j-title jt-azure">Nabi Yusuf 'Alaihissalam</div>
+          <div class="j-desc jdesc-azure">Nabi Yusuf — yang diberi separuh dari seluruh keindahan — menyambut dengan senyum yang memancarkan cahaya. Nabi ﷺ berkata: "Ia telah diberi separuh ketampanan."</div>
+        </div>
+      </div>
+
+      <div class="journey-step step-left">
+        <div class="j-dot jd-azure"></div>
+        <div class="j-card jcard-azure">
+          <div class="j-langit jl-azure">Langit Keempat</div>
+          <div class="j-title jt-azure">Nabi Idris 'Alaihissalam</div>
+          <div class="j-desc jdesc-azure">Allah berfirman dalam Al-Qur'an: "Kami telah mengangkatnya ke martabat yang tinggi." Di langit keempat inilah Nabi Idris berada — diangkat Allah ke tempat yang mulia.</div>
+        </div>
+      </div>
+
+      <div class="journey-step step-right">
+        <div class="j-dot jd-azure"></div>
+        <div class="j-card jcard-azure">
+          <div class="j-langit jl-azure">Langit Kelima</div>
+          <div class="j-title jt-azure">Nabi Harun 'Alaihissalam</div>
+          <div class="j-desc jdesc-azure">Harun — saudara Musa — menyambut dengan penuh kasih. Ia adalah nabi yang dicintai kaumnya dengan kecintaan yang dalam.</div>
+        </div>
+      </div>
+
+      <div class="journey-step step-left">
+        <div class="j-dot jd-azure"></div>
+        <div class="j-card jcard-azure">
+          <div class="j-langit jl-azure">Langit Keenam</div>
+          <div class="j-title jt-azure">Nabi Musa 'Alaihissalam</div>
+          <div class="j-desc jdesc-azure">Musa menangis ketika Nabi ﷺ berlalu. Ketika ditanya, ia berkata: "Aku menangis karena seorang pemuda diutus setelahku, namun umatnya yang masuk surga lebih banyak dari umatku."</div>
+        </div>
+      </div>
+
+      <div class="journey-step step-right">
+        <div class="j-dot jd-azure"></div>
+        <div class="j-card jcard-azure">
+          <div class="j-langit jl-azure">Langit Ketujuh</div>
+          <div class="j-title jt-azure">Nabi Ibrahim 'Alaihissalam</div>
+          <div class="j-desc jdesc-azure">Ibrahim — bapak para nabi — bersandar di Baitul Ma'mur. Setiap hari 70.000 malaikat masuk ke dalamnya dan tidak kembali lagi. Ibrahim menyambut Nabi ﷺ dengan penuh kebanggaan.</div>
+        </div>
+      </div>
+
+      <div class="journey-step step-left">
+        <div class="j-dot jd-gold"></div>
+        <div class="j-card jcard-gold" style="border-color:rgba(212,184,64,.4);">
+          <div class="j-langit jl-gold">✦ Puncak — Tujuan</div>
+          <div class="j-title jt-gold">Sidratul Muntaha</div>
+          <div class="j-desc jdesc-gold">Di sinilah perjalanan vertikal mencapai puncaknya. Nabi ﷺ tiba di Sidratul Muntaha — pohon yang diliputi oleh sesuatu yang tidak dapat digambarkan manusia. Kemudian beliau dibawa lebih jauh — ke hadapan Allah Subhanahu wa Ta'ala.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dalil dalil-cosmos">
+      <div class="dbar-cosmos"></div>
+      <div class="dbody">
+        <div class="dtag dtag-cosmos">📜 HR. Bukhari &amp; Muslim — Gambaran Lengkap Perjalanan</div>
+        <div class="dar dar-cosmos">ثُمَّ عُرِجَ بِنَا حَتَّى انْتَهَيْنَا إِلَى سِدْرَةِ الْمُنْتَهَى وَإِذَا وَرَقُهَا مِثْلُ آذَانِ الْفِيَلَةِ وَإِذَا نَبِقُهَا مِثْلُ قِلَالِ هَجَرَ</div>
+        <div class="dtrans dtrans-cosmos">"Kemudian kami dinaikkan hingga sampai ke Sidratul Muntaha, dan ternyata daunnya seperti telinga-telinga gajah, dan buahnya seperti guci-guci besar Hajar."</div>
+        <div class="dref dref-cosmos">HR. Muslim (173) — dari Abdullah bin Mas'ud radhiyallahu 'anhu</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"><span>✦ ✦ ✦</span></div>
+
+<!-- ═══════ BAB III: APA YANG DILIPUTI SIDRAH ═══════ -->
+<section class="sec sec-gold">
+  <div class="inner">
+    <div class="sh">
+      <div class="sh-badge badge-gold">✦ Bab Ketiga</div>
+      <div class="sh-ar shar-cosmos">إِذْ يَغْشَى السِّدْرَةَ مَا يَغْشَى</div>
+      <h2 class="sh-title shtitle-cosmos">"Ketika Sidratul Muntaha Diliputi oleh Sesuatu yang Meliputinya"</h2>
+      <div class="sh-rule rule-gold"></div>
+      <p class="sh-sub" style="color:rgba(200,220,252,.55);">Ayat QS. An-Najm: 16 menyebutkan sesuatu yang luar biasa meliputinya — dan para ulama menafsirkan dari riwayat Nabi ﷺ sendiri.</p>
+    </div>
+
+    <div class="prose prose-gold">
+      <p class="lead">Ketika Allah berfirman "diliputi oleh sesuatu yang meliputinya" — ini adalah ungkapan Al-Qur'an yang sengaja tidak menjelaskan secara rinci, karena apa yang meliputinya melampaui kemampuan bahasa manusia untuk mengungkapkannya. Namun Nabi ﷺ dalam beberapa riwayat memberikan gambaran yang menggetarkan.</p>
+    </div>
+
+    <div class="feat-grid">
+      <div class="feat feat-gold">
+        <span class="feat-icon">🦋</span>
+        <div class="feat-title ft-gold">Diliputi Kupu-Kupu dari Emas</div>
+        <div class="feat-ar far-gold">فَرَاشٌ مِنْ ذَهَبٍ</div>
+        <div class="feat-desc fd-gold">Dalam riwayat Imam Muslim, Nabi ﷺ menyebutkan bahwa Sidratul Muntaha diliputi oleh farāsy (kupu-kupu atau serangga seperti ngengat) dari emas yang berterbangan mengelilinginya.</div>
+        <span class="feat-ref fr-gold">HR. Muslim (173) — dari Ibnu Mas'ud</span>
+      </div>
+
+      <div class="feat feat-gold">
+        <span class="feat-icon">🎨</span>
+        <div class="feat-title ft-gold">Berubah Warna Menjadi Keindahan Tiada Tara</div>
+        <div class="feat-ar far-gold">فَتَغَيَّرَتْ لَوْنًا لَوْنًا</div>
+        <div class="feat-desc fd-gold">Pohon itu berubah warna sehingga Nabi ﷺ tidak mampu menggambarkannya — ia menjadi sesuatu yang tidak ada manusia yang sanggup melukiskan keindahannya karena Allah menganugerahinya.</div>
+        <span class="feat-ref fr-gold">HR. Muslim (173)</span>
+      </div>
+
+      <div class="feat feat-gold">
+        <span class="feat-icon">👼</span>
+        <div class="feat-title ft-gold">Diliputi Malaikat yang Tak Terhitung</div>
+        <div class="feat-ar far-gold">يَغْشَاهَا مِنَ الْمَلَائِكَةِ</div>
+        <div class="feat-desc fd-gold">Para ulama tafsir seperti Ibnu Katsir dan Al-Qurthubi menafsirkan bahwa yang meliputinya adalah para malaikat yang jumlahnya tidak terbatas — semua berkerumun di sekitar pohon agung itu dalam ketaatan kepada Allah.</div>
+        <span class="feat-ref fr-gold">Tafsir Ibnu Katsir atas QS. An-Najm: 16</span>
+      </div>
+
+      <div class="feat feat-gold">
+        <span class="feat-icon">🌟</span>
+        <div class="feat-title ft-gold">Cahaya dan Keagungan Allah</div>
+        <div class="feat-ar far-gold">نُورُ رَبِّهِ</div>
+        <div class="feat-desc fd-gold">Sebagian ulama berpendapat bahwa "sesuatu yang meliputinya" adalah cahaya dari keagungan Allah Subhanahu wa Ta'ala — sebuah manifestasi kebesaran yang tidak tergambarkan oleh kata-kata makhluk manapun.</div>
+        <span class="feat-ref fr-gold">Pendapat Muqatil &amp; Al-Hasan — dikutip Al-Qurthubi</span>
+      </div>
+    </div>
+
+    <div class="dalil dalil-gold">
+      <div class="dbar-gold"></div>
+      <div class="dbody">
+        <div class="dtag dtag-gold">📜 HR. Muslim — Gambaran Nabi ﷺ saat Melihat Sidrah</div>
+        <div class="dar dar-gold">فَغَشِيَهَا أَلْوَانٌ لَا أَدْرِي مَا هِيَ ثُمَّ أُدْخِلْتُ الْجَنَّةَ فَإِذَا فِيهَا حَبَايِلُ اللُّؤْلُؤِ وَإِذَا تُرَابُهَا الْمِسْكُ</div>
+        <div class="dtrans dtrans-gold">"Kemudian pohon itu diliputi warna-warna yang aku tidak tahu apa ia (tidak mampu digambarkan). Lalu aku dimasukkan ke dalam Surga, dan ternyata di dalamnya ada untaian-untaian mutiara, dan tanahnya adalah misk (wewangian)."</div>
+        <div class="dref dref-gold">HR. Muslim (173) — dari Abdullah bin Mas'ud radhiyallahu 'anhu</div>
+      </div>
+    </div>
+
+    <div class="banner banner-gold">
+      <div class="bnar bnar-gold">مَا زَاغَ الْبَصَرُ وَمَا طَغَىٰ</div>
+      <div class="bnid bnid-gold">"Penglihatannya tidak berpaling dan tidak pula melampaui." — Ketika Nabi ﷺ berada di puncak tertinggi penciptaan, menyaksikan pemandangan yang tidak pernah disaksikan makhluk lain, penglihatan beliau tidak berpaling dan tidak melampaui. Ini adalah bukti keteguhan dan keagungan akhlak beliau — bahkan di hadapan keindahan kosmik yang melampaui segala imajinasi, beliau tetap terjaga batasnya.</div>
+      <div class="bnref bnref-gold">QS. An-Najm (53): 17</div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"><span>✦ ✦ ✦</span></div>
+
+<!-- ═══════ BAB IV: DI SANA NABI MENERIMA SHALAT ═══════ -->
+<section class="sec sec-cosmos">
+  <div class="inner">
+    <div class="sh">
+      <div class="sh-badge badge-cosmos">✦ Bab Keempat</div>
+      <div class="sh-ar shar-cosmos">فَرِيضَةُ الصَّلَاةِ عِنْدَ السِّدْرَةِ</div>
+      <h2 class="sh-title shtitle-cosmos">Di Sidratul Muntaha: Perintah Shalat Lima Waktu Diturunkan</h2>
+      <div class="sh-rule rule-cosmos"></div>
+    </div>
+
+    <div class="prose prose-cosmos">
+      <p class="lead">Di antara semua yang terjadi pada malam Mi'raj, momen paling bersejarah bagi umat Islam adalah apa yang terjadi ketika Nabi ﷺ berada di puncak langit ketujuh — di sisi Sidratul Muntaha. Di sinilah Allah memerintahkan shalat lima waktu secara langsung, tanpa perantaraan malaikat.</p>
+      <p>Ini bukan sembarang momen. Ini adalah satu-satunya perintah ibadah dalam Islam yang diberikan langsung dari Allah kepada Nabi ﷺ tanpa perantaraan wahyu biasa. Shalat tidak diperintahkan melalui Jibril yang turun ke bumi — melainkan Nabi ﷺ yang naik ke hadirat Allah. Ini menunjukkan betapa agungnya kedudukan shalat di sisi Allah.</p>
+    </div>
+
+    <div class="dalil dalil-cosmos">
+      <div class="dbar-cosmos"></div>
+      <div class="dbody">
+        <div class="dtag dtag-cosmos">📜 HR. Bukhari &amp; Muslim — Perintah 50 Shalat, Dikurangi Menjadi 5</div>
+        <div class="dar dar-cosmos">فَفَرَضَ اللَّهُ عَلَى أُمَّتِي خَمْسِينَ صَلَاةً … حَتَّى رَدَّهَا إِلَى خَمْسٍ وَقَالَ يَا مُحَمَّدُ إِنَّهُنَّ خَمْسٌ فِي الْعَمَلِ وَخَمْسُونَ فِي الْمِيزَانِ</div>
+        <div class="dtrans dtrans-cosmos">"Maka Allah mewajibkan atas umatku lima puluh shalat... hingga dikurangi menjadi lima. Lalu Allah berfirman: 'Wahai Muhammad, sesungguhnya (shalat itu) lima dalam pelaksanaan, namun lima puluh dalam timbangan (pahala).'"</div>
+        <div class="dref dref-cosmos">HR. Bukhari (3887) &amp; Muslim (163) — dari Anas bin Malik radhiyallahu 'anhu</div>
+      </div>
+    </div>
+
+    <div class="prose prose-cosmos">
+      <p>Kisah pengurangan dari 50 menjadi 5 shalat adalah salah satu kisah paling mengharukan dalam sejarah Islam. Setiap kali Nabi ﷺ turun dari hadirat Allah, Nabi Musa 'alaihissalam — yang mengenal betapa beratnya mengemban syariat bagi umat manusia — meminta beliau kembali ke hadirat Allah dan memohon pengurangan. Ini berlangsung beberapa kali, hingga shalat dikurangi menjadi lima waktu. Ketika Nabi ﷺ merasa malu untuk memohon pengurangan lagi, Allah menetapkannya sebagai lima — dengan pahala lima puluh.</p>
+    </div>
+
+    <div class="pull pull-cosmos">
+      <p class="pullp-cosmos">"Shalat adalah puncak dari ibadah — diperintahkan di puncak langit, di sisi pohon paling agung, dalam pertemuan paling agung yang pernah terjadi antara seorang hamba dan Rabbnya. Maka janganlah kita meremehkan shalat, karena ia adalah hadiah dari Sidratul Muntaha."</p>
+      <cite class="pullc-cosmos">Intisari dari Syarah Shahih Muslim — Imam An-Nawawi rahimahullah</cite>
+    </div>
+
+    <div class="dalil dalil-cosmos">
+      <div class="dbar-cosmos"></div>
+      <div class="dbody">
+        <div class="dtag dtag-cosmos">📜 HR. Bukhari — Jibril Pun Tidak Melampaui Sidratul Muntaha</div>
+        <div class="dar dar-cosmos">فَانْتَهَى إِلَى سِدْرَةِ الْمُنْتَهَى وَهُوَ فِي السَّمَاءِ السَّادِسَةِ مَا يَجَاوِزُهَا أَحَدٌ مِنَ الْخَلْقِ</div>
+        <div class="dtrans dtrans-cosmos">"Kemudian sampailah ke Sidratul Muntaha yang berada di langit ketujuh — tidak ada seorang pun dari makhluk yang melampasinya." — Jibril 'alaihissalam sendiri memiliki batas di Sidratul Muntaha. Hanya Nabi ﷺ yang dibawa lebih jauh ke hadirat Allah.</div>
+        <div class="dref dref-cosmos">HR. Bukhari (3207) — dari Anas bin Malik radhiyallahu 'anhu</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"><span>✦ ✦ ✦</span></div>
+
+<!-- ═══════ BAB V: MAKNA & PELAJARAN ═══════ -->
+<section class="sec sec-light">
+  <div class="inner">
+    <div class="sh">
+      <div class="sh-badge badge-paper">✦ Bab Kelima</div>
+      <div class="sh-ar shar-paper">الدُّرُوسُ وَالْعِبَرُ</div>
+      <h2 class="sh-title shtitle-paper">Makna &amp; Pelajaran dari Sidratul Muntaha</h2>
+      <div class="sh-rule rule-paper"></div>
+    </div>
+
+    <div class="prose prose-light">
+      <p class="lead">Sidratul Muntaha bukan sekadar nama tempat yang indah — ia adalah simbol kosmik yang menyimpan pelajaran mendalam bagi setiap mukmin yang mau merenungkannya.</p>
+    </div>
+
+    <div class="feat-grid" style="gap:1px;">
+      <div class="feat" style="background:rgba(20,24,32,.04);border:1px solid rgba(14,24,32,.1);border-top:2px solid var(--sapphire);">
+        <span class="feat-icon">🌿</span>
+        <div class="feat-title" style="color:var(--sapphire);">Ada Batas yang Tidak Boleh Dilanggar</div>
+        <div class="feat-desc" style="color:var(--ink-soft);">Sidratul Muntaha mengajarkan: setiap makhluk memiliki batas yang Allah tetapkan. Bahkan Jibril — malaikat paling mulia — memiliki batas di sana. Melampaui batas adalah sifat setan dan orang yang sombong. Tanda iman adalah mengenal dan menghormati batasan.</div>
+      </div>
+      <div class="feat" style="background:rgba(20,24,32,.04);border:1px solid rgba(14,24,32,.1);border-top:2px solid var(--sapphire);">
+        <span class="feat-icon">🧠</span>
+        <div class="feat-title" style="color:var(--sapphire);">Ilmu Makhluk Ada Batasnya</div>
+        <div class="feat-desc" style="color:var(--ink-soft);">Di Sidratul Muntaha, ilmu semua makhluk berakhir. Di luar itu adalah wilayah yang hanya milik Allah. Ini mengingatkan kita: betapa kecilnya ilmu manusia dibandingkan ilmu Allah — dan betapa arogannya jika kita merasa sudah mengetahui segalanya.</div>
+      </div>
+      <div class="feat" style="background:rgba(20,24,32,.04);border:1px solid rgba(14,24,32,.1);border-top:2px solid var(--sapphire);">
+        <span class="feat-icon">🙏</span>
+        <div class="feat-title" style="color:var(--sapphire);">Shalat Adalah Perjalanan ke Sidratul Muntaha</div>
+        <div class="feat-desc" style="color:var(--ink-soft);">Para ulama mengatakan: setiap kali kita shalat, kita melakukan Mi'raj kecil — naik mendekat kepada Allah. Shalat adalah momen di mana seorang hamba berdiri di hadapan Allah, seperti Nabi ﷺ berdiri di puncak langit.</div>
+      </div>
+      <div class="feat" style="background:rgba(20,24,32,.04);border:1px solid rgba(14,24,32,.1);border-top:2px solid var(--sapphire);">
+        <span class="feat-icon">⭐</span>
+        <div class="feat-title" style="color:var(--sapphire);">Amal Naik ke Sidratul Muntaha</div>
+        <div class="feat-desc" style="color:var(--ink-soft);">Setiap amal baik yang kita kerjakan — setiap sedekah, setiap dzikir, setiap shalat — naik melewati langit satu per satu, melewati malaikat-malaikat, hingga mencapai Sidratul Muntaha dan diterima Allah. Maka jangan sepelekan satu pun kebaikan.</div>
+      </div>
+    </div>
+
+    <div class="dalil dalil-light" style="margin-top:8px;">
+      <div class="dbar-light"></div>
+      <div class="dbody">
+        <div class="dtag dtag-light">📖 QS. An-Najm: 17–18 — Penegasan Keagungan Apa yang Disaksikan</div>
+        <div class="dar dar-light">مَا زَاغَ الْبَصَرُ وَمَا طَغَىٰ ۝ لَقَدْ رَأَىٰ مِنْ آيَاتِ رَبِّهِ الْكُبْرَى</div>
+        <div class="dtrans dtrans-light">"Penglihatannya tidak berpaling dan tidak pula melampaui. Sungguh, dia telah melihat sebagian tanda-tanda (kebesaran) Tuhannya yang paling besar."</div>
+        <div class="dref dref-light">QS. An-Najm (53): 17–18</div>
+      </div>
+    </div>
+
+    <div class="banner banner-light" style="margin-top:28px;">
+      <div class="bnar bnar-light">الصَّلَاةُ مِعْرَاجُ الْمُؤْمِنِ</div>
+      <div class="bnid bnid-light">"Shalat adalah mi'raj seorang mukmin." — Ketika Nabi ﷺ naik ke Sidratul Muntaha dan menerima perintah shalat di sana, tersirat pesan mendalam: shalat adalah cara Allah memberikan kesempatan kepada setiap mukmin untuk "naik" mendekat kepada-Nya — bukan secara fisik, melainkan dengan ruh, hati, dan kesadaran. Setiap sujud adalah momen kita paling dekat kepada Allah.</div>
+      <div class="bnref bnref-light">Perkataan para ulama — berdasarkan HR. Muslim: "Sedekat-dekatnya hamba kepada Rabb-nya adalah ketika ia sujud."</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ PENUTUP ═══════ -->
+<div class="penutup">
+  <div class="penutup-inner">
+
+    <div class="penutup-ar">سُبْحَانَ الَّذِي أَسْرَىٰ بِعَبْدِهِ لَيْلًا</div>
+    <div class="penutup-div"></div>
+
+    <p class="penutup-p">"Maha Suci (Allah), yang telah memperjalankan hamba-Nya (Muhammad) pada malam hari."</p>
+    <p class="penutup-ref">QS. Al-Isrā' (17): 1 — Pembuka kisah Isra' Mi'raj</p>
+
+    <div class="penutup-div"></div>
+
+    <p class="penutup-p">Sidratul Muntaha adalah pengingat bahwa di atas segala yang kita ketahui, ada yang jauh lebih agung yang tidak bisa kita jangkau. Di atas langit ketujuh, di sana ada pohon yang satu daunnya saja menerangi bumi — sementara kita hanya makhluk kecil yang bahkan tidak bisa membayangkannya.</p>
+
+    <p class="penutup-p" style="margin-top:12px;">Namun Allah — Yang menciptakan Sidratul Muntaha — adalah Allah yang juga memerintahkan kita untuk mendirikan shalat. Dan setiap kali kita shalat dengan khusyuk, hati kita sedang melakukan perjalanan kecil menuju-Nya — melewati batas diri kita, mendekat kepada Dzat yang tidak terbatas.</p>
+
+    <div class="penutup-div"></div>
+
+    <div class="dalil dalil-cosmos" style="text-align:left;">
+      <div class="dbar-cosmos"></div>
+      <div class="dbody">
+        <div class="dtag dtag-cosmos">📜 Doa Shalawat atas Nabi ﷺ yang Telah Menyaksikan Sidratul Muntaha</div>
+        <div class="dar dar-cosmos">اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ كَمَا صَلَّيْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ وَبَارِكْ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ</div>
+        <div class="dtrans dtrans-cosmos">"Ya Allah, berikanlah shalawat kepada Muhammad dan keluarga Muhammad, sebagaimana Engkau memberikan shalawat kepada Ibrahim dan keluarga Ibrahim. Dan berkahilah Muhammad dan keluarga Muhammad..."</div>
+        <div class="dref dref-cosmos">HR. Bukhari (3370) &amp; Muslim (406) — Shalawat Ibrahimiyah yang dibaca dalam setiap Tasyahhud Akhir</div>
+      </div>
+    </div>
+
+    <div class="penutup-footer">
+      <div class="logo">سِدْرَةُ الْمُنْتَهَى</div>
+      <div class="tag">وَاللّٰهُ أَعْلَمُ بِالصَّوَابِ · Semoga Bermanfaat</div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ─── COSMOS CANVAS ─── */
+const canvas = document.getElementById('cosmos-canvas');
+const ctx = canvas.getContext('2d');
+let W, H, stars = [], nebulae = [];
+
+function resize(){
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+}
+
+function init(){
+  stars = [];
+  for(let i=0;i<300;i++){
+    stars.push({
+      x:Math.random()*W, y:Math.random()*H,
+      r:Math.random()*1.8+.2,
+      a:Math.random()*.7+.1,
+      speed:Math.random()*.5+.1,
+      phase:Math.random()*Math.PI*2,
+      gold:Math.random()<.06
+    });
+  }
+}
+
+let t=0;
+function draw(){
+  ctx.clearRect(0,0,W,H);
+  t+=.008;
+
+  stars.forEach(s=>{
+    const pulse = Math.sin(t*s.speed+s.phase)*.3+.7;
+    ctx.beginPath();
+    ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+    if(s.gold){
+      ctx.fillStyle=`rgba(240,208,80,${s.a*pulse})`;
+      if(s.r>1.2){
+        ctx.shadowBlur=6;ctx.shadowColor='rgba(240,208,80,.4)';
+      }
+    }else{
+      ctx.fillStyle=`rgba(200,225,255,${s.a*pulse})`;
+      ctx.shadowBlur=0;
+    }
+    ctx.fill();
+    ctx.shadowBlur=0;
+  });
+
+  // Occasional shooting star
+  if(Math.random()<.003){
+    const x=Math.random()*W*.8, y=Math.random()*H*.4;
+    const len=Math.random()*100+50;
+    const ang=Math.PI/5;
+    const grd=ctx.createLinearGradient(x,y,x+Math.cos(ang)*len,y+Math.sin(ang)*len);
+    grd.addColorStop(0,'rgba(240,208,80,0)');
+    grd.addColorStop(.5,'rgba(240,208,80,.6)');
+    grd.addColorStop(1,'rgba(255,255,255,.8)');
+    ctx.beginPath();
+    ctx.moveTo(x,y);
+    ctx.lineTo(x+Math.cos(ang)*len,y+Math.sin(ang)*len);
+    ctx.strokeStyle=grd;ctx.lineWidth=1.5;ctx.stroke();
+  }
+
+  requestAnimationFrame(draw);
+}
+
+window.addEventListener('resize',()=>{resize();init();});
+resize();init();draw();
+
+/* ─── LEAF LIGHTS ─── */
+const lWrap=document.getElementById('leaves');
+const lColors=['rgba(212,184,64,1)','rgba(200,225,255,1)','rgba(248,220,100,1)','rgba(168,200,232,1)'];
+for(let i=0;i<45;i++){
+  const l=document.createElement('div');
+  l.className='leaf';
+  const sz=Math.random()*3+1;
+  const col=lColors[Math.floor(Math.random()*lColors.length)];
+  l.style.cssText=`
+    width:${sz}px;height:${sz}px;
+    background:${col};
+    left:${30+Math.random()*40}%;
+    top:${20+Math.random()*60}%;
+    --ld:${(Math.random()*8+5).toFixed(1)}s;
+    --lo:${(Math.random()*.6+.2).toFixed(2)};
+    --lx:${(Math.random()*60-30).toFixed(0)}px;
+    --ly:${(Math.random()*-100-30).toFixed(0)}px;
+    animation-delay:${(Math.random()*12).toFixed(1)}s;
+    box-shadow:0 0 ${sz*3}px ${col};
+    border-radius:50%;
+  `;
+  lWrap.appendChild(l);
+}
+</script>
+</body>
+</html>

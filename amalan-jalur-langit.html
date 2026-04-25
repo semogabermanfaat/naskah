@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amalan Jalur Langit</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=IM+Fell+English:ital@0;1&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --sky-void: #04060f;
+  --deep-navy: #080d1e;
+  --midnight: #0d1530;
+  --twilight: #162040;
+  --cosmic-blue: #1e2d5a;
+  --azure: #2a4a8a;
+  --gold-bright: #f5d060;
+  --gold-mid: #d4a82a;
+  --gold-dim: #8a6a18;
+  --gold-glow: rgba(245,208,96,0.18);
+  --silver: #c8d8f0;
+  --silver-dim: rgba(200,216,240,0.55);
+  --white-soft: #eef4ff;
+  --ink-deep: #0a0f20;
+  --paper: #f8f3e6;
+  --paper-warm: #f2ead6;
+  --sepia: #7a5c2a;
+  --emerald: #0e3d2a;
+  --emerald-bright: #155c3f;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--sky-void);
+  font-family: 'IM Fell English', Georgia, serif;
+  color: var(--white-soft);
+  overflow-x: hidden;
+}
+
+/* ══════════ CANVAS BG ══════════ */
+#cosmos {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ══════════ HERO ══════════ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 60px 24px 80px;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.hero-nebula {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 40%, rgba(30,45,90,0.9) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 80% at 20% 70%, rgba(14,61,42,0.4) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 80% 20%, rgba(42,74,138,0.35) 0%, transparent 60%);
+  z-index: 0;
+}
+
+/* Milky Way band */
+.hero-nebula::after {
+  content:'';
+  position:absolute; inset:0;
+  background: linear-gradient(125deg,
+    transparent 0%,
+    rgba(200,216,240,0.03) 30%,
+    rgba(245,208,96,0.04) 50%,
+    rgba(200,216,240,0.03) 70%,
+    transparent 100%);
+}
+
+.hero-inner { position:relative; z-index:2; max-width:760px; }
+
+.bismillah {
+  font-family:'Amiri',serif;
+  font-size: clamp(1.6rem,5vw,3rem);
+  color: var(--gold-bright);
+  text-shadow: 0 0 30px rgba(245,208,96,0.7), 0 0 60px rgba(245,208,96,0.3);
+  line-height:1.8;
+  margin-bottom:20px;
+  animation: haloFade 2s ease both;
+}
+
+.hero-eyebrow {
+  font-family:'IM Fell English',serif;
+  font-style:italic;
+  font-size:clamp(0.75rem,2vw,0.95rem);
+  letter-spacing:5px;
+  text-transform:uppercase;
+  color: var(--silver-dim);
+  margin-bottom:16px;
+  animation: haloFade 2s ease both 0.3s;
+}
+
+.hero-title {
+  font-family:'Playfair Display',serif;
+  font-weight:900;
+  font-size: clamp(2.8rem,9vw,6.5rem);
+  line-height:1.05;
+  letter-spacing:-1px;
+  background: linear-gradient(160deg, #ffffff 0%, var(--gold-bright) 45%, #c8d8f0 100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  margin-bottom:12px;
+  animation: riseUp 1.5s cubic-bezier(.16,1,.3,1) both 0.2s;
+  text-shadow:none;
+}
+
+.hero-title-ar {
+  font-family:'Amiri',serif;
+  font-size:clamp(1.3rem,3.5vw,2rem);
+  color: rgba(245,208,96,0.75);
+  line-height:2;
+  margin-bottom:28px;
+  animation: haloFade 2s ease both 0.5s;
+}
+
+.star-line {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  margin: 20px auto 32px;
+  animation: haloFade 2s ease both 0.7s;
+}
+.star-line span { display:inline-block; width:60px; height:1px; background:linear-gradient(90deg,transparent,var(--gold-mid)); }
+.star-line span:last-child { background:linear-gradient(90deg,var(--gold-mid),transparent); }
+.star-line em { color:var(--gold-bright); font-size:1rem; font-style:normal; letter-spacing:6px; }
+
+.hero-verse {
+  max-width:540px;
+  margin:0 auto;
+  padding:22px 30px;
+  border:1px solid rgba(245,208,96,0.25);
+  background:rgba(30,45,90,0.4);
+  backdrop-filter:blur(6px);
+  border-radius:2px;
+  animation: haloFade 2s ease both 0.9s;
+}
+.hero-verse p {
+  font-family:'Amiri',serif;
+  font-size:clamp(1rem,2.5vw,1.3rem);
+  color:var(--gold-bright);
+  line-height:2.2;
+  margin-bottom:10px;
+  direction:rtl;
+}
+.hero-verse small {
+  font-family:'IM Fell English',serif;
+  font-style:italic;
+  font-size:0.82rem;
+  color:var(--silver-dim);
+  direction:ltr;
+}
+
+.scroll-cue {
+  position:absolute;
+  bottom:32px; left:50%;
+  transform:translateX(-50%);
+  display:flex; flex-direction:column; align-items:center; gap:8px;
+  color:var(--silver-dim);
+  font-size:0.7rem; letter-spacing:3px; text-transform:uppercase;
+  animation: float 2.5s ease-in-out infinite;
+  z-index:2;
+}
+.scroll-cue::after {
+  content:'';
+  width:1px; height:40px;
+  background:linear-gradient(180deg,var(--gold-dim),transparent);
+}
+
+@keyframes haloFade { from{opacity:0;filter:blur(4px);} to{opacity:1;filter:blur(0);} }
+@keyframes riseUp { from{opacity:0;transform:translateY(30px);} to{opacity:1;transform:translateY(0);} }
+@keyframes float { 0%,100%{transform:translateX(-50%) translateY(0);} 50%{transform:translateX(-50%) translateY(-8px);} }
+
+/* ══════════ SCROLL BODY ══════════ */
+.scroll-body {
+  position:relative;
+  z-index:2;
+  max-width:860px;
+  margin:0 auto;
+  padding:0 0 100px;
+}
+
+/* Paper sections */
+.parchment-section {
+  background: var(--paper);
+  color: #1a1208;
+  position:relative;
+  margin:0;
+  padding:56px 52px 48px;
+  border-top:6px solid transparent;
+  border-image: linear-gradient(90deg, var(--emerald), var(--gold-mid), var(--emerald)) 1;
+}
+
+@media(max-width:640px){
+  .parchment-section { padding:36px 22px 32px; }
+}
+
+.parchment-section::before {
+  content:'';
+  position:absolute; inset:0;
+  background-image:
+    repeating-linear-gradient(0deg,transparent,transparent 27px,rgba(0,0,0,0.04) 27px,rgba(0,0,0,0.04) 28px);
+  pointer-events:none;
+}
+
+/* Dark cosmic sections */
+.cosmos-section {
+  background: linear-gradient(180deg, var(--midnight) 0%, var(--deep-navy) 100%);
+  color: var(--white-soft);
+  padding:56px 52px 48px;
+  position:relative;
+  border-top:1px solid rgba(245,208,96,0.15);
+  border-bottom:1px solid rgba(245,208,96,0.1);
+}
+
+@media(max-width:640px){
+  .cosmos-section { padding:36px 22px 32px; }
+}
+
+.cosmos-section::before {
+  content:'';
+  position:absolute; inset:0;
+  background:radial-gradient(ellipse 70% 50% at 50% 0%, rgba(42,74,138,0.25) 0%, transparent 70%);
+  pointer-events:none;
+}
+
+/* ══════════ CHAPTER HEADER ══════════ */
+.ch-header {
+  margin-bottom:32px;
+}
+
+.ch-tag {
+  display:inline-block;
+  font-family:'Playfair Display',serif;
+  font-style:italic;
+  font-size:0.72rem;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  padding:5px 16px;
+  border:1px solid currentColor;
+  border-radius:1px;
+  margin-bottom:16px;
+  opacity:0.7;
+}
+
+.parchment-section .ch-tag { color:var(--sepia); border-color:var(--sepia); }
+.cosmos-section .ch-tag { color:var(--gold-dim); border-color:var(--gold-dim); }
+
+.ch-num {
+  font-family:'Playfair Display',serif;
+  font-weight:900;
+  font-size:clamp(4rem,12vw,8rem);
+  line-height:0.85;
+  opacity:0.06;
+  position:absolute;
+  top:40px; right:44px;
+  pointer-events:none;
+  user-select:none;
+}
+.parchment-section .ch-num { color:var(--emerald); }
+.cosmos-section .ch-num { color:var(--gold-bright); }
+
+.ch-title-ar {
+  font-family:'Amiri',serif;
+  font-size:clamp(1.4rem,3.5vw,2rem);
+  margin-bottom:8px;
+  line-height:1.8;
+}
+.parchment-section .ch-title-ar { color:var(--gold-dim); }
+.cosmos-section .ch-title-ar { color:var(--gold-bright); text-shadow:0 0 20px rgba(245,208,96,0.4); }
+
+.ch-title {
+  font-family:'Playfair Display',serif;
+  font-weight:700;
+  font-size:clamp(1.4rem,4vw,2.2rem);
+  line-height:1.25;
+  margin-bottom:6px;
+}
+.parchment-section .ch-title { color:var(--emerald); }
+.cosmos-section .ch-title { color:#e8f0ff; }
+
+.ch-rule {
+  width:80px; height:2px;
+  margin:16px 0 0;
+  background:linear-gradient(90deg,var(--gold-mid),transparent);
+}
+
+/* ══════════ PROSE ══════════ */
+.prose { position:relative; z-index:1; }
+
+.prose p {
+  font-size:clamp(0.95rem,2.2vw,1.08rem);
+  line-height:2;
+  margin-bottom:20px;
+  text-align:justify;
+}
+
+.parchment-section .prose p { color:#2c1f08; }
+.cosmos-section .prose p { color:rgba(220,232,255,0.88); }
+
+.prose p:first-of-type::first-letter {
+  font-family:'Playfair Display',serif;
+  font-weight:900;
+  font-size:4.2em;
+  line-height:0.72;
+  float:left;
+  margin:10px 12px 0 0;
+}
+.parchment-section .prose p:first-of-type::first-letter { color:var(--emerald); }
+.cosmos-section .prose p:first-of-type::first-letter { color:var(--gold-bright); }
+
+/* ══════════ DALIL CARD ══════════ */
+.dalil {
+  margin:32px 0;
+  position:relative;
+  overflow:hidden;
+  border-radius:2px;
+}
+
+.parchment-section .dalil {
+  background: linear-gradient(135deg, #ede5cc, #f5eedd);
+  border-left: 5px solid var(--gold-mid);
+  border: 1px solid rgba(161,120,40,0.3);
+  border-left: 5px solid var(--gold-mid);
+  padding:24px 28px 20px;
+}
+
+.cosmos-section .dalil {
+  background: linear-gradient(135deg, rgba(14,61,42,0.4), rgba(30,45,90,0.5));
+  border:1px solid rgba(245,208,96,0.25);
+  border-left:5px solid var(--gold-bright);
+  padding:24px 28px 20px;
+  backdrop-filter:blur(4px);
+}
+
+.dalil-type {
+  font-size:0.68rem;
+  letter-spacing:3.5px;
+  text-transform:uppercase;
+  font-family:'Playfair Display',serif;
+  font-style:italic;
+  margin-bottom:14px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.dalil-type::after {
+  content:'';
+  flex:1;
+  height:1px;
+}
+.parchment-section .dalil-type { color:var(--gold-dim); }
+.parchment-section .dalil-type::after { background:linear-gradient(90deg,rgba(161,120,40,0.3),transparent); }
+.cosmos-section .dalil-type { color:var(--gold-bright); }
+.cosmos-section .dalil-type::after { background:linear-gradient(90deg,rgba(245,208,96,0.3),transparent); }
+
+.dalil-arabic {
+  font-family:'Amiri',serif;
+  font-size:clamp(1.2rem,3vw,1.65rem);
+  line-height:2.2;
+  direction:rtl;
+  text-align:right;
+  margin-bottom:16px;
+  padding-bottom:14px;
+}
+.parchment-section .dalil-arabic { color:var(--emerald); border-bottom:1px dashed rgba(14,61,42,0.25); }
+.cosmos-section .dalil-arabic { color:var(--gold-bright); border-bottom:1px dashed rgba(245,208,96,0.2); }
+
+.dalil-trans {
+  font-style:italic;
+  font-size:0.93rem;
+  line-height:1.8;
+  margin-bottom:10px;
+}
+.parchment-section .dalil-trans { color:#3d2c10; }
+.cosmos-section .dalil-trans { color:rgba(220,232,255,0.8); }
+
+.dalil-ref {
+  font-size:0.73rem;
+  font-weight:700;
+  letter-spacing:1px;
+}
+.parchment-section .dalil-ref { color:var(--gold-mid); }
+.cosmos-section .dalil-ref { color:var(--gold-bright); }
+
+/* ══════════ STORY BLOCK ══════════ */
+.story {
+  margin:28px 0;
+  padding:24px 28px;
+  position:relative;
+}
+.parchment-section .story {
+  background:rgba(14,61,42,0.06);
+  border-right:3px solid var(--emerald);
+}
+.cosmos-section .story {
+  background:rgba(245,208,96,0.05);
+  border-right:3px solid var(--gold-mid);
+}
+
+.story-label {
+  font-size:0.68rem; letter-spacing:3px; text-transform:uppercase;
+  margin-bottom:12px; font-style:italic;
+}
+.parchment-section .story-label { color:var(--sepia); }
+.cosmos-section .story-label { color:var(--gold-dim); }
+
+.story p {
+  font-size:0.97rem;
+  line-height:1.95;
+  margin-bottom:12px;
+  font-style:italic;
+}
+.parchment-section .story p { color:#3d2c10; }
+.cosmos-section .story p { color:rgba(200,216,240,0.85); }
+
+/* ══════════ HIGHLIGHT BANNER ══════════ */
+.banner {
+  margin:32px 0;
+  padding:28px 32px;
+  text-align:center;
+  position:relative;
+}
+
+.parchment-section .banner {
+  background:var(--emerald);
+  color:var(--gold-bright);
+}
+.cosmos-section .banner {
+  background:linear-gradient(135deg,rgba(245,208,96,0.12),rgba(245,208,96,0.06));
+  border:1px solid rgba(245,208,96,0.3);
+  color:var(--gold-bright);
+}
+
+.banner-arabic {
+  font-family:'Amiri',serif;
+  font-size:clamp(1.1rem,2.8vw,1.5rem);
+  line-height:1.9;
+  margin-bottom:10px;
+}
+
+.banner-id {
+  font-style:italic;
+  font-size:0.85rem;
+  opacity:0.72;
+  line-height:1.7;
+}
+
+/* ══════════ DIVIDER ══════════ */
+.cosmic-divider {
+  text-align:center;
+  padding:24px 0;
+  background: var(--sky-void);
+  position:relative;
+  z-index:2;
+}
+.cosmic-divider span {
+  display:inline-block;
+  color:var(--gold-dim);
+  letter-spacing:16px;
+  font-size:0.9rem;
+}
+
+/* ══════════ KHATIMAH ══════════ */
+.khatimah {
+  position:relative;
+  z-index:2;
+  background: linear-gradient(180deg, var(--deep-navy), var(--sky-void));
+  text-align:center;
+  padding:72px 32px 80px;
+  overflow:hidden;
+}
+.khatimah::before {
+  content:'';
+  position:absolute; inset:0;
+  background:radial-gradient(ellipse 60% 60% at 50% 50%, rgba(42,74,138,0.3) 0%, transparent 70%);
+}
+
+.khatimah-inner { position:relative; z-index:1; max-width:580px; margin:0 auto; }
+
+.khatimah-arabic {
+  font-family:'Amiri',serif;
+  font-size:clamp(1.8rem,5vw,3rem);
+  color:var(--gold-bright);
+  text-shadow:0 0 30px rgba(245,208,96,0.5);
+  line-height:1.8;
+  margin-bottom:20px;
+}
+
+.khatimah-divline {
+  width:120px; height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold-mid),transparent);
+  margin:20px auto;
+}
+
+.khatimah-doa {
+  font-style:italic;
+  color:var(--silver-dim);
+  font-size:clamp(0.88rem,2vw,1rem);
+  line-height:1.85;
+  margin-bottom:8px;
+}
+
+.khatimah-ref {
+  font-size:0.75rem;
+  color:var(--gold-dim);
+  letter-spacing:1px;
+  margin-top:10px;
+}
+
+.seal {
+  margin-top:40px;
+  display:inline-flex;
+  flex-direction:column;
+  align-items:center;
+  gap:6px;
+}
+.seal-ring {
+  width:80px; height:80px;
+  border-radius:50%;
+  border:2px solid rgba(245,208,96,0.4);
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 0 20px rgba(245,208,96,0.15), inset 0 0 20px rgba(245,208,96,0.05);
+}
+.seal-ring span { color:var(--gold-bright); font-family:'Amiri',serif; font-size:1.8rem; }
+.seal small {
+  color:var(--gold-dim);
+  font-size:0.68rem;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  font-style:italic;
+}
+
+/* ══════════ AMALAN LIST ══════════ */
+.amalan-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:16px;
+  margin:28px 0;
+}
+
+.amalan-card {
+  padding:20px;
+  text-align:center;
+  border-radius:2px;
+  border:1px solid rgba(245,208,96,0.2);
+  background:rgba(30,45,90,0.4);
+}
+.amalan-card .icon { font-size:2rem; margin-bottom:10px; display:block; }
+.amalan-card .nama {
+  font-family:'Playfair Display',serif;
+  font-size:1rem;
+  font-weight:700;
+  color:var(--gold-bright);
+  margin-bottom:4px;
+}
+.amalan-card .keterangan {
+  font-size:0.78rem;
+  color:var(--silver-dim);
+  font-style:italic;
+  line-height:1.6;
+}
+
+/* ══════════ RESPONSIVE ══════════ */
+@media(max-width:480px){
+  .ch-num { display:none; }
+  .dalil { padding:16px 16px; }
+  .story { padding:18px 16px; }
+  .banner { padding:20px 18px; }
+}
+</style>
+</head>
+<body>
+
+<canvas id="cosmos"></canvas>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section class="hero">
+  <div class="hero-nebula"></div>
+  <div class="hero-inner">
+    <div class="bismillah">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
+    <p class="hero-eyebrow">Naskah Inspirasi Islami · Berdalil Al-Qur'an & Hadis</p>
+    <h1 class="hero-title">Amalan<br>Jalur Langit</h1>
+    <div class="hero-title-ar">الأعمال التي تصعد إلى السماء</div>
+    <div class="star-line">
+      <span></span>
+      <em>✦ ✦ ✦</em>
+      <span></span>
+    </div>
+    <div class="hero-verse">
+      <p>إِلَيْهِ يَصْعَدُ الْكَلِمُ الطَّيِّبُ وَالْعَمَلُ الصَّالِحُ يَرْفَعُهُ</p>
+      <small>"Kepada-Nya naik perkataan-perkataan yang baik, dan amal saleh yang mengangkatnya."<br>— QS. Fāthir: 10</small>
+    </div>
+  </div>
+  <div class="scroll-cue">Baca</div>
+</section>
+
+<!-- ═══════════════ SCROLL BODY ═══════════════ -->
+<main class="scroll-body">
+
+  <!-- ── PROLOG ── -->
+  <section class="cosmos-section">
+    <div class="ch-num">٠</div>
+    <div class="ch-header">
+      <span class="ch-tag">Pembuka</span>
+      <div class="ch-title-ar">مقدمة</div>
+      <h2 class="ch-title">Ketika Amal Naik ke Langit</h2>
+      <div class="ch-rule"></div>
+    </div>
+    <div class="prose">
+      <p>
+        Ada amalan-amalan yang tidak sekadar dicatat malaikat di bumi — ia naik, menembus lapisan demi lapisan langit, sampai berdiri di hadapan Allah Yang Maha Mendengar lagi Maha Melihat. Bukan karena amal itu besar di mata manusia. Bukan karena pelakunya terkenal. Melainkan karena ia tulus, karena ia ikhlas, karena ia dikerjakan dengan segenap jiwa seorang hamba yang sadar bahwa ia sedang berbicara dengan Rabbnya.
+      </p>
+      <p>
+        Inilah yang disebut <em>jalur langit</em> — jalan vertikal yang memotong segala hiruk-pikuk dunia, menghubungkan debu bumi dengan singgasana 'Arsy. Jalan yang bisa ditempuh siapa saja, kapan saja, dari mana saja. Dan jalan itu bernama: <strong>shalat malam, shalat Dhuha, sedekah yang dirahasiakan, istighfar, dan dzikir yang hidup</strong>.
+      </p>
+    </div>
+
+    <div class="dalil">
+      <div class="dalil-type">📖 Al-Qur'an · QS. Fāthir: 10</div>
+      <div class="dalil-arabic">مَن كَانَ يُرِيدُ الْعِزَّةَ فَلِلَّهِ الْعِزَّةُ جَمِيعًا ۚ إِلَيْهِ يَصْعَدُ الْكَلِمُ الطَّيِّبُ وَالْعَمَلُ الصَّالِحُ يَرْفَعُهُ</div>
+      <div class="dalil-trans">"Barangsiapa menghendaki kemuliaan, maka bagi Allah-lah kemuliaan seluruhnya. Kepada-Nya naik perkataan-perkataan yang baik, dan amal saleh yang mengangkatnya."</div>
+      <div class="dalil-ref">QS. Fāthir (35): 10</div>
+    </div>
+  </section>
+
+  <div class="cosmic-divider"><span>✦ I ✦</span></div>
+
+  <!-- ── BAB 1: TAHAJUD ── -->
+  <section class="parchment-section">
+    <div class="ch-num">١</div>
+    <div class="ch-header">
+      <span class="ch-tag">Jalur Pertama</span>
+      <div class="ch-title-ar">قِيَامُ اللَّيْلِ — صَلاةُ التَّهَجُّدِ</div>
+      <h2 class="ch-title">Tahajud: Pintu yang Hanya Terbuka di Malam Hari</h2>
+      <div class="ch-rule"></div>
+    </div>
+
+    <div class="story">
+      <div class="story-label">✦ Kisah Farid</div>
+      <p>Farid tidak pernah menyangka bahwa titik balik hidupnya bukan terjadi di ruang rapat, bukan di momen wisuda, bukan saat kontrak besar ditandatangani — melainkan di atas sajadah lusuh pukul 03.15 dini hari, ketika ia yang patah hati, bangkrut, dan hampa, bersujud untuk pertama kalinya dengan benar-benar pasrah.</p>
+      <p>Ia tidak meminta harta kembali. Ia tidak meminta karir pulih. Ia hanya berbisik: <em>"Ya Allah, aku tidak tahu jalan keluar. Tapi aku yakin Engkau tahu."</em> Dan dari sujud itulah segalanya mulai bergerak.</p>
+    </div>
+
+    <div class="dalil">
+      <div class="dalil-type">📖 Al-Qur'an · QS. Al-Isrā': 79</div>
+      <div class="dalil-arabic">وَمِنَ الَّيْلِ فَتَهَجَّدْ بِهِۦ نَافِلَةً لَّكَ ۖ عَسَىٰٓ أَن يَبْعَثَكَ رَبُّكَ مَقَامًا مَّحْمُودًا</div>
+      <div class="dalil-trans">"Dan pada sebagian malam, lakukanlah shalat tahajud sebagai ibadah tambahan bagimu; mudah-mudahan Tuhanmu mengangkatmu ke tempat yang terpuji (maqāman mahmūdā)."</div>
+      <div class="dalil-ref">QS. Al-Isrā' (17): 79</div>
+    </div>
+
+    <div class="prose">
+      <p>
+        <em>Maqāman mahmūdā</em> — kedudukan mulia — adalah puncak yang dijanjikan Allah bagi hamba yang rela meninggalkan tidurnya untuk bermunajat. Ibnu Katsir dalam tafsirnya menyebutkan bahwa ayat ini turun khusus kepada Nabi ﷺ, namun umatnya diundang mengikuti jejak yang sama. Sebab Allah Maha Adil — siapa yang memberi waktu terbaiknya, Dia akan membalas dengan kedudukan terbaik.
+      </p>
+    </div>
+
+    <div class="dalil">
+      <div class="dalil-type">📜 Hadis Shahih · HR. Bukhari & Muslim</div>
+      <div class="dalil-arabic">يَنْزِلُ رَبُّنَا تَبَارَكَ وَتَعَالَى كُلَّ لَيْلَةٍ إِلَى السَّمَاءِ الدُّنْيَا حِينَ يَبْقَى ثُلُثُ اللَّيْلِ الآخِرُ يَقُولُ مَنْ يَدْعُونِي فَأَسْتَجِيبَ لَهُ مَنْ يَسْأَلُنِي فَأُعْطِيَهُ مَنْ يَسْتَغْفِرُنِي فَأَغْفِرَ لَهُ</div>
+      <div class="dalil-trans">"Rabb kita Yang Mahaagung turun ke langit dunia setiap malam saat tersisa sepertiga malam terakhir, seraya berfirman: 'Siapa yang berdoa kepada-Ku — Aku kabulkan. Siapa yang meminta — Aku beri. Siapa yang beristighfar — Aku ampuni.'"</div>
+      <div class="dalil-ref">HR. Bukhari (1145) & Muslim (758) — dari Abu Hurairah radhiyallahu 'anhu</div>
+    </div>
+
+    <div class="prose">
+      <p>
+        Bayangkan: setiap malam, di sepertiga terakhir, Allah "turun" dengan tawaran yang luar biasa. Bukan Allah yang membutuhkan kita — Dia Yang Mahakaya. Tapi Dia, dalam kemurahan-Nya yang tak terhingga, <em>membuka pintu</em> dan menunggu. Siapa yang datang, Dia layani. Siapa yang meminta, Dia beri. Siapa yang menangis menyesali dosa, Dia ampuni.
+      </p>
+      <p>
+        Dan siapa yang memilih tidur? Pintu itu tetap terbuka. Esok malam, kesempatan datang lagi. Allah tidak bosan menawarkan. Pertanyaannya: berapa malam lagi kita lewatkan?
+      </p>
+    </div>
+
+    <div class="dalil">
+      <div class="dalil-type">📖 Al-Qur'an · QS. Al-Muzzammil: 1–4 & 6</div>
+      <div class="dalil-arabic">يَٰٓأَيُّهَا الْمُزَّمِّلُ ۞ قُمِ الَّيْلَ إِلَّا قَلِيلًا ۞ نِّصْفَهُۥٓ أَوِ انقُصْ مِنْهُ قَلِيلًا ۞ أَوْ زِدْ عَلَيْهِ وَرَتِّلِ الْقُرْءَانَ تَرْتِيلًا ۞ إِنَّ نَاشِئَةَ الَّيْلِ هِيَ أَشَدُّ وَطْـًٔا وَأَقْوَمُ قِيلًا</div>
+      <div class="dalil-trans">"Wahai orang yang berselimut! Bangunlah (untuk shalat) malam, kecuali sedikit darinya. Setengahnya atau kurangi sedikit dari itu, atau lebih dari setengahnya dan bacalah Al-Qur'an dengan perlahan-lahan. Sesungguhnya bangun malam itu lebih kuat (mengisi jiwa) dan lebih tepat (untuk khusyuk dalam berdzikir)."</div>
+      <div class="dalil-ref">QS. Al-Muzzammil (73): 1–4 & 6</div>
+    </div>
+
+    <div class="banner">
+      <div class="banner-arabic">أَفْضَلُ الصَّلاَةِ بَعْدَ الْفَرِيضَةِ صَلاَةُ اللَّيْلِ</div>
+      <div class="banner-id">"Shalat yang paling utama setelah shalat fardhu adalah shalat malam."<br><em style="font-size:0.78rem;opacity:0.7">— HR. Muslim (1163), dari Abu Hurairah radhiyallahu 'anhu</em></div>
+    </div>
+  </section>
+
+  <div class="cosmic-divider"><span>✦ II ✦</span></div>
+
+  <!-- ── BAB 2: DHUHA ── -->
+  <section class="cosmos-section">
+    <div class="ch-num">٢</div>
+    <div class="ch-header">
+      <span class="ch-tag">Jalur Kedua</span>
+      <div class="ch-title-ar">صَلَاةُ الضُّحَى — مِفتَاحُ الرِّزقِ</div>
+      <h2 class="ch-title">Dhuha: Kunci Rezeki di Pagi Hari</h2>
+      <div class="ch-rule"></div>
+    </div>
+
+    <div class="prose">
+      <p>
+        Saat Farid bangkit dari sujud tahajudnya, ia tidak langsung kembali tidur. Ia duduk berdzikir sampai fajar menyingsing, lalu shalat Subuh. Setelah itu ia menunggu — bukan dengan membuang waktu, tapi dengan membaca Al-Qur'an, hingga matahari setinggi satu atau dua tombak. Lalu ia berdiri lagi. Kali ini untuk Dhuha.
+      </p>
+      <p>
+        Dua rakaat yang dulu ia anggap sepele. Dua rakaat yang ternyata menjadi salah satu kunci yang Allah siapkan untuk membuka pintu-pintu langit di pagi hari.
+      </p>
+    </div>
+
+    <div class="dalil">
+      <div class="dalil-type">📖 Al-Qur'an · QS. Adh-Dhuhā: 1–5</div>
+      <div class="dalil-arabic">وَالضُّحَىٰ ۞ وَالَّيْلِ إِذَا سَجَىٰ ۞ مَا وَدَّعَكَ رَبُّكَ وَمَا قَلَىٰ ۞ وَلَلْآخِرَةُ خَيْرٌ لَّكَ مِنَ الْأُولَىٰ ۞ وَلَسَوْفَ يُعْطِيكَ رَبُّكَ فَتَرْضَىٰ</div>
+      <div class="dalil-trans">"Demi waktu dhuha, dan demi malam apabila telah sunyi. Tuhanmu tidak meninggalkan engkau dan tidak membencimu. Dan sesungguhnya akhir itu lebih baik bagimu dari permulaan. Dan sungguh, Tuhanmu pasti akan memberikan karunia-Nya kepadamu, sehingga engkau menjadi puas."</div>
+      <div class="dalil-ref">QS. Adh-Dhuhā (93): 1–5</div>
+    </div>
+
+    <div class="prose">
+      <p>
+        Allah bersumpah demi waktu Dhuha. Ini bukan kebetulan linguistik. Dalam tradisi Arab, sumpah adalah penegasan kemulian atas sesuatu. Dan Allah — Pemilik segala sesuatu — memilih Dhuha untuk disebut dalam sumpah-Nya. Ini cukup menjadi alasan untuk tidak melewatkannya.
+      </p>
+    </div>
+
+    <div class="dalil">
+      <div class="dalil-type">📜 Hadis Qudsi · HR. Ahmad & Abu Dawud</div>
+      <div class="dalil-arabic">يَا ابْنَ آدَمَ ارْكَعْ لِي أَرْبَعَ رَكَعَاتٍ مِنْ أَوَّلِ النَّهَارِ أَكْفِكَ آخِرَهُ</div>
+      <div class="dalil-trans">"Wahai anak Adam, rukuklah (shalatlah) empat rakaat untuk-Ku di awal siang, maka Aku akan mencukupimu di akhir siangmu."</div>
+      <div class="dalil-ref">HR. Ahmad (22382) & Abu Dawud (1289) — dari Nu'aim bin Hammar — Shahih</div>
+    </div>
+
+    <div class="amalan-grid">
+      <div class="amalan-card">
+        <span class="icon">🌅</span>
+        <div class="nama">2 Rakaat</div>
+        <div class="keterangan">Minimum Dhuha — mencukupi sedekah seluruh 360 sendi tubuh</div>
+      </div>
+      <div class="amalan-card">
+        <span class="icon">☀️</span>
+        <div class="nama">4 Rakaat</div>
+        <div class="keterangan">Allah jaminkan kecukupan sepanjang hari</div>
+      </div>
+      <div class="amalan-card">
+        <span class="icon">✨</span>
+        <div class="nama">8 Rakaat</div>
+        <div class="keterangan">Sunnah terbanyak yang diriwayatkan dari Nabi ﷺ</div>
+      </div>
+      <div class="amalan-card">
+        <span class="icon">🏰</span>
+        <div class="nama">12 Rakaat</div>
+        <div class="keterangan">Allah bangunkan istana emas di surga</div>
+      </div>
+    </div>
+
+    <div class="dalil">
+      <div class="dalil-type">📜 HR. Muslim · Sedekah 360 Sendi</div>
+      <div class="dalil-arabic">يُصْبِحُ عَلَى كُلِّ سُلاَمَى مِنْ أَحَدِكُمْ صَدَقَةٌ … وَيُجْزِئُ مِنْ ذَلِكَ رَكْعَتَانِ يَرْكَعُهُمَا مِنَ الضُّحَى</div>
+      <div class="dalil-trans">"Setiap persendian di tubuh salah seorang dari kalian wajib bersedekah setiap pagi … dan yang mencukupi semua itu adalah dua rakaat yang ia kerjakan pada waktu Dhuha."</div>
+      <div class="dalil-ref">HR. Muslim (720) — dari Abu Dzar radhiyallahu 'anhu</div>
+    </div>
+
+    <div class="dalil">
+      <div class="dalil-type">📜 HR. Tirmidzi & Ibnu Majah · Istana Surga</div>
+      <div class="dalil-arabic">مَنْ صَلَّى الضُّحَى ثِنْتَيْ عَشْرَةَ رَكْعَةً بَنَى اللَّهُ لَهُ قَصْرًا مِنْ ذَهَبٍ فِى الْجَنَّةِ</div>
+      <div class="dalil-trans">"Barangsiapa shalat Dhuha dua belas rakaat, Allah akan membangunkan baginya sebuah istana emas di surga."</div>
+      <div class="dalil-ref">HR. Tirmidzi & Ibnu Majah — Hasan</div>
+    </div>
+  </section>
+
+  <div class="cosmic-divider"><span>✦ III ✦</span></div>
+
+  <!-- ── BAB 3: SEDEKAH TERSEMBUNYI ── -->
+  <section class="parchment-section">
+    <div class="ch-num">٣</div>
+    <div class="ch-header">
+      <span class="ch-tag">Jalur Ketiga</span>
+      <div class="ch-title-ar">الصَّدَقَةُ الخَفِيَّةُ</div>
+      <h2 class="ch-title">Sedekah Diam-Diam: Memadamkan Murka Allah</h2>
+      <div class="ch-rule"></div>
+    </div>
+
+    <div class="story">
+      <div class="story-label">✦ Rahasia Ibu Rahma</div>
+      <p>Tak seorang pun tahu bahwa Ibu Rahma — wanita tua penjual gorengan di ujung gang — adalah salah satu orang yang paling banyak bersedekah di kampungnya. Setiap malam Jumat, ia menyelipkan uang ke dalam amplop polos, lalu menaruhnya di depan pintu tetangganya yang kurang mampu tanpa nama pengirim.</p>
+      <p>Anak-anaknya sendiri tidak tahu. Tapi Allah tahu. Dan dari dapur pengap yang berasap itulah, keberkahan mengalir tanpa ia mengerti dari mana asalnya.</p>
+    </div>
+
+    <div class="dalil">
+      <div class="dalil-type">📖 Al-Qur'an · QS. Al-Baqarah: 274</div>
+      <div class="dalil-arabic">الَّذِينَ يُنفِقُونَ أَمْوَالَهُم بِالَّيْلِ وَالنَّهَارِ سِرًّا وَعَلَانِيَةً فَلَهُمْ أَجْرُهُمْ عِندَ رَبِّهِمْ وَلَا خَوْفٌ عَلَيْهِمْ وَلَا هُمْ يَحْزَنُونَ</div>
+      <div class="dalil-trans">"Orang-orang yang menginfakkan hartanya di malam dan siang hari secara rahasia maupun terang-terangan, maka mereka mendapat pahala di sisi Tuhannya. Tidak ada kekhawatiran atas mereka dan tidak pula mereka bersedih."</div>
+      <div class="dalil-ref">QS. Al-Baqarah (2): 274</div>
+    </div>
+
+    <div class="dalil">
+      <div class="dalil-type">📜 HR. Bukhari & Muslim · 7 Golongan di Bawah Naungan Allah</div>
+      <div class="dalil-arabic">وَرَجُلٌ تَصَدَّقَ بِصَدَقَةٍ فَأَخْفَاهَا حَتَّى لَا تَعْلَمَ شِمَالُهُ مَا تُنْفِقُ يَمِينُهُ</div>
+      <div class="dalil-trans">"… dan seorang lelaki yang bersedekah lalu menyembunyikannya sehingga tangan kirinya tidak mengetahui apa yang diinfakkan oleh tangan kanannya."</div>
+      <div class="dalil-ref">HR. Bukhari (1423) & Muslim (1031) — dari Abu Hurairah radhiyallahu 'anhu</div>
+    </div>
+
+    <div class="prose">
+      <p>
+        Tangan kiri tidak tahu apa yang diberikan tangan kanan — ini bukan ungkapan yang berlebihan. Ini adalah gambaran keikhlasan yang sempurna. Dimana bahkan diri sendiri tidak sempat membanggakan amalnya, karena ia sudah pergi sebelum rasa ujub datang menghampiri.
+      </p>
+    </div>
+
+    <div class="dalil">
+      <div class="dalil-type">📜 HR. Tirmidzi · Sedekah Memadamkan Murka</div>
+      <div class="dalil-arabic">إِنَّ الصَّدَقَةَ لَتُطْفِئُ غَضَبَ الرَّبِّ وَتَدْفَعُ مِيتَةَ السُّوءِ</div>
+      <div class="dalil-trans">"Sesungguhnya sedekah itu benar-benar dapat memadamkan murka Tuhan dan menolak kematian yang buruk."</div>
+      <div class="dalil-ref">HR. Tirmidzi (664) — dari Anas bin Malik — Hasan</div>
+    </div>
+  </section>
+
+  <div class="cosmic-divider"><span>✦ IV ✦</span></div>
+
+  <!-- ── BAB 4: ISTIGHFAR & DZIKIR ── -->
+  <section class="cosmos-section">
+    <div class="ch-num">٤</div>
+    <div class="ch-header">
+      <span class="ch-tag">Jalur Keempat</span>
+      <div class="ch-title-ar">الاِسْتِغْفَارُ وَالذِّكْرُ</div>
+      <h2 class="ch-title">Istighfar & Dzikir: Napas Jiwa yang Naik ke Atas</h2>
+      <div class="ch-rule"></div>
+    </div>
+
+    <div class="prose">
+      <p>
+        Setiap kata yang keluar dari mulut seorang mukmin yang berdzikir — ia naik. Setiap <em>subhānallāh</em>, setiap <em>alhamdulillāh</em>, setiap <em>lā ilāha illallāh</em>, setiap <em>astaghfirullāh</em> — naik menembus langit seperti cahaya, seperti asap wewangian yang mengepul ke atas, sampai ia berdiri di hadapan Allah yang tidak pernah tidur.
+      </p>
+    </div>
+
+    <div class="dalil">
+      <div class="dalil-type">📖 Al-Qur'an · QS. Hūd: 3 & 52</div>
+      <div class="dalil-arabic">وَأَنِ اسْتَغْفِرُوا رَبَّكُمْ ثُمَّ تُوبُوا إِلَيْهِ يُمَتِّعْكُم مَّتَاعًا حَسَنًا إِلَىٰٓ أَجَلٍ مُّسَمًّى</div>
+      <div class="dalil-trans">"Dan hendaklah kamu memohon ampunan kepada Tuhanmu kemudian bertobat kepada-Nya, niscaya Dia akan memberi kenikmatan yang baik kepadamu sampai waktu yang telah ditentukan."</div>
+      <div class="dalil-ref">QS. Hūd (11): 3</div>
+    </div>
+
+    <div class="dalil">
+      <div class="dalil-type">📜 HR. Muslim · Istighfar Nabi ﷺ dalam Sehari</div>
+      <div class="dalil-arabic">وَاللَّهِ إِنِّي لَأَسْتَغْفِرُ اللَّهَ وَأَتُوبُ إِلَيْهِ فِي الْيَوْمِ أَكْثَرَ مِنْ سَبْعِينَ مَرَّةً</div>
+      <div class="dalil-trans">"Demi Allah, sesungguhnya aku memohon ampunan kepada Allah dan bertobat kepada-Nya dalam sehari lebih dari tujuh puluh kali."</div>
+      <div class="dalil-ref">HR. Bukhari (6307) — dari Abu Hurairah radhiyallahu 'anhu</div>
+    </div>
+
+    <div class="prose">
+      <p>
+        Rasulullah ﷺ — yang seluruh dosanya telah diampuni Allah sebelum dan sesudahnya — masih beristighfar lebih dari tujuh puluh kali sehari. Lalu bagaimana dengan kita yang dosanya menggunung? Istighfar bukan tanda kelemahan. Istighfar adalah tanda bahwa kita mengenal diri kita yang sesungguhnya, dan mengenal Allah yang sesungguhnya.
+      </p>
+    </div>
+
+    <div class="dalil">
+      <div class="dalil-type">📜 HR. Tirmidzi · Kalimat Terberat di Timbangan</div>
+      <div class="dalil-arabic">كَلِمَتَانِ خَفِيفَتَانِ عَلَى اللِّسَانِ ثَقِيلَتَانِ فِي الْمِيزَانِ حَبِيبَتَانِ إِلَى الرَّحْمَنِ سُبْحَانَ اللَّهِ وَبِحَمْدِهِ سُبْحَانَ اللَّهِ الْعَظِيمِ</div>
+      <div class="dalil-trans">"Dua kalimat yang ringan di lisan, berat di timbangan (amal), dan dicintai oleh Ar-Rahmān: <em>Subhānallāhi wa bihamdih, subhānallāhil 'azīm.</em>"</div>
+      <div class="dalil-ref">HR. Bukhari (6682) & Muslim (2694) — dari Abu Hurairah radhiyallahu 'anhu</div>
+    </div>
+
+    <div class="banner">
+      <div class="banner-arabic">أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ</div>
+      <div class="banner-id">"Ingatlah, hanya dengan mengingat Allah hati menjadi tenteram."<br><em style="font-size:0.78rem;opacity:0.7">— QS. Ar-Ra'd (13): 28</em></div>
+    </div>
+  </section>
+
+  <div class="cosmic-divider"><span>✦ V ✦</span></div>
+
+  <!-- ── BAB 5: KONSISTENSI ── -->
+  <section class="parchment-section">
+    <div class="ch-num">٥</div>
+    <div class="ch-header">
+      <span class="ch-tag">Kunci Jalur Langit</span>
+      <div class="ch-title-ar">الاِسْتِقَامَةُ — سِرُّ القَبُول</div>
+      <h2 class="ch-title">Istiqamah: Kunci yang Membuka Semua Pintu</h2>
+      <div class="ch-rule"></div>
+    </div>
+
+    <div class="prose">
+      <p>
+        Tiga tahun setelah malam sujud itu, Farid bukan menjadi orang kaya raya — tapi ia menjadi manusia yang jauh lebih kaya dari orang-orang berharta yang miskin hatinya. Usahanya kembali bangkit. Keluarganya menjadi tenteram. Tapi yang paling ia syukuri: hatinya tenang. Badai bisa datang, tapi ia tidak lagi goyah seperti dulu.
+      </p>
+      <p>
+        Rahasianya? Ia tidak pernah berhenti. Di malam-malam ketika matanya berat, ia tetap bangkit — meski hanya dua rakaat. Di pagi-pagi ketika pekerjaannya menumpuk, ia tetap sisihkan waktu untuk Dhuha — meski hanya dua rakaat. Karena ia tahu: Allah lebih mencintai yang sedikit tapi terus-menerus, daripada yang banyak tapi terputus.
+      </p>
+    </div>
+
+    <div class="dalil">
+      <div class="dalil-type">📜 HR. Bukhari & Muslim · Amalan Terbaik</div>
+      <div class="dalil-arabic">أَحَبُّ الأَعْمَالِ إِلَى اللَّهِ أَدْوَمُهَا وَإِنْ قَلَّ</div>
+      <div class="dalil-trans">"Amalan yang paling dicintai Allah adalah yang paling terus-menerus dikerjakan meskipun sedikit."</div>
+      <div class="dalil-ref">HR. Bukhari (6465) & Muslim (783) — dari 'Aisyah radhiyallahu 'anha</div>
+    </div>
+
+    <div class="dalil">
+      <div class="dalil-type">📖 Al-Qur'an · QS. Fushshilat: 30</div>
+      <div class="dalil-arabic">إِنَّ الَّذِينَ قَالُوا رَبُّنَا اللَّهُ ثُمَّ اسْتَقَامُوا تَتَنَزَّلُ عَلَيْهِمُ الْمَلَائِكَةُ أَلَّا تَخَافُوا وَلَا تَحْزَنُوا وَأَبْشِرُوا بِالْجَنَّةِ الَّتِي كُنتُمْ تُوعَدُونَ</div>
+      <div class="dalil-trans">"Sesungguhnya orang-orang yang berkata 'Tuhan kami adalah Allah,' kemudian mereka beristiqamah, maka malaikat-malaikat akan turun kepada mereka (seraya berkata): 'Janganlah kamu merasa takut dan janganlah bersedih; bergembiralah dengan surga yang telah dijanjikan kepadamu.'"</div>
+      <div class="dalil-ref">QS. Fushshilat (41): 30</div>
+    </div>
+
+    <div class="prose">
+      <p>
+        Istiqamah — teguh, konsisten, tidak berpaling — adalah kata yang Nabi ﷺ sendiri tekankan ketika ditanya tentang satu pesan terpenting dalam Islam. Bukan sekadar "jangan berbohong" atau "jangan mencuri." Tapi <em>istaqim</em> — tetaplah lurus. Karena jalan ke surga bukan lari sprint, tapi maraton panjang yang hanya bisa ditaklukkan oleh jiwa yang tidak berhenti.
+      </p>
+    </div>
+
+    <div class="dalil">
+      <div class="dalil-type">📜 HR. Muslim · Wasiat Satu Kata</div>
+      <div class="dalil-arabic">قُلْ آمَنْتُ بِاللَّهِ ثُمَّ اسْتَقِمْ</div>
+      <div class="dalil-trans">"Katakanlah: 'Aku beriman kepada Allah,' kemudian beristiqamahlah."</div>
+      <div class="dalil-ref">HR. Muslim (38) — dari Sufyan bin 'Abdullah ats-Tsaqafi radhiyallahu 'anhu</div>
+    </div>
+  </section>
+
+  <div class="cosmic-divider"><span>✦ ✦ ✦</span></div>
+
+  <!-- ── KHATIMAH ── -->
+  <div class="khatimah">
+    <div class="khatimah-inner">
+      <div class="seal">
+        <div class="seal-ring"><span>☽</span></div>
+        <small>Khatimah</small>
+      </div>
+
+      <div style="margin:32px 0 24px;">
+        <div class="khatimah-arabic">رَبَّنَا تَقَبَّلْ مِنَّا ۖ إِنَّكَ أَنتَ السَّمِيعُ الْعَلِيمُ</div>
+        <div class="khatimah-divline"></div>
+        <p class="khatimah-doa">"Ya Tuhan kami, terimalah (amal) dari kami. Sesungguhnya Engkaulah Yang Maha Mendengar lagi Maha Mengetahui."</p>
+        <p class="khatimah-ref">— QS. Al-Baqarah (2): 127</p>
+      </div>
+
+      <div class="khatimah-divline"></div>
+
+      <p class="khatimah-doa">
+        Jalur langit itu nyata. Ia tidak butuh tiket mahal, tidak butuh gelar tinggi, tidak butuh nama besar. Ia hanya butuh hati yang mau tunduk, kaki yang mau bangkit, dan lidah yang mau bergerak menyebut nama-Nya.
+      </p>
+      <p class="khatimah-doa" style="margin-top:16px;">
+        Maka mulailah malam ini. Dua rakaat saja. Satu istighfar saja. Satu sedekah kecil saja. Karena dari yang kecil dan konsisten itulah, sebuah jalur menuju langit terbentang.
+      </p>
+
+      <div class="khatimah-divline"></div>
+      <div style="margin-top:20px; color:var(--gold-dim); font-size:0.75rem; letter-spacing:3px; text-transform:uppercase; font-style:italic;">
+        وَاللّٰهُ أَعْلَمُ بِالصَّوَابِ · Semoga Bermanfaat
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<script>
+/* ── COSMOS CANVAS ── */
+const canvas = document.getElementById('cosmos');
+const ctx = canvas.getContext('2d');
+let W, H, stars = [], shooters = [];
+
+function resize() {
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+}
+
+function initStars() {
+  stars = [];
+  for (let i = 0; i < 280; i++) {
+    stars.push({
+      x: Math.random() * W,
+      y: Math.random() * H,
+      r: Math.random() * 1.6 + 0.2,
+      a: Math.random() * 0.7 + 0.1,
+      speed: Math.random() * 0.4 + 0.05,
+      phase: Math.random() * Math.PI * 2,
+    });
+  }
+}
+
+function spawnShooter() {
+  if (shooters.length < 3 && Math.random() < 0.004) {
+    shooters.push({
+      x: Math.random() * W * 0.7,
+      y: Math.random() * H * 0.4,
+      len: Math.random() * 120 + 60,
+      speed: Math.random() * 8 + 6,
+      angle: Math.PI / 4 + (Math.random() - 0.5) * 0.4,
+      life: 1,
+    });
+  }
+}
+
+let t = 0;
+function draw() {
+  ctx.clearRect(0, 0, W, H);
+  t += 0.01;
+
+  // stars
+  stars.forEach(s => {
+    const pulse = Math.sin(t * s.speed + s.phase) * 0.25 + 0.75;
+    ctx.beginPath();
+    ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(220, 235, 255, ${s.a * pulse})`;
+    ctx.fill();
+  });
+
+  // golden stars (rare)
+  if (Math.floor(t) % 3 === 0 && Math.random() < 0.01) {
+    const gx = Math.random() * W, gy = Math.random() * H * 0.6;
+    ctx.beginPath();
+    ctx.arc(gx, gy, 1.2, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(245,208,96,0.8)';
+    ctx.fill();
+  }
+
+  // shooting stars
+  spawnShooter();
+  shooters = shooters.filter(s => s.life > 0);
+  shooters.forEach(s => {
+    const ex = s.x + Math.cos(s.angle) * s.len * s.life;
+    const ey = s.y + Math.sin(s.angle) * s.len * s.life;
+    const grad = ctx.createLinearGradient(s.x, s.y, ex, ey);
+    grad.addColorStop(0, `rgba(245,208,96,0)`);
+    grad.addColorStop(0.4, `rgba(245,208,96,${s.life * 0.6})`);
+    grad.addColorStop(1, `rgba(255,255,255,${s.life * 0.9})`);
+    ctx.beginPath();
+    ctx.moveTo(s.x, s.y);
+    ctx.lineTo(ex, ey);
+    ctx.strokeStyle = grad;
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+    s.x += Math.cos(s.angle) * s.speed;
+    s.y += Math.sin(s.angle) * s.speed;
+    s.life -= 0.018;
+  });
+
+  requestAnimationFrame(draw);
+}
+
+window.addEventListener('resize', () => { resize(); initStars(); });
+resize(); initStars(); draw();
+</script>
+</body>
+</html>

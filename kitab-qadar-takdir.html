@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kitab Qadar — Takdir dalam Islam</title>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;0,700;0,900;1,400;1,600&family=Amiri:ital,wght@0,400;0,700;1,400&family=Barlow+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+
+:root{
+  /* Lauh palette */
+  --void:     #04030a;
+  --abyss:    #070614;
+  --deep:     #0c0a1e;
+  --dusk:     #12102c;
+  --indigo:   #1a1640;
+  --violet:   #221e52;
+  --amethyst: #2e2870;
+  --lilac:    #5040a8;
+  --silver:   #b0a8d8;
+  --silver-lt:#d8d0f0;
+  --white:    #f0eeff;
+  --gold:     #d4b030;
+  --gold-lt:  #f0cc50;
+  --gold-pale:#fef8d8;
+  --gold-dim: #8a7018;
+  --amber:    #c89020;
+
+  /* Paper palette */
+  --paper:    #f8f4ea;
+  --paper-d:  #ede6d2;
+  --paper-dd: #e0d6bc;
+  --parchment:#f2ecd8;
+  --ink:      #1a1530;
+  --ink-mid:  #2c2848;
+  --ink-soft: #5c5880;
+  --sepia:    #6a5030;
+  --rust:     #8a3020;
+
+  /* Accent */
+  --teal:     #0a7090;
+  --teal-lt:  #40a8c8;
+
+  --b-gold:   rgba(212,176,48,.2);
+  --b-violet: rgba(46,40,112,.3);
+  --b-silver: rgba(176,168,216,.15);
+}
+
+html{scroll-behavior:smooth;}
+body{background:var(--void);font-family:'Crimson Pro',Georgia,serif;color:var(--white);overflow-x:hidden;}
+
+/* ══════════════════════════
+   GEOMETRIC PATTERN CANVAS
+══════════════════════════ */
+.geo-bg{
+  position:fixed;inset:0;z-index:0;pointer-events:none;
+  opacity:.06;
+  background-image:
+    repeating-linear-gradient(0deg,  transparent,transparent 59px,rgba(212,176,48,.8) 59px,rgba(212,176,48,.8) 60px),
+    repeating-linear-gradient(90deg, transparent,transparent 59px,rgba(212,176,48,.8) 59px,rgba(212,176,48,.8) 60px),
+    repeating-linear-gradient(45deg, transparent,transparent 41px,rgba(176,168,216,.5) 41px,rgba(176,168,216,.5) 42px),
+    repeating-linear-gradient(-45deg,transparent,transparent 41px,rgba(176,168,216,.5) 41px,rgba(176,168,216,.5) 42px);
+  background-size:60px 60px, 60px 60px, 84px 84px, 84px 84px;
+}
+
+/* ══════════════════════════
+   HERO — THE LAUH
+══════════════════════════ */
+.hero{
+  min-height:100vh;
+  position:relative;z-index:1;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;
+  padding:80px 24px 100px;
+  overflow:hidden;
+}
+
+.hero-glow{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 40%,rgba(46,40,112,.7) 0%,transparent 65%),
+    radial-gradient(ellipse 50% 40% at 50% 0%,  rgba(212,176,48,.08) 0%,transparent 60%),
+    radial-gradient(ellipse 100% 50% at 50% 100%,rgba(4,3,10,.95) 0%,transparent 60%),
+    linear-gradient(180deg,var(--abyss) 0%,var(--deep) 40%,var(--dusk) 70%,var(--indigo) 100%);
+}
+
+/* Rotating geometric star */
+.geo-star{
+  position:absolute;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  width:min(700px,90vw);height:min(700px,90vw);
+  pointer-events:none;
+  animation:starSpin 120s linear infinite;
+  opacity:.04;
+}
+@keyframes starSpin{from{transform:translate(-50%,-50%) rotate(0deg);}to{transform:translate(-50%,-50%) rotate(360deg);}}
+
+/* Pen/quill animation */
+.pen-light{
+  position:absolute;
+  width:2px;
+  height:min(300px,40vh);
+  top:0;
+  background:linear-gradient(180deg,rgba(212,176,48,.6) 0%,rgba(212,176,48,.1) 80%,transparent 100%);
+  animation:penWrite 8s ease-in-out infinite;
+  transform-origin:top center;
+}
+@keyframes penWrite{
+  0%  {left:30%;opacity:.5;height:60%;}
+  25% {left:45%;opacity:.8;}
+  50% {left:60%;opacity:.5;height:50%;}
+  75% {left:55%;opacity:.7;}
+  100%{left:30%;opacity:.5;height:60%;}
+}
+
+/* Floating dots (stars) */
+.star-field{position:absolute;inset:0;pointer-events:none;}
+.star-d{
+  position:absolute;border-radius:50%;
+  animation:twinkStar var(--sd,4s) ease-in-out infinite alternate;
+  background:var(--silver-lt);
+}
+@keyframes twinkStar{
+  from{opacity:var(--so,.2);transform:scale(1);}
+  to  {opacity:calc(var(--so,.2)*2.5);transform:scale(1.4);}
+}
+
+.hero-inner{position:relative;z-index:3;max-width:760px;}
+
+.hero-bismillah{
+  font-family:'Amiri',serif;
+  font-size:clamp(1.5rem,4vw,2.8rem);
+  color:var(--gold);
+  text-shadow:0 0 40px rgba(212,176,48,.5),0 0 80px rgba(212,176,48,.2);
+  line-height:1.9;margin-bottom:16px;
+  animation:quillWrite 2s ease both;
+}
+
+.hero-eyebrow{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:400;
+  font-size:clamp(.6rem,1.5vw,.78rem);
+  letter-spacing:7px;text-transform:uppercase;
+  color:rgba(176,168,216,.45);
+  margin-bottom:20px;
+  animation:quillWrite 2s ease both .2s;
+}
+
+.hero-title{
+  font-family:'Crimson Pro',serif;
+  font-weight:900;
+  font-size:clamp(3rem,9vw,7rem);
+  line-height:1.0;letter-spacing:-2px;
+  background:linear-gradient(160deg,#fff 0%,var(--gold-lt) 35%,var(--silver-lt) 65%,rgba(212,176,48,.7) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  margin-bottom:8px;
+  animation:quillWrite 2s ease both .08s;
+}
+
+.hero-sub{
+  font-family:'Amiri',serif;
+  font-size:clamp(1.2rem,3vw,2rem);
+  color:rgba(212,176,48,.65);
+  line-height:2;margin-bottom:26px;
+  animation:quillWrite 2s ease both .28s;
+}
+
+.hero-divider{
+  display:flex;align-items:center;justify-content:center;gap:14px;
+  margin:14px auto 28px;
+  animation:quillWrite 2s ease both .38s;
+}
+.hero-divider span{width:80px;height:1px;background:linear-gradient(90deg,transparent,rgba(212,176,48,.3));}
+.hero-divider span:last-child{background:linear-gradient(90deg,rgba(212,176,48,.3),transparent);}
+.hero-divider em{color:var(--amethyst);font-style:normal;letter-spacing:8px;font-size:.8rem;}
+
+.hero-verse{
+  max-width:580px;margin:0 auto;
+  padding:22px 30px;
+  background:rgba(10,8,28,.7);
+  border:1px solid rgba(212,176,48,.2);
+  backdrop-filter:blur(10px);
+  animation:quillWrite 2s ease both .5s;
+}
+.hv-ar{font-family:'Amiri',serif;font-size:clamp(1rem,2.5vw,1.4rem);color:var(--gold);line-height:2.2;direction:rtl;margin-bottom:10px;}
+.hv-id{font-style:italic;font-size:.82rem;color:rgba(176,168,216,.6);line-height:1.7;}
+
+@keyframes quillWrite{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+
+/* ══════════════════════════
+   CONTENT LAYOUT
+══════════════════════════ */
+
+/* Dark indigo sections */
+.sec-dark{
+  position:relative;z-index:1;
+  background:linear-gradient(180deg,var(--dusk) 0%,var(--indigo) 100%);
+  padding:64px 24px 56px;
+  border-top:1px solid var(--b-gold);
+}
+.sec-dark::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 40% at 50% 0%,rgba(46,40,112,.3) 0%,transparent 70%);
+  pointer-events:none;
+}
+
+/* Warm paper sections */
+.sec-paper{
+  position:relative;z-index:1;
+  background:var(--parchment);
+  color:var(--ink);
+  padding:64px 24px 56px;
+  border-top:5px solid var(--amethyst);
+}
+.sec-paper::before{
+  content:'';position:absolute;inset:0;
+  background-image:
+    repeating-linear-gradient(0deg,transparent,transparent 27px,rgba(26,21,48,.035) 27px,rgba(26,21,48,.035) 28px),
+    radial-gradient(ellipse 70% 50% at 80% 20%,rgba(212,176,48,.04) 0%,transparent 70%);
+  pointer-events:none;
+}
+
+/* Gold accent section */
+.sec-gold{
+  position:relative;z-index:1;
+  background:linear-gradient(180deg,var(--deep) 0%,var(--abyss) 100%);
+  padding:64px 24px 56px;
+  border-top:1px solid var(--b-gold);
+}
+.sec-gold::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 40% at 50% 0%,rgba(212,176,48,.07) 0%,transparent 70%);
+  pointer-events:none;
+}
+
+.inner{max-width:860px;margin:0 auto;position:relative;z-index:1;}
+
+/* ══════════════════════════
+   SECTION HEADERS
+══════════════════════════ */
+.sh{text-align:center;margin-bottom:44px;}
+
+.sh-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:5px 16px;
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:600;
+  font-size:.6rem;letter-spacing:5px;text-transform:uppercase;
+  margin-bottom:16px;
+}
+.badge-d{background:rgba(46,40,112,.3);color:var(--silver);border:1px solid var(--b-silver);}
+.badge-g{background:rgba(212,176,48,.12);color:var(--gold);border:1px solid var(--b-gold);}
+.badge-p{background:rgba(26,21,48,.08);color:var(--ink-soft);border:1px solid rgba(26,21,48,.15);}
+.badge-r{background:rgba(138,48,32,.12);color:var(--rust);border:1px solid rgba(138,48,32,.2);}
+
+.sh-ar{
+  font-family:'Amiri',serif;
+  font-size:clamp(1.3rem,3.5vw,2rem);line-height:1.9;margin-bottom:6px;
+}
+.shar-d{color:var(--gold);}
+.shar-p{color:var(--amethyst);}
+.shar-g{color:var(--gold-lt);}
+
+.sh-title{
+  font-family:'Crimson Pro',serif;font-weight:700;
+  font-size:clamp(1.4rem,3.8vw,2.3rem);line-height:1.2;margin-bottom:8px;
+}
+.shtitle-d{color:var(--white);}
+.shtitle-p{color:var(--ink);}
+.shtitle-g{color:var(--white);}
+
+.sh-rule{width:56px;height:2px;margin:14px auto 0;}
+.rule-d{background:var(--lilac);}
+.rule-p{background:var(--amethyst);}
+.rule-g{background:var(--gold);}
+
+.sh-sub{font-style:italic;font-size:clamp(.87rem,2vw,1rem);line-height:1.8;max-width:560px;margin:14px auto 0;opacity:.7;}
+
+/* ══════════════════════════
+   PROSE
+══════════════════════════ */
+.prose p{font-size:clamp(.97rem,2.2vw,1.08rem);line-height:2.05;margin-bottom:17px;text-align:justify;}
+.prose-d p{color:rgba(224,220,252,.82);}
+.prose-p p{color:var(--ink-mid);}
+.prose-g p{color:rgba(224,220,252,.82);}
+
+.prose-d p.lead,.prose-g p.lead{color:var(--silver-lt);font-style:italic;font-size:clamp(1rem,2.3vw,1.15rem);line-height:1.9;}
+.prose-p p.lead{color:var(--amethyst);font-style:italic;font-size:clamp(1rem,2.3vw,1.15rem);}
+
+.prose-d p:first-of-type:not(.lead)::first-letter{font-family:'Crimson Pro',serif;font-weight:900;font-size:4.2em;line-height:.72;float:left;margin:10px 10px 0 0;color:var(--gold);}
+.prose-p p:first-of-type:not(.lead)::first-letter{font-family:'Crimson Pro',serif;font-weight:900;font-size:4.2em;line-height:.72;float:left;margin:10px 10px 0 0;color:var(--amethyst);}
+.prose-g p:first-of-type:not(.lead)::first-letter{font-family:'Crimson Pro',serif;font-weight:900;font-size:4.2em;line-height:.72;float:left;margin:10px 10px 0 0;color:var(--gold);}
+
+/* ══════════════════════════
+   DALIL
+══════════════════════════ */
+.dalil{margin:26px 0;display:grid;grid-template-columns:4px 1fr;}
+
+.dalil-d{background:rgba(8,6,22,.85);border:1px solid var(--b-gold);}
+.dalil-p{background:var(--paper-d);border:1px solid rgba(26,21,48,.15);}
+.dalil-g{background:rgba(6,4,18,.9);border:1px solid var(--b-gold);}
+
+.dbar-d,.dbar-g{background:var(--gold);}
+.dbar-p{background:var(--amethyst);}
+
+.dbody{padding:20px 22px 16px;}
+
+.dtag{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:.6rem;letter-spacing:4px;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:10px;}
+.dtag::after{content:'';flex:1;height:1px;}
+.dtag-d,.dtag-g{color:var(--gold);}
+.dtag-d::after,.dtag-g::after{background:linear-gradient(90deg,rgba(212,176,48,.3),transparent);}
+.dtag-p{color:var(--amethyst);}
+.dtag-p::after{background:linear-gradient(90deg,rgba(46,40,112,.25),transparent);}
+
+.dar{font-family:'Amiri',serif;font-size:clamp(1.1rem,2.8vw,1.55rem);line-height:2.2;direction:rtl;text-align:right;margin-bottom:13px;padding-bottom:11px;}
+.dar-d,.dar-g{color:var(--gold-lt);border-bottom:1px dashed rgba(212,176,48,.2);}
+.dar-p{color:var(--amethyst);border-bottom:1px dashed rgba(46,40,112,.2);}
+
+.dtrans{font-style:italic;font-size:.92rem;line-height:1.8;margin-bottom:8px;}
+.dtrans-d,.dtrans-g{color:rgba(216,212,244,.78);}
+.dtrans-p{color:var(--ink-soft);}
+
+.dref{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:.62rem;letter-spacing:2px;text-transform:uppercase;}
+.dref-d,.dref-g{color:var(--lilac);}
+.dref-p{color:var(--amethyst);}
+
+/* ══════════════════════════
+   MANZILAH CARDS (Tingkatan Qadar)
+══════════════════════════ */
+.manzilah{margin:28px 0;display:grid;grid-template-columns:1fr;gap:6px;}
+
+.mz{
+  display:flex;gap:0;
+  border:1px solid;overflow:hidden;
+}
+.mz-dark{border-color:rgba(212,176,48,.2);background:rgba(10,8,28,.9);}
+.mz-paper{border-color:rgba(26,21,48,.12);background:#fff;}
+
+.mz-num{
+  flex-shrink:0;width:60px;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:flex-start;
+  padding:16px 0 0;
+  font-family:'Crimson Pro',serif;font-weight:900;font-size:1.6rem;
+}
+.mn-d{color:var(--gold);background:rgba(46,40,112,.3);}
+.mn-p{color:var(--amethyst);background:rgba(46,40,112,.08);}
+
+.mz-ar-num{
+  font-family:'Amiri',serif;
+  font-size:1.2rem;
+  margin-top:4px;
+  opacity:.5;
+}
+
+.mz-body{flex:1;padding:14px 18px;}
+
+.mz-title{font-family:'Crimson Pro',serif;font-weight:700;font-size:1.02rem;margin-bottom:4px;}
+.mt-d{color:var(--silver-lt);}
+.mt-p{color:var(--ink);}
+
+.mz-ar-text{font-family:'Amiri',serif;font-size:1.05rem;direction:rtl;text-align:right;margin-bottom:7px;line-height:1.9;}
+.mar-d{color:rgba(212,176,48,.5);}
+.mar-p{color:rgba(46,40,112,.4);}
+
+.mz-desc{font-size:.85rem;line-height:1.72;font-style:italic;}
+.md-d{color:rgba(216,212,244,.65);}
+.md-p{color:var(--ink-soft);}
+
+.mz-dalil{font-family:'Barlow Condensed',sans-serif;font-size:.6rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;margin-top:8px;display:block;}
+.mdal-d{color:var(--gold-dim);}
+.mdal-p{color:var(--amethyst);}
+
+/* ══════════════════════════
+   BANNER
+══════════════════════════ */
+.banner{margin:32px 0;padding:26px 30px;text-align:center;position:relative;overflow:hidden;}
+.banner-d{background:linear-gradient(135deg,rgba(46,40,112,.3),rgba(22,18,52,.3));border:1px solid var(--b-silver);}
+.banner-g{background:linear-gradient(135deg,rgba(212,176,48,.1),rgba(10,8,22,.2));border:1px solid var(--b-gold);}
+.banner-p{background:var(--paper-dd);border:1px solid rgba(26,21,48,.15);}
+
+.bnar{font-family:'Amiri',serif;font-size:clamp(1.1rem,2.8vw,1.55rem);line-height:2;margin-bottom:10px;position:relative;z-index:1;}
+.bnar-d{color:var(--gold);}
+.bnar-g{color:var(--gold-lt);}
+.bnar-p{color:var(--amethyst);}
+
+.bnid{font-style:italic;font-size:.9rem;line-height:1.78;position:relative;z-index:1;}
+.bnid-d{color:rgba(216,212,244,.7);}
+.bnid-g{color:rgba(240,218,140,.7);}
+.bnid-p{color:var(--ink-soft);}
+
+.bnref{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:.6rem;letter-spacing:3px;text-transform:uppercase;margin-top:8px;position:relative;z-index:1;}
+.bnref-d{color:rgba(80,64,168,.65);}
+.bnref-g{color:rgba(212,176,48,.5);}
+.bnref-p{color:var(--amethyst);}
+
+/* ══════════════════════════
+   PULL QUOTE
+══════════════════════════ */
+.pull{margin:30px 0;padding:24px 28px;border-top:3px solid;}
+.pull-d{border-color:var(--lilac);background:rgba(10,8,28,.7);}
+.pull-g{border-color:var(--gold);background:rgba(8,6,18,.8);}
+.pull-p{border-color:var(--amethyst);background:var(--paper-d);}
+
+.pull p{font-family:'Crimson Pro',serif;font-size:clamp(1.15rem,2.8vw,1.5rem);font-style:italic;line-height:1.68;margin-bottom:10px;}
+.pp-d,.pp-g{color:var(--silver-lt);}
+.pp-p{color:var(--amethyst);}
+.pull cite{font-family:'Barlow Condensed',sans-serif;font-size:.62rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;}
+.pc-d,.pc-g{color:var(--lilac);}
+.pc-p{color:var(--amethyst);}
+
+/* ══════════════════════════
+   FIRQAH TABLE (Responsive)
+══════════════════════════ */
+.tbl-wrap{margin:26px 0;overflow:hidden;}
+.tbl{width:100%;border-collapse:collapse;font-size:.88rem;table-layout:fixed;}
+.tbl thead tr{color:#fff;}
+.tbl.th-dark thead tr{background:var(--amethyst);}
+.tbl.th-paper thead tr{background:var(--amethyst);}
+.tbl.th-rust thead tr{background:var(--rust);}
+.tbl thead th{padding:10px 12px;text-align:left;font-family:'Barlow Condensed',sans-serif;font-size:.6rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;}
+.tbl tbody tr{border-bottom:1px solid rgba(0,0,0,.07);}
+.tbl tbody tr:nth-child(even){background:rgba(0,0,0,.025);}
+.tbl tbody tr:nth-child(odd){background:#fff;}
+.tbl td{padding:10px 12px;line-height:1.65;color:var(--ink-mid);vertical-align:top;word-break:break-word;}
+.tbl td:first-child{font-weight:700;color:var(--ink);}
+
+.tbadge{display:inline-block;padding:2px 8px;font-family:'Barlow Condensed',sans-serif;font-size:.58rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;white-space:nowrap;}
+.tb-ok{background:rgba(10,112,144,.1);color:var(--teal);border:1px solid rgba(10,112,144,.2);}
+.tb-warn{background:rgba(200,144,32,.1);color:var(--amber);border:1px solid rgba(200,144,32,.2);}
+.tb-err{background:rgba(138,48,32,.1);color:var(--rust);border:1px solid rgba(138,48,32,.2);}
+.tb-ok2{background:rgba(46,40,112,.1);color:var(--lilac);border:1px solid rgba(46,40,112,.2);}
+
+@media(max-width:600px){
+  .tbl,.tbl thead,.tbl tbody,.tbl th,.tbl td,.tbl tr{display:block;width:100%;}
+  .tbl thead{display:none;}
+  .tbl tbody tr{background:#fff!important;border:1px solid rgba(0,0,0,.08);margin-bottom:8px;padding:14px 14px 10px;}
+  .tbl td{padding:5px 0 5px;border:none;display:grid;grid-template-columns:96px 1fr;gap:6px;align-items:start;}
+  .tbl td::before{content:attr(data-label);font-family:'Barlow Condensed',sans-serif;font-size:.58rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding-top:2px;color:var(--amethyst);}
+  .tbl.th-rust td::before{color:var(--rust);}
+  .tbl td:first-child{font-weight:700;font-size:.95rem;}
+}
+
+/* ══════════════════════════
+   FAEDAH GRID
+══════════════════════════ */
+.faedah-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2px;margin:26px 0;}
+
+.faedah{padding:22px 20px;position:relative;overflow:hidden;}
+.faedah-d{background:rgba(10,8,28,.95);border:1px solid var(--b-silver);border-top:2px solid var(--lilac);}
+.faedah-g{background:rgba(8,6,18,.97);border:1px solid var(--b-gold);border-top:2px solid var(--gold);}
+.faedah-p{background:#fff;border:1px solid rgba(26,21,48,.1);border-top:2px solid var(--amethyst);}
+
+.faedah-icon{font-size:1.7rem;margin-bottom:10px;display:block;}
+
+.faedah-title{font-family:'Crimson Pro',serif;font-weight:700;font-size:1.02rem;margin-bottom:5px;line-height:1.3;}
+.ft-d{color:var(--silver-lt);}
+.ft-g{color:var(--gold-lt);}
+.ft-p{color:var(--amethyst);}
+
+.faedah-desc{font-size:.83rem;line-height:1.68;font-style:italic;}
+.fd-d{color:rgba(216,212,244,.62);}
+.fd-g{color:rgba(240,218,140,.62);}
+.fd-p{color:var(--ink-soft);}
+
+.faedah-ref{font-family:'Barlow Condensed',sans-serif;font-size:.6rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;margin-top:8px;display:block;}
+.fr-d{color:var(--lilac);}
+.fr-g{color:var(--amber);}
+.fr-p{color:var(--amethyst);}
+
+/* ══════════════════════════
+   SEPARATOR
+══════════════════════════ */
+.sep{text-align:center;padding:14px 0;background:var(--void);position:relative;z-index:1;}
+.sep span{color:rgba(46,40,112,.45);letter-spacing:12px;font-size:.75rem;}
+
+/* ══════════════════════════
+   PENUTUP
+══════════════════════════ */
+.penutup{
+  position:relative;z-index:1;
+  background:linear-gradient(180deg,var(--indigo) 0%,var(--abyss) 100%);
+  padding:72px 24px 80px;text-align:center;overflow:hidden;
+}
+.penutup::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 0%,rgba(46,40,112,.3) 0%,transparent 70%),
+    radial-gradient(ellipse 50% 40% at 50% 50%,rgba(212,176,48,.04) 0%,transparent 70%);
+  pointer-events:none;
+}
+.penutup::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
+.penutup-inner{max-width:620px;margin:0 auto;position:relative;z-index:1;}
+.penutup-ar{font-family:'Amiri',serif;font-size:clamp(1.5rem,4vw,2.6rem);color:var(--gold);line-height:2;text-shadow:0 0 30px rgba(212,176,48,.35);margin-bottom:14px;}
+.penutup-div{width:80px;height:1px;background:linear-gradient(90deg,transparent,var(--lilac),transparent);margin:18px auto;}
+.penutup-p{font-style:italic;font-size:clamp(.9rem,2vw,1.05rem);color:rgba(216,212,244,.72);line-height:1.92;margin-bottom:12px;}
+.penutup-ref{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:.6rem;letter-spacing:3px;text-transform:uppercase;color:rgba(80,64,168,.55);}
+.penutup-footer{margin-top:40px;padding-top:22px;border-top:1px solid rgba(255,255,255,.04);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+.penutup-footer .logo{font-family:'Amiri',serif;font-size:1.1rem;color:rgba(212,176,48,.35);}
+.penutup-footer .tag{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:.55rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.12);}
+
+/* ══════════════════════════
+   RESPONSIVE
+══════════════════════════ */
+@media(max-width:600px){
+  .sec-dark,.sec-paper,.sec-gold{padding:44px 18px 40px;}
+  .banner{padding:20px 18px;}
+  .pull{padding:20px 20px;}
+  .penutup{padding:52px 18px 56px;}
+  .mz-num{width:48px;}
+  .dbody{padding:16px 16px 12px;}
+}
+</style>
+</head>
+<body>
+
+<div class="geo-bg"></div>
+
+<!-- ══════ HERO ══════ -->
+<section class="hero">
+  <div class="hero-glow"></div>
+
+  <!-- Geometric star (SVG) -->
+  <div class="geo-star">
+    <svg viewBox="0 0 700 700" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="rgba(212,176,48,1)" stroke-width="0.5">
+      <circle cx="350" cy="350" r="280"/>
+      <circle cx="350" cy="350" r="210"/>
+      <circle cx="350" cy="350" r="140"/>
+      <!-- 8-point star -->
+      <polygon points="350,70 393,257 560,140 423,293 630,350 423,407 560,560 393,443 350,630 307,443 140,560 277,407 70,350 277,293 140,140 307,257"/>
+      <!-- Inner octagon -->
+      <polygon points="350,175 463,238 526,350 463,463 350,526 238,463 175,350 238,238"/>
+      <!-- Cross lines -->
+      <line x1="70" y1="350" x2="630" y2="350"/>
+      <line x1="350" y1="70" x2="350" y2="630"/>
+      <line x1="150" y1="150" x2="550" y2="550"/>
+      <line x1="550" y1="150" x2="150" y2="550"/>
+    </svg>
+  </div>
+
+  <div class="pen-light"></div>
+  <div class="star-field" id="stars"></div>
+
+  <div class="hero-inner">
+    <div class="hero-bismillah">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
+    <p class="hero-eyebrow">Kitab Akidah · Berdalil Al-Qur'an &amp; Hadis Shahih · Kajian Komprehensif</p>
+    <h1 class="hero-title">Kitab Qadar</h1>
+    <div class="hero-sub">الْقَضَاءُ وَالْقَدَرُ — Takdir dalam Islam</div>
+    <div class="hero-divider">
+      <span></span><em>✦ ✦ ✦</em><span></span>
+    </div>
+    <div class="hero-verse">
+      <div class="hv-ar">إِنَّا كُلَّ شَيْءٍ خَلَقْنَاهُ بِقَدَرٍ</div>
+      <div class="hv-id">"Sesungguhnya Kami menciptakan segala sesuatu menurut qadar (ukuran yang telah ditetapkan)."<br><em style="color:rgba(212,176,48,.5)">— QS. Al-Qamar: 49</em></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ PROLOG ══════ -->
+<section class="sec-dark">
+  <div class="inner">
+    <div class="sh">
+      <div class="sh-badge badge-d">✦ Pembuka</div>
+      <div class="sh-ar shar-d">مَا هُوَ الْقَدَرُ؟</div>
+      <h2 class="sh-title shtitle-d">Apakah Qadar Itu?</h2>
+      <div class="sh-rule rule-d"></div>
+    </div>
+    <div class="prose prose-d">
+      <p class="lead">Di antara enam rukun iman, iman kepada qadar adalah yang paling dalam dan paling sering memunculkan pertanyaan. Ia adalah pilar keenam yang membedakan seorang mukmin dari seseorang yang hanya mengakui Allah tanpa memahami hakikat kekuasaan-Nya yang mutlak atas segala sesuatu.</p>
+      <p>Qadar adalah pengetahuan Allah yang azali — yang tidak didahului oleh kejahilan dan tidak diikuti oleh kelupaan — bahwa Ia telah mengetahui seluruh kejadian makhluk-Nya sejak sebelum mereka diciptakan, menuliskannya di Lauh Mahfuzh, dan menghendaki serta menciptakan semuanya. Tidak ada satu pun butir debu, tidak ada satu tetes hujan, tidak ada satu helai rambut yang jatuh, tidak ada satu niat yang terlintas di hati — kecuali Allah telah mengetahuinya, menghendakinya, dan menciptakannya.</p>
+      <p>Namun iman kepada qadar bukan berarti fatalisme — bukan alasan untuk berleha-leha dan meninggalkan usaha. Para ulama dengan sangat indah menjelaskan: qadar adalah rahasia Allah yang tidak diketahui manusia sebelum terjadi, maka kewajiban manusia adalah berusaha dan bertawakal — bukan menunggu sambil berpangku tangan.</p>
+    </div>
+
+    <div class="dalil dalil-d">
+      <div class="dbar-d"></div>
+      <div class="dbody">
+        <div class="dtag dtag-d">📜 HR. Muslim — Iman kepada Qadar adalah Rukun Iman</div>
+        <div class="dar dar-d">أَنْ تُؤْمِنَ بِاللَّهِ وَمَلَائِكَتِهِ وَكُتُبِهِ وَرُسُلِهِ وَالْيَوْمِ الْآخِرِ وَتُؤْمِنَ بِالْقَدَرِ خَيْرِهِ وَشَرِّهِ</div>
+        <div class="dtrans dtrans-d">"Kamu beriman kepada Allah, malaikat-malaikat-Nya, kitab-kitab-Nya, rasul-rasul-Nya, Hari Akhir, dan kamu beriman kepada qadar — yang baik maupun yang buruk (semuanya dari Allah)."</div>
+        <div class="dref dref-d">HR. Muslim (8) — Hadis Jibril tentang Iman · dari Umar bin Khattab radhiyallahu 'anhu</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"><span>✦ ✦ ✦</span></div>
+
+<!-- ══════ BAB I: EMPAT MANZILAH ══════ -->
+<section class="sec-paper">
+  <div class="inner">
+    <div class="sh">
+      <div class="sh-badge badge-p">✦ Bab Pertama</div>
+      <div class="sh-ar shar-p">الْمَرَاتِبُ الْأَرْبَعُ لِلْقَدَرِ</div>
+      <h2 class="sh-title shtitle-p">Empat Tingkatan Iman kepada Qadar</h2>
+      <div class="sh-rule rule-p"></div>
+      <p class="sh-sub" style="color:var(--ink-soft);">Para ulama akidah menetapkan bahwa iman kepada qadar mencakup empat tingkatan yang harus diyakini semuanya. Kurang satu saja, iman kepada qadar belum sempurna.</p>
+    </div>
+
+    <div class="manzilah">
+      <!-- 1: Ilmu -->
+      <div class="mz mz-paper">
+        <div class="mz-num mn-p">
+          1
+          <span class="mz-ar-num">١</span>
+        </div>
+        <div class="mz-body">
+          <div class="mz-title mt-p">Al-'Ilm — Ilmu Allah yang Azali</div>
+          <div class="mz-ar-text mar-p">اَلْعِلْمُ الْأَزَلِيُّ</div>
+          <div class="mz-desc md-p">Beriman bahwa Allah mengetahui segala sesuatu yang telah terjadi, sedang terjadi, dan yang akan terjadi — sejak azal hingga abadi. Tidak ada satu pun yang tersembunyi dari ilmu-Nya: segala perbuatan makhluk, rezeki, ajal, ucapan, dan rahasia hati semuanya diketahui Allah sebelum makhluk itu diciptakan. Ini adalah tingkatan pertama dan fondasi dari seluruh iman kepada qadar.</div>
+          <span class="mz-dalil mdal-p">QS. Luqmān: 34 · QS. Al-An'ām: 59 · QS. Al-Hadīd: 22</span>
+        </div>
+      </div>
+
+      <!-- 2: Kitabah -->
+      <div class="mz mz-paper">
+        <div class="mz-num mn-p">
+          2
+          <span class="mz-ar-num">٢</span>
+        </div>
+        <div class="mz-body">
+          <div class="mz-title mt-p">Al-Kitābah — Penulisan di Lauh Mahfuzh</div>
+          <div class="mz-ar-text mar-p">الْكِتَابَةُ فِي اللَّوْحِ الْمَحْفُوظِ</div>
+          <div class="mz-desc md-p">Beriman bahwa Allah telah menuliskan segala sesuatu yang akan terjadi di Lauh Mahfuzh — "Papan yang Terjaga" — 50.000 tahun sebelum langit dan bumi diciptakan. Tulisan ini tidak berubah dan tidak salah. Setiap kelahiran, kematian, rezeki, musibah — semua sudah tertulis di sana dengan pena-Nya yang agung.</div>
+          <span class="mz-dalil mdal-p">HR. Muslim (2653) · QS. Al-Hadīd: 22 · QS. Al-An'ām: 38</span>
+        </div>
+      </div>
+
+      <!-- 3: Masyi'ah -->
+      <div class="mz mz-paper">
+        <div class="mz-num mn-p">
+          3
+          <span class="mz-ar-num">٣</span>
+        </div>
+        <div class="mz-body">
+          <div class="mz-title mt-p">Al-Masyi'ah — Kehendak Allah yang Mutlak</div>
+          <div class="mz-ar-text mar-p">الْمَشِيئَةُ الشَّامِلَةُ</div>
+          <div class="mz-desc md-p">Beriman bahwa seluruh yang terjadi di alam semesta ini terjadi atas kehendak Allah — tidak ada sesuatu pun yang terjadi di luar kehendak-Nya. Apa yang Allah kehendaki pasti terjadi, dan apa yang tidak Ia kehendaki tidak akan pernah terjadi. Ini mencakup perbuatan manusia yang baik maupun buruk — semuanya terjadi atas kehendak-Nya, meski manusia tetap memiliki iradah (pilihan) dan ikhtiar (usaha) sendiri.</div>
+          <span class="mz-dalil mdal-p">QS. Al-Insān: 30 · QS. At-Takwīr: 29 · QS. Al-An'ām: 107</span>
+        </div>
+      </div>
+
+      <!-- 4: Khalq -->
+      <div class="mz mz-paper">
+        <div class="mz-num mn-p">
+          4
+          <span class="mz-ar-num">٤</span>
+        </div>
+        <div class="mz-body">
+          <div class="mz-title mt-p">Al-Khalq — Penciptaan Semua oleh Allah</div>
+          <div class="mz-ar-text mar-p">خَلْقُ اللَّهِ لِكُلِّ شَيْءٍ</div>
+          <div class="mz-desc md-p">Beriman bahwa Allah adalah Pencipta segala sesuatu — termasuk perbuatan manusia. Perbuatan manusia diciptakan oleh Allah dalam arti bahwa kemampuan, kekuatan, dan kondisi yang memungkinkan perbuatan itu terjadi semuanya berasal dari Allah. Namun ini tidak menafikan tanggung jawab manusia — karena manusia memiliki kehendak dan pilihan yang nyata, dan Allah menciptakan sesuai dengan pilihan mereka.</div>
+          <span class="mz-dalil mdal-p">QS. Az-Zumar: 62 · QS. Ash-Shāffāt: 96 · QS. Al-Qamar: 49</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="dalil dalil-p">
+      <div class="dbar-p"></div>
+      <div class="dbody">
+        <div class="dtag dtag-p">📜 HR. Muslim — Penulisan 50.000 Tahun Sebelum Langit dan Bumi</div>
+        <div class="dar dar-p">كَتَبَ اللَّهُ مَقَادِيرَ الْخَلَائِقِ قَبْلَ أَنْ يَخْلُقَ السَّمَاوَاتِ وَالْأَرْضَ بِخَمْسِينَ أَلْفَ سَنَةٍ</div>
+        <div class="dtrans dtrans-p">"Allah telah menuliskan takdir-takdir seluruh makhluk lima puluh ribu tahun sebelum Dia menciptakan langit dan bumi."</div>
+        <div class="dref dref-p">HR. Muslim (2653) — dari Abdullah bin Amr radhiyallahu 'anhu</div>
+      </div>
+    </div>
+
+    <div class="dalil dalil-p">
+      <div class="dbar-p"></div>
+      <div class="dbody">
+        <div class="dtag dtag-p">📖 QS. Al-Hadīd: 22 — Tertulis Sebelum Terjadi</div>
+        <div class="dar dar-p">مَا أَصَابَ مِن مُّصِيبَةٍ فِي الْأَرْضِ وَلَا فِي أَنفُسِكُمْ إِلَّا فِي كِتَابٍ مِّن قَبْلِ أَن نَّبْرَأَهَا ۚ إِنَّ ذَٰلِكَ عَلَى اللَّهِ يَسِيرٌ</div>
+        <div class="dtrans dtrans-p">"Tidak ada musibah apapun yang menimpa di bumi dan tidak pula pada dirimu sendiri, melainkan telah tertulis dalam Kitab (Lauh Mahfuzh) sebelum Kami menciptakannya. Sungguh, yang demikian itu mudah bagi Allah."</div>
+        <div class="dref dref-p">QS. Al-Hadīd (57): 22</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"><span>✦ ✦ ✦</span></div>
+
+<!-- ══════ BAB II: LAUH MAHFUZH & PENA ══════ -->
+<section class="sec-dark">
+  <div class="inner">
+    <div class="sh">
+      <div class="sh-badge badge-d">✦ Bab Kedua</div>
+      <div class="sh-ar shar-d">اللَّوْحُ الْمَحْفُوظُ وَالْقَلَمُ</div>
+      <h2 class="sh-title shtitle-d">Lauh Mahfuzh dan Al-Qalam</h2>
+      <div class="sh-rule rule-d"></div>
+    </div>
+
+    <div class="prose prose-d">
+      <p class="lead">Sebelum langit dan bumi ada, sebelum waktu dan ruang tercipta, Allah menciptakan dua hal yang menjadi saksi azali atas seluruh kehendak-Nya: Al-Qalam (Pena) dan Al-Lauh (Papan). Keduanya adalah makhluk yang tidak kasat mata namun sangat nyata dalam keyakinan Islam.</p>
+      <p>Allah memerintahkan Al-Qalam untuk menulis, dan Al-Qalam bertanya: "Apa yang harus aku tulis?" Allah menjawab: "Tulislah segala sesuatu yang akan terjadi hingga Hari Kiamat." Maka Al-Qalam pun menulis seluruh qadar dari seluruh makhluk — tidak ada yang terlewat, tidak ada yang salah — di atas Lauh Mahfuzh yang terjaga dari segala perubahan dan penambahan.</p>
+    </div>
+
+    <div class="dalil dalil-d">
+      <div class="dbar-d"></div>
+      <div class="dbody">
+        <div class="dtag dtag-d">📜 HR. Abu Dawud &amp; Tirmidzi — Pena Pertama yang Diciptakan</div>
+        <div class="dar dar-d">إِنَّ أَوَّلَ مَا خَلَقَ اللَّهُ الْقَلَمَ فَقَالَ لَهُ اكْتُبْ قَالَ رَبِّ وَمَاذَا أَكْتُبُ قَالَ اكْتُبْ مَقَادِيرَ كُلِّ شَيْءٍ حَتَّى تَقُومَ السَّاعَةُ</div>
+        <div class="dtrans dtrans-d">"Sesungguhnya yang pertama kali Allah ciptakan adalah Al-Qalam (Pena). Lalu Allah berfirman kepadanya: 'Tulislah!' Pena bertanya: 'Wahai Rabb-ku, apa yang harus aku tulis?' Allah berfirman: 'Tulislah takdir-takdir segala sesuatu hingga Hari Kiamat.'"</div>
+        <div class="dref dref-d">HR. Abu Dawud (4700) &amp; Tirmidzi (2155) — dari 'Ubadah bin Shamit — Shahih</div>
+      </div>
+    </div>
+
+    <div class="dalil dalil-d">
+      <div class="dbar-d"></div>
+      <div class="dbody">
+        <div class="dtag dtag-d">📖 QS. Al-Burūj: 21–22 — Lauh Mahfuzh</div>
+        <div class="dar dar-d">بَلْ هُوَ قُرْآنٌ مَّجِيدٌ ۝ فِي لَوْحٍ مَّحْفُوظٍ</div>
+        <div class="dtrans dtrans-d">"Bahkan (yang didustakan mereka itu) adalah Al-Qur'an yang mulia, (yang tersimpan) dalam Lauh Mahfuzh."</div>
+        <div class="dref dref-d">QS. Al-Burūj (85): 21–22</div>
+      </div>
+    </div>
+
+    <!-- Tingkatan Penulisan Takdir -->
+    <div class="sh" style="text-align:left;margin:40px 0 16px;">
+      <div class="sh-ar shar-d" style="font-size:1.3rem;">أَنْوَاعُ الْكِتَابَةِ</div>
+      <h3 class="sh-title shtitle-d" style="font-size:1.3rem;">Empat Jenis Penulisan Takdir</h3>
+    </div>
+
+    <div class="manzilah">
+      <div class="mz mz-dark">
+        <div class="mz-num mn-d">١</div>
+        <div class="mz-body">
+          <div class="mz-title mt-d">Takdir Azali — di Lauh Mahfuzh</div>
+          <div class="mz-desc md-d">Penulisan pertama dan paling umum: seluruh qadar makhluk sejak azal hingga kiamat, 50.000 tahun sebelum penciptaan langit dan bumi. Ini tidak berubah sama sekali.</div>
+          <span class="mz-dalil mdal-d">HR. Muslim (2653)</span>
+        </div>
+      </div>
+      <div class="mz mz-dark">
+        <div class="mz-num mn-d">٢</div>
+        <div class="mz-body">
+          <div class="mz-title mt-d">Takdir 'Umri — saat dalam Kandungan</div>
+          <div class="mz-desc md-d">Ketika janin berusia 40+40+40=120 hari (atau 40 hari menurut riwayat lain), malaikat diutus untuk meniupkan ruh dan menuliskan: rezeki, ajal, amalan, dan apakah ia akan bahagia atau celaka. Ini adalah spesifikasi takdir yang lebih terperinci.</div>
+          <span class="mz-dalil mdal-d">HR. Bukhari (3208) &amp; Muslim (2643)</span>
+        </div>
+      </div>
+      <div class="mz mz-dark">
+        <div class="mz-num mn-d">٣</div>
+        <div class="mz-body">
+          <div class="mz-title mt-d">Takdir Sanawi — setiap Malam Lailatul Qadar</div>
+          <div class="mz-desc md-d">Setiap tahun pada Lailatul Qadar, takdir tahunan ditentukan: siapa yang akan lahir, siapa yang akan meninggal, berapa rezeki masing-masing, dan urusan besar lainnya untuk satu tahun ke depan. Ini bukan perubahan takdir azali, melainkan implementasi rinciannya.</div>
+          <span class="mz-dalil mdal-d">QS. Ad-Dukhān: 4 · QS. Al-Qadr: 4</span>
+        </div>
+      </div>
+      <div class="mz mz-dark">
+        <div class="mz-num mn-d">٤</div>
+        <div class="mz-body">
+          <div class="mz-title mt-d">Takdir Yaumi — setiap Hari</div>
+          <div class="mz-desc md-d">"Setiap hari Dia dalam kesibukan (urusan)." Allah setiap hari mengurus: mematikan, menghidupkan, memuliakan, merendahkan, memberi rezeki, menahan rezeki. Ini adalah manifestasi aktif dari takdir yang telah ditetapkan.</div>
+          <span class="mz-dalil mdal-d">QS. Ar-Rahmān: 29</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="banner banner-d">
+      <div class="bnar bnar-d">كُلَّ يَوْمٍ هُوَ فِي شَأْنٍ</div>
+      <div class="bnid bnid-d">"Setiap hari Dia dalam kesibukan (mengurus makhluk)." — Allah tidak pernah absen, tidak pernah lengah, tidak pernah tidur. Setiap saat Dia mengatur, memutuskan, memberi, menahan — seluruh semesta alam bergerak atas komando-Nya yang aktif, setiap detiknya.</div>
+      <div class="bnref bnref-d">QS. Ar-Rahmān (55): 29</div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"><span>✦ ✦ ✦</span></div>
+
+<!-- ══════ BAB III: QADAR BAIK & BURUK ══════ -->
+<section class="sec-paper">
+  <div class="inner">
+    <div class="sh">
+      <div class="sh-badge badge-p">✦ Bab Ketiga</div>
+      <div class="sh-ar shar-p">خَيْرُ الْقَدَرِ وَشَرُّهُ</div>
+      <h2 class="sh-title shtitle-p">Qadar Baik dan Buruk — Semuanya dari Allah</h2>
+      <div class="sh-rule rule-p"></div>
+    </div>
+
+    <div class="prose prose-p">
+      <p class="lead">Salah satu pertanyaan paling mendasar dalam pembahasan qadar: mengapa Allah mentakdirkan hal-hal yang buruk? Mengapa ada bencana, penyakit, kematian dini, dan penderitaan? Inilah pertanyaan yang para ulama akidah bahas dengan sangat mendalam dan cermat.</p>
+      <p>Kuncinya ada pada pemahaman bahwa "buruk" dalam persepsi manusia tidak berarti "buruk" dalam rencana Allah. Apa yang tampak sebagai musibah mungkin adalah rahmat yang tertunda. Apa yang terasa pahit mungkin menyimpan kebaikan yang tidak terlihat. Dan tidak ada satu pun yang Allah takdirkan kecuali dengan hikmah yang sempurna.</p>
+    </div>
+
+    <div class="dalil dalil-p">
+      <div class="dbar-p"></div>
+      <div class="dbody">
+        <div class="dtag dtag-p">📜 HR. Muslim — Qadar Baik dan Buruk Keduanya dari Allah</div>
+        <div class="dar dar-p">وَالشَّرُّ لَيْسَ إِلَيْكَ</div>
+        <div class="dtrans dtrans-p">"Dan keburukan tidak (dapat dinisbatkan/disandarkan) kepada-Mu." — Ini adalah bagian dari doa qunut yang diajarkan Nabi ﷺ. Maknanya: keburukan tidak bersumber dari Allah, namun ia terjadi atas kehendak-Nya dan di dalam kuasa-Nya. Allah Maha Baik dan tidak ada keburukan yang berasal dari dzat-Nya.</div>
+        <div class="dref dref-p">HR. Abu Dawud (760), Tirmidzi (3566), An-Nasā'i (1745) — dari Ali bin Abi Thalib — Shahih</div>
+      </div>
+    </div>
+
+    <div class="prose prose-p">
+      <p>Para ulama menjelaskan: keburukan dalam qadar adalah relatif dan terbatas dari sisi makhluk yang mengalaminya. Namun dari sisi Allah, seluruh takdir-Nya mengandung keadilan, hikmah, dan kebaikan yang sempurna — meskipun manusia tidak selalu bisa melihatnya. Ibnu Qayyim Al-Jauziyyah dalam <em>Syifā'ul 'Alīl</em> membahas ini dengan sangat mendalam: tidak ada dalam ciptaan Allah sesuatu yang sia-sia atau murni buruk tanpa hikmah.</p>
+    </div>
+
+    <div class="dalil dalil-p">
+      <div class="dbar-p"></div>
+      <div class="dbody">
+        <div class="dtag dtag-p">📖 QS. Al-Baqarah: 216 — Mungkin Kamu Tidak Suka namun Baik Bagimu</div>
+        <div class="dar dar-p">وَعَسَىٰٓ أَن تَكْرَهُوا شَيْئًا وَهُوَ خَيْرٌ لَّكُمْ ۖ وَعَسَىٰٓ أَن تُحِبُّوا شَيْئًا وَهُوَ شَرٌّ لَّكُمْ ۗ وَاللَّهُ يَعْلَمُ وَأَنتُمْ لَا تَعْلَمُونَ</div>
+        <div class="dtrans dtrans-p">"Boleh jadi kamu membenci sesuatu, padahal itu baik bagimu. Dan boleh jadi kamu menyukai sesuatu, padahal itu buruk bagimu. Allah mengetahui, sedangkan kamu tidak mengetahui."</div>
+        <div class="dref dref-p">QS. Al-Baqarah (2): 216</div>
+      </div>
+    </div>
+
+    <div class="pull pull-p">
+      <p class="pp-p">"Apabila engkau melihat sesuatu yang telah Allah tentukan dan kamu tidak menyukainya — yakinlah bahwa di baliknya ada hikmah yang tidak kamu lihat, ada kebaikan yang tidak kamu rasakan sekarang. Allah lebih mengetahui urusanmu daripada dirimu sendiri."</p>
+      <cite class="pc-p">Ibnu Al-Qayyim Al-Jauziyyah — Zādul Ma'ād</cite>
+    </div>
+  </div>
+</section>
+
+<div class="sep"><span>✦ ✦ ✦</span></div>
+
+<!-- ══════ BAB IV: IKHTIAR & TAKDIR ══════ -->
+<section class="sec-gold">
+  <div class="inner">
+    <div class="sh">
+      <div class="sh-badge badge-g">✦ Bab Keempat</div>
+      <div class="sh-ar shar-g">الاِخْتِيَارُ وَالتَّوَكُّلُ مَعَ الْقَدَرِ</div>
+      <h2 class="sh-title shtitle-g">Ikhtiar, Usaha &amp; Tawakal: Bukan Bertentangan dengan Qadar</h2>
+      <div class="sh-rule rule-g"></div>
+    </div>
+
+    <div class="prose prose-g">
+      <p class="lead">Pertanyaan yang sering muncul: "Jika semua sudah ditakdirkan, untuk apa berusaha?" Ini adalah kesalahpahaman besar yang bahkan pernah ditanyakan kepada Nabi ﷺ secara langsung — dan jawaban beliau adalah salah satu permata kenabian yang paling berharga.</p>
+    </div>
+
+    <div class="dalil dalil-g">
+      <div class="dbar-g"></div>
+      <div class="dbody">
+        <div class="dtag dtag-g">📜 HR. Bukhari &amp; Muslim — Jawaban Nabi ﷺ: Berusahalah!</div>
+        <div class="dar dar-g">اعْمَلُوا فَكُلٌّ مُيَسَّرٌ لِمَا خُلِقَ لَهُ</div>
+        <div class="dtrans dtrans-g">"Berusahalah (beramallah)! Karena setiap orang akan dimudahkan menuju apa yang ia diciptakan untuknya (apa yang telah ditakdirkan baginya)."</div>
+        <div class="dref dref-g">HR. Bukhari (4949) &amp; Muslim (2647) — dari Ali bin Abi Thalib radhiyallahu 'anhu</div>
+      </div>
+    </div>
+
+    <div class="prose prose-g">
+      <p>Inilah jawaban yang sempurna. Nabi ﷺ tidak berkata: "Duduk saja, karena takdir sudah menentukan." Beliau justru menyuruh beramal dan berusaha — karena usaha itu sendiri adalah bagian dari takdir. Allah tidak mentakdirkan seseorang mendapat rezeki tanpa sebab. Allah mentakdirkan rezeki itu beserta jalannya — dan jalan itu adalah usaha, doa, dan tawakal.</p>
+    </div>
+
+    <div class="dalil dalil-g">
+      <div class="dbar-g"></div>
+      <div class="dbody">
+        <div class="dtag dtag-g">📜 HR. Ahmad — Ikat Dulu Untamu, Baru Bertawakal</div>
+        <div class="dar dar-g">اعْقِلْهَا وَتَوَكَّلْ</div>
+        <div class="dtrans dtrans-g">Seorang laki-laki berkata kepada Nabi ﷺ: "Apakah aku ikat untaku lalu bertawakal, atau aku lepaskan saja lalu bertawakal?" Nabi ﷺ menjawab: "Ikatlah (dulu), kemudian bertawakallah."</div>
+        <div class="dref dref-g">HR. Tirmidzi (2517) &amp; Ibnu Hibbān — dari Anas bin Malik — Hasan</div>
+      </div>
+    </div>
+
+    <div class="faedah-grid">
+      <div class="faedah faedah-g">
+        <span class="faedah-icon">🎯</span>
+        <div class="faedah-title ft-g">Qadar Tidak Menghilangkan Ikhtiar</div>
+        <div class="faedah-desc fd-g">Manusia memiliki iradah (kehendak) dan ikhtiar (pilihan) yang nyata — Allah menciptakan pilihan-pilihan itu dan manusia memilihnya. Pilihan ini yang akan dipertanggungjawabkan.</div>
+        <span class="faedah-ref fr-g">QS. Al-Insān: 3</span>
+      </div>
+      <div class="faedah faedah-g">
+        <span class="faedah-icon">🔑</span>
+        <div class="faedah-title ft-g">Doa Mengubah Takdir</div>
+        <div class="faedah-desc fd-g">Nabi ﷺ bersabda: "Tidak ada yang menolak takdir kecuali doa." Ini bukan kontradiksi — doa adalah bagian dari takdir. Allah mentakdirkan sesuatu beserta doa yang mengubahnya.</div>
+        <span class="faedah-ref fr-g">HR. Tirmidzi (2139) — Hasan</span>
+      </div>
+      <div class="faedah faedah-g">
+        <span class="faedah-icon">💪</span>
+        <div class="faedah-title ft-g">Silaturrahmi Memanjangkan Umur</div>
+        <div class="faedah-desc fd-g">"Siapa yang ingin diluaskan rezekinya dan dipanjangkan umurnya, hendaklah ia menyambung silaturrahmi." — Ini bukan bertentangan dengan qadar, melainkan Allah mentakdirkan umur panjang bagi orang yang bersilaturrahmi.</div>
+        <span class="faedah-ref fr-g">HR. Bukhari (5986) &amp; Muslim (2557)</span>
+      </div>
+      <div class="faedah faedah-g">
+        <span class="faedah-icon">🛡️</span>
+        <div class="faedah-title ft-g">Berhati-hati adalah Bagian Qadar</div>
+        <div class="faedah-desc fd-g">Umar bin Khattab ra. ketika diperingatkan ada wabah di Syam, memilih tidak masuk. Ketika ditanya: "Apakah kamu lari dari takdir Allah?" Beliau menjawab: "Ya, kami lari dari takdir Allah menuju takdir Allah yang lain."</div>
+        <span class="faedah-ref fr-g">HR. Bukhari (5729) &amp; Muslim (2219)</span>
+      </div>
+    </div>
+
+    <div class="banner banner-g">
+      <div class="bnar bnar-g">لَا يَرُدُّ الْقَدَرَ إِلَّا الدُّعَاءُ وَلَا يَزِيدُ فِي الْعُمُرِ إِلَّا الْبِرُّ</div>
+      <div class="bnid bnid-g">"Tidak ada yang menolak takdir kecuali doa, dan tidak ada yang menambah umur kecuali kebajikan." — Doa adalah senjata mukmin dalam menghadapi takdir. Bukan menolak qadar Allah, melainkan memohon kepada Allah agar Ia menggunakan salah satu dari sekian banyak takdir-Nya yang baik untuk kita.</div>
+      <div class="bnref bnref-g">HR. Tirmidzi (2139) — dari Salman Al-Farisi — Hasan</div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"><span>✦ ✦ ✦</span></div>
+
+<!-- ══════ BAB V: FIRQAH SESAT ══════ -->
+<section class="sec-paper">
+  <div class="inner">
+    <div class="sh">
+      <div class="sh-badge badge-r">⚠ Bab Kelima</div>
+      <div class="sh-ar shar-p">الْفِرَقُ الضَّالَّةُ فِي بَابِ الْقَدَرِ</div>
+      <h2 class="sh-title shtitle-p">Kelompok yang Menyimpang dalam Persoalan Qadar</h2>
+      <div class="sh-rule" style="background:var(--rust);width:56px;height:2px;margin:14px auto 0;"></div>
+      <p class="sh-sub" style="color:var(--ink-soft);">Para ulama akidah telah memperingatkan dua penyimpangan utama dalam persoalan qadar — keduanya sama-sama tersesat dari jalan yang lurus.</p>
+    </div>
+
+    <div class="tbl-wrap">
+      <table class="tbl th-rust">
+        <thead>
+          <tr>
+            <th style="width:22%">Kelompok</th>
+            <th style="width:30%">Penyimpangan</th>
+            <th style="width:25%">Akibat</th>
+            <th style="width:23%">Bantahan</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="Kelompok"><strong>Qadariyyah</strong><br><em style="font-size:.78rem;font-weight:400;font-style:italic;">(Mujassimah/Mu'tazilah ekstrem)</em></td>
+            <td data-label="Penyimpangan">Mengingkari ilmu dan takdir Allah atas perbuatan manusia. Mengatakan manusia menciptakan perbuatannya sendiri secara mandiri, tanpa keterlibatan ilmu dan kehendak Allah.</td>
+            <td data-label="Akibat"><span class="tbadge tb-err">Menyekutukan Allah</span> — menjadikan manusia sebagai pencipta mandiri di samping Allah.</td>
+            <td data-label="Bantahan">QS. Az-Zumar: 62: "Allah adalah Pencipta segala sesuatu." Termasuk perbuatan manusia.</td>
+          </tr>
+          <tr>
+            <td data-label="Kelompok"><strong>Jabariyyah</strong><br><em style="font-size:.78rem;font-weight:400;font-style:italic;">(Fatalisme ekstrem)</em></td>
+            <td data-label="Penyimpangan">Berlebihan dalam meyakini takdir hingga meniadakan ikhtiar manusia sama sekali. Mengatakan manusia seperti bulu yang tertiup angin — tidak ada pilihan dan tidak ada tanggung jawab.</td>
+            <td data-label="Akibat"><span class="tbadge tb-err">Meniadakan keadilan Allah</span> — jika manusia tidak punya pilihan, bagaimana Allah bisa menghukumnya?</td>
+            <td data-label="Bantahan">QS. Al-Kahfi: 29: "Barangsiapa yang mau, berimanlah; barangsiapa mau, kafirlah." Manusia memiliki pilihan nyata.</td>
+          </tr>
+          <tr>
+            <td data-label="Kelompok"><strong>Ahlus Sunnah wal Jama'ah</strong><br><em style="font-size:.78rem;font-weight:400;font-style:italic;">(Jalan yang benar)</em></td>
+            <td data-label="Penyimpangan">Meyakini: Allah mengetahui, menghendaki, dan menciptakan segala sesuatu — termasuk perbuatan manusia. Namun manusia juga memiliki kehendak dan pilihan yang nyata, dan atas dasar itulah manusia bertanggung jawab.</td>
+            <td data-label="Akibat"><span class="tbadge tb-ok">Keseimbangan sempurna</span> — antara kemutlakan kekuasaan Allah dan tanggung jawab manusia.</td>
+            <td data-label="Bantahan">Hadis Jibril (HR. Muslim 8) + seluruh dalil Al-Qur'an yang menyebut pilihan manusia dan kehendak Allah sekaligus.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="dalil dalil-p">
+      <div class="dbar-p"></div>
+      <div class="dbody">
+        <div class="dtag dtag-p">📜 HR. Abu Dawud — Qadariyyah adalah Majusi Umat Ini</div>
+        <div class="dar dar-p">الْقَدَرِيَّةُ مَجُوسُ هَذِهِ الْأُمَّةِ</div>
+        <div class="dtrans dtrans-p">"Qadariyyah adalah majusinya umat ini." — Nabi ﷺ menyebut mereka seperti Majusi karena Majusi meyakini dua tuhan (Tuhan kebaikan dan Tuhan keburukan). Qadariyyah yang mengingkari qadar seolah meyakini bahwa ada wilayah yang di luar kekuasaan Allah.</div>
+        <div class="dref dref-p">HR. Abu Dawud (4691) &amp; Ibnu Majah (92) — dari Ibnu Umar — Hasan</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"><span>✦ ✦ ✦</span></div>
+
+<!-- ══════ BAB VI: BUAH IMAN KEPADA QADAR ══════ -->
+<section class="sec-dark">
+  <div class="inner">
+    <div class="sh">
+      <div class="sh-badge badge-d">✦ Bab Keenam</div>
+      <div class="sh-ar shar-d">ثِمَارُ الْإِيمَانِ بِالْقَدَرِ</div>
+      <h2 class="sh-title shtitle-d">Buah Manis Iman kepada Qadar</h2>
+      <div class="sh-rule rule-d"></div>
+      <p class="sh-sub" style="color:rgba(176,168,216,.55);">Iman kepada qadar bukan sekadar akidah di kepala — ia menghasilkan buah-buah akhlak dan sikap hidup yang luar biasa indah.</p>
+    </div>
+
+    <div class="faedah-grid">
+      <div class="faedah faedah-d">
+        <span class="faedah-icon">🕊️</span>
+        <div class="faedah-title ft-d">Ketenangan Jiwa yang Tak Tergoyahkan</div>
+        <div class="faedah-desc fd-d">Orang yang beriman kepada qadar tidak akan goyah oleh badai kehidupan. Ia tahu bahwa segala yang menimpanya sudah diketahui dan diizinkan Allah — dan Allah tidak akan menyia-nyiakannya.</div>
+        <span class="faedah-ref fr-d">QS. At-Taghabun: 11</span>
+      </div>
+      <div class="faedah faedah-d">
+        <span class="faedah-icon">🚫</span>
+        <div class="faedah-title ft-d">Terbebas dari Kesombongan</div>
+        <div class="faedah-desc fd-d">Ketika sukses, ia tahu bahwa semua itu adalah anugerah Allah — bukan semata hasil kepandaiannya. Ini mencegah kesombongan dan memunculkan rasa syukur yang tulus.</div>
+        <span class="faedah-ref fr-d">QS. Al-Hadīd: 23</span>
+      </div>
+      <div class="faedah faedah-d">
+        <span class="faedah-icon">💔</span>
+        <div class="faedah-title ft-d">Tidak Putus Asa saat Gagal</div>
+        <div class="faedah-desc fd-d">Ketika gagal, ia tidak menghancurkan dirinya sendiri. Ia tahu bahwa itu adalah takdir Allah yang mengandung hikmah — dan ia bangkit dengan lebih bijaksana.</div>
+        <span class="faedah-ref fr-d">QS. Al-Hadīd: 23</span>
+      </div>
+      <div class="faedah faedah-d">
+        <span class="faedah-icon">⚔️</span>
+        <div class="faedah-title ft-d">Keberanian Luar Biasa</div>
+        <div class="faedah-desc fd-d">Para mujahidin yang kuat iman kepada qadar adalah pejuang paling berani — karena mereka tahu ajal tidak akan datang sebelum waktunya, dan tidak ada yang bisa membunuh mereka sebelum Allah izinkan.</div>
+        <span class="faedah-ref fr-d">QS. Āli 'Imrān: 145</span>
+      </div>
+      <div class="faedah faedah-d">
+        <span class="faedah-icon">🌱</span>
+        <div class="faedah-title ft-d">Sabar dalam Musibah</div>
+        <div class="faedah-desc fd-d">Ketika musibah datang, ia langsung berkata: "Innā lillāhi wa innā ilayhi rāji'ūn" — dan ia mendapat kabar gembira dari Allah berupa shalawat dan rahmat.</div>
+        <span class="faedah-ref fr-d">QS. Al-Baqarah: 155–157</span>
+      </div>
+      <div class="faedah faedah-d">
+        <span class="faedah-icon">🙏</span>
+        <div class="faedah-title ft-d">Tawakkal yang Hakiki</div>
+        <div class="faedah-desc fd-d">Tawakal bukan pasif — ia adalah memasrahkan hasil kepada Allah setelah melakukan ikhtiar maksimal. Dan orang yang bertawakal dijamin Allah mencukupinya dari arah yang tidak terduga.</div>
+        <span class="faedah-ref fr-d">QS. Ath-Thalāq: 3</span>
+      </div>
+    </div>
+
+    <div class="dalil dalil-d">
+      <div class="dbar-d"></div>
+      <div class="dbody">
+        <div class="dtag dtag-d">📜 HR. Muslim — Indahnya Urusan Orang Beriman</div>
+        <div class="dar dar-d">عَجَبًا لِأَمْرِ الْمُؤْمِنِ إِنَّ أَمْرَهُ كُلَّهُ خَيْرٌ وَلَيْسَ ذَاكَ لِأَحَدٍ إِلَّا لِلْمُؤْمِنِ إِنْ أَصَابَتْهُ سَرَّاءُ شَكَرَ فَكَانَ خَيْرًا لَهُ وَإِنْ أَصَابَتْهُ ضَرَّاءُ صَبَرَ فَكَانَ خَيْرًا لَهُ</div>
+        <div class="dtrans dtrans-d">"Sungguh menakjubkan urusan orang beriman! Sesungguhnya seluruh urusannya adalah kebaikan — dan hal itu tidak dimiliki kecuali oleh orang beriman. Jika ia mendapat kesenangan, ia bersyukur — maka itu menjadi kebaikan baginya. Dan jika ia ditimpa kesusahan, ia bersabar — maka itu pun menjadi kebaikan baginya."</div>
+        <div class="dref dref-d">HR. Muslim (2999) — dari Shuhaib radhiyallahu 'anhu</div>
+      </div>
+    </div>
+
+    <div class="dalil dalil-d">
+      <div class="dbar-d"></div>
+      <div class="dbody">
+        <div class="dtag dtag-d">📖 QS. Al-Hadīd: 22–23 — Takdir sebagai Obat Hati</div>
+        <div class="dar dar-d">مَا أَصَابَ مِن مُّصِيبَةٍ فِي الْأَرْضِ وَلَا فِي أَنفُسِكُمْ إِلَّا فِي كِتَابٍ مِّن قَبْلِ أَن نَّبْرَأَهَا ۚ إِنَّ ذَٰلِكَ عَلَى اللَّهِ يَسِيرٌ ۝ لِّكَيْلَا تَأْسَوْا عَلَىٰ مَا فَاتَكُمْ وَلَا تَفْرَحُوا بِمَا آتَاكُمْ</div>
+        <div class="dtrans dtrans-d">"Tidak ada musibah yang menimpa di bumi dan tidak pula pada dirimu sendiri, melainkan telah tertulis dalam Kitab sebelum Kami menciptakannya. Sungguh, yang demikian itu mudah bagi Allah. (Hal ini diberitakan) agar kamu tidak berduka cita terhadap apa yang luput dari kamu, dan tidak terlalu gembira terhadap apa yang diberikan-Nya kepadamu."</div>
+        <div class="dref dref-d">QS. Al-Hadīd (57): 22–23 — Inilah fungsi iman kepada qadar: keseimbangan jiwa</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"><span>✦ ✦ ✦</span></div>
+
+<!-- ══════ BAB VII: HADIS JANIN & TAKDIR ══════ -->
+<section class="sec-paper">
+  <div class="inner">
+    <div class="sh">
+      <div class="sh-badge badge-p">✦ Bab Ketujuh</div>
+      <div class="sh-ar shar-p">حَدِيثُ الْجَنِينِ وَتَقْدِيرُ الرِّزْقِ وَالْأَجَلِ</div>
+      <h2 class="sh-title shtitle-p">Takdir Janin: Rezeki, Ajal &amp; Kebahagiaan</h2>
+      <div class="sh-rule rule-p"></div>
+    </div>
+
+    <div class="prose prose-p">
+      <p class="lead">Salah satu hadis paling terkenal tentang qadar adalah hadis tentang proses penciptaan manusia dalam kandungan — di mana malaikat menuliskan empat hal yang akan menentukan seluruh perjalanan hidup seseorang.</p>
+    </div>
+
+    <div class="dalil dalil-p">
+      <div class="dbar-p"></div>
+      <div class="dbody">
+        <div class="dtag dtag-p">📜 HR. Bukhari &amp; Muslim — Hadis Penciptaan Manusia</div>
+        <div class="dar dar-p">إِنَّ أَحَدَكُمْ يُجْمَعُ خَلْقُهُ فِي بَطْنِ أُمِّهِ أَرْبَعِينَ يَوْمًا نُطْفَةً ثُمَّ يَكُونُ عَلَقَةً مِثْلَ ذَلِكَ ثُمَّ يَكُونُ مُضْغَةً مِثْلَ ذَلِكَ ثُمَّ يُرْسَلُ إِلَيْهِ الْمَلَكُ فَيَنْفُخُ فِيهِ الرُّوحَ وَيُؤْمَرُ بِأَرْبَعِ كَلِمَاتٍ بِكَتْبِ رِزْقِهِ وَأَجَلِهِ وَعَمَلِهِ وَشَقِيٌّ أَوْ سَعِيدٌ</div>
+        <div class="dtrans dtrans-p">"Sesungguhnya setiap orang dari kalian dikumpulkan penciptaannya di perut ibunya selama empat puluh hari sebagai nuthfah (air mani), kemudian menjadi 'alaqah (gumpalan darah) selama itu pula, kemudian menjadi mudhghah (gumpalan daging) selama itu pula. Kemudian diutuslah malaikat kepadanya, lalu ia meniupkan ruh, dan ia diperintahkan dengan empat kalimat: untuk menulis rezekinya, ajalnya, amalannya, dan (apakah ia akan menjadi) sengsara atau bahagia."</div>
+        <div class="dref dref-p">HR. Bukhari (3208) &amp; Muslim (2643) — dari Abdullah bin Mas'ud radhiyallahu 'anhu</div>
+      </div>
+    </div>
+
+    <div class="prose prose-p">
+      <p>Para ulama menjelaskan makna "syaqiyyun aw sa'idun" (celaka atau bahagia): ini bukan berarti Allah memaksa seseorang untuk celaka. Melainkan Allah mengetahui — berdasarkan ilmu-Nya yang azali — apa yang akan dipilih orang itu dan ke mana ia akan berakhir. Penulisan ini adalah berdasarkan ilmu Allah, bukan paksaan. Sebagaimana Allah mengetahui siapa yang akan matahari terbenam pada hari tertentu — itu tidak berarti Allah memaksa matahari terbenam.</p>
+    </div>
+
+    <div class="pull pull-p">
+      <p class="pp-p">"Beramallah, karena setiap orang dimudahkan menuju apa yang ia diciptakan untuknya. Orang yang termasuk golongan bahagia, ia akan dimudahkan melakukan amalan kebahagiaan. Dan orang yang termasuk celaka, ia akan dimudahkan melakukan amalan kecelakaan."</p>
+      <cite class="pc-p">HR. Bukhari (4949) &amp; Muslim (2647) — dari Ali bin Abi Thalib radhiyallahu 'anhu</cite>
+    </div>
+
+    <!-- Tabel empat hal yang ditulis -->
+    <div class="tbl-wrap">
+      <table class="tbl th-paper">
+        <thead>
+          <tr>
+            <th style="width:25%">Yang Ditulis</th>
+            <th style="width:40%">Makna</th>
+            <th style="width:35%">Implikasi bagi Mukmin</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="Yang Ditulis">Rezeki (Rizq)</td>
+            <td data-label="Makna">Jumlah total rezeki seseorang sepanjang hidupnya — harta, makanan, anak, ilmu, dan segala nikmat.</td>
+            <td data-label="Implikasi">Berusaha maksimal mencari rezeki, karena usaha adalah jalan yang Allah takdirkan. Tidak iri dengan rezeki orang lain.</td>
+          </tr>
+          <tr>
+            <td data-label="Yang Ditulis">Ajal (Kematian)</td>
+            <td data-label="Makna">Saat kematian yang sudah ditetapkan — tidak bisa dimaju atau dimundurkan satu detik pun.</td>
+            <td data-label="Implikasi">Berani menghadapi bahaya dalam kebenaran, tidak takut mati, namun tidak pula mencari kematian sia-sia.</td>
+          </tr>
+          <tr>
+            <td data-label="Yang Ditulis">Amalan ('Amal)</td>
+            <td data-label="Makna">Jenis-jenis perbuatan yang akan dilakukan seseorang semasa hidupnya.</td>
+            <td data-label="Implikasi">Bersungguh-sungguh dalam amal baik — karena mungkin itulah yang Allah takdirkan. Jangan berhenti beramal.</td>
+          </tr>
+          <tr>
+            <td data-label="Yang Ditulis">Bahagia atau Celaka</td>
+            <td data-label="Makna">Berdasarkan ilmu Allah tentang pilihan yang akan dibuat seseorang — bukan paksaan Allah.</td>
+            <td data-label="Implikasi">Berlindung kepada Allah dari su'ul khatimah, memperbanyak doa dan istighfar, serta berusaha mati dalam keimanan.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ PENUTUP ══════ -->
+<div class="penutup">
+  <div class="penutup-inner">
+
+    <div class="penutup-ar">آمَنَّا بِاللَّهِ وَقَدَرِهِ خَيْرِهِ وَشَرِّهِ</div>
+    <div class="penutup-div"></div>
+
+    <p class="penutup-p">"Kami beriman kepada Allah dan takdir-Nya — yang baik maupun yang buruk." Inilah pernyataan iman seorang mukmin yang telah memahami bahwa tidak ada satu atom pun di alam semesta ini yang bergerak di luar pengetahuan dan kehendak Allah.</p>
+
+    <p class="penutup-p" style="margin-top:12px;">Iman kepada qadar bukan membuat kita lemah dan pasif. Ia justru membuat kita kuat — karena kita tahu bahwa musibah yang datang sudah diketahui Allah sebelum ia terjadi, dan tidak akan datang kecuali dengan izin-Nya. Dan setiap yang Allah izinkan pasti mengandung kebaikan yang mungkin belum kita lihat.</p>
+
+    <div class="penutup-div"></div>
+
+    <div class="dalil dalil-d" style="text-align:left;">
+      <div class="dbar-d"></div>
+      <div class="dbody">
+        <div class="dtag dtag-d">📜 Doa Berlindung dari Lemahnya Iman kepada Qadar · HR. Muslim</div>
+        <div class="dar dar-d">اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْعَجْزِ وَالْكَسَلِ وَالْجُبْنِ وَالْبُخْلِ وَالْهَرَمِ وَأَعُوذُ بِكَ مِنْ عَذَابِ الْقَبْرِ وَمِنْ فِتْنَةِ الْمَحْيَا وَالْمَمَاتِ</div>
+        <div class="dtrans dtrans-d">"Ya Allah, aku berlindung kepada-Mu dari kelemahan, kemalasan, pengecut, kikir, dan pikun. Dan aku berlindung kepada-Mu dari azab kubur serta fitnah kehidupan dan kematian." — Doa ini mengajarkan bahwa iman kepada qadar bukan alasan untuk lemah dan malas — justru berlindung dari kelemahan adalah bagian dari pengamalan iman kepada qadar.</div>
+        <div class="dref dref-d">HR. Bukhari (2823) &amp; Muslim (2706) — dari Anas bin Malik radhiyallahu 'anhu</div>
+      </div>
+    </div>
+
+    <div class="penutup-footer">
+      <div class="logo">الْقَضَاءُ وَالْقَدَرُ</div>
+      <div class="tag">وَاللّٰهُ أَعْلَمُ بِالصَّوَابِ · Semoga Bermanfaat</div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// Star field
+const sf = document.getElementById('stars');
+for(let i=0;i<200;i++){
+  const s=document.createElement('div');
+  s.className='star-d';
+  const sz=Math.random()*1.8+.3;
+  const gold=Math.random()<.08;
+  s.style.cssText=`
+    width:${sz}px;height:${sz}px;
+    left:${Math.random()*100}%;top:${Math.random()*100}%;
+    --sd:${(Math.random()*5+2).toFixed(1)}s;
+    --so:${(Math.random()*.5+.1).toFixed(2)};
+    background:${gold?'rgba(212,176,48,1)':'rgba(216,208,248,1)'};
+    animation-delay:${(Math.random()*6).toFixed(1)}s;
+    ${gold&&sz>1?'box-shadow:0 0 4px rgba(212,176,48,.5);':''}
+  `;
+  sf.appendChild(s);
+}
+</script>
+</body>
+</html>
