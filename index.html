@@ -641,7 +641,7 @@
     Naskah tersedia di <a href="https://github.com/semogabermanfaat/naskah" target="_blank">GitHub</a> — bebas dibaca &amp; disebarkan.<br><br>
     <em>"Dan sebaik-baik manusia adalah yang paling bermanfaat bagi manusia lainnya."</em>
   </p>
-
+<br><br>
     <span style="display: inline-flex; align-items: center; gap: 8px; font-size: 0.7rem; color: var(--gold-dk); border: 1px solid rgba(201,168,76,0.15); padding: 5px 15px; border-radius: 30px; margin-bottom: 20px; background: rgba(201,168,76,0.03);">
       <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
       Total Kunjungan: <span id="visit-count">...</span>
@@ -711,9 +711,34 @@
     });
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Fungsi Visitor Counter
+  function getVisitCount() {
+    const countElement = document.getElementById('visit-count');
+    
+    // Kita gunakan namespace berdasarkan domain Anda agar unik
+    const namespace = "semogabermanfaat.github.io";
+    const key = "naskah-utama";
+
+    fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
+      .then(res => res.json())
+      .then(data => {
+        countElement.innerText = data.value.toLocaleString('id-ID');
+      })
+      .catch(err => {
+        // Jika API gagal, kita tampilkan teks cadangan agar tidak merusak tampilan
+        countElement.innerText = "Pembaca Aktif";
+        console.error("Counter Error:", err);
+      });
+  }
+
+  // Jalankan fungsi saat halaman dimuat
+  window.addEventListener('DOMContentLoaded', getVisitCount);
+
 </script>
 </body>
 </html>
+
 
 
 
