@@ -28,8 +28,32 @@
     body::before { content: ''; position: fixed; inset: 0; background-image: repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(201,168,76,.02) 40px, rgba(201,168,76,.02) 41px), repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(201,168,76,.02) 40px, rgba(201,168,76,.02) 41px); pointer-events: none; z-index: 1; }
     
     header { position: relative; min-height: 90vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 40px 24px; background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(27,67,50,.15) 0%, transparent 70%), linear-gradient(180deg, #0b1410 0%, var(--bg-main) 100%); overflow: hidden; z-index: 2; }
-    .mandala { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: min(600px, 85vw); height: min(600px, 85vw); opacity: .05; animation: spin 120s linear infinite; pointer-events: none; }
-    .mandala-inner { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: min(400px, 55vw); height: min(400px, 55vw); opacity: .08; animation: spin 80s linear infinite reverse; pointer-events: none; }
+
+ .mandala {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(600px, 85vw);
+  height: min(600px, 85vw);
+  opacity: .2; /* Diubah dari .05 agar lebih terlihat jelas */
+  animation: spin 120s linear infinite;
+  pointer-events: none;
+  /* Tambahkan drop-shadow untuk efek pendaran emas */
+  filter: drop-shadow(0 0 10px rgba(201, 168, 76, 0.3)); 
+}
+
+.mandala-inner {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(400px, 55vw);
+  height: min(400px, 55vw);
+  opacity: .25; /* Diubah dari .08 */
+  animation: spin 80s linear infinite reverse;
+  pointer-events: none;
+  filter: drop-shadow(0 0 8px rgba(232, 204, 128, 0.4));
+}
+
     @keyframes spin { to { transform: translate(-50%,-50%) rotate(360deg); } }
     
     .hero-bismillah { font-family: 'Lateef', serif; font-size: clamp(2rem, 6vw, 4.2rem); color: var(--gold-lt); margin-bottom: 12px; position: relative; z-index: 1; }
@@ -136,8 +160,8 @@
   <div class="about-text reveal">
     <h2 class="section-title">Niat & Tujuan</h2>
     <div class="section-rule"></div>
-      <p>Kumpulan naskah ini ditulis untuk berbagi ilmu yang bermanfaat. Setiap tulisan disusun dengan referensi yang sahih dan bahasa yang mudah dipahami oleh siapa saja.</p>
-      <p>Semua naskah dapat dibaca langsung di browser, diunduh, maupun disebarluaskan secara bebas tanpa perlu izin — karena ilmu adalah milik semua umat.</p>
+      <p>Kumpulan naskah ini ditulis untuk berbagi ilmu yang bermanfaat. Setiap tulisan disusun dengan referensi yang sahih dan bahasa yang mudah dipahami oleh siapa saja.</p><br>
+      <p>Semua naskah dapat dibaca langsung di browser, diunduh, maupun disebarluaskan secara bebas tanpa perlu izin — karena ilmu adalah milik semua umat.</p><br>
       <p>Jika Anda menemukan manfaat, cukuplah doakan agar menjadi amal jariah bagi penulisnya. Itulah sebaik-baik balasan.</p>
   </div>
 </div>
@@ -192,6 +216,7 @@
 </script>
 </body>
 </html>
+
 
 
 
