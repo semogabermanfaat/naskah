@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Syahadat & Panduan Mualaf — Cahaya Islam</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,600&family=Amiri:ital,wght@0,400;0,700;1,400&family=Figtree:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+
+:root{
+  /* Dawn palette */
+  --dawn:      #fff8ef;
+  --morning:   #fff3e0;
+  --glow:      #fde8c0;
+  --horizon:   #f8d898;
+  --sun:       #e8a818;
+  --sun-d:     #c88408;
+  --sun-pale:  #fef5d8;
+  --sky:       #1a6090;
+  --sky-d:     #104870;
+  --sky-lt:    #2880b8;
+  --sky-pale:  #dceef8;
+  --forest:    #1a5038;
+  --forest-d:  #0e3828;
+  --forest-lt: #2a7050;
+  --forest-p:  #e0f0e8;
+  --rose:      #c84848;
+  --rose-pale: #fde8e8;
+  --ink:       #12100e;
+  --ink-mid:   #231e18;
+  --ink-soft:  #5a5040;
+  --b-sun:     rgba(232,168,24,.18);
+  --b-sky:     rgba(26,96,144,.15);
+  --b-forest:  rgba(26,80,56,.15);
+  --b-ink:     rgba(18,16,14,.1);
+}
+
+html{scroll-behavior:smooth;}
+body{background:var(--dawn);font-family:'Fraunces',Georgia,serif;color:var(--ink);overflow-x:hidden;}
+
+/* ══════════════════════════════
+   ANIMATED BACKGROUND
+══════════════════════════════ */
+body::before{
+  content:'';
+  position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 80% 40% at 50% -5%,rgba(232,168,24,.12) 0%,transparent 60%),
+    radial-gradient(ellipse 60% 30% at 80% 20%,rgba(26,96,144,.06) 0%,transparent 60%);
+}
+
+/* ══════════════════════════════
+   HERO — FIRST LIGHT
+══════════════════════════════ */
+.hero{
+  min-height:100vh;
+  position:relative;z-index:1;
+  background:linear-gradient(160deg,
+    #0e2030 0%,
+    #102840 20%,
+    #1a4860 40%,
+    #1e6080 60%,
+    #c88408 80%,
+    #e8a818 90%,
+    #f8d898 100%);
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;
+  padding:80px 24px 120px;
+  overflow:hidden;
+}
+
+/* Sunbeam rays */
+.hero-rays{
+  position:absolute;inset:0;
+  background:conic-gradient(
+    from 90deg at 50% 110%,
+    transparent 0deg, rgba(248,216,152,.08) 8deg, transparent 16deg,
+    transparent 28deg, rgba(248,216,152,.06) 36deg, transparent 44deg,
+    transparent 55deg, rgba(248,216,152,.07) 63deg, transparent 71deg,
+    transparent 82deg, rgba(248,216,152,.05) 90deg, transparent 98deg,
+    transparent 110deg, rgba(248,216,152,.06) 118deg, transparent 126deg,
+    transparent 360deg);
+  pointer-events:none;
+}
+
+/* Horizon glow */
+.hero-glow{
+  position:absolute;
+  bottom:0;left:0;right:0;
+  height:45%;
+  background:linear-gradient(0deg,
+    rgba(232,168,24,.4) 0%,
+    rgba(232,168,24,.2) 30%,
+    rgba(232,168,24,.05) 60%,
+    transparent 100%);
+  pointer-events:none;
+}
+
+/* Mosque skyline silhouette */
+.hero-skyline{
+  position:absolute;bottom:0;left:50%;
+  transform:translateX(-50%);
+  width:min(700px,100vw);
+  pointer-events:none;opacity:.18;
+}
+
+.hero-inner{position:relative;z-index:2;max-width:740px;}
+
+.hero-top{
+  font-family:'Figtree',sans-serif;font-weight:300;
+  font-size:clamp(.6rem,1.4vw,.75rem);
+  letter-spacing:8px;text-transform:uppercase;
+  color:rgba(248,216,152,.5);
+  margin-bottom:24px;
+  animation:dawnRise 2s ease both .2s;
+}
+
+.hero-shahada-ar{
+  font-family:'Amiri',serif;
+  font-size:clamp(1.8rem,5.5vw,4rem);
+  color:rgba(248,216,152,.95);
+  text-shadow:0 0 40px rgba(232,168,24,.5),0 0 80px rgba(232,168,24,.2);
+  line-height:1.8;margin-bottom:8px;
+  direction:rtl;
+  animation:dawnRise 2s ease both;
+}
+
+.hero-shahada-lat{
+  font-family:'Fraunces',serif;
+  font-style:italic;font-weight:300;
+  font-size:clamp(1rem,2.5vw,1.6rem);
+  color:rgba(248,216,152,.65);
+  margin-bottom:28px;letter-spacing:1px;
+  animation:dawnRise 2s ease both .15s;
+}
+
+.hero-ornament{
+  display:flex;align-items:center;justify-content:center;gap:14px;
+  margin:0 auto 28px;
+  animation:dawnRise 2s ease both .3s;
+}
+.hero-ornament span{width:80px;height:1px;background:linear-gradient(90deg,transparent,rgba(232,168,24,.4));}
+.hero-ornament span:last-child{background:linear-gradient(90deg,rgba(232,168,24,.4),transparent);}
+.hero-ornament em{color:rgba(248,216,152,.6);font-style:normal;letter-spacing:8px;}
+
+.hero-title{
+  font-family:'Fraunces',serif;font-weight:700;
+  font-size:clamp(2.5rem,7vw,5.5rem);
+  line-height:1.05;letter-spacing:-1px;
+  color:#fff;margin-bottom:8px;
+  animation:dawnRise 2s ease both .07s;
+}
+
+.hero-sub{
+  font-family:'Fraunces',serif;font-weight:300;font-style:italic;
+  font-size:clamp(1rem,2.5vw,1.6rem);
+  color:rgba(248,216,152,.6);
+  margin-bottom:28px;
+  animation:dawnRise 2s ease both .25s;
+}
+
+.hero-card{
+  max-width:560px;margin:0 auto;
+  padding:22px 32px;
+  background:rgba(14,32,48,.65);
+  border:1px solid rgba(232,168,24,.22);
+  backdrop-filter:blur(12px);
+  animation:dawnRise 2s ease both .48s;
+}
+.hc-ar{font-family:'Amiri',serif;font-size:clamp(1rem,2.5vw,1.38rem);color:rgba(248,216,152,.9);line-height:2.2;direction:rtl;margin-bottom:10px;}
+.hc-id{font-style:italic;font-size:.83rem;color:rgba(200,220,248,.55);line-height:1.7;}
+
+@keyframes dawnRise{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+
+/* ══════════════════════════════
+   BODY
+══════════════════════════════ */
+.body-wrap{max-width:860px;margin:0 auto;padding:0 16px 80px;position:relative;z-index:1;}
+
+/* ── Chapter Bars ── */
+.chap{
+  margin:52px 0 0;
+  display:flex;align-items:stretch;
+}
+.chap-stripe{width:5px;flex-shrink:0;}
+.cs-sun{background:var(--sun);}
+.cs-sky{background:var(--sky);}
+.cs-forest{background:var(--forest);}
+.cs-rose{background:var(--rose);}
+
+.chap-body{flex:1;padding:16px 20px;}
+.cb-sun{background:var(--sun-pale);border:1px solid var(--b-sun);border-left:none;}
+.cb-sky{background:var(--sky-pale);border:1px solid var(--b-sky);border-left:none;}
+.cb-forest{background:var(--forest-p);border:1px solid var(--b-forest);border-left:none;}
+.cb-rose{background:var(--rose-pale);border:1px solid rgba(200,72,72,.15);border-left:none;}
+
+.chap-tag{font-family:'Figtree',sans-serif;font-weight:700;font-size:.6rem;letter-spacing:4px;text-transform:uppercase;margin-bottom:6px;}
+.ct-sun{color:var(--sun-d);}
+.ct-sky{color:var(--sky-d);}
+.ct-forest{color:var(--forest-d);}
+.ct-rose{color:var(--rose);}
+
+.chap-ar{font-family:'Amiri',serif;font-size:clamp(1.1rem,2.8vw,1.6rem);line-height:1.8;margin-bottom:4px;}
+.car-sun{color:var(--sun-d);}
+.car-sky{color:var(--sky-d);}
+.car-forest{color:var(--forest-d);}
+.car-rose{color:var(--rose);}
+
+.chap-title{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(1.1rem,2.8vw,1.7rem);line-height:1.25;color:var(--ink);}
+
+/* ── Sections ── */
+.sec{padding:28px 0 22px;border-bottom:1px solid var(--b-ink);}
+.sec:last-child{border-bottom:none;}
+
+/* ── Prose ── */
+.prose p{font-size:clamp(.97rem,2.1vw,1.07rem);line-height:2.1;color:var(--ink-mid);margin-bottom:16px;text-align:justify;}
+.prose p.lead{font-style:italic;color:var(--sky-d);font-size:clamp(1rem,2.2vw,1.12rem);line-height:1.9;}
+.prose.sun-lead p.lead{color:var(--sun-d);}
+.prose.forest-lead p.lead{color:var(--forest-d);}
+.prose p:first-of-type:not(.lead)::first-letter{font-family:'Fraunces',serif;font-weight:700;font-size:3.8em;line-height:.72;float:left;margin:8px 10px 0 0;}
+.prose.fl-sky p:first-of-type:not(.lead)::first-letter{color:var(--sky);}
+.prose.fl-sun p:first-of-type:not(.lead)::first-letter{color:var(--sun);}
+.prose.fl-forest p:first-of-type:not(.lead)::first-letter{color:var(--forest);}
+
+/* ── DALIL ── */
+.dalil{margin:24px 0;display:grid;grid-template-columns:4px 1fr;}
+.dalil-sun{background:var(--sun-pale);border:1px solid var(--b-sun);}
+.dalil-sky{background:var(--sky-pale);border:1px solid var(--b-sky);}
+.dalil-forest{background:var(--forest-p);border:1px solid var(--b-forest);}
+.dalil-rose{background:var(--rose-pale);border:1px solid rgba(200,72,72,.15);}
+.dalil-dark{background:var(--ink);border:1px solid rgba(232,168,24,.18);}
+
+.dbar-sun{background:var(--sun);}
+.dbar-sky{background:var(--sky);}
+.dbar-forest{background:var(--forest);}
+.dbar-rose{background:var(--rose);}
+.dbar-dark{background:var(--sun);}
+
+.dbody{padding:18px 20px 14px;}
+.dtag{font-family:'Figtree',sans-serif;font-weight:700;font-size:.6rem;letter-spacing:4px;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:10px;}
+.dtag::after{content:'';flex:1;height:1px;}
+.dtag-sun{color:var(--sun-d);}
+.dtag-sun::after{background:linear-gradient(90deg,var(--b-sun),transparent);}
+.dtag-sky{color:var(--sky-d);}
+.dtag-sky::after{background:linear-gradient(90deg,var(--b-sky),transparent);}
+.dtag-forest{color:var(--forest-d);}
+.dtag-forest::after{background:linear-gradient(90deg,var(--b-forest),transparent);}
+.dtag-dark{color:var(--sun);}
+.dtag-dark::after{background:linear-gradient(90deg,rgba(232,168,24,.2),transparent);}
+
+.dar{font-family:'Amiri',serif;font-size:clamp(1.1rem,2.8vw,1.52rem);line-height:2.2;direction:rtl;text-align:right;margin-bottom:12px;padding-bottom:10px;}
+.dar-sun{color:var(--sun-d);border-bottom:1px dashed var(--b-sun);}
+.dar-sky{color:var(--sky-d);border-bottom:1px dashed var(--b-sky);}
+.dar-forest{color:var(--forest-d);border-bottom:1px dashed var(--b-forest);}
+.dar-dark{color:rgba(248,216,152,.9);border-bottom:1px dashed rgba(232,168,24,.18);}
+
+.dtrans{font-style:italic;font-size:.92rem;line-height:1.8;color:var(--ink-soft);margin-bottom:7px;}
+.dtrans-dark{color:rgba(220,210,190,.78);}
+.dref{font-family:'Figtree',sans-serif;font-weight:700;font-size:.62rem;letter-spacing:2px;text-transform:uppercase;}
+.dref-sun{color:var(--sun-d);}
+.dref-sky{color:var(--sky-d);}
+.dref-forest{color:var(--forest-d);}
+.dref-dark{color:var(--sun);}
+
+/* ══════════════════════════════
+   MAKNA BOX — for Syahadat breakdown
+══════════════════════════════ */
+.makna-item{
+  display:flex;gap:0;
+  margin-bottom:6px;
+  border:1px solid;overflow:hidden;
+  background:var(--dawn);
+}
+.mi-sun{border-color:var(--b-sun);}
+.mi-sky{border-color:var(--b-sky);}
+.mi-forest{border-color:var(--b-forest);}
+
+.makna-num{
+  flex-shrink:0;width:52px;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:flex-start;
+  padding:14px 0 0;
+  font-family:'Fraunces',serif;font-weight:700;font-size:1.4rem;
+}
+.mn-sun{color:var(--sun);background:var(--sun-pale);border-right:1px solid var(--b-sun);}
+.mn-sky{color:var(--sky);background:var(--sky-pale);border-right:1px solid var(--b-sky);}
+.mn-forest{color:var(--forest);background:var(--forest-p);border-right:1px solid var(--b-forest);}
+
+.makna-body{flex:1;padding:14px 16px;}
+.makna-title{font-family:'Fraunces',serif;font-weight:700;font-size:.97rem;margin-bottom:3px;color:var(--ink);}
+.makna-ar{font-family:'Amiri',serif;font-size:1.1rem;direction:rtl;text-align:right;margin-bottom:6px;line-height:1.9;color:rgba(18,16,14,.35);}
+.makna-trans{font-family:'Figtree',sans-serif;font-weight:600;font-size:.78rem;letter-spacing:1px;margin-bottom:6px;text-transform:uppercase;}
+.mt-sun{color:var(--sun-d);}
+.mt-sky{color:var(--sky-d);}
+.mt-forest{color:var(--forest-d);}
+.makna-desc{font-size:.86rem;line-height:1.75;font-style:italic;color:var(--ink-soft);}
+
+/* ══════════════════════════════
+   STEP CARDS — for guides
+══════════════════════════════ */
+.step-list{margin:18px 0;}
+.step-item{
+  display:flex;gap:0;margin-bottom:5px;
+  border:1px solid var(--b-sky);overflow:hidden;background:var(--dawn);
+}
+.step-item.si-sun{border-color:var(--b-sun);}
+.step-item.si-forest{border-color:var(--b-forest);}
+
+.step-num{
+  flex-shrink:0;width:48px;
+  display:flex;align-items:flex-start;justify-content:center;
+  font-family:'Fraunces',serif;font-weight:700;font-size:1.3rem;
+  padding:12px 0 0;
+}
+.sn-sun{color:var(--sun-d);background:var(--sun-pale);border-right:1px solid var(--b-sun);}
+.sn-sky{color:var(--sky-d);background:var(--sky-pale);border-right:1px solid var(--b-sky);}
+.sn-forest{color:var(--forest-d);background:var(--forest-p);border-right:1px solid var(--b-forest);}
+
+.step-body{flex:1;padding:12px 16px;}
+.step-title{font-family:'Fraunces',serif;font-weight:700;font-size:.97rem;margin-bottom:3px;color:var(--ink);}
+.step-ar{font-family:'Amiri',serif;font-size:.96rem;direction:rtl;text-align:right;margin-bottom:4px;line-height:1.85;color:rgba(18,16,14,.25);}
+.step-desc{font-size:.85rem;line-height:1.72;font-style:italic;color:var(--ink-soft);}
+.step-badge{
+  display:inline-block;margin-top:6px;
+  font-family:'Figtree',sans-serif;font-size:.58rem;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;padding:2px 8px;
+}
+.sb-sun{background:var(--sun-pale);color:var(--sun-d);border:1px solid var(--b-sun);}
+.sb-sky{background:var(--sky-pale);color:var(--sky-d);border:1px solid var(--b-sky);}
+.sb-forest{background:var(--forest-p);color:var(--forest-d);border:1px solid var(--b-forest);}
+.sb-gray{background:rgba(18,16,14,.06);color:var(--ink-soft);border:1px solid var(--b-ink);}
+
+/* ══════════════════════════════
+   HIGHLIGHT
+══════════════════════════════ */
+.hl{margin:20px 0;padding:18px 20px;}
+.hl-sun{background:var(--sun-pale);border:1px solid var(--b-sun);border-left:4px solid var(--sun);}
+.hl-sky{background:var(--sky-pale);border:1px solid var(--b-sky);border-left:4px solid var(--sky);}
+.hl-forest{background:var(--forest-p);border:1px solid var(--b-forest);border-left:4px solid var(--forest);}
+.hl-dark{background:var(--ink);padding:22px 24px;}
+
+.hl-label{font-family:'Figtree',sans-serif;font-weight:700;font-size:.6rem;letter-spacing:3px;text-transform:uppercase;margin-bottom:9px;}
+.hll-sun{color:var(--sun-d);}
+.hll-sky{color:var(--sky-d);}
+.hll-forest{color:var(--forest-d);}
+.hll-white{color:rgba(232,168,24,.6);}
+
+.hl-ar{font-family:'Amiri',serif;font-size:clamp(1.05rem,2.5vw,1.4rem);line-height:2;margin-bottom:8px;}
+.hlar-sun{color:var(--sun-d);}
+.hlar-sky{color:var(--sky-d);}
+.hlar-forest{color:var(--forest-d);}
+.hlar-white{color:rgba(248,216,152,.95);}
+
+.hl-trans{font-style:italic;font-size:.9rem;line-height:1.8;color:var(--ink-soft);margin-bottom:6px;}
+.hlt-white{color:rgba(220,210,190,.78);}
+
+.hl-ref{font-family:'Figtree',sans-serif;font-weight:700;font-size:.6rem;letter-spacing:2px;text-transform:uppercase;}
+.hlr-sun{color:var(--sun);}
+.hlr-sky{color:var(--sky);}
+.hlr-forest{color:var(--forest);}
+.hlr-white{color:rgba(232,168,24,.45);}
+
+/* ══════════════════════════════
+   FEAT GRID
+══════════════════════════════ */
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:6px;margin:20px 0;}
+.feat{padding:18px 16px;border:1px solid;border-top:3px solid;background:var(--dawn);}
+.feat-sun{border-color:var(--b-sun);border-top-color:var(--sun);}
+.feat-sky{border-color:var(--b-sky);border-top-color:var(--sky);}
+.feat-forest{border-color:var(--b-forest);border-top-color:var(--forest);}
+.feat-icon{font-size:1.7rem;margin-bottom:9px;display:block;}
+.feat-title{font-family:'Fraunces',serif;font-weight:700;font-size:.97rem;margin-bottom:4px;color:var(--ink);}
+.feat-desc{font-size:.83rem;line-height:1.68;font-style:italic;color:var(--ink-soft);}
+.feat-ref{font-family:'Figtree',sans-serif;font-weight:700;font-size:.58rem;letter-spacing:2px;text-transform:uppercase;margin-top:8px;display:block;color:var(--ink-soft);}
+
+/* ══════════════════════════════
+   RESPONSIVE TABLE
+══════════════════════════════ */
+.tbl-wrap{margin:20px 0;overflow:hidden;}
+.tbl{width:100%;border-collapse:collapse;font-size:.87rem;table-layout:fixed;}
+.tbl.th-sky thead tr{background:var(--sky-d);color:#fff;}
+.tbl.th-sun thead tr{background:var(--sun-d);color:#fff;}
+.tbl.th-forest thead tr{background:var(--forest-d);color:#fff;}
+.tbl thead th{padding:10px 12px;text-align:left;font-family:'Figtree',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;}
+.tbl tbody tr{border-bottom:1px solid var(--b-ink);}
+.tbl tbody tr:nth-child(even){background:rgba(26,96,144,.04);}
+.tbl tbody tr:nth-child(odd){background:var(--dawn);}
+.tbl td{padding:10px 12px;line-height:1.65;color:var(--ink-mid);vertical-align:top;word-break:break-word;}
+.tbl td:first-child{font-weight:600;color:var(--ink);}
+
+.tbdg{display:inline-block;padding:2px 8px;font-family:'Figtree',sans-serif;font-size:.57rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;white-space:nowrap;}
+.tbdg-sun{background:var(--sun-pale);color:var(--sun-d);border:1px solid var(--b-sun);}
+.tbdg-sky{background:var(--sky-pale);color:var(--sky-d);border:1px solid var(--b-sky);}
+.tbdg-forest{background:var(--forest-p);color:var(--forest-d);border:1px solid var(--b-forest);}
+.tbdg-gray{background:rgba(18,16,14,.06);color:var(--ink-soft);border:1px solid var(--b-ink);}
+
+@media(max-width:580px){
+  .tbl,.tbl thead,.tbl tbody,.tbl th,.tbl td,.tbl tr{display:block;width:100%;}
+  .tbl thead{display:none;}
+  .tbl tbody tr{background:var(--dawn)!important;border:1px solid var(--b-ink);margin-bottom:8px;padding:12px 14px 10px;}
+  .tbl td{padding:4px 0 4px;border:none;display:grid;grid-template-columns:88px 1fr;gap:6px;align-items:start;}
+  .tbl td::before{content:attr(data-label);font-family:'Figtree',sans-serif;font-size:.58rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding-top:2px;color:var(--sky-d);}
+  .tbl.th-sun td::before{color:var(--sun-d);}
+  .tbl.th-forest td::before{color:var(--forest-d);}
+  .tbl td:first-child{font-weight:700;font-size:.93rem;}
+}
+
+/* ══════════════════════════════
+   BANNER
+══════════════════════════════ */
+.banner{margin:26px 0;padding:24px 28px;text-align:center;}
+.banner-sun{background:var(--sun);color:var(--ink);}
+.banner-sky{background:var(--sky-d);color:#fff;}
+.banner-forest{background:var(--forest-d);color:#fff;}
+.banner-light{background:var(--glow);border:1px solid var(--b-sun);}
+
+.ban-ar{font-family:'Amiri',serif;font-size:clamp(1.1rem,2.8vw,1.5rem);line-height:2;margin-bottom:10px;}
+.bnar-dark{color:var(--ink);}
+.bnar-w{color:#fff;}
+.bnar-lt{color:rgba(248,216,152,.95);}
+.bnar-sun{color:var(--sun-d);}
+
+.ban-id{font-style:italic;font-size:.9rem;line-height:1.78;margin-bottom:6px;}
+.bnid-dark{color:rgba(18,16,14,.75);}
+.bnid-w{color:rgba(255,255,255,.85);}
+.bnid-lt{color:rgba(220,200,160,.78);}
+.bnid-sun{color:var(--ink-soft);}
+
+.ban-ref{font-family:'Figtree',sans-serif;font-weight:700;font-size:.6rem;letter-spacing:3px;text-transform:uppercase;margin-top:7px;}
+.bnref-dark{color:rgba(18,16,14,.45);}
+.bnref-w{color:rgba(255,255,255,.45);}
+.bnref-sun{color:rgba(18,16,14,.4);}
+
+/* ══════════════════════════════
+   SEPARATOR
+══════════════════════════════ */
+.sep{text-align:center;padding:14px 0;background:var(--glow);border-top:1px solid var(--b-sun);border-bottom:1px solid var(--b-sun);}
+.sep span{color:var(--sun-d);letter-spacing:12px;font-size:.7rem;opacity:.5;}
+
+/* ══════════════════════════════
+   CHECKLIST STYLE
+══════════════════════════════ */
+.checklist{margin:18px 0;}
+.chk-item{
+  display:flex;align-items:flex-start;gap:12px;
+  padding:12px 14px;
+  border:1px solid var(--b-ink);
+  margin-bottom:5px;
+  background:var(--dawn);
+}
+.chk-icon{
+  flex-shrink:0;width:28px;height:28px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.85rem;margin-top:2px;
+}
+.ci-sun{background:var(--sun-pale);color:var(--sun-d);border:1px solid var(--b-sun);}
+.ci-sky{background:var(--sky-pale);color:var(--sky-d);border:1px solid var(--b-sky);}
+.ci-forest{background:var(--forest-p);color:var(--forest-d);border:1px solid var(--b-forest);}
+
+.chk-body{}
+.chk-title{font-family:'Fraunces',serif;font-weight:700;font-size:.96rem;margin-bottom:2px;color:var(--ink);}
+.chk-desc{font-size:.84rem;line-height:1.7;color:var(--ink-soft);font-style:italic;}
+
+/* ══════════════════════════════
+   DOA BOX
+══════════════════════════════ */
+.doa-box{
+  background:var(--dawn);
+  border:1px solid var(--b-sky);
+  padding:20px 20px 16px;
+  margin:14px 0;
+}
+.doa-box.db-sun{border-color:var(--b-sun);}
+.doa-box.db-forest{border-color:var(--b-forest);}
+
+.doa-tag{font-family:'Figtree',sans-serif;font-weight:700;font-size:.6rem;letter-spacing:3px;text-transform:uppercase;margin-bottom:10px;}
+.dt-sky{color:var(--sky-d);}
+.dt-sun{color:var(--sun-d);}
+.dt-forest{color:var(--forest-d);}
+
+.doa-ar{font-family:'Amiri',serif;font-size:clamp(1.1rem,2.8vw,1.5rem);line-height:2.2;direction:rtl;text-align:right;margin-bottom:10px;padding-bottom:8px;border-bottom:1px dashed var(--b-sky);color:var(--ink);}
+.da-sun{border-bottom-color:var(--b-sun);color:var(--sun-d);}
+.da-forest{border-bottom-color:var(--b-forest);color:var(--forest-d);}
+
+.doa-latin{font-family:'Figtree',sans-serif;font-size:clamp(.78rem,1.7vw,.86rem);line-height:1.85;margin-bottom:6px;font-style:italic;color:var(--sky-d);}
+.dl-sun{color:var(--sun-d);}
+.dl-forest{color:var(--forest-d);}
+
+.doa-trans{font-size:.88rem;line-height:1.8;font-style:italic;color:var(--ink-soft);margin-bottom:6px;}
+.doa-ref{font-family:'Figtree',sans-serif;font-weight:700;font-size:.58rem;letter-spacing:2px;text-transform:uppercase;color:var(--sky-d);}
+.dr-sun{color:var(--sun-d);}
+.dr-forest{color:var(--forest-d);}
+
+/* ══════════════════════════════
+   PENUTUP
+══════════════════════════════ */
+.penutup{
+  background:linear-gradient(160deg,var(--sky-d) 0%,var(--forest-d) 50%,var(--ink) 100%);
+  padding:72px 24px 80px;text-align:center;
+  position:relative;overflow:hidden;margin-top:56px;z-index:1;
+}
+.penutup::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(232,168,24,.15) 0%,transparent 70%);
+  pointer-events:none;
+}
+.penutup::after{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--forest-d),var(--sky-d),var(--sun),var(--sky-d),var(--forest-d));}
+.penutup-inner{max-width:560px;margin:0 auto;position:relative;z-index:1;}
+.penutup-ar{font-family:'Amiri',serif;font-size:clamp(1.5rem,4vw,2.6rem);color:rgba(248,216,152,.95);line-height:2;text-shadow:0 0 20px rgba(232,168,24,.3);margin-bottom:14px;}
+.penutup-div{width:80px;height:1px;background:linear-gradient(90deg,transparent,var(--sun),transparent);margin:18px auto;}
+.penutup-p{font-style:italic;font-size:clamp(.9rem,2vw,1.05rem);color:rgba(200,220,255,.75);line-height:1.92;margin-bottom:12px;}
+.penutup-ref{font-family:'Figtree',sans-serif;font-weight:700;font-size:.6rem;letter-spacing:3px;text-transform:uppercase;color:rgba(232,168,24,.4);}
+.penutup-footer{margin-top:40px;padding-top:22px;border-top:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+.penutup-footer .logo{font-family:'Amiri',serif;font-size:1.1rem;color:rgba(232,168,24,.35);}
+.penutup-footer .tag{font-family:'Figtree',sans-serif;font-weight:700;font-size:.55rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.15);}
+
+@media(max-width:600px){
+  .body-wrap{padding:0 14px 60px;}
+  .hero{padding:56px 20px 80px;}
+  .chap-body{padding:12px 16px;}
+  .hl,.banner{padding:16px 16px;}
+  .penutup{padding:48px 18px 56px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════ HERO ══════ -->
+<section class="hero">
+  <div class="hero-rays"></div>
+  <div class="hero-glow"></div>
+
+  <!-- Masjid silhouette -->
+  <div class="hero-skyline">
+    <svg viewBox="0 0 700 140" xmlns="http://www.w3.org/2000/svg" fill="rgba(248,216,152,1)">
+      <rect x="0" y="80" width="700" height="60"/>
+      <ellipse cx="350" cy="80" rx="65" ry="50"/>
+      <ellipse cx="200" cy="88" rx="38" ry="30"/>
+      <ellipse cx="500" cy="88" rx="38" ry="30"/>
+      <rect x="100" y="30" width="20" height="60" rx="3"/>
+      <rect x="580" y="30" width="20" height="60" rx="3"/>
+      <rect x="240" y="45" width="16" height="52" rx="2"/>
+      <rect x="444" y="45" width="16" height="52" rx="2"/>
+      <polygon points="110,30 120,10 130,30"/>
+      <polygon points="590,30 600,10 610,30"/>
+      <polygon points="248,45 252,28 256,45"/>
+      <polygon points="452,45 456,28 460,45"/>
+      <circle cx="120" cy="8" r="5" opacity=".8"/>
+      <circle cx="600" cy="8" r="5" opacity=".8"/>
+    </svg>
+  </div>
+
+  <div class="hero-inner">
+    <div class="hero-top">Cahaya Islam · Panduan untuk Saudara Baru · Berdalil Al-Qur'an &amp; Hadis</div>
+    <div class="hero-shahada-ar">لَا إِلَٰهَ إِلَّا اللَّهُ مُحَمَّدٌ رَسُولُ اللَّهِ</div>
+    <div class="hero-shahada-lat">Lā ilāha illallāh, Muḥammadur rasūlullāh</div>
+    <div class="hero-ornament">
+      <span></span><em>☀ ✦ ☀</em><span></span>
+    </div>
+    <h1 class="hero-title">Syahadat &amp;<br>Panduan Mualaf</h1>
+    <div class="hero-sub">Dua Kalimat yang Membuka Pintu Surga</div>
+    <div class="hero-card">
+      <div class="hc-ar">قُلْ هَٰذِهِ سَبِيلِي أَدْعُو إِلَى اللَّهِ ۚ عَلَىٰ بَصِيرَةٍ أَنَا وَمَنِ اتَّبَعَنِي</div>
+      <div class="hc-id">"Katakanlah (Muhammad): Inilah jalanku, aku dan orang-orang yang mengikutiku mengajak (kalian) kepada Allah dengan bukti yang nyata."<br><em style="color:rgba(232,168,24,.45)">— QS. Yusuf: 108</em></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ BODY ══════ -->
+<div class="body-wrap">
+
+<!-- ══ PROLOG ══ -->
+<div class="chap">
+  <div class="chap-stripe cs-sun"></div>
+  <div class="chap-body cb-sun">
+    <div class="chap-tag ct-sun">✦ Pembuka</div>
+    <div class="chap-ar car-sun">مَرْحَبًا بِكَ فِي الإِسْلَامِ</div>
+    <div class="chap-title">Selamat Datang dalam Cahaya Islam</div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="prose fl-sun sun-lead">
+    <p class="lead">Jika kamu baru saja mengucapkan syahadat — atau sedang mempertimbangkannya — ketahuilah bahwa saat ini kamu berdiri di ambang pintu kehidupan yang baru. Bukan kehidupan yang lebih berat, bukan kehidupan yang lebih rumit — melainkan kehidupan yang memiliki makna, arah, dan cahaya yang tidak pernah kamu bayangkan sebelumnya.</p>
+    <p>Islam bukan agama yang jatuh dari langit untuk mempersulit. Ia adalah <em>dīn al-fiṭrah</em> — agama yang selaras dengan fitrah (kesucian asal) setiap manusia. Setiap bayi lahir dalam keadaan fitrah. Islam adalah jalan kembali kepada fitrah itu — jalan yang paling alami, paling masuk akal, dan paling memuaskan jiwa.</p>
+    <p>Panduan ini disusun dengan penuh kasih untuk para saudara baru (mualaf) dan siapapun yang ingin memperbarui pemahamannya tentang fondasi Islam: syahadat, rukun Islam, rukun iman, dan langkah-langkah awal dalam perjalanan yang paling indah ini.</p>
+  </div>
+
+  <div class="hl hl-sun">
+    <div class="hl-label hll-sun">✦ Kabar Gembira untuk Mualaf</div>
+    <div class="hl-ar hlar-sun">الإِسْلَامُ يَجُبُّ مَا كَانَ قَبْلَهُ</div>
+    <div class="hl-trans">Nabi ﷺ bersabda: "Islam menghapus semua dosa yang dilakukan sebelumnya." — Begitu seseorang masuk Islam dengan tulus, seluruh dosa masa lalunya diampuni Allah — bersih seperti bayi baru lahir. Tidak ada beban dari masa lalu. Lembaran baru dimulai dari nol.</div>
+    <div class="hl-ref hlr-sun">HR. Muslim (121) — dari Amr bin Al-'Ash radhiyallahu 'anhu</div>
+  </div>
+</div>
+
+<!-- ══ BAB I: SYAHADAT ══ -->
+<div class="chap">
+  <div class="chap-stripe cs-sun"></div>
+  <div class="chap-body cb-sun">
+    <div class="chap-tag ct-sun">✦ Bab Pertama</div>
+    <div class="chap-ar car-sun">الشَّهَادَتَانِ — مِفْتَاحُ الإِسْلَامِ</div>
+    <div class="chap-title">Dua Kalimat Syahadat — Kunci Masuk Islam</div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="prose fl-sun">
+    <p class="lead">Dua kalimat syahadat adalah kunci yang membuka pintu Islam. Mengucapkannya dengan tulus — memahami maknanya, meyakini isinya, dan menerima konsekuensinya — adalah satu tindakan paling transformatif yang bisa dilakukan seorang manusia.</p>
+  </div>
+
+  <!-- Teks Syahadat -->
+  <div style="background:var(--ink);padding:28px 24px;text-align:center;margin:20px 0;">
+    <div style="font-family:'Figtree',sans-serif;font-weight:600;font-size:.6rem;letter-spacing:5px;text-transform:uppercase;color:rgba(232,168,24,.5);margin-bottom:14px;">كَلِمَتَا الشَّهَادَةِ — DUA KALIMAT SYAHADAT</div>
+    <div style="font-family:'Amiri',serif;font-size:clamp(1.5rem,4.5vw,3rem);color:rgba(248,216,152,.95);line-height:2;direction:rtl;margin-bottom:12px;text-shadow:0 0 20px rgba(232,168,24,.3);">
+      أَشْهَدُ أَنْ لَا إِلَٰهَ إِلَّا اللَّهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ اللَّهِ
+    </div>
+    <div style="font-family:'Fraunces',serif;font-style:italic;font-size:clamp(.9rem,2.2vw,1.2rem);color:rgba(200,220,255,.7);line-height:1.8;margin-bottom:12px;">
+      Asyhadu allā ilāha illallāh, wa asyhadu anna Muḥammadan rasūlullāh
+    </div>
+    <div style="font-style:italic;font-size:clamp(.85rem,2vw,1rem);color:rgba(200,200,200,.6);line-height:1.8;">
+      "Aku bersaksi bahwa tidak ada sesembahan yang benar selain Allah,<br>dan aku bersaksi bahwa Muhammad adalah utusan Allah."
+    </div>
+  </div>
+
+  <!-- Makna Syahadat Pertama -->
+  <p style="font-family:'Figtree',sans-serif;font-weight:700;font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--sun-d);margin:24px 0 12px;">Makna Syahadat Pertama — لَا إِلَٰهَ إِلَّا اللَّهُ</p>
+
+  <div class="makna-item mi-sun">
+    <div class="makna-num mn-sun">١</div>
+    <div class="makna-body">
+      <div class="makna-title">Lā ilāha — Penolakan Semua Sesembahan Selain Allah</div>
+      <div class="makna-ar">لَا إِلَٰهَ</div>
+      <div class="makna-trans mt-sun">"Tidak ada sesembahan yang benar..."</div>
+      <div class="makna-desc">Bagian ini menolak — secara total dan tanpa kompromi — semua bentuk sesembahan yang salah: berhala, manusia, bintang, hawa nafsu, harta, jabatan, atau apapun yang dijadikan tujuan hidup selain Allah. Ini adalah deklarasi pembebasan dari segala perbudakan selain kepada Allah.</div>
+    </div>
+  </div>
+
+  <div class="makna-item mi-sun">
+    <div class="makna-num mn-sun">٢</div>
+    <div class="makna-body">
+      <div class="makna-title">Illallāh — Penetapan Allah Satu-satunya yang Berhak Disembah</div>
+      <div class="makna-ar">إِلَّا اللَّهُ</div>
+      <div class="makna-trans mt-sun">"...kecuali Allah."</div>
+      <div class="makna-desc">Setelah menolak semua sesembahan yang batil, bagian ini menetapkan: hanya Allah — satu-satunya, tanpa sekutu, tanpa tandingan — yang berhak mendapat ketundukan, cinta, harapan, dan ketakutan yang sempurna. Ini adalah poros seluruh kehidupan seorang Muslim.</div>
+    </div>
+  </div>
+
+  <!-- Makna Syahadat Kedua -->
+  <p style="font-family:'Figtree',sans-serif;font-weight:700;font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--sun-d);margin:20px 0 12px;">Makna Syahadat Kedua — مُحَمَّدٌ رَسُولُ اللَّهِ</p>
+
+  <div class="makna-item mi-sun">
+    <div class="makna-num mn-sun">٣</div>
+    <div class="makna-body">
+      <div class="makna-title">Muhammad Rasulullah — Menerima Kenabian Muhammad ﷺ</div>
+      <div class="makna-ar">مُحَمَّدٌ رَسُولُ اللَّهِ</div>
+      <div class="makna-trans mt-sun">"Muhammad adalah utusan Allah."</div>
+      <div class="makna-desc">Ini berarti: menerima bahwa Muhammad ﷺ adalah nabi dan rasul terakhir yang membawa risalah Islam; bahwa Al-Qur'an yang beliau bawa adalah firman Allah yang terjaga; bahwa cara hidup beliau (sunnah) adalah contoh terbaik yang harus diikuti; dan bahwa tidak ada nabi setelah beliau.</div>
+    </div>
+  </div>
+
+  <!-- 7 syarat syahadat -->
+  <p style="font-family:'Figtree',sans-serif;font-weight:700;font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--sun-d);margin:20px 0 12px;">7 Syarat Syahadat agar Sah &amp; Diterima Allah</p>
+
+  <div class="step-list">
+    <div class="step-item si-sun">
+      <div class="step-num sn-sun">١</div>
+      <div class="step-body">
+        <div class="step-title">Al-'Ilm — Pengetahuan dan Pemahaman</div>
+        <div class="step-desc">Mengetahui makna syahadat: apa yang dinafikan (lā ilāha) dan apa yang ditetapkan (illallāh). Tidak cukup hanya mengucapkan tanpa paham artinya.</div>
+        <span class="step-badge sb-sun">Syarat 1</span>
+      </div>
+    </div>
+    <div class="step-item si-sun">
+      <div class="step-num sn-sun">٢</div>
+      <div class="step-body">
+        <div class="step-title">Al-Yaqīn — Keyakinan yang Pasti (Tanpa Keraguan)</div>
+        <div class="step-desc">Meyakini isinya dengan keyakinan yang mantap — tidak ada keraguan sedikitpun. Syahadat yang diucapkan dengan keraguan tidak diterima.</div>
+        <span class="step-badge sb-sun">Syarat 2</span>
+      </div>
+    </div>
+    <div class="step-item si-sun">
+      <div class="step-num sn-sun">٣</div>
+      <div class="step-body">
+        <div class="step-title">Al-Qabūl — Penerimaan dengan Hati dan Lisan</div>
+        <div class="step-desc">Menerima seluruh konsekuensi syahadat — ibadah kepada Allah, mengikuti Nabi ﷺ — bukan menolak atau keberatan terhadap ajaran Islam.</div>
+        <span class="step-badge sb-sun">Syarat 3</span>
+      </div>
+    </div>
+    <div class="step-item si-sun">
+      <div class="step-num sn-sun">٤</div>
+      <div class="step-body">
+        <div class="step-title">Al-Inqiyād — Ketundukan dan Kepatuhan</div>
+        <div class="step-desc">Tunduk dan patuh secara lahir dan batin kepada apa yang dituntut syahadat — mengerjakan perintah Allah dan meninggalkan larangan-Nya semampunya.</div>
+        <span class="step-badge sb-sun">Syarat 4</span>
+      </div>
+    </div>
+    <div class="step-item si-sun">
+      <div class="step-num sn-sun">٥</div>
+      <div class="step-body">
+        <div class="step-title">Ash-Shidq — Kejujuran (Tidak Munafik)</div>
+        <div class="step-desc">Apa yang diucapkan lisan harus sesuai dengan apa yang ada di hati. Syahadat yang diucapkan mulut namun diingkari hati adalah kemunafikan.</div>
+        <span class="step-badge sb-sun">Syarat 5</span>
+      </div>
+    </div>
+    <div class="step-item si-sun">
+      <div class="step-num sn-sun">٦</div>
+      <div class="step-body">
+        <div class="step-title">Al-Ikhlāsh — Ketulusan Niat Karena Allah</div>
+        <div class="step-desc">Mengucapkan syahadat murni karena Allah — bukan karena terpaksa, bukan karena ingin menikahi orang Muslim, bukan karena kepentingan duniawi semata.</div>
+        <span class="step-badge sb-sun">Syarat 6</span>
+      </div>
+    </div>
+    <div class="step-item si-sun">
+      <div class="step-num sn-sun">٧</div>
+      <div class="step-body">
+        <div class="step-title">Al-Maḥabbah — Mencintai Kalimat Ini dan Konsekuensinya</div>
+        <div class="step-desc">Mencintai makna syahadat, mencintai apa yang dituntutnya, dan mencintai orang-orang yang mengamalkannya. Bukan sekadar menjalani secara terpaksa.</div>
+        <span class="step-badge sb-sun">Syarat 7</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="dalil dalil-sun">
+    <div class="dbar-sun"></div>
+    <div class="dbody">
+      <div class="dtag dtag-sun">📜 HR. Bukhari &amp; Muslim — Syahadat Kunci Surga</div>
+      <div class="dar dar-sun">مَنْ مَاتَ وَهُوَ يَعْلَمُ أَنَّهُ لَا إِلَهَ إِلَّا اللَّهُ دَخَلَ الْجَنَّةَ</div>
+      <div class="dtrans">"Barangsiapa yang meninggal dalam keadaan mengetahui (meyakini) bahwa tidak ada sesembahan yang benar selain Allah, ia masuk surga."</div>
+      <div class="dref dref-sun">HR. Muslim (26) — dari Utsman bin Affan radhiyallahu 'anhu</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ BAB II: RUKUN ISLAM ══ -->
+<div class="chap">
+  <div class="chap-stripe cs-sky"></div>
+  <div class="chap-body cb-sky">
+    <div class="chap-tag ct-sky">✦ Bab Kedua</div>
+    <div class="chap-ar car-sky">أَرْكَانُ الإِسْلَامِ الْخَمْسَةُ</div>
+    <div class="chap-title">Lima Rukun Islam — Pilar Kehidupan Muslim</div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="prose fl-sky">
+    <p class="lead">Islam berdiri di atas lima pilar yang saling menopang. Nabi ﷺ menggambarkan Islam seperti sebuah bangunan — lima pilar ini adalah tiang-tiangnya. Tanpa satu pilar pun, bangunan itu tidak sempurna.</p>
+  </div>
+
+  <div class="dalil dalil-sky">
+    <div class="dbar-sky"></div>
+    <div class="dbody">
+      <div class="dtag dtag-sky">📜 HR. Bukhari &amp; Muslim — Hadis Lima Rukun Islam</div>
+      <div class="dar dar-sky">بُنِيَ الإِسْلَامُ عَلَى خَمْسٍ شَهَادَةِ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَأَنَّ مُحَمَّدًا رَسُولُ اللَّهِ وَإِقَامِ الصَّلَاةِ وَإِيتَاءِ الزَّكَاةِ وَالْحَجِّ وَصَوْمِ رَمَضَانَ</div>
+      <div class="dtrans">"Islam dibangun di atas lima (pilar): bersaksi bahwa tidak ada sesembahan yang benar selain Allah dan bahwa Muhammad adalah utusan Allah, mendirikan shalat, menunaikan zakat, haji, dan puasa Ramadhan."</div>
+      <div class="dref dref-sky">HR. Bukhari (8) &amp; Muslim (16) — dari Ibnu Umar radhiyallahu 'anhu</div>
+    </div>
+  </div>
+
+  <div class="tbl-wrap">
+    <table class="tbl th-sky">
+      <thead>
+        <tr>
+          <th style="width:5%">No</th>
+          <th style="width:22%">Rukun</th>
+          <th style="width:18%">Kewajiban</th>
+          <th style="width:55%">Penjelasan Singkat untuk Mualaf</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="No">١</td>
+          <td data-label="Rukun"><strong>Syahadat</strong><br><em style="font-size:.78rem;">Dua Kalimat Persaksian</em></td>
+          <td data-label="Kewajiban"><span class="tbdg tbdg-sky">Sekali Seumur Hidup</span></td>
+          <td data-label="Penjelasan">Mengucapkan dua kalimat syahadat dengan penuh kesadaran dan keyakinan. Ini adalah gerbang masuk Islam. Dianjurkan diucapkan ulang setiap saat untuk memperbarui iman.</td>
+        </tr>
+        <tr>
+          <td data-label="No">٢</td>
+          <td data-label="Rukun"><strong>Shalat</strong><br><em style="font-size:.78rem;">5 Waktu Sehari</em></td>
+          <td data-label="Kewajiban"><span class="tbdg tbdg-sky">Setiap Hari</span></td>
+          <td data-label="Penjelasan">Shalat 5 waktu (Subuh, Zhuhur, Ashar, Maghrib, Isya) adalah kewajiban harian yang tidak boleh ditinggalkan. Ini adalah percakapan langsung antara hamba dan Allah. Pelajari tata caranya secepat mungkin.</td>
+        </tr>
+        <tr>
+          <td data-label="No">٣</td>
+          <td data-label="Rukun"><strong>Puasa Ramadhan</strong><br><em style="font-size:.78rem;">Sebulan Penuh</em></td>
+          <td data-label="Kewajiban"><span class="tbdg tbdg-sky">Setahun Sekali</span></td>
+          <td data-label="Penjelasan">Menahan makan, minum, dan hal-hal yang membatalkan puasa dari fajar hingga maghrib selama bulan Ramadhan. Melatih kesabaran, kepedulian, dan kedekatan dengan Allah.</td>
+        </tr>
+        <tr>
+          <td data-label="No">٤</td>
+          <td data-label="Rukun"><strong>Zakat</strong><br><em style="font-size:.78rem;">Jika Memenuhi Nisab</em></td>
+          <td data-label="Kewajiban"><span class="tbdg tbdg-gray">Jika Mampu</span></td>
+          <td data-label="Penjelasan">Mengeluarkan 2,5% dari harta yang mencapai nisab (batas minimum) setelah disimpan satu tahun. Hak orang miskin dalam harta orang kaya. Mensucikan harta.</td>
+        </tr>
+        <tr>
+          <td data-label="No">٥</td>
+          <td data-label="Rukun"><strong>Haji</strong><br><em style="font-size:.78rem;">ke Makkah</em></td>
+          <td data-label="Kewajiban"><span class="tbdg tbdg-gray">Sekali (Jika Mampu)</span></td>
+          <td data-label="Penjelasan">Perjalanan ibadah ke Makkah yang wajib sekali seumur hidup bagi yang mampu secara fisik dan finansial. Ini adalah puncak dari seluruh ekspresi keimanan.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══ BAB III: RUKUN IMAN ══ -->
+<div class="chap">
+  <div class="chap-stripe cs-sky"></div>
+  <div class="chap-body cb-sky">
+    <div class="chap-tag ct-sky">✦ Bab Ketiga</div>
+    <div class="chap-ar car-sky">أَرْكَانُ الإِيمَانِ السِّتَّةُ</div>
+    <div class="chap-title">Enam Rukun Iman — Fondasi Keyakinan Muslim</div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="prose fl-sky">
+    <p>Iman dalam Islam bukan sekadar kepercayaan abstrak — ia adalah keyakinan yang hidup, yang memiliki objek-objek spesifik yang harus diyakini. Enam rukun iman ini adalah isi dari apa yang harus diyakini setiap Muslim.</p>
+  </div>
+
+  <div class="dalil dalil-sky">
+    <div class="dbar-sky"></div>
+    <div class="dbody">
+      <div class="dtag dtag-sky">📜 HR. Muslim — Hadis Jibril tentang Iman</div>
+      <div class="dar dar-sky">أَنْ تُؤْمِنَ بِاللَّهِ وَمَلَائِكَتِهِ وَكُتُبِهِ وَرُسُلِهِ وَالْيَوْمِ الْآخِرِ وَتُؤْمِنَ بِالْقَدَرِ خَيْرِهِ وَشَرِّهِ</div>
+      <div class="dtrans">"(Iman adalah) engkau beriman kepada Allah, malaikat-malaikat-Nya, kitab-kitab-Nya, rasul-rasul-Nya, Hari Akhir, dan engkau beriman kepada qadar — yang baik maupun yang buruk."</div>
+      <div class="dref dref-sky">HR. Muslim (8) — dari Umar bin Khattab radhiyallahu 'anhu · Hadis Jibril</div>
+    </div>
+  </div>
+
+  <div class="feat-grid">
+    <div class="feat feat-sky">
+      <span class="feat-icon">🕌</span>
+      <div class="feat-title">1. Iman kepada Allah</div>
+      <div class="feat-desc">Meyakini keberadaan Allah, keesaan-Nya, sifat-sifat-Nya yang sempurna, dan bahwa Dia-lah satu-satunya yang berhak disembah. Ini adalah fondasi dari seluruh keimanan.</div>
+      <span class="feat-ref">QS. Al-Ikhlas (112): 1–4</span>
+    </div>
+    <div class="feat feat-sky">
+      <span class="feat-icon">👼</span>
+      <div class="feat-title">2. Iman kepada Malaikat</div>
+      <div class="feat-desc">Meyakini keberadaan malaikat sebagai makhluk Allah dari cahaya yang tidak bisa dilihat, tidak pernah bermaksiat, dan selalu melaksanakan perintah Allah.</div>
+      <span class="feat-ref">QS. Al-Baqarah: 285</span>
+    </div>
+    <div class="feat feat-sky">
+      <span class="feat-icon">📖</span>
+      <div class="feat-title">3. Iman kepada Kitab-Kitab</div>
+      <div class="feat-desc">Meyakini Al-Qur'an sebagai firman Allah yang terjaga, dan meyakini bahwa sebelumnya Allah juga menurunkan Taurat, Zabur, dan Injil kepada para nabi.</div>
+      <span class="feat-ref">QS. Al-Baqarah: 285</span>
+    </div>
+    <div class="feat feat-sky">
+      <span class="feat-icon">🕊️</span>
+      <div class="feat-title">4. Iman kepada Para Rasul</div>
+      <div class="feat-desc">Meyakini semua nabi dan rasul yang diutus Allah — dari Adam hingga Muhammad ﷺ sebagai nabi terakhir. Tidak membeda-bedakan satu pun dari mereka.</div>
+      <span class="feat-ref">QS. Al-Baqarah: 285</span>
+    </div>
+    <div class="feat feat-sky">
+      <span class="feat-icon">⚖️</span>
+      <div class="feat-title">5. Iman kepada Hari Akhir</div>
+      <div class="feat-desc">Meyakini kematian, alam kubur, kebangkitan, hari perhitungan, shirāth, surga, dan neraka. Hari Akhir adalah motivasi terbesar untuk beramal baik.</div>
+      <span class="feat-ref">QS. Az-Zilzal: 7–8</span>
+    </div>
+    <div class="feat feat-sky">
+      <span class="feat-icon">✨</span>
+      <div class="feat-title">6. Iman kepada Qadar</div>
+      <div class="feat-desc">Meyakini bahwa Allah mengetahui, menuliskan, menghendaki, dan menciptakan segala sesuatu yang terjadi — sambil tetap berikhtiar dan berdoa karena usaha juga bagian dari qadar.</div>
+      <span class="feat-ref">QS. Al-Qamar: 49 · HR. Muslim (2653)</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══ BAB IV: PANDUAN PRAKTIS MUALAF ══ -->
+<div class="sep"><span>☀ ☀ ☀</span></div>
+
+<div class="chap">
+  <div class="chap-stripe cs-forest"></div>
+  <div class="chap-body cb-forest">
+    <div class="chap-tag ct-forest">✦ Bab Keempat</div>
+    <div class="chap-ar car-forest">دَلِيلٌ عَمَلِيٌّ لِلْمُسْلِمِ الْجَدِيدِ</div>
+    <div class="chap-title">Panduan Praktis untuk Muslim Baru — Langkah demi Langkah</div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="prose fl-forest forest-lead">
+    <p class="lead">Memasuki Islam adalah awal dari perjalanan, bukan akhirnya. Tidak perlu langsung sempurna. Tidak perlu langsung tahu segalanya. Yang penting adalah melangkah dengan arah yang benar, satu langkah demi satu langkah.</p>
+    <p>Nabi ﷺ bersabda: "Agama itu mudah." Allah sendiri berfirman: "Allah tidak membebani seseorang melebihi kesanggupannya." Islam mengenal prinsip <em>tadarruj</em> — bertahap, tidak sekaligus. Berikut adalah langkah-langkah praktis yang disarankan.</p>
+  </div>
+
+  <p style="font-family:'Figtree',sans-serif;font-weight:700;font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--forest-d);margin:0 0 12px;">Langkah-Langkah Pertama</p>
+
+  <div class="step-list">
+    <div class="step-item si-forest">
+      <div class="step-num sn-forest">1</div>
+      <div class="step-body">
+        <div class="step-title">Ucapkan Syahadat dengan Saksi</div>
+        <div class="step-desc">Idealnya diucapkan di hadapan dua orang saksi Muslim (atau di depan ustadz/pengurus masjid). Ini secara resmi menandai masuknya seseorang ke dalam Islam. Mendapat sertifikat mualaf dari masjid atau MUI juga disarankan.</div>
+        <span class="step-badge sb-forest">Prioritas Utama</span>
+      </div>
+    </div>
+    <div class="step-item si-forest">
+      <div class="step-num sn-forest">2</div>
+      <div class="step-body">
+        <div class="step-title">Mandi Wajib (Ghusl) — Bersuci dari Masa Lalu</div>
+        <div class="step-desc">Disunnahkan mandi wajib setelah mengucapkan syahadat. Ini adalah simbolisme pemurnian dan awal yang baru. Cara: niatkan mandi ghusl, basuh seluruh tubuh dengan air bersih dari ujung rambut hingga ujung kaki.</div>
+        <span class="step-badge sb-forest">Sunnah Sangat Dianjurkan</span>
+      </div>
+    </div>
+    <div class="step-item si-forest">
+      <div class="step-num sn-forest">3</div>
+      <div class="step-body">
+        <div class="step-title">Pelajari Tata Cara Wudhu &amp; Shalat</div>
+        <div class="step-desc">Ini adalah prioritas utama setelah syahadat. Shalat adalah kewajiban harian yang segera. Cari bimbingan ustadz atau bergabung dengan kelas mualaf di masjid terdekat. Tidak apa-apa belajar perlahan — Allah Maha Mengetahui niat baik.</div>
+        <span class="step-badge sb-forest">Wajib dipelajari segera</span>
+      </div>
+    </div>
+    <div class="step-item si-forest">
+      <div class="step-num sn-forest">4</div>
+      <div class="step-body">
+        <div class="step-title">Pelajari Al-Fatihah dan Bacaan Shalat Dasar</div>
+        <div class="step-desc">Hafal Surah Al-Fatihah sebagai prioritas pertama (wajib dalam shalat). Kemudian pelajari beberapa surah pendek (Al-Ikhlas, Al-Falaq, An-Nas, Al-Kafirun). Sambil belajar, boleh membaca dari kertas dulu — tidak apa-apa.</div>
+        <span class="step-badge sb-forest">Prioritas Kedua</span>
+      </div>
+    </div>
+    <div class="step-item si-forest">
+      <div class="step-num sn-forest">5</div>
+      <div class="step-body">
+        <div class="step-title">Bergabung dengan Komunitas Muslim</div>
+        <div class="step-desc">Carilah masjid, komunitas mualaf, atau teman Muslim yang bisa membimbing. Perjalanan ini jauh lebih mudah dengan dukungan sesama. Banyak masjid memiliki program khusus untuk saudara baru.</div>
+        <span class="step-badge sb-forest">Sangat Penting</span>
+      </div>
+    </div>
+    <div class="step-item si-forest">
+      <div class="step-num sn-forest">6</div>
+      <div class="step-body">
+        <div class="step-title">Belajar Membaca Al-Qur'an (Iqra/Tahsin)</div>
+        <div class="step-desc">Belajar membaca Al-Qur'an dengan tajwid yang benar. Mulai dari Iqra' untuk yang belum bisa sama sekali. Ini adalah ilmu seumur hidup yang membuka pintu seluruh keilmuan Islam.</div>
+        <span class="step-badge sb-forest">Jangka Panjang</span>
+      </div>
+    </div>
+    <div class="step-item si-forest">
+      <div class="step-num sn-forest">7</div>
+      <div class="step-body">
+        <div class="step-title">Pelajari Hal-Hal yang Halal dan Haram Secara Bertahap</div>
+        <div class="step-desc">Pelajari perlahan apa yang dihalalkan dan diharamkan Islam. Tidak perlu khawatir — prinsip Islam adalah kemudahan, dan ada banyak rukhshah (keringanan) untuk mualaf yang masih dalam proses belajar.</div>
+        <span class="step-badge sb-gray">Bertahap</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="dalil dalil-forest">
+    <div class="dbar-forest"></div>
+    <div class="dbody">
+      <div class="dtag dtag-forest">📜 HR. Bukhari — Agama Islam itu Mudah</div>
+      <div class="dar dar-forest">إِنَّ الدِّينَ يُسْرٌ وَلَنْ يُشَادَّ الدِّينَ أَحَدٌ إِلَّا غَلَبَهُ فَسَدِّدُوا وَقَارِبُوا وَأَبْشِرُوا</div>
+      <div class="dtrans">"Sesungguhnya agama (Islam) itu mudah. Tidak ada seorang pun yang mempersulit agama kecuali ia akan dikalahkan (tidak mampu melakukannya). Maka berlaku luruskah, dekatkan (kepada kesempurnaan), dan bergembiralah."</div>
+      <div class="dref dref-forest">HR. Bukhari (39) — dari Abu Hurairah radhiyallahu 'anhu</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ BAB V: HAL YANG WAJIB DITINGGALKAN ══ -->
+<div class="chap">
+  <div class="chap-stripe cs-rose"></div>
+  <div class="chap-body cb-rose">
+    <div class="chap-tag ct-rose">✦ Bab Kelima</div>
+    <div class="chap-ar car-rose">مَا يَجِبُ تَرْكُهُ عِنْدَ الدُّخُولِ فِي الإِسْلَامِ</div>
+    <div class="chap-title">Hal-Hal Utama yang Perlu Ditinggalkan saat Masuk Islam</div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="prose">
+    <p class="lead" style="color:var(--rose);">Masuk Islam berarti meninggalkan beberapa hal yang bertentangan dengan tauhid dan syariat. Namun ingat — ini dilakukan secara bertahap dengan bimbingan, bukan sekaligus dalam satu hari.</p>
+    <p>Nabi ﷺ tidak langsung membebani para sahabat baru dengan seluruh hukum Islam sekaligus. Al-Qur'an sendiri turun secara bertahap selama 23 tahun. Utamakan yang terpenting dulu, lalu ikuti dengan yang lainnya seiring bertambahnya pemahaman.</p>
+  </div>
+
+  <div class="checklist">
+    <div class="chk-item">
+      <div class="chk-icon ci-sun">🔵</div>
+      <div class="chk-body">
+        <div class="chk-title">Meninggalkan Syirik — Prioritas Mutlak</div>
+        <div class="chk-desc">Meninggalkan semua bentuk penyembahan selain Allah: menyembah berhala, jimat, roh leluhur, atau memohon kepada selain Allah untuk hal-hal yang hanya Allah bisa lakukan. Ini adalah syarat utama keabsahan tauhid.</div>
+      </div>
+    </div>
+    <div class="chk-item">
+      <div class="chk-icon ci-sun">🚫</div>
+      <div class="chk-body">
+        <div class="chk-title">Meninggalkan Khamr (Alkohol) dan Narkoba</div>
+        <div class="chk-desc">Minuman keras dan semua zat yang memabukkan diharamkan dalam Islam. Ini mungkin salah satu perubahan gaya hidup paling nyata bagi mualaf dari budaya tertentu. Minta dukungan komunitas Muslim jika membutuhkan bantuan.</div>
+      </div>
+    </div>
+    <div class="chk-item">
+      <div class="chk-icon ci-sun">🐷</div>
+      <div class="chk-body">
+        <div class="chk-title">Meninggalkan Daging Babi</div>
+        <div class="chk-desc">Babi dan produk turunannya diharamkan dalam Islam (QS. Al-Mā'idah: 3). Periksa label makanan dan mintalah saran kepada komunitas Muslim tentang makanan halal di daerahmu.</div>
+      </div>
+    </div>
+    <div class="chk-item">
+      <div class="chk-icon ci-sky">⚠️</div>
+      <div class="chk-body">
+        <div class="chk-title">Meninggalkan Zina dan Hubungan di Luar Nikah</div>
+        <div class="chk-desc">Islam memerintahkan hubungan seksual hanya dalam ikatan pernikahan yang sah. Jika sudah ada pasangan yang tidak dinikahi, perlu dibahas solusinya bersama ustadz (bisa segera dinikahi secara Islam).</div>
+      </div>
+    </div>
+    <div class="chk-item">
+      <div class="chk-icon ci-sky">💬</div>
+      <div class="chk-body">
+        <div class="chk-title">Meninggalkan Sihir, Ramalan, dan Perdukunan</div>
+        <div class="chk-desc">Mempercayai dan meminta bantuan kepada dukun, peramal, dan praktik sihir adalah bentuk kesyirikan yang harus ditinggalkan. Islam mengajarkan hanya kepada Allah kita memohon dan bertawakal.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hl hl-forest">
+    <div class="hl-label hll-forest">✦ Pesan untuk Mualaf: Proses, Bukan Sempurna</div>
+    <div class="hl-trans">Para ulama menekankan: mualaf mendapat keringanan khusus dalam proses belajar dan bertransisi. Jika masih kesulitan meninggalkan suatu kebiasaan, jangan putus asa — teruslah berusaha, berdoa, dan minta bimbingan. Allah Maha Pengasih dan sangat menghargai setiap langkah kecil menuju kebaikan. Yang penting: niat tulus, usaha sungguh-sungguh, dan tidak berhenti belajar.</div>
+    <div class="hl-ref hlr-forest">QS. Al-Baqarah: 286 — "Allah tidak membebani seseorang melebihi kesanggupannya."</div>
+  </div>
+</div>
+
+<!-- ══ BAB VI: DOA-DOA AWAL ══ -->
+<div class="chap">
+  <div class="chap-stripe cs-forest"></div>
+  <div class="chap-body cb-forest">
+    <div class="chap-tag ct-forest">✦ Bab Keenam</div>
+    <div class="chap-ar car-forest">أَدْعِيَةٌ لِلْمُسْلِمِ الْجَدِيدِ</div>
+    <div class="chap-title">Doa-Doa Penting untuk Muslim Baru</div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="prose fl-forest">
+    <p>Doa dalam Islam bukan ritual rumit — ia adalah percakapan langsung antara hamba dan Allah, dalam bahasa apapun yang dimengerti. Berikut adalah doa-doa dasar yang sangat penting untuk dipelajari terlebih dahulu.</p>
+  </div>
+
+  <!-- Doa-doa -->
+  <p style="font-family:'Figtree',sans-serif;font-weight:700;font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--forest-d);margin:0 0 12px;">Doa Masuk Islam (Membaca Syahadat)</p>
+  <div class="doa-box">
+    <div class="doa-tag dt-sky">Saat Mengucapkan Syahadat</div>
+    <div class="doa-ar">أَشْهَدُ أَنْ لَا إِلَٰهَ إِلَّا اللَّهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ اللَّهِ</div>
+    <div class="doa-latin">Asyhadu allā ilāha illallāh, wa asyhadu anna Muḥammadan rasūlullāh</div>
+    <div class="doa-trans">"Aku bersaksi bahwa tidak ada sesembahan yang benar selain Allah, dan aku bersaksi bahwa Muhammad adalah utusan Allah."</div>
+    <div class="doa-ref">HR. Bukhari (8) — Rukun Islam pertama</div>
+  </div>
+
+  <p style="font-family:'Figtree',sans-serif;font-weight:700;font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--forest-d);margin:20px 0 12px;">Doa Memohon Petunjuk dan Keistiqamahan</p>
+  <div class="doa-box db-forest">
+    <div class="doa-tag dt-forest">Doa Paling Sering Dibaca Muslim</div>
+    <div class="doa-ar da-forest">اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ</div>
+    <div class="doa-latin dl-forest">Ihdinaṣ-ṣirāṭal-mustaqīm</div>
+    <div class="doa-trans">"Tunjukkanlah kami jalan yang lurus." — Doa ini dibaca minimal 17 kali sehari dalam Al-Fatihah. Ini adalah doa paling fundamental: memohon agar Allah terus menunjukkan jalan yang benar.</div>
+    <div class="doa-ref dr-forest">QS. Al-Fatihah (1): 6 — Dibaca dalam setiap rakaat shalat</div>
+  </div>
+
+  <p style="font-family:'Figtree',sans-serif;font-weight:700;font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--forest-d);margin:20px 0 12px;">Doa Memohon Ampunan — untuk Dibaca Setiap Saat</p>
+  <div class="doa-box">
+    <div class="doa-tag dt-sky">Istighfar — Permohonan Ampunan</div>
+    <div class="doa-ar">أَسْتَغْفِرُ اللَّهَ الْعَظِيمَ الَّذِي لَا إِلَهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ وَأَتُوبُ إِلَيْهِ</div>
+    <div class="doa-latin">Astaghfirullāhal-'aẓīmal-ladzī lā ilāha illā huwal-ḥayyul-qayyūm wa atūbu ilaih</div>
+    <div class="doa-trans">"Aku memohon ampunan kepada Allah Yang Maha Agung, yang tidak ada sesembahan selain Dia, Yang Maha Hidup lagi terus menerus mengurus makhluk-Nya, dan aku bertobat kepada-Nya."</div>
+    <div class="doa-ref">HR. Abu Dawud (1517), Tirmidzi (3577) — Shahih · Nabi ﷺ beristighfar lebih dari 70× sehari</div>
+  </div>
+
+  <p style="font-family:'Figtree',sans-serif;font-weight:700;font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--forest-d);margin:20px 0 12px;">Doa Kebaikan Dunia dan Akhirat</p>
+  <div class="doa-box db-sun">
+    <div class="doa-tag dt-sun">Doa Paling Komprehensif — Dibaca Setiap Hari</div>
+    <div class="doa-ar da-sun">رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ</div>
+    <div class="doa-latin dl-sun">Rabbanā ātinā fid-dunyā ḥasanah, wa fil-ākhirati ḥasanah, wa qinā 'adzāban-nār</div>
+    <div class="doa-trans">"Wahai Rabb kami, berikanlah kepada kami kebaikan di dunia dan kebaikan di akhirat, dan peliharalah kami dari azab Neraka."</div>
+    <div class="doa-ref dr-sun">QS. Al-Baqarah (2): 201 — Nabi ﷺ sangat sering membaca doa ini</div>
+  </div>
+
+  <div class="hl hl-dark">
+    <div class="hl-label hll-white">✦ Boleh Berdoa dalam Bahasa Sendiri</div>
+    <div class="hl-ar hlar-white">اُدْعُوا رَبَّكُمْ تَضَرُّعًا وَخُفْيَةً</div>
+    <div class="hl-trans hlt-white">"Berdoalah kepada Rabb-mu dengan rendah hati dan suara lembut." — Doa boleh diucapkan dalam bahasa Indonesia, Inggris, atau bahasa apapun yang dimengerti — kecuali doa-doa dalam shalat yang memiliki bacaan tertentu. Allah Maha Mengetahui semua bahasa dan semua bisikan hati.</div>
+    <div class="hl-ref hlr-white">QS. Al-A'rāf (7): 55 · Para ulama: doa di luar shalat boleh dalam bahasa apapun</div>
+  </div>
+</div>
+
+<!-- ══ BAB VII: HAK DAN KEWAJIBAN MUALAF ══ -->
+<div class="chap">
+  <div class="chap-stripe cs-sky"></div>
+  <div class="chap-body cb-sky">
+    <div class="chap-tag ct-sky">✦ Bab Ketujuh</div>
+    <div class="chap-ar car-sky">حُقُوقُ الْمُسْلِمِ الْجَدِيدِ وَوَاجِبَاتُهُ</div>
+    <div class="chap-title">Hak-Hak Mualaf &amp; Kewajiban Umat Islam terhadap Mereka</div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="prose fl-sky">
+    <p class="lead">Mualaf memiliki hak-hak yang wajib dipenuhi oleh komunitas Muslim yang menerimanya. Islam sangat memuliakan orang-orang yang baru masuk Islam — bahkan menyediakan dana khusus untuk mereka dari zakat.</p>
+  </div>
+
+  <div class="tbl-wrap">
+    <table class="tbl th-sky">
+      <thead>
+        <tr>
+          <th style="width:35%">Hak / Kewajiban Umat Islam</th>
+          <th style="width:65%">Penjelasan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Hak">Menerima bagian dari Zakat</td>
+          <td data-label="Penjelasan">Al-Qur'an menyebutkan "Al-Mu'allafah qulūbuhum" (orang yang hatinya sedang dilunakkan) sebagai salah satu 8 golongan penerima zakat. Mualaf berhak mendapat bantuan finansial dari dana zakat jika membutuhkan. — QS. At-Tawbah: 60</td>
+        </tr>
+        <tr>
+          <td data-label="Hak">Mendapat Bimbingan &amp; Pengajaran</td>
+          <td data-label="Penjelasan">Komunitas Muslim wajib membimbing, mengajarkan, dan mendampingi mualaf — bukan membiarkannya sendirian. Ini adalah kewajiban komunal (fardhu kifayah) yang jika tidak dipenuhi, seluruh komunitas berdosa.</td>
+        </tr>
+        <tr>
+          <td data-label="Hak">Tidak Dibebani Langsung</td>
+          <td data-label="Penjelasan">Mualaf tidak boleh langsung dibebani dengan seluruh kewajiban sekaligus. Islam mengenal konsep tadarruj (bertahap). Para sahabat baru dahulu pun dibimbing secara bertahap oleh Nabi ﷺ.</td>
+        </tr>
+        <tr>
+          <td data-label="Hak">Dipertemukan dengan Komunitas yang Mendukung</td>
+          <td data-label="Penjelasan">Setiap mualaf berhak mendapatkan mentor atau teman Muslim yang bisa menjadi sandaran, menjawab pertanyaan, dan menemaninya dalam perjalanan awal keislamannya.</td>
+        </tr>
+        <tr>
+          <td data-label="Hak">Keluarga Non-Muslim Tetap Dihormati</td>
+          <td data-label="Penjelasan">Islam memerintahkan tetap berbuat baik kepada kedua orang tua dan keluarga meski mereka bukan Muslim, selama tidak menyuruh kepada kesyirikan. — QS. Luqman: 15</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="dalil dalil-sky">
+    <div class="dbar-sky"></div>
+    <div class="dbody">
+      <div class="dtag dtag-sky">📖 QS. At-Tawbah: 60 — Mualaf Termasuk Penerima Zakat</div>
+      <div class="dar dar-sky">إِنَّمَا الصَّدَقَاتُ لِلْفُقَرَاءِ وَالْمَسَاكِينِ وَالْعَامِلِينَ عَلَيْهَا وَالْمُؤَلَّفَةِ قُلُوبُهُمْ</div>
+      <div class="dtrans">"Sesungguhnya zakat itu hanyalah untuk orang-orang fakir, orang miskin, pengurus zakat, para mualaf yang dijinakkan hatinya..." — Mualaf secara eksplisit disebutkan Allah sebagai penerima zakat.</div>
+      <div class="dref dref-sky">QS. At-Tawbah (9): 60</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ BAB VIII: PESAN UNTUK MUALAF ══ -->
+<div class="chap">
+  <div class="chap-stripe cs-sun"></div>
+  <div class="chap-body cb-sun">
+    <div class="chap-tag ct-sun">✦ Bab Kedelapan — Penutup</div>
+    <div class="chap-ar car-sun">رِسَالَةٌ لِكُلِّ مُسْلِمٍ جَدِيدٍ</div>
+    <div class="chap-title">Pesan dari Hati untuk Setiap Saudara Baru</div>
+  </div>
+</div>
+
+<div class="sec" style="border-bottom:none;">
+  <div class="prose fl-sun sun-lead">
+    <p class="lead">Keputusanmu masuk Islam adalah keputusan paling berani dan paling indah yang pernah kamu buat. Tidak ada yang lebih membuat Allah gembira dari seorang hamba yang kembali kepada fitrahnya.</p>
+    <p>Kamu mungkin akan menghadapi tantangan. Mungkin dari keluarga yang tidak mengerti, dari teman-teman yang bingung, atau dari dirimu sendiri yang kadang merasa berat. Itu wajar. Setiap perjalanan yang bermakna memiliki tantangannya.</p>
+    <p>Tapi ingatlah: Allah tidak pernah meninggalkan orang yang datang kepada-Nya dengan tulus. Setiap langkah kecilmu menuju-Nya dicatat, dihargai, dan dibalas dengan kasih sayang yang tidak bisa kamu bayangkan. Kamu tidak sendirian dalam perjalanan ini.</p>
+  </div>
+
+  <div class="feat-grid">
+    <div class="feat feat-sun">
+      <span class="feat-icon">💛</span>
+      <div class="feat-title">Allah Sangat Gembira dengan Tobatmu</div>
+      <div class="feat-desc">Nabi ﷺ bersabda: "Kegembiraan Allah atas tobat hamba-Nya melebihi kegembiraan seseorang yang menemukan untanya yang hilang di padang pasir." — HR. Bukhari (6309). Allah menunggumu.</div>
+    </div>
+    <div class="feat feat-sun">
+      <span class="feat-icon">🌱</span>
+      <div class="feat-title">Bertahap itu Normal dan Dianjurkan</div>
+      <div class="feat-desc">Tidak ada yang sempurna sejak hari pertama. Para sahabat terbaik pun belajar perlahan. Yang penting: konsisten, sabar, dan terus melangkah walau kecil.</div>
+    </div>
+    <div class="feat feat-sun">
+      <span class="feat-icon">🤝</span>
+      <div class="feat-title">Kamu Bagian dari Keluarga Besar</div>
+      <div class="feat-desc">1,8 miliar Muslim di seluruh dunia adalah saudaramu. Ke manapun kamu pergi, ada saudara yang siap membantu, menerima, dan mendampingimu.</div>
+    </div>
+    <div class="feat feat-sun">
+      <span class="feat-icon">📚</span>
+      <div class="feat-title">Ilmu adalah Perjalanan Seumur Hidup</div>
+      <div class="feat-desc">Nabi ﷺ bersabda: "Mencari ilmu adalah kewajiban atas setiap Muslim." — HR. Ibnu Majah (224). Nikmati setiap hal baru yang kamu pelajari — setiap penemuan akan membuat imanmu semakin dalam.</div>
+    </div>
+  </div>
+
+  <div class="banner banner-sun">
+    <div class="ban-ar bnar-dark">يَا عِبَادِيَ الَّذِينَ أَسْرَفُوا عَلَىٰ أَنفُسِهِمْ لَا تَقْنَطُوا مِن رَّحْمَةِ اللَّهِ ۚ إِنَّ اللَّهَ يَغْفِرُ الذُّنُوبَ جَمِيعًا</div>
+    <div class="ban-id bnid-dark">"Wahai hamba-hamba-Ku yang melampaui batas terhadap diri mereka sendiri, janganlah kamu berputus asa dari rahmat Allah. Sesungguhnya Allah mengampuni dosa-dosa semuanya." — Tidak ada dosa yang terlalu besar untuk diampuni Allah bagi orang yang bertobat dengan tulus. Pintu-Nya selalu terbuka.</div>
+    <div class="ban-ref bnref-dark">QS. Az-Zumar (39): 53</div>
+  </div>
+</div>
+
+</div><!-- end body-wrap -->
+
+<!-- ══════ PENUTUP ══════ -->
+<div class="penutup">
+  <div class="penutup-inner">
+    <div class="penutup-ar">مَنْ أَسْلَمَ فَقَدْ هَدَاهُ اللَّهُ</div>
+    <div class="penutup-div"></div>
+    <p class="penutup-p">"Barangsiapa yang masuk Islam, maka Allah telah memberikan hidayah kepadanya." Hidayah bukan milik orang yang pandai atau kaya — ia adalah anugerah Allah kepada siapapun yang hatinya bersih dan jujur dalam mencari kebenaran.</p>
+    <p class="penutup-p" style="margin-top:12px;">Selamat datang dalam perjalanan paling indah dalam hidup. Selamat datang dalam cahaya yang tidak akan pernah padam. Selamat datang dalam keluarga besar yang menyambut kamu dengan tangan terbuka dan hati yang penuh kasih. مَرْحَبًا بِكَ فِي الإِسْلَامِ — Selamat datang dalam Islam.</p>
+    <div class="penutup-div"></div>
+    <div class="dalil dalil-dark" style="text-align:left;">
+      <div class="dbar-dark"></div>
+      <div class="dbody">
+        <div class="dtag dtag-dark">📜 Doa Memohon Keteguhan Iman</div>
+        <div class="dar dar-dark">رَبَّنَا لَا تُزِغْ قُلُوبَنَا بَعْدَ إِذْ هَدَيْتَنَا وَهَبْ لَنَا مِن لَّدُنكَ رَحْمَةً ۚ إِنَّكَ أَنتَ الْوَهَّابُ</div>
+        <div class="dtrans" style="color:rgba(220,210,190,.78);">"Wahai Rabb kami, janganlah Engkau palingkan hati kami setelah Engkau memberi kami petunjuk, dan karuniakanlah kepada kami rahmat dari sisi-Mu. Sesungguhnya Engkau Maha Pemberi."</div>
+        <div class="dref dref-dark">QS. Āli 'Imrān (3): 8 — Doa para ulul albab untuk memohon keteguhan hidayah</div>
+      </div>
+    </div>
+    <div class="penutup-footer">
+      <div class="logo">مَرْحَبًا بِكَ فِي الإِسْلَامِ</div>
+      <div class="tag">بِسْمِ اللَّهِ · Semoga Bermanfaat · Barakallahu Fiikum</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
