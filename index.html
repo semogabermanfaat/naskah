@@ -29,20 +29,20 @@
     
     header { position: relative; min-height: 90vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 40px 24px; background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(27,67,50,.15) 0%, transparent 70%), linear-gradient(180deg, #0b1410 0%, var(--bg-main) 100%); overflow: hidden; z-index: 2; }
 
- .mandala {
+ .hizb {
   position: absolute;
   top: 50%; left: 50%;
   transform: translate(-50%, -50%);
   width: min(600px, 85vw);
   height: min(600px, 85vw);
   opacity: .2; /* Diubah dari .05 agar lebih terlihat jelas */
-  animation: spin 120s linear infinite;
+  animation: spin 180s linear infinite;
   pointer-events: none;
   /* Tambahkan drop-shadow untuk efek pendaran emas */
   filter: drop-shadow(0 0 10px rgba(201, 168, 76, 0.3)); 
 }
 
-.mandala-inner {
+.hizb-inner {
   position: absolute;
   top: 50%; left: 50%;
   transform: translate(-50%, -50%);
@@ -119,8 +119,16 @@
 <canvas id="particle-canvas"></canvas>
 
 <header>
-  <svg class="mandala" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><g fill="none" stroke="var(--gold)" stroke-width=".3"><circle cx="100" cy="100" r="95"/><circle cx="100" cy="100" r="80"/><circle cx="100" cy="100" r="65"/><circle cx="100" cy="100" r="50"/><circle cx="100" cy="100" r="35"/><circle cx="100" cy="100" r="20"/><line x1="100" y1="5" x2="100" y2="195"/><line x1="5" y1="100" x2="195" y2="100"/><line x1="32" y1="32" x2="168" y2="168"/><line x1="168" y1="32" x2="32" y2="168"/></g></svg>
-  <svg class="mandala-inner" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><g fill="none" stroke="var(--gold-lt)" stroke-width=".4"><polygon points="100,15 185,57.5 185,142.5 100,185 15,142.5 15,57.5"/><polygon points="100,15 185,57.5 185,142.5 100,185 15,142.5 15,57.5" transform="rotate(45,100,100)"/></g></svg>
+<svg class="hizb" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <g fill="none" stroke="var(--gold)" stroke-width="0.8">
+    <rect x="50" y="50" width="100" height="100" />
+    <rect x="50" y="50" width="100" height="100" transform="rotate(45, 100, 100)" />
+    <circle cx="100" cy="100" r="15" />
+    <circle cx="100" cy="100" r="85" stroke-dasharray="2, 4" opacity="0.5" />
+  </g>
+</svg>
+
+
   <div class="hero-bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
   <h1 class="hero-title">Naskah Islami</h1>
   <p class="hero-subtitle">Semua naskah di sini dapat dibaca, diunduh, dan disebarluaskan secara bebas.
@@ -216,6 +224,9 @@
 </script>
 </body>
 </html>
+
+
+
 
 
 
