@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QYVB2LHJTJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-QYVB2LHJTJ');
+  </script>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Naskah Islami — Amal Jariah</title>
@@ -8,409 +16,29 @@
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    /* Tema Gelap & Hangat */
     :root {
-      --gold:       #C9A84C;
-      --gold-lt:    #E8CC80;
-      --gold-dk:    #8B6914;
-      
-      --bg-main:    #120E0A; /* Latar utama gelap hangat */
-      --bg-surface: #1A1510; /* Latar kartu & footer */
-      --bg-box:     #221C16; /* Latar kotak info */
-      
-      --text-main:  #E2D8C7; /* Krem lembut, tidak silau */
-      --text-muted: #B8AD9C; /* Teks redup */
-      
-      --green-dk:   #0F2318;
-      --green-lt:   #2D6A4F;
+      --gold: #C9A84C; --gold-lt: #E8CC80; --gold-dk: #8B6914;
+      --bg-main: #120E0A; --bg-surface: #1A1510; --bg-box: #221C16;
+      --text-main: #E2D8C7; --text-muted: #B8AD9C;
+      --green-dk: #0F2318; --green-lt: #2D6A4F;
     }
-
     html { scroll-behavior: smooth; }
-
-    body {
-      background-color: var(--bg-main);
-      color: var(--text-main);
-      font-family: 'Lora', Georgia, serif;
-      line-height: 1.6;
-      overflow-x: hidden;
-      position: relative;
-    }
-
-    /* ── Particle Canvas Container ── */
-    #particle-canvas {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    /* ── Geometric background texture ── */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image:
-        repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(201,168,76,.02) 40px, rgba(201,168,76,.02) 41px),
-        repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(201,168,76,.02) 40px, rgba(201,168,76,.02) 41px);
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    /* ══════════════════════════════
-       HEADER / HERO
-    ══════════════════════════════ */
-    header {
-      position: relative;
-      min-height: 90vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 40px 24px 60px;
-      background:
-        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(27,67,50,.15) 0%, transparent 70%),
-        linear-gradient(180deg, #0b1410 0%, var(--bg-main) 100%);
-      overflow: hidden;
-      z-index: 2;
-    }
-
-    .mandala {
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      width: min(600px, 85vw);
-      height: min(600px, 85vw);
-      opacity: .05;
-      animation: spin 120s linear infinite;
-      pointer-events: none;
-    }
-    @keyframes spin { to { transform: translate(-50%,-50%) rotate(360deg); } }
-
-    .mandala-inner {
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      width: min(400px, 55vw);
-      height: min(400px, 55vw);
-      opacity: .08;
-      animation: spin 80s linear infinite reverse;
-      pointer-events: none;
-    }
-
-    .hero-bismillah {
-      font-family: 'Lateef', serif;
-      font-size: clamp(2rem, 6vw, 4.2rem);
-      color: var(--gold-lt);
-      letter-spacing: .02em;
-      line-height: 1.2;
-      margin-bottom: 12px;
-      animation: fadeDown .9s ease both;
-      position: relative; z-index: 1;
-      text-shadow: 0 2px 15px rgba(201,168,76,.3);
-    }
-
-    .hero-divider {
-      width: 150px;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
-      margin: 8px auto 20px;
-      animation: fadeDown 1s .15s ease both;
-      position: relative; z-index: 1;
-    }
-
-    .hero-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.8rem, 4.5vw, 3rem);
-      font-weight: 600;
-      color: #fff;
-      line-height: 1.1;
-      animation: fadeDown 1s .3s ease both;
-      position: relative; z-index: 1;
-    }
-
-    .hero-subtitle {
-      font-family: 'Lora', serif;
-      font-size: clamp(.9rem, 2vw, 1.2rem);
-      color: var(--gold);
-      margin-top: 10px;
-      font-style: italic;
-      animation: fadeDown 1s .45s ease both;
-      position: relative; z-index: 1;
-    }
-
-    .hero-desc {
-      max-width: 520px;
-      margin: 16px auto 0;
-      font-size: clamp(.85rem, 1.8vw, .95rem);
-      color: var(--text-muted);
-      animation: fadeDown 1s .6s ease both;
-      position: relative; z-index: 1;
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      margin-top: 28px;
-      padding: 8px 20px;
-      border: 1px solid rgba(201,168,76,.3);
-      border-radius: 40px;
-      color: var(--gold-lt);
-      font-size: .8rem;
-      font-family: 'Playfair Display', serif;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      animation: fadeDown 1s .75s ease both;
-      position: relative; z-index: 1;
-      background: rgba(201,168,76,.05);
-    }
-    .hero-badge svg { width:14px; height:14px; fill: var(--gold); }
-
-    @keyframes fadeDown {
-      from { opacity:0; transform:translateY(-15px); }
-      to   { opacity:1; transform:translateY(0); }
-    }
-
-    .scroll-cue {
-      position: absolute;
-      bottom: 24px; left: 50%;
-      transform: translateX(-50%);
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-      color: var(--text-muted);
-      font-size: .65rem;
-      letter-spacing: .15em;
-      text-transform: uppercase;
-    }
-    .scroll-cue::after {
-      content:'';
-      display:block;
-      width:1px; height:30px;
-      background: linear-gradient(to bottom, rgba(201,168,76,.5), transparent);
-      animation: scrollPulse 2s ease-in-out infinite;
-    }
-    @keyframes scrollPulse {
-      0%,100% { opacity:.2; transform:scaleY(1); }
-      50% { opacity:1; transform:scaleY(1.1); }
-    }
-
-    /* ══════════════════════════════
-       AYAT BAND
-    ══════════════════════════════ */
-    .ayat-band {
-      background: linear-gradient(135deg, var(--green-dk) 0%, #08120d 100%);
-      padding: 50px 24px;
-      text-align: center;
-      position: relative;
-      border-top: 1px solid rgba(201,168,76,.1);
-      border-bottom: 1px solid rgba(201,168,76,.1);
-      z-index: 2;
-    }
-    .ayat-arabic {
-      font-family: 'Lateef', serif;
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
-      color: var(--gold-lt);
-      direction: rtl;
-      line-height: 1.4;
-      margin-bottom: 10px;
-    }
-    .ayat-trans {
-      font-style: italic;
-      font-size: clamp(.85rem, 1.8vw, 1rem);
-      color: var(--text-muted);
-      max-width: 600px;
-      margin: 0 auto 8px;
-    }
-    .ayat-source {
-      font-family: 'Playfair Display', serif;
-      font-size: .7rem;
-      letter-spacing: .15em;
-      text-transform: uppercase;
-      color: var(--gold-dk);
-    }
-
-    /* ══════════════════════════════
-       SECTION WRAPPER
-    ══════════════════════════════ */
-    .section {
-      position: relative;
-      z-index: 2;
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 60px 24px;
-    }
-
-    .section-label {
-      font-family: 'Playfair Display', serif;
-      font-size: .7rem;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 6px;
-    }
-
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.4rem, 3.5vw, 2.2rem);
-      color: var(--gold-lt);
-      font-weight: 600;
-      line-height: 1.2;
-      margin-bottom: 12px;
-    }
-
-    .section-rule {
-      width: 50px; height: 2px;
-      background: var(--gold-dk);
-      margin-bottom: 30px;
-    }
-
-    /* ══════════════════════════════
-       NASKAH CARDS GRID
-    ══════════════════════════════ */
-    .cards-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 16px;
-    }
-
-    .card {
-      background: var(--bg-surface);
-      border: 1px solid rgba(201,168,76,.1);
-      border-radius: 4px;
-      position: relative;
-      transition: transform .2s ease, border-color .2s ease;
-      box-shadow: 0 4px 15px rgba(0,0,0,.2);
-    }
-    .card:hover {
-      transform: translateY(-3px);
-      border-color: rgba(201,168,76,.3);
-    }
-
-    .card::before {
-      content:'';
-      display:block;
-      height: 2px;
-      background: linear-gradient(90deg, var(--gold-dk), var(--gold-lt));
-      opacity: 0.7;
-    }
-
-    .card-body { padding: 20px 22px; }
-
-    .card-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: var(--gold-lt);
-      line-height: 1.2;
-      margin-bottom: 6px;
-    }
-
-    .card-desc {
-      font-size: .85rem;
-      color: var(--text-muted);
-      line-height: 1.5;
-      margin-bottom: 16px;
-    }
-
-    .card-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-family: 'Playfair Display', serif;
-      font-size: .75rem;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--gold);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(201,168,76,.2);
-      padding-bottom: 2px;
-      transition: color .2s, border-color .2s;
-    }
-    .card-link:hover { color: var(--gold-lt); border-color: var(--gold-lt); }
-    .card-link svg { width:12px; height:12px; }
-
-    /* ══════════════════════════════
-       ABOUT / AMAL JARIAH
-    ══════════════════════════════ */
-    .about-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      align-items: center;
-    }
-    @media(max-width:700px){ .about-inner{ grid-template-columns:1fr; gap:30px; } }
-
-    .about-text p {
-      font-size: .9rem;
-      color: var(--text-main);
-      margin-bottom: 12px;
-    }
-
-    .amal-box {
-      background: var(--bg-box);
-      border: 1px solid rgba(201,168,76,.15);
-      border-left: 3px solid var(--gold);
-      border-radius: 4px;
-      padding: 24px;
-    }
-    .amal-box .arabic-quote {
-      font-family: 'Lateef', serif;
-      font-size: 1.4rem;
-      color: var(--gold-lt);
-      direction: rtl;
-      margin-bottom: 6px;
-    }
-    .amal-box .latin-quote {
-      font-style: italic;
-      font-size: .9rem;
-      color: var(--text-muted);
-      margin-bottom: 8px;
-    }
-    .amal-box .source {
-      font-family: 'Playfair Display', serif;
-      font-size: .7rem;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--gold-dk);
-    }
-
-    /* ══════════════════════════════
-       FOOTER
-    ══════════════════════════════ */
-    footer {
-      background: var(--bg-surface);
-      padding: 40px 24px;
-      text-align: center;
-      border-top: 1px solid rgba(201,168,76,.05);
-      position: relative;
-      z-index: 2;
-    }
-    .footer-logo {
-      font-family: 'Lateef', serif;
-      font-size: 1.8rem;
-      color: var(--gold-dk);
-      margin-bottom: 6px;
-    }
-    .footer-text {
-      font-size: .8rem;
-      color: var(--text-muted);
-    }
-    .footer-text a { color: var(--gold); text-decoration: none; }
-    .footer-heart { color: #8B4513; }
-
-    /* UTILITY */
-    .reveal {
-      opacity: 0;
-      transform: translateY(15px);
-      transition: opacity .5s ease, transform .5s ease;
-    }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
+    body { background-color: var(--bg-main); color: var(--text-main); font-family: 'Lora', serif; line-height: 1.6; overflow-x: hidden; }
+    #particle-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+    header { position: relative; min-height: 90vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 40px 24px; background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(27,67,50,.15) 0%, transparent 70%), linear-gradient(180deg, #0b1410 0%, var(--bg-main) 100%); z-index: 2; }
+    .hero-bismillah { font-family: 'Lateef', serif; font-size: clamp(2.5rem, 6vw, 4.5rem); color: var(--gold-lt); margin-bottom: 15px; }
+    .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3.5rem); color: #fff; line-height: 1.1; }
+    .section { max-width: 1100px; margin: 0 auto; padding: 60px 24px; position: relative; z-index: 2; }
+    .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+    .card { background: var(--bg-surface); border: 1px solid rgba(201,168,76,.1); border-radius: 8px; padding: 25px; transition: 0.3s; height: 100%; display: flex; flex-direction: column; }
+    .card:hover { transform: translateY(-5px); border-color: var(--gold); }
+    .card-title { font-family: 'Playfair Display'; color: var(--gold-lt); font-size: 1.4rem; margin-bottom: 10px; }
+    .card-desc { font-size: 0.9rem; color: var(--text-muted); flex-grow: 1; margin-bottom: 20px; }
+    .card-link { color: var(--gold); text-decoration: none; font-weight: bold; font-size: 0.85rem; display: flex; align-items: center; gap: 5px; }
+    .card-link:hover { color: #fff; }
+    .amal-box { background: var(--bg-box); border-left: 4px solid var(--gold); padding: 30px; margin: 40px 0; border-radius: 0 8px 8px 0; text-align: center; }
+    footer { background: var(--bg-surface); padding: 60px 24px; text-align: center; border-top: 1px solid rgba(201,168,76,0.1); position: relative; z-index: 2; }
+    .counter-badge { display: inline-flex; align-items: center; gap: 8px; font-size: 0.75rem; color: var(--gold-lt); border: 1px solid rgba(201,168,76,0.2); padding: 8px 20px; border-radius: 50px; background: rgba(201,168,76,0.05); margin-top: 25px; }
   </style>
 </head>
 <body>
@@ -418,305 +46,193 @@
 <canvas id="particle-canvas"></canvas>
 
 <header>
-  <svg class="mandala" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-    <g fill="none" stroke="var(--gold)" stroke-width=".3">
-      <circle cx="100" cy="100" r="95"/><circle cx="100" cy="100" r="80"/>
-      <circle cx="100" cy="100" r="65"/><circle cx="100" cy="100" r="50"/>
-      <circle cx="100" cy="100" r="35"/><circle cx="100" cy="100" r="20"/>
-      <line x1="100" y1="5" x2="100" y2="195"/><line x1="5" y1="100" x2="195" y2="100"/>
-      <line x1="32" y1="32" x2="168" y2="168"/><line x1="168" y1="32" x2="32" y2="168"/>
-    </g>
-  </svg>
-  <svg class="mandala-inner" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-    <g fill="none" stroke="var(--gold-lt)" stroke-width=".4">
-      <polygon points="100,15 185,57.5 185,142.5 100,185 15,142.5 15,57.5"/>
-      <polygon points="100,15 185,57.5 185,142.5 100,185 15,142.5 15,57.5" transform="rotate(45,100,100)"/>
-    </g>
-  </svg>
-
   <div class="hero-bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
-  <div class="hero-divider"></div>
   <h1 class="hero-title">Naskah Islami</h1>
-  <p class="hero-subtitle">Kumpulan tulisan gratis</p>
-  <p class="hero-desc">
-    Semua naskah di sini dapat dibaca, diunduh, dan disebarluaskan secara bebas.
-    Semoga setiap huruf yang terbaca menjadi amal yang terus mengalir.
-  </p>
-  <div class="hero-badge">
-    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
-    Gratis &amp; Terbuka
-  </div>
-  <div class="scroll-cue">Gulir</div>
+  <p style="color:var(--gold); margin-top:10px; font-style:italic;">Kumpulan tulisan gratis sebagai amal jariah</p>
 </header>
 
-<div style="background:var(--bg-main); position:relative; z-index:2;">
-  <div class="section about-inner">
-    <div class="about-text reveal">
-    <div class="amal-box reveal">
-<div class="ayat-arabic">إِذَا مَاتَ الْإِنْسَانُ انْقَطَعَ عَنْهُ عَمَلُهُ إِلَّا مِنْ ثَلَاثَةٍ</div>
-  <p class="ayat-trans">
-    "Apabila manusia meninggal dunia, terputuslah amalnya kecuali dari tiga perkara:
-    sedekah jariah, ilmu yang bermanfaat, atau anak saleh yang mendoakannya."
-  </p>
-  <p class="source">HR. Muslim, No. 1631</p>
-</div>
-</div>
-</div>
-</div>
-
 <div class="section">
-  <p class="section-label reveal">Koleksi Naskah</p>
-  <h2 class="section-title reveal">Bacaan Pilihan</h2>
-  <div class="section-rule reveal"></div>
+  <div class="amal-box">
+    <p style="font-family:'Lateef'; font-size:2rem; color:var(--gold-lt);">إِذَا مَاتَ الْإِنْسَانُ انْقَطَعَ عَنْهُ عَمَلُهُ إِلَّا مِنْ ثَلَاثَةٍ</p>
+    <p style="font-style:italic; margin:15px 0;">"Apabila manusia meninggal dunia, terputuslah amalnya kecuali dari tiga perkara: sedekah jariah, ilmu yang bermanfaat, atau anak saleh yang mendoakannya."</p>
+    <p style="font-size:0.7rem; color:var(--gold-dk); letter-spacing:2px;">HR. MUSLIM, NO. 1631</p>
+  </div>
 
   <div class="cards-grid">
-    <div class="card reveal">
-      <div class="card-body">
-        <h3 class="card-title">Panduan Login</h3>
-        <p class="card-desc">Kabar gembira untuk mualaf: HR. Muslim (121) "Islam menghapus semua dosa sebelumnya" — lembaran baru yang bersih.</p>
-        <a href="https://semogabermanfaat.github.io/naskah/syahadat-panduan-mualaf.html" class="card-link" target="_blank">Baca Naskah <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-      </div>
+    <div class="card">
+      <h3 class="card-title">Panduan Login (Mualaf)</h3>
+      <p class="card-desc">Kabar gembira untuk mualaf: HR. Muslim (121) "Islam menghapus semua dosa sebelumnya" — lembaran baru yang bersih.</p>
+      <a href="https://semogabermanfaat.github.io/naskah/syahadat-panduan-mualaf.html" class="card-link" target="_blank">Baca Naskah ➜</a>
     </div>
 
-    <div class="card reveal">
-      <div class="card-body">
-        <h3 class="card-title">Qadar atau Takdir</h3>
-        <p class="card-desc">Apakah Qadar Itu? Definisi qadar sebagai pengetahuan azali Allah. Hadis Jibril (HR. Muslim 8) — iman kepada qadar sebagai rukun iman keenam.</p>
-        <a href="https://semogabermanfaat.github.io/naskah/kitab-qadar-takdir.html" class="card-link" target="_blank">Baca Naskah <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-      </div>
-    </div>
-    
-    <div class="card reveal">
-      <div class="card-body">
-        <h3 class="card-title">Sifat Orang Munafik</h3>
-        <p class="card-desc">Siapakah Orang Munafik? Pengantar bahwa kemunafikan dibahas lebih panjang dari kekafiran dalam Al-Qur'an. Dalil QS. Al-Baqarah: 8–10.</p>
-        <a href="https://semogabermanfaat.github.io/naskah/sifat-orang-munafik.html" class="card-link" target="_blank">Baca Naskah <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-      </div>
-    </div>
-    
-    <div class="card reveal">
-      <div class="card-body">
-        <h3 class="card-title">Surga dan Neraka</h3>
-        <p class="card-desc">Menggambarkan keadaan surga, telaga Nabi, dan siksaan neraka.</p>
-        <a href="https://semogabermanfaat.github.io/naskah/kitab-surga-neraka.html" class="card-link" target="_blank">Baca Naskah <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-      </div>
-    </div>
-    
-    <div class="card reveal">
-      <div class="card-body">
-        <h3 class="card-title">Tanda-tanda Kiamat</h3>
-        <p class="card-desc">Pengantar pembagian tanda kecil & besar, dalil QS. Muhammad: 18 dan Hadis Jibril.</p>
-        <a href="https://semogabermanfaat.github.io/naskah/kitab-tanda-kiamat.html" class="card-link" target="_blank">Baca Naskah <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-      </div>
-    </div>
-    
-    <div class="card reveal">
-      <div class="card-body">
-        <h3 class="card-title">Thaharah atau Bersuci</h3>
-        <p class="card-desc">Thaharah setengah iman (HR. Muslim 223) · penjelasan posisi thaharah sebagai bab pertama fiqh.</p>
-        <a href="https://semogabermanfaat.github.io/naskah/thaharah-bersuci.html" class="card-link" target="_blank">Baca Naskah <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-      </div>
-    </div>
-    
-    <div class="card reveal">
-      <div class="card-body">
-        <h3 class="card-title">Shalat Nabi</h3>
-        <p class="card-desc">Shalat Nabi ﷺ bukan sekadar gerakan tubuh — ia adalah percakapan jiwa yang paling intim dengan Allah.</p>
-        <a href="https://semogabermanfaat.github.io/naskah/shalat-nabi-bacaan-dzikir.html" class="card-link" target="_blank">Baca Naskah <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-      </div>
-    </div>
-    
-    <div class="card reveal">
-      <div class="card-body">
-        <h3 class="card-title">Shalat Musafir Qashar</h3>
-        <p class="card-desc">Kemurahan Allah bagi musafir. QS. An-Nisā': 101 + HR. Muslim (686): "Ini adalah sedekah Allah — terimalah sedekah-Nya."</p>
-        <a href="https://semogabermanfaat.github.io/naskah/shalat-musafir-qashar.html" class="card-link" target="_blank">Baca Naskah <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-      </div>
-    </div>
-    
-    <div class="card reveal">
-      <div class="card-body">
-        <h3 class="card-title">Perjalanan Al-Quran</h3>
-        <p class="card-desc">Kitab paling terjaga sepanjang sejarah. QS. Al-Hijr: 9 (jaminan penjagaan Allah).</p>
-        <a href="https://semogabermanfaat.github.io/naskah/perjalanan-alquran.html" class="card-link" target="_blank">Baca Naskah <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-      </div>
-    </div>
-    
-    <div class="card reveal">
-      <div class="card-body">
-        <h3 class="card-title">Isra' Mi'raj</h3>
-        <p class="card-desc">Perjalanan Agung Menembus Langit.</p>
-        <a href="https://semogabermanfaat.github.io/naskah/isra-miraj.html" class="card-link" target="_blank">Baca Naskah <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-      </div>
-    </div>
-    
-    <div class="card reveal">
-      <div class="card-body">
-        <h3 class="card-title">Sidratul Muntaha</h3>
-        <p class="card-desc">Apakah Sidratul Muntaha? Pengenalan bahwa ia adalah pohon kosmis di batas tertinggi alam makhluk. Dalil utama: QS. An-Najm: 13–18</p>
-        <a href="https://semogabermanfaat.github.io/naskah/sidratul-muntaha.html" class="card-link" target="_blank">Baca Naskah <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-      </div>
-    </div>
-    
-    <div class="card reveal">
-      <div class="card-body">
-        <h3 class="card-title">Malaikat Allah</h3>
-        <p class="card-desc">Siapakah malaikat? Diciptakan dari cahaya, rukun iman ke-2. QS. Al-Baqarah: 285 + HR. Muslim (2996).</p>
-        <a href="https://semogabermanfaat.github.io/naskah/kitab-malaikat-allah.html" class="card-link" target="_blank">Baca Naskah <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-      </div>
-    </div>
-    
-    <div class="card reveal">
-      <div class="card-body">
-        <h3 class="card-title">Amalan Jalur Langit</h3>
-        <p class="card-desc">Ketika Amal Naik ke Langit Dibuka dengan QS. Fāthir: 10 — bahwa amal saleh benar-benar naik ke hadirat Allah.</p>
-        <a href="https://semogabermanfaat.github.io/naskah/amalan-jalur-langit.html" class="card-link" target="_blank">Baca Naskah <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-      </div>
-    </div>
-    
-    <div class="card reveal">
-      <div class="card-body">
-        <h3 class="card-title">Keutamaan Istigfar</h3>
-        <p class="card-desc">Pintu Rahmat yang Selalu Terbuka Istighfar sebagai pintu yang tidak pernah dikunci, bagi siapa pun, kapan pun.</p>
-        <a href="https://semogabermanfaat.github.io/naskah/keutamaan-istighfar.html" class="card-link" target="_blank">Baca Naskah <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-      </div>
-    </div>
-    
-    <div class="card reveal">
-      <div class="card-body">
-        <h3 class="card-title">Kekuatan Tahajud dan Dhuha</h3>
-        <p class="card-desc">Di Antara Gelap dan Fajar Pengantar tentang dua waktu paling istimewa yang Allah siapkan untuk hamba-Nya.</p>
-        <a href="https://semogabermanfaat.github.io/naskah/the-power-of-tahajud-dhuha.html" class="card-link" target="_blank">Baca Naskah <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-      </div>
-    </div>
-    
-    <div class="card reveal">
-      <div class="card-body">
-        <h3 class="card-title">Sahabat Nabi</h3>
-        <p class="card-desc">Definisi sahabat + larangan mencela mereka. HR. Bukhari (3673): "Janganlah mencela sahabatku..."</p>
-        <a href="https://semogabermanfaat.github.io/naskah/kitab-sahabat-nabi.html" class="card-link" target="_blank">Baca Naskah <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-      </div>
-    </div>
-    
-    <div class="card reveal">
-      <div class="card-body">
-        <h3 class="card-title">Fiqih Wanita</h3>
-        <p class="card-desc">Panduan lengkap hukum Islam yang berkaitan dengan kehidupan wanita muslimah — dari thaharah, ibadah, hingga muamalah.</p>
-        <a href="https://semogabermanfaat.github.io/naskah/fiqih-wanita.html" class="card-link" target="_blank">Baca Naskah <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-      </div>
-    </div>
-    
-    <div class="card reveal">
-      <div class="card-body">
-        <h3 class="card-title">Istri-istri Nabi Muhammad</h3>
-        <p class="card-desc">Istri-istri Nabi Muhammad ﷺ adalah wanita-wanita mulia yang Allah sebut sebagai ibu bagi seluruh kaum Mukmin.</p>
-        <a href="https://semogabermanfaat.github.io/naskah/istri-nabi-muhammad.html" class="card-link" target="_blank">Baca Naskah <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-      </div>
+    <div class="card">
+      <h3 class="card-title">Qadar atau Takdir</h3>
+      <p class="card-desc">Definisi qadar sebagai pengetahuan azali Allah. Hadis Jibril (HR. Muslim 8) — iman kepada qadar sebagai rukun iman keenam.</p>
+      <a href="https://semogabermanfaat.github.io/naskah/kitab-qadar-takdir.html" class="card-link" target="_blank">Baca Naskah ➜</a>
     </div>
 
-  </div>
-</div>
-
-<div style="background:var(--bg-main); position:relative; z-index:2;">
-  <div class="section about-inner">
-    <div class="about-text reveal">
-      <p class="section-label">Tentang</p>
-      <h2 class="section-title">Niat &amp; Tujuan</h2>
-      <div class="section-rule"></div>
-      <p>Kumpulan naskah ini ditulis untuk berbagi ilmu yang bermanfaat. Setiap tulisan disusun dengan referensi yang sahih dan bahasa yang mudah dipahami oleh siapa saja.</p>
-      <p>Semua naskah dapat dibaca langsung di browser, diunduh, maupun disebarluaskan secara bebas tanpa perlu izin — karena ilmu adalah milik semua umat.</p>
-      <p>Jika Anda menemukan manfaat, cukuplah doakan agar menjadi amal jariah bagi penulisnya. Itulah sebaik-baik balasan.</p>
+    <div class="card">
+      <h3 class="card-title">Sifat Orang Munafik</h3>
+      <p class="card-desc">Kemunafikan dibahas lebih panjang dari kekafiran dalam Al-Qur'an. Dalil utama dari QS. Al-Baqarah: 8–10.</p>
+      <a href="https://semogabermanfaat.github.io/naskah/sifat-orang-munafik.html" class="card-link" target="_blank">Baca Naskah ➜</a>
     </div>
-    <div class="amal-box reveal">
-      <p class="arabic-quote">مَنْ دَلَّ عَلَى خَيْرٍ فَلَهُ مِثْلُ أَجْرِ فَاعِلِهِ</p>
-      <p class="latin-quote">"Barangsiapa menunjukkan kepada suatu kebaikan, maka ia mendapat pahala seperti pahala orang yang melakukannya."</p>
-      <p class="source">HR. Muslim, No. 1893</p>
+
+    <div class="card">
+      <h3 class="card-title">Surga dan Neraka</h3>
+      <p class="card-desc">Menggambarkan keadaan nikmat surga, telaga Nabi, serta peringatan tentang pedihnya siksaan neraka.</p>
+      <a href="https://semogabermanfaat.github.io/naskah/kitab-surga-neraka.html" class="card-link" target="_blank">Baca Naskah ➜</a>
+    </div>
+
+    <div class="card">
+      <h3 class="card-title">Tanda-tanda Kiamat</h3>
+      <p class="card-desc">Pengantar pembagian tanda-tanda kecil dan besar berdasarkan dalil QS. Muhammad: 18 dan Hadis Jibril.</p>
+      <a href="https://semogabermanfaat.github.io/naskah/kitab-tanda-kiamat.html" class="card-link" target="_blank">Baca Naskah ➜</a>
+    </div>
+
+    <div class="card">
+      <h3 class="card-title">Thaharah (Bersuci)</h3>
+      <p class="card-desc">Thaharah adalah setengah dari iman (HR. Muslim 223). Penjelasan posisi penting thaharah sebagai bab awal fiqh.</p>
+      <a href="https://semogabermanfaat.github.io/naskah/thaharah-bersuci.html" class="card-link" target="_blank">Baca Naskah ➜</a>
+    </div>
+
+    <div class="card">
+      <h3 class="card-title">Shalat Nabi</h3>
+      <p class="card-desc">Shalat Nabi ﷺ bukan sekadar gerakan — ia adalah percakapan jiwa yang paling intim dengan sang Pencipta.</p>
+      <a href="https://semogabermanfaat.github.io/naskah/shalat-nabi-bacaan-dzikir.html" class="card-link" target="_blank">Baca Naskah ➜</a>
+    </div>
+
+    <div class="card">
+      <h3 class="card-title">Shalat Musafir</h3>
+      <p class="card-desc">Kemurahan Allah bagi musafir. QS. An-Nisā': 101. Shalat qashar adalah sedekah dari Allah untuk hamba-Nya.</p>
+      <a href="https://semogabermanfaat.github.io/naskah/shalat-musafir-qashar.html" class="card-link" target="_blank">Baca Naskah ➜</a>
+    </div>
+
+    <div class="card">
+      <h3 class="card-title">Perjalanan Al-Quran</h3>
+      <p class="card-desc">Kitab paling terjaga sepanjang sejarah. QS. Al-Hijr: 9 sebagai jaminan penjagaan Allah dari perubahan.</p>
+      <a href="https://semogabermanfaat.github.io/naskah/perjalanan-alquran.html" class="card-link" target="_blank">Baca Naskah ➜</a>
+    </div>
+
+    <div class="card">
+      <h3 class="card-title">Isra' Mi'raj</h3>
+      <p class="card-desc">Perjalanan agung Rasulullah ﷺ menembus tujuh lapis langit untuk menerima perintah shalat.</p>
+      <a href="https://semogabermanfaat.github.io/naskah/isra-miraj.html" class="card-link" target="_blank">Baca Naskah ➜</a>
+    </div>
+
+    <div class="card">
+      <h3 class="card-title">Sidratul Muntaha</h3>
+      <p class="card-desc">Mengenal pohon kosmis di batas tertinggi alam makhluk berdasarkan dalil QS. An-Najm: 13–18.</p>
+      <a href="https://semogabermanfaat.github.io/naskah/sidratul-muntaha.html" class="card-link" target="_blank">Baca Naskah ➜</a>
+    </div>
+
+    <div class="card">
+      <h3 class="card-title">Malaikat Allah</h3>
+      <p class="card-desc">Mengenal makhluk yang diciptakan dari cahaya. Rukun iman kedua yang wajib diyakini setiap muslim.</p>
+      <a href="https://semogabermanfaat.github.io/naskah/kitab-malaikat-allah.html" class="card-link" target="_blank">Baca Naskah ➜</a>
+    </div>
+
+    <div class="card">
+      <h3 class="card-title">Amalan Jalur Langit</h3>
+      <p class="card-desc">Membahas bagaimana amal saleh naik ke hadirat Allah berdasarkan QS. Fāthir: 10.</p>
+      <a href="https://semogabermanfaat.github.io/naskah/amalan-jalur-langit.html" class="card-link" target="_blank">Baca Naskah ➜</a>
+    </div>
+
+    <div class="card">
+      <h3 class="card-title">Keutamaan Istighfar</h3>
+      <p class="card-desc">Pintu rahmat yang selalu terbuka. Istighfar sebagai penghapus duka dan pembuka pintu rezeki.</p>
+      <a href="https://semogabermanfaat.github.io/naskah/keutamaan-istighfar.html" class="card-link" target="_blank">Baca Naskah ➜</a>
+    </div>
+
+    <div class="card">
+      <h3 class="card-title">Tahajud & Dhuha</h3>
+      <p class="card-desc">Membahas kekuatan di waktu gelap dan fajar sebagai sarana mendekatkan diri paling istimewa.</p>
+      <a href="https://semogabermanfaat.github.io/naskah/the-power-of-tahajud-dhuha.html" class="card-link" target="_blank">Baca Naskah ➜</a>
+    </div>
+
+    <div class="card">
+      <h3 class="card-title">Sahabat Nabi</h3>
+      <p class="card-desc">Definisi sahabat dan larangan mencela mereka. "Janganlah mencela sahabatku..." (HR. Bukhari 3673).</p>
+      <a href="https://semogabermanfaat.github.io/naskah/kitab-sahabat-nabi.html" class="card-link" target="_blank">Baca Naskah ➜</a>
+    </div>
+
+    <div class="card">
+      <h3 class="card-title">Fiqih Wanita</h3>
+      <p class="card-desc">Panduan lengkap hukum Islam yang berkaitan dengan kehidupan wanita muslimah secara syar'i.</p>
+      <a href="https://semogabermanfaat.github.io/naskah/fiqih-wanita.html" class="card-link" target="_blank">Baca Naskah ➜</a>
+    </div>
+
+    <div class="card">
+      <h3 class="card-title">Istri-istri Nabi</h3>
+      <p class="card-desc">Mengenal para Ummul Mukminin, wanita-wanita mulia teladan sepanjang sejarah Islam.</p>
+      <a href="https://semogabermanfaat.github.io/naskah/istri-nabi-muhammad.html" class="card-link" target="_blank">Baca Naskah ➜</a>
     </div>
   </div>
 </div>
 
 <footer>
-  <div class="footer-logo">﷽</div>
+  <div style="font-family:'Lateef'; font-size:2.2rem; color:var(--gold-dk);">﷽</div>
   <p class="footer-text">
-    Dibuat dengan <span class="footer-heart">♥</span> sebagai amal jariah.<br>
-    Naskah tersedia di <a href="https://github.com/semogabermanfaat/naskah" target="_blank">GitHub</a> — bebas dibaca &amp; disebarkan.<br><br>
-    <em>"Dan sebaik-baik manusia adalah yang paling bermanfaat bagi manusia lainnya."</em>
+    Dibuat dengan penuh cinta sebagai amal jariah.<br>
+    Naskah tersedia di <a href="https://github.com/semogabermanfaat/naskah" target="_blank" style="color:var(--gold);">GitHub</a> — Bebas dibaca & disebarkan.
+  </p>
+  
+  <div class="counter-badge">
+    <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+    Total Kunjungan: <span id="visit-count">Terpantau</span>
+  </div>
+  
+  <p style="font-size:0.7rem; color:var(--text-muted); margin-top:20px; font-style:italic;">
+    "Sebaik-baik manusia adalah yang paling bermanfaat bagi orang lain."
   </p>
 </footer>
 
 <script>
-  // PARTIKEL MELAYANG
+  // Script Animasi Partikel
   const canvas = document.getElementById('particle-canvas');
   const ctx = canvas.getContext('2d');
   let particles = [];
-
-  function resize() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  }
-  window.addEventListener('resize', resize);
-  resize();
-
+  function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+  window.addEventListener('resize', resize); resize();
   class Particle {
-    constructor() {
-      this.init();
-    }
+    constructor() { this.init(); }
     init() {
       this.x = Math.random() * canvas.width;
       this.y = Math.random() * canvas.height;
       this.size = Math.random() * 1.5 + 0.5;
-      this.speedX = Math.random() * 0.5 - 0.25;
-      this.speedY = Math.random() * 0.5 - 0.25;
-      this.opacity = Math.random() * 0.5 + 0.2;
+      this.speedX = Math.random() * 0.4 - 0.2;
+      this.speedY = Math.random() * 0.4 - 0.2;
+      this.opacity = Math.random() * 0.5 + 0.1;
     }
     update() {
-      this.x += this.speedX;
-      this.y += this.speedY;
-      if (this.x > canvas.width) this.x = 0;
-      if (this.x < 0) this.x = canvas.width;
-      if (this.y > canvas.height) this.y = 0;
-      if (this.y < 0) this.y = canvas.height;
+      this.x += this.speedX; this.y += this.speedY;
+      if (this.x > canvas.width) this.x = 0; if (this.y > canvas.height) this.y = 0;
     }
     draw() {
       ctx.fillStyle = `rgba(201, 168, 76, ${this.opacity})`;
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-      ctx.fill();
+      ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill();
     }
   }
-
-  for (let i = 0; i < 80; i++) {
-    particles.push(new Particle());
-  }
-
+  for (let i = 0; i < 70; i++) { particles.push(new Particle()); }
   function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    particles.forEach(p => {
-      p.update();
-      p.draw();
-    });
+    particles.forEach(p => { p.update(); p.draw(); });
     requestAnimationFrame(animate);
   }
   animate();
 
+  // Visitor Counter (Menggunakan API Alternatif yang Stabil)
+  async function updateCounter() {
+    try {
+      const response = await fetch('https://api.countapi.xyz/hit/semogabermanfaat.github.io/naskah');
+      const data = await response.json();
+      document.getElementById('visit-count').innerText = data.value.toLocaleString('id-ID');
+    } catch (e) {
+      document.getElementById('visit-count').innerText = "Aktif";
+    }
+  }
+  updateCounter();
 </script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-QYVB2LHJTJ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-QYVB2LHJTJ');
-</script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
 
