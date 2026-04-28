@@ -1,0 +1,1888 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ghazwat — Peperangan di Masa Rasulullah ﷺ</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;900&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+
+/* ══════════════════════════════════════════
+   DESIGN: Obsidian Luxury
+   — Near-black background with warm gold
+   — Cinzel display (Roman/Imperial gravitas)
+   — Crimson Pro for elegant body prose
+   — Justified editorial text throughout
+   — Parallax-style layered hero
+   — Thin hairline borders, generous space
+══════════════════════════════════════════ */
+
+:root {
+  --obsidian:   #080A0E;
+  --onyx:       #0E1117;
+  --slate:      #141820;
+  --charcoal:   #1C2230;
+  --steel:      #263040;
+  --gold:       #C8973A;
+  --gold2:      #DDB04E;
+  --gold3:      #EDD080;
+  --gold-dim:   #8A6420;
+  --gold-pale:  #F5EDD4;
+  --crimson:    #8B1C2E;
+  --crimson2:   #A82840;
+  --blood:      #6B1020;
+  --silver:     #B8C4D4;
+  --silver2:    #8A9AB0;
+  --white:      #F0F4FC;
+  --text:       #D4DCEC;
+  --text2:      #8E9CB4;
+  --border:     rgba(200,151,58,0.15);
+  --border2:    rgba(200,151,58,0.28);
+  --border3:    rgba(200,151,58,0.45);
+  --shadow:     0 24px 64px rgba(0,0,0,0.5);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Crimson Pro', serif;
+  background: var(--obsidian);
+  color: var(--text);
+  overflow-x: hidden;
+  line-height: 1.8;
+}
+
+/* ══ GRAIN OVERLAY ══ */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='0.028'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: overlay;
+}
+
+/* ══════════════════════════════════════════
+   NAVIGATION
+══════════════════════════════════════════ */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 500;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 3rem;
+  background: rgba(8,10,14,0.88);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.nav-crest {
+  width: 28px; height: 28px;
+  border: 1px solid var(--border3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  color: var(--gold2);
+}
+
+.nav-wordmark {
+  font-family: 'Cinzel', serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold3);
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: 'Cinzel', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--silver2);
+  text-decoration: none;
+  transition: color 0.2s;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -3px; left: 0; right: 0;
+  height: 1px;
+  background: var(--gold2);
+  transform: scaleX(0);
+  transition: transform 0.25s;
+}
+
+.nav-links a:hover { color: var(--gold3); }
+.nav-links a:hover::after { transform: scaleX(1); }
+
+@media (max-width: 700px) {
+  nav { padding: 0 1.2rem; }
+  .nav-links { display: none; }
+}
+
+/* ══════════════════════════════════════════
+   HERO — CINEMATIC DARK
+══════════════════════════════════════════ */
+.hero {
+  min-height: 100vh;
+  padding-top: 60px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 50% 100%, rgba(139,28,46,0.18) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(200,151,58,0.06) 0%, transparent 40%),
+    linear-gradient(180deg, #080A0E 0%, #0E1117 60%, #141820 100%);
+}
+
+/* Horizontal rule lines — cinematic style */
+.hero-rule-top {
+  position: absolute;
+  top: 90px; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--border2), transparent);
+}
+
+.hero-rule-bottom {
+  position: absolute;
+  bottom: 80px; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--border2), transparent);
+}
+
+/* Vertical side lines */
+.hero-rule-left, .hero-rule-right {
+  position: absolute;
+  top: 90px; bottom: 80px;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, var(--border), transparent);
+}
+
+.hero-rule-left { left: 3rem; }
+.hero-rule-right { right: 3rem; }
+
+@media (max-width: 640px) {
+  .hero-rule-left { left: 1rem; }
+  .hero-rule-right { right: 1rem; }
+}
+
+/* Corner marks */
+.corner-mark {
+  position: absolute;
+  width: 20px; height: 20px;
+}
+
+.corner-mark::before, .corner-mark::after {
+  content: '';
+  position: absolute;
+  background: var(--gold);
+}
+
+.corner-mark::before { width: 100%; height: 1px; top: 0; left: 0; }
+.corner-mark::after  { width: 1px; height: 100%; top: 0; left: 0; }
+
+.cm-tl { top: 89px; left: 47px; }
+.cm-tr { top: 89px; right: 47px; transform: scaleX(-1); }
+.cm-bl { bottom: 79px; left: 47px; transform: scaleY(-1); }
+.cm-br { bottom: 79px; right: 47px; transform: scale(-1); }
+
+@media (max-width: 640px) {
+  .cm-tl { left: 15px; }
+  .cm-tr { right: 15px; }
+  .cm-bl { left: 15px; }
+  .cm-br { right: 15px; }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 3rem 2rem;
+  max-width: 900px;
+}
+
+.hero-overline {
+  font-family: 'Cinzel', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.55em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  opacity: 0;
+  animation: fadeUp 1s 0.15s ease forwards;
+}
+
+.hero-overline .dash { width: 28px; height: 1px; background: var(--gold-dim); }
+
+.hero-arabic {
+  font-family: 'Amiri', serif;
+  font-size: clamp(1.6rem, 4vw, 2.8rem);
+  color: var(--gold2);
+  direction: rtl;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 0 40px rgba(200,151,58,0.2);
+  opacity: 0;
+  animation: fadeUp 1s 0.3s ease forwards;
+}
+
+.hero h1 {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(3rem, 8vw, 7.5rem);
+  font-weight: 900;
+  color: var(--white);
+  line-height: 0.9;
+  letter-spacing: 0.06em;
+  margin-bottom: 1.8rem;
+  opacity: 0;
+  animation: fadeUp 1s 0.45s ease forwards;
+  text-shadow: 0 4px 40px rgba(0,0,0,0.8);
+}
+
+.hero h1 .gold-word { color: var(--gold3); }
+.hero h1 .light-word { font-weight: 400; color: rgba(240,244,252,0.65); }
+
+.hero-tagline {
+  font-size: clamp(0.95rem, 2vw, 1.12rem);
+  color: var(--silver2);
+  max-width: 520px;
+  margin: 0 auto 3rem;
+  line-height: 1.8;
+  opacity: 0;
+  animation: fadeUp 1s 0.6s ease forwards;
+}
+
+/* Stats row */
+.hero-stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+  max-width: 600px;
+  margin: 0 auto;
+  opacity: 0;
+  animation: fadeUp 1s 0.75s ease forwards;
+}
+
+.hs-item {
+  flex: 1;
+  padding: 1.2rem 1.5rem;
+  border-right: 1px solid var(--border);
+  text-align: center;
+}
+
+.hs-item:last-child { border-right: none; }
+
+.hs-num {
+  font-family: 'Cinzel', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--gold2);
+  line-height: 1;
+  margin-bottom: 0.3rem;
+}
+
+.hs-label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--silver2);
+  opacity: 0.6;
+}
+
+/* Scroll indicator */
+.hero-scroll {
+  position: absolute;
+  bottom: 1.8rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0;
+  animation: fadeUp 1s 1s ease forwards;
+  z-index: 2;
+}
+
+.hs-line {
+  width: 1px; height: 36px;
+  background: linear-gradient(to bottom, var(--gold-dim), transparent);
+  animation: scrollPulse 2.5s ease infinite;
+}
+
+.hero-scroll span {
+  font-family: 'Cinzel', serif;
+  font-size: 0.5rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.4; transform: scaleY(1); }
+  50% { opacity: 1; transform: scaleY(1.4); }
+}
+
+/* ══════════════════════════════════════════
+   INTRO BAND
+══════════════════════════════════════════ */
+.intro-band {
+  background: var(--slate);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 5rem 2rem;
+}
+
+.intro-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+@media (max-width: 800px) {
+  .intro-inner { grid-template-columns: 1fr; gap: 2rem; }
+  .intro-divider { display: none; }
+}
+
+.intro-divider {
+  background: linear-gradient(to bottom, transparent, var(--border2), transparent);
+  width: 1px;
+  min-height: 200px;
+  align-self: stretch;
+}
+
+.intro-label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.58rem;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: 1.2rem;
+  display: block;
+}
+
+.intro-left h2 {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.3;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.03em;
+}
+
+.intro-left h2 em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--gold3);
+  font-family: 'Crimson Pro', serif;
+}
+
+.intro-body p {
+  font-size: 1rem;
+  color: var(--silver);
+  line-height: 1.9;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+  margin-bottom: 1.1rem;
+}
+
+.intro-body p:last-child { margin-bottom: 0; }
+
+.drop-cap::first-letter {
+  font-family: 'Cinzel', serif;
+  font-size: 4rem;
+  font-weight: 900;
+  color: var(--gold2);
+  float: left;
+  line-height: 0.75;
+  margin-right: 0.1em;
+  margin-top: 0.18em;
+  padding-right: 0.04em;
+  text-shadow: 0 0 20px rgba(200,151,58,0.3);
+}
+
+/* Ayat box */
+.ayat-box {
+  background: var(--charcoal);
+  border: 1px solid var(--border2);
+  border-radius: 2px;
+  padding: 2rem 2.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.ayat-box::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: linear-gradient(to bottom, var(--gold-dim), var(--gold2), var(--gold-dim));
+}
+
+.ayat-ar {
+  font-family: 'Amiri', serif;
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  color: var(--gold3);
+  direction: rtl;
+  text-align: right;
+  line-height: 2.2;
+  margin-bottom: 0.9rem;
+}
+
+.ayat-tr {
+  font-style: italic;
+  font-size: 0.92rem;
+  color: var(--silver2);
+  line-height: 1.7;
+  margin-bottom: 0.5rem;
+}
+
+.ayat-ref {
+  font-family: 'Cinzel', serif;
+  font-size: 0.58rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+}
+
+/* ══════════════════════════════════════════
+   SECTION STRUCTURE
+══════════════════════════════════════════ */
+.war-section {
+  padding: 0 2rem;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+/* Chapter header strip */
+.ch-strip {
+  display: flex;
+  align-items: center;
+  padding: 4rem 2rem 0;
+  max-width: 1080px;
+  margin: 0 auto;
+  gap: 2rem;
+}
+
+.ch-strip .line { flex: 1; height: 1px; background: var(--border2); }
+
+.ch-label-wrap {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  white-space: nowrap;
+}
+
+.ch-num {
+  font-family: 'Cinzel', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+}
+
+.ch-gem {
+  width: 6px; height: 6px;
+  background: var(--gold2);
+  transform: rotate(45deg);
+}
+
+.ch-name {
+  font-family: 'Cinzel', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold2);
+}
+
+/* ══════════════════════════════════════════
+   WAR CARDS — LARGE FEATURE
+══════════════════════════════════════════ */
+.war-card {
+  margin: 3rem 0;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+  background: var(--onyx);
+  transition: border-color 0.3s;
+  position: relative;
+}
+
+.war-card:hover { border-color: var(--border2); }
+
+/* Top accent line */
+.war-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(to right, transparent, var(--gold-dim), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.war-card:hover::before { opacity: 1; }
+
+.wc-head {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 0;
+  border-bottom: 1px solid var(--border);
+}
+
+@media (max-width: 640px) {
+  .wc-head { grid-template-columns: 1fr; }
+  .wc-head-mid { order: 1; }
+  .wc-head-left { order: 0; }
+  .wc-head-right { order: 2; }
+}
+
+.wc-head-left {
+  padding: 1.8rem 2rem;
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 110px;
+  background: rgba(200,151,58,0.03);
+}
+
+.wc-year {
+  font-family: 'Cinzel', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--gold2);
+  line-height: 1;
+  margin-bottom: 0.3rem;
+}
+
+.wc-hijri {
+  font-family: 'Cinzel', serif;
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+}
+
+.wc-head-mid {
+  padding: 1.8rem 2rem;
+  flex: 1;
+}
+
+.wc-arabic {
+  font-family: 'Amiri', serif;
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  color: var(--gold3);
+  direction: rtl;
+  text-align: right;
+  margin-bottom: 0.2rem;
+}
+
+.wc-name {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.2rem, 2.8vw, 1.8rem);
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+
+.wc-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.wm-chip {
+  font-family: 'Cinzel', serif;
+  font-size: 0.55rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: 1px;
+  color: var(--silver2);
+}
+
+.wm-chip.win { border-color: rgba(200,151,58,0.3); color: var(--gold2); }
+.wm-chip.loss { border-color: rgba(139,28,46,0.4); color: #D06070; }
+.wm-chip.treaty { border-color: rgba(100,150,200,0.3); color: #88AACC; }
+
+.wc-head-right {
+  padding: 1.8rem 2rem;
+  border-left: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.8rem;
+  min-width: 160px;
+}
+
+@media (max-width: 640px) {
+  .wc-head-right { border-left: none; border-top: 1px solid var(--border); flex-direction: row; flex-wrap: wrap; }
+}
+
+.wc-stat { }
+
+.wcs-val {
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--gold3);
+  line-height: 1;
+}
+
+.wcs-key {
+  font-family: 'Cinzel', serif;
+  font-size: 0.52rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--silver2);
+  opacity: 0.55;
+  margin-top: 0.18rem;
+}
+
+/* Body */
+.wc-body {
+  padding: 2rem 2.2rem;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2.5rem;
+}
+
+@media (max-width: 768px) {
+  .wc-body { grid-template-columns: 1fr; gap: 1.5rem; }
+}
+
+.wc-prose p {
+  font-size: 0.97rem;
+  color: var(--silver);
+  line-height: 1.9;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+  margin-bottom: 0.9rem;
+}
+
+.wc-prose p:last-child { margin-bottom: 0; }
+
+.wc-sidebar { }
+
+.wcs-box {
+  background: var(--charcoal);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 1.3rem 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.wcs-box:last-child { margin-bottom: 0; }
+
+.wcs-box-title {
+  font-family: 'Cinzel', serif;
+  font-size: 0.58rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: 0.7rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.wcs-box-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.wcs-list {
+  list-style: none;
+  padding: 0;
+}
+
+.wcs-list li {
+  font-size: 0.85rem;
+  color: var(--silver2);
+  padding: 0.3rem 0 0.3rem 1.1rem;
+  position: relative;
+  border-bottom: 1px solid rgba(200,151,58,0.06);
+  line-height: 1.5;
+}
+
+.wcs-list li:last-child { border-bottom: none; }
+
+.wcs-list li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--gold-dim);
+  font-size: 0.7rem;
+  top: 0.35rem;
+}
+
+/* Hadis inside card */
+.wc-hadis {
+  margin: 0 2.2rem 2rem;
+  background: var(--slate);
+  border-left: 3px solid var(--gold-dim);
+  padding: 1.3rem 1.8rem;
+  border-radius: 0 2px 2px 0;
+}
+
+.wch-ar {
+  font-family: 'Amiri', serif;
+  font-size: clamp(0.95rem, 2vw, 1.2rem);
+  color: var(--gold3);
+  direction: rtl;
+  text-align: right;
+  line-height: 2.1;
+  margin-bottom: 0.7rem;
+}
+
+.wch-tr {
+  font-style: italic;
+  font-size: 0.88rem;
+  color: var(--silver2);
+  line-height: 1.7;
+  margin-bottom: 0.4rem;
+}
+
+.wch-src {
+  font-family: 'Cinzel', serif;
+  font-size: 0.56rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+}
+
+/* ══════════════════════════════════════════
+   TIMELINE OVERVIEW
+══════════════════════════════════════════ */
+.timeline-section {
+  background: var(--slate);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 5rem 2rem;
+}
+
+.tl-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.tl-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.tl-header h2 {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: 0.06em;
+  margin-bottom: 0.5rem;
+}
+
+.tl-header p {
+  font-size: 0.92rem;
+  color: var(--silver2);
+}
+
+/* Timeline track */
+.tl-track {
+  position: relative;
+  padding-left: 3.5rem;
+}
+
+.tl-track::before {
+  content: '';
+  position: absolute;
+  left: 1rem;
+  top: 0; bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, var(--gold-dim) 10%, var(--gold-dim) 90%, transparent);
+}
+
+.tl-item {
+  position: relative;
+  margin-bottom: 2.8rem;
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.tl-item:last-child { margin-bottom: 0; }
+
+.tl-dot {
+  position: absolute;
+  left: -2.7rem;
+  top: 0.4rem;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--gold-dim);
+  border: 2px solid var(--obsidian);
+  box-shadow: 0 0 0 3px rgba(200,151,58,0.15);
+  transition: all 0.25s;
+}
+
+.tl-item:hover .tl-dot {
+  background: var(--gold2);
+  box-shadow: 0 0 0 5px rgba(200,151,58,0.2);
+}
+
+.tl-year-block {
+  text-align: right;
+}
+
+.tl-hijri {
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--gold2);
+  line-height: 1;
+}
+
+.tl-masehi {
+  font-family: 'Cinzel', serif;
+  font-size: 0.52rem;
+  letter-spacing: 0.1em;
+  color: var(--silver2);
+  opacity: 0.5;
+  margin-top: 0.2rem;
+}
+
+.tl-content { }
+
+.tl-name {
+  font-family: 'Cinzel', serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 0.25rem;
+  letter-spacing: 0.04em;
+}
+
+.tl-desc {
+  font-size: 0.88rem;
+  color: var(--silver2);
+  line-height: 1.65;
+}
+
+.tl-badge {
+  display: inline-block;
+  font-family: 'Cinzel', serif;
+  font-size: 0.5rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.15rem 0.55rem;
+  border: 1px solid;
+  border-radius: 1px;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+}
+
+.tb-w { border-color: rgba(200,151,58,0.3); color: var(--gold2); }
+.tb-l { border-color: rgba(139,28,46,0.4); color: #C06070; }
+.tb-t { border-color: rgba(100,150,200,0.3); color: #88AACC; }
+.tb-s { border-color: rgba(100,180,100,0.3); color: #88CC88; }
+
+/* ══════════════════════════════════════════
+   LESSONS SECTION
+══════════════════════════════════════════ */
+.lessons-section {
+  padding: 5rem 2rem;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.ls-header {
+  margin-bottom: 3rem;
+}
+
+.ls-header h2 {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.ls-header p { font-size: 0.92rem; color: var(--silver2); }
+
+.lessons-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.2rem;
+}
+
+.lesson-card {
+  background: var(--onyx);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 1.8rem;
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.lesson-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(to right, transparent, var(--gold-dim), transparent);
+  transform: scaleX(0);
+  transition: transform 0.3s;
+}
+
+.lesson-card:hover {
+  border-color: var(--border2);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+}
+
+.lesson-card:hover::after { transform: scaleX(1); }
+
+.lc-num {
+  font-family: 'Cinzel', serif;
+  font-size: 3rem;
+  font-weight: 900;
+  color: rgba(200,151,58,0.08);
+  line-height: 1;
+  margin-bottom: 0.8rem;
+  letter-spacing: -0.02em;
+}
+
+.lc-title {
+  font-family: 'Cinzel', serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold3);
+  margin-bottom: 0.7rem;
+}
+
+.lc-body {
+  font-size: 0.9rem;
+  color: var(--silver2);
+  line-height: 1.75;
+  text-align: justify;
+}
+
+/* ══════════════════════════════════════════
+   CLOSING
+══════════════════════════════════════════ */
+.closing {
+  background: linear-gradient(180deg, var(--obsidian) 0%, var(--blood) 50%, var(--obsidian) 100%);
+  padding: 8rem 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.closing::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 50%, rgba(200,151,58,0.07) 0%, transparent 65%);
+}
+
+.closing-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.closing-gem-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-bottom: 3rem;
+}
+
+.cg { width: 7px; height: 7px; background: var(--gold2); transform: rotate(45deg); }
+.cg.sm { width: 4px; height: 4px; opacity: 0.4; }
+.cg-line { width: 60px; height: 1px; background: var(--border2); }
+
+.closing h2 {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.8rem, 4.5vw, 3.5rem);
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+.closing h2 em {
+  font-family: 'Crimson Pro', serif;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--gold3);
+}
+
+.closing p {
+  font-size: 1rem;
+  color: var(--silver2);
+  line-height: 1.9;
+  text-align: justify;
+  text-justify: inter-word;
+  margin-bottom: 1rem;
+}
+
+.closing-ar {
+  font-family: 'Amiri', serif;
+  font-size: clamp(1.3rem, 3vw, 1.9rem);
+  color: var(--gold3);
+  direction: rtl;
+  margin: 2.5rem 0 0.6rem;
+  line-height: 2.1;
+  text-shadow: 0 0 30px rgba(200,151,58,0.2);
+}
+
+.closing-tr {
+  font-style: italic;
+  font-size: 0.88rem;
+  color: rgba(138,154,176,0.5);
+}
+
+.closing-ref {
+  font-family: 'Cinzel', serif;
+  font-size: 0.56rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-top: 0.3rem;
+}
+
+/* ══ FOOTER ══ */
+footer {
+  background: #04050A;
+  color: rgba(138,154,176,0.25);
+  text-align: center;
+  padding: 2.5rem 2rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  line-height: 2.2;
+}
+
+footer em { color: var(--gold-dim); font-style: normal; }
+
+</style>
+</head>
+<body>
+
+<!-- ════ NAV ════ -->
+<nav>
+  <div class="nav-brand">
+    <div class="nav-crest">⚔</div>
+    <div class="nav-wordmark">Ghazwat Rasulullah ﷺ</div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#badar">Badar</a></li>
+    <li><a href="#uhud">Uhud</a></li>
+    <li><a href="#khandaq">Khandaq</a></li>
+    <li><a href="#khaibar">Khaibar</a></li>
+    <li><a href="#fath">Fathul Makkah</a></li>
+    <li><a href="#timeline">Kronologi</a></li>
+  </ul>
+</nav>
+
+<!-- ════ HERO ════ -->
+<header class="hero">
+  <div class="hero-rule-top"></div>
+  <div class="hero-rule-bottom"></div>
+  <div class="hero-rule-left"></div>
+  <div class="hero-rule-right"></div>
+  <div class="corner-mark cm-tl"></div>
+  <div class="corner-mark cm-tr"></div>
+  <div class="corner-mark cm-bl"></div>
+  <div class="corner-mark cm-br"></div>
+
+  <div class="hero-content">
+    <div class="hero-overline">
+      <div class="dash"></div>
+      <span>Sirah Nabawiyah — Al-Maghazi</span>
+      <div class="dash"></div>
+    </div>
+    <div class="hero-arabic">الْمَغَازِي وَالسَّرَايَا فِي عَهْدِ النَّبِيِّ ﷺ</div>
+    <h1>
+      <span class="light-word">Peperangan</span><br>
+      <span class="gold-word">Rasulullah</span><br>
+      <span class="light-word">ﷺ</span>
+    </h1>
+    <p class="hero-tagline">Mengkaji ghazwat dan sariyah di masa kenabian — sebuah catatan keteguhan iman, strategi agung, dan hikmah di balik setiap pertempuran berdasarkan Al-Qur'an dan Hadis Shahih.</p>
+    <div class="hero-stats">
+      <div class="hs-item">
+        <div class="hs-num">27</div>
+        <div class="hs-label">Ghazwat</div>
+      </div>
+      <div class="hs-item">
+        <div class="hs-num">38+</div>
+        <div class="hs-label">Sariyah</div>
+      </div>
+      <div class="hs-item">
+        <div class="hs-num">9</div>
+        <div class="hs-label">Tahun Jihad</div>
+      </div>
+      <div class="hs-item">
+        <div class="hs-num">9</div>
+        <div class="hs-label">Perang Besar</div>
+      </div>
+    </div>
+  </div>
+
+</header>
+
+<!-- ════ INTRO ════ -->
+<section class="intro-band">
+  <div class="intro-inner">
+    <div class="intro-left">
+      <span class="intro-label">Pengantar</span>
+      <h2>Ghazwat &<br><em>Sariyah</em></h2>
+      <div class="intro-body">
+        <p class="drop-cap">Para ulama sirah membedakan dua jenis ekspedisi militer di masa Nabi ﷺ: <em>Ghazwah</em> (غَزْوَة) — peperangan yang diikuti langsung oleh Rasulullah ﷺ, dan <em>Sariyah</em> (سَرِيَّة) — ekspedisi yang dipimpin sahabat atas perintah beliau tanpa kehadiran Nabi secara langsung. Jumlah ghazwat yang diikuti Nabi ﷺ mencapai 27 kali, sementara sariyah lebih dari 38 ekspedisi.</p>
+        <p>Peperangan dalam Islam bukan tujuan, melainkan sarana perlindungan dakwah dan keadilan. Allah mengizinkan perang hanya setelah kaum Muslimin dizalimi, diusir, dan dihalang-halangi dari agama mereka selama bertahun-tahun. Setiap perang memiliki hikmah mendalam yang Allah abadikan dalam Al-Qur'an.</p>
+      </div>
+    </div>
+    <div class="intro-divider"></div>
+    <div>
+      <div class="ayat-box" style="margin-bottom:1.5rem;">
+        <p class="ayat-ar">أُذِنَ لِلَّذِينَ يُقَاتَلُونَ بِأَنَّهُمْ ظُلِمُوا ۚ وَإِنَّ اللَّهَ عَلَىٰ نَصْرِهِمْ لَقَدِيرٌ</p>
+        <p class="ayat-tr">"Diizinkan (berperang) bagi orang-orang yang diperangi, karena sesungguhnya mereka telah dizalimi. Dan sungguh, Allah benar-benar Mahakuasa menolong mereka."</p>
+        <p class="ayat-ref">QS. Al-Hajj: 39 — Ayat pertama izin berperang</p>
+      </div>
+      <div class="intro-body">
+        <p>Ibnu Abbas meriwayatkan bahwa QS. Al-Hajj: 39 adalah ayat pertama yang turun mengizinkan kaum Muslimin berperang, setelah 13 tahun bersabar di Mekah hanya menerima ujian dan penganiayaan tanpa boleh membalas. Izin ini baru turun setelah hijrah ke Madinah, ketika komunitas Muslim telah memiliki kedaulatan.</p>
+        <p>Seluruh perang di masa Nabi ﷺ adalah <em>perang defensif</em> — baik mempertahankan Madinah, melindungi rute perdagangan, maupun merespons pengkhianatan perjanjian. Tidak ada perang yang bertujuan penaklukan semata dalam sirah Nabawiyah.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     PERANG BADAR
+══════════════════════════════ -->
+<div id="badar">
+<div class="ch-strip">
+  <div class="line"></div>
+  <div class="ch-label-wrap">
+    <span class="ch-num">Ghazwah I</span>
+    <div class="ch-gem"></div>
+    <span class="ch-name">Perang Terbesar Pertama</span>
+  </div>
+  <div class="line"></div>
+</div>
+
+<div class="war-section">
+  <div class="war-card">
+    <div class="wc-head">
+      <div class="wc-head-left">
+        <div class="wc-year">2 H</div>
+        <div class="wc-hijri">624 M</div>
+      </div>
+      <div class="wc-head-mid">
+        <div class="wc-arabic">غَزْوَةُ بَدْرٍ الْكُبْرَى</div>
+        <div class="wc-name">Perang Badar Al-Kubra</div>
+        <div class="wc-meta">
+          <span class="wm-chip win">Kemenangan Besar</span>
+          <span class="wm-chip">Ramadhan 2 H</span>
+          <span class="wm-chip">Sumur Badar, Hijaz</span>
+          <span class="wm-chip">Perang Pertama</span>
+        </div>
+      </div>
+      <div class="wc-head-right">
+        <div class="wc-stat">
+          <div class="wcs-val">313</div>
+          <div class="wcs-key">Pasukan Muslim</div>
+        </div>
+        <div class="wc-stat">
+          <div class="wcs-val">950+</div>
+          <div class="wcs-key">Pasukan Quraisy</div>
+        </div>
+        <div class="wc-stat">
+          <div class="wcs-val">14 : 70</div>
+          <div class="wcs-key">Syahid : Gugur Musuh</div>
+        </div>
+      </div>
+    </div>
+    <div class="wc-body">
+      <div class="wc-prose">
+        <p>Perang Badar adalah perang pertama dan paling menentukan dalam sejarah Islam. Bermula dari rencana mencegat kafilah dagang Quraisy yang dipimpin Abu Sufyan dari Syam — namun kafilah berhasil lolos, dan justru pasukan besar Quraisy di bawah Abu Jahl yang datang menyongsong kaum Muslimin dengan 950 prajurit. Di mata manusia, kekalahan hampir pasti — namun Allah berkehendak lain.</p>
+        <p>Rasulullah ﷺ bermunajat sepanjang malam sebelum perang dengan penuh kekhusyukan, sampai selendang beliau jatuh dari pundak, dan Abu Bakar menghibur beliau. Allah kemudian menurunkan bala bantuan malaikat — suatu mukjizat yang Allah abadikan dalam Surah Al-Anfal. Perang berlangsung singkat namun menentukan: 70 pemimpin Quraisy terbunuh termasuk Abu Jahl, dan 70 lainnya ditawan.</p>
+        <p>Kemenangan Badar bukan hanya kemenangan militer — ia adalah kemenangan iman atas keraguan, kemenangan sedikit atas banyak, dan pembuktian bahwa pertolongan Allah nyata bagi yang bersungguh-sungguh. Allah menurunkan lebih dari 75 ayat dalam Surah Al-Anfal khusus tentang perang ini.</p>
+      </div>
+      <div class="wc-sidebar">
+        <div class="wcs-box">
+          <div class="wcs-box-title">Tokoh Kunci</div>
+          <ul class="wcs-list">
+            <li>Hamzah bin Abdul Muthallib — Singa Allah</li>
+            <li>Ali bin Abi Thalib — Juara duel pertama</li>
+            <li>Ubaidah bin Al-Harits — Syahid awal</li>
+            <li>Abu Jahl — Tewas di medan perang</li>
+            <li>Umayyah bin Khalaf — Tewas oleh Bilal</li>
+          </ul>
+        </div>
+        <div class="wcs-box">
+          <div class="wcs-box-title">Hikmah Utama</div>
+          <ul class="wcs-list">
+            <li>Pertolongan Allah bagi yang sedikit namun benar</li>
+            <li>Doa adalah senjata terkuat mukmin</li>
+            <li>Strategi militer dan tawakal harus beriringan</li>
+            <li>Perlakuan manusiawi terhadap tawanan perang</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="wc-hadis">
+      <p class="wch-ar">إِذْ تَسْتَغِيثُونَ رَبَّكُمْ فَاسْتَجَابَ لَكُمْ أَنِّي مُمِدُّكُم بِأَلْفٍ مِّنَ الْمَلَائِكَةِ مُرْدِفِينَ</p>
+      <p class="wch-tr">"Ingatlah ketika kamu memohon pertolongan kepada Tuhanmu, lalu Dia mengabulkan permohonanmu: 'Sesungguhnya Aku akan mendatangkan bala bantuan kepadamu berupa seribu malaikat yang datang berturut-turut.'"</p>
+      <p class="wch-src">QS. Al-Anfal: 9</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════
+     PERANG UHUD
+══════════════════════════════ -->
+<div id="uhud">
+<div class="ch-strip">
+  <div class="line"></div>
+  <div class="ch-label-wrap">
+    <span class="ch-num">Ghazwah II</span>
+    <div class="ch-gem"></div>
+    <span class="ch-name">Ujian Terbesar Keimanan</span>
+  </div>
+  <div class="line"></div>
+</div>
+
+<div class="war-section">
+  <div class="war-card">
+    <div class="wc-head">
+      <div class="wc-head-left">
+        <div class="wc-year">3 H</div>
+        <div class="wc-hijri">625 M</div>
+      </div>
+      <div class="wc-head-mid">
+        <div class="wc-arabic">غَزْوَةُ أُحُدٍ</div>
+        <div class="wc-name">Perang Uhud</div>
+        <div class="wc-meta">
+          <span class="wm-chip loss">Ujian Berat</span>
+          <span class="wm-chip">Syawwal 3 H</span>
+          <span class="wm-chip">Bukit Uhud, Madinah</span>
+          <span class="wm-chip">70 Syuhada</span>
+        </div>
+      </div>
+      <div class="wc-head-right">
+        <div class="wc-stat">
+          <div class="wcs-val">700</div>
+          <div class="wcs-key">Pasukan Muslim</div>
+        </div>
+        <div class="wc-stat">
+          <div class="wcs-val">3.000</div>
+          <div class="wcs-key">Pasukan Quraisy</div>
+        </div>
+        <div class="wc-stat">
+          <div class="wcs-val">70</div>
+          <div class="wcs-key">Syuhada Muslim</div>
+        </div>
+      </div>
+    </div>
+    <div class="wc-body">
+      <div class="wc-prose">
+        <p>Perang Uhud adalah ujian terbesar bagi kaum Muslimin — dan Al-Qur'an mencurahkan lebih dari 60 ayat dalam Surah Ali Imran untuk menganalisanya dengan mendalam. Setahun setelah Badar, Abu Sufyan memimpin 3.000 pasukan Quraisy membalas kekalahan mereka. Nabi ﷺ mengerahkan 700 orang.</p>
+        <p>Awalnya, kaum Muslimin unggul. Namun 50 pemanah yang ditempatkan Nabi ﷺ di Bukit 'Ainain melanggar perintah beliau untuk tidak meninggalkan pos mereka. Saat melihat harta rampasan, sebagian besar turun meninggalkan bukit. Khalid bin Walid — saat itu masih di pihak Quraisy — langsung memanfaatkan celah ini dan menyerang dari belakang. Keadaan berbalik. Tujuh puluh sahabat syahid, termasuk Hamzah bin Abdul Muthallib, paman tercinta Nabi ﷺ.</p>
+        <p>Nabi ﷺ sendiri terluka — gigi depan beliau patah, pelindung helm menembus pipi, dan beliau jatuh ke dalam lubang. Namun tidak sekalipun beliau berpikir melarikan diri. Allah menurunkan ayat-ayat yang menjelaskan bahwa musibah ini adalah akibat ketidaktaatan, sekaligus pelajaran agung tentang konsekuensi meninggalkan komando pemimpin.</p>
+      </div>
+      <div class="wc-sidebar">
+        <div class="wcs-box">
+          <div class="wcs-box-title">Para Syuhada Uhud</div>
+          <ul class="wcs-list">
+            <li>Hamzah bin Abdul Muthallib — Sayyidus Syuhada</li>
+            <li>Mush'ab bin Umair — pembawa panji Islam</li>
+            <li>Abdullah bin Jahsy — sepupu Nabi</li>
+            <li>Anas bin An-Nadhr — yang dicari-cari syahadah</li>
+            <li>70 sahabat mulia lainnya</li>
+          </ul>
+        </div>
+        <div class="wcs-box">
+          <div class="wcs-box-title">Pelajaran Abadi</div>
+          <ul class="wcs-list">
+            <li>Ketaatan kepada pemimpin adalah kunci kemenangan</li>
+            <li>Cinta dunia dan harta menghancurkan barisan</li>
+            <li>Musibah bisa jadi ujian sekaligus teguran Allah</li>
+            <li>Kesabaran dalam kekalahan lebih berat dari kemenangan</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="wc-hadis">
+      <p class="wch-ar">وَلَقَدْ صَدَقَكُمُ اللَّهُ وَعْدَهُ إِذْ تَحُسُّونَهُم بِإِذْنِهِ ۖ حَتَّىٰ إِذَا فَشِلْتُمْ وَتَنَازَعْتُمْ فِي الْأَمْرِ وَعَصَيْتُم مِّن بَعْدِ مَا أَرَاكُم مَّا تُحِبُّونَ</p>
+      <p class="wch-tr">"Dan sungguh, Allah telah menepati janji-Nya kepadamu ketika kamu membunuh mereka dengan izin-Nya; sampai ketika kamu lemah (goyah) dan berselisih dalam urusan itu, dan kamu mendurhakai (perintah Rasul) setelah Allah memperlihatkan kepadamu apa yang kamu sukai..."</p>
+      <p class="wch-src">QS. Ali Imran: 152</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════
+     PERANG KHANDAQ
+══════════════════════════════ -->
+<div id="khandaq">
+<div class="ch-strip">
+  <div class="line"></div>
+  <div class="ch-label-wrap">
+    <span class="ch-num">Ghazwah III</span>
+    <div class="ch-gem"></div>
+    <span class="ch-name">Strategi Genius Salman Al-Farisi</span>
+  </div>
+  <div class="line"></div>
+</div>
+
+<div class="war-section">
+  <div class="war-card">
+    <div class="wc-head">
+      <div class="wc-head-left">
+        <div class="wc-year">5 H</div>
+        <div class="wc-hijri">627 M</div>
+      </div>
+      <div class="wc-head-mid">
+        <div class="wc-arabic">غَزْوَةُ الْخَنْدَقِ — الأَحْزَابُ</div>
+        <div class="wc-name">Perang Khandaq (Al-Ahzab)</div>
+        <div class="wc-meta">
+          <span class="wm-chip win">Kemenangan Strategis</span>
+          <span class="wm-chip">Syawwal 5 H</span>
+          <span class="wm-chip">Madinah</span>
+          <span class="wm-chip">Koalisi 10.000 Pasukan</span>
+        </div>
+      </div>
+      <div class="wc-head-right">
+        <div class="wc-stat">
+          <div class="wcs-val">3.000</div>
+          <div class="wcs-key">Pasukan Muslim</div>
+        </div>
+        <div class="wc-stat">
+          <div class="wcs-val">10.000</div>
+          <div class="wcs-key">Koalisi Musuh</div>
+        </div>
+        <div class="wc-stat">
+          <div class="wcs-val">20 hari</div>
+          <div class="wcs-key">Pengepungan</div>
+        </div>
+      </div>
+    </div>
+    <div class="wc-body">
+      <div class="wc-prose">
+        <p>Perang Khandaq atau Al-Ahzab (Sekutu) adalah saat paling kritis dalam sejarah Madinah. Sepuluh ribu pasukan gabungan — Quraisy, Ghatafan, Bani Nadhir, dan berbagai suku Arab — mengepung Madinah dari segala penjuru. Ancaman ini jauh lebih besar dari Badar dan Uhud digabungkan.</p>
+        <p>Sahabat Salman Al-Farisi — berasal dari Persia — mengusulkan strategi yang belum pernah dikenal bangsa Arab sebelumnya: menggali parit (khandaq) sepanjang kurang lebih 5 km di sisi utara Madinah yang terbuka. Rasulullah ﷺ langsung menyetujui dan ikut menggali dengan tangannya sendiri, bahkan dua kali melakukan mukjizat memecah batu besar dengan pukulan yang memancarkan cahaya menandakan kemenangan Islam di Persia, Romawi, dan Yaman.</p>
+        <p>Pengepungan berlangsung sekitar 20-27 hari dalam kondisi lapar dan dingin luar biasa. Namun Allah mengirimkan angin topan dahsyat yang memorakporandakan kemah pasukan musuh, sementara Nu'aim bin Mas'ud berhasil memecah belah koalisi dari dalam melalui strategi diplomatik jenius. Pasukan sekutu akhirnya mundur tanpa pertempuran besar. Al-Qur'an menurunkan Surah Al-Ahzab untuk mengabadikan peristiwa ini.</p>
+      </div>
+      <div class="wc-sidebar">
+        <div class="wcs-box">
+          <div class="wcs-box-title">Tokoh Kunci</div>
+          <ul class="wcs-list">
+            <li>Salman Al-Farisi — penggagas strategi parit</li>
+            <li>Nu'aim bin Mas'ud — agen diplomatik rahasia</li>
+            <li>Ali bin Abi Thalib — duel melawan Amr bin Wudd</li>
+            <li>Amr bin Wudd — "seribu penunggang kuda" — tewas oleh Ali</li>
+          </ul>
+        </div>
+        <div class="wcs-box">
+          <div class="wcs-box-title">Keistimewaan</div>
+          <ul class="wcs-list">
+            <li>Strategi militer non-Arab pertama dalam Islam</li>
+            <li>Nabi ﷺ ikut menggali parit langsung</li>
+            <li>Kemenangan tanpa pertempuran besar</li>
+            <li>Allah yang memenangkan lewat angin dan fitnah</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="wc-hadis">
+      <p class="wch-ar">يَا أَيُّهَا الَّذِينَ آمَنُوا اذْكُرُوا نِعْمَةَ اللَّهِ عَلَيْكُمْ إِذْ جَاءَتْكُمْ جُنُودٌ فَأَرْسَلْنَا عَلَيْهِمْ رِيحًا وَجُنُودًا لَّمْ تَرَوْهَا</p>
+      <p class="wch-tr">"Wahai orang-orang yang beriman, ingatlah nikmat Allah (yang diberikan) kepadamu ketika bala tentara datang kepadamu, lalu Kami kirimkan kepada mereka angin topan dan bala tentara yang tidak dapat kamu melihatnya."</p>
+      <p class="wch-src">QS. Al-Ahzab: 9</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════
+     HUDAIBIYAH
+══════════════════════════════ -->
+<div id="hudaibiyah">
+<div class="ch-strip">
+  <div class="line"></div>
+  <div class="ch-label-wrap">
+    <span class="ch-num">Perjanjian</span>
+    <div class="ch-gem"></div>
+    <span class="ch-name">Kemenangan Tersembunyi</span>
+  </div>
+  <div class="line"></div>
+</div>
+
+<div class="war-section">
+  <div class="war-card">
+    <div class="wc-head">
+      <div class="wc-head-left">
+        <div class="wc-year">6 H</div>
+        <div class="wc-hijri">628 M</div>
+      </div>
+      <div class="wc-head-mid">
+        <div class="wc-arabic">صُلْحُ الْحُدَيْبِيَةِ</div>
+        <div class="wc-name">Perjanjian Hudaibiyah</div>
+        <div class="wc-meta">
+          <span class="wm-chip treaty">Perjanjian Damai</span>
+          <span class="wm-chip">Dzulqa'dah 6 H</span>
+          <span class="wm-chip">Al-Hudaibiyah, Makkah</span>
+          <span class="wm-chip win">Fath Mubin</span>
+        </div>
+      </div>
+      <div class="wc-head-right">
+        <div class="wc-stat">
+          <div class="wcs-val">1.400</div>
+          <div class="wcs-key">Jamaah Muslim</div>
+        </div>
+        <div class="wc-stat">
+          <div class="wcs-val">10 thn</div>
+          <div class="wcs-key">Masa Gencatan Senjata</div>
+        </div>
+        <div class="wc-stat">
+          <div class="wcs-val">0 : 0</div>
+          <div class="wcs-key">Korban (Tanpa Perang)</div>
+        </div>
+      </div>
+    </div>
+    <div class="wc-body">
+      <div class="wc-prose">
+        <p>Hudaibiyah adalah salah satu peristiwa yang paling disalahpahami namun paling agung dalam sirah Nabawiyah. Nabi ﷺ berangkat bersama 1.400 sahabat dengan niat ibadah umrah ke Mekah — bukan berperang. Namun Quraisy menghalangi mereka di daerah Hudaibiyah.</p>
+        <p>Setelah negosiasi panjang, tercapailah perjanjian damai selama 10 tahun dengan syarat-syarat yang tampaknya sangat merugikan Muslim: tidak boleh umrah tahun ini, harus pulang, Muslim yang lari ke Madinah harus dikembalikan namun Quraisy yang lari ke Mekah tidak. Para sahabat — termasuk Umar bin Khattab — marah besar dan keberatan. Namun Nabi ﷺ menandatanganinya dengan tenang.</p>
+        <p>Allah kemudian menurunkan Surah Al-Fath yang menyebut perjanjian ini sebagai "kemenangan yang nyata" (Fath Mubin). Dalam dua tahun, ribuan orang masuk Islam — termasuk Khalid bin Walid dan Amr bin Ash. Perjanjian ini membuka jalan dakwah lebih luas dari yang pernah terbayangkan, membuktikan bahwa perdamaian dengan syarat sekalipun lebih baik dari perang, dan hikmah Nabi ﷺ jauh melampaui pandangan sahabat yang paling cerdas sekalipun.</p>
+      </div>
+      <div class="wc-sidebar">
+        <div class="wcs-box">
+          <div class="wcs-box-title">Isi Perjanjian</div>
+          <ul class="wcs-list">
+            <li>Gencatan senjata 10 tahun</li>
+            <li>Muslim umrah tahun depan, 3 hari saja</li>
+            <li>Pengungsi Muslim ke Quraisy tidak dikembalikan</li>
+            <li>Suku lain bebas bersekutu dengan siapapun</li>
+          </ul>
+        </div>
+        <div class="wcs-box">
+          <div class="wcs-box-title">Hikmah Tersembunyi</div>
+          <ul class="wcs-list">
+            <li>Dua tahun kemudian ribuan masuk Islam</li>
+            <li>Khalid bin Walid masuk Islam berkat Hudaibiyah</li>
+            <li>Membuka jalan Fathul Makkah 2 tahun kemudian</li>
+            <li>Pembuktian visi Nabi ﷺ melampaui sahabat</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="wc-hadis">
+      <p class="wch-ar">إِنَّا فَتَحْنَا لَكَ فَتْحًا مُّبِينًا ۝ لِّيَغْفِرَ لَكَ اللَّهُ مَا تَقَدَّمَ مِن ذَنبِكَ وَمَا تَأَخَّرَ</p>
+      <p class="wch-tr">"Sesungguhnya Kami telah memberikan kepadamu kemenangan yang nyata, agar Allah memberi ampunan kepadamu atas dosamu yang telah lalu dan yang akan datang..."</p>
+      <p class="wch-src">QS. Al-Fath: 1–2 — turun setelah Perjanjian Hudaibiyah</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════
+     KHAIBAR
+══════════════════════════════ -->
+<div id="khaibar">
+<div class="ch-strip">
+  <div class="line"></div>
+  <div class="ch-label-wrap">
+    <span class="ch-num">Ghazwah IV</span>
+    <div class="ch-gem"></div>
+    <span class="ch-name">Benteng-Benteng Khaibar</span>
+  </div>
+  <div class="line"></div>
+</div>
+
+<div class="war-section">
+  <div class="war-card">
+    <div class="wc-head">
+      <div class="wc-head-left">
+        <div class="wc-year">7 H</div>
+        <div class="wc-hijri">629 M</div>
+      </div>
+      <div class="wc-head-mid">
+        <div class="wc-arabic">غَزْوَةُ خَيْبَرَ</div>
+        <div class="wc-name">Perang Khaibar</div>
+        <div class="wc-meta">
+          <span class="wm-chip win">Kemenangan Penuh</span>
+          <span class="wm-chip">Muharram 7 H</span>
+          <span class="wm-chip">Oasis Khaibar, Madinah Utara</span>
+          <span class="wm-chip">Ali bin Abi Thalib</span>
+        </div>
+      </div>
+      <div class="wc-head-right">
+        <div class="wc-stat">
+          <div class="wcs-val">1.400</div>
+          <div class="wcs-key">Pasukan Muslim</div>
+        </div>
+        <div class="wc-stat">
+          <div class="wcs-val">7+</div>
+          <div class="wcs-key">Benteng Direbut</div>
+        </div>
+        <div class="wc-stat">
+          <div class="wcs-val">93 : 20</div>
+          <div class="wcs-key">Gugur Musuh : Syahid</div>
+        </div>
+      </div>
+    </div>
+    <div class="wc-body">
+      <div class="wc-prose">
+        <p>Setelah Hudaibiyah, Rasulullah ﷺ mengarahkan ekspedisi ke Khaibar — oasis kaya milik Bani Nadhir yang telah terusir dari Madinah dan menjadi pusat konspirasi terhadap kaum Muslimin. Benteng-benteng Khaibar yang kokoh dan berlapis menjadi tantangan tersendiri.</p>
+        <p>Pada hari-hari pertama, dua orang sahabat senior — Abu Bakar dan Umar — mencoba membuka Benteng Al-Qamus namun belum berhasil. Malam harinya Nabi ﷺ bersabda dengan kalimat yang masyhur: <em>"Besok aku akan menyerahkan panji ini kepada seseorang yang mencintai Allah dan Rasul-Nya, dan Allah dan Rasul-Nya mencintainya — ia tidak akan lari."</em> Keesokan paginya, Ali bin Abi Thalib dipanggil meski matanya sedang sakit, Nabi ﷺ meludah di matanya (sebagai syifa), dan Ali pun memimpin serangan. Ia menjebol pintu benteng Al-Qamus dengan tangannya sendiri dan menjadikannya perisai.</p>
+        <p>Di Khaibar pula terjadi percobaan racun terhadap Nabi ﷺ melalui daging kambing yang diberikan Zainab binti Al-Harits. Nabi ﷺ memuntahkannya setelah satu suapan, namun sahabat Bisyr bin Al-Bara' yang ikut makan meninggal dunia. Nabi ﷺ tidak menghukum wanita itu setelah mengakuinya.</p>
+      </div>
+      <div class="wc-sidebar">
+        <div class="wcs-box">
+          <div class="wcs-box-title">Benteng-Benteng Khaibar</div>
+          <ul class="wcs-list">
+            <li>Benteng Na'im — pertama direbut</li>
+            <li>Benteng Al-Qamus — yang terkuat, oleh Ali</li>
+            <li>Benteng Ash-Sha'b — mengandung harta besar</li>
+            <li>Benteng Az-Zubayr, Ubay, Al-Katibah</li>
+            <li>Total 7+ benteng dikuasai dalam 10-20 hari</li>
+          </ul>
+        </div>
+        <div class="wcs-box">
+          <div class="wcs-box-title">Kejadian Penting</div>
+          <ul class="wcs-list">
+            <li>Mukjizat penyembuhan mata Ali oleh Nabi ﷺ</li>
+            <li>Ali mencabut pintu benteng sebagai perisai</li>
+            <li>Percobaan racun terhadap Nabi ﷺ</li>
+            <li>Nabi menikahi Shafiyyah binti Huyay di sini</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="wc-hadis">
+      <p class="wch-ar">لَأُعْطِيَنَّ هَذِهِ الرَّايَةَ غَدًا رَجُلًا يُحِبُّ اللَّهَ وَرَسُولَهُ وَيُحِبُّهُ اللَّهُ وَرَسُولُهُ يَفْتَحُ اللَّهُ عَلَى يَدَيْهِ</p>
+      <p class="wch-tr">"Sungguh akan aku berikan panji ini besok kepada seorang laki-laki yang mencintai Allah dan Rasul-Nya, dan Allah serta Rasul-Nya mencintainya. Allah akan membuka kemenangan melalui tangannya."</p>
+      <p class="wch-src">HR. Bukhari & Muslim — Sabda Nabi ﷺ sebelum Perang Khaibar</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════
+     FATHUL MAKKAH
+══════════════════════════════ -->
+<div id="fath">
+<div class="ch-strip">
+  <div class="line"></div>
+  <div class="ch-label-wrap">
+    <span class="ch-num">Ghazwah V</span>
+    <div class="ch-gem"></div>
+    <span class="ch-name">Puncak Kemenangan Islam</span>
+  </div>
+  <div class="line"></div>
+</div>
+
+<div class="war-section">
+  <div class="war-card" style="border-color: rgba(200,151,58,0.25);">
+    <div class="wc-head" style="border-bottom-color: rgba(200,151,58,0.2);">
+      <div class="wc-head-left" style="background: rgba(200,151,58,0.06);">
+        <div class="wc-year">8 H</div>
+        <div class="wc-hijri">630 M</div>
+      </div>
+      <div class="wc-head-mid">
+        <div class="wc-arabic">فَتْحُ مَكَّةَ الْمُكَرَّمَةِ</div>
+        <div class="wc-name">Fathul Makkah — Pembebasan Makkah</div>
+        <div class="wc-meta">
+          <span class="wm-chip win">Kemenangan Agung</span>
+          <span class="wm-chip">Ramadhan 8 H</span>
+          <span class="wm-chip">Makkah Al-Mukarramah</span>
+          <span class="wm-chip win">Tanpa Pertumpahan Darah</span>
+        </div>
+      </div>
+      <div class="wc-head-right">
+        <div class="wc-stat">
+          <div class="wcs-val">10.000</div>
+          <div class="wcs-key">Pasukan Muslim</div>
+        </div>
+        <div class="wc-stat">
+          <div class="wcs-val">360</div>
+          <div class="wcs-key">Berhala Dihancurkan</div>
+        </div>
+        <div class="wc-stat">
+          <div class="wcs-val">Amnesti</div>
+          <div class="wcs-key">Umum untuk Makkah</div>
+        </div>
+      </div>
+    </div>
+    <div class="wc-body">
+      <div class="wc-prose">
+        <p>Fathul Makkah adalah puncak dan mahkota dari seluruh perjuangan Islam selama 20 tahun. Ketika Quraisy melanggar Perjanjian Hudaibiyah dengan membantu sekutu mereka menyerang Bani Khuza'ah — sekutu Muslim — Rasulullah ﷺ bergerak dengan 10.000 pasukan, jumlah terbesar yang pernah ada, memasuki Mekah pada bulan Ramadhan tahun 8 Hijriyah.</p>
+        <p>Strategi Nabi ﷺ adalah mengirimkan pesan keamanan: siapa yang masuk masjid aman, yang tinggal di rumah Abu Sufyan aman, yang menutup pintu rumahnya aman. Hampir tidak ada perlawanan. Satu-satunya bentrokan kecil terjadi di sisi Khalid bin Walid, namun segera padam. Makkah jatuh hampir tanpa setetes darah.</p>
+        <p>Nabi ﷺ memasuki Ka'bah dengan kepala tertunduk penuh tawadhu, menghancurkan 360 berhala sambil membaca ayat: "Kebenaran telah datang dan kebatilan telah lenyap." Kemudian beliau berdiri di depan Ka'bah menghadap kerumunan orang Quraisy yang menyangka akan dihukum — dan mengucapkan kalimat paling agung: <em>"Pergilah, kalian semua bebas."</em> (Itliquu faintum atulaqaa). Kemuliaan ini melebihi kemenangan militer mana pun dalam sejarah manusia.</p>
+      </div>
+      <div class="wc-sidebar">
+        <div class="wcs-box">
+          <div class="wcs-box-title">4 Kolom Masuk Makkah</div>
+          <ul class="wcs-list">
+            <li>Khalid bin Walid — sisi selatan (Kuda')</li>
+            <li>Zubair bin Awwam — sisi utara (Kada')</li>
+            <li>Abu Ubaidah — sisi tengah (Lembah)</li>
+            <li>Nabi ﷺ — kolom utama dari atas</li>
+          </ul>
+        </div>
+        <div class="wcs-box">
+          <div class="wcs-box-title">Momen Bersejarah</div>
+          <ul class="wcs-list">
+            <li>Bilal mengumandangkan adzan di atas Ka'bah</li>
+            <li>360 berhala dihancurkan di Ka'bah</li>
+            <li>"Itliquu faintum atulaqaa" — amnesti umum</li>
+            <li>Abu Sufyan masuk Islam sebelum pertempuran</li>
+            <li>Ikrimah bin Abi Jahl akhirnya masuk Islam</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="wc-hadis">
+      <p class="wch-ar">وَقُلْ جَاءَ الْحَقُّ وَزَهَقَ الْبَاطِلُ ۚ إِنَّ الْبَاطِلَ كَانَ زَهُوقًا</p>
+      <p class="wch-tr">"Dan katakanlah: 'Kebenaran telah datang dan kebatilan telah lenyap.' Sesungguhnya kebatilan itu pasti lenyap."</p>
+      <p class="wch-src">QS. Al-Isra: 81 — dibaca Nabi ﷺ saat menghancurkan berhala Ka'bah</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════
+     TIMELINE
+══════════════════════════════ -->
+<div id="timeline" class="timeline-section">
+  <div class="tl-inner">
+    <div class="tl-header">
+      <span style="font-family:'Cinzel',serif; font-size:0.58rem; letter-spacing:0.38em; text-transform:uppercase; color:var(--gold-dim); display:block; margin-bottom:0.8rem;">Kronologi Lengkap</span>
+      <h2>Ghazwat & Sariyah<br>Rasulullah ﷺ</h2>
+      <p>Seluruh ekspedisi militer utama dari tahun 1–9 Hijriyah</p>
+    </div>
+    <div class="tl-track">
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year-block"><div class="tl-hijri">1 H</div><div class="tl-masehi">623 M</div></div>
+        <div class="tl-content">
+          <div class="tl-name">Sariyah Hamzah bin Abdul Muthallib <span class="tl-badge tb-s">Sariyah</span></div>
+          <div class="tl-desc">Ekspedisi pertama Islam. 30 orang menuju pesisir Laut Merah (Ays) untuk mencegat kafilah Quraisy. Berakhir damai karena mediasi Majdi bin Amr.</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year-block"><div class="tl-hijri">2 H</div><div class="tl-masehi">624 M</div></div>
+        <div class="tl-content">
+          <div class="tl-name">Perang Badar Al-Kubra <span class="tl-badge tb-w">Kemenangan</span></div>
+          <div class="tl-desc">313 Muslim vs 950 Quraisy. Kemenangan pertama dan paling menentukan. 70 pemimpin Quraisy tewas, 70 ditawan. Surah Al-Anfal turun.</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year-block"><div class="tl-hijri">3 H</div><div class="tl-masehi">625 M</div></div>
+        <div class="tl-content">
+          <div class="tl-name">Perang Uhud <span class="tl-badge tb-l">Ujian</span></div>
+          <div class="tl-desc">700 Muslim vs 3.000 Quraisy. 70 sahabat syahid termasuk Hamzah. Nabi ﷺ terluka. Pelajaran ketaatan terhadap pemimpin. Ali Imran 140–179 turun.</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year-block"><div class="tl-hijri">4 H</div><div class="tl-masehi">626 M</div></div>
+        <div class="tl-content">
+          <div class="tl-name">Perang Bani Nadhir & Bani Mustaliq <span class="tl-badge tb-w">Kemenangan</span></div>
+          <div class="tl-desc">Pengusiran Bani Nadhir dari Madinah karena pengkhianatan. Perang Bani Mustaliq: 800 Muslim merebut oasis Muraisi' tanpa korban besar. Nabi menikahi Juwairiyah.</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year-block"><div class="tl-hijri">5 H</div><div class="tl-masehi">627 M</div></div>
+        <div class="tl-content">
+          <div class="tl-name">Perang Khandaq (Al-Ahzab) <span class="tl-badge tb-w">Kemenangan</span></div>
+          <div class="tl-desc">3.000 Muslim vs koalisi 10.000. Strategi parit Salman Al-Farisi. Angin Allah memorakporandakan musuh. Surah Al-Ahzab turun. Dilanjutkan Bani Quraizhah.</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year-block"><div class="tl-hijri">6 H</div><div class="tl-masehi">628 M</div></div>
+        <div class="tl-content">
+          <div class="tl-name">Perjanjian Hudaibiyah <span class="tl-badge tb-t">Perjanjian</span></div>
+          <div class="tl-desc">1.400 Muslim datang untuk umrah tapi dihalangi Quraisy. Perjanjian damai 10 tahun yang Allah sebut "Fath Mubin". Membuka jalan ribuan orang masuk Islam.</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year-block"><div class="tl-hijri">7 H</div><div class="tl-masehi">629 M</div></div>
+        <div class="tl-content">
+          <div class="tl-name">Perang Khaibar & Umrah Qadha <span class="tl-badge tb-w">Kemenangan</span></div>
+          <div class="tl-desc">Penaklukan 7+ benteng Khaibar oleh Ali bin Abi Thalib. Umrah Qadha: pertama kalinya Muslim masuk Makkah secara damai sejak hijrah. Khalid & Amr bin Ash masuk Islam.</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year-block"><div class="tl-hijri">8 H</div><div class="tl-masehi">630 M</div></div>
+        <div class="tl-content">
+          <div class="tl-name">Fathul Makkah, Hunain & Tha'if <span class="tl-badge tb-w">Puncak</span></div>
+          <div class="tl-desc">Pembebasan Makkah tanpa pertumpahan darah. Amnesti umum "Itliquu." Perang Hunain: 12.000 Muslim hampir kalah lalu Allah turunkan ketenangan. Pengepungan Tha'if.</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year-block"><div class="tl-hijri">9 H</div><div class="tl-masehi">631 M</div></div>
+        <div class="tl-content">
+          <div class="tl-name">Perang Tabuk — Ekspedisi Terakhir <span class="tl-badge tb-w">Kemenangan</span></div>
+          <div class="tl-desc">30.000 pasukan — terbesar dalam sejarah Nabi ﷺ — bergerak ke perbatasan Romawi. Musuh mundur tanpa perang. Peristiwa Ka'b bin Malik dan tiga sahabat yang ditinggalkan. Surah At-Taubah turun.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ════ HIKMAH ════ -->
+<section class="lessons-section">
+  <div class="ls-header">
+    <span style="font-family:'Cinzel',serif; font-size:0.58rem; letter-spacing:0.38em; text-transform:uppercase; color:var(--gold-dim); display:block; margin-bottom:0.8rem;">Refleksi</span>
+    <h2>Hikmah Abadi dari<br>Peperangan Nabi ﷺ</h2>
+    <p>Setiap perang mengandung pelajaran yang Allah abadikan dalam Al-Qur'an untuk seluruh generasi.</p>
+  </div>
+  <div class="lessons-grid">
+    <div class="lesson-card">
+      <div class="lc-num">01</div>
+      <div class="lc-title">Perang adalah Jalan Terakhir</div>
+      <div class="lc-body">Seluruh peperangan Nabi ﷺ adalah respons atas kezaliman, bukan ambisi. Islam baru diizinkan berperang setelah 13 tahun bersabar dengan penganiayaan yang luar biasa. (QS. Al-Hajj: 39)</div>
+    </div>
+    <div class="lesson-card">
+      <div class="lc-num">02</div>
+      <div class="lc-title">Sedikit yang Taat Mengalahkan Banyak yang Lalai</div>
+      <div class="lc-body">Badar membuktikan bahwa 313 Muslim yang ikhlas mengalahkan 950 musuh yang berbekal kekuatan. Allah tidak melihat jumlah, melainkan kualitas iman dan ketaatan.</div>
+    </div>
+    <div class="lesson-card">
+      <div class="lc-num">03</div>
+      <div class="lc-title">Kekalahan Bisa Jadi Ujian yang Lebih Mulia</div>
+      <div class="lc-body">Uhud mengajarkan bahwa musibah bukan selalu hukuman — bisa jadi ujian penyucian, pembuktian siapa yang sungguh-sungguh beriman. (QS. Ali Imran: 140)</div>
+    </div>
+    <div class="lesson-card">
+      <div class="lc-num">04</div>
+      <div class="lc-title">Inovasi & Strategi adalah Sunnah</div>
+      <div class="lc-body">Khandaq membuktikan bahwa mengambil ilmu dan strategi dari luar (Persia) tidak bertentangan dengan iman — Nabi ﷺ sendiri yang menyetujui saran Salman Al-Farisi.</div>
+    </div>
+    <div class="lesson-card">
+      <div class="lc-num">05</div>
+      <div class="lc-title">Perdamaian dengan Pengorbanan lebih Mulia</div>
+      <div class="lc-body">Hudaibiyah mengajarkan bahwa kadang menerima perjanjian yang "merugikan" secara lahir adalah kemenangan jangka panjang. Visi strategis melampaui ego sesaat.</div>
+    </div>
+    <div class="lesson-card">
+      <div class="lc-num">06</div>
+      <div class="lc-title">Pemenang Sejati Memaafkan</div>
+      <div class="lc-body">Fathul Makkah adalah standar tertinggi etika militer sepanjang sejarah — 10.000 pasukan memasuki kota musuh bebuyutan lalu memberikan amnesti umum tanpa syarat.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ CLOSING ════ -->
+<section class="closing">
+  <div class="closing-inner">
+    <div class="closing-gem-row">
+      <div class="cg-line"></div>
+      <div class="cg sm"></div>
+      <div class="cg"></div>
+      <div class="cg sm"></div>
+      <div class="cg-line"></div>
+    </div>
+
+    <h2>Perang demi<br><em>Rahmat bagi Semesta</em></h2>
+
+    <p>Rasulullah ﷺ berperang bukan untuk kekuasaan, bukan untuk harta, dan bukan untuk balas dendam. Seluruh peperangan beliau bertujuan satu: membebaskan manusia dari perbudakan manusia menuju penghambaan hanya kepada Allah, dan menegakkan keadilan bagi mereka yang dizalimi.</p>
+
+    <p>Maka ketika Makkah — kota yang telah mengusir, menyiksa, dan memerangi beliau selama 20 tahun — akhirnya takluk, Nabi ﷺ tidak membalas. Beliau mengampuni. Inilah akhlak yang Allah sifatkan dalam Al-Qur'an sebagai rahmat bagi seluruh alam semesta.</p>
+
+    <div class="closing-gem-row" style="margin: 2rem 0 0.5rem;">
+      <div class="cg-line"></div><div class="cg sm"></div><div class="cg"></div><div class="cg sm"></div><div class="cg-line"></div>
+    </div>
+
+    <p class="closing-ar">وَمَا أَرْسَلْنَاكَ إِلَّا رَحْمَةً لِّلْعَالَمِينَ</p>
+    <p class="closing-tr">"Dan Kami tidak mengutus engkau (Muhammad) melainkan sebagai rahmat bagi seluruh alam."</p>
+    <p class="closing-ref">QS. Al-Anbiya: 107</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Disusun berdasarkan <em>Al-Qur'an Al-Karim</em> · <em>Shahih Bukhari & Muslim</em> · <em>Sirah Ibnu Hisyam</em> · <em>Al-Maghazi (Al-Waqidi)</em> · <em>Al-Bidayah wan Nihayah (Ibnu Katsir)</em> · <em>Zad Al-Ma'ad (Ibnu Qayyim)</em></p>
+  <p>Semoga menjadi ilmu yang bermanfaat dan menambah kecintaan kepada Rasulullah ﷺ · <em>صلى الله عليه وسلم</em></p>
+</footer>
+
+</body>
+</html>
+

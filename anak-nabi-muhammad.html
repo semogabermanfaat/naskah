@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Putra-Putri Nabi Muhammad ﷺ</title>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+
+/* ══════════════════════════════════════
+   TOKENS
+══════════════════════════════════════ */
+:root {
+  --parch:      #F5EFE0;
+  --parch2:     #EDE5CF;
+  --parch3:     #DDD3B8;
+  --ink:        #1A1208;
+  --ink2:       #2D2010;
+  --brown:      #5C3A1E;
+  --brown2:     #7A5230;
+  --copper:     #A0522D;
+  --copper2:    #C8762A;
+  --terracotta: #B85C38;
+  --gold:       #C09020;
+  --gold2:      #D4A840;
+  --gold-pale:  #F9F0D8;
+  --sage:       #5A6E50;
+  --muted:      #7A6A50;
+  --border:     rgba(92,58,30,0.15);
+  --border2:    rgba(192,144,32,0.25);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Jost', sans-serif;
+  background: var(--parch);
+  color: var(--ink);
+  overflow-x: hidden;
+}
+
+/* ══════════════════════════════════════
+   PAPER TEXTURE
+══════════════════════════════════════ */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: multiply;
+}
+
+/* ══════════════════════════════════════
+   NAVIGATION — MINIMAL SERIF
+══════════════════════════════════════ */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(245,239,224,0.93);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 3rem;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-brand {
+  font-family: 'Spectral', serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--brown);
+  letter-spacing: 0.05em;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--gold); }
+
+@media (max-width: 640px) {
+  nav { padding: 0 1.2rem; }
+  .nav-links { display: none; }
+}
+
+/* ══════════════════════════════════════
+   HERO — EDITORIAL MAGAZINE STYLE
+══════════════════════════════════════ */
+.hero {
+  padding-top: 56px;
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  background: var(--ink2);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Aged paper overlay */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 15% 80%, rgba(160,82,45,0.2) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 20%, rgba(192,144,32,0.1) 0%, transparent 45%);
+  pointer-events: none;
+}
+
+/* Decorative geometric frame */
+.hero-frame {
+  position: absolute;
+  inset: 3rem;
+  border: 1px solid rgba(192,144,32,0.15);
+  pointer-events: none;
+}
+
+.hero-frame::before {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(192,144,32,0.08);
+}
+
+/* Corner ornaments */
+.hero-frame::after {
+  content: '✦';
+  position: absolute;
+  top: -0.6rem; left: 50%;
+  transform: translateX(-50%);
+  color: var(--gold2);
+  font-size: 0.9rem;
+  background: var(--ink2);
+  padding: 0 0.5rem;
+}
+
+.hero-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 5rem 2rem 3rem;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-topline {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin-bottom: 2.5rem;
+  opacity: 0;
+  animation: fadeIn 1s 0.2s ease forwards;
+}
+
+.hero-topline .rule { width: 50px; height: 1px; background: var(--gold2); opacity: 0.5; }
+.hero-topline span {
+  font-size: 0.65rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold2);
+}
+
+.hero-arabic {
+  font-family: 'Amiri', serif;
+  font-size: clamp(1.8rem, 5vw, 3.2rem);
+  color: var(--gold2);
+  direction: rtl;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 20px rgba(192,144,32,0.3);
+  opacity: 0;
+  animation: fadeIn 1s 0.4s ease forwards;
+}
+
+.hero h1 {
+  font-family: 'Spectral', serif;
+  font-size: clamp(3.2rem, 8vw, 7.5rem);
+  font-weight: 800;
+  color: var(--parch);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: fadeIn 1s 0.55s ease forwards;
+}
+
+.hero h1 .accent {
+  font-weight: 300;
+  font-style: italic;
+  color: var(--gold2);
+  text-transform: none;
+  letter-spacing: -0.01em;
+}
+
+.hero-tagline {
+  font-size: clamp(0.88rem, 1.8vw, 1rem);
+  color: rgba(245,239,224,0.45);
+  max-width: 480px;
+  line-height: 1.7;
+  opacity: 0;
+  animation: fadeIn 1s 0.7s ease forwards;
+}
+
+/* Bottom strip */
+.hero-strip {
+  background: var(--gold);
+  padding: 1rem 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 2;
+}
+
+.strip-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink2);
+  font-weight: 600;
+}
+
+.strip-item .dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--ink2);
+  opacity: 0.4;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ══════════════════════════════════════
+   INTRO EDITORIAL
+══════════════════════════════════════ */
+.intro-section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 6rem 3rem;
+  display: grid;
+  grid-template-columns: 1fr 2px 2fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .intro-section { grid-template-columns: 1fr; gap: 2rem; padding: 4rem 1.5rem; }
+  .intro-divider { display: none; }
+}
+
+.intro-left { }
+
+.chapter-label {
+  font-size: 0.62rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.2rem;
+  display: block;
+}
+
+.intro-left h2 {
+  font-family: 'Spectral', serif;
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 700;
+  color: var(--brown);
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+}
+
+.intro-left h2 em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--copper);
+}
+
+.stat-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.stat-box {
+  background: var(--parch2);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1.2rem;
+  border-left: 3px solid var(--gold);
+}
+
+.stat-num {
+  font-family: 'Spectral', serif;
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: var(--brown);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  margin-top: 0.3rem;
+}
+
+.intro-divider {
+  background: linear-gradient(to bottom, transparent, var(--border), transparent);
+  width: 2px;
+  min-height: 300px;
+}
+
+.intro-right { }
+
+.intro-right p {
+  font-size: 1.02rem;
+  line-height: 1.9;
+  color: var(--ink2);
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+  margin-bottom: 1.4rem;
+}
+
+.drop-cap::first-letter {
+  font-family: 'Spectral', serif;
+  font-size: 4.5rem;
+  font-weight: 800;
+  line-height: 0.8;
+  float: left;
+  margin-right: 0.12em;
+  margin-top: 0.12em;
+  color: var(--brown);
+  padding-right: 0.05em;
+}
+
+.ayat-inline {
+  background: var(--ink2);
+  color: var(--gold2);
+  font-family: 'Amiri', serif;
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  direction: rtl;
+  text-align: right;
+  padding: 1.5rem 2rem;
+  border-radius: 4px;
+  line-height: 2.2;
+  margin: 1.5rem 0 0.5rem;
+}
+
+.ayat-trans {
+  font-style: italic;
+  font-size: 0.88rem;
+  color: var(--muted);
+  text-align: right;
+  margin-bottom: 0.3rem;
+}
+
+.ayat-src {
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-align: right;
+}
+
+/* ══════════════════════════════════════
+   CHAPTER DIVIDER
+══════════════════════════════════════ */
+.chapter-divider {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 0 3rem;
+  max-width: 1100px;
+  margin: 0 auto 3rem;
+}
+
+.cd-line { flex: 1; height: 1px; background: var(--border2); }
+.cd-text {
+  font-size: 0.62rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+  white-space: nowrap;
+}
+.cd-ornament { color: var(--gold); font-size: 0.7rem; }
+
+/* ══════════════════════════════════════
+   CHILD ARTICLES — EDITORIAL LAYOUT
+══════════════════════════════════════ */
+.children-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 3rem 6rem;
+}
+
+@media (max-width: 640px) { .children-wrap { padding: 0 1.2rem 4rem; } }
+
+/* Individual article card */
+.child-article {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 0 2.5rem;
+  margin-bottom: 4rem;
+  padding-bottom: 4rem;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+
+.child-article:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+@media (max-width: 700px) {
+  .child-article { grid-template-columns: 1fr; gap: 0; }
+  .child-aside { display: flex; flex-direction: row; align-items: center; gap: 1rem; margin-bottom: 1.2rem; }
+}
+
+.child-aside { }
+
+.child-num {
+  font-family: 'Spectral', serif;
+  font-size: 4.5rem;
+  font-weight: 800;
+  color: rgba(92,58,30,0.1);
+  line-height: 1;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.child-gender {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  margin: 0 auto;
+}
+
+.gender-m { background: rgba(42,82,152,0.12); }
+.gender-f { background: rgba(176,44,90,0.1); }
+
+.child-main { }
+
+.child-header {
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px dashed var(--border);
+}
+
+.child-arabic {
+  font-family: 'Amiri', serif;
+  font-size: clamp(1.3rem, 3vw, 1.9rem);
+  color: var(--gold);
+  direction: rtl;
+  text-align: right;
+  line-height: 1.5;
+  margin-bottom: 0.2rem;
+}
+
+.child-name {
+  font-family: 'Spectral', serif;
+  font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+  font-weight: 700;
+  color: var(--brown);
+  margin-bottom: 0.2rem;
+  line-height: 1.2;
+}
+
+.child-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.6rem;
+}
+
+.meta-chip {
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.22rem 0.75rem;
+  border-radius: 100px;
+  border: 1px solid var(--border2);
+  color: var(--brown2);
+  background: var(--gold-pale);
+}
+
+.meta-chip.ibu { background: rgba(176,44,90,0.06); border-color: rgba(176,44,90,0.2); color: #7A1A40; }
+
+/* Article body — justified text */
+.child-body {
+  font-size: 0.97rem;
+  line-height: 1.9;
+  color: var(--ink2);
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+}
+
+.child-body p {
+  margin-bottom: 1rem;
+}
+
+.child-body p:last-child { margin-bottom: 0; }
+
+/* Pull quote */
+.pull-quote {
+  float: right;
+  width: 42%;
+  margin: 0 0 1.2rem 2rem;
+  padding: 1.2rem 1.5rem;
+  border-top: 2px solid var(--gold);
+  border-bottom: 1px solid var(--border2);
+}
+
+@media (max-width: 600px) {
+  .pull-quote {
+    float: none;
+    width: 100%;
+    margin: 1rem 0;
+  }
+}
+
+.pq-text {
+  font-family: 'Spectral', serif;
+  font-size: 1.05rem;
+  font-style: italic;
+  color: var(--brown);
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+}
+
+.pq-src {
+  font-size: 0.68rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* Hadis box */
+.hadis-box {
+  background: var(--ink2);
+  border-radius: 6px;
+  padding: 1.5rem 1.8rem;
+  margin: 1.2rem 0;
+  clear: both;
+}
+
+.hb-arabic {
+  font-family: 'Amiri', serif;
+  font-size: clamp(1rem, 2.2vw, 1.3rem);
+  color: var(--gold2);
+  direction: rtl;
+  text-align: right;
+  line-height: 2.1;
+  margin-bottom: 0.8rem;
+}
+
+.hb-trans {
+  font-style: italic;
+  font-size: 0.88rem;
+  color: rgba(245,239,224,0.6);
+  line-height: 1.7;
+  margin-bottom: 0.4rem;
+}
+
+.hb-src {
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* ══════════════════════════════════════
+   DARK SUMMARY SECTION
+══════════════════════════════════════ */
+.summary-section {
+  background: var(--brown);
+  padding: 5rem 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.summary-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C09020' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.summary-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.summary-inner h2 {
+  font-family: 'Spectral', serif;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--parch);
+  margin-bottom: 3rem;
+  line-height: 1.2;
+}
+
+.summary-inner h2 em { font-style: italic; font-weight: 300; color: var(--gold2); }
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.sum-card {
+  background: rgba(245,239,224,0.05);
+  border: 1px solid rgba(192,144,32,0.2);
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: all 0.25s ease;
+}
+
+.sum-card:hover {
+  background: rgba(245,239,224,0.09);
+  border-color: rgba(192,144,32,0.4);
+  transform: translateY(-2px);
+}
+
+.sum-card-name {
+  font-family: 'Spectral', serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--parch);
+  margin-bottom: 0.2rem;
+}
+
+.sum-card-arabic {
+  font-family: 'Amiri', serif;
+  font-size: 0.95rem;
+  color: var(--gold2);
+  direction: rtl;
+  margin-bottom: 0.8rem;
+}
+
+.sum-card-body {
+  font-size: 0.82rem;
+  color: rgba(245,239,224,0.55);
+  line-height: 1.65;
+  text-align: justify;
+}
+
+.sum-card-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-top: 0.8rem;
+}
+
+.sc-chip {
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  padding: 0.18rem 0.55rem;
+  border-radius: 100px;
+  border: 1px solid rgba(192,144,32,0.25);
+  color: var(--gold2);
+}
+
+/* ══════════════════════════════════════
+   CLOSING
+══════════════════════════════════════ */
+.closing {
+  background: var(--ink2);
+  padding: 6rem 3rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.closing::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(160,82,45,0.08) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.closing-inner {
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.closing-ornament {
+  font-family: 'Amiri', serif;
+  font-size: 1.5rem;
+  color: var(--gold2);
+  letter-spacing: 0.5em;
+  margin-bottom: 2rem;
+}
+
+.closing h2 {
+  font-family: 'Spectral', serif;
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--parch);
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+.closing h2 strong { font-weight: 800; font-style: normal; color: var(--gold2); }
+
+.closing p {
+  font-size: 0.95rem;
+  color: rgba(245,239,224,0.45);
+  line-height: 1.85;
+  text-align: justify;
+  text-justify: inter-word;
+  margin-bottom: 1rem;
+}
+
+.closing-ar {
+  font-family: 'Amiri', serif;
+  font-size: clamp(1.3rem, 3vw, 1.9rem);
+  color: var(--gold2);
+  direction: rtl;
+  margin: 2.5rem 0 0.6rem;
+  line-height: 2.1;
+  text-align: center;
+  text-shadow: 0 0 30px rgba(192,144,32,0.2);
+}
+
+.closing-trans {
+  font-size: 0.85rem;
+  font-style: italic;
+  color: rgba(245,239,224,0.35);
+  text-align: center !important;
+}
+
+.sep {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  justify-content: center;
+  margin: 2.5rem 0;
+}
+
+.sep .line { width: 70px; height: 1px; background: rgba(192,144,32,0.35); }
+.sep .gem { width: 6px; height: 6px; background: var(--gold); transform: rotate(45deg); }
+
+/* ══════════════════════════════════════
+   FOOTER
+══════════════════════════════════════ */
+footer {
+  background: #0E0A04;
+  color: rgba(245,239,224,0.2);
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  line-height: 1.8;
+}
+
+footer em { color: var(--gold); font-style: normal; }
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">Putra-Putri Nabi ﷺ</div>
+  <ul class="nav-links">
+    <li><a href="#putra">Putra</a></li>
+    <li><a href="#putri">Putri</a></li>
+    <li><a href="#ibrahim">Ibrahim</a></li>
+    <li><a href="#ringkasan">Ringkasan</a></li>
+  </ul>
+</nav>
+
+<!-- ════ HERO ════ -->
+<header class="hero">
+  <div class="hero-frame"></div>
+  <div class="hero-inner">
+    <div class="hero-topline">
+      <div class="rule"></div>
+      <span>Sejarah & Sirah Nabawiyah</span>
+      <div class="rule"></div>
+    </div>
+    <div class="hero-arabic">أَبْنَاءُ النَّبِيِّ مُحَمَّدٍ ﷺ وَبَنَاتُهُ</div>
+    <h1>Putra &<br><span class="accent">Putri Nabi</span></h1>
+    <p class="hero-tagline">Mengenal tujuh anak Nabi Muhammad ﷺ — tiga putra dan empat putri — kehidupan, keutamaan, dan kenangan mereka dalam Al-Qur'an dan Hadis.</p>
+  </div>
+  <div class="hero-strip">
+    <div class="strip-item"><span>3 Putra</span><div class="dot"></div></div>
+    <div class="strip-item"><span>4 Putri</span><div class="dot"></div></div>
+    <div class="strip-item"><span>Semua dari Khadijah, kecuali Ibrahim</span><div class="dot"></div></div>
+    <div class="strip-item"><span>Semuanya mendahului Nabi ﷺ</span></div>
+  </div>
+</header>
+
+<!-- ════ INTRO ════ -->
+<section class="intro-section">
+  <div class="intro-left">
+    <span class="chapter-label">Pengantar</span>
+    <h2>Tujuh<br><em>Cahaya</em><br>Nabi ﷺ</h2>
+    <div class="stat-column">
+      <div class="stat-box">
+        <div class="stat-num">7</div>
+        <div class="stat-label">Jumlah anak Nabi ﷺ</div>
+      </div>
+      <div class="stat-box" style="border-left-color:var(--copper);">
+        <div class="stat-num">3♂</div>
+        <div class="stat-label">Putra (Al-Qasim, Abdullah, Ibrahim)</div>
+      </div>
+      <div class="stat-box" style="border-left-color:var(--terracotta);">
+        <div class="stat-num">4♀</div>
+        <div class="stat-label">Putri (Zainab, Ruqayyah, Ummu Kultsum, Fatimah)</div>
+      </div>
+    </div>
+  </div>
+  <div class="intro-divider"></div>
+  <div class="intro-right">
+    <p class="drop-cap">Nabi Muhammad ﷺ dikaruniai tujuh orang anak semasa hidupnya. Enam di antaranya lahir dari pernikahan beliau dengan Sayyidah Khadijah binti Khuwailid, istri pertama dan tercinta, sementara seorang lagi — Ibrahim — lahir dari Mariyah Al-Qibthiyyah. Semua putra-putri beliau mendahului wafat sebelum Rasulullah ﷺ, kecuali Fatimah Az-Zahra yang menyusul wafat enam bulan setelah beliau.</p>
+
+    <p>Kehilangan anak-anak adalah salah satu ujian terberat yang dialami Rasulullah ﷺ. Namun dengan keteguhan iman dan ketawakkalan yang luar biasa, beliau selalu menerimanya dengan penuh kesabaran dan ridha kepada Allah. Kisah-kisah ini tercatat dalam hadis-hadis shahih yang menjadi teladan bagi seluruh umat.</p>
+
+    <div class="ayat-inline">وَمَا مُحَمَّدٌ إِلَّا رَسُولٌ قَدْ خَلَتْ مِن قَبْلِهِ الرُّسُلُ</div>
+    <p class="ayat-trans">"Muhammad itu tidak lain hanyalah seorang Rasul; sebelumnya telah berlalu beberapa orang Rasul..."</p>
+    <p class="ayat-src">QS. Ali Imran: 144</p>
+
+    <p style="margin-top:1.2rem;">Para ulama sirah mencatat bahwa semua anak laki-laki Nabi ﷺ wafat di usia bayi atau kanak-kanak, sementara keempat putrinya tumbuh dewasa dan bersuami. Di antara mereka, Fatimah Az-Zahra adalah yang paling dikenal karena menjadi ibu dari Hasan dan Husain — dua cucu Nabi yang dicintai.</p>
+  </div>
+</section>
+
+<!-- ════ PUTRA ════ -->
+<div class="chapter-divider" id="putra">
+  <div class="cd-line"></div>
+  <span class="cd-text">Bab Pertama</span>
+  <span class="cd-ornament">✦</span>
+  <span class="cd-text">Putra-Putra Nabi ﷺ</span>
+  <div class="cd-line"></div>
+</div>
+
+<div class="children-wrap">
+
+  <!-- AL-QASIM -->
+  <article class="child-article">
+    <div class="child-aside">
+      <div class="child-num">I</div>
+      <div class="child-gender gender-m">👦</div>
+    </div>
+    <div class="child-main">
+      <div class="child-header">
+        <div class="child-arabic">الْقَاسِمُ بْنُ مُحَمَّدٍ</div>
+        <h2 class="child-name">Al-Qasim bin Muhammad</h2>
+        <div class="child-meta">
+          <span class="meta-chip">Putra Sulung</span>
+          <span class="meta-chip">Lahir sebelum kenabian</span>
+          <span class="meta-chip ibu">Ibu: Khadijah</span>
+          <span class="meta-chip">Wafat masa bayi</span>
+        </div>
+      </div>
+      <div class="child-body">
+        <div class="pull-quote">
+          <p class="pq-text">"Kami memotong (habis) bukan engkau, Muhammad. Sesungguhnya orang yang membencimu — dialah yang abtar."</p>
+          <p class="pq-src">QS. Al-Kautsar: 3 — turun untuk membantah ejekan musuh</p>
+        </div>
+        <p>Al-Qasim adalah putra pertama Nabi Muhammad ﷺ, lahir sebelum datangnya wahyu pertama. Karena anak sulunglah, Nabi Muhammad ﷺ mendapat gelar "Abul Qasim" (Ayahanda Al-Qasim) — gelar yang sangat beliau banggakan dan digunakan oleh para sahabat dalam memanggil beliau.</p>
+        <p>Al-Qasim wafat dalam usia yang sangat muda, bahkan sebelum sempat berjalan, menurut sebagian riwayat. Imam Ibnu Katsir dalam Al-Bidayah wan Nihayah menyebutkan bahwa Al-Qasim meninggal ketika masih menyusu. Wafatnya di Mekah sebelum hijrah.</p>
+        <p>Ketika Al-Qasim wafat, musuh-musuh Nabi — terutama Al-Ash bin Wa'il — mengejek beliau sebagai "al-abtar" (yang terputus keturunannya) karena tidak memiliki anak laki-laki yang hidup. Allah kemudian menurunkan Surah Al-Kautsar sebagai bantahan tegas: justru orang yang membenci Nabi itulah yang abtar (terputus).</p>
+        <div class="hadis-box">
+          <p class="hb-arabic">كُنَّا نُكَنِّي بِأَبِي الْقَاسِمِ حَتَّى وُلِدَ الْقَاسِمُ</p>
+          <p class="hb-trans">"Kami biasa memakai nama julukan Abul Qasim (sebelumnya), hingga lahirlah Al-Qasim (anak Nabi)."</p>
+          <p class="hb-src">HR. Bukhari — tentang kunyah Nabi ﷺ</p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- ABDULLAH -->
+  <article class="child-article">
+    <div class="child-aside">
+      <div class="child-num">II</div>
+      <div class="child-gender gender-m">👦</div>
+    </div>
+    <div class="child-main">
+      <div class="child-header">
+        <div class="child-arabic">عَبْدُ اللَّهِ بْنُ مُحَمَّدٍ</div>
+        <h2 class="child-name">Abdullah bin Muhammad</h2>
+        <div class="child-meta">
+          <span class="meta-chip">Ath-Thayyib & Ath-Thahir</span>
+          <span class="meta-chip">Lahir setelah kenabian</span>
+          <span class="meta-chip ibu">Ibu: Khadijah</span>
+          <span class="meta-chip">Wafat masa bayi</span>
+        </div>
+      </div>
+      <div class="child-body">
+        <p>Abdullah adalah putra kedua Nabi ﷺ dari Sayyidah Khadijah, lahir setelah turunnya wahyu. Ia dikenal pula dengan dua julukan mulia: <em>Ath-Thayyib</em> (yang baik/harum) dan <em>Ath-Thahir</em> (yang suci bersih). Julukan-julukan ini diberikan karena ia lahir dalam masa keislaman, sebagai kebanggaan keluarga Nabi.</p>
+        <p>Para ulama sirah seperti Ibnu Hisyam dan Ibnu Sa'd menyebutkan bahwa Abdullah wafat lebih awal dari Al-Qasim, ada juga yang mengatakan wafat lebih kemudian. Yang pasti, ia pun wafat dalam usia bayi, di Mekah, sebelum hijrah ke Madinah. Wafatnya kembali memancing ejekan dari musuh-musuh yang menyebut Nabi "abtar", namun Allah tetap membela beliau.</p>
+        <div class="pull-quote">
+          <p class="pq-text">"Sesungguhnya Kami telah memberikan kepadamu nikmat yang banyak (Al-Kautsar). Maka shalatlah karena Tuhanmu dan berkurbanlah."</p>
+          <p class="pq-src">QS. Al-Kautsar: 1–2</p>
+        </div>
+        <p>Ibnu Abbas, sepupu Nabi, meriwayatkan bahwa surah Al-Kautsar turun berkenaan dengan wafatnya anak-anak Nabi ﷺ dan ejekan musuh. Surah ini menjadi penghibur dan peneguh hati Nabi bahwa kebaikan yang Allah berikan jauh melebihi apa yang diambil-Nya. Inilah pelajaran agung tentang tawakal dan husnuzhan kepada Allah.</p>
+      </div>
+    </div>
+  </article>
+
+  <!-- IBRAHIM -->
+  <article class="child-article" id="ibrahim">
+    <div class="child-aside">
+      <div class="child-num">III</div>
+      <div class="child-gender gender-m">👦</div>
+    </div>
+    <div class="child-main">
+      <div class="child-header">
+        <div class="child-arabic">إِبْرَاهِيمُ بْنُ مُحَمَّدٍ</div>
+        <h2 class="child-name">Ibrahim bin Muhammad</h2>
+        <div class="child-meta">
+          <span class="meta-chip">Putra Bungsu</span>
+          <span class="meta-chip">Lahir 8 H (629 M)</span>
+          <span class="meta-chip ibu">Ibu: Mariyah Al-Qibthiyyah</span>
+          <span class="meta-chip">Wafat usia 18 bulan</span>
+        </div>
+      </div>
+      <div class="child-body">
+        <p>Ibrahim adalah putra bungsu Nabi ﷺ, lahir pada tahun 8 Hijriyah dari Mariyah Al-Qibthiyyah — seorang wanita Koptik Mesir yang dihadiahkan oleh Muqauqis, penguasa Mesir, kepada Nabi. Kelahiran Ibrahim membawa kegembiraan luar biasa bagi Rasulullah ﷺ. Beliau memberinya nama Ibrahim — nama kakek moyang para nabi — sebagai penghormatan kepada Nabi Ibrahim alaihissalam.</p>
+        <p>Ibrahim tumbuh menjadi bayi yang sehat dan disayangi. Rasulullah ﷺ sangat mencintainya dan sering mengunjunginya di rumah Mariyah di dataran tinggi Madinah. Para sahabat merasakan kegembiraan yang terpancar dari wajah Nabi setiap kali menyebut nama Ibrahim.</p>
+        <div class="hadis-box">
+          <p class="hb-arabic">إِنَّ الْعَيْنَ تَدْمَعُ وَالْقَلْبَ يَحْزَنُ وَلَا نَقُولُ إِلَّا مَا يَرْضَى رَبُّنَا وَإِنَّا بِفِرَاقِكَ يَا إِبْرَاهِيمُ لَمَحْزُونُونَ</p>
+          <p class="hb-trans">"Sesungguhnya mata ini mencucurkan air mata, dan hati ini bersedih, namun kami tidak mengatakan kecuali apa yang diridhai Tuhan kami. Dan sesungguhnya kami atas perpisahan denganmu wahai Ibrahim, benar-benar bersedih."</p>
+          <p class="hb-src">HR. Bukhari & Muslim — Sabda Nabi ﷺ saat Ibrahim wafat</p>
+        </div>
+        <p>Ibrahim wafat pada usia sekitar 16–18 bulan, pada tahun 10 Hijriyah. Hari wafatnya bertepatan dengan terjadinya gerhana matahari, sehingga sebagian orang mengira gerhana itu terjadi karena kematian Ibrahim. Nabi ﷺ dengan tegas meluruskan: <em>"Sesungguhnya matahari dan bulan adalah dua tanda di antara tanda-tanda kebesaran Allah. Keduanya tidak gerhana karena kematian atau kehidupan seseorang."</em> (HR. Bukhari).</p>
+        <p>Hadis tentang tangisan Nabi saat Ibrahim wafat adalah salah satu hadis paling mengharukan dalam sirah. Beliau menangis — namun tetap sabar dan berserah. Inilah contoh agung bahwa menangis karena kasih sayang adalah hal yang manusiawi dan tidak bertentangan dengan iman.</p>
+      </div>
+    </div>
+  </article>
+
+</div><!-- /children-wrap putra -->
+
+<!-- ════ PUTRI ════ -->
+<div class="chapter-divider" id="putri" style="padding-top:1rem;">
+  <div class="cd-line"></div>
+  <span class="cd-text">Bab Kedua</span>
+  <span class="cd-ornament">✦</span>
+  <span class="cd-text">Putri-Putri Nabi ﷺ</span>
+  <div class="cd-line"></div>
+</div>
+
+<div class="children-wrap">
+
+  <!-- ZAINAB -->
+  <article class="child-article">
+    <div class="child-aside">
+      <div class="child-num">IV</div>
+      <div class="child-gender gender-f">👧</div>
+    </div>
+    <div class="child-main">
+      <div class="child-header">
+        <div class="child-arabic">زَيْنَبُ بِنْتُ مُحَمَّدٍ</div>
+        <h2 class="child-name">Zainab binti Muhammad</h2>
+        <div class="child-meta">
+          <span class="meta-chip">Putri Sulung</span>
+          <span class="meta-chip">Wafat 8 H</span>
+          <span class="meta-chip ibu">Ibu: Khadijah</span>
+          <span class="meta-chip">Suami: Abul Ash bin Rabi'</span>
+        </div>
+      </div>
+      <div class="child-body">
+        <p>Zainab adalah putri sulung Nabi Muhammad ﷺ, buah pertama cinta beliau dengan Khadijah. Ia tumbuh dalam kasih sayang ayahanda dan ibundanya yang luar biasa, menjadi wanita yang cantik, mulia, dan berakhlak tinggi. Zainab menikah dengan Abul Ash bin Rabi', seorang saudagar Quraisy yang terhormat — sepupu Khadijah — sebelum datangnya Islam.</p>
+        <p>Ketika Nabi ﷺ menerima wahyu dan mulai berdakwah, Zainab langsung beriman dan masuk Islam. Namun suaminya, Abul Ash, masih tetap pada agama leluhurnya. Nabi ﷺ tidak memisahkan mereka karena ayat yang mewajibkan cerai bagi pasangan beda agama belum turun pada masa awal Islam.</p>
+        <div class="pull-quote">
+          <p class="pq-text">"Zainab adalah sebaik-baik putriku dan ia mengalami cobaan karena aku."</p>
+          <p class="pq-src">HR. Al-Hakim — Sabda Nabi ﷺ tentang Zainab</p>
+        </div>
+        <p>Ketika terjadi Perang Badar, Abul Ash berada di pihak kaum Quraisy dan tertawan oleh kaum Muslimin. Zainab dari Madinah mengirimkan kalung ibundanya Khadijah sebagai tebusan suaminya. Ketika Nabi ﷺ melihat kalung itu, beliau sangat tersentuh dan meminta para sahabat untuk membebaskan Abul Ash tanpa tebusan, dengan syarat Abul Ash mengizinkan Zainab hijrah ke Madinah.</p>
+        <p>Zainab akhirnya berhijrah ke Madinah dalam kondisi hamil. Di tengah perjalanan, ia diserang oleh sekelompok Quraisy. Habbat bin Al-Aswad menghentakkan kudanya hingga Zainab jatuh dan mengalami keguguran. Luka akibat peristiwa ini terus menyertai Zainab hingga ia wafat pada tahun 8 Hijriyah. Nabi ﷺ mandi mengkafaninya dengan tangannya sendiri, suatu kemuliaan yang menunjukkan betapa Nabi mencintai putri sulungnya.</p>
+        <div class="hadis-box">
+          <p class="hb-arabic">نَزَلَ النَّبِيُّ ﷺ فِي قَبْرِهَا وَكَشَفَ عَنْهَا ثُمَّ أَدْخَلَهَا فِيهِ</p>
+          <p class="hb-trans">"Nabi ﷺ turun ke dalam kuburan Zainab, membuka kain (kafannya), kemudian memasukkannya ke dalam liang kubur."</p>
+          <p class="hb-src">HR. Abu Dawud — tentang pemakaman Zainab</p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- RUQAYYAH -->
+  <article class="child-article">
+    <div class="child-aside">
+      <div class="child-num">V</div>
+      <div class="child-gender gender-f">👧</div>
+    </div>
+    <div class="child-main">
+      <div class="child-header">
+        <div class="child-arabic">رُقَيَّةُ بِنْتُ مُحَمَّدٍ</div>
+        <h2 class="child-name">Ruqayyah binti Muhammad</h2>
+        <div class="child-meta">
+          <span class="meta-chip">Putri Kedua</span>
+          <span class="meta-chip">Wafat 2 H</span>
+          <span class="meta-chip ibu">Ibu: Khadijah</span>
+          <span class="meta-chip">Suami: Utsman bin Affan</span>
+        </div>
+      </div>
+      <div class="child-body">
+        <p>Ruqayyah adalah putri kedua Nabi ﷺ, dikenal sebagai wanita yang sangat cantik dan lemah lembut. Ia dinikahkan dengan Utbah bin Abi Lahab atas tekanan keluarganya sebelum masa Islam. Namun ketika Nabi ﷺ mulai berdakwah dan surah Al-Masad (Al-Lahab) turun mengecam Abu Lahab dan istrinya, Utbah diperintahkan ayahnya untuk menceraikan Ruqayyah — suatu penghinaan yang dibalas Allah dengan memuliakan Ruqayyah dengan suami yang jauh lebih mulia.</p>
+        <p>Setelah perceraian itu, Ruqayyah dinikahi oleh Utsman bin Affan, sahabat mulia yang kelak menjadi Khalifah ketiga Islam. Keduanya berhijrah ke Habasyah pada gelombang pertama dan kedua hijrah, mengikuti perintah Nabi untuk menghindari penindasan Quraisy. Mereka menjadi pasangan yang dikenal sebagai "Dzun Nurain" — kemudian gelar ini dilekatkan pada Utsman karena menikahi dua putri Nabi.</p>
+        <div class="pull-quote">
+          <p class="pq-text">"Tidak ada yang berhijrah dengan keluarganya setelah Luth alaihissalam kecuali Utsman bin Affan."</p>
+          <p class="pq-src">HR. Tirmidzi — Sabda Nabi ﷺ tentang hijrah Utsman & Ruqayyah</p>
+        </div>
+        <p>Ruqayyah kembali ke Madinah dan sempat menetap bersama suaminya. Namun ia jatuh sakit parah tepat ketika berlangsung Perang Badar. Rasulullah ﷺ memerintahkan Utsman untuk tinggal bersama dan merawat Ruqayyah, sehingga Utsman tidak turut serta dalam Perang Badar. Ruqayyah wafat tepat pada hari kaum Muslimin pulang membawa kemenangan Badar, pada tahun 2 Hijriyah. Kesamaan berita itu — wafatnya Ruqayyah dan datangnya kabar kemenangan — menjadi salah satu momen yang paling mengharukan dalam sejarah awal Islam.</p>
+      </div>
+    </div>
+  </article>
+
+  <!-- UMMU KULTSUM -->
+  <article class="child-article">
+    <div class="child-aside">
+      <div class="child-num">VI</div>
+      <div class="child-gender gender-f">👧</div>
+    </div>
+    <div class="child-main">
+      <div class="child-header">
+        <div class="child-arabic">أُمُّ كُلْثُومٍ بِنْتُ مُحَمَّدٍ</div>
+        <h2 class="child-name">Ummu Kultsum binti Muhammad</h2>
+        <div class="child-meta">
+          <span class="meta-chip">Putri Ketiga</span>
+          <span class="meta-chip">Wafat 9 H</span>
+          <span class="meta-chip ibu">Ibu: Khadijah</span>
+          <span class="meta-chip">Suami: Utsman bin Affan</span>
+        </div>
+      </div>
+      <div class="child-body">
+        <p>Ummu Kultsum adalah putri ketiga Nabi ﷺ. Sebelum Islam, ia telah dinikahkan dengan Utaibah bin Abi Lahab — saudara Utbah yang menikahi Ruqayyah. Ketika Islam datang dan surah Al-Lahab turun, Abu Lahab memerintahkan kedua putranya untuk menceraikan kedua putri Nabi. Maka Ummu Kultsum pun diceraikan Utaibah dengan cara yang kasar dan penghinaan.</p>
+        <p>Ummu Kultsum tinggal bersama orangtuanya. Setelah kakaknya Ruqayyah wafat dan Utsman bin Affan menjadi duda, Nabi ﷺ menikahkan Ummu Kultsum dengan Utsman pada tahun 3 Hijriyah. Inilah yang menyebabkan Utsman mendapat gelar mulia "Dzun Nurain" — Pemilik Dua Cahaya — karena menikahi dua putri Nabi secara berurutan.</p>
+        <div class="hadis-box">
+          <p class="hb-arabic">لَوْ كَانَ عِنْدِي ثَالِثَةٌ لَزَوَّجْتُكَهَا يَا عُثْمَانُ</p>
+          <p class="hb-trans">"Seandainya aku masih mempunyai putri yang ketiga, pastilah aku nikahkan denganmu wahai Utsman."</p>
+          <p class="hb-src">HR. Ibnu Asakir — Sabda Nabi ﷺ setelah Ummu Kultsum wafat</p>
+        </div>
+        <p>Ummu Kultsum wafat pada bulan Sya'ban tahun 9 Hijriyah, setahun sebelum Nabi ﷺ wafat. Nabi ﷺ turun ke liang lahadnya dan berdoa dengan penuh kesedihan. Sabda beliau setelahnya menjadi saksi betapa besar cintanya kepada putri-putrinya, sekaligus menunjukkan betapa Nabi ﷺ menghargai Utsman bin Affan yang telah memuliakan dua putrinya.</p>
+      </div>
+    </div>
+  </article>
+
+  <!-- FATIMAH -->
+  <article class="child-article">
+    <div class="child-aside">
+      <div class="child-num">VII</div>
+      <div class="child-gender gender-f">👧</div>
+    </div>
+    <div class="child-main">
+      <div class="child-header">
+        <div class="child-arabic">فَاطِمَةُ الزَّهْرَاءُ بِنْتُ مُحَمَّدٍ</div>
+        <h2 class="child-name">Fatimah Az-Zahra binti Muhammad</h2>
+        <div class="child-meta">
+          <span class="meta-chip">Az-Zahra (Sang Bersinar)</span>
+          <span class="meta-chip">Wafat 11 H</span>
+          <span class="meta-chip ibu">Ibu: Khadijah</span>
+          <span class="meta-chip">Suami: Ali bin Abi Thalib</span>
+          <span class="meta-chip" style="background:rgba(192,144,32,0.12); border-color:var(--border2); color:var(--gold);">Penghulu Wanita Surga</span>
+        </div>
+      </div>
+      <div class="child-body">
+        <div class="pull-quote">
+          <p class="pq-text">"Fatimah adalah bagian dariku. Barang siapa yang menyakitinya, berarti menyakitiku."</p>
+          <p class="pq-src">HR. Bukhari & Muslim — Sabda Nabi ﷺ</p>
+        </div>
+        <p>Fatimah Az-Zahra adalah putri bungsu Nabi ﷺ dari Khadijah, sekaligus yang paling dicintai di antara semua putrinya. Ia lahir sekitar lima tahun sebelum kenabian, dan tumbuh menjadi wanita yang menyerupai Nabi ﷺ dalam cara berjalan, tutur kata, dan wibawanya. Para sahabat mencatat bahwa ketika Fatimah memasuki ruangan Nabi, beliau berdiri menyambut, menciumnya, dan mempersilakan duduk di tempat duduk beliau — suatu penghormatan yang luar biasa.</p>
+        <p>Fatimah menikah dengan Ali bin Abi Thalib, sepupu sekaligus salah satu sahabat terdekat Nabi. Pernikahan ini berlangsung sederhana: mahar Fatimah adalah baju besi Ali yang dijual, menghasilkan uang sekitar 480 dirham. Dari pernikahan ini lahir empat anak: Hasan, Husain, Zainab, dan Ummu Kultsum — yang menjadi keturunan Nabi yang paling terkenal dalam sejarah Islam.</p>
+        <p>Fatimah dikenal sebagai sosok yang sangat kuat dan penyayang sekaligus. Ia menggiling gandum dengan tangannya sendiri hingga telapak tangannya melepuh. Ia memikul air hingga bekas tali di bahunya. Ia menyapu rumah hingga pakaiannya kotor. Ketika meminta pembantu kepada ayahandanya, Nabi ﷺ tidak memberikannya pembantu, namun mengajarkan dzikir sebelum tidur yang lebih baik dari seorang pembantu — Subhanallah 33 kali, Alhamdulillah 33 kali, Allahu Akbar 34 kali.</p>
+        <div class="hadis-box">
+          <p class="hb-arabic">فَاطِمَةُ سَيِّدَةُ نِسَاءِ أَهْلِ الْجَنَّةِ</p>
+          <p class="hb-trans">"Fatimah adalah pemimpin (penghulu) para wanita penghuni surga."</p>
+          <p class="hb-src">HR. Bukhari — tentang keutamaan Fatimah</p>
+        </div>
+        <p>Fatimah adalah satu-satunya anak Nabi ﷺ yang masih hidup ketika beliau wafat. Nabi ﷺ membisikkan dua rahasia kepada Fatimah sesaat sebelum beliau wafat: pertama bahwa Jibril telah mendatanginya dan memperdengarkan Al-Qur'an dua kali — sebuah tanda ajalnya sudah dekat; dan kedua bahwa Fatimah adalah anggota keluarganya yang pertama akan menyusulnya. Fatimah pun kemudian menangis, lalu tersenyum. Fatimah wafat hanya enam bulan setelah Rasulullah ﷺ, dan ia dimakamkan di Madinah.</p>
+      </div>
+    </div>
+  </article>
+
+</div><!-- /children-wrap putri -->
+
+<!-- ════ RINGKASAN ════ -->
+<section class="summary-section" id="ringkasan">
+  <div class="summary-inner">
+    <h2>Ringkasan <em>Tujuh Cahaya</em><br>Nabi Muhammad ﷺ</h2>
+    <div class="summary-grid">
+
+      <div class="sum-card">
+        <div class="sum-card-name">Al-Qasim</div>
+        <div class="sum-card-arabic">الْقَاسِمُ</div>
+        <p class="sum-card-body">Putra sulung dari Khadijah. Asal-usul kunyah "Abul Qasim". Wafat masa bayi di Mekah sebelum kenabian. Wafatnya memancing ejekan musuh yang dijawab Al-Qur'an lewat surah Al-Kautsar.</p>
+        <div class="sum-card-chips">
+          <span class="sc-chip">Putra</span>
+          <span class="sc-chip">Ibu: Khadijah</span>
+          <span class="sc-chip">Wafat bayi</span>
+        </div>
+      </div>
+
+      <div class="sum-card">
+        <div class="sum-card-name">Abdullah</div>
+        <div class="sum-card-arabic">عَبْدُ اللَّهِ</div>
+        <p class="sum-card-body">Putra kedua dari Khadijah, lahir setelah kenabian. Julukan: Ath-Thayyib dan Ath-Thahir. Wafat masa bayi di Mekah. Kisahnya terkait turunnya Surah Al-Kautsar.</p>
+        <div class="sum-card-chips">
+          <span class="sc-chip">Putra</span>
+          <span class="sc-chip">Ibu: Khadijah</span>
+          <span class="sc-chip">Wafat bayi</span>
+        </div>
+      </div>
+
+      <div class="sum-card">
+        <div class="sum-card-name">Ibrahim</div>
+        <div class="sum-card-arabic">إِبْرَاهِيمُ</div>
+        <p class="sum-card-body">Putra bungsu dari Mariyah Al-Qibthiyyah. Lahir 8 H, wafat 10 H di usia 16–18 bulan. Nabi ﷺ menangis saat wafatnya. Hari wafatnya bersamaan dengan gerhana matahari.</p>
+        <div class="sum-card-chips">
+          <span class="sc-chip">Putra</span>
+          <span class="sc-chip">Ibu: Mariyah</span>
+          <span class="sc-chip">Wafat 18 bulan</span>
+        </div>
+      </div>
+
+      <div class="sum-card">
+        <div class="sum-card-name">Zainab</div>
+        <div class="sum-card-arabic">زَيْنَبُ</div>
+        <p class="sum-card-body">Putri sulung dari Khadijah. Suami: Abul Ash bin Rabi'. Berhijrah ke Madinah dalam kondisi hamil, diserang hingga keguguran. Nabi turun ke liang lahadnya sendiri. Wafat 8 H.</p>
+        <div class="sum-card-chips">
+          <span class="sc-chip">Putri</span>
+          <span class="sc-chip">Ibu: Khadijah</span>
+          <span class="sc-chip">Wafat 8 H</span>
+        </div>
+      </div>
+
+      <div class="sum-card">
+        <div class="sum-card-name">Ruqayyah</div>
+        <div class="sum-card-arabic">رُقَيَّةُ</div>
+        <p class="sum-card-body">Putri kedua dari Khadijah. Suami: Utsman bin Affan. Hijrah ke Habasyah bersama Utsman. Wafat saat Perang Badar berlangsung, tahun 2 H — bersamaan dengan datangnya berita kemenangan.</p>
+        <div class="sum-card-chips">
+          <span class="sc-chip">Putri</span>
+          <span class="sc-chip">Ibu: Khadijah</span>
+          <span class="sc-chip">Wafat 2 H</span>
+        </div>
+      </div>
+
+      <div class="sum-card">
+        <div class="sum-card-name">Ummu Kultsum</div>
+        <div class="sum-card-arabic">أُمُّ كُلْثُومٍ</div>
+        <p class="sum-card-body">Putri ketiga dari Khadijah. Suami: Utsman bin Affan (setelah Ruqayyah wafat), menjadikan Utsman bergelar Dzun Nurain. Wafat 9 H. Nabi bersabda: "Andai ada putri ketigaku…"</p>
+        <div class="sum-card-chips">
+          <span class="sc-chip">Putri</span>
+          <span class="sc-chip">Ibu: Khadijah</span>
+          <span class="sc-chip">Wafat 9 H</span>
+        </div>
+      </div>
+
+      <div class="sum-card" style="border-color: rgba(192,144,32,0.35); background: rgba(192,144,32,0.07);">
+        <div class="sum-card-name">Fatimah Az-Zahra</div>
+        <div class="sum-card-arabic">فَاطِمَةُ الزَّهْرَاءُ</div>
+        <p class="sum-card-body">Putri bungsu dari Khadijah. Penghulu wanita surga. Suami: Ali bin Abi Thalib. Ibu Hasan & Husain. Satu-satunya anak yang hidup saat Nabi wafat. Wafat 6 bulan setelah Nabi ﷺ, tahun 11 H.</p>
+        <div class="sum-card-chips">
+          <span class="sc-chip">Putri</span>
+          <span class="sc-chip">Ibu: Khadijah</span>
+          <span class="sc-chip">Wafat 11 H</span>
+          <span class="sc-chip" style="color:var(--gold2); border-color:rgba(192,144,32,0.4);">Penghulu Wanita Surga</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════ CLOSING ════ -->
+<section class="closing">
+  <div class="closing-inner">
+    <div class="closing-ornament">✦ ✦ ✦</div>
+    <h2>Ujian Seorang<br><strong>Ayah Nabi</strong></h2>
+    <p>Kehilangan anak adalah ujian terberat yang dilalui Rasulullah ﷺ. Beliau mengalami kepedihan mendalam sebagai manusia — namun tidak sekalipun keluar dari mulutnya keluhan kepada Allah. Yang ada hanyalah kesabaran, syukur, dan pasrah yang sempurna.</p>
+    <p>Semua anak-anak beliau — kecuali Fatimah yang menyusul enam bulan kemudian — wafat mendahului beliau. Ini adalah hikmah besar: Nabi ﷺ diuji dengan cara yang sama seperti Nabi Ibrahim alaihissalam, agar beliau benar-benar menjadi teladan yang paling sempurna dalam hal sabar dan ridha kepada ketentuan Allah.</p>
+    <div class="hadis-box" style="margin:2rem 0;">
+      <p class="hb-arabic">مَنْ ابْتُلِيَ بِشَيْءٍ مِنَ الْبَنَاتِ فَصَبَرَ عَلَيْهِنَّ كُنَّ لَهُ حِجَابًا مِنَ النَّارِ</p>
+      <p class="hb-trans">"Barang siapa diuji dengan (mengurus) beberapa anak perempuan lalu ia bersabar terhadap mereka, maka mereka akan menjadi penghalang (perisai) baginya dari api neraka."</p>
+      <p class="hb-src">HR. Bukhari & Muslim</p>
+    </div>
+    <div class="sep">
+      <div class="line"></div>
+      <div class="gem"></div>
+      <div class="line"></div>
+    </div>
+    <p class="closing-ar">رَضِيَ اللَّهُ عَنْهُمْ وَرَحِمَهُمُ اللَّهُ أَجْمَعِينَ</p>
+    <p class="closing-trans">Semoga Allah meridhai mereka semua dan merahmati mereka.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Disusun berdasarkan <em>Al-Qur'an Al-Karim</em> · <em>Shahih Bukhari & Muslim</em> · <em>Sirah Ibnu Hisyam</em> · <em>Al-Bidayah wan Nihayah (Ibnu Katsir)</em> · <em>Thabaqat Al-Kubra (Ibnu Sa'd)</em></p>
+  <p style="margin-top:0.4rem">Semoga bermanfaat sebagai ilmu dan pengenal dekat kepada kehidupan Nabi ﷺ. <em>صلى الله عليه وسلم</em></p>
+</footer>
+
+</body>
+</html>

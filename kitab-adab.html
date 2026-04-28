@@ -1,0 +1,1540 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kitab Adab — Tata Tertib dalam Islam</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Josefin+Sans:wght@300;400;600;700&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+
+/* ══════════════════════════════════════
+   DESIGN DIRECTION:
+   Art Deco Islamic — geometric tile patterns,
+   deep forest green + aged brass/gold,
+   formal yet warm, like an illuminated
+   manuscript reimagined for the screen.
+══════════════════════════════════════ */
+
+:root {
+  --forest:    #1A2E1C;
+  --forest2:   #243826;
+  --forest3:   #2E4A30;
+  --moss:      #3D6142;
+  --sage:      #5E8A5C;
+  --mint:      #C8DFC6;
+  --brass:     #B8922A;
+  --brass2:    #D4A83C;
+  --brass3:    #ECC96A;
+  --brass-pale:#FDF5E0;
+  --ivory:     #F8F4EC;
+  --ivory2:    #F0EAD8;
+  --ivory3:    #E5DCC8;
+  --ink:       #0F1A10;
+  --ink2:      #1C2B1E;
+  --text:      #1E2E20;
+  --text2:     #3A4E3C;
+  --muted:     #6B7E5C;
+  --border:    rgba(184,146,42,0.2);
+  --border2:   rgba(184,146,42,0.35);
+  --shadow:    rgba(15,26,16,0.12);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Libre Baskerville', serif;
+  background: var(--ivory);
+  color: var(--text);
+  overflow-x: hidden;
+  line-height: 1.8;
+}
+
+/* ══ GEOMETRIC TILE BG ══ */
+.tile-bg {
+  background-color: var(--forest);
+  background-image:
+    linear-gradient(30deg, rgba(184,146,42,0.06) 12%, transparent 12.5%, transparent 87%, rgba(184,146,42,0.06) 87.5%, rgba(184,146,42,0.06)),
+    linear-gradient(150deg, rgba(184,146,42,0.06) 12%, transparent 12.5%, transparent 87%, rgba(184,146,42,0.06) 87.5%, rgba(184,146,42,0.06)),
+    linear-gradient(30deg, rgba(184,146,42,0.06) 12%, transparent 12.5%, transparent 87%, rgba(184,146,42,0.06) 87.5%, rgba(184,146,42,0.06)),
+    linear-gradient(150deg, rgba(184,146,42,0.06) 12%, transparent 12.5%, transparent 87%, rgba(184,146,42,0.06) 87.5%, rgba(184,146,42,0.06)),
+    linear-gradient(60deg, rgba(184,146,42,0.04) 25%, transparent 25.5%, transparent 75%, rgba(184,146,42,0.04) 75%, rgba(184,146,42,0.04)),
+    linear-gradient(60deg, rgba(184,146,42,0.04) 25%, transparent 25.5%, transparent 75%, rgba(184,146,42,0.04) 75%, rgba(184,146,42,0.04));
+  background-size: 40px 70px;
+  background-position: 0 0, 0 0, 20px 35px, 20px 35px, 0 0, 10px 18px;
+}
+
+/* ══════════════════════════════════════
+   NAV
+══════════════════════════════════════ */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 200;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2.5rem;
+  background: rgba(26,46,28,0.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(184,146,42,0.25);
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.nav-gem {
+  width: 8px; height: 8px;
+  background: var(--brass2);
+  transform: rotate(45deg);
+}
+
+.nav-title {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--brass3);
+}
+
+.nav-sub {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(200,223,198,0.4);
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(200,223,198,0.45);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--brass3); }
+
+@media (max-width: 700px) {
+  nav { padding: 0 1.2rem; }
+  .nav-links { display: none; }
+  .nav-sub { display: none; }
+}
+
+/* ══════════════════════════════════════
+   HERO — ART DECO ISLAMIC
+══════════════════════════════════════ */
+.hero {
+  min-height: 100vh;
+  padding-top: 58px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero { background-color: var(--forest); }
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(30deg, rgba(184,146,42,0.05) 12%, transparent 12.5%, transparent 87%, rgba(184,146,42,0.05) 87.5%),
+    linear-gradient(150deg, rgba(184,146,42,0.05) 12%, transparent 12.5%, transparent 87%, rgba(184,146,42,0.05) 87.5%),
+    linear-gradient(60deg, rgba(184,146,42,0.03) 25%, transparent 25.5%, transparent 75%, rgba(184,146,42,0.03) 75%);
+  background-size: 40px 70px;
+  pointer-events: none;
+}
+
+/* Radial glow */
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 60%, rgba(184,146,42,0.07) 0%, transparent 60%),
+    radial-gradient(ellipse at 50% 0%, rgba(61,97,66,0.3) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Decorative border frame */
+.hero-border {
+  position: absolute;
+  inset: 2.5rem;
+  border: 1px solid rgba(184,146,42,0.18);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero-border::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border: 1px solid rgba(184,146,42,0.08);
+}
+
+/* Corner diamonds */
+.hero-border .corner {
+  position: absolute;
+  width: 16px; height: 16px;
+  background: var(--forest);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-border .corner::after {
+  content: '◆';
+  font-size: 0.55rem;
+  color: var(--brass2);
+}
+
+.hero-border .c-tl { top: -8px; left: -8px; }
+.hero-border .c-tr { top: -8px; right: -8px; }
+.hero-border .c-bl { bottom: -8px; left: -8px; }
+.hero-border .c-br { bottom: -8px; right: -8px; }
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 4rem 2rem;
+  max-width: 820px;
+}
+
+.hero-kicker {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: var(--brass2);
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  opacity: 0;
+  animation: riseIn 0.9s 0.2s ease forwards;
+}
+
+.hero-kicker .tick { width: 30px; height: 1px; background: var(--brass2); opacity: 0.5; }
+
+.hero-arabic {
+  font-family: 'Amiri', serif;
+  font-size: clamp(1.6rem, 4.5vw, 2.8rem);
+  color: var(--brass3);
+  direction: rtl;
+  line-height: 1.7;
+  margin-bottom: 1.2rem;
+  text-shadow: 0 2px 24px rgba(184,146,42,0.25);
+  opacity: 0;
+  animation: riseIn 0.9s 0.4s ease forwards;
+}
+
+.hero h1 {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: clamp(2.8rem, 7vw, 6.5rem);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ivory);
+  line-height: 0.95;
+  margin-bottom: 0.5rem;
+  opacity: 0;
+  animation: riseIn 0.9s 0.55s ease forwards;
+}
+
+.hero h1 .sub-word {
+  display: block;
+  font-weight: 300;
+  font-size: 0.55em;
+  letter-spacing: 0.3em;
+  color: var(--brass3);
+  margin-bottom: 0.3em;
+}
+
+.hero-desc {
+  font-size: clamp(0.88rem, 1.8vw, 1rem);
+  color: rgba(200,223,198,0.5);
+  max-width: 480px;
+  margin: 1.5rem auto 0;
+  line-height: 1.8;
+  opacity: 0;
+  animation: riseIn 0.9s 0.7s ease forwards;
+}
+
+/* Bottom chapter index */
+.hero-index {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  z-index: 2;
+  display: flex;
+  border-top: 1px solid rgba(184,146,42,0.2);
+}
+
+.hi-item {
+  flex: 1;
+  padding: 1.2rem 1.5rem;
+  border-right: 1px solid rgba(184,146,42,0.15);
+  cursor: pointer;
+  transition: background 0.2s;
+  text-decoration: none;
+  display: block;
+}
+
+.hi-item:last-child { border-right: none; }
+.hi-item:hover { background: rgba(184,146,42,0.06); }
+
+.hi-num {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.58rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--brass2);
+  margin-bottom: 0.3rem;
+}
+
+.hi-title {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: clamp(0.65rem, 1.5vw, 0.75rem);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(200,223,198,0.5);
+  line-height: 1.4;
+}
+
+@media (max-width: 640px) {
+  .hero-index { display: none; }
+  .hero-border { inset: 1rem; }
+}
+
+@keyframes riseIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ══════════════════════════════════════
+   OPENING BAND
+══════════════════════════════════════ */
+.opening-band {
+  background: var(--forest2);
+  padding: 4rem 2rem;
+  border-top: 3px solid var(--brass);
+  border-bottom: 1px solid rgba(184,146,42,0.2);
+}
+
+.ob-inner {
+  max-width: 820px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.ob-arabic {
+  font-family: 'Amiri', serif;
+  font-size: clamp(1.4rem, 3.5vw, 2rem);
+  color: var(--brass3);
+  direction: rtl;
+  line-height: 2.2;
+  margin-bottom: 1rem;
+}
+
+.ob-trans {
+  font-style: italic;
+  font-size: clamp(0.9rem, 2vw, 1.05rem);
+  color: rgba(200,223,198,0.6);
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
+}
+
+.ob-ref {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--brass2);
+}
+
+/* ══════════════════════════════════════
+   CHAPTER LAYOUT SYSTEM
+══════════════════════════════════════ */
+.chapter {
+  padding: 5rem 2rem 4rem;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.chapter-head {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2rem;
+  align-items: start;
+  margin-bottom: 3.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+@media (max-width: 640px) {
+  .chapter-head { grid-template-columns: 1fr; gap: 1rem; }
+}
+
+.chapter-badge {
+  background: var(--forest);
+  border: 1px solid var(--border2);
+  border-radius: 4px;
+  padding: 1.2rem 1.5rem;
+  text-align: center;
+  min-width: 100px;
+}
+
+.cb-num {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--brass2);
+  line-height: 1;
+}
+
+.cb-label {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.55rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--mint);
+  opacity: 0.5;
+  margin-top: 0.3rem;
+}
+
+.chapter-title-block { }
+
+.ct-tag {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--brass2);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.ct-arabic {
+  font-family: 'Amiri', serif;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  color: var(--forest);
+  direction: rtl;
+  text-align: right;
+  margin-bottom: 0.3rem;
+}
+
+.ct-title {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink);
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+}
+
+.ct-sub {
+  font-size: 0.9rem;
+  color: var(--muted);
+  max-width: 600px;
+  line-height: 1.7;
+}
+
+/* ══ BODY PROSE ══ */
+.chapter-body {
+  font-size: 0.97rem;
+  line-height: 1.95;
+  color: var(--text2);
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+}
+
+.chapter-body p {
+  margin-bottom: 1.2rem;
+}
+
+.chapter-body p:last-child { margin-bottom: 0; }
+
+.drop-cap::first-letter {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 700;
+  font-size: 4.2rem;
+  line-height: 0.78;
+  float: left;
+  margin-right: 0.1em;
+  margin-top: 0.15em;
+  color: var(--forest);
+  letter-spacing: -0.02em;
+  padding-right: 0.05em;
+}
+
+/* ══ TWO COLUMN ══ */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 768px) { .two-col { grid-template-columns: 1fr; gap: 1.5rem; } }
+
+/* ══ DALIL BOX (dark) ══ */
+.dalil {
+  background: var(--forest);
+  border-radius: 6px;
+  padding: 1.8rem 2.2rem;
+  margin: 1.8rem 0;
+  position: relative;
+  border-left: 4px solid var(--brass);
+}
+
+.dalil::before {
+  content: '❝';
+  position: absolute;
+  top: 0.5rem; right: 1.2rem;
+  font-size: 3rem;
+  color: rgba(184,146,42,0.1);
+  font-family: 'Libre Baskerville', serif;
+  line-height: 1;
+}
+
+.dalil-ar {
+  font-family: 'Amiri', serif;
+  font-size: clamp(1rem, 2.2vw, 1.35rem);
+  color: var(--brass3);
+  direction: rtl;
+  text-align: right;
+  line-height: 2.2;
+  margin-bottom: 0.8rem;
+}
+
+.dalil-tr {
+  font-style: italic;
+  font-size: 0.9rem;
+  color: rgba(200,223,198,0.6);
+  line-height: 1.75;
+  margin-bottom: 0.5rem;
+}
+
+.dalil-src {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--brass2);
+}
+
+/* ══ PULL QUOTE ══ */
+.pull {
+  float: right;
+  width: 40%;
+  margin: 0.4rem 0 1.5rem 2rem;
+  padding: 1.2rem 1.5rem;
+  background: var(--ivory2);
+  border-top: 3px solid var(--brass);
+  border-radius: 0 0 4px 4px;
+}
+
+@media (max-width: 600px) {
+  .pull { float: none; width: 100%; margin: 1.2rem 0; }
+}
+
+.pull-text {
+  font-style: italic;
+  font-size: 0.98rem;
+  color: var(--forest2);
+  line-height: 1.65;
+  margin-bottom: 0.4rem;
+}
+
+.pull-src {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--brass);
+}
+
+/* ══ RULE LIST (adab items) ══ */
+.adab-list {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.adab-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 0.9rem 1.2rem;
+  background: var(--ivory2);
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  font-size: 0.93rem;
+  color: var(--text2);
+  line-height: 1.7;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.adab-list li:hover {
+  border-color: var(--border2);
+  transform: translateX(4px);
+}
+
+.adab-list li::before {
+  content: '◆';
+  color: var(--brass2);
+  font-size: 0.45rem;
+  margin-top: 0.55rem;
+  flex-shrink: 0;
+}
+
+/* ══ CARDS GRID ══ */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 1.3rem;
+  margin: 2rem 0;
+}
+
+.adab-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.25s cubic-bezier(0.34,1.56,0.64,1);
+}
+
+.adab-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px var(--shadow);
+  border-color: var(--border2);
+}
+
+.ac-top {
+  padding: 1.3rem 1.5rem 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.ac-icon {
+  font-size: 1.5rem;
+  margin-bottom: 0.6rem;
+}
+
+.ac-title {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--forest);
+  margin-bottom: 0.2rem;
+}
+
+.ac-arabic {
+  font-family: 'Amiri', serif;
+  font-size: 0.9rem;
+  color: var(--brass);
+  direction: rtl;
+}
+
+.ac-body {
+  padding: 1rem 1.5rem 1.3rem;
+  font-size: 0.85rem;
+  color: var(--text2);
+  line-height: 1.7;
+  text-align: justify;
+}
+
+/* ══ NAME TABLE ══ */
+.name-table-wrap {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 2rem 0;
+  box-shadow: 0 4px 16px var(--shadow);
+}
+
+.ntw-head {
+  background: var(--forest);
+  padding: 1.2rem 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ntw-head h4 {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ivory);
+}
+
+.ntw-head span {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--brass2);
+}
+
+table.ntable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table.ntable th {
+  background: var(--ivory2);
+  padding: 0.7rem 1.2rem;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--forest2);
+  text-align: left;
+  border-bottom: 2px solid var(--border);
+}
+
+table.ntable td {
+  padding: 0.85rem 1.2rem;
+  font-size: 0.88rem;
+  color: var(--text2);
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+
+table.ntable tr:last-child td { border-bottom: none; }
+table.ntable tr:hover td { background: rgba(26,46,28,0.02); }
+
+.ntable .ar {
+  font-family: 'Amiri', serif;
+  font-size: 1rem;
+  color: var(--forest);
+  direction: rtl;
+}
+
+.ntable .new {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--forest2);
+}
+
+.ntable .old { color: var(--muted); font-style: italic; }
+
+.badge-changed {
+  display: inline-block;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.18rem 0.6rem;
+  border-radius: 100px;
+  background: rgba(26,46,28,0.08);
+  color: var(--forest2);
+  border: 1px solid rgba(26,46,28,0.15);
+}
+
+/* ══ DIVIDER ══ */
+.section-divider {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.sd-line { flex: 1; height: 1px; background: var(--border2); }
+
+.sd-content {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+}
+
+.sd-gem { width: 7px; height: 7px; background: var(--brass2); transform: rotate(45deg); }
+
+.sd-text {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--brass2);
+}
+
+/* ══ DARK CHAPTER (alternating) ══ */
+.chapter-dark {
+  background: var(--forest2);
+  padding: 5rem 2rem 4rem;
+}
+
+.chapter-dark .chapter {
+  padding: 0;
+}
+
+.chapter-dark .chapter-head {
+  border-bottom-color: rgba(184,146,42,0.2);
+}
+
+.chapter-dark .chapter-badge {
+  background: var(--forest3);
+  border-color: rgba(184,146,42,0.3);
+}
+
+.chapter-dark .ct-arabic { color: var(--brass3); }
+.chapter-dark .ct-title { color: var(--ivory); }
+.chapter-dark .ct-sub { color: rgba(200,223,198,0.5); }
+.chapter-dark .chapter-body { color: rgba(200,223,198,0.7); }
+.chapter-dark .chapter-body .drop-cap::first-letter { color: var(--brass3); }
+.chapter-dark .adab-list li {
+  background: rgba(255,255,255,0.04);
+  border-color: rgba(184,146,42,0.15);
+  color: rgba(200,223,198,0.7);
+}
+.chapter-dark .pull {
+  background: rgba(255,255,255,0.05);
+  border-top-color: var(--brass2);
+}
+.chapter-dark .pull-text { color: var(--ivory); }
+.chapter-dark .adab-card {
+  background: rgba(255,255,255,0.04);
+  border-color: rgba(184,146,42,0.15);
+}
+.chapter-dark .adab-card:hover { background: rgba(255,255,255,0.07); }
+.chapter-dark .ac-top { border-bottom-color: rgba(184,146,42,0.15); }
+.chapter-dark .ac-title { color: var(--brass3); }
+.chapter-dark .ac-body { color: rgba(200,223,198,0.65); }
+.chapter-dark .two-col p { color: rgba(200,223,198,0.7); }
+
+/* ══════════════════════════════════════
+   CLOSING
+══════════════════════════════════════ */
+.closing {
+  background: var(--ink);
+  padding: 6rem 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.closing::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(30deg, rgba(184,146,42,0.04) 12%, transparent 12.5%, transparent 87%, rgba(184,146,42,0.04) 87.5%),
+    linear-gradient(150deg, rgba(184,146,42,0.04) 12%, transparent 12.5%, transparent 87%, rgba(184,146,42,0.04) 87.5%);
+  background-size: 40px 70px;
+  pointer-events: none;
+}
+
+.closing-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.closing-gem-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  justify-content: center;
+  margin-bottom: 2.5rem;
+}
+
+.cg { width: 7px; height: 7px; background: var(--brass2); transform: rotate(45deg); }
+.cg.sm { width: 5px; height: 5px; opacity: 0.5; }
+.cg-line { width: 60px; height: 1px; background: rgba(184,146,42,0.3); }
+
+.closing h2 {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: clamp(1.8rem, 4.5vw, 3.2rem);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ivory);
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+}
+
+.closing h2 em {
+  font-style: normal;
+  color: var(--brass3);
+  font-weight: 300;
+  letter-spacing: 0.18em;
+}
+
+.closing p {
+  font-size: 0.96rem;
+  color: rgba(200,223,198,0.45);
+  line-height: 1.9;
+  text-align: justify;
+  text-justify: inter-word;
+  margin-bottom: 1rem;
+}
+
+.closing-ayat-ar {
+  font-family: 'Amiri', serif;
+  font-size: clamp(1.3rem, 3vw, 1.9rem);
+  color: var(--brass3);
+  direction: rtl;
+  margin: 2.5rem 0 0.6rem;
+  line-height: 2.1;
+  text-shadow: 0 0 30px rgba(184,146,42,0.2);
+}
+
+.closing-ayat-tr {
+  font-style: italic;
+  font-size: 0.87rem;
+  color: rgba(200,223,198,0.35);
+}
+
+.closing-ayat-ref {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--brass2);
+  margin-top: 0.3rem;
+}
+
+/* ══ FOOTER ══ */
+footer {
+  background: #080E09;
+  color: rgba(200,223,198,0.18);
+  text-align: center;
+  padding: 2rem;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 2;
+}
+
+footer em { color: var(--brass2); font-style: normal; }
+
+@media (max-width: 640px) {
+  .chapter { padding: 3rem 1.2rem 2.5rem; }
+  .chapter-dark { padding: 3rem 0 2.5rem; }
+  .section-divider { padding: 0 1.2rem; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">
+    <div class="nav-gem"></div>
+    <div>
+      <div class="nav-title">Kitab Adab</div>
+      <div class="nav-sub">Tata Tertib dalam Islam</div>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#tamu">Tamu</a></li>
+    <li><a href="#izin">Izin Masuk</a></li>
+    <li><a href="#nama">Nama</a></li>
+    <li><a href="#lainnya">Adab Lainnya</a></li>
+  </ul>
+</nav>
+
+<!-- ════ HERO ════ -->
+<header class="hero">
+  <div class="hero-border">
+    <div class="corner c-tl"></div>
+    <div class="corner c-tr"></div>
+    <div class="corner c-bl"></div>
+    <div class="corner c-br"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-kicker">
+      <div class="tick"></div>
+      <span>Berdasarkan Al-Qur'an & Hadis Shahih</span>
+      <div class="tick"></div>
+    </div>
+    <div class="hero-arabic">كِتَابُ الْأَدَبِ — آدَابُ الإِسْلَامِ</div>
+    <h1>
+      <span class="sub-word">Kitab</span>
+      Adab
+    </h1>
+    <p class="hero-desc">Tata tertib dan akhlak mulia dalam Islam — menghormati tamu, adab meminta izin masuk, mengganti nama yang buruk, dan berbagai adab kehidupan sehari-hari.</p>
+  </div>
+  <div class="hero-index">
+    <a class="hi-item" href="#tamu">
+      <div class="hi-num">Bab I</div>
+      <div class="hi-title">Adab Memuliakan Tamu</div>
+    </a>
+    <a class="hi-item" href="#izin">
+      <div class="hi-num">Bab II</div>
+      <div class="hi-title">Izin Masuk & Mengetuk Pintu</div>
+    </a>
+    <a class="hi-item" href="#nama">
+      <div class="hi-num">Bab III</div>
+      <div class="hi-title">Mengganti Nama yang Buruk</div>
+    </a>
+    <a class="hi-item" href="#lainnya">
+      <div class="hi-num">Bab IV</div>
+      <div class="hi-title">Adab-Adab Lainnya</div>
+    </a>
+    <a class="hi-item" href="#majelis">
+      <div class="hi-num">Bab V</div>
+      <div class="hi-title">Adab Majelis & Berkumpul</div>
+    </a>
+  </div>
+</header>
+
+<!-- ════ OPENING AYAT ════ -->
+<div class="opening-band">
+  <div class="ob-inner">
+    <p class="ob-arabic">إِنَّ اللَّهَ يَأْمُرُ بِالْعَدْلِ وَالْإِحْسَانِ وَإِيتَاءِ ذِي الْقُرْبَىٰ وَيَنْهَىٰ عَنِ الْفَحْشَاءِ وَالْمُنكَرِ وَالْبَغْيِ</p>
+    <p class="ob-trans">"Sesungguhnya Allah menyuruh (kamu) berlaku adil dan berbuat kebajikan, memberi bantuan kepada kerabat, dan Dia melarang (melakukan) perbuatan keji, kemungkaran, dan permusuhan."</p>
+    <p class="ob-ref">QS. An-Nahl: 90 — Landasan Seluruh Adab dalam Islam</p>
+  </div>
+</div>
+
+<!-- ════════════════════════
+     BAB I: TAMU
+════════════════════════ -->
+<div id="tamu">
+<section class="chapter">
+  <div class="chapter-head">
+    <div class="chapter-badge">
+      <div class="cb-num">I</div>
+      <div class="cb-label">Bab Pertama</div>
+    </div>
+    <div class="chapter-title-block">
+      <span class="ct-tag">Adab Memuliakan Tamu</span>
+      <div class="ct-arabic">إِكْرَامُ الضَّيْفِ</div>
+      <h2 class="ct-title">Ikramudh Dhaif<br>Memuliakan Tamu</h2>
+      <p class="ct-sub">Memuliakan tamu adalah salah satu tanda keimanan yang paling nyata. Rasulullah ﷺ menjadikannya sebagai bagian dari ciri orang yang beriman kepada Allah dan hari akhir.</p>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div>
+      <div class="chapter-body">
+        <p class="drop-cap">Memuliakan tamu adalah tradisi mulia yang telah ada sejak zaman para nabi. Nabi Ibrahim alaihissalam adalah teladan pertama dalam menjamu tamu dengan sepenuh hati, sampai-sampai Al-Qur'an mengabadikan kisah beliau menjamu para malaikat yang datang dalam wujud manusia. Beliau tidak menunggu ditanya, tidak pula mempersilahkan mereka menunggu lama — ia segera menyembelih anak sapi yang gemuk dan menghidangkannya.</p>
+        <p>Dalam Islam, memuliakan tamu bukan sekadar tradisi budaya, melainkan bagian dari syariat yang diperintahkan dan dikaitkan langsung dengan keimanan. Rasulullah ﷺ menegaskan hal ini dalam hadis yang sangat terkenal dan shahih.</p>
+      </div>
+      <div class="dalil">
+        <p class="dalil-ar">مَنْ كَانَ يُؤْمِنُ بِاللَّهِ وَالْيَوْمِ الْآخِرِ فَلْيُكْرِمْ ضَيْفَهُ</p>
+        <p class="dalil-tr">"Barang siapa beriman kepada Allah dan hari akhir, maka hendaklah ia memuliakan tamunya."</p>
+        <p class="dalil-src">HR. Bukhari & Muslim — Hadis Shahih</p>
+      </div>
+    </div>
+    <div>
+      <div class="chapter-body">
+        <p>Para ulama menerangkan bahwa memuliakan tamu mencakup beberapa aspek: menyambut dengan wajah ceria dan tutur kata yang menyenangkan, mempersilakan duduk di tempat yang layak, menghidangkan makanan dan minuman sesuai kemampuan, tidak membebani tamu dengan pertanyaan yang menyulitkan, dan mengantarkan tamu ketika hendak pergi.</p>
+        <p>Al-Qur'an mengabadikan kisah Nabi Ibrahim sebagai contoh paling sempurna tentang memuliakan tamu, dalam Surah Adz-Dzariyat dan Hud. Kisah ini menunjukkan bahwa kemuliaan seorang tuan rumah bukan diukur dari kemewahan yang disajikan, melainkan dari ketulusan dan kecepatan melayani.</p>
+      </div>
+      <div class="dalil" style="border-left-color: var(--sage);">
+        <p class="dalil-ar">هَلْ أَتَاكَ حَدِيثُ ضَيْفِ إِبْرَاهِيمَ الْمُكْرَمِينَ</p>
+        <p class="dalil-tr">"Sudahkah sampai kepadamu berita tentang tamu-tamu Ibrahim yang dimuliakan?"</p>
+        <p class="dalil-src">QS. Adz-Dzariyat: 24 — Kisah Ibrahim menjamu tamu</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- DETAIL ADAB TAMU -->
+  <h3 style="font-family:'Josefin Sans',sans-serif; font-size:0.8rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--forest); margin:2rem 0 1rem; display:flex; align-items:center; gap:1rem;">
+    <span style="flex:1; height:1px; background:var(--border2);"></span>
+    Adab-Adab Memuliakan Tamu
+    <span style="flex:1; height:1px; background:var(--border2);"></span>
+  </h3>
+
+  <div class="card-grid">
+    <div class="adab-card">
+      <div class="ac-top">
+        <div class="ac-icon">😊</div>
+        <div class="ac-title">Sambut dengan Wajah Ceria</div>
+        <div class="ac-arabic">اسْتِقْبَالُ الضَّيْفِ بِوَجْهٍ طَلْقٍ</div>
+      </div>
+      <div class="ac-body">Menyambut tamu dengan wajah berseri dan senyum tulus adalah sunnah. Nabi ﷺ bersabda: "Senyummu di hadapan saudaramu adalah sedekah." (HR. Tirmidzi). Ekspresi wajah yang menyenangkan adalah hak pertama seorang tamu.</div>
+    </div>
+    <div class="adab-card">
+      <div class="ac-top">
+        <div class="ac-icon">🍽️</div>
+        <div class="ac-title">Suguhkan Makanan Terbaik</div>
+        <div class="ac-arabic">تَقْدِيمُ الطَّعَامِ لِلضَّيْفِ</div>
+      </div>
+      <div class="ac-body">Jamuan tamu hak selama tiga hari; hari pertama adalah wajib (sesuai kemampuan terbaik), hari kedua dan ketiga sunnah, lebih dari itu adalah sedekah. Berdasarkan hadis Nabi ﷺ dalam HR. Bukhari & Muslim.</div>
+    </div>
+    <div class="adab-card">
+      <div class="ac-top">
+        <div class="ac-icon">🚪</div>
+        <div class="ac-title">Antarkan Tamu Pergi</div>
+        <div class="ac-arabic">تَشْيِيعُ الضَّيْفِ</div>
+      </div>
+      <div class="ac-body">Mengantarkan tamu hingga ke pintu atau kendaraannya adalah adab mulia yang sering dilupakan. Nabi ﷺ selalu mengantarkan tamunya. Ini menunjukkan penghormatan bahwa kedatangan mereka benar-benar dihargai.</div>
+    </div>
+    <div class="adab-card">
+      <div class="ac-top">
+        <div class="ac-icon">🤫</div>
+        <div class="ac-title">Hormati Privasi Tamu</div>
+        <div class="ac-arabic">احْتِرَامُ خُصُوصِيَّةِ الضَّيْفِ</div>
+      </div>
+      <div class="ac-body">Tidak memaksa tamu menceritakan urusan pribadinya, tidak menampakkan kesulitan dalam menjamu (meski ada), dan tidak menyinggung hal yang dapat mempermalukan tamu adalah bagian dari akhlak tuan rumah yang baik.</div>
+    </div>
+    <div class="adab-card">
+      <div class="ac-top">
+        <div class="ac-icon">⏰</div>
+        <div class="ac-title">Batas Waktu Tamu</div>
+        <div class="ac-arabic">مُدَّةُ الضِّيَافَةِ</div>
+      </div>
+      <div class="ac-body">Nabi ﷺ bersabda: "Tidak halal bagi seorang Muslim tinggal pada saudaranya (terlalu lama) hingga menjadikannya berdosa." Ketika ditanya, beliau menjawab: "Ia menginap padanya hingga tidak ada lagi yang bisa disuguhkan." (HR. Bukhari & Muslim).</div>
+    </div>
+    <div class="adab-card">
+      <div class="ac-top">
+        <div class="ac-icon">📖</div>
+        <div class="ac-title">Adab Tamu kepada Tuan Rumah</div>
+        <div class="ac-arabic">آدَابُ الضَّيْفِ</div>
+      </div>
+      <div class="ac-body">Tamu juga memiliki adab: mendoakan tuan rumah setelah makan, tidak menolak makanan yang dihidangkan tanpa alasan syar'i, tidak menceritakan keburukan tuan rumah kepada orang lain, dan pamit dengan ucapan yang baik.</div>
+    </div>
+  </div>
+
+  <div class="dalil">
+    <p class="dalil-ar">الضِّيَافَةُ ثَلَاثَةُ أَيَّامٍ، فَمَا كَانَ وَرَاءَ ذَلِكَ فَهُوَ صَدَقَةٌ عَلَيْهِ</p>
+    <p class="dalil-tr">"Menjamu tamu adalah tiga hari. Adapun yang lebih dari itu, maka itu adalah sedekah darinya (tuan rumah) atasnya (tamu)."</p>
+    <p class="dalil-src">HR. Bukhari & Muslim — tentang batas waktu jamuan tamu</p>
+  </div>
+</section>
+</div>
+
+<!-- DIVIDER -->
+<div class="section-divider">
+  <div class="sd-line"></div>
+  <div class="sd-content">
+    <div class="sd-gem"></div>
+    <span class="sd-text">Bab Kedua</span>
+    <div class="sd-gem"></div>
+  </div>
+  <div class="sd-line"></div>
+</div>
+
+<!-- ════════════════════════
+     BAB II: IZIN MASUK
+════════════════════════ -->
+<div id="izin" class="chapter-dark">
+<section class="chapter" style="max-width:1140px; margin:0 auto;">
+  <div class="chapter-head">
+    <div class="chapter-badge">
+      <div class="cb-num">II</div>
+      <div class="cb-label">Bab Kedua</div>
+    </div>
+    <div class="chapter-title-block">
+      <span class="ct-tag">Meminta Izin Masuk</span>
+      <div class="ct-arabic">الاسْتِئْذَانُ وَقَرْعُ الْبَابِ</div>
+      <h2 class="ct-title">Adab Isti'dzan<br>Mengetuk Pintu & Meminta Izin</h2>
+      <p class="ct-sub">Islam menetapkan tata cara meminta izin masuk yang sangat rinci — termasuk cara mengetuk, jumlah ketukan, cara berdiri, dan apa yang dilakukan jika tidak diizinkan. Ini adalah adab yang ditetapkan langsung dalam Al-Qur'an.</p>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div>
+      <div class="chapter-body">
+        <p class="drop-cap">Adab meminta izin masuk (isti'dzan) adalah di antara akhlak Islam yang paling unik dan mendalam. Allah menurunkan ayat-ayat khusus tentangnya dalam Surah An-Nur, lengkap dengan panduan waktu-waktu yang perlu diperhatikan. Ini menunjukkan betapa Islam sangat menghargai privasi dan kehormatan setiap rumah tangga.</p>
+        <p>Rasulullah ﷺ sendiri sangat ketat dalam menjalankan adab ini. Beliau mengajarkan cara mengetuk pintu yang benar, cara berdiri di depan pintu, dan bagaimana merespons jika ada yang menanyakan identitas dari dalam.</p>
+      </div>
+      <div class="dalil">
+        <p class="dalil-ar">يَا أَيُّهَا الَّذِينَ آمَنُوا لَا تَدْخُلُوا بُيُوتًا غَيْرَ بُيُوتِكُمْ حَتَّىٰ تَسْتَأْنِسُوا وَتُسَلِّمُوا عَلَىٰ أَهْلِهَا</p>
+        <p class="dalil-tr">"Wahai orang-orang yang beriman, janganlah kalian memasuki rumah-rumah yang bukan rumah kalian sebelum meminta izin dan memberi salam kepada penghuninya."</p>
+        <p class="dalil-src">QS. An-Nur: 27</p>
+      </div>
+    </div>
+    <div>
+      <div class="chapter-body">
+        <p>Para ulama merinci adab isti'dzan dengan sangat teliti. Imam An-Nawawi dalam Al-Adzkar menyebutkan bahwa mengetuk pintu sebaiknya dilakukan dengan lembut tiga kali, jika tidak direspons maka boleh kembali. Seseorang tidak boleh memaksa masuk meski pun tuan rumah diketahui ada di dalam.</p>
+        <p>Salah satu adab yang sering dilupakan adalah cara berdiri di depan pintu. Rasulullah ﷺ tidak pernah berdiri tepat di depan pintu (menghadap langsung ke dalam) ketika mengetuk, melainkan berdiri di sisi kanan atau kiri. Ini untuk menjaga kehormatan penghuni rumah dari kemungkinan terlihat.</p>
+      </div>
+      <div class="dalil" style="border-left-color: var(--sage);">
+        <p class="dalil-ar">كَانَ رَسُولُ اللَّهِ ﷺ إِذَا أَتَى بَابَ قَوْمٍ لَمْ يَسْتَقْبِلِ الْبَابَ مِنْ تِلْقَاءِ وَجْهِهِ</p>
+        <p class="dalil-tr">"Rasulullah ﷺ apabila mendatangi pintu suatu kaum, beliau tidak berdiri tepat di hadapan pintu (menghadap langsung ke dalamnya)..."</p>
+        <p class="dalil-src">HR. Abu Dawud (Shahih) — adab berdiri di depan pintu</p>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="font-family:'Josefin Sans',sans-serif; font-size:0.8rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--brass3); margin:2rem 0 1rem; display:flex; align-items:center; gap:1rem;">
+    <span style="flex:1; height:1px; background:rgba(184,146,42,0.2);"></span>
+    Tata Cara Meminta Izin
+    <span style="flex:1; height:1px; background:rgba(184,146,42,0.2);"></span>
+  </h3>
+
+  <ul class="adab-list">
+    <li><strong>Ketuk maksimal tiga kali:</strong> Meminta izin dilakukan tiga kali. Jika tidak direspons setelah tiga kali, maka hendaklah kembali dan tidak memaksa. Nabi ﷺ bersabda: "Isti'dzan itu tiga kali; jika diizinkan (masuklah), jika tidak maka pulanglah." (HR. Bukhari & Muslim).</li>
+    <li><strong>Ucapkan salam terlebih dahulu:</strong> Sebelum masuk, ucapkan "Assalamu'alaikum" — ini adalah hak penghuni rumah untuk mendengar salam sebelum menerima tamu. Salam mendahului permintaan izin masuk berdasarkan QS. An-Nur: 27.</li>
+    <li><strong>Jangan berdiri tepat di depan pintu:</strong> Berdirilah di sisi kanan atau kiri pintu, bukan tepat di depan yang memungkinkan terlihatnya isi rumah. Ini adalah sunnah yang diajarkan Nabi ﷺ (HR. Abu Dawud).</li>
+    <li><strong>Sebutkan nama jelas jika ditanya:</strong> Ketika ditanya "Siapa?" dari dalam, jawablah dengan nama jelas. Tidak boleh menjawab "Saya" atau "Ana" saja — karena itu tidak memberi informasi. Nabi ﷺ menolak izin masuk seseorang yang menjawab "Ana" (HR. Bukhari & Muslim).</li>
+    <li><strong>Hormati keputusan tuan rumah:</strong> Jika tuan rumah tidak mengizinkan masuk, wajib kembali tanpa rasa tersinggung. QS. An-Nur: 28 menegaskan hal ini: "Jika dikatakan kepada kalian 'kembalilah', maka kembalilah. Itu lebih suci bagi kalian."</li>
+    <li><strong>Adab izin masuk bagi anggota keluarga sendiri:</strong> Bahkan anggota keluarga (anak yang sudah baligh) pun perlu meminta izin dalam tiga waktu — sebelum Subuh, tengah hari, dan setelah Isya. (QS. An-Nur: 58)</li>
+    <li><strong>Setelah masuk, tidak mengintip:</strong> Haram mengintip ke dalam rumah orang lain tanpa izin. Nabi ﷺ bersabda: "Jika seseorang mengintip ke dalam rumahmu tanpa izin dan engkau mencongkel matanya, maka tidak ada dosa bagimu." (HR. Bukhari & Muslim) — ini adalah ungkapan tegas betapa haramnya mengintip.</li>
+  </ul>
+
+  <div class="dalil">
+    <p class="dalil-ar">فَإِن لَّمْ تَجِدُوا فِيهَا أَحَدًا فَلَا تَدْخُلُوهَا حَتَّىٰ يُؤْذَنَ لَكُمْ ۖ وَإِن قِيلَ لَكُمُ ارْجِعُوا فَارْجِعُوا ۖ هُوَ أَزْكَىٰ لَكُمْ</p>
+    <p class="dalil-tr">"Jika kamu tidak menemukan seorangpun di dalamnya, maka janganlah kamu masuk sebelum kamu mendapat izin. Dan jika dikatakan kepadamu: 'Kembalilah', maka hendaklah kamu kembali. Itu lebih suci bagimu."</p>
+    <p class="dalil-src">QS. An-Nur: 28</p>
+  </div>
+</section>
+</div>
+
+<!-- DIVIDER -->
+<div class="section-divider" style="padding-top:0; margin-top:0;">
+  <div class="sd-line"></div>
+  <div class="sd-content">
+    <div class="sd-gem"></div>
+    <span class="sd-text">Bab Ketiga</span>
+    <div class="sd-gem"></div>
+  </div>
+  <div class="sd-line"></div>
+</div>
+
+<!-- ════════════════════════
+     BAB III: NAMA
+════════════════════════ -->
+<div id="nama">
+<section class="chapter">
+  <div class="chapter-head">
+    <div class="chapter-badge">
+      <div class="cb-num">III</div>
+      <div class="cb-label">Bab Ketiga</div>
+    </div>
+    <div class="chapter-title-block">
+      <span class="ct-tag">Nama dalam Islam</span>
+      <div class="ct-arabic">تَغْيِيرُ الأَسْمَاءِ الْقَبِيحَةِ</div>
+      <h2 class="ct-title">Mengganti Nama<br>yang Buruk</h2>
+      <p class="ct-sub">Rasulullah ﷺ sangat memperhatikan nama — baik nama orang maupun nama tempat. Beliau sering mengganti nama yang mengandung makna buruk, pesimis, atau bertentangan dengan tauhid dengan nama yang bermakna baik dan penuh harapan.</p>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div>
+      <div class="chapter-body">
+        <p class="drop-cap">Nama dalam Islam bukan sekadar label identitas — ia adalah doa, harapan, dan cerminan nilai yang ditanamkan kepada penyandangnya. Oleh karena itu, Rasulullah ﷺ memberikan perhatian khusus pada nama, dan tidak segan-segan mengganti nama seseorang jika nama itu mengandung makna yang buruk, mengandung unsur kesyirikan, atau mengandung sugesti negatif.</p>
+        <p>Para ulama seperti Imam Al-Bukhari, Imam Muslim, dan Imam Abu Dawud mencatat puluhan hadis tentang penggantian nama oleh Nabi ﷺ. Ini menunjukkan bahwa adab penamaan bukan hal sepele dalam pandangan syariat Islam.</p>
+      </div>
+    </div>
+    <div>
+      <div class="chapter-body">
+        <p>Di antara nama-nama yang diganti Nabi ﷺ: nama yang mengandung makna "taat kepada berhala" diganti dengan nama yang mengandung ketaatan kepada Allah; nama yang bermakna "durhaka" atau "pahit" diganti dengan yang bermakna "taat" atau "manis"; nama yang mengandung self-glorification berlebihan diganti dengan yang lebih tawadhu.</p>
+        <p>Nabi ﷺ bersabda: "Sesungguhnya kalian akan dipanggil pada hari kiamat dengan nama-nama kalian dan nama-nama bapak kalian, maka baguskanlah nama-nama kalian." (HR. Abu Dawud — Hasan). Ini menjadi dasar pentingnya memilih dan memperbaiki nama.</p>
+      </div>
+      <div class="dalil">
+        <p class="dalil-ar">إِنَّكُمْ تُدْعَوْنَ يَوْمَ الْقِيَامَةِ بِأَسْمَائِكُمْ وَأَسْمَاءِ آبَائِكُمْ فَأَحْسِنُوا أَسْمَاءَكُمْ</p>
+        <p class="dalil-tr">"Sesungguhnya kalian akan dipanggil pada hari kiamat dengan nama-nama kalian dan nama-nama ayah kalian, maka baguskanlah nama-nama kalian."</p>
+        <p class="dalil-src">HR. Abu Dawud (Hasan)</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TABLE NAMA -->
+  <div class="name-table-wrap">
+    <div class="ntw-head">
+      <h4>Nama-Nama yang Diganti oleh Rasulullah ﷺ</h4>
+      <span>Berdasarkan Hadis Shahih</span>
+    </div>
+    <div style="overflow-x:auto;">
+      <table class="ntable">
+        <thead>
+          <tr>
+            <th>Nama Asli (Lama)</th>
+            <th>Nama Baru (Diganti)</th>
+            <th>Alasan Penggantian</th>
+            <th>Sumber</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="old">Ashiyah (عَاصِيَة)</span><br><small>Artinya: si durhaka / pembangkang</small></td>
+            <td><span class="ar">جَمِيلَة</span><br><span class="new">Jamilah (cantik/indah)</span></td>
+            <td>Nabi mengganti nama wanita ini karena artinya bermakna durhaka dan buruk</td>
+            <td><span class="badge-changed">HR. Muslim</span></td>
+          </tr>
+          <tr>
+            <td><span class="old">'Aasiy (عَاصِي)</span><br><small>Artinya: si durhaka (laki-laki)</small></td>
+            <td><span class="ar">مُطِيع</span><br><span class="new">Muthi' (yang taat)</span></td>
+            <td>Mengandung makna negatif berupa kedurhakaan</td>
+            <td><span class="badge-changed">HR. Abu Dawud</span></td>
+          </tr>
+          <tr>
+            <td><span class="old">Hazn (حَزْن)</span><br><small>Artinya: kesedihan/kegersangan</small></td>
+            <td><span class="ar">سَهْل</span><br><span class="new">Sahl (yang mudah/lapang)</span></td>
+            <td>Kakek Said bin Musayyab mempertahankan nama Hazn; Said berkata: "Kami tidak henti-hentinya mengalami kegersangan (hazunah)" — (HR. Bukhari)</td>
+            <td><span class="badge-changed">HR. Bukhari</span></td>
+          </tr>
+          <tr>
+            <td><span class="old">Harb (حَرْب)</span><br><small>Artinya: perang/konflik</small></td>
+            <td><span class="ar">سِلْم</span><br><span class="new">Silm (damai/tenteram)</span></td>
+            <td>Nama yang bermakna kekerasan dan pertempuran tidak sesuai dengan semangat Islam yang damai</td>
+            <td><span class="badge-changed">HR. Abu Dawud</span></td>
+          </tr>
+          <tr>
+            <td><span class="old">Murrah (مُرَّة)</span><br><small>Artinya: pahit/menyakitkan</small></td>
+            <td><span class="ar">حُلْو / بَشِير</span><br><span class="new">Hulw / Basyir (manis/pembawa berita baik)</span></td>
+            <td>Bermakna kepahitan yang tidak disukai dan mengandung sugesti negatif</td>
+            <td><span class="badge-changed">HR. Abu Dawud</span></td>
+          </tr>
+          <tr>
+            <td><span class="old">Aflah, Nafi', Barakah, Yassar</span><br><small>Nama-nama yang bermakna pujian diri</small></td>
+            <td><span class="ar">—</span><br><span class="new">Dianjurkan dihindari</span></td>
+            <td>Nabi melarang nama yang bermakna "beruntung", "bermanfaat", "berkah", karena ketika ditanya "Apakah si Aflah ada?" dan dijawab "tidak ada" — seperti mengatakan "tidak ada keberuntungan"</td>
+            <td><span class="badge-changed">HR. Muslim</span></td>
+          </tr>
+          <tr>
+            <td><span class="old">Abd Al-Ka'bah<br>Abd Al-Uzza<br>Abd Al-Lat</span><br><small>Artinya: hamba Ka'bah/hamba berhala</small></td>
+            <td><span class="ar">عَبْدُ الرَّحْمَٰن</span><br><span class="new">Abdurrahman / Abdullah</span></td>
+            <td>Nama yang mengandung penghambaan kepada selain Allah adalah syirik; wajib diganti dengan nama yang menunjukkan penghambaan kepada Allah</td>
+            <td><span class="badge-changed">HR. Bukhari</span></td>
+          </tr>
+          <tr>
+            <td><span class="old">Barra'ah (بَرَّاءَة)</span><br><small>Artinya: suci/terbebas (penyucian diri)</small></td>
+            <td><span class="ar">زَيْنَب / جُوَيْرِيَة</span><br><span class="new">Zainab / Juwairiyah</span></td>
+            <td>Nabi bersabda: "Janganlah kalian mensucikan diri sendiri (dengan nama). Allah lebih tahu siapa yang bertakwa di antara kalian." (HR. Muslim)</td>
+            <td><span class="badge-changed">HR. Muslim</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="chapter-body" style="margin-top:2rem;">
+    <div class="pull">
+      <p class="pull-text">"Nama-nama yang paling dicintai Allah adalah Abdullah dan Abdurrahman."</p>
+      <p class="pull-src">HR. Muslim — Sabda Nabi ﷺ</p>
+    </div>
+    <p>Para ulama menetapkan bahwa nama yang paling utama adalah nama-nama yang mengandung penghambaan kepada Allah (Abdullah, Abdurrahman, dan seterusnya), kemudian nama-nama para nabi dan rasul. Adapun nama yang mengandung makna syirik, hukumnya haram dan wajib diganti. Nama yang bermakna buruk sangat dianjurkan untuk diganti, dan ini boleh dilakukan kapan saja, tidak hanya saat masuk Islam.</p>
+    <p>Adapun nama yang mengandung puji-pujian yang berlebihan terhadap diri sendiri — seperti Aflah (paling beruntung), Naji (yang selamat), Barakah (keberkahan) — maka Nabi ﷺ melarangnya karena mengandung semacam klaim kemuliaan yang belum tentu sesuai kenyataan. Namun sebagian ulama membatasi larangan ini hanya jika nama tersebut menimbulkan kerancuan dalam komunikasi sehari-hari.</p>
+  </div>
+</section>
+</div>
+
+<!-- DIVIDER -->
+<div class="section-divider">
+  <div class="sd-line"></div>
+  <div class="sd-content">
+    <div class="sd-gem"></div>
+    <span class="sd-text">Bab Keempat</span>
+    <div class="sd-gem"></div>
+  </div>
+  <div class="sd-line"></div>
+</div>
+
+<!-- ════════════════════════
+     BAB IV: ADAB LAINNYA
+════════════════════════ -->
+<div id="lainnya" class="chapter-dark">
+<section class="chapter" style="max-width:1140px; margin:0 auto;">
+  <div class="chapter-head">
+    <div class="chapter-badge">
+      <div class="cb-num">IV</div>
+      <div class="cb-label">Bab Keempat</div>
+    </div>
+    <div class="chapter-title-block">
+      <span class="ct-tag">Adab-Adab Penting Lainnya</span>
+      <div class="ct-arabic">الآدَابُ الإِسْلَامِيَّةُ الأُخْرَى</div>
+      <h2 class="ct-title">Adab Sehari-hari<br>yang Mulia</h2>
+      <p class="ct-sub">Islam mengatur setiap aspek kehidupan dengan adab yang mengangkat derajat manusia. Dari cara berbicara, duduk bersama, memberi hadiah, hingga adab makan dan bersin — semuanya memiliki panduan yang indah.</p>
+    </div>
+  </div>
+
+  <div class="card-grid">
+    <div class="adab-card">
+      <div class="ac-top">
+        <div class="ac-icon">👋</div>
+        <div class="ac-title">Adab Salam & Berjabat Tangan</div>
+        <div class="ac-arabic">آدَابُ السَّلَامِ وَالْمُصَافَحَةِ</div>
+      </div>
+      <div class="ac-body">Memulai salam adalah sunnah, menjawabnya adalah wajib. Yang lebih muda memulai salam kepada yang lebih tua, yang berjalan kepada yang duduk, yang sedikit kepada yang banyak. Nabi ﷺ bersabda: "Kalian tidak akan masuk surga hingga beriman, dan kalian tidak beriman hingga saling mencintai. Maukah aku tunjukkan sesuatu yang jika kalian lakukan akan saling mencintai? Sebarkanlah salam." (HR. Muslim)</div>
+    </div>
+    <div class="adab-card">
+      <div class="ac-top">
+        <div class="ac-icon">🤧</div>
+        <div class="ac-title">Adab Bersin & Menguap</div>
+        <div class="ac-arabic">آدَابُ الْعُطَاسِ وَالتَّثَاؤُبِ</div>
+      </div>
+      <div class="ac-body">Bersin adalah dari Allah, tutup mulut dan hidung, ucapkan "Alhamdulillah". Yang mendengar menjawab "Yarhamukallah", lalu penyebutnya menjawab "Yahdikumullah". Menguap adalah dari setan — tahan semampu mungkin, tutup mulut. (HR. Bukhari & Muslim)</div>
+    </div>
+    <div class="adab-card">
+      <div class="ac-top">
+        <div class="ac-icon">🎁</div>
+        <div class="ac-title">Adab Memberi & Menerima Hadiah</div>
+        <div class="ac-arabic">آدَابُ الْهَدِيَّةِ</div>
+      </div>
+      <div class="ac-body">Saling memberi hadiah menumbuhkan cinta. Nabi ﷺ bersabda: "Saling memberi hadialah, niscaya kalian akan saling mencintai." (HR. Al-Bukhari dalam Al-Adab Al-Mufrad — Hasan). Menerima hadiah dengan tangan kanan, mendoakan pemberi, dan tidak menolak meski kecil adalah adab yang diajarkan.</div>
+    </div>
+    <div class="adab-card">
+      <div class="ac-top">
+        <div class="ac-icon">🗣️</div>
+        <div class="ac-title">Adab Berbicara & Berkata Baik</div>
+        <div class="ac-arabic">آدَابُ الْكَلَامِ</div>
+      </div>
+      <div class="ac-body">Nabi ﷺ bersabda: "Barang siapa beriman kepada Allah dan hari akhir, hendaklah ia berkata baik atau diam." (HR. Bukhari & Muslim). Islam melarang ghibah (membicarakan keburukan), namimah (mengadu domba), dusta, dan kata-kata kotor, serta menganjurkan kelembutan dalam berbicara.</div>
+    </div>
+    <div class="adab-card">
+      <div class="ac-top">
+        <div class="ac-icon">😴</div>
+        <div class="ac-title">Adab Tidur & Bangun</div>
+        <div class="ac-arabic">آدَابُ النَّوْمِ وَالِاسْتِيقَاظِ</div>
+      </div>
+      <div class="ac-body">Berwudhu sebelum tidur, tidur miring ke kanan, membaca doa tidur, tidak tidur tengkurap (HR. Abu Dawud — dilarang Nabi), membaca ayat Kursi dan Al-Mu'awwidzatain. Ketika bangun, ucapkan doa bangun tidur dan segera cuci tangan sebelum memasukkannya ke bejana air.</div>
+    </div>
+    <div class="adab-card">
+      <div class="ac-top">
+        <div class="ac-icon">🍴</div>
+        <div class="ac-title">Adab Makan & Minum</div>
+        <div class="ac-arabic">آدَابُ الْأَكْلِ وَالشُّرْبِ</div>
+      </div>
+      <div class="ac-body">Mulai dengan Bismillah, makan dengan tangan kanan, makan dari yang terdekat di piring, tidak meniup makanan panas (HR. Abu Dawud), minum sambil duduk tiga tegukan, tidak minum langsung dari mulut bejana. Hadis Umar bin Abi Salamah: Nabi ﷺ bersabda "Sebut nama Allah, makanlah dengan tangan kananmu, dan makanlah dari yang dekat denganmu." (HR. Bukhari)</div>
+    </div>
+  </div>
+
+  <div class="dalil">
+    <p class="dalil-ar">مَنْ كَانَ يُؤْمِنُ بِاللَّهِ وَالْيَوْمِ الْآخِرِ فَلْيَقُلْ خَيْرًا أَوْ لِيَصْمُتْ</p>
+    <p class="dalil-tr">"Barang siapa beriman kepada Allah dan hari akhir, hendaklah ia berkata baik atau diam."</p>
+    <p class="dalil-src">HR. Bukhari & Muslim — Dasar Adab Berbicara</p>
+  </div>
+</section>
+</div>
+
+<!-- DIVIDER -->
+<div class="section-divider" style="margin-top:0;">
+  <div class="sd-line"></div>
+  <div class="sd-content">
+    <div class="sd-gem"></div>
+    <span class="sd-text">Bab Kelima</span>
+    <div class="sd-gem"></div>
+  </div>
+  <div class="sd-line"></div>
+</div>
+
+<!-- ════════════════════════
+     BAB V: MAJELIS
+════════════════════════ -->
+<div id="majelis">
+<section class="chapter">
+  <div class="chapter-head">
+    <div class="chapter-badge">
+      <div class="cb-num">V</div>
+      <div class="cb-label">Bab Kelima</div>
+    </div>
+    <div class="chapter-title-block">
+      <span class="ct-tag">Adab Berkumpul & Bermajlis</span>
+      <div class="ct-arabic">آدَابُ الْمَجَالِسِ</div>
+      <h2 class="ct-title">Adab Majelis<br>& Berkumpul</h2>
+      <p class="ct-sub">Islam memiliki etika yang lengkap untuk setiap pertemuan dan majelis — dari cara duduk, berbicara, mendengar, hingga cara meninggalkan tempat duduk dan kembali ke dalamnya.</p>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div>
+      <div class="chapter-body">
+        <p class="drop-cap">Majelis adalah cerminan peradaban sebuah masyarakat. Islam menaruh perhatian besar pada adab berkumpul karena di dalam majlislah terbentuk hubungan, disebarkan ilmu, diputuskan perkara, dan dibangun rasa persaudaraan. Nabi ﷺ adalah contoh terbaik dalam adab majelis — beliau selalu menghadapkan seluruh badannya kepada orang yang berbicara, tidak memotong pembicaraan, dan tidak menduduki tempat orang lain.</p>
+        <p>Al-Qur'an sendiri memberikan panduan majelis yang sangat detail dalam Surah Al-Mujadilah ayat 11, memerintahkan agar saling melapangkan tempat ketika diminta, sebagai bagian dari adab berinteraksi yang ditanamkan Allah.</p>
+      </div>
+      <div class="dalil">
+        <p class="dalil-ar">يَا أَيُّهَا الَّذِينَ آمَنُوا إِذَا قِيلَ لَكُمْ تَفَسَّحُوا فِي الْمَجَالِسِ فَافْسَحُوا يَفْسَحِ اللَّهُ لَكُمْ</p>
+        <p class="dalil-tr">"Wahai orang-orang yang beriman, apabila dikatakan kepadamu 'berilah kelapangan di dalam majelis', maka lapangkanlah. Niscaya Allah akan memberi kelapangan untukmu."</p>
+        <p class="dalil-src">QS. Al-Mujadilah: 11</p>
+      </div>
+    </div>
+    <div>
+      <div class="chapter-body">
+        <p>Nabi ﷺ melarang seseorang mengusir orang lain dari tempat duduknya lalu ia duduk di sana. Beliau bersabda: "Janganlah seseorang mengusir saudaranya dari tempat duduknya lalu ia duduk di sana. Tetapi lapangkanlah dan luaskanlah." (HR. Bukhari & Muslim).</p>
+        <p>Di antara adab majelis yang sering diabaikan adalah adab ketika meninggalkan majelis dan kembali lagi. Nabi ﷺ bersabda bahwa seseorang yang meninggalkan tempat duduknya kemudian kembali, ia lebih berhak atas tempatnya. Ini mencerminkan keadilan dan penghormatan Islam terhadap hak setiap individu dalam ruang publik.</p>
+      </div>
+      <div class="dalil" style="border-left-color:var(--sage);">
+        <p class="dalil-ar">إِذَا قَامَ أَحَدُكُمْ مِنْ مَجْلِسِهِ ثُمَّ رَجَعَ إِلَيْهِ فَهُوَ أَحَقُّ بِهِ</p>
+        <p class="dalil-tr">"Apabila salah seorang dari kalian bangkit dari tempat duduknya kemudian kembali ke sana, maka ia lebih berhak atas tempat duduknya itu."</p>
+        <p class="dalil-src">HR. Muslim</p>
+      </div>
+    </div>
+  </div>
+
+  <ul class="adab-list">
+    <li><strong>Ucapkan salam saat tiba dan hendak pergi:</strong> Nabi ﷺ bersabda: "Apabila salah seorang dari kalian tiba di majelis, ucapkanlah salam. Dan apabila hendak pergi, ucapkanlah salam. Yang pertama tidak lebih berhak dari yang terakhir." (HR. Abu Dawud & Tirmidzi — Hasan)</li>
+    <li><strong>Jangan berbisik berdua jika bersama tiga orang:</strong> Berbisik berdua di hadapan orang ketiga adalah haram karena menyakiti hatinya. Nabi ﷺ melarangnya dalam HR. Bukhari & Muslim.</li>
+    <li><strong>Tutup majelis dengan kaffaratul majelis:</strong> "Subhanakallahumma wabihamdika, asyhadu alla ilaha illa anta, astaghfiruka wa atubu ilaik." Ini adalah doa penutup majelis yang menghapus dosa-dosa yang terjadi selama majelis. (HR. Abu Dawud — Shahih)</li>
+    <li><strong>Jangan duduk di antara dua orang tanpa izin:</strong> Nabi ﷺ melarang seseorang duduk di antara dua orang yang sedang duduk bersama kecuali dengan izin keduanya. (HR. Abu Dawud — Hasan)</li>
+    <li><strong>Jangan mendominasi pembicaraan:</strong> Mendengarkan dengan penuh perhatian, tidak memotong pembicaraan orang lain, dan memberikan kesempatan berbicara kepada yang lebih tua atau yang lebih berhak adalah bagian dari adab yang diajarkan Nabi ﷺ.</li>
+    <li><strong>Jangan mengungkap rahasia majelis:</strong> "Majelis-majelis itu dengan amanah." (HR. Abu Dawud — Hasan). Apa yang dibicarakan dalam sebuah pertemuan, termasuk hal-hal yang privat, adalah amanah yang tidak boleh disebarkan sembarangan.</li>
+  </ul>
+</section>
+</div>
+
+<!-- ════ CLOSING ════ -->
+<section class="closing">
+  <div class="closing-inner">
+    <div class="closing-gem-row">
+      <div class="cg-line"></div>
+      <div class="cg sm"></div>
+      <div class="cg"></div>
+      <div class="cg sm"></div>
+      <div class="cg-line"></div>
+    </div>
+
+    <h2>Adab adalah<br><em>Mahkota</em> Ilmu</h2>
+
+    <p>Para ulama salaf berkata: "Pelajarilah adab sebelum mempelajari ilmu." Imam Malik berkata kepada seorang muridnya yang hendak menuntut ilmu: "Pelajarilah adab sebelum engkau mempelajari ilmu." Ini bukan berarti adab lebih penting dari ilmu, melainkan bahwa tanpa adab, ilmu tidak akan menghasilkan kebaikan.</p>
+
+    <p>Akhlak dan adab yang baik adalah tujuan utama diutusnya Rasulullah ﷺ. Beliau sendiri bersabda: "Sesungguhnya aku diutus hanyalah untuk menyempurnakan akhlak yang mulia." (HR. Al-Baihaqi — Shahih). Setiap adab yang diajarkan Islam — dari menghormati tamu, meminta izin masuk, hingga memperbaiki nama — semuanya bermuara pada satu tujuan: membentuk manusia yang mulia di hadapan Allah dan manusia.</p>
+
+    <div class="dalil" style="margin:2.5rem 0; text-align:right; border-left:none; border-right:4px solid var(--brass); padding-right:2rem; padding-left:1.5rem;">
+      <p class="dalil-ar">إِنَّمَا بُعِثْتُ لِأُتَمِّمَ مَكَارِمَ الْأَخْلَاقِ</p>
+      <p class="dalil-tr">"Sesungguhnya aku hanyalah diutus untuk menyempurnakan akhlak yang mulia."</p>
+      <p class="dalil-src">HR. Al-Baihaqi dalam Syu'abul Iman — Shahih</p>
+    </div>
+
+    <div class="closing-gem-row" style="margin-bottom:1.5rem;">
+      <div class="cg-line"></div>
+      <div class="cg sm"></div>
+      <div class="cg"></div>
+      <div class="cg sm"></div>
+      <div class="cg-line"></div>
+    </div>
+
+    <p class="closing-ayat-ar">وَإِنَّكَ لَعَلَىٰ خُلُقٍ عَظِيمٍ</p>
+    <p class="closing-ayat-tr">"Dan sesungguhnya engkau (Muhammad) benar-benar berbudi pekerti yang agung."</p>
+    <p class="closing-ayat-ref">QS. Al-Qalam: 4</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Disusun berdasarkan <em>Al-Qur'an Al-Karim</em> · <em>Shahih Bukhari & Muslim</em> · <em>Sunan Abu Dawud & Tirmidzi</em> · <em>Al-Adab Al-Mufrad (Imam Bukhari)</em> · <em>Al-Adzkar (Imam An-Nawawi)</em></p>
+  <p>Semoga menjadi ilmu yang bermanfaat dan amal jariyah. <em>صلى الله عليه وسلم</em></p>
+</footer>
+
+</body>
+</html>

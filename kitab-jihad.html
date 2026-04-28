@@ -1,0 +1,1355 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kitab Jihad — Aturan Perang & Keutamaan Syahid</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Nunito:wght@300;400;600&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════
+   DESIGN DIRECTION:
+   Sacred War — Deep midnight blue + living
+   gold fire. Geometric Islamic star animations
+   in hero. Floating Arabic calligraphy.
+   Particle field. Section backgrounds morph
+   with CSS gradients + animated pseudo-els.
+   Imperial, reverent, alive.
+═══════════════════════════════════════════ */
+:root {
+  --night:    #04060E;
+  --deep:     #070C18;
+  --navy:     #0A1228;
+  --cobalt:   #0F1E40;
+  --azure:    #162858;
+  --fire:     #C8780A;
+  --ember:    #E09830;
+  --gold:     #F0BC50;
+  --gold2:    #F8D878;
+  --pearl:    #F4EDDC;
+  --silver:   #A8BAD4;
+  --silver2:  #6880A0;
+  --white:    #EEF4FF;
+  --crimson:  #8A1828;
+  --ruby:     #AA2030;
+  --jade:     #0E4030;
+  --jade2:    #186050;
+  --text:     #C8D8EC;
+  --text2:    #7890AC;
+  --border:   rgba(240,188,80,0.14);
+  --border2:  rgba(240,188,80,0.28);
+  --glow:     0 0 40px rgba(240,188,80,0.15);
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Nunito',sans-serif;background:var(--night);color:var(--text);overflow-x:hidden;line-height:1.8}
+
+/* ═══ NOISE GRAIN ═══ */
+body::after{
+  content:'';position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.032'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:9999;mix-blend-mode:overlay
+}
+
+/* ═══════════════════════════════════════════
+   NAV
+═══════════════════════════════════════════ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:300;
+  height:56px;display:flex;align-items:center;justify-content:space-between;
+  padding:0 2.5rem;
+  background:rgba(4,6,14,0.9);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border)
+}
+.nav-logo{
+  font-family:'Amiri',serif;font-size:1.1rem;
+  color:var(--gold);letter-spacing:0.06em
+}
+.nav-menu{display:flex;gap:2rem;list-style:none}
+.nav-menu a{
+  font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--silver2);text-decoration:none;transition:color .2s
+}
+.nav-menu a:hover{color:var(--gold)}
+@media(max-width:640px){nav{padding:0 1rem}.nav-menu{display:none}}
+
+/* ═══════════════════════════════════════════
+   HERO — ANIMATED STAR CANVAS + GEOMETRY
+═══════════════════════════════════════════ */
+.hero{
+  position:relative;min-height:100vh;padding-top:56px;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  overflow:hidden;
+  background:radial-gradient(ellipse at 50% 40%, #0D1A3A 0%, #070C18 55%, #04060E 100%)
+}
+
+/* Animated star canvas */
+#heroCanvas{position:absolute;inset:0;z-index:0}
+
+/* ── ROTATING ISLAMIC STAR GEOMETRY ── */
+.geo-wrap{
+  position:absolute;inset:0;z-index:1;
+  display:flex;align-items:center;justify-content:center;
+  pointer-events:none
+}
+
+.geo-ring{
+  position:absolute;
+  border-radius:50%;
+  border:1px solid rgba(240,188,80,0.08)
+}
+.geo-ring:nth-child(1){width:700px;height:700px;animation:spinCCW 120s linear infinite}
+.geo-ring:nth-child(2){width:560px;height:560px;animation:spinCW 90s linear infinite;border-color:rgba(240,188,80,0.06)}
+.geo-ring:nth-child(3){width:420px;height:420px;animation:spinCCW 60s linear infinite;border-color:rgba(240,188,80,0.1)}
+.geo-ring:nth-child(4){width:280px;height:280px;animation:spinCW 40s linear infinite;border-color:rgba(240,188,80,0.14)}
+
+/* SVG 8-pointed star */
+.geo-star{
+  position:absolute;
+  animation:spinCCW 80s linear infinite;
+  opacity:0.07
+}
+
+/* Pulsing glow center */
+.geo-center{
+  position:absolute;
+  width:180px;height:180px;border-radius:50%;
+  background:radial-gradient(circle, rgba(240,188,80,0.12) 0%, transparent 70%);
+  animation:pulse 4s ease-in-out infinite
+}
+
+@keyframes spinCW{to{transform:rotate(360deg)}}
+@keyframes spinCCW{to{transform:rotate(-360deg)}}
+@keyframes pulse{
+  0%,100%{transform:scale(1);opacity:.6}
+  50%{transform:scale(1.4);opacity:1}
+}
+
+/* ── FLOATING ARABIC LETTERS ── */
+.float-ar{
+  position:absolute;
+  font-family:'Amiri',serif;
+  color:rgba(240,188,80,0.06);
+  pointer-events:none;
+  animation:floatUp linear infinite;
+  user-select:none;
+  z-index:1
+}
+
+@keyframes floatUp{
+  0%{transform:translateY(20px);opacity:0}
+  10%{opacity:1}
+  90%{opacity:.4}
+  100%{transform:translateY(-80px);opacity:0}
+}
+
+/* ── EMBER PARTICLES (CSS) ── */
+.embers{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.ember-p{
+  position:absolute;bottom:-4px;
+  width:2px;height:2px;border-radius:50%;
+  background:var(--ember);
+  animation:riseEmber linear infinite;
+  opacity:0
+}
+@keyframes riseEmber{
+  0%{transform:translateY(0) translateX(0);opacity:0}
+  10%{opacity:.8}
+  80%{opacity:.3}
+  100%{transform:translateY(-120vh) translateX(var(--drift));opacity:0}
+}
+
+/* Hero content */
+.hero-content{
+  position:relative;z-index:2;
+  text-align:center;padding:2rem 1.5rem;max-width:860px
+}
+
+.hero-badge{
+  display:inline-flex;align-items:center;gap:.8rem;
+  font-size:.62rem;letter-spacing:.4em;text-transform:uppercase;
+  color:var(--fire);margin-bottom:2rem;
+  opacity:0;animation:heroFadeUp 1s .2s ease forwards
+}
+.hero-badge .tick{width:24px;height:1px;background:var(--fire);opacity:.6}
+
+.hero-arabic{
+  font-family:'Amiri',serif;
+  font-size:clamp(2rem,5.5vw,3.8rem);
+  color:var(--gold);direction:rtl;line-height:1.6;
+  margin-bottom:1rem;
+  text-shadow:0 0 60px rgba(240,188,80,.35),0 0 120px rgba(240,188,80,.15);
+  opacity:0;animation:heroFadeUp 1s .4s ease forwards
+}
+
+.hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(3rem,8vw,7rem);
+  font-weight:900;color:var(--white);
+  line-height:.95;letter-spacing:-.01em;
+  margin-bottom:1.5rem;
+  text-shadow:0 4px 40px rgba(0,0,0,.8);
+  opacity:0;animation:heroFadeUp 1s .55s ease forwards
+}
+.hero h1 .fire-word{
+  color:var(--gold);
+  text-shadow:0 0 40px rgba(240,188,80,.4)
+}
+.hero h1 .dim-word{font-weight:400;color:rgba(238,244,255,.5)}
+
+.hero-sub{
+  font-size:clamp(.9rem,2vw,1.05rem);
+  color:var(--silver2);max-width:520px;margin:0 auto 2.5rem;
+  line-height:1.85;
+  opacity:0;animation:heroFadeUp 1s .7s ease forwards
+}
+
+/* Stat pills row */
+.hero-pills{
+  display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;
+  opacity:0;animation:heroFadeUp 1s .85s ease forwards
+}
+.h-pill{
+  padding:.45rem 1.2rem;
+  border:1px solid rgba(240,188,80,.2);
+  border-radius:100px;
+  font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(168,186,212,.6);
+  background:rgba(240,188,80,.03);
+  transition:all .25s
+}
+.h-pill:hover{border-color:rgba(240,188,80,.4);color:var(--gold)}
+
+/* Scroll cue */
+.hero-scroll{
+  position:absolute;bottom:2rem;left:50%;
+  transform:translateX(-50%);z-index:2;
+  display:flex;flex-direction:column;align-items:center;gap:.5rem;
+  opacity:0;animation:heroFadeUp 1s 1.1s ease forwards
+}
+.scroll-track{
+  width:1px;height:48px;overflow:hidden;
+  position:relative
+}
+.scroll-track::after{
+  content:'';position:absolute;
+  top:-100%;left:0;width:1px;height:100%;
+  background:linear-gradient(to bottom,transparent,var(--gold),transparent);
+  animation:scrollDrop 2s ease-in-out infinite
+}
+@keyframes scrollDrop{
+  0%{top:-100%}
+  100%{top:200%}
+}
+.hero-scroll span{
+  font-size:.52rem;letter-spacing:.3em;text-transform:uppercase;
+  color:rgba(240,188,80,.4)
+}
+
+@keyframes heroFadeUp{
+  from{opacity:0;transform:translateY(24px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* ═══════════════════════════════════════════
+   ANIMATED SECTION BACKGROUNDS
+═══════════════════════════════════════════ */
+
+/* Band 1 — dark navy with flowing gradient */
+.band-dark{
+  position:relative;overflow:hidden;
+  background:var(--cobalt);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border)
+}
+.band-dark::before{
+  content:'';position:absolute;
+  width:800px;height:800px;border-radius:50%;
+  background:radial-gradient(circle,rgba(240,188,80,.05) 0%,transparent 70%);
+  top:-200px;right:-200px;
+  animation:blobFloat1 12s ease-in-out infinite
+}
+.band-dark::after{
+  content:'';position:absolute;
+  width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(circle,rgba(22,40,88,.6) 0%,transparent 70%);
+  bottom:-150px;left:-100px;
+  animation:blobFloat2 15s ease-in-out infinite
+}
+@keyframes blobFloat1{
+  0%,100%{transform:translate(0,0)}
+  50%{transform:translate(-30px,40px)}
+}
+@keyframes blobFloat2{
+  0%,100%{transform:translate(0,0)}
+  50%{transform:translate(40px,-30px)}
+}
+
+/* Band 2 — jade/emerald for larangan */
+.band-jade{
+  position:relative;overflow:hidden;
+  background:linear-gradient(160deg,#061810 0%,#0A2218 50%,#061A10 100%)
+}
+.band-jade::before{
+  content:'';position:absolute;
+  width:900px;height:900px;border-radius:50%;
+  background:radial-gradient(circle,rgba(24,96,80,.12) 0%,transparent 65%);
+  top:50%;left:50%;transform:translate(-50%,-50%);
+  animation:jadeBreath 10s ease-in-out infinite
+}
+@keyframes jadeBreath{
+  0%,100%{transform:translate(-50%,-50%) scale(1)}
+  50%{transform:translate(-50%,-50%) scale(1.2)}
+}
+
+/* Band 3 — crimson for syahid */
+.band-crimson{
+  position:relative;overflow:hidden;
+  background:linear-gradient(160deg,#0A0408 0%,#150810 50%,#0A0408 100%)
+}
+.band-crimson::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse at 20% 50%,rgba(138,24,40,.12) 0%,transparent 50%),
+    radial-gradient(ellipse at 80% 50%,rgba(240,188,80,.05) 0%,transparent 50%);
+  animation:crimsonShift 14s ease-in-out infinite
+}
+@keyframes crimsonShift{
+  0%,100%{opacity:.8}
+  50%{opacity:1}
+}
+
+/* Animated mesh grid */
+.mesh-bg{
+  position:absolute;inset:0;z-index:0;
+  background-image:
+    linear-gradient(rgba(240,188,80,.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(240,188,80,.03) 1px,transparent 1px);
+  background-size:60px 60px;
+  animation:meshDrift 20s linear infinite
+}
+@keyframes meshDrift{
+  0%{background-position:0 0}
+  100%{background-position:60px 60px}
+}
+
+/* ═══════════════════════════════════════════
+   LAYOUT SYSTEM
+═══════════════════════════════════════════ */
+.wrap{max-width:1080px;margin:0 auto;padding:0 2rem}
+@media(max-width:640px){.wrap{padding:0 1.2rem}}
+
+.chapter-inner{
+  position:relative;z-index:1;
+  max-width:1080px;margin:0 auto;padding:5.5rem 2rem 5rem
+}
+@media(max-width:640px){.chapter-inner{padding:3.5rem 1.2rem}}
+
+/* Chapter heading */
+.ch-head{
+  display:flex;align-items:flex-start;gap:2rem;
+  margin-bottom:3.5rem;padding-bottom:2.5rem;
+  border-bottom:1px solid var(--border)
+}
+@media(max-width:640px){.ch-head{flex-direction:column;gap:1rem}}
+
+.ch-badge{
+  min-width:88px;
+  display:flex;flex-direction:column;align-items:center;
+  padding:1.2rem .8rem;
+  border:1px solid var(--border2);border-radius:4px;
+  background:rgba(240,188,80,.04);flex-shrink:0
+}
+.ch-badge-num{
+  font-family:'Playfair Display',serif;
+  font-size:2.8rem;font-weight:900;
+  color:var(--gold);line-height:1
+}
+.ch-badge-text{
+  font-size:.52rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--silver2);margin-top:.3rem
+}
+
+.ch-title-block{}
+.ch-tag{
+  font-size:.6rem;letter-spacing:.32em;text-transform:uppercase;
+  color:var(--fire);margin-bottom:.6rem;display:block
+}
+.ch-arabic{
+  font-family:'Amiri',serif;
+  font-size:clamp(1.3rem,3vw,1.9rem);
+  color:var(--gold);direction:rtl;
+  text-align:right;margin-bottom:.3rem
+}
+.ch-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.6rem,3.5vw,2.6rem);
+  font-weight:900;color:var(--white);
+  line-height:1.1;letter-spacing:-.01em;margin-bottom:.5rem
+}
+.ch-sub{font-size:.9rem;color:var(--silver2);max-width:580px;line-height:1.7}
+
+/* ═══ PROSE ═══ */
+.prose{
+  font-size:.97rem;line-height:1.95;color:var(--text);
+  text-align:justify;text-justify:inter-word;hyphens:auto
+}
+.prose p{margin-bottom:1.1rem}
+.prose p:last-child{margin-bottom:0}
+
+.drop-cap::first-letter{
+  font-family:'Playfair Display',serif;
+  font-size:4.2rem;font-weight:900;
+  color:var(--gold);float:left;
+  line-height:.76;margin-right:.1em;margin-top:.16em;
+  text-shadow:0 0 20px rgba(240,188,80,.3)
+}
+
+/* Two column */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-bottom:2rem}
+@media(max-width:768px){.two-col{grid-template-columns:1fr;gap:1.5rem}}
+
+/* ═══ DALIL BOX ═══ */
+.dalil{
+  border-radius:4px;padding:1.8rem 2.2rem;
+  margin:1.8rem 0;position:relative;overflow:hidden;
+  border-left:3px solid var(--gold)
+}
+.dalil-dark{background:rgba(15,30,64,.8)}
+.dalil-jade{background:rgba(6,24,16,.8);border-left-color:var(--jade2)}
+.dalil-ruby{background:rgba(20,4,8,.8);border-left-color:var(--ruby)}
+
+.dalil::after{
+  content:'❝';position:absolute;
+  bottom:-.5rem;right:1.2rem;
+  font-size:5rem;
+  color:rgba(240,188,80,.05);
+  font-family:'Playfair Display',serif;line-height:1
+}
+.d-ar{
+  font-family:'Amiri',serif;
+  font-size:clamp(1rem,2.2vw,1.35rem);
+  color:var(--gold);direction:rtl;
+  text-align:right;line-height:2.2;margin-bottom:.8rem
+}
+.d-tr{
+  font-style:italic;font-size:.9rem;
+  color:var(--silver2);line-height:1.75;margin-bottom:.5rem
+}
+.d-src{
+  font-size:.6rem;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--fire)
+}
+
+/* ═══ RULE CARDS (aturan perang) ═══ */
+.rules-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+  gap:1.2rem;margin:2rem 0
+}
+.rule-card{
+  background:rgba(15,30,64,.5);
+  border:1px solid var(--border);
+  border-radius:6px;padding:1.6rem;
+  transition:all .3s cubic-bezier(.34,1.56,.64,1);
+  position:relative;overflow:hidden
+}
+.rule-card::before{
+  content:'';position:absolute;
+  top:0;left:0;right:0;height:2px;
+  background:linear-gradient(to right,transparent,var(--gold-dim,var(--fire)),transparent);
+  transform:scaleX(0);transition:transform .3s
+}
+.rule-card:hover{
+  border-color:var(--border2);
+  transform:translateY(-4px);
+  box-shadow:0 16px 40px rgba(0,0,0,.5),var(--glow)
+}
+.rule-card:hover::before{transform:scaleX(1)}
+
+.rc-icon{font-size:1.6rem;margin-bottom:.8rem}
+.rc-num{
+  font-family:'Playfair Display',serif;
+  font-size:3rem;font-weight:900;
+  color:rgba(240,188,80,.07);line-height:1;
+  position:absolute;top:.5rem;right:1rem
+}
+.rc-title{
+  font-family:'Playfair Display',serif;
+  font-size:1.05rem;font-weight:700;
+  color:var(--white);margin-bottom:.5rem
+}
+.rc-arabic{
+  font-family:'Amiri',serif;font-size:.9rem;
+  color:var(--ember);direction:rtl;margin-bottom:.6rem
+}
+.rc-body{
+  font-size:.86rem;color:var(--silver2);
+  line-height:1.72;text-align:justify
+}
+
+/* ═══ PROHIBITION ITEMS ═══ */
+.prohib-list{
+  display:flex;flex-direction:column;gap:1rem;margin:1.8rem 0
+}
+.prohib-item{
+  display:grid;grid-template-columns:3.5rem 1fr;
+  gap:1.2rem;align-items:start;
+  background:rgba(6,24,16,.6);
+  border:1px solid rgba(24,96,80,.25);
+  border-radius:6px;padding:1.3rem 1.5rem;
+  transition:all .25s;position:relative;overflow:hidden
+}
+.prohib-item::after{
+  content:'';position:absolute;
+  left:0;top:0;bottom:0;width:3px;
+  background:var(--jade2);
+  border-radius:3px 0 0 3px
+}
+.prohib-item:hover{
+  border-color:rgba(24,96,80,.45);
+  transform:translateX(4px)
+}
+.pi-icon{
+  width:3rem;height:3rem;border-radius:8px;
+  background:rgba(24,96,80,.2);
+  border:1px solid rgba(24,96,80,.3);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.2rem;flex-shrink:0
+}
+.pi-body h4{
+  font-family:'Playfair Display',serif;
+  font-size:1rem;color:var(--white);margin-bottom:.3rem
+}
+.pi-body p{
+  font-size:.86rem;color:var(--silver2);
+  line-height:1.7;text-align:justify
+}
+.pi-body .src{
+  font-size:.6rem;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--jade2);
+  margin-top:.3rem
+}
+
+/* ═══ SYAHID CARDS ═══ */
+.syahid-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:1.3rem;margin:2rem 0
+}
+.syahid-card{
+  background:rgba(20,4,8,.5);
+  border:1px solid rgba(170,32,48,.2);
+  border-radius:6px;overflow:hidden;
+  transition:all .3s;position:relative
+}
+.syahid-card:hover{
+  border-color:rgba(170,32,48,.45);
+  transform:translateY(-3px);
+  box-shadow:0 12px 36px rgba(0,0,0,.6)
+}
+.sc-top{
+  background:linear-gradient(135deg,rgba(138,24,40,.3),rgba(10,4,8,.5));
+  padding:1.4rem 1.6rem 1rem;
+  border-bottom:1px solid rgba(170,32,48,.15)
+}
+.sc-keutamaan-num{
+  font-family:'Playfair Display',serif;
+  font-size:3.5rem;font-weight:900;
+  color:rgba(224,152,48,.08);line-height:1;
+  float:right;margin-top:-.3rem
+}
+.sc-title{
+  font-family:'Playfair Display',serif;
+  font-size:1.05rem;font-weight:700;
+  color:var(--white);margin-bottom:.2rem
+}
+.sc-arabic{
+  font-family:'Amiri',serif;font-size:.88rem;
+  color:var(--ember);direction:rtl
+}
+.sc-body{
+  padding:1rem 1.6rem 1.4rem;
+  font-size:.86rem;color:var(--silver2);
+  line-height:1.75;text-align:justify
+}
+
+/* ═══ GRAND HADIS ═══ */
+.grand-hadis{
+  background:linear-gradient(160deg,rgba(10,18,40,.9),rgba(4,6,14,.95));
+  border:1px solid var(--border2);
+  border-radius:8px;padding:3rem;margin:3rem 0;
+  position:relative;overflow:hidden;
+  box-shadow:0 8px 40px rgba(0,0,0,.6),inset 0 1px 0 rgba(240,188,80,.08)
+}
+.grand-hadis::before{
+  content:'';position:absolute;
+  top:0;left:0;right:0;height:1px;
+  background:linear-gradient(to right,transparent,var(--gold),transparent)
+}
+.grand-hadis::after{
+  content:'';position:absolute;
+  bottom:0;left:0;right:0;height:1px;
+  background:linear-gradient(to right,transparent,var(--gold),transparent)
+}
+.gh-top{
+  text-align:center;margin-bottom:2rem
+}
+.gh-tag{
+  font-size:.58rem;letter-spacing:.35em;text-transform:uppercase;
+  color:var(--fire);display:block;margin-bottom:.8rem
+}
+.gh-arabic{
+  font-family:'Amiri',serif;
+  font-size:clamp(1.3rem,3.5vw,2rem);
+  color:var(--gold);direction:rtl;
+  line-height:2.2;text-align:center;
+  text-shadow:0 0 30px rgba(240,188,80,.2)
+}
+.gh-trans{
+  font-family:'Playfair Display',serif;
+  font-style:italic;font-size:1.05rem;
+  color:var(--silver);text-align:center;
+  line-height:1.75;margin-top:1.2rem;max-width:600px;margin-inline:auto
+}
+.gh-src{
+  font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;
+  color:var(--fire);text-align:center;margin-top:.8rem
+}
+
+/* ═══ ANIMATED DIVIDERS ═══ */
+.sec-divider{
+  display:flex;align-items:center;gap:1.5rem;
+  max-width:1080px;margin:0 auto;padding:2rem 2rem 0
+}
+.sd-line{flex:1;height:1px;background:var(--border2)}
+.sd-badge{
+  display:flex;align-items:center;gap:.7rem;white-space:nowrap
+}
+.sd-gem{
+  width:7px;height:7px;background:var(--gold);
+  transform:rotate(45deg);
+  animation:gemPulse 3s ease-in-out infinite
+}
+@keyframes gemPulse{
+  0%,100%{box-shadow:0 0 0 0 rgba(240,188,80,.3)}
+  50%{box-shadow:0 0 0 6px rgba(240,188,80,0)}
+}
+.sd-text{
+  font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--gold)
+}
+
+/* ═══ CLOSING ═══ */
+.closing{
+  position:relative;overflow:hidden;
+  padding:8rem 2rem;text-align:center;
+  background:linear-gradient(180deg,var(--night) 0%,rgba(10,4,8,.95) 50%,var(--night) 100%)
+}
+.closing::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse at 50% 50%,rgba(200,120,10,.07) 0%,transparent 55%),
+    radial-gradient(ellipse at 50% 0%,rgba(15,30,64,.5) 0%,transparent 40%);
+  animation:closingPulse 8s ease-in-out infinite
+}
+@keyframes closingPulse{
+  0%,100%{opacity:.8}
+  50%{opacity:1}
+}
+/* Animated closing ornament */
+.closing-ornament{
+  position:relative;z-index:1;
+  margin-bottom:3rem
+}
+.co-svg{
+  animation:spinCCW 30s linear infinite;
+  opacity:.15
+}
+.co-center{
+  position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  font-family:'Amiri',serif;font-size:1.8rem;
+  color:var(--gold);
+  text-shadow:0 0 20px rgba(240,188,80,.4)
+}
+
+.closing-inner{position:relative;z-index:1;max-width:720px;margin:0 auto}
+.closing h2{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2rem,5vw,3.5rem);
+  font-weight:900;color:var(--white);
+  line-height:1.15;letter-spacing:-.01em;margin-bottom:1.5rem
+}
+.closing h2 em{
+  font-style:italic;color:var(--gold);
+  text-shadow:0 0 30px rgba(240,188,80,.3)
+}
+.closing p{
+  font-size:1rem;color:var(--silver2);
+  line-height:1.9;text-align:justify;
+  text-justify:inter-word;margin-bottom:1rem
+}
+.closing-ar{
+  font-family:'Amiri',serif;
+  font-size:clamp(1.4rem,3.5vw,2.1rem);
+  color:var(--gold);direction:rtl;
+  margin:2.5rem 0 .6rem;line-height:2.1;
+  text-shadow:0 0 40px rgba(240,188,80,.2)
+}
+.closing-tr{
+  font-style:italic;font-size:.9rem;
+  color:rgba(168,186,212,.4)
+}
+.closing-ref{
+  font-size:.58rem;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--fire);margin-top:.3rem
+}
+
+.sep-row{
+  display:flex;align-items:center;gap:.8rem;
+  justify-content:center;margin:2.5rem 0
+}
+.sr-gem{width:6px;height:6px;background:var(--gold);transform:rotate(45deg)}
+.sr-gem.sm{width:4px;height:4px;opacity:.4}
+.sr-line{width:60px;height:1px;background:var(--border2)}
+
+/* FOOTER */
+footer{
+  background:#020305;color:rgba(104,128,160,.22);
+  text-align:center;padding:2rem;
+  font-size:.62rem;letter-spacing:.1em;line-height:2.2
+}
+footer em{color:var(--fire);font-style:normal}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">كِتَابُ الْجِهَادِ</div>
+  <ul class="nav-menu">
+    <li><a href="#pengertian">Pengertian</a></li>
+    <li><a href="#aturan">Aturan Perang</a></li>
+    <li><a href="#larangan">Larangan</a></li>
+    <li><a href="#syahid">Keutamaan Syahid</a></li>
+  </ul>
+</nav>
+
+<!-- ════════════════════════════════
+     HERO — ANIMATED
+════════════════════════════════ -->
+<header class="hero">
+
+  <!-- Animated star canvas (JS) -->
+  <canvas id="heroCanvas"></canvas>
+
+  <!-- Rotating geometric rings -->
+  <div class="geo-wrap">
+    <div class="geo-ring"></div>
+    <div class="geo-ring"></div>
+    <div class="geo-ring"></div>
+    <div class="geo-ring"></div>
+    <!-- 8-pointed star SVG -->
+    <svg class="geo-star" width="500" height="500" viewBox="0 0 500 500">
+      <polygon points="250,30 295,175 440,175 325,262 370,405 250,320 130,405 175,262 60,175 205,175"
+        fill="none" stroke="rgba(240,188,80,1)" stroke-width="0.8"/>
+      <polygon points="250,70 285,165 375,165 305,220 330,315 250,265 170,315 195,220 125,165 215,165"
+        fill="none" stroke="rgba(240,188,80,0.6)" stroke-width="0.5"/>
+    </svg>
+    <div class="geo-center"></div>
+  </div>
+
+  <!-- Floating Arabic letters -->
+  <div id="floatLetters"></div>
+
+  <!-- Ember particles -->
+  <div class="embers" id="embers"></div>
+
+  <!-- Main content -->
+  <div class="hero-content">
+    <div class="hero-badge">
+      <div class="tick"></div>
+      <span>Berdasarkan Al-Qur'an & Hadis Shahih</span>
+      <div class="tick"></div>
+    </div>
+    <div class="hero-arabic">كِتَابُ الْجِهَادِ وَالسِّيَرِ</div>
+    <h1>
+      <span class="dim-word">Kitab</span><br>
+      <span class="fire-word">Jihad</span><br>
+      <span class="dim-word">& Syahid</span>
+    </h1>
+    <p class="hero-sub">Memahami jihad secara utuh — aturan peperangan yang adil, perlindungan warga sipil, dan keutamaan syahid di jalan Allah berdasarkan Al-Qur'an dan Hadis Shahih.</p>
+    <div class="hero-pills">
+      <span class="h-pill">Aturan Perang</span>
+      <span class="h-pill">Larangan Membunuh Sipil</span>
+      <span class="h-pill">Perlindungan Wanita & Anak</span>
+      <span class="h-pill">10 Keutamaan Syahid</span>
+      <span class="h-pill">Etika Militer Islam</span>
+    </div>
+  </div>
+
+
+</header>
+
+<!-- ════════════════════════════════
+     PENGERTIAN JIHAD
+════════════════════════════════ -->
+<div id="pengertian" class="band-dark">
+  <div class="mesh-bg"></div>
+  <div class="chapter-inner">
+    <div class="ch-head">
+      <div class="ch-badge">
+        <div class="ch-badge-num">I</div>
+        <div class="ch-badge-text">Bab Pertama</div>
+      </div>
+      <div class="ch-title-block">
+        <span class="ch-tag">Landasan & Pengertian</span>
+        <div class="ch-arabic">الْجِهَادُ فِي سَبِيلِ اللَّهِ</div>
+        <h2 class="ch-title">Hakikat Jihad<br>dalam Islam</h2>
+        <p class="ch-sub">Jihad adalah kata yang paling sering disalahpahami. Memahaminya secara benar adalah kewajiban setiap Muslim.</p>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <div class="prose">
+          <p class="drop-cap">Kata <strong style="color:var(--gold)">جِهَاد (jihad)</strong> berasal dari akar kata <em>jahada</em> yang berarti bersungguh-sungguh, berjuang, atau mengerahkan segenap kemampuan. Dalam syariat Islam, jihad memiliki makna yang sangat luas — jauh lebih luas dari sekadar perang. Para ulama membaginya menjadi beberapa tingkatan: jihad melawan hawa nafsu (jihad akbar), jihad melalui ilmu dan dakwah, jihad melalui harta, dan jihad melalui perang (jihad ashghar) yang merupakan tingkatan terakhir dan hanya dibolehkan dalam kondisi tertentu.</p>
+          <p>Rasulullah ﷺ ketika pulang dari medan perang bersabda kepada para sahabat: "Kita baru saja kembali dari jihad kecil menuju jihad besar." Para sahabat bertanya, "Apakah jihad besar itu wahai Rasulullah?" Beliau menjawab: "Jihad melawan hawa nafsu." (HR. Al-Baihaqi). Ini menunjukkan bahwa perjuangan terbesar dalam Islam adalah menundukkan diri sendiri.</p>
+        </div>
+        <div class="dalil dalil-dark">
+          <p class="d-ar">وَجَاهِدُوا فِي اللَّهِ حَقَّ جِهَادِهِ ۚ هُوَ اجْتَبَاكُمْ</p>
+          <p class="d-tr">"Dan berjihadlah kamu di jalan Allah dengan sebenar-benar jihad. Dia telah memilih kamu..."</p>
+          <p class="d-src">QS. Al-Hajj: 78</p>
+        </div>
+      </div>
+      <div>
+        <div class="prose">
+          <p>Jihad perang (qital) dalam Islam hanya dibolehkan dalam keadaan: mempertahankan diri dari serangan musuh, membebaskan yang tertindas dan dilarang beragama, dan menegakkan keadilan ketika perjanjian dilanggar. Islam bahkan lebih dahulu memerintahkan dakwah dengan hikmah dan perdebatan yang baik, perundingan damai, dan perjanjian sebelum perang. Perang adalah pilihan terakhir.</p>
+          <p>Yang membedakan jihad Islam dari konsep perang lainnya adalah <em>niat, tujuan, dan aturan mainnya</em>. Hanya karena Allah, hanya untuk menegakkan keadilan, dan dibatasi oleh aturan-aturan yang sangat ketat yang melarang membunuh non-kombatan, merusak alam, dan berbuat berlebihan. Ini adalah etika militer paling maju di zamannya.</p>
+        </div>
+        <div class="dalil dalil-dark">
+          <p class="d-ar">أُذِنَ لِلَّذِينَ يُقَاتَلُونَ بِأَنَّهُمْ ظُلِمُوا ۚ وَإِنَّ اللَّهَ عَلَىٰ نَصْرِهِمْ لَقَدِيرٌ</p>
+          <p class="d-tr">"Diizinkan (berperang) bagi orang-orang yang diperangi, karena sesungguhnya mereka telah dizalimi. Dan sungguh, Allah Maha Kuasa menolong mereka."</p>
+          <p class="d-src">QS. Al-Hajj: 39 — Ayat izin perang pertama</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════
+     ATURAN PERANG
+════════════════════════════════ -->
+<div class="sec-divider" id="aturan">
+  <div class="sd-line"></div>
+  <div class="sd-badge"><div class="sd-gem"></div><span class="sd-text">Bab Kedua</span><div class="sd-gem"></div></div>
+  <div class="sd-line"></div>
+</div>
+
+<section style="padding:5rem 2rem;position:relative;overflow:hidden;background:var(--deep)">
+  <!-- Animated hexagon pattern bg -->
+  <div style="position:absolute;inset:0;z-index:0;opacity:.04;background-image:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='84' height='96'%3E%3Cpath d='M42 0L84 24v48L42 96 0 72V24z' fill='none' stroke='%23F0BC50' stroke-width='1'/%3E%3C/svg%3E\");background-size:84px 96px;animation:meshDrift 25s linear infinite"></div>
+
+  <div style="position:relative;z-index:1;max-width:1080px;margin:0 auto">
+    <div class="ch-head">
+      <div class="ch-badge">
+        <div class="ch-badge-num">II</div>
+        <div class="ch-badge-text">Bab Kedua</div>
+      </div>
+      <div class="ch-title-block">
+        <span class="ch-tag">Etika Militer Islam</span>
+        <div class="ch-arabic">آدَابُ الْقِتَالِ وَأَحْكَامُهُ</div>
+        <h2 class="ch-title">Aturan Peperangan<br>dalam Islam</h2>
+        <p class="ch-sub">Rasulullah ﷺ menetapkan kode etik perang yang jauh melampaui peradaban mana pun di zamannya — bahkan hingga hari ini masih relevan sebagai standar humaniter.</p>
+      </div>
+    </div>
+
+    <!-- Grand hadis pembuka -->
+    <div class="grand-hadis">
+      <div class="gh-top">
+        <span class="gh-tag">Wasiat Nabi ﷺ Sebelum Perang</span>
+        <p class="gh-arabic">اغْزُوا بِاسْمِ اللَّهِ وَفِي سَبِيلِ اللَّهِ، قَاتِلُوا مَنْ كَفَرَ بِاللَّهِ، اغْزُوا وَلَا تَغُلُّوا وَلَا تَغْدِرُوا وَلَا تُمَثِّلُوا وَلَا تَقْتُلُوا وَلِيدًا</p>
+        <p class="gh-trans">"Berperanglah dengan nama Allah dan di jalan Allah. Perangilah orang yang kafir terhadap Allah. Berperanglah dan janganlah berkhianat, jangan berbuat curang, jangan mencacah mutilasi (mayat), dan janganlah membunuh anak-anak."</p>
+        <p class="gh-src">HR. Muslim — Wasiat Nabi ﷺ kepada pemimpin pasukan</p>
+      </div>
+    </div>
+
+    <div class="rules-grid">
+      <div class="rule-card">
+        <div class="rc-num">01</div>
+        <div class="rc-icon">🕊️</div>
+        <div class="rc-title">Dahulukan Perdamaian</div>
+        <div class="rc-arabic">تَقْدِيمُ الدَّعْوَةِ قَبْلَ الْقِتَالِ</div>
+        <div class="rc-body">Sebelum berperang, wajib mengajak musuh kepada Islam atau perjanjian damai (jizyah). Nabi ﷺ selalu mengirimkan utusan terlebih dahulu. Perang hanya boleh dimulai jika semua tawaran ditolak dan serangan tetap terjadi. (HR. Muslim — dari Sulaiman bin Buraidah)</div>
+      </div>
+      <div class="rule-card">
+        <div class="rc-num">02</div>
+        <div class="rc-icon">⚖️</div>
+        <div class="rc-title">Niat Hanya Karena Allah</div>
+        <div class="rc-arabic">إِخْلَاصُ النِّيَّةِ لِلَّهِ</div>
+        <div class="rc-body">Jihad yang sah hanya yang diniatkan karena Allah semata — bukan karena ambisi pribadi, suku, atau kekuasaan. Nabi ﷺ bersabda: "Barang siapa berperang agar namanya disebut, bukan di jalan Allah — Allah tidak menerimanya." (HR. Muslim)</div>
+      </div>
+      <div class="rule-card">
+        <div class="rc-num">03</div>
+        <div class="rc-icon">🚫</div>
+        <div class="rc-title">Larangan Berkhianat</div>
+        <div class="rc-arabic">تَحْرِيمُ الْغَدْرِ وَالْخِيَانَةِ</div>
+        <div class="rc-body">Pengkhianatan terhadap perjanjian adalah dosa besar. Nabi ﷺ bersabda: "Setiap pengkhianat akan ditempatkan sebuah panji pada hari kiamat; dikatakan: 'Ini adalah pengkhianatan si fulan.'" (HR. Bukhari & Muslim)</div>
+      </div>
+      <div class="rule-card">
+        <div class="rc-num">04</div>
+        <div class="rc-icon">🌿</div>
+        <div class="rc-title">Larangan Merusak Alam</div>
+        <div class="rc-arabic">تَحْرِيمُ قَطْعِ الشَّجَرِ وَإِفْسَادِ الزَّرْعِ</div>
+        <div class="rc-body">Abu Bakar Ash-Shiddiq mewasiatkan 10 hal kepada pasukan yang dikirimnya: "Janganlah menebang pohon yang berbuah, jangan merusak tanaman yang sedang tumbuh, jangan menyembelih hewan ternak kecuali untuk dimakan." (Atsar Abu Bakar — Shahih)</div>
+      </div>
+      <div class="rule-card">
+        <div class="rc-num">05</div>
+        <div class="rc-icon">🏛️</div>
+        <div class="rc-title">Larangan Menghancurkan Tempat Ibadah</div>
+        <div class="rc-arabic">تَحْرِيمُ هَدْمِ الْكَنَائِسِ وَالْبِيَعِ</div>
+        <div class="rc-body">Islam melarang menghancurkan tempat ibadah non-Muslim selama mereka tidak terlibat dalam perang. Abu Bakar mewasiatkan: "Janganlah menghancurkan biara-biara (rahib) dan jangan membunuh para rahib di dalamnya." Ini adalah hak minoritas yang dilindungi.</div>
+      </div>
+      <div class="rule-card">
+        <div class="rc-num">06</div>
+        <div class="rc-icon">🤝</div>
+        <div class="rc-title">Hormati Jaminan Keamanan</div>
+        <div class="rc-arabic">الْوَفَاءُ بِالْأَمَانِ</div>
+        <div class="rc-body">Jaminan keamanan yang diberikan seorang Muslim kepada musuh harus dihormati oleh seluruh kaum Muslimin. Nabi ﷺ bersabda: "Sesungguhnya perlindungan kaum Muslimin itu satu; bahkan yang terendah dari mereka berhak memberikannya." (HR. Bukhari & Muslim)</div>
+      </div>
+      <div class="rule-card">
+        <div class="rc-num">07</div>
+        <div class="rc-icon">⛔</div>
+        <div class="rc-title">Larangan Mutilasi Mayat</div>
+        <div class="rc-arabic">تَحْرِيمُ الْمُثْلَةِ</div>
+        <div class="rc-body">Nabi ﷺ melarang keras mencacah atau memutilasi mayat musuh sekalipun. Ini adalah larangan eksplisit dalam wasiat perang beliau. Bahkan ketika Hamzah dimutilasi di Uhud, Nabi marah dan hampir bersumpah membalas — namun Allah menurunkan ayat yang melarangnya.</div>
+      </div>
+      <div class="rule-card">
+        <div class="rc-num">08</div>
+        <div class="rc-icon">🏳️</div>
+        <div class="rc-title">Hormati Bendera Putih & Penyerahan</div>
+        <div class="rc-arabic">قَبُولُ التَّسْلِيمِ</div>
+        <div class="rc-body">Musuh yang menyerah atau memohon damai tidak boleh dibunuh. Fathul Makkah adalah contoh terbaik: seluruh penduduk Makkah yang menyerah diberikan amnesti umum tanpa terkecuali. "Pergilah, kalian semua bebas." (HR. Al-Baihaqi — Shahih)</div>
+      </div>
+      <div class="rule-card">
+        <div class="rc-num">09</div>
+        <div class="rc-icon">🏠</div>
+        <div class="rc-title">Perlakukan Tawanan dengan Manusiawi</div>
+        <div class="rc-arabic">حُسْنُ مُعَامَلَةِ الْأَسِيرِ</div>
+        <div class="rc-body">Allah berfirman memuji orang yang memberi makan tawanan (QS. Al-Insan: 8). Nabi ﷺ memerintahkan agar tawanan Badar diberi makan terlebih dahulu sebelum para penawannya makan. Tawanan bisa dibebaskan dengan tebusan, pertukaran, atau tanpa syarat.</div>
+      </div>
+      <div class="rule-card">
+        <div class="rc-num">10</div>
+        <div class="rc-icon">📜</div>
+        <div class="rc-title">Tunduk pada Komando Pemimpin</div>
+        <div class="rc-arabic">طَاعَةُ أَمِيرِ الْجَيْشِ</div>
+        <div class="rc-body">Disiplin militer adalah syarat kemenangan. Perang Uhud mengajarkan pelajaran pahit: 50 pemanah yang meninggalkan pos menyebabkan kekalahan. Nabi ﷺ bersabda: "Dengar dan taatilah (pemimpin), meskipun dia seorang budak Habasyah." (HR. Bukhari)</div>
+      </div>
+      <div class="rule-card">
+        <div class="rc-num">11</div>
+        <div class="rc-icon">⚡</div>
+        <div class="rc-title">Larangan Berlebihan dalam Perang</div>
+        <div class="rc-arabic">النَّهْيُ عَنِ الْغُلُوِّ وَالتَّعَدِّي</div>
+        <div class="rc-body">Allah berfirman: "Dan janganlah kalian melampaui batas. Sesungguhnya Allah tidak menyukai orang-orang yang melampaui batas." (QS. Al-Baqarah: 190). Menyiksa, membakar, menenggelamkan, dan cara-cara yang menyiksa adalah dilarang.</div>
+      </div>
+      <div class="rule-card">
+        <div class="rc-num">12</div>
+        <div class="rc-icon">🛑</div>
+        <div class="rc-title">Segera Hentikan jika Musuh Berislam</div>
+        <div class="rc-arabic">الْكَفُّ عَمَّنْ أَسْلَمَ</div>
+        <div class="rc-body">Jika musuh mengucapkan syahadat di tengah perang, wajib menghentikan serangan. Usamah bin Zaid membunuh seseorang yang mengucapkan syahadat — dan Nabi ﷺ sangat murka serta berkali-kali bertanya: "Apakah engkau sudah membelah dadanya?" (HR. Bukhari & Muslim)</div>
+      </div>
+    </div>
+
+    <div class="dalil dalil-dark">
+      <p class="d-ar">وَقَاتِلُوا فِي سَبِيلِ اللَّهِ الَّذِينَ يُقَاتِلُونَكُمْ وَلَا تَعْتَدُوا ۚ إِنَّ اللَّهَ لَا يُحِبُّ الْمُعْتَدِينَ</p>
+      <p class="d-tr">"Dan perangilah di jalan Allah orang-orang yang memerangi kamu, tetapi janganlah kamu melampaui batas. Sesungguhnya Allah tidak menyukai orang-orang yang melampaui batas."</p>
+      <p class="d-src">QS. Al-Baqarah: 190 — Prinsip utama etika perang Islam</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════
+     LARANGAN MEMBUNUH SIPIL
+════════════════════════════════ -->
+<div class="sec-divider" id="larangan">
+  <div class="sd-line"></div>
+  <div class="sd-badge"><div class="sd-gem"></div><span class="sd-text">Bab Ketiga</span><div class="sd-gem"></div></div>
+  <div class="sd-line"></div>
+</div>
+
+<div class="band-jade">
+  <div class="chapter-inner">
+    <div class="ch-head">
+      <div class="ch-badge" style="border-color:rgba(24,96,80,.4);background:rgba(24,96,80,.08)">
+        <div class="ch-badge-num" style="color:var(--jade2)">III</div>
+        <div class="ch-badge-text">Bab Ketiga</div>
+      </div>
+      <div class="ch-title-block">
+        <span class="ch-tag" style="color:var(--jade2)">Perlindungan Non-Kombatan</span>
+        <div class="ch-arabic" style="color:rgba(24,150,120,.9)">تَحْرِيمُ قَتْلِ الْمَدَنِيِّينَ</div>
+        <h2 class="ch-title">Larangan Membunuh<br>Wanita, Anak & Sipil</h2>
+        <p class="ch-sub">Islam adalah agama pertama dalam sejarah yang menetapkan perlindungan hukum yang rinci dan tegas bagi non-kombatan dalam perang — jauh sebelum Konvensi Jenewa 1949.</p>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <div class="prose">
+          <p class="drop-cap">Larangan membunuh wanita dan anak-anak dalam perang adalah salah satu hukum Islam yang paling tegas dan tidak ada pengecualiannya. Rasulullah ﷺ menyebutnya secara eksplisit dalam wasiat perang beliau kepada setiap pemimpin pasukan yang dikirimnya. Ini bukan sekadar anjuran — ini adalah larangan keras (haram).</p>
+          <p>Ibnu Umar meriwayatkan: "Ditemukan seorang wanita yang terbunuh dalam salah satu peperangan Rasulullah ﷺ. Maka Rasulullah ﷺ mengingkari pembunuhan wanita dan anak-anak." (HR. Bukhari & Muslim). Hadis ini menunjukkan bahwa Nabi langsung bertindak ketika menemukan pelanggarannya — ini bukan hukum yang dibiarkan, melainkan ditegakkan secara aktif.</p>
+        </div>
+        <div class="dalil dalil-jade">
+          <p class="d-ar" style="color:rgba(100,220,180,.9)">نَهَى رَسُولُ اللَّهِ ﷺ عَنْ قَتْلِ النِّسَاءِ وَالصِّبْيَانِ</p>
+          <p class="d-tr">"Rasulullah ﷺ melarang membunuh wanita dan anak-anak."</p>
+          <p class="d-src" style="color:var(--jade2)">HR. Bukhari & Muslim — Hadis Shahih</p>
+        </div>
+      </div>
+      <div>
+        <div class="prose">
+          <p>Para ulama memperluas larangan ini kepada semua non-kombatan: orang tua renta yang tidak ikut berperang, pendeta dan rahib yang tidak angkat senjata, petani dan pedagang yang tidak terlibat perang, orang gila, dan siapapun yang tidak secara aktif menyerang kaum Muslimin.</p>
+          <p>Imam As-Syafi'i, Abu Hanifah, Malik, dan Ahmad sepakat bahwa membunuh non-kombatan adalah haram — bahkan jika mereka adalah warga negara musuh. Yang dibolehkan untuk diperangi hanyalah mereka yang benar-benar angkat senjata melawan kaum Muslimin. Prinsip ini disebut <em>al-'ism al-ashliy</em> — perlindungan asal bagi setiap jiwa.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="font-family:'Playfair Display',serif;font-size:1.1rem;color:rgba(100,200,160,.8);letter-spacing:.15em;text-transform:uppercase;margin:2rem 0 1.2rem;display:flex;align-items:center;gap:1rem">
+      <span style="flex:1;height:1px;background:rgba(24,96,80,.3)"></span>
+      Kelompok yang Dilindungi dalam Perang Islam
+      <span style="flex:1;height:1px;background:rgba(24,96,80,.3)"></span>
+    </h3>
+
+    <div class="prohib-list">
+      <div class="prohib-item">
+        <div class="pi-icon">👩</div>
+        <div class="pi-body">
+          <h4>Wanita</h4>
+          <p>Larangan membunuh wanita adalah mutlak, baik wanita Muslim maupun non-Muslim, wanita musuh sekalipun, selama ia tidak secara aktif ikut berperang dengan senjata. Jika seorang wanita angkat senjata menyerang, ia boleh dihadapi dalam konteks membela diri — namun ini pengecualian yang sangat sempit.</p>
+          <p class="src">HR. Bukhari & Muslim — Ibnu Umar</p>
+        </div>
+      </div>
+      <div class="prohib-item">
+        <div class="pi-icon">👶</div>
+        <div class="pi-body">
+          <h4>Anak-Anak</h4>
+          <p>Anak-anak tidak boleh dibunuh dalam keadaan apapun. Larangan ini disebutkan bersama wanita dalam semua riwayat. Jika dalam serangan terdapat anak-anak yang menjadi korban karena berada di tengah kombatan dan tidak bisa dibedakan, para ulama berbeda pendapat dan sebagian mengharuskan diyat.</p>
+          <p class="src">HR. Muslim — Wasiat Nabi ﷺ sebelum setiap perang</p>
+        </div>
+      </div>
+      <div class="prohib-item">
+        <div class="pi-icon">👴</div>
+        <div class="pi-body">
+          <h4>Orang Tua Renta yang Tidak Berperang</h4>
+          <p>Abu Bakar Ash-Shiddiq mewasiatkan kepada pasukannya: "Janganlah kalian membunuh orang tua renta (syaikhan faniyyan)." Para ulama menafsirkan ini sebagai orang lanjut usia yang karena usianya tidak ikut berperang dan tidak memberi kontribusi pada upaya perang musuh.</p>
+          <p class="src">Atsar Abu Bakar — Al-Muwatha' Imam Malik</p>
+        </div>
+      </div>
+      <div class="prohib-item">
+        <div class="pi-icon">⛪</div>
+        <div class="pi-body">
+          <h4>Para Rahib, Pendeta & Pemuka Agama</h4>
+          <p>Rahib yang menyendiri di biara dan tidak terlibat dalam upaya perang tidak boleh dibunuh. Abu Bakar mewasiatkan: "Janganlah membunuh rahib-rahib yang ada di biara-biara mereka." Ini adalah pengakuan Islam terhadap mereka yang mengabdikan diri untuk spiritualitas dan tidak mengambil bagian dalam konflik.</p>
+          <p class="src">Atsar Abu Bakar — Sunan Al-Baihaqi Al-Kubra</p>
+        </div>
+      </div>
+      <div class="prohib-item">
+        <div class="pi-icon">🌾</div>
+        <div class="pi-body">
+          <h4>Petani, Pedagang & Pekerja Sipil</h4>
+          <p>Mereka yang tidak ikut berperang dan tidak memberikan dukungan langsung kepada upaya militer musuh tidak boleh dibunuh. Nabi ﷺ bersabda: "Janganlah membunuh orang yang bercocok tanam (penggarap ladang)." (HR. Abu Dawud). Ini adalah perlindungan bagi mereka yang hanya menjalani kehidupan sehari-hari.</p>
+          <p class="src">HR. Abu Dawud — dihasankan Al-Albani</p>
+        </div>
+      </div>
+      <div class="prohib-item">
+        <div class="pi-icon">🤝</div>
+        <div class="pi-body">
+          <h4>Mereka yang Memiliki Perjanjian (Mu'ahad)</h4>
+          <p>Membunuh orang kafir yang memiliki perjanjian dengan kaum Muslimin (mu'ahad) adalah dosa yang sangat besar. Nabi ﷺ bersabda: "Barang siapa membunuh seorang mu'ahad, ia tidak akan mencium bau surga — padahal baunya dapat tercium dari perjalanan 40 tahun." (HR. Bukhari)</p>
+          <p class="src">HR. Bukhari — Hadis Shahih</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="dalil dalil-jade" style="margin-top:2rem">
+      <p class="d-ar" style="color:rgba(100,220,180,.9)">مَنْ قَتَلَ مُعَاهَدًا لَمْ يَرَحْ رَائِحَةَ الْجَنَّةِ وَإِنَّ رِيحَهَا لَيُوجَدُ مِنْ مَسِيرَةِ أَرْبَعِينَ عَامًا</p>
+      <p class="d-tr">"Barang siapa membunuh seorang yang memiliki perjanjian damai (mu'ahad), ia tidak akan mencium bau surga — padahal sesungguhnya baunya dapat tercium dari perjalanan empat puluh tahun."</p>
+      <p class="d-src" style="color:var(--jade2)">HR. Bukhari — Hadis Shahih</p>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════
+     KEUTAMAAN SYAHID
+════════════════════════════════ -->
+<div class="sec-divider" id="syahid">
+  <div class="sd-line"></div>
+  <div class="sd-badge"><div class="sd-gem"></div><span class="sd-text">Bab Keempat</span><div class="sd-gem"></div></div>
+  <div class="sd-line"></div>
+</div>
+
+<div class="band-crimson">
+  <div class="chapter-inner">
+    <div class="ch-head">
+      <div class="ch-badge" style="border-color:rgba(170,32,48,.4);background:rgba(138,24,40,.1)">
+        <div class="ch-badge-num" style="color:var(--ruby)">IV</div>
+        <div class="ch-badge-text">Bab Keempat</div>
+      </div>
+      <div class="ch-title-block">
+        <span class="ch-tag" style="color:var(--ruby)">Keutamaan Agung</span>
+        <div class="ch-arabic" style="color:var(--ember)">فَضَائِلُ الشَّهَادَةِ فِي سَبِيلِ اللَّهِ</div>
+        <h2 class="ch-title">Keutamaan Mati<br>Syahid di Jalan Allah</h2>
+        <p class="ch-sub">Syahid adalah derajat tertinggi seorang mukmin setelah para nabi dan shiddiqin. Allah menjanjikan kemuliaan yang tiada tandingannya bagi mereka yang gugur di jalan-Nya.</p>
+      </div>
+    </div>
+
+    <div class="grand-hadis" style="background:linear-gradient(160deg,rgba(20,4,8,.95),rgba(10,2,4,.98));border-color:rgba(170,32,48,.3)">
+      <div class="gh-top">
+        <span class="gh-tag">Keistimewaan Syahid</span>
+        <p class="gh-arabic" style="color:var(--ember)">لِلشَّهِيدِ عِنْدَ اللَّهِ سِتُّ خِصَالٍ: يُغْفَرُ لَهُ فِي أَوَّلِ دَفْعَةٍ مِنْ دَمِهِ، وَيَرَى مَقْعَدَهُ مِنَ الْجَنَّةِ، وَيُجَارُ مِنْ عَذَابِ الْقَبْرِ، وَيَأْمَنُ مِنَ الْفَزَعِ الْأَكْبَرِ، وَيُوضَعُ عَلَى رَأْسِهِ تَاجُ الْوَقَارِ، وَيُزَوَّجُ اثْنَتَيْنِ وَسَبْعِينَ زَوْجَةً مِنَ الْحُورِ الْعِينِ، وَيُشَفَّعُ فِي سَبْعِينَ مِنْ أَقَارِبِهِ</p>
+        <p class="gh-trans" style="color:var(--silver)">"Syahid mendapat enam keistimewaan di sisi Allah: diampuni dosanya pada tetesan darah pertama, melihat tempat duduknya di surga, dilindungi dari azab kubur, aman dari ketakutan terbesar (hari kiamat), diletakkan mahkota kemuliaan di kepalanya, dinikahkan dengan 72 bidadari, dan diberi syafaat untuk 70 kerabatnya."</p>
+        <p class="gh-src" style="color:var(--ruby)">HR. Tirmidzi & Ibnu Majah — Hasan Shahih</p>
+      </div>
+    </div>
+
+    <div class="syahid-grid">
+      <div class="syahid-card">
+        <div class="sc-top">
+          <div class="sc-keutamaan-num">01</div>
+          <div class="sc-title">Hidup di Sisi Allah</div>
+          <div class="sc-arabic">أَحْيَاءٌ عِنْدَ رَبِّهِمْ يُرْزَقُونَ</div>
+        </div>
+        <div class="sc-body">Allah berfirman dalam QS. Ali Imran: 169: "Janganlah kamu mengira bahwa orang-orang yang gugur di jalan Allah itu mati; bahkan mereka itu hidup di sisi Tuhannya dengan mendapat rezeki." Para syuhada hidup di alam barzakh dengan kehidupan yang sempurna, bukan dalam keadaan mati biasa.</div>
+      </div>
+      <div class="syahid-card">
+        <div class="sc-top">
+          <div class="sc-keutamaan-num">02</div>
+          <div class="sc-title">Diampuni Semua Dosa</div>
+          <div class="sc-arabic">يُغْفَرُ لَهُ كُلُّ ذَنْبٍ</div>
+        </div>
+        <div class="sc-body">Nabi ﷺ bersabda: "Syahid diampuni dosanya pada tetesan pertama darahnya, dan ia melihat tempat duduknya di surga." (HR. Tirmidzi). Kecuali hutang — karena hutang adalah hak manusia yang tidak gugur dengan kematian. Ini menunjukkan betapa Islam menghormati hak sesama manusia.</div>
+      </div>
+      <div class="syahid-card">
+        <div class="sc-top">
+          <div class="sc-keutamaan-num">03</div>
+          <div class="sc-title">Aman dari Azab Kubur</div>
+          <div class="sc-arabic">يُجَارُ مِنْ عَذَابِ الْقَبْرِ</div>
+        </div>
+        <div class="sc-body">Salah satu ketakutan terbesar seorang Muslim adalah fitnah dan azab kubur. Syahid mendapat jaminan aman dari keduanya. Cukuplah suara deru pedang di atas kepalanya sebagai pengganti pertanyaan Malaikat Munkar dan Nakir — demikian sebagian ulama tafsirkan.</div>
+      </div>
+      <div class="syahid-card">
+        <div class="sc-top">
+          <div class="sc-keutamaan-num">04</div>
+          <div class="sc-title">Aman di Hari Kiamat</div>
+          <div class="sc-arabic">يَأْمَنُ مِنَ الْفَزَعِ الْأَكْبَرِ</div>
+        </div>
+        <div class="sc-body">Hari kiamat adalah hari ketakutan terbesar yang pernah ada — manusia berlari ketakutan, hari yang lamanya 50.000 tahun. Namun syahid aman dari ketakutan terbesar ini. Ia bangkit dalam keadaan tenang, karena darahnya di jalan Allah menjadi tebusan yang tak ternilai.</div>
+      </div>
+      <div class="syahid-card">
+        <div class="sc-top">
+          <div class="sc-keutamaan-num">05</div>
+          <div class="sc-title">Mahkota Kemuliaan</div>
+          <div class="sc-arabic">تَاجُ الْوَقَارِ</div>
+        </div>
+        <div class="sc-body">Di atas kepala syahid diletakkan mahkota kemuliaan — sebuah simbolisasi kehormatan tertinggi. Satu permata dari mahkota itu lebih baik dari seluruh dunia dan isinya. Ini adalah balasan Allah bagi mereka yang telah meninggalkan segala-galanya demi ridha-Nya.</div>
+      </div>
+      <div class="syahid-card">
+        <div class="sc-top">
+          <div class="sc-keutamaan-num">06</div>
+          <div class="sc-title">Syafaat untuk 70 Keluarga</div>
+          <div class="sc-arabic">يُشَفَّعُ فِي سَبْعِينَ مِنْ أَقَارِبِهِ</div>
+        </div>
+        <div class="sc-body">Syahid diberi hak untuk memberi syafaat (pertolongan di akhirat) bagi 70 orang kerabatnya — suatu karunia yang luar biasa. Betapa cintanya Islam kepada keluarga: seorang yang gugur di jalan Allah tidak hanya selamat sendiri, melainkan membawa serta keluarganya.</div>
+      </div>
+      <div class="syahid-card">
+        <div class="sc-top">
+          <div class="sc-keutamaan-num">07</div>
+          <div class="sc-title">Ingin Kembali ke Dunia</div>
+          <div class="sc-arabic">تَمَنِّي الرُّجُوعِ إِلَى الدُّنْيَا</div>
+        </div>
+        <div class="sc-body">Nabi ﷺ bersabda: "Tidak ada seorangpun yang telah masuk surga yang ingin kembali ke dunia — kecuali syahid. Ia ingin kembali dan terbunuh sepuluh kali karena melihat kemuliaan yang diperolehnya (dari syahid)." (HR. Bukhari & Muslim). Betapa agungnya kemuliaan syahid.</div>
+      </div>
+      <div class="syahid-card">
+        <div class="sc-top">
+          <div class="sc-keutamaan-num">08</div>
+          <div class="sc-title">Tidak Merasa Sakit</div>
+          <div class="sc-arabic">لَا يَجِدُ أَلَمَ الْقَتْلِ</div>
+        </div>
+        <div class="sc-body">Nabi ﷺ bersabda: "Orang yang syahid tidak merasakan sakitnya terbunuh kecuali seperti salah seorang di antara kalian merasakan cubitan." (HR. Tirmidzi — Hasan). Allah mengangkat rasa sakit dari mereka sebagai bentuk pemuliaan — tubuh mereka menerima luka, namun ruh mereka sudah di taman surga.</div>
+      </div>
+      <div class="syahid-card">
+        <div class="sc-top">
+          <div class="sc-keutamaan-num">09</div>
+          <div class="sc-title">Tidak Dimandikan & Dikafani</div>
+          <div class="sc-arabic">يُدْفَنُ فِي ثِيَابِهِ بِدَمِهِ</div>
+        </div>
+        <div class="sc-body">Syahid dikubur dalam pakaian dan darah mereka — tidak dimandikan, tidak dikafani. Ini bukan penghinaan, melainkan kemuliaan: darah mereka adalah kesucian. Nabi ﷺ memerintahkan para syuhada Uhud dikubur bersama darah mereka. "Mereka akan dibangkitkan dalam keadaan luka masih mengalir, warnanya warna darah namun baunya bau misk." (HR. Bukhari)</div>
+      </div>
+      <div class="syahid-card">
+        <div class="sc-top">
+          <div class="sc-keutamaan-num">10</div>
+          <div class="sc-title">Derajat Tertinggi Setelah Nabi</div>
+          <div class="sc-arabic">الدَّرَجَةُ الْعُلْيَا بَعْدَ النَّبِيِّينَ</div>
+        </div>
+        <div class="sc-body">Allah berfirman dalam QS. An-Nisa: 69: "Dan barang siapa menaati Allah dan Rasul-Nya, mereka itu akan bersama dengan orang-orang yang diberi nikmat oleh Allah: para nabi, shiddiqin, syuhada, dan orang-orang shalih." Syahid berada di urutan ketiga — hanya di bawah nabi dan shiddiqin — sebagai derajat tertinggi manusia.</div>
+      </div>
+    </div>
+
+    <div class="dalil dalil-ruby">
+      <p class="d-ar" style="color:var(--ember)">وَلَا تَحْسَبَنَّ الَّذِينَ قُتِلُوا فِي سَبِيلِ اللَّهِ أَمْوَاتًا ۚ بَلْ أَحْيَاءٌ عِنْدَ رَبِّهِمْ يُرْزَقُونَ ۝ فَرِحِينَ بِمَا آتَاهُمُ اللَّهُ مِن فَضْلِهِ</p>
+      <p class="d-tr">"Dan janganlah kamu mengira bahwa orang-orang yang gugur di jalan Allah itu mati; bahkan mereka itu hidup di sisi Tuhannya dengan mendapat rezeki. Mereka bergembira dengan karunia yang diberikan Allah kepada mereka..."</p>
+      <p class="d-src" style="color:var(--ruby)">QS. Ali Imran: 169–170</p>
+    </div>
+  </div>
+</div>
+
+<!-- ════ CLOSING ════ -->
+<section class="closing">
+  <!-- Animated ornament -->
+  <div class="closing-ornament" style="display:flex;justify-content:center">
+    <svg class="co-svg" width="140" height="140" viewBox="0 0 140 140">
+      <polygon points="70,8 85,52 130,52 95,78 108,122 70,98 32,122 45,78 10,52 55,52"
+        fill="none" stroke="rgba(240,188,80,1)" stroke-width="1"/>
+      <circle cx="70" cy="70" r="55" fill="none" stroke="rgba(240,188,80,.6)" stroke-width=".5"/>
+      <circle cx="70" cy="70" r="40" fill="none" stroke="rgba(240,188,80,.4)" stroke-width=".5"/>
+    </svg>
+    <div class="co-center">☪</div>
+  </div>
+
+  <div class="closing-inner">
+    <h2>Jihad adalah<br><em>Puncak Kemuliaan</em></h2>
+    <p>Jihad dalam Islam bukan ajaran kekerasan — ia adalah sistem etika yang paling canggih dalam sejarah perang. Sebelum ada Konvensi Jenewa, sebelum ada Hukum Humaniter Internasional, Islam telah menetapkan: wanita dilindungi, anak-anak dilindungi, sipil dilindungi, tempat ibadah dilindungi, alam dilindungi, dan tawanan diperlakukan dengan manusiawi.</p>
+    <p>Dan bagi mereka yang gugur dalam mempertahankan kebenaran dan keadilan di jalan Allah — bukan derajat kematian yang mereka terima, melainkan derajat kehidupan yang paling mulia. Itulah syahid: mati yang lebih hidup dari yang hidup.</p>
+
+    <div class="sep-row">
+      <div class="sr-line"></div><div class="sr-gem sm"></div><div class="sr-gem"></div><div class="sr-gem sm"></div><div class="sr-line"></div>
+    </div>
+
+    <p class="closing-ar">فَلْيُقَاتِلْ فِي سَبِيلِ اللَّهِ الَّذِينَ يَشْرُونَ الْحَيَاةَ الدُّنْيَا بِالْآخِرَةِ ۚ وَمَن يُقَاتِلْ فِي سَبِيلِ اللَّهِ فَيُقْتَلْ أَوْ يَغْلِبْ فَسَوْفَ نُؤْتِيهِ أَجْرًا عَظِيمًا</p>
+    <p class="closing-tr">"Maka hendaklah berperang di jalan Allah orang-orang yang menjual kehidupan dunia dengan kehidupan akhirat. Dan barang siapa yang berperang di jalan Allah, lalu gugur atau menang, maka kelak akan Kami berikan kepadanya pahala yang besar."</p>
+    <p class="closing-ref">QS. An-Nisa: 74</p>
+  </div>
+</section>
+
+<footer>
+  <p>Disusun berdasarkan <em>Al-Qur'an Al-Karim</em> · <em>Shahih Bukhari & Muslim</em> · <em>Sunan Abu Dawud & Tirmidzi</em> · <em>Zad Al-Ma'ad (Ibnu Qayyim)</em> · <em>Al-Mughni (Ibnu Qudamah)</em></p>
+  <p>Semoga menjadi ilmu yang bermanfaat. <em>صلى الله عليه وسلم</em></p>
+</footer>
+
+<!-- ════════════════════════════════
+     JAVASCRIPT — HERO ANIMATIONS
+════════════════════════════════ -->
+<script>
+/* ─── STAR FIELD CANVAS ─── */
+(function(){
+  const c = document.getElementById('heroCanvas');
+  const ctx = c.getContext('2d');
+  let stars=[], W, H;
+
+  function resize(){
+    W = c.width = window.innerWidth;
+    H = c.height = window.innerHeight;
+  }
+
+  function initStars(){
+    stars = [];
+    const n = Math.floor(W*H/4000);
+    for(let i=0;i<n;i++){
+      stars.push({
+        x: Math.random()*W,
+        y: Math.random()*H,
+        r: Math.random()*1.4+.2,
+        a: Math.random()*.7+.1,
+        s: Math.random()*.4+.05,
+        tw: Math.random()*Math.PI*2,
+        // slow drift
+        dx: (Math.random()-.5)*.03,
+        dy: (Math.random()-.5)*.02
+      });
+    }
+  }
+
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    const t = Date.now()/1200;
+    stars.forEach(s=>{
+      // twinkle
+      const alpha = s.a*(0.4+0.6*Math.sin(t+s.tw));
+      // drift
+      s.x += s.dx; s.y += s.dy;
+      if(s.x<0)s.x=W; if(s.x>W)s.x=0;
+      if(s.y<0)s.y=H; if(s.y>H)s.y=0;
+      // colour: mostly white-blue, some gold
+      const isGold = s.tw > 5;
+      ctx.beginPath();
+      ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+      ctx.fillStyle = isGold
+        ? `rgba(240,188,80,${alpha})`
+        : `rgba(180,210,255,${alpha})`;
+      ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+
+  resize(); initStars(); draw();
+  window.addEventListener('resize',()=>{resize();initStars()});
+})();
+
+/* ─── EMBER PARTICLES ─── */
+(function(){
+  const wrap = document.getElementById('embers');
+  const COUNT = 28;
+  for(let i=0;i<COUNT;i++){
+    const p = document.createElement('div');
+    p.className = 'ember-p';
+    const x = Math.random()*100;
+    const dur = 6+Math.random()*10;
+    const delay = Math.random()*10;
+    const drift = (Math.random()-0.5)*120;
+    const size = .8+Math.random()*2;
+    p.style.cssText = `
+      left:${x}%;
+      width:${size}px;height:${size}px;
+      animation-duration:${dur}s;
+      animation-delay:${delay}s;
+      --drift:${drift}px;
+      background:${Math.random()>.5?'rgba(240,188,80,.8)':'rgba(224,152,48,.6)'};
+    `;
+    wrap.appendChild(p);
+  }
+})();
+
+/* ─── FLOATING ARABIC LETTERS ─── */
+(function(){
+  const wrap = document.getElementById('floatLetters');
+  const letters = ['ﷲ','الله','محمد','جهاد','شهيد','سبيل','إيمان','نصر','فتح','بسم'];
+  const sizes = ['2rem','2.5rem','1.8rem','3rem','2.2rem'];
+
+  function spawn(){
+    const el = document.createElement('div');
+    el.className = 'float-ar';
+    el.textContent = letters[Math.floor(Math.random()*letters.length)];
+    el.style.cssText = `
+      left:${5+Math.random()*90}%;
+      bottom:${-5+Math.random()*20}%;
+      font-size:${sizes[Math.floor(Math.random()*sizes.length)]};
+      animation-duration:${12+Math.random()*18}s;
+      animation-delay:${Math.random()*8}s;
+    `;
+    wrap.appendChild(el);
+    // remove after animation
+    setTimeout(()=>el.remove(),(30+Math.random()*20)*1000);
+  }
+
+  // initial batch
+  for(let i=0;i<8;i++) spawn();
+  // keep spawning
+  setInterval(spawn, 3000);
+})();
+</script>
+
+</body>
+</html>
+

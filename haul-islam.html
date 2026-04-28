@@ -1,0 +1,1579 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Haul dalam Islam — Tinjauan Al-Qur'an & Hadis</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+
+/* ════════════════════════════════
+   ROOT VARIABLES
+════════════════════════════════ */
+:root {
+  --midnight:  #0B0F1A;
+  --deep:      #111827;
+  --ink:       #1A2035;
+  --azure:     #1E3A5F;
+  --blue:      #2A5298;
+  --sky:       #4A90C4;
+  --silver:    #C8D6E8;
+  --pearl:     #EEF3F9;
+  --white:     #F8FAFE;
+  --gold:      #C9A84C;
+  --gold-soft: #E2C97A;
+  --gold-pale: #FBF5E6;
+  --text-dark: #0D1421;
+  --text-mid:  #374151;
+  --text-muted:#6B7A8D;
+  --border:    rgba(74,144,196,0.15);
+  --border-gold: rgba(201,168,76,0.25);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--white);
+  color: var(--text-dark);
+  overflow-x: hidden;
+  line-height: 1.75;
+}
+
+/* ════════════════════════════════
+   STARFIELD CANVAS
+════════════════════════════════ */
+#starfield {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ════════════════════════════════
+   NAVIGATION
+════════════════════════════════ */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 200;
+  padding: 0.9rem 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(11,15,26,0.82);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(74,144,196,0.12);
+}
+
+.nav-logo {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.1rem;
+  color: var(--silver);
+  letter-spacing: 0.08em;
+}
+
+.nav-logo span { color: var(--gold); }
+
+.nav-menu {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-menu a {
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(200,214,232,0.55);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-menu a:hover { color: var(--gold); }
+
+@media (max-width: 640px) {
+  nav { padding: 0.9rem 1.2rem; }
+  .nav-menu { display: none; }
+}
+
+/* ════════════════════════════════
+   HERO — DEEP NIGHT SKY
+════════════════════════════════ */
+.hero {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 6rem 2rem 5rem;
+  background: radial-gradient(ellipse at 50% 30%, #1A2A50 0%, #0B0F1A 65%);
+  overflow: hidden;
+}
+
+/* Crescent moon decoration */
+.moon {
+  position: absolute;
+  top: 12%; right: 12%;
+  width: 90px; height: 90px;
+  border-radius: 50%;
+  box-shadow: inset -20px -6px 0 0 var(--gold-soft),
+              0 0 50px rgba(201,168,76,0.12);
+  background: transparent;
+  opacity: 0.7;
+  animation: moonGlow 6s ease-in-out infinite;
+}
+
+@keyframes moonGlow {
+  0%, 100% { opacity: 0.7; box-shadow: inset -20px -6px 0 0 var(--gold-soft), 0 0 50px rgba(201,168,76,0.12); }
+  50% { opacity: 0.9; box-shadow: inset -20px -6px 0 0 var(--gold-soft), 0 0 80px rgba(201,168,76,0.22); }
+}
+
+.hero-glow {
+  position: absolute;
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(42,82,152,0.25) 0%, transparent 70%);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 780px;
+}
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.8rem;
+  opacity: 0;
+  animation: fadeUp 1s 0.2s ease forwards;
+}
+
+.hero-eyebrow::before,
+.hero-eyebrow::after {
+  content: '';
+  width: 24px; height: 1px;
+  background: var(--gold);
+  opacity: 0.6;
+}
+
+.hero-arabic-big {
+  font-family: 'Amiri', serif;
+  font-size: clamp(2rem, 6vw, 4rem);
+  color: var(--gold-soft);
+  direction: rtl;
+  line-height: 1.6;
+  margin-bottom: 0.8rem;
+  text-shadow: 0 0 60px rgba(201,168,76,0.3);
+  opacity: 0;
+  animation: fadeUp 1s 0.4s ease forwards;
+}
+
+.hero h1 {
+  font-family: 'EB Garamond', serif;
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 400;
+  color: var(--white);
+  line-height: 1;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.6rem;
+  opacity: 0;
+  animation: fadeUp 1s 0.55s ease forwards;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--gold-soft);
+}
+
+.hero-sub {
+  font-size: clamp(0.92rem, 1.8vw, 1.08rem);
+  color: rgba(200,214,232,0.6);
+  max-width: 560px;
+  margin: 1.4rem auto 2.5rem;
+  opacity: 0;
+  animation: fadeUp 1s 0.7s ease forwards;
+}
+
+.hero-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  justify-content: center;
+  opacity: 0;
+  animation: fadeUp 1s 0.85s ease forwards;
+}
+
+.pill {
+  padding: 0.4rem 1.1rem;
+  border-radius: 100px;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  border: 1px solid rgba(200,214,232,0.2);
+  color: var(--silver);
+  background: rgba(255,255,255,0.04);
+}
+
+.scroll-down {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  color: rgba(200,214,232,0.3);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  z-index: 2;
+  animation: fadeUp 1s 1.2s ease forwards;
+  opacity: 0;
+}
+
+.scroll-line {
+  width: 1px; height: 40px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  animation: scrollPulse 2s ease infinite;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { transform: scaleY(1); opacity: 0.5; }
+  50% { transform: scaleY(1.3); opacity: 1; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ════════════════════════════════
+   DEFINITION SECTION
+════════════════════════════════ */
+.def-section {
+  background: var(--deep);
+  padding: 6rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.def-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+}
+
+.def-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .def-inner { grid-template-columns: 1fr; gap: 2rem; }
+}
+
+.def-left {
+  position: sticky;
+  top: 100px;
+}
+
+.def-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.def-title {
+  font-family: 'EB Garamond', serif;
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 400;
+  color: var(--white);
+  line-height: 1.2;
+  margin-bottom: 1.2rem;
+}
+
+.def-title em { color: var(--gold-soft); font-style: italic; }
+
+.def-desc {
+  font-size: 0.9rem;
+  color: rgba(200,214,232,0.5);
+  line-height: 1.8;
+}
+
+.def-right { }
+
+.def-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(74,144,196,0.15);
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 1.2rem;
+  transition: border-color 0.3s, background 0.3s;
+}
+
+.def-card:hover {
+  border-color: rgba(201,168,76,0.3);
+  background: rgba(201,168,76,0.03);
+}
+
+.def-card-head {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.def-icon {
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  background: rgba(42,82,152,0.25);
+  border: 1px solid rgba(74,144,196,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.def-card-title {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.2rem;
+  color: var(--white);
+  font-weight: 500;
+}
+
+.def-card-arabic {
+  font-family: 'Amiri', serif;
+  font-size: 0.9rem;
+  color: var(--gold);
+  direction: rtl;
+  margin-top: 0.1rem;
+}
+
+.def-card p {
+  font-size: 0.9rem;
+  color: rgba(200,214,232,0.65);
+  line-height: 1.75;
+}
+
+.def-card ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 0.8rem;
+}
+
+.def-card ul li {
+  padding: 0.4rem 0 0.4rem 1.4rem;
+  position: relative;
+  font-size: 0.88rem;
+  color: rgba(200,214,232,0.6);
+  border-bottom: 1px solid rgba(74,144,196,0.08);
+}
+
+.def-card ul li:last-child { border-bottom: none; }
+
+.def-card ul li::before {
+  content: '◈';
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  font-size: 0.5rem;
+  top: 0.7rem;
+}
+
+/* ════════════════════════════════
+   AYAT FULL BLEED
+════════════════════════════════ */
+.ayat-full {
+  background: linear-gradient(135deg, var(--azure) 0%, #0D1F40 100%);
+  padding: 5rem 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.ayat-full::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 50%, rgba(201,168,76,0.06) 0%, transparent 40%),
+    radial-gradient(circle at 80% 50%, rgba(201,168,76,0.06) 0%, transparent 40%);
+}
+
+.ayat-full-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+.af-tag {
+  display: inline-block;
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid rgba(201,168,76,0.3);
+  padding: 0.3rem 1rem;
+  border-radius: 100px;
+  margin-bottom: 2rem;
+}
+
+.af-arabic {
+  font-family: 'Amiri', serif;
+  font-size: clamp(1.5rem, 4vw, 2.4rem);
+  color: var(--gold-soft);
+  direction: rtl;
+  line-height: 2.3;
+  margin-bottom: 1.5rem;
+}
+
+.af-latin {
+  font-family: 'EB Garamond', serif;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-style: italic;
+  color: rgba(255,255,255,0.65);
+  margin-bottom: 0.8rem;
+  line-height: 1.7;
+}
+
+.af-ref {
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* ════════════════════════════════
+   CONTENT SECTIONS (Light)
+════════════════════════════════ */
+.content-section {
+  padding: 6rem 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.cs-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.cs-num {
+  font-family: 'EB Garamond', serif;
+  font-size: 5rem;
+  font-weight: 700;
+  color: rgba(42,82,152,0.12);
+  line-height: 1;
+  flex-shrink: 0;
+  letter-spacing: -0.02em;
+}
+
+.cs-head-text { }
+
+.cs-tag {
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 0.4rem;
+  display: block;
+}
+
+.cs-title {
+  font-family: 'EB Garamond', serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 500;
+  color: var(--text-dark);
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+
+.cs-title em { color: var(--blue); font-style: italic; }
+
+.cs-sub {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* TWO-COL PROSE */
+.prose-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+@media (max-width: 768px) { .prose-cols { grid-template-columns: 1fr; } }
+
+.prose-block p {
+  font-size: 0.93rem;
+  color: var(--text-mid);
+  line-height: 1.85;
+  margin-bottom: 1rem;
+}
+
+/* DALIL CARD */
+.dalil-card {
+  background: var(--deep);
+  border-radius: 16px;
+  padding: 2rem 2.5rem;
+  margin-bottom: 1.2rem;
+  border-left: 3px solid var(--gold);
+  position: relative;
+  overflow: hidden;
+}
+
+.dalil-card::after {
+  content: '"';
+  position: absolute;
+  bottom: -1.5rem; right: 1.5rem;
+  font-family: 'EB Garamond', serif;
+  font-size: 8rem;
+  color: rgba(201,168,76,0.06);
+  line-height: 1;
+}
+
+.dalil-arabic {
+  font-family: 'Amiri', serif;
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  color: var(--gold-soft);
+  direction: rtl;
+  text-align: right;
+  line-height: 2.2;
+  margin-bottom: 1rem;
+}
+
+.dalil-trans {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.05rem;
+  font-style: italic;
+  color: rgba(200,214,232,0.7);
+  line-height: 1.7;
+  margin-bottom: 0.8rem;
+}
+
+.dalil-ref {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+}
+
+/* GRID CARDS */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.2rem;
+  margin-top: 2rem;
+}
+
+.info-card {
+  background: var(--pearl);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.5rem;
+  transition: all 0.25s ease;
+}
+
+.info-card:hover {
+  border-color: rgba(42,82,152,0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(42,82,152,0.08);
+}
+
+.ic-icon {
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  background: rgba(42,82,152,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  margin-bottom: 0.9rem;
+}
+
+.ic-title {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 0.4rem;
+}
+
+.ic-body {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+/* ════════════════════════════════
+   DIVIDER — DARK BAND
+════════════════════════════════ */
+.dark-band {
+  background: var(--midnight);
+  padding: 5rem 2rem;
+  position: relative;
+}
+
+.dark-band::before,
+.dark-band::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(201,168,76,0.3), transparent);
+}
+
+.dark-band::before { top: 0; }
+.dark-band::after { bottom: 0; }
+
+.dark-band-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ════════════════════════════════
+   HUKUM TABLE
+════════════════════════════════ */
+.hukum-table-wrap {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(42,82,152,0.06);
+}
+
+.ht-header {
+  background: linear-gradient(135deg, var(--azure), var(--ink));
+  padding: 1.5rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ht-header h3 {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.3rem;
+  color: white;
+}
+
+.ht-header span {
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+table.htable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table.htable th {
+  background: var(--pearl);
+  padding: 0.8rem 1.2rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--blue);
+  text-align: left;
+  border-bottom: 2px solid var(--border);
+}
+
+table.htable td {
+  padding: 1rem 1.2rem;
+  font-size: 0.88rem;
+  color: var(--text-mid);
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+
+table.htable tr:last-child td { border-bottom: none; }
+table.htable tr:hover td { background: rgba(42,82,152,0.02); }
+
+.hukum-badge {
+  display: inline-block;
+  padding: 0.22rem 0.75rem;
+  border-radius: 100px;
+  font-size: 0.68rem;
+  font-weight: 600;
+}
+
+.hb-boleh    { background: #e3f5e8; color: #1a6b2a; }
+.hb-dianjurkan { background: #e8f0fb; color: #1a3a8b; }
+.hb-sunnah   { background: #edf8ec; color: #1a5a2a; }
+.hb-khilaf   { background: #fdf3e3; color: #7a4a00; }
+.hb-bidah    { background: #fde8e8; color: #8b1a1a; }
+.hb-haram    { background: #fcd5d5; color: #7a0a0a; }
+
+@media (max-width: 640px) {
+  table.htable { display: block; overflow-x: auto; }
+}
+
+/* ════════════════════════════════
+   ULAMA PENDAPAT SECTION
+════════════════════════════════ */
+.ulama-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.ulama-card {
+  background: white;
+  border-radius: 16px;
+  padding: 1.8rem;
+  border: 1px solid var(--border);
+  position: relative;
+  transition: all 0.25s ease;
+}
+
+.ulama-card:hover {
+  border-color: rgba(42,82,152,0.25);
+  box-shadow: 0 8px 30px rgba(42,82,152,0.08);
+}
+
+.ulama-school {
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 0.6rem;
+  display: block;
+}
+
+.ulama-name {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 0.2rem;
+}
+
+.ulama-arabic {
+  font-family: 'Amiri', serif;
+  font-size: 0.95rem;
+  color: var(--gold);
+  direction: rtl;
+  margin-bottom: 1rem;
+}
+
+.ulama-quote {
+  font-size: 0.88rem;
+  color: var(--text-mid);
+  line-height: 1.75;
+  font-style: italic;
+  padding-left: 1rem;
+  border-left: 2px solid var(--gold);
+}
+
+.ulama-verdict {
+  margin-top: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+/* ════════════════════════════════
+   AMALAN SECTION
+════════════════════════════════ */
+.amalan-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.amalan-item {
+  display: grid;
+  grid-template-columns: 3rem 1fr auto;
+  gap: 1.2rem;
+  align-items: center;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.2rem 1.5rem;
+  transition: all 0.25s;
+}
+
+.amalan-item:hover {
+  border-color: rgba(42,82,152,0.25);
+  transform: translateX(4px);
+  box-shadow: 0 4px 16px rgba(42,82,152,0.07);
+}
+
+.amalan-no {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: rgba(42,82,152,0.15);
+  text-align: center;
+  line-height: 1;
+}
+
+.amalan-text h4 {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.1rem;
+  color: var(--text-dark);
+  margin-bottom: 0.25rem;
+}
+
+.amalan-text p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.amalan-status {
+  flex-shrink: 0;
+}
+
+@media (max-width: 560px) {
+  .amalan-item { grid-template-columns: 2.5rem 1fr; }
+  .amalan-status { display: none; }
+}
+
+/* ════════════════════════════════
+   TIMELINE (Sejarah Haul)
+════════════════════════════════ */
+.timeline {
+  position: relative;
+  padding-left: 3rem;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0.6rem;
+  top: 0; bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--gold), rgba(201,168,76,0.1));
+}
+
+.tl-item {
+  position: relative;
+  margin-bottom: 2.5rem;
+}
+
+.tl-dot {
+  position: absolute;
+  left: -2.5rem;
+  top: 0.3rem;
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: var(--gold);
+  border: 2px solid var(--white);
+  box-shadow: 0 0 0 3px rgba(201,168,76,0.2);
+}
+
+.tl-period {
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.4rem;
+}
+
+.tl-title {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 0.4rem;
+}
+
+.tl-desc {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+/* ════════════════════════════════
+   CLOSING
+════════════════════════════════ */
+.closing {
+  background: linear-gradient(160deg, #0D1421 0%, #0B0F1A 100%);
+  padding: 7rem 2rem 6rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.closing::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 30% 50%, rgba(42,82,152,0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 50%, rgba(201,168,76,0.06) 0%, transparent 50%);
+}
+
+.closing-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.closing h2 {
+  font-family: 'EB Garamond', serif;
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-weight: 400;
+  color: var(--white);
+  line-height: 1.2;
+  margin-bottom: 1.2rem;
+}
+
+.closing h2 em { color: var(--gold-soft); font-style: italic; }
+
+.closing p {
+  font-size: 0.95rem;
+  color: rgba(200,214,232,0.5);
+  margin-bottom: 0.8rem;
+}
+
+.closing-arabic {
+  font-family: 'Amiri', serif;
+  font-size: clamp(1.4rem, 3.5vw, 2rem);
+  color: var(--gold-soft);
+  direction: rtl;
+  margin: 2.5rem 0 0.6rem;
+  line-height: 2.1;
+  text-shadow: 0 0 30px rgba(201,168,76,0.2);
+}
+
+.closing-trans { font-size: 0.88rem; font-style: italic; color: rgba(200,214,232,0.4); }
+
+.sep {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+  margin: 3rem 0;
+}
+.sep .ln { flex: 1; max-width: 80px; height: 1px; }
+.sep .ln-l { background: linear-gradient(to right, transparent, rgba(201,168,76,0.4)); }
+.sep .ln-r { background: linear-gradient(to left, transparent, rgba(201,168,76,0.4)); }
+.sep .diamond {
+  width: 7px; height: 7px;
+  background: var(--gold);
+  transform: rotate(45deg);
+}
+
+/* ════════════════════════════════
+   FOOTER
+════════════════════════════════ */
+footer {
+  background: #070A12;
+  color: rgba(255,255,255,0.2);
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.76rem;
+  letter-spacing: 0.04em;
+}
+
+footer em { color: var(--gold); font-style: normal; }
+
+</style>
+</head>
+<body>
+
+<!-- STARFIELD -->
+<canvas id="starfield"></canvas>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Haul <span>في الإسلام</span></div>
+  <ul class="nav-menu">
+    <li><a href="#pengertian">Pengertian</a></li>
+    <li><a href="#dasar">Dalil</a></li>
+    <li><a href="#hukum">Hukum</a></li>
+    <li><a href="#amalan">Amalan</a></li>
+    <li><a href="#ulama">Ulama</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="moon"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Tinjauan Al-Qur'an & Hadis</p>
+    <p class="hero-arabic-big">الْحَوْلُ</p>
+    <h1>Makna & Hukum<br><em>Haul</em> dalam Islam</h1>
+    <p class="hero-sub">Memahami tradisi peringatan haul secara ilmiah — definisi, landasan syariat, perbedaan pendapat ulama, dan amalan yang dianjurkan.</p>
+    <div class="hero-pills">
+      <span class="pill">Definisi Haul</span>
+      <span class="pill">Dalil Al-Qur'an</span>
+      <span class="pill">Hadis Shahih</span>
+      <span class="pill">Pendapat Ulama</span>
+      <span class="pill">Amalan Sunnah</span>
+    </div>
+  </div>
+ 
+</header>
+
+<!-- ═══ DEFINISI ═══ -->
+<section class="def-section" id="pengertian">
+  <div class="def-inner">
+    <div class="def-left">
+      <span class="def-label">Bagian Pertama</span>
+      <h2 class="def-title">Apa itu<br><em>Haul?</em></h2>
+      <p class="def-desc">Kata "haul" berasal dari bahasa Arab yang memiliki makna linguistik dan istilah syariat yang perlu dipahami dengan benar sebelum menilai hukumnya.</p></br></br></br>
+    </div>
+    <div class="def-right">
+
+      <div class="def-card">
+        <div class="def-card-head">
+          <div class="def-icon">📖</div>
+          <div>
+            <div class="def-card-title">Makna Bahasa (Lughawi)</div>
+            <div class="def-card-arabic">الْحَوْلُ لُغَةً</div>
+          </div>
+        </div>
+        <p>Kata <strong style="color:var(--gold-soft)">حَوْل (haul)</strong> dalam bahasa Arab berarti <em>satu tahun penuh</em>. Ia berasal dari akar kata حَالَ – يَحُولُ yang berarti "berlalu" atau "berputar". Al-Qur'an menyebut kata ini dalam beberapa ayat, antara lain tentang masa menyusui dua tahun penuh (QS. Al-Baqarah: 233) dan zakat yang wajib setelah berlalu satu haul.</p>
+      </div>
+
+      <div class="def-card">
+        <div class="def-card-head">
+          <div class="def-icon">🕌</div>
+          <div>
+            <div class="def-card-title">Makna dalam Tradisi</div>
+            <div class="def-card-arabic">الْحَوْلُ عُرْفًا</div>
+          </div>
+        </div>
+        <p>Dalam tradisi masyarakat Muslim (khususnya di Asia Tenggara), <strong style="color:var(--gold-soft)">haul</strong> merujuk kepada peringatan tahunan wafatnya seseorang — biasanya seorang ulama, wali, atau tokoh agama. Acara haul umumnya diisi dengan:</p>
+        <ul>
+          <li>Pembacaan Al-Qur'an dan tahlil</li>
+          <li>Dzikir, shalawat, dan doa bersama</li>
+          <li>Ceramah agama mengenai keutamaan tokoh yang diperingati</li>
+          <li>Sedekah dan pemberian makan kepada tamu</li>
+          <li>Ziarah kubur kepada yang diperingati</li>
+        </ul>
+      </div>
+
+      <div class="def-card">
+        <div class="def-card-head">
+          <div class="def-icon">⚖️</div>
+          <div>
+            <div class="def-card-title">Haul dalam Fiqih Zakat</div>
+            <div class="def-card-arabic">حَوْلُ الزَّكَاةِ</div>
+          </div>
+        </div>
+        <p>Dalam fiqih zakat, <strong style="color:var(--gold-soft)">haul</strong> adalah syarat wajib zakat — yaitu harta telah dimiliki selama satu tahun (haul) dan mencapai nisab. Ini adalah penggunaan haul yang paling baku dalam syariat Islam dan disepakati seluruh mazhab.</p>
+        <ul>
+          <li>Zakat emas, perak, dan uang: wajib setelah satu haul</li>
+          <li>Zakat ternak: wajib setelah satu haul</li>
+          <li>Zakat pertanian & buah: tidak disyaratkan haul</li>
+          <li>Dasar: HR. Tirmidzi — "Tidak ada zakat pada harta hingga berlalu haul"</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ AYAT DALIL UTAMA ═══ -->
+<div class="ayat-full" id="dasar">
+  <div class="ayat-full-inner">
+    <span class="af-tag">Dalil Al-Qur'an tentang Haul</span>
+    <p class="af-arabic">وَالْوَالِدَاتُ يُرْضِعْنَ أَوْلَادَهُنَّ حَوْلَيْنِ كَامِلَيْنِ ۖ لِمَنْ أَرَادَ أَن يُتِمَّ الرَّضَاعَةَ</p>
+    <p class="af-latin">"Para ibu hendaklah menyusukan anak-anaknya selama dua tahun penuh (haula<u>in</u> kâmila<u>in</u>), bagi yang ingin menyempurnakan penyusuan."</p>
+    <p class="af-ref">QS. Al-Baqarah: 233 — Kata "Haulain" = Dua Haul (Dua Tahun)</p>
+  </div>
+</div>
+
+<!-- ═══ DASAR SYARIAT HAUL (TAHLILAN) ═══ -->
+<section class="content-section" id="dasar2">
+  <div class="cs-header">
+    <div class="cs-num">02</div>
+    <div class="cs-head-text">
+      <span class="cs-tag">Landasan Syariat</span>
+      <h2 class="cs-title">Dalil-Dalil yang <em>Berkaitan</em> dengan Haul</h2>
+      <p class="cs-sub">Para ulama yang membolehkan haul berpijak pada beberapa dalil dari Al-Qur'an dan Hadis shahih.</p>
+    </div>
+  </div>
+
+  <div class="dalil-card">
+    <p class="dalil-arabic">مَا مِنْ رَجُلٍ يَزُورُ قَبْرَ أَخِيهِ وَيَجْلِسُ عِنْدَهُ إِلَّا اسْتَأْنَسَ بِهِ وَرَدَّ عَلَيْهِ حَتَّى يَقُومَ</p>
+    <p class="dalil-trans">"Tidaklah seorang laki-laki mengunjungi kubur saudaranya dan duduk di sisinya, melainkan ia (si mayit) akan merasa senang dengannya dan membalasnya hingga orang itu berdiri."</p>
+    <p class="dalil-ref">HR. Ibnu Abi Ad-Dunya — Dihasankan sebagian ulama</p>
+  </div>
+
+  <div class="dalil-card" style="margin-top:1rem; border-left-color: var(--sky);">
+    <p class="dalil-arabic">كَانَ النَّبِيُّ ﷺ يَزُورُ قُبُورَ الشُّهَدَاءِ عِنْدَ رَأْسِ كُلِّ حَوْلٍ</p>
+    <p class="dalil-trans">"Nabi ﷺ biasa mengunjungi kuburan para syuhada setiap awal tahun (ra'su kulli haul)."</p>
+    <p class="dalil-ref">HR. Al-Baihaqi dalam Syu'abul Iman — Dijadikan dalil ziarah berkala</p>
+  </div>
+
+  <div class="prose-cols" style="margin-top:2.5rem">
+    <div class="prose-block">
+      <p><strong>Tentang Ziarah Kubur:</strong> Rasulullah ﷺ awalnya melarang ziarah kubur, kemudian membolehkan bahkan menganjurkannya. Beliau bersabda: <em>"Dulu aku melarang kalian ziarah kubur, maka sekarang berziarahlah — karena ia mengingatkan pada akhirat."</em> (HR. Muslim).</p>
+      <p>Ziarah kubur yang dilakukan dalam rangka haul, jika diniatkan untuk mendoakan, mengambil ibrah, dan mengingat mati, maka termasuk dalam anjuran ini.</p>
+    </div>
+    <div class="prose-block">
+      <p><strong>Tentang Membaca Al-Qur'an untuk Orang Meninggal:</strong> Imam Ahmad dan mayoritas ulama membolehkan pahala Al-Qur'an dikirimkan kepada yang telah wafat. Ibnu Qayyim al-Jauziyyah menyebutkan ini dalam <em>Ar-Ruh</em> dengan panjang lebar.</p>
+      <p>Adapun doa, semua ulama sepakat doa untuk orang yang telah meninggal sampai, berdasarkan firman Allah: <em>"Dan orang-orang yang datang sesudah mereka berdoa: 'Ya Rabb kami, ampunilah kami dan saudara-saudara kami yang telah beriman lebih dahulu.'"</em> (QS. Al-Hasyr: 10).</p>
+    </div>
+  </div>
+
+  <!-- DALIL DOA -->
+  <div class="dalil-card" style="margin-top:0; border-left-color: var(--gold);">
+    <p class="dalil-arabic">وَالَّذِينَ جَاءُوا مِن بَعْدِهِمْ يَقُولُونَ رَبَّنَا اغْفِرْ لَنَا وَلِإِخْوَانِنَا الَّذِينَ سَبَقُونَا بِالْإِيمَانِ</p>
+    <p class="dalil-trans">"Dan orang-orang yang datang sesudah mereka (Muhajirin dan Anshar) berdoa: 'Ya Tuhan kami, ampunilah kami dan saudara-saudara kami yang telah beriman lebih dahulu dari kami.'"</p>
+    <p class="dalil-ref">QS. Al-Hasyr: 10 — Dalil doa untuk yang telah wafat</p>
+  </div>
+
+</section>
+
+<!-- ═══ DARK BAND: HUKUM ═══ -->
+<div class="dark-band" id="hukum">
+  <div class="dark-band-inner">
+
+    <div style="text-align:center; margin-bottom:3rem;">
+      <span class="def-label" style="color:var(--gold);">Bagian Ketiga</span>
+      <h2 style="font-family:'EB Garamond',serif; font-size:clamp(2rem,4vw,3rem); color:var(--white); font-weight:400;">Hukum <em style="color:var(--gold-soft); font-style:italic;">Haul</em> dalam Islam</h2>
+      <p style="color:rgba(200,214,232,0.5); font-size:0.92rem; margin-top:0.8rem; max-width:560px; margin-inline:auto;">Para ulama berbeda pendapat tentang hukum haul. Perbedaan ini lahir dari cara memandang unsur-unsur yang ada dalam pelaksanaan haul.</p>
+    </div>
+
+    <div class="hukum-table-wrap">
+      <div class="ht-header">
+        <h3>Ringkasan Hukum Berbagai Amalan dalam Haul</h3>
+        <span>Berdasarkan Ijma & Khilaf Ulama</span>
+      </div>
+      <div style="overflow-x:auto;">
+        <table class="htable">
+          <thead>
+            <tr>
+              <th>Amalan dalam Haul</th>
+              <th>Hukum</th>
+              <th>Dasar</th>
+              <th>Keterangan</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Ziarah Kubur</strong></td>
+              <td><span class="hukum-badge hb-sunnah">Sunnah</span></td>
+              <td>HR. Muslim, Abu Dawud</td>
+              <td>Dianjurkan untuk semua, mengingatkan akhirat</td>
+            </tr>
+            <tr>
+              <td><strong>Doa untuk Mayit</strong></td>
+              <td><span class="hukum-badge hb-boleh">Wajib / Sunnah</span></td>
+              <td>QS. Al-Hasyr: 10; HR. Muslim</td>
+              <td>Doa sampai kepada mayit — ijma ulama</td>
+            </tr>
+            <tr>
+              <td><strong>Membaca Al-Qur'an</strong></td>
+              <td><span class="hukum-badge hb-dianjurkan">Boleh</span></td>
+              <td>Pendapat Ahmad, Syafi'i (riwayat baru)</td>
+              <td>Pahala sampai menurut mayoritas; khilaf dalam sebagian riwayat</td>
+            </tr>
+            <tr>
+              <td><strong>Tahlil & Dzikir Bersama</strong></td>
+              <td><span class="hukum-badge hb-boleh">Boleh</span></td>
+              <td>HR. Muslim (keutamaan majelis dzikir)</td>
+              <td>Selama tidak ada keyakinan wajib atau cara tertentu yang ditetapkan</td>
+            </tr>
+            <tr>
+              <td><strong>Ceramah & Pengajian</strong></td>
+              <td><span class="hukum-badge hb-sunnah">Sunnah</span></td>
+              <td>QS. Ali Imran: 104</td>
+              <td>Menyebarkan ilmu dan mengingat kematian adalah anjuran</td>
+            </tr>
+            <tr>
+              <td><strong>Sedekah & Makan Bersama</strong></td>
+              <td><span class="hukum-badge hb-sunnah">Sunnah</span></td>
+              <td>HR. Muslim (sedekah atas nama mayit)</td>
+              <td>Pahala sedekah sampai kepada mayit — ijma ulama</td>
+            </tr>
+            <tr>
+              <td><strong>Memperingati tanpa unsur munkar</strong></td>
+              <td><span class="hukum-badge hb-boleh">Boleh</span></td>
+              <td>Kaidah: Al-ashlu fil asyya' al-ibahah</td>
+              <td>Jika diisi amal shalih, tidak ada dalil pelarangannya</td>
+            </tr>
+            <tr>
+              <td><strong>Berlebihan / Mengkultuskan</strong></td>
+              <td><span class="hukum-badge hb-haram">Haram</span></td>
+              <td>HR. Bukhari (larangan ghuluw)</td>
+              <td>Meminta kepada mayit, tawassul berlebih yang terlarang</td>
+            </tr>
+            <tr>
+              <td><strong>Hiburan / Maksiat dalam acara</strong></td>
+              <td><span class="hukum-badge hb-haram">Haram</span></td>
+              <td>Dalil umum larangan kemungkaran</td>
+              <td>Musik keras, ikhtilat, atau hal-hal yang diharamkan</td>
+            </tr>
+            <tr>
+              <td><strong>Meyakini haul sebagai ibadah wajib</strong></td>
+              <td><span class="hukum-badge hb-bidah">Bid'ah</span></td>
+              <td>Kaidah ibadah harus ada dalilnya</td>
+              <td>Jika diyakini sebagai kewajiban agama tanpa dalil</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ PENDAPAT ULAMA ═══ -->
+<section class="content-section" id="ulama">
+  <div class="cs-header">
+    <div class="cs-num">04</div>
+    <div class="cs-head-text">
+      <span class="cs-tag">Perbedaan Pandangan</span>
+      <h2 class="cs-title">Pendapat Para <em>Ulama</em></h2>
+      <p class="cs-sub">Ulama berbeda dalam menghukumi haul karena perbedaan dalam memandang unsur-unsur yang ada: ada yang melihatnya sebagai sarana amal shalih, ada yang mengkhawatirkan jatuh pada bid'ah atau ghuluw.</p>
+    </div>
+  </div>
+
+  <div class="ulama-grid">
+
+    <div class="ulama-card">
+      <span class="ulama-school">Ulama Syafi'iyyah & Nusantara</span>
+      <div class="ulama-name">Imam An-Nawawi & Ulama Nusantara</div>
+      <div class="ulama-arabic">الإمام النووي</div>
+      <p class="ulama-quote">Imam An-Nawawi dalam Al-Majmu' membolehkan membacakan Al-Qur'an di sisi kubur dan berdoa. Para ulama Nusantara seperti Habib Umar bin Hafidz dan ulama pesantren memandang haul yang diisi dzikir, doa, dan sedekah sebagai amal shalih yang dianjurkan karena terdiri dari amalan-amalan yang memiliki dalil kuat.</p>
+      <span class="ulama-verdict">
+        <span class="hukum-badge hb-boleh" style="font-size:0.7rem;">Boleh / Dianjurkan</span>
+        jika diisi amal shalih
+      </span>
+    </div>
+
+    <div class="ulama-card">
+      <span class="ulama-school">Ibnu Taimiyah & Ibnu Qayyim</span>
+      <div class="ulama-name">Syaikhul Islam Ibnu Taimiyah</div>
+      <div class="ulama-arabic">ابن تيمية رحمه الله</div>
+      <p class="ulama-quote">Ibnu Taimiyah membolehkan ziarah kubur biasa dan doa untuk mayit. Beliau menolak peringatan berkala (haul) jika dijadikan ritual rutin yang diwajibkan atau meniru kebiasaan ahlul kitab. Namun beliau membolehkan mengunjungi kubur sesekali, termasuk kubur orang shalih, selama tidak ada pengagungan yang berlebihan.</p>
+      <span class="ulama-verdict">
+        <span class="hukum-badge hb-khilaf" style="font-size:0.7rem;">Khilaf</span>
+        tergantung niat & cara
+      </span>
+    </div>
+
+    <div class="ulama-card">
+      <span class="ulama-school">Ulama Kontemporer</span>
+      <div class="ulama-name">Syaikh Yusuf Al-Qaradhawi</div>
+      <div class="ulama-arabic">يوسف القرضاوي</div>
+      <p class="ulama-quote">Al-Qaradhawi berpendapat haul yang diisi dengan pembacaan Al-Qur'an, ceramah agama, dzikir, dan sedekah adalah boleh bahkan baik. Yang tidak boleh adalah jika dalam haul terdapat unsur-unsur yang dilarang syariat seperti meratap, pengagungan berlebihan kepada orang yang meninggal, atau percampuran yang tidak syar'i.</p>
+      <span class="ulama-verdict">
+        <span class="hukum-badge hb-boleh" style="font-size:0.7rem;">Boleh</span>
+        dengan syarat
+      </span>
+    </div>
+
+    <div class="ulama-card">
+      <span class="ulama-school">Lajnah Daimah Arab Saudi</span>
+      <div class="ulama-name">Lajnah Daimah lil Buhuts</div>
+      <div class="ulama-arabic">اللجنة الدائمة للبحوث</div>
+      <p class="ulama-quote">Lajnah Daimah mengeluarkan fatwa bahwa merayakan hari kematian secara tahunan (haul) dengan berkumpul khusus adalah bid'ah yang tidak ada contohnya dari Rasulullah ﷺ dan para sahabat. Namun mereka tetap membolehkan ziarah kubur biasa, doa, dan sedekah atas nama mayit tanpa harus mengkhususkan waktu tertentu.</p>
+      <span class="ulama-verdict">
+        <span class="hukum-badge hb-bidah" style="font-size:0.7rem;">Bid'ah</span>
+        jika sebagai ritual rutin
+      </span>
+    </div>
+
+    <div class="ulama-card">
+      <span class="ulama-school">Ulama Malik & Syafi'i Klasik</span>
+      <div class="ulama-name">Imam Malik & Imam Syafi'i</div>
+      <div class="ulama-arabic">الإمام مالك والشافعي</div>
+      <p class="ulama-quote">Imam Malik memakruhkan berkumpul di rumah keluarga mayit untuk makan karena dianggap termasuk niyahah (meratap). Namun ini berkaitan dengan tradisi jahiliyah berkumpul di rumah duka secara terus-menerus, bukan haul sebagai peringatan tahunan yang diisi ceramah agama dan dzikir.</p>
+      <span class="ulama-verdict">
+        <span class="hukum-badge hb-khilaf" style="font-size:0.7rem;">Makruh</span>
+        jika ada unsur niyahah
+      </span>
+    </div>
+
+    <div class="ulama-card">
+      <span class="ulama-school">Kesimpulan Ilmiah</span>
+      <div class="ulama-name">Titik Temu Para Ulama</div>
+      <div class="ulama-arabic">الرَّأْيُ الْجَامِعُ</div>
+      <p class="ulama-quote">Semua ulama sepakat: (1) Doa untuk mayit sampai dan disyariatkan. (2) Ziarah kubur adalah sunnah. (3) Sedekah atas nama mayit sah pahalanya. (4) Haul menjadi bermasalah jika ada pengagungan berlebihan, keyakinan wajib tanpa dalil, atau unsur kemungkaran. Jika bebas dari ini, para ulama mayoritas memandangnya boleh.</p>
+      <span class="ulama-verdict">
+        <span class="hukum-badge hb-boleh" style="font-size:0.7rem;">Boleh</span>
+        jika syarat terpenuhi
+      </span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ AMALAN YANG DISYARIATKAN ═══ -->
+<section class="content-section" style="padding-top:0;" id="amalan">
+  <div class="cs-header">
+    <div class="cs-num">05</div>
+    <div class="cs-head-text">
+      <span class="cs-tag">Panduan Praktis</span>
+      <h2 class="cs-title">Amalan <em>yang Disyariatkan</em><br>dalam Haul</h2>
+      <p class="cs-sub">Jika haul diadakan, berikut amalan-amalan yang memiliki dalil kuat dan dianjurkan untuk dilakukan.</p>
+    </div>
+  </div>
+
+  <div class="amalan-list">
+
+    <div class="amalan-item">
+      <div class="amalan-no">1</div>
+      <div class="amalan-text">
+        <h4>Ziarah Kubur yang Diperingati</h4>
+        <p>Mengunjungi makam dengan niat mendoakan, mengambil ibrah tentang kematian, dan mengingatkan diri sendiri akan akhirat. Rasulullah ﷺ bersabda: "Berziarahlah ke kubur, karena ia mengingatkan pada kematian." — HR. Muslim</p>
+      </div>
+      <div class="amalan-status"><span class="hukum-badge hb-sunnah">Sunnah</span></div>
+    </div>
+
+    <div class="amalan-item">
+      <div class="amalan-no">2</div>
+      <div class="amalan-text">
+        <h4>Membaca Al-Fatihah & Doa untuk Mayit</h4>
+        <p>Membaca Al-Fatihah dan berdoa kepada Allah agar diampuni dosanya, dilapangkan kuburnya, dan dirahmati. Doa untuk muslim yang telah meninggal adalah sunnah yang disepakati ulama. (QS. Al-Hasyr: 10; HR. Muslim)</p>
+      </div>
+      <div class="amalan-status"><span class="hukum-badge hb-sunnah">Sunnah</span></div>
+    </div>
+
+    <div class="amalan-item">
+      <div class="amalan-no">3</div>
+      <div class="amalan-text">
+        <h4>Membaca Al-Qur'an & Menghadiahkan Pahalanya</h4>
+        <p>Imam Ahmad dan mayoritas ulama Hanabilah, serta sebagian Syafi'iyyah berpendapat pahala membaca Al-Qur'an sampai kepada mayit jika diniatkan. Ini termasuk membaca Al-Ikhlas, Al-Mulk, Yasin, dan lainnya.</p>
+      </div>
+      <div class="amalan-status"><span class="hukum-badge hb-dianjurkan">Boleh</span></div>
+    </div>
+
+    <div class="amalan-item">
+      <div class="amalan-no">4</div>
+      <div class="amalan-text">
+        <h4>Sedekah atas Nama yang Diperingati</h4>
+        <p>Rasulullah ﷺ membolehkan bersedekah atas nama orang yang telah meninggal. Sa'd bin Ubadah bertanya: "Ibuku wafat, sedekah apa yang paling utama?" Nabi ﷺ menjawab: "Air." Maka Sa'd membuat sumur atas nama ibunya. — HR. Abu Dawud & Nasa'i</p>
+      </div>
+      <div class="amalan-status"><span class="hukum-badge hb-sunnah">Sunnah</span></div>
+    </div>
+
+    <div class="amalan-item">
+      <div class="amalan-no">5</div>
+      <div class="amalan-text">
+        <h4>Dzikir, Tahlil, dan Shalawat Bersama</h4>
+        <p>Berkumpul untuk berdzikir memiliki keutamaan tersendiri. Rasulullah ﷺ bersabda: "Tidaklah suatu kaum berkumpul untuk berdzikir kepada Allah, melainkan malaikat mengelilingi mereka, rahmat menyelimuti mereka, ketenangan turun kepada mereka, dan Allah menyebut mereka di hadapan makhluk di sisi-Nya." — HR. Muslim</p>
+      </div>
+      <div class="amalan-status"><span class="hukum-badge hb-sunnah">Sunnah</span></div>
+    </div>
+
+    <div class="amalan-item">
+      <div class="amalan-no">6</div>
+      <div class="amalan-text">
+        <h4>Ceramah & Tausiyah tentang Keutamaan Tokoh</h4>
+        <p>Menyebutkan kebaikan dan keutamaan orang yang telah wafat adalah dianjurkan. Rasulullah ﷺ bersabda: "Sebutlah kebaikan orang-orang mati kalian dan tahanlah (jangan ceritakan) keburukan mereka." — HR. Abu Dawud & Tirmidzi</p>
+      </div>
+      <div class="amalan-status"><span class="hukum-badge hb-sunnah">Sunnah</span></div>
+    </div>
+
+    <div class="amalan-item">
+      <div class="amalan-no">7</div>
+      <div class="amalan-text">
+        <h4>Memberi Makan & Memuliakan Tamu</h4>
+        <p>Memuliakan tamu dan memberi makan adalah sunnah Islam. Jika dikaitkan dengan haul — selama tidak ada keyakinan bahwa makanan itu adalah "sesaji" atau ritual wajib — maka ini termasuk ibadah umum yang dianjurkan. (HR. Bukhari & Muslim tentang memuliakan tamu)</p>
+      </div>
+      <div class="amalan-status"><span class="hukum-badge hb-boleh">Boleh</span></div>
+    </div>
+
+  </div>
+
+  <!-- AMALAN YANG HARUS DIHINDARI -->
+  <div style="margin-top:3rem; background: #FFF5F5; border:1px solid rgba(139,0,0,0.15); border-radius:16px; padding:2rem;">
+    <h3 style="font-family:'EB Garamond',serif; font-size:1.5rem; color:#5A0A0A; margin-bottom:1rem;">⚠️ Hal-hal yang Harus Dihindari dalam Haul</h3>
+    <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(260px,1fr)); gap:1rem;">
+      <div style="background:white; border-radius:10px; padding:1rem; border-left:3px solid #C00;">
+        <strong style="font-size:0.9rem; color:#5A0A0A;">Meminta/Berdoa kepada Mayit</strong>
+        <p style="font-size:0.82rem; color:#7A3030; margin-top:0.4rem;">Meminta sesuatu langsung kepada yang telah wafat adalah syirik. Doa hanya kepada Allah; boleh bertawassul dengan amal shalih atau doa orang hidup.</p>
+      </div>
+      <div style="background:white; border-radius:10px; padding:1rem; border-left:3px solid #C00;">
+        <strong style="font-size:0.9rem; color:#5A0A0A;">Pengagungan Berlebihan (Ghuluw)</strong>
+        <p style="font-size:0.82rem; color:#7A3030; margin-top:0.4rem;">Nabi ﷺ bersabda: "Jangan kalian berlebih-lebihan dalam memujiku sebagaimana orang Nasrani berlebihan terhadap Isa bin Maryam." — HR. Bukhari</p>
+      </div>
+      <div style="background:white; border-radius:10px; padding:1rem; border-left:3px solid #C00;">
+        <strong style="font-size:0.9rem; color:#5A0A0A;">Menganggap Haul sebagai Kewajiban</strong>
+        <p style="font-size:0.82rem; color:#7A3030; margin-top:0.4rem;">Meyakini bahwa meninggalkan haul adalah dosa tanpa dalil yang jelas termasuk bid'ah dalam agama yang tidak dibenarkan.</p>
+      </div>
+      <div style="background:white; border-radius:10px; padding:1rem; border-left:3px solid #C00;">
+        <strong style="font-size:0.9rem; color:#5A0A0A;">Kemungkaran dalam Acara</strong>
+        <p style="font-size:0.82rem; color:#7A3030; margin-top:0.4rem;">Musik haram, ikhtilat (campur-baur lelaki perempuan yang bukan mahram), atau hal-hal yang jelas dilarang syariat haram dilakukan, terlepas dari konteks haul.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TIMELINE ═══ -->
+<section class="content-section" style="padding-top:0;">
+  <div class="cs-header">
+    <div class="cs-num">06</div>
+    <div class="cs-head-text">
+      <span class="cs-tag">Sejarah & Konteks</span>
+      <h2 class="cs-title">Perkembangan <em>Tradisi Haul</em></h2>
+      <p class="cs-sub">Bagaimana tradisi haul berkembang dari masa ke masa dalam peradaban Islam.</p>
+    </div>
+  </div>
+
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <p class="tl-period">Masa Rasulullah ﷺ (609–632 M)</p>
+      <h4 class="tl-title">Ziarah Kubur Syuhada Secara Berkala</h4>
+      <p class="tl-desc">Rasulullah ﷺ diketahui mengunjungi makam para syuhada Uhud setiap tahun (ra'su kulli haul). Beliau berdoa dan memohonkan ampunan untuk mereka. Ini menjadi salah satu landasan praktik ziarah berkala dalam Islam. (HR. Al-Baihaqi)</p>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <p class="tl-period">Masa Sahabat & Tabi'in (632–750 M)</p>
+      <h4 class="tl-title">Ziarah Kubur & Doa tanpa Ritual Khusus</h4>
+      <p class="tl-desc">Para sahabat dan tabi'in berziarah ke kubur Rasulullah ﷺ dan kubur para ulama, membaca doa dan salam. Belum ada format "haul" berupa peringatan tahunan yang terstruktur seperti yang dikenal saat ini.</p>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <p class="tl-period">Masa Dinasti Fatimiyah (909–1171 M)</p>
+      <h4 class="tl-title">Berkembangnya Tradisi Peringatan Tahunan</h4>
+      <p class="tl-desc">Dinasti Fatimiyah di Mesir mengembangkan tradisi peringatan tahunan Maulid Nabi dan peringatan wafat para tokoh. Tradisi ini menyebar dan kemudian berkembang ke berbagai wilayah dunia Islam, termasuk Timur Tengah dan Asia Tenggara.</p>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <p class="tl-period">Masa Islam Nusantara (abad 13–17 M)</p>
+      <h4 class="tl-title">Haul Wali Songo & Para Ulama</h4>
+      <p class="tl-desc">Para wali dan ulama di Nusantara, termasuk Wali Songo, menggunakan tradisi haul sebagai media dakwah — mengumpulkan masyarakat, mengisi dengan dzikir, ceramah agama, dan sedekah. Haul Sunan Ampel, Sunan Bonang, dan haul ulama besar menjadi tradisi yang mengakar.</p>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <p class="tl-period">Masa Kontemporer (abad 20–21 M)</p>
+      <h4 class="tl-title">Diskusi Ulama & Fatwa Modern</h4>
+      <p class="tl-desc">Perbedaan pendapat ulama tentang haul semakin terdokumentasi dengan baik. Lembaga seperti Nahdlatul Ulama (NU) membolehkan haul yang diisi amal shalih. Majelis ulama dari Arab Saudi cenderung melarangnya sebagai bid'ah. Diskusi berlangsung ilmiah dengan dalil-dalil yang dipertukarkan.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ CLOSING ═══ -->
+<section class="closing">
+  <div class="closing-inner">
+    <div class="sep">
+      <div class="ln ln-l"></div>
+      <div class="diamond"></div>
+      <div class="diamond" style="opacity:0.5; margin:0 4px;"></div>
+      <div class="diamond"></div>
+      <div class="ln ln-r"></div>
+    </div>
+
+    <h2>Kesimpulan:<br>Haul antara <em>Tradisi & Syariat</em></h2>
+
+    <p>Haul sebagai tradisi berkumpul tahunan untuk mendoakan, berdzikir, bersedekah, dan mengambil ilmu dari kehidupan orang shalih yang telah wafat — pada intinya terdiri dari amalan-amalan yang memiliki dalil kuat dalam Al-Qur'an dan Sunnah.</p>
+
+    <p>Yang menjadi masalah bukan haul-nya, melainkan <strong style="color:var(--gold-soft)">isi dan niatnya</strong>. Jika haul diisi dengan dzikir, doa, bacaan Al-Qur'an, ceramah ilmu, dan sedekah — mayoritas ulama membolehkannya. Jika disertai pengagungan berlebihan, permintaan kepada mayit, atau kemungkaran — itulah yang dilarang.</p>
+
+    <p style="font-style:italic; color:rgba(200,214,232,0.4);">"Setiap amalan tergantung niatnya, dan setiap orang akan mendapatkan sesuai niatnya." — HR. Bukhari & Muslim</p>
+
+    <div class="dalil-card" style="margin-top:2.5rem; text-align:right; border-left:none; border-right:3px solid var(--gold);">
+      <p class="dalil-arabic">وَمَا يَفْعَلُوا مِنْ خَيْرٍ فَلَن يُكْفَرُوهُ ۗ وَاللَّهُ عَلِيمٌ بِالْمُتَّقِينَ</p>
+      <p class="dalil-trans">"Dan apa saja kebaikan yang mereka kerjakan, mereka tidak akan diingkari (pahalanya). Dan Allah Maha Mengetahui orang-orang yang bertakwa."</p>
+      <p class="dalil-ref">QS. Ali Imran: 115</p>
+    </div>
+
+    <p class="closing-arabic">اللَّهُمَّ اغْفِرْ لِمَوْتَانَا وَأَحْيَائِنَا وَارْحَمْهُمْ وَعَافِهِمْ</p>
+    <p class="closing-trans">"Ya Allah, ampunilah orang-orang yang telah wafat dan yang masih hidup di antara kami, rahmatilah dan sehatkanlah mereka."</p>
+
+    <div class="sep" style="margin-top:3rem;">
+      <div class="ln ln-l"></div>
+      <div class="diamond"></div>
+      <div class="ln ln-r"></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Disusun berdasarkan <em>Al-Qur'an Al-Karim</em> · <em>Shahih Bukhari & Muslim</em> · <em>Al-Majmu' An-Nawawi</em> · <em>Ar-Ruh Ibnu Qayyim</em> · <em>Syu'abul Iman Al-Baihaqi</em> · <em>Fatawa Lajnah Daimah</em></p>
+  <p style="margin-top:0.5rem">Untuk masalah yang masih diperdebatkan, bertanyalah kepada ulama terpercaya di daerah Anda. <em>رحمهم الله جميعًا</em></p>
+</footer>
+
+<!-- STARFIELD JS -->
+<script>
+const canvas = document.getElementById('starfield');
+const ctx = canvas.getContext('2d');
+let stars = [];
+
+function resize() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+
+function initStars() {
+  stars = [];
+  for (let i = 0; i < 160; i++) {
+    stars.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 1.2 + 0.2,
+      alpha: Math.random() * 0.6 + 0.1,
+      speed: Math.random() * 0.3 + 0.05,
+      twinkle: Math.random() * Math.PI * 2
+    });
+  }
+}
+
+function drawStars() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  const t = Date.now() / 1500;
+  stars.forEach(s => {
+    const a = s.alpha * (0.5 + 0.5 * Math.sin(t + s.twinkle));
+    ctx.beginPath();
+    ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(200,220,255,${a})`;
+    ctx.fill();
+  });
+  requestAnimationFrame(drawStars);
+}
+
+resize();
+initStars();
+drawStars();
+window.addEventListener('resize', () => { resize(); initStars(); });
+
+// Only show stars over dark sections
+canvas.style.mixBlendMode = 'screen';
+canvas.style.opacity = '0.7';
+</script>
+
+</body>
+</html>
+
+

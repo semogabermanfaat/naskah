@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kitab Puasa — Shaum dalam Islam</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Amiri:ital,wght@0,400;0,700;1,400&family=Outfit:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+
+:root{
+  /* Ramadhan night palette */
+  --night:    #020510;
+  --cosmos:   #040818;
+  --midnight: #070d28;
+  --navy:     #0b1440;
+  --blue:     #101e5a;
+  --azure:    #162478;
+  --moon:     #f0e0a0;
+  --moon-lt:  #f8f0c8;
+  --star:     #e8d880;
+  --crescent: #d4b840;
+  --maroon:   #7a1820;
+  --maroon-d: #5a1018;
+  --maroon-lt:#b02030;
+  --maroon-p: #fde8e8;
+  --crimson:  #9a2020;
+  --teal:     #0a6878;
+  --teal-lt:  #1898b0;
+  --teal-p:   #d8f4f8;
+  --sage:     #2a6040;
+  --sage-lt:  #3a9060;
+  --sage-p:   #d8f0e4;
+  --cream:    #faf6ec;
+  --ivory:    #f5f0e4;
+  --parch:    #ede8d8;
+  --parch-d:  #e0d8c0;
+  --ink:      #120e08;
+  --ink-mid:  #201808;
+  --ink-soft: #5a4828;
+  --b-moon:   rgba(212,184,64,.2);
+  --b-maroon: rgba(122,24,32,.18);
+  --b-teal:   rgba(10,104,120,.15);
+  --b-sage:   rgba(42,96,64,.15);
+  --b-ink:    rgba(18,14,8,.1);
+}
+
+html{scroll-behavior:smooth;}
+body{background:var(--cream);font-family:'Cormorant Garamond',Georgia,serif;color:var(--ink);overflow-x:hidden;}
+
+/* ══════════════════════════════
+   CANVAS — Star field
+══════════════════════════════ */
+#canvas{position:fixed;inset:0;z-index:0;pointer-events:none;}
+
+/* ══════════════════════════════
+   HERO — RAMADHAN NIGHT
+══════════════════════════════ */
+.hero{
+  min-height:100vh;
+  position:relative;z-index:1;
+  background:
+    radial-gradient(ellipse 60% 50% at 70% 25%,rgba(240,224,160,.05) 0%,transparent 60%),
+    radial-gradient(ellipse 80% 60% at 50% 40%,rgba(11,20,64,.8) 0%,transparent 70%),
+    radial-gradient(ellipse 100% 40% at 50% 100%,rgba(2,5,16,.98) 0%,transparent 55%),
+    linear-gradient(180deg,var(--night) 0%,var(--cosmos) 20%,var(--midnight) 50%,var(--navy) 75%,var(--blue) 100%);
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;
+  padding:80px 24px 120px;
+  overflow:hidden;
+}
+
+/* Crescent moon */
+.moon-wrap{
+  position:absolute;
+  top:clamp(40px,6vw,80px);
+  right:clamp(40px,8vw,120px);
+  width:clamp(80px,12vw,160px);
+  height:clamp(80px,12vw,160px);
+  pointer-events:none;
+}
+.moon-body{
+  width:100%;height:100%;border-radius:50%;
+  background:radial-gradient(circle at 40% 40%,var(--moon-lt),var(--crescent));
+  box-shadow:
+    0 0 20px rgba(240,224,160,.4),
+    0 0 60px rgba(240,224,160,.15),
+    0 0 120px rgba(240,224,160,.06);
+  animation:moonPulse 6s ease-in-out infinite alternate;
+}
+.moon-shadow{
+  position:absolute;
+  top:-5%;left:12%;
+  width:100%;height:100%;
+  border-radius:50%;
+  background:var(--cosmos);
+  box-shadow:inset 0 0 10px rgba(4,8,24,.5);
+}
+@keyframes moonPulse{
+  from{box-shadow:0 0 20px rgba(240,224,160,.4),0 0 60px rgba(240,224,160,.15);}
+  to  {box-shadow:0 0 40px rgba(240,224,160,.6),0 0 100px rgba(240,224,160,.25);}
+}
+
+/* Bottom horizon glow */
+.hero-horizon{
+  position:absolute;bottom:0;left:0;right:0;height:30%;
+  background:linear-gradient(0deg,rgba(2,5,16,.95) 0%,transparent 100%);
+  pointer-events:none;
+}
+
+.hero-inner{position:relative;z-index:2;max-width:740px;}
+
+.hero-bismillah{
+  font-family:'Amiri',serif;
+  font-size:clamp(1.5rem,4.5vw,2.8rem);
+  color:var(--crescent);
+  text-shadow:0 0 30px rgba(212,184,64,.5),0 0 60px rgba(212,184,64,.2);
+  line-height:1.9;margin-bottom:14px;
+  animation:nightRise 2s ease both;
+}
+
+.hero-kicker{
+  font-family:'Outfit',sans-serif;font-weight:300;
+  font-size:clamp(.6rem,1.4vw,.75rem);
+  letter-spacing:8px;text-transform:uppercase;
+  color:rgba(212,184,64,.45);
+  margin-bottom:22px;
+  animation:nightRise 2s ease both .22s;
+}
+
+.hero-title{
+  font-family:'Cormorant Garamond',serif;font-weight:700;
+  font-size:clamp(2.8rem,8.5vw,7rem);
+  line-height:1.02;letter-spacing:-1px;
+  color:#fff;margin-bottom:6px;
+  animation:nightRise 2s ease both .07s;
+}
+
+.hero-title em{
+  display:block;font-style:italic;font-weight:300;
+  font-size:.55em;letter-spacing:2px;
+  background:linear-gradient(135deg,var(--moon-lt),var(--crescent));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+
+.hero-ar{
+  font-family:'Amiri',serif;
+  font-size:clamp(1.2rem,3vw,2rem);
+  color:rgba(240,224,160,.6);
+  line-height:2;margin-bottom:26px;
+  animation:nightRise 2s ease both .28s;
+}
+
+.hero-rule{
+  display:flex;align-items:center;justify-content:center;gap:14px;
+  margin:0 auto 28px;
+  animation:nightRise 2s ease both .38s;
+}
+.hero-rule span{width:80px;height:1px;background:linear-gradient(90deg,transparent,rgba(212,184,64,.3));}
+.hero-rule span:last-child{background:linear-gradient(90deg,rgba(212,184,64,.3),transparent);}
+.hero-rule em{color:var(--crescent);font-style:normal;letter-spacing:8px;opacity:.6;}
+
+.hero-verse{
+  max-width:580px;margin:0 auto;
+  padding:22px 32px;
+  background:rgba(4,8,24,.65);
+  border:1px solid rgba(212,184,64,.2);
+  backdrop-filter:blur(10px);
+  animation:nightRise 2s ease both .5s;
+}
+.hv-ar{font-family:'Amiri',serif;font-size:clamp(1rem,2.5vw,1.4rem);color:var(--crescent);line-height:2.2;direction:rtl;margin-bottom:10px;}
+.hv-id{font-style:italic;font-size:.83rem;color:rgba(200,220,255,.55);line-height:1.7;}
+
+@keyframes nightRise{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+
+/* ══════════════════════════════
+   BODY
+══════════════════════════════ */
+.body-wrap{max-width:860px;margin:0 auto;padding:0 16px 80px;position:relative;z-index:1;}
+
+/* ── Chapter Bars ── */
+.chap{margin:52px 0 0;display:flex;align-items:stretch;}
+.chap-stripe{width:5px;flex-shrink:0;}
+.cs-moon{background:var(--crescent);}
+.cs-maroon{background:var(--maroon);}
+.cs-teal{background:var(--teal);}
+.cs-sage{background:var(--sage);}
+.cs-night{background:var(--navy);}
+
+.chap-body{flex:1;padding:16px 20px;}
+.cb-moon{background:rgba(212,184,64,.08);border:1px solid var(--b-moon);border-left:none;}
+.cb-maroon{background:var(--maroon-p);border:1px solid var(--b-maroon);border-left:none;}
+.cb-teal{background:var(--teal-p);border:1px solid var(--b-teal);border-left:none;}
+.cb-sage{background:var(--sage-p);border:1px solid var(--b-sage);border-left:none;}
+.cb-night{background:var(--midnight);border:1px solid rgba(212,184,64,.15);border-left:none;}
+
+.chap-tag{font-family:'Outfit',sans-serif;font-weight:700;font-size:.6rem;letter-spacing:4px;text-transform:uppercase;margin-bottom:6px;}
+.ct-moon{color:var(--ink-soft);}
+.ct-maroon{color:var(--maroon-d);}
+.ct-teal{color:var(--teal);}
+.ct-sage{color:var(--sage);}
+.ct-night{color:rgba(212,184,64,.6);}
+
+.chap-ar{font-family:'Amiri',serif;font-size:clamp(1.1rem,2.8vw,1.6rem);line-height:1.8;margin-bottom:4px;}
+.car-moon{color:var(--ink-soft);}
+.car-maroon{color:var(--maroon-d);}
+.car-teal{color:var(--teal);}
+.car-sage{color:var(--sage);}
+.car-night{color:var(--crescent);}
+
+.chap-title{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:clamp(1.1rem,2.8vw,1.7rem);line-height:1.25;color:var(--ink);}
+.ct-night-title{color:var(--moon);}
+
+/* ── Section ── */
+.sec{padding:28px 0 22px;border-bottom:1px solid var(--b-ink);}
+.sec:last-child{border-bottom:none;}
+
+/* ── Prose ── */
+.prose p{font-size:clamp(.97rem,2.1vw,1.07rem);line-height:2.1;color:var(--ink-mid);margin-bottom:16px;text-align:justify;}
+.prose p.lead{font-style:italic;color:var(--maroon-d);font-size:clamp(1rem,2.2vw,1.12rem);line-height:1.9;}
+.prose.teal-lead p.lead{color:var(--teal);}
+.prose.sage-lead p.lead{color:var(--sage);}
+.prose.moon-lead p.lead{color:var(--ink-soft);}
+.prose p:first-of-type:not(.lead)::first-letter{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:4em;line-height:.72;float:left;margin:8px 10px 0 0;}
+.prose.fl-maroon p:first-of-type:not(.lead)::first-letter{color:var(--maroon);}
+.prose.fl-teal p:first-of-type:not(.lead)::first-letter{color:var(--teal);}
+.prose.fl-sage p:first-of-type:not(.lead)::first-letter{color:var(--sage);}
+.prose.fl-moon p:first-of-type:not(.lead)::first-letter{color:var(--crescent);}
+
+/* ── Dalil ── */
+.dalil{margin:24px 0;display:grid;grid-template-columns:4px 1fr;}
+.dalil-m{background:var(--maroon-p);border:1px solid var(--b-maroon);}
+.dalil-t{background:var(--teal-p);border:1px solid var(--b-teal);}
+.dalil-s{background:var(--sage-p);border:1px solid var(--b-sage);}
+.dalil-moon{background:rgba(212,184,64,.07);border:1px solid var(--b-moon);}
+.dalil-dk{background:rgba(4,8,24,.85);border:1px solid rgba(212,184,64,.18);}
+
+.dbar-m{background:var(--maroon);}
+.dbar-t{background:var(--teal);}
+.dbar-s{background:var(--sage);}
+.dbar-moon{background:var(--crescent);}
+.dbar-dk{background:var(--crescent);}
+
+.dbody{padding:18px 20px 14px;}
+.dtag{font-family:'Outfit',sans-serif;font-weight:700;font-size:.6rem;letter-spacing:4px;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:10px;}
+.dtag::after{content:'';flex:1;height:1px;}
+.dtag-m{color:var(--maroon-d);}
+.dtag-m::after{background:linear-gradient(90deg,var(--b-maroon),transparent);}
+.dtag-t{color:var(--teal);}
+.dtag-t::after{background:linear-gradient(90deg,var(--b-teal),transparent);}
+.dtag-s{color:var(--sage);}
+.dtag-s::after{background:linear-gradient(90deg,var(--b-sage),transparent);}
+.dtag-moon{color:var(--ink-soft);}
+.dtag-moon::after{background:linear-gradient(90deg,var(--b-moon),transparent);}
+.dtag-dk{color:var(--crescent);}
+.dtag-dk::after{background:linear-gradient(90deg,rgba(212,184,64,.2),transparent);}
+
+.dar{font-family:'Amiri',serif;font-size:clamp(1.1rem,2.8vw,1.52rem);line-height:2.2;direction:rtl;text-align:right;margin-bottom:12px;padding-bottom:10px;}
+.dar-m{color:var(--maroon-d);border-bottom:1px dashed var(--b-maroon);}
+.dar-t{color:var(--teal);border-bottom:1px dashed var(--b-teal);}
+.dar-s{color:var(--sage);border-bottom:1px dashed var(--b-sage);}
+.dar-moon{color:var(--ink-soft);border-bottom:1px dashed var(--b-moon);}
+.dar-dk{color:var(--crescent);border-bottom:1px dashed rgba(212,184,64,.18);}
+
+.dtrans{font-style:italic;font-size:.92rem;line-height:1.8;color:var(--ink-soft);margin-bottom:7px;}
+.dtrans-dk{color:rgba(220,210,180,.78);}
+.dref{font-family:'Outfit',sans-serif;font-weight:700;font-size:.62rem;letter-spacing:2px;text-transform:uppercase;}
+.dref-m{color:var(--maroon);}
+.dref-t{color:var(--teal);}
+.dref-s{color:var(--sage);}
+.dref-moon{color:var(--ink-soft);}
+.dref-dk{color:var(--crescent);}
+
+/* ══════════════════════════════
+   STEP LIST
+══════════════════════════════ */
+.step-list{margin:18px 0;}
+.step-item{display:flex;gap:0;margin-bottom:5px;border:1px solid;overflow:hidden;background:var(--ivory);}
+.si-m{border-color:var(--b-maroon);}
+.si-t{border-color:var(--b-teal);}
+.si-s{border-color:var(--b-sage);}
+.si-moon{border-color:var(--b-moon);}
+
+.step-num{flex-shrink:0;width:48px;display:flex;align-items:flex-start;justify-content:center;font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1.3rem;padding:12px 0 0;}
+.sn-m{color:var(--maroon-d);background:var(--maroon-p);border-right:1px solid var(--b-maroon);}
+.sn-t{color:var(--teal);background:var(--teal-p);border-right:1px solid var(--b-teal);}
+.sn-s{color:var(--sage);background:var(--sage-p);border-right:1px solid var(--b-sage);}
+.sn-moon{color:var(--ink-soft);background:rgba(212,184,64,.07);border-right:1px solid var(--b-moon);}
+
+.step-body{flex:1;padding:12px 16px;}
+.step-title{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:.97rem;margin-bottom:3px;color:var(--ink);}
+.step-ar{font-family:'Amiri',serif;font-size:.97rem;direction:rtl;text-align:right;margin-bottom:4px;line-height:1.85;color:rgba(18,14,8,.28);}
+.step-desc{font-size:.85rem;line-height:1.72;font-style:italic;color:var(--ink-soft);}
+
+.step-badge{display:inline-block;margin-top:6px;font-family:'Outfit',sans-serif;font-size:.58rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:2px 8px;}
+.sb-m{background:var(--maroon-p);color:var(--maroon-d);border:1px solid var(--b-maroon);}
+.sb-t{background:var(--teal-p);color:var(--teal);border:1px solid var(--b-teal);}
+.sb-s{background:var(--sage-p);color:var(--sage);border:1px solid var(--b-sage);}
+.sb-gray{background:rgba(18,14,8,.06);color:var(--ink-soft);border:1px solid var(--b-ink);}
+
+/* ══════════════════════════════
+   HIGHLIGHT
+══════════════════════════════ */
+.hl{margin:20px 0;padding:18px 20px;}
+.hl-m{background:var(--maroon-p);border:1px solid var(--b-maroon);border-left:4px solid var(--maroon);}
+.hl-t{background:var(--teal-p);border:1px solid var(--b-teal);border-left:4px solid var(--teal);}
+.hl-s{background:var(--sage-p);border:1px solid var(--b-sage);border-left:4px solid var(--sage);}
+.hl-moon{background:rgba(212,184,64,.07);border:1px solid var(--b-moon);border-left:4px solid var(--crescent);}
+.hl-dk{background:var(--midnight);padding:22px 24px;}
+
+.hl-label{font-family:'Outfit',sans-serif;font-weight:700;font-size:.6rem;letter-spacing:3px;text-transform:uppercase;margin-bottom:9px;}
+.hll-m{color:var(--maroon-d);}
+.hll-t{color:var(--teal);}
+.hll-s{color:var(--sage);}
+.hll-moon{color:var(--ink-soft);}
+.hll-w{color:rgba(212,184,64,.55);}
+
+.hl-ar{font-family:'Amiri',serif;font-size:clamp(1.05rem,2.5vw,1.4rem);line-height:2;margin-bottom:8px;}
+.hlar-m{color:var(--maroon-d);}
+.hlar-t{color:var(--teal);}
+.hlar-s{color:var(--sage);}
+.hlar-moon{color:var(--ink-soft);}
+.hlar-w{color:var(--crescent);}
+
+.hl-trans{font-style:italic;font-size:.9rem;line-height:1.8;margin-bottom:6px;color:var(--ink-soft);}
+.hlt-dk{color:rgba(220,210,180,.78);}
+
+.hl-ref{font-family:'Outfit',sans-serif;font-weight:700;font-size:.6rem;letter-spacing:2px;text-transform:uppercase;}
+.hlr-m{color:var(--maroon);}
+.hlr-t{color:var(--teal);}
+.hlr-s{color:var(--sage);}
+.hlr-moon{color:var(--ink-soft);}
+.hlr-w{color:rgba(212,184,64,.4);}
+
+/* ══════════════════════════════
+   RESPONSIVE TABLE
+══════════════════════════════ */
+.tbl-wrap{margin:22px 0;overflow:hidden;}
+.tbl{width:100%;border-collapse:collapse;font-size:.87rem;table-layout:fixed;}
+.tbl.th-m thead tr{background:var(--maroon-d);color:#fff;}
+.tbl.th-t thead tr{background:var(--teal);color:#fff;}
+.tbl.th-s thead tr{background:var(--sage);color:#fff;}
+.tbl.th-moon thead tr{background:var(--navy);color:var(--moon);}
+.tbl.th-dk thead tr{background:var(--midnight);color:var(--moon);}
+.tbl thead th{padding:10px 12px;text-align:left;font-family:'Outfit',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;}
+.tbl tbody tr{border-bottom:1px solid var(--b-ink);}
+.tbl tbody tr:nth-child(even){background:rgba(18,14,8,.03);}
+.tbl tbody tr:nth-child(odd){background:var(--cream);}
+.tbl td{padding:10px 12px;line-height:1.65;color:var(--ink-mid);vertical-align:top;word-break:break-word;}
+.tbl td:first-child{font-weight:600;color:var(--ink);}
+
+.tbdg{display:inline-block;padding:2px 8px;font-family:'Outfit',sans-serif;font-size:.57rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;white-space:nowrap;}
+.tbdg-m{background:var(--maroon-p);color:var(--maroon-d);border:1px solid var(--b-maroon);}
+.tbdg-t{background:var(--teal-p);color:var(--teal);border:1px solid var(--b-teal);}
+.tbdg-s{background:var(--sage-p);color:var(--sage);border:1px solid var(--b-sage);}
+.tbdg-moon{background:rgba(212,184,64,.1);color:var(--ink-soft);border:1px solid var(--b-moon);}
+.tbdg-gray{background:rgba(18,14,8,.06);color:var(--ink-soft);border:1px solid var(--b-ink);}
+
+@media(max-width:580px){
+  .tbl,.tbl thead,.tbl tbody,.tbl th,.tbl td,.tbl tr{display:block;width:100%;}
+  .tbl thead{display:none;}
+  .tbl tbody tr{background:var(--ivory)!important;border:1px solid var(--b-ink);margin-bottom:8px;padding:12px 14px 10px;}
+  .tbl td{padding:4px 0 4px;border:none;display:grid;grid-template-columns:88px 1fr;gap:6px;align-items:start;}
+  .tbl td::before{content:attr(data-label);font-family:'Outfit',sans-serif;font-size:.58rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding-top:2px;color:var(--maroon-d);}
+  .tbl.th-t td::before{color:var(--teal);}
+  .tbl.th-s td::before{color:var(--sage);}
+  .tbl.th-dk td::before{color:var(--ink-soft);}
+  .tbl td:first-child{font-weight:700;font-size:.93rem;}
+}
+
+/* ══════════════════════════════
+   FEAT GRID
+══════════════════════════════ */
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:6px;margin:20px 0;}
+.feat{padding:18px 16px;border:1px solid;border-top:3px solid;background:var(--ivory);}
+.feat-m{border-color:var(--b-maroon);border-top-color:var(--maroon);}
+.feat-t{border-color:var(--b-teal);border-top-color:var(--teal);}
+.feat-s{border-color:var(--b-sage);border-top-color:var(--sage);}
+.feat-moon{border-color:var(--b-moon);border-top-color:var(--crescent);}
+.feat-icon{font-size:1.7rem;margin-bottom:9px;display:block;}
+.feat-title{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:.98rem;margin-bottom:4px;color:var(--ink);}
+.feat-desc{font-size:.83rem;line-height:1.68;font-style:italic;color:var(--ink-soft);}
+.feat-ref{font-family:'Outfit',sans-serif;font-weight:700;font-size:.58rem;letter-spacing:2px;text-transform:uppercase;margin-top:8px;display:block;color:var(--ink-soft);}
+
+/* ══════════════════════════════
+   BANNER
+══════════════════════════════ */
+.banner{margin:26px 0;padding:24px 28px;text-align:center;}
+.banner-m{background:var(--maroon-d);color:#fff;}
+.banner-t{background:var(--teal);color:#fff;}
+.banner-s{background:var(--sage);color:#fff;}
+.banner-moon{background:rgba(212,184,64,.09);border:1px solid var(--b-moon);}
+.banner-dk{background:var(--midnight);border:1px solid rgba(212,184,64,.18);}
+
+.ban-ar{font-family:'Amiri',serif;font-size:clamp(1.1rem,2.8vw,1.5rem);line-height:2;margin-bottom:10px;}
+.bnar-w{color:#fff;}
+.bnar-moon{color:var(--ink-soft);}
+.bnar-dk{color:var(--crescent);}
+
+.ban-id{font-style:italic;font-size:.9rem;line-height:1.78;margin-bottom:6px;}
+.bnid-w{color:rgba(255,255,255,.85);}
+.bnid-moon{color:var(--ink-soft);}
+.bnid-dk{color:rgba(220,210,180,.72);}
+
+.ban-ref{font-family:'Outfit',sans-serif;font-weight:700;font-size:.6rem;letter-spacing:3px;text-transform:uppercase;margin-top:7px;}
+.bnref-w{color:rgba(255,255,255,.45);}
+.bnref-moon{color:rgba(18,14,8,.35);}
+.bnref-dk{color:rgba(212,184,64,.4);}
+
+/* ══════════════════════════════
+   SEPARATOR
+══════════════════════════════ */
+.sep{text-align:center;padding:12px 0;background:var(--parch-d);border-top:1px solid var(--b-moon);border-bottom:1px solid var(--b-moon);}
+.sep span{color:var(--ink-soft);letter-spacing:12px;font-size:.7rem;opacity:.4;}
+
+/* ══════════════════════════════
+   PENUTUP
+══════════════════════════════ */
+.penutup{
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 0%,rgba(11,20,64,.4) 0%,transparent 70%),
+    linear-gradient(180deg,var(--navy) 0%,var(--midnight) 40%,var(--cosmos) 80%,var(--night) 100%);
+  padding:72px 24px 80px;text-align:center;
+  position:relative;overflow:hidden;margin-top:56px;z-index:1;
+}
+.penutup::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--crescent),transparent);}
+.penutup-inner{max-width:580px;margin:0 auto;position:relative;z-index:1;}
+.penutup-ar{font-family:'Amiri',serif;font-size:clamp(1.5rem,4vw,2.6rem);color:var(--crescent);line-height:2;text-shadow:0 0 20px rgba(212,184,64,.3);margin-bottom:14px;}
+.penutup-div{width:80px;height:1px;background:linear-gradient(90deg,transparent,var(--crescent),transparent);margin:18px auto;}
+.penutup-p{font-style:italic;font-size:clamp(.9rem,2vw,1.05rem);color:rgba(200,220,255,.72);line-height:1.92;margin-bottom:12px;}
+.penutup-ref{font-family:'Outfit',sans-serif;font-weight:700;font-size:.6rem;letter-spacing:3px;text-transform:uppercase;color:rgba(212,184,64,.4);}
+.penutup-footer{margin-top:40px;padding-top:22px;border-top:1px solid rgba(255,255,255,.05);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+.penutup-footer .logo{font-family:'Amiri',serif;font-size:1.1rem;color:rgba(212,184,64,.35);}
+.penutup-footer .tag{font-family:'Outfit',sans-serif;font-weight:700;font-size:.55rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.12);}
+
+@media(max-width:600px){
+  .body-wrap{padding:0 14px 60px;}
+  .hero{padding:56px 20px 80px;}
+  .chap-body{padding:12px 16px;}
+  .hl,.banner{padding:16px 16px;}
+  .penutup{padding:48px 18px 56px;}
+}
+</style>
+</head>
+<body>
+
+<canvas id="canvas"></canvas>
+
+<!-- ══════ HERO ══════ -->
+<section class="hero">
+  <div class="moon-wrap">
+    <div class="moon-body"></div>
+    <div class="moon-shadow"></div>
+  </div>
+  <div class="hero-horizon"></div>
+
+  <div class="hero-inner">
+    <div class="hero-bismillah">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
+    <p class="hero-kicker">Kitab Fiqh Ibadah · Berdalil Al-Qur'an &amp; Hadis Shahih · Lengkap &amp; Mendalam</p>
+    <h1 class="hero-title">
+      Kitab Puasa
+      <em>Shaum dalam Islam</em>
+    </h1>
+    <div class="hero-ar">كِتَابُ الصِّيَامِ</div>
+    <div class="hero-rule">
+      <span></span><em>☽ ✦ ☽</em><span></span>
+    </div>
+    <div class="hero-verse">
+      <div class="hv-ar">يَا أَيُّهَا الَّذِينَ آمَنُوا كُتِبَ عَلَيْكُمُ الصِّيَامُ كَمَا كُتِبَ عَلَى الَّذِينَ مِن قَبْلِكُمْ لَعَلَّكُمْ تَتَّقُونَ</div>
+      <div class="hv-id">"Wahai orang-orang yang beriman! Diwajibkan atas kamu berpuasa sebagaimana diwajibkan atas orang-orang sebelum kamu agar kamu bertakwa."<br><em style="color:rgba(212,184,64,.45)">— QS. Al-Baqarah: 183</em></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ BODY ══════ -->
+<div class="body-wrap">
+
+<!-- ══ PROLOG ══ -->
+<div class="chap">
+  <div class="chap-stripe cs-moon"></div>
+  <div class="chap-body cb-moon">
+    <div class="chap-tag ct-moon">✦ Pembuka</div>
+    <div class="chap-ar car-moon">مَا هُوَ الصِّيَامُ وَفَضْلُهُ</div>
+    <div class="chap-title">Apakah Puasa? Keutamaan &amp; Kedudukannya dalam Islam</div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="prose fl-moon moon-lead">
+    <p class="lead">Puasa — dalam bahasa Arab <em>shaum</em> atau <em>shiyām</em> — adalah menahan diri dari makan, minum, hubungan suami-istri, dan hal-hal yang membatalkan, mulai dari terbit fajar shadiq hingga terbenamnya matahari, dengan niat yang tulus karena Allah. Ia adalah rukun Islam yang keempat dan salah satu ibadah paling mulia dalam Islam.</p>
+    <p>Yang membedakan puasa dari ibadah-ibadah lain adalah sifatnya yang paling murni dari riya': seseorang bisa berpura-pura shalat, berpura-pura bersedekah — namun tidak bisa berpura-pura puasa. Karena itulah Allah berfirman dalam hadis qudsi: "Puasa itu untuk-Ku, dan Aku-lah yang akan membalasnya." Allah sendiri yang menjadi upah dan balasan bagi orang yang berpuasa.</p>
+    <p>Para ulama membagi puasa menjadi tiga tingkatan: puasa 'awam (orang biasa) yang hanya menahan makan-minum; puasa khawash (orang khusus) yang juga menahan anggota tubuh dari dosa; dan puasa khawash al-khawash (yang paling khusus) yang juga menahan hati dari segala selain Allah.</p>
+  </div>
+
+  <div class="dalil dalil-dk">
+    <div class="dbar-dk"></div>
+    <div class="dbody">
+      <div class="dtag dtag-dk">📜 HR. Bukhari &amp; Muslim — Hadis Qudsi: Puasa untuk Allah</div>
+      <div class="dar dar-dk">كُلُّ عَمَلِ ابْنِ آدَمَ لَهُ إِلَّا الصِّيَامَ فَإِنَّهُ لِي وَأَنَا أَجْزِي بِهِ</div>
+      <div class="dtrans dtrans-dk">"Setiap amalan anak Adam adalah untuknya, kecuali puasa — karena puasa itu untuk-Ku dan Aku-lah yang akan membalasnya."</div>
+      <div class="dref dref-dk">HR. Bukhari (1904) &amp; Muslim (1151) — dari Abu Hurairah radhiyallahu 'anhu · Hadis Qudsi</div>
+    </div>
+  </div>
+
+  <div class="feat-grid">
+    <div class="feat feat-moon">
+      <span class="feat-icon">🌙</span>
+      <div class="feat-title">Pintu Surga Ar-Rayyan</div>
+      <div class="feat-desc">Nabi ﷺ bersabda: "Di surga ada pintu yang disebut Ar-Rayyan. Pada Hari Kiamat, orang-orang yang berpuasa masuk melaluinya — tidak ada yang masuk selain mereka." — HR. Bukhari (1896)</div>
+      <span class="feat-ref">HR. Bukhari (1896) &amp; Muslim (1152)</span>
+    </div>
+    <div class="feat feat-moon">
+      <span class="feat-icon">🛡️</span>
+      <div class="feat-title">Perisai dari Api Neraka</div>
+      <div class="feat-desc">"Puasa adalah perisai (junnah). Apabila salah seorang dari kalian sedang berpuasa, janganlah ia berbuat keji dan jangan pula berteriak-teriak. Jika seseorang mencacinya, hendaklah ia katakan: 'Aku sedang berpuasa.'" — HR. Bukhari (1894)</div>
+      <span class="feat-ref">HR. Bukhari (1894) &amp; Muslim (1151)</span>
+    </div>
+    <div class="feat feat-moon">
+      <span class="feat-icon">😊</span>
+      <div class="feat-title">Dua Kegembiraan</div>
+      <div class="feat-desc">"Orang yang berpuasa memiliki dua kegembiraan: kegembiraan ketika berbuka, dan kegembiraan ketika bertemu Rabbnya." — HR. Bukhari (1904). Kegembiraan pertama di dunia, kegembiraan kedua di akhirat.</div>
+      <span class="feat-ref">HR. Bukhari (1904) &amp; Muslim (1151)</span>
+    </div>
+    <div class="feat feat-moon">
+      <span class="feat-icon">🌿</span>
+      <div class="feat-title">Menggugurkan Dosa Setahun</div>
+      <div class="feat-desc">"Puasa Arafah (9 Dzulhijjah) menghapus dosa setahun yang lalu dan setahun yang akan datang. Puasa Asyura (10 Muharram) menghapus dosa setahun yang lalu." — HR. Muslim (1162)</div>
+      <span class="feat-ref">HR. Muslim (1162) — dari Abu Qatadah</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══ BAB I: PUASA RAMADHAN ══ -->
+<div class="chap">
+  <div class="chap-stripe cs-maroon"></div>
+  <div class="chap-body cb-maroon">
+    <div class="chap-tag ct-maroon">✦ Bab Pertama</div>
+    <div class="chap-ar car-maroon">صِيَامُ رَمَضَانَ — الرُّكْنُ الرَّابِعُ</div>
+    <div class="chap-title">Puasa Ramadhan — Rukun Islam Keempat</div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="prose fl-maroon">
+    <p class="lead">Puasa Ramadhan adalah puasa wajib selama satu bulan penuh — bulan kesembilan dalam kalender Hijriyah. Ia adalah kewajiban yang langsung ditetapkan Al-Qur'an, dikuatkan oleh sunnah Nabi ﷺ, dan menjadi konsensus (ijma') seluruh ulama Islam.</p>
+    <p>Ramadhan adalah bulan yang diturunkan padanya Al-Qur'an, bulan yang di dalamnya ada Lailatul Qadar (malam yang lebih baik dari 1.000 bulan), bulan di mana pintu surga dibuka, pintu neraka ditutup, dan setan-setan dibelenggu. Ia bukan sekadar menahan lapar — ia adalah bulan transformasi jiwa yang paling komprehensif dalam setahun.</p>
+  </div>
+
+  <div class="dalil dalil-m">
+    <div class="dbar-m"></div>
+    <div class="dbody">
+      <div class="dtag dtag-m">📖 QS. Al-Baqarah: 183–185 — Kewajiban Puasa</div>
+      <div class="dar dar-m">يَا أَيُّهَا الَّذِينَ آمَنُوا كُتِبَ عَلَيْكُمُ الصِّيَامُ كَمَا كُتِبَ عَلَى الَّذِينَ مِن قَبْلِكُمْ لَعَلَّكُمْ تَتَّقُونَ ۝ شَهْرُ رَمَضَانَ الَّذِي أُنزِلَ فِيهِ الْقُرْآنُ هُدًى لِّلنَّاسِ وَبَيِّنَاتٍ مِّنَ الْهُدَىٰ وَالْفُرْقَانِ</div>
+      <div class="dtrans">"Wahai orang-orang yang beriman! Diwajibkan atas kamu berpuasa... Bulan Ramadhan adalah (bulan) yang di dalamnya diturunkan Al-Qur'an, sebagai petunjuk bagi manusia dan penjelasan-penjelasan mengenai petunjuk itu dan pembeda (antara yang benar dan yang batil)."</div>
+      <div class="dref dref-m">QS. Al-Baqarah (2): 183 &amp; 185 — Diwajibkan tahun ke-2 Hijriyah</div>
+    </div>
+  </div>
+
+  <!-- Syarat Wajib Puasa -->
+  <p style="font-family:'Outfit',sans-serif;font-weight:700;font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--maroon-d);margin:0 0 12px;">Syarat Wajib Puasa Ramadhan</p>
+
+  <div class="tbl-wrap">
+    <table class="tbl th-m">
+      <thead>
+        <tr>
+          <th style="width:25%">Syarat</th>
+          <th style="width:40%">Penjelasan</th>
+          <th style="width:35%">Catatan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Syarat">Islam</td>
+          <td data-label="Penjelasan">Hanya wajib atas orang Muslim. Kafir tidak diwajibkan — namun akan dihisab di akhirat.</td>
+          <td data-label="Catatan">Murtad wajib qadha jika kembali Islam menurut Syafi'i.</td>
+        </tr>
+        <tr>
+          <td data-label="Syarat">Baligh</td>
+          <td data-label="Penjelasan">Anak yang belum baligh tidak wajib, namun dianjurkan dibiasakan berpuasa sebagai latihan.</td>
+          <td data-label="Catatan">Orang tua dianjurkan membiasakan anak berpuasa sejak dini.</td>
+        </tr>
+        <tr>
+          <td data-label="Syarat">Berakal Sehat</td>
+          <td data-label="Penjelasan">Orang gila (majnun) tidak wajib dan tidak perlu qadha. Orang pikun berat hukumnya sama.</td>
+          <td data-label="Catatan">Jika gila sementara (mabuk), wajib qadha menurut jumhur.</td>
+        </tr>
+        <tr>
+          <td data-label="Syarat">Mampu (tidak ada uzur)</td>
+          <td data-label="Penjelasan">Sakit, perjalanan jauh (safar), hamil/menyusui — memberikan keringanan untuk berbuka dan mengganti.</td>
+          <td data-label="Catatan">QS. Al-Baqarah: 185 — "Allah menghendaki kemudahan bagimu."</td>
+        </tr>
+        <tr>
+          <td data-label="Syarat">Tidak Sedang Haidh/Nifas</td>
+          <td data-label="Penjelasan">Wanita yang haidh atau nifas haram berpuasa dan wajib mengqadha setelah suci.</td>
+          <td data-label="Catatan">HR. Bukhari (304) — penjelasan Aisyah tentang qadha puasa.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Rukun Puasa -->
+  <p style="font-family:'Outfit',sans-serif;font-weight:700;font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--maroon-d);margin:20px 0 12px;">Rukun Puasa</p>
+
+  <div class="step-list">
+    <div class="step-item si-m">
+      <div class="step-num sn-m">١</div>
+      <div class="step-body">
+        <div class="step-title">Niat</div>
+        <div class="step-ar">النِّيَّةُ — بَيَاتُ النِّيَّةِ</div>
+        <div class="step-desc">Niat puasa Ramadhan harus dilakukan setiap malam sebelum fajar (menurut Syafi'i dan Hanbali). Nabi ﷺ bersabda: "Barangsiapa yang tidak berniat puasa sebelum fajar, maka tidak ada puasa baginya." — HR. Abu Dawud (2454) — Shahih.</div>
+        <span class="step-badge sb-m">Rukun — Wajib</span>
+      </div>
+    </div>
+    <div class="step-item si-m">
+      <div class="step-num sn-m">٢</div>
+      <div class="step-body">
+        <div class="step-title">Menahan dari Hal-Hal yang Membatalkan</div>
+        <div class="step-ar">الإِمْسَاكُ عَنِ الْمُفَطِّرَاتِ</div>
+        <div class="step-desc">Menahan diri dari makan, minum, hubungan suami-istri, dan hal-hal lain yang membatalkan — mulai dari terbitnya fajar shadiq (adzan Subuh) hingga terbenamnya matahari (adzan Maghrib).</div>
+        <span class="step-badge sb-m">Rukun — Wajib</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hal yang membatalkan -->
+  <p style="font-family:'Outfit',sans-serif;font-weight:700;font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--maroon-d);margin:20px 0 12px;">Hal-Hal yang Membatalkan Puasa</p>
+
+  <div class="tbl-wrap">
+    <table class="tbl th-m">
+      <thead>
+        <tr>
+          <th style="width:30%">Pembatal</th>
+          <th style="width:40%">Penjelasan</th>
+          <th style="width:30%">Hukum</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Pembatal">Makan &amp; Minum</td>
+          <td data-label="Penjelasan">Sengaja makan atau minum apa pun — walau sedikit — membatalkan puasa. Jika lupa, tidak batal. — HR. Bukhari (6669)</td>
+          <td data-label="Hukum"><span class="tbdg tbdg-m">Batal · Wajib Qadha</span></td>
+        </tr>
+        <tr>
+          <td data-label="Pembatal">Jima' (Hubungan Suami-Istri)</td>
+          <td data-label="Penjelasan">Membatalkan puasa dan wajib kafarat: memerdekakan budak, atau puasa 2 bulan berturut-turut, atau memberi makan 60 orang miskin. — HR. Bukhari (1936)</td>
+          <td data-label="Hukum"><span class="tbdg tbdg-m">Batal · Wajib Kafarat</span></td>
+        </tr>
+        <tr>
+          <td data-label="Pembatal">Muntah Sengaja</td>
+          <td data-label="Penjelasan">Sengaja membuat diri muntah membatalkan puasa. Muntah tidak sengaja tidak membatalkan. — HR. Abu Dawud (2380) — Shahih</td>
+          <td data-label="Hukum"><span class="tbdg tbdg-m">Batal · Wajib Qadha</span></td>
+        </tr>
+        <tr>
+          <td data-label="Pembatal">Keluarnya Mani Sengaja</td>
+          <td data-label="Penjelasan">Masturbasi atau menggesekkan badan hingga keluar mani membatalkan. Mimpi basah tidak membatalkan.</td>
+          <td data-label="Hukum"><span class="tbdg tbdg-m">Batal · Wajib Qadha</span></td>
+        </tr>
+        <tr>
+          <td data-label="Pembatal">Haidh &amp; Nifas</td>
+          <td data-label="Penjelasan">Bila haidh atau nifas datang walau sesaat sebelum Maghrib, puasa hari itu batal dan wajib diqadha.</td>
+          <td data-label="Hukum"><span class="tbdg tbdg-m">Batal · Wajib Qadha</span></td>
+        </tr>
+        <tr>
+          <td data-label="Pembatal">Murtad</td>
+          <td data-label="Penjelasan">Keluar dari Islam membatalkan seluruh amal, termasuk puasa.</td>
+          <td data-label="Hukum"><span class="tbdg tbdg-m">Batal</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="hl hl-m">
+    <div class="hl-label hll-m">✦ Yang TIDAK Membatalkan Puasa</div>
+    <div class="hl-trans">Makan atau minum karena lupa (HR. Bukhari 6669) · Sikat gigi tanpa tertelan · Berkumur tanpa tertelan · Mandi · Suntikan yang tidak bertujuan memberi nutrisi · Tetes mata/telinga (menurut pendapat kuat) · Mencicipi makanan tanpa menelan · Mencium/memeluk pasangan tanpa syahwat (bagi yang bisa mengendalikan) · Menangis · Mimpi basah</div>
+  </div>
+</div>
+
+<!-- ══ BAB II: SAHUR DAN BERBUKA ══ -->
+<div class="chap">
+  <div class="chap-stripe cs-teal"></div>
+  <div class="chap-body cb-teal">
+    <div class="chap-tag ct-teal">✦ Bab Kedua</div>
+    <div class="chap-ar car-teal">السُّحُورُ وَالإِفْطَارُ</div>
+    <div class="chap-title">Sahur &amp; Berbuka — Sunnah &amp; Doa Lengkap</div>
+  </div>
+</div>
+
+<div class="sec">
+  <!-- Sahur -->
+  <p style="font-family:'Outfit',sans-serif;font-weight:700;font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin:0 0 12px;">Sahur — Makan Sebelum Fajar</p>
+
+  <div class="dalil dalil-t">
+    <div class="dbar-t"></div>
+    <div class="dbody">
+      <div class="dtag dtag-t">📜 HR. Bukhari &amp; Muslim — Sahur adalah Berkah</div>
+      <div class="dar dar-t">تَسَحَّرُوا فَإِنَّ فِي السَّحُورِ بَرَكَةً</div>
+      <div class="dtrans">"Makan sahurlah kalian, karena sesungguhnya dalam sahur terdapat berkah."</div>
+      <div class="dref dref-t">HR. Bukhari (1923) &amp; Muslim (1095) — dari Anas bin Malik radhiyallahu 'anhu</div>
+    </div>
+  </div>
+
+  <div class="hl hl-t">
+    <div class="hl-label hll-t">✦ Sunnah-Sunnah Sahur</div>
+    <div class="hl-trans">Mengakhirkan sahur hingga mendekati adzan Subuh (namun berhenti saat adzan) · Makan kurma atau air putih jika tidak ada makanan lain · Membaca basmallah saat mulai makan · Berdoa setelah makan · Berhenti sebelum kekenyangan</div>
+    <div class="hl-ref hlr-t">HR. Ahmad (22030) — "Sebaik-baik sahur mukmin adalah kurma" · HR. Abu Dawud</div>
+  </div>
+
+  <!-- Berbuka -->
+  <p style="font-family:'Outfit',sans-serif;font-weight:700;font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin:20px 0 12px;">Berbuka — Iftar</p>
+
+  <div class="dalil dalil-t">
+    <div class="dbar-t"></div>
+    <div class="dbody">
+      <div class="dtag dtag-t">📜 HR. Bukhari — Menyegerakan Berbuka</div>
+      <div class="dar dar-t">لَا يَزَالُ النَّاسُ بِخَيْرٍ مَا عَجَّلُوا الْفِطْرَ</div>
+      <div class="dtrans">"Manusia senantiasa berada dalam kebaikan selama mereka menyegerakan berbuka (saat waktu Maghrib telah masuk)."</div>
+      <div class="dref dref-t">HR. Bukhari (1957) &amp; Muslim (1098) — dari Sahl bin Sa'd radhiyallahu 'anhu</div>
+    </div>
+  </div>
+
+  <!-- Doa berbuka -->
+  <p style="font-family:'Outfit',sans-serif;font-weight:700;font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin:20px 0 12px;">Doa Berbuka Puasa</p>
+
+  <div class="step-list">
+    <div class="step-item si-t">
+      <div class="step-num sn-t">١</div>
+      <div class="step-body">
+        <div class="step-title">Doa Berbuka — Pilihan 1 (Paling Shahih)</div>
+        <div class="step-ar">اللَّهُمَّ لَكَ صُمْتُ وَبِكَ آمَنْتُ وَعَلَى رِزْقِكَ أَفْطَرْتُ</div>
+        <div class="step-desc"><em style="font-style:italic;color:var(--teal);">Allāhumma laka shumtu wa bika āmantu wa 'alā rizqika afthartu</em><br>"Ya Allah, karena-Mu aku berpuasa, kepada-Mu aku beriman, dan dengan rezeki-Mu aku berbuka."</div>
+        <span class="step-badge sb-t">HR. Abu Dawud (2358) — Hasan</span>
+      </div>
+    </div>
+    <div class="step-item si-t">
+      <div class="step-num sn-t">٢</div>
+      <div class="step-body">
+        <div class="step-title">Doa Berbuka — Pilihan 2 (Populer)</div>
+        <div class="step-ar">ذَهَبَ الظَّمَأُ وَابْتَلَّتِ الْعُرُوقُ وَثَبَتَ الْأَجْرُ إِن شَاءَ اللَّهُ</div>
+        <div class="step-desc"><em style="font-style:italic;color:var(--teal);">Dzahabadh-dhama'u wabtallatil-'urūqu wa tsabatal-ajru insyā'allāh</em><br>"Telah hilang rasa haus, telah basah urat-urat, dan telah tetap pahala — insyā'allāh."</div>
+        <span class="step-badge sb-t">HR. Abu Dawud (2357) — dari Ibnu Umar — Hasan</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hl hl-t">
+    <div class="hl-label hll-t">✦ Sunnah Berbuka</div>
+    <div class="hl-trans">Segera berbuka saat waktu Maghrib masuk · Berbuka dengan kurma ganjil (1, 3, 5 butir) · Jika tidak ada kurma, dengan air putih · Membaca bismillah · Berdoa dengan doa berbuka · Shalat Maghrib sebelum makan banyak (jika memungkinkan)</div>
+    <div class="hl-ref hlr-t">HR. Tirmidzi (696) — "Nabi ﷺ berbuka dengan ruthab (kurma segar) sebelum shalat"</div>
+  </div>
+</div>
+
+<!-- ══ BAB III: SUNNAH RAMADHAN ══ -->
+<div class="chap">
+  <div class="chap-stripe cs-sage"></div>
+  <div class="chap-body cb-sage">
+    <div class="chap-tag ct-sage">✦ Bab Ketiga</div>
+    <div class="chap-ar car-sage">سُنَنُ رَمَضَانَ وَفَضَائِلُهُ</div>
+    <div class="chap-title">Sunnah-Sunnah Ramadhan &amp; Keutamaannya</div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="prose fl-sage sage-lead">
+    <p class="lead">Ramadhan bukan sekadar menahan makan-minum. Ia adalah bulan program ibadah menyeluruh yang Nabi ﷺ contohkan dengan sangat detail — dari shalat tarawih hingga memperbanyak sedekah, dari i'tikaf hingga membaca Al-Qur'an.</p>
+  </div>
+
+  <div class="feat-grid">
+    <div class="feat feat-s">
+      <span class="feat-icon">🕌</span>
+      <div class="feat-title">Shalat Tarawih</div>
+      <div class="feat-desc">Shalat sunnah malam Ramadhan yang sangat dianjurkan. Nabi ﷺ mengerjakannya berjamaah lalu mengkhawatirkan dikira wajib, sehingga dikerjakan sendiri-sendiri. Umar bin Khattab mengumpulkan kembali di belakang Ubay bin Ka'ab dengan 11 rakaat.</div>
+      <span class="feat-ref">HR. Bukhari (2012) · 11 rakaat menurut Aisyah</span>
+    </div>
+    <div class="feat feat-s">
+      <span class="feat-icon">📖</span>
+      <div class="feat-title">Khatam Al-Qur'an</div>
+      <div class="feat-desc">Nabi ﷺ dan Jibril saling menyetor Al-Qur'an setiap malam Ramadhan. Pada tahun terakhir diulangi dua kali. Ramadhan adalah bulan Al-Qur'an — sangat dianjurkan memperbanyak tilawah.</div>
+      <span class="feat-ref">HR. Bukhari (3220) — Mudarasah Jibril</span>
+    </div>
+    <div class="feat feat-s">
+      <span class="feat-icon">💝</span>
+      <div class="feat-title">Memperbanyak Sedekah</div>
+      <div class="feat-desc">Nabi ﷺ adalah orang yang paling dermawan, dan kedermawanannya meningkat di bulan Ramadhan — "seperti angin yang berhembus." Memberi makan orang berbuka mendapat pahala seperti yang berpuasa.</div>
+      <span class="feat-ref">HR. Bukhari (1902) · HR. Tirmidzi (807)</span>
+    </div>
+    <div class="feat feat-s">
+      <span class="feat-icon">🏕️</span>
+      <div class="feat-title">I'tikaf 10 Hari Terakhir</div>
+      <div class="feat-desc">Nabi ﷺ selalu beri'tikaf di 10 hari terakhir Ramadhan mencari Lailatul Qadar. I'tikaf adalah menetap di masjid dengan niat ibadah, menahan dari keluar kecuali hajat.</div>
+      <span class="feat-ref">HR. Bukhari (2025) &amp; Muslim (1167)</span>
+    </div>
+    <div class="feat feat-s">
+      <span class="feat-icon">⭐</span>
+      <div class="feat-title">Lailatul Qadar</div>
+      <div class="feat-desc">"Carilah Lailatul Qadar di malam-malam ganjil dari 10 terakhir Ramadhan." — HR. Bukhari (2017). Malam ini lebih baik dari 1.000 bulan (QS. Al-Qadr: 3). Doa yang diajarkan Nabi ﷺ: Allāhumma innaka 'afuwwun tuhibbul-'afwa fa'fu 'annī.</div>
+      <span class="feat-ref">HR. Tirmidzi (3513) — Doa Lailatul Qadar</span>
+    </div>
+    <div class="feat feat-s">
+      <span class="feat-icon">🌙</span>
+      <div class="feat-title">Qiyamul Lail (Tahajud)</div>
+      <div class="feat-desc">"Barangsiapa shalat malam Ramadhan dengan iman dan mengharap pahala, dosanya yang telah lalu diampuni." — HR. Bukhari (2009). Bangun sepertiga malam terakhir untuk shalat dan berdoa adalah amalan paling dianjurkan Ramadhan.</div>
+      <span class="feat-ref">HR. Bukhari (2009) &amp; Muslim (759)</span>
+    </div>
+  </div>
+
+  <div class="dalil dalil-s">
+    <div class="dbar-s"></div>
+    <div class="dbody">
+      <div class="dtag dtag-s">📜 HR. Muslim — Barangsiapa Menghidupkan Ramadhan</div>
+      <div class="dar dar-s">مَنْ قَامَ رَمَضَانَ إِيمَانًا وَاحْتِسَابًا غُفِرَ لَهُ مَا تَقَدَّمَ مِنْ ذَنْبِهِ</div>
+      <div class="dtrans">"Barangsiapa menghidupkan (shalat malam) Ramadhan dengan iman dan mengharap pahala, dosanya yang telah lalu diampuni."</div>
+      <div class="dref dref-s">HR. Bukhari (2009) &amp; Muslim (759) — dari Abu Hurairah radhiyallahu 'anhu</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ BAB IV: QADHA, FIDYAH, KAFARAT ══ -->
+<div class="chap">
+  <div class="chap-stripe cs-maroon"></div>
+  <div class="chap-body cb-maroon">
+    <div class="chap-tag ct-maroon">✦ Bab Keempat</div>
+    <div class="chap-ar car-maroon">الْقَضَاءُ وَالْفِدْيَةُ وَالْكَفَّارَةُ</div>
+    <div class="chap-title">Qadha, Fidyah &amp; Kafarat — Hukum Mengganti Puasa</div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="tbl-wrap">
+    <table class="tbl th-m">
+      <thead>
+        <tr>
+          <th style="width:22%">Kondisi</th>
+          <th style="width:20%">Hukum Puasa</th>
+          <th style="width:30%">Kewajiban Ganti</th>
+          <th style="width:28%">Dalil</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Kondisi">Sakit (yang bisa sembuh)</td>
+          <td data-label="Hukum Puasa"><span class="tbdg tbdg-moon">Boleh berbuka</span></td>
+          <td data-label="Kewajiban">Qadha sejumlah hari yang ditinggal</td>
+          <td data-label="Dalil">QS. Al-Baqarah: 185 · HR. Bukhari</td>
+        </tr>
+        <tr>
+          <td data-label="Kondisi">Safar (perjalanan ≥89 km)</td>
+          <td data-label="Hukum Puasa"><span class="tbdg tbdg-moon">Boleh berbuka</span></td>
+          <td data-label="Kewajiban">Qadha sejumlah hari yang ditinggal</td>
+          <td data-label="Dalil">QS. Al-Baqarah: 185</td>
+        </tr>
+        <tr>
+          <td data-label="Kondisi">Hamil / Menyusui (khawatir bayi)</td>
+          <td data-label="Hukum Puasa"><span class="tbdg tbdg-moon">Boleh berbuka</span></td>
+          <td data-label="Kewajiban">Qadha (jumhur) / Fidyah + Qadha (Syafi'i jika khawatir anak)</td>
+          <td data-label="Dalil">HR. Abu Dawud (2408) — Hasan</td>
+        </tr>
+        <tr>
+          <td data-label="Kondisi">Sakit Menahun / Lansia</td>
+          <td data-label="Hukum Puasa"><span class="tbdg tbdg-moon">Boleh berbuka</span></td>
+          <td data-label="Kewajiban">Fidyah saja (tidak perlu qadha): memberi makan 1 orang miskin per hari</td>
+          <td data-label="Dalil">QS. Al-Baqarah: 184 · Tafsir Ibnu Abbas</td>
+        </tr>
+        <tr>
+          <td data-label="Kondisi">Sengaja membatalkan tanpa uzur</td>
+          <td data-label="Hukum Puasa"><span class="tbdg tbdg-m">Dosa Besar</span></td>
+          <td data-label="Kewajiban">Qadha (wajib) — dan bagi yang jima': Kafarat</td>
+          <td data-label="Dalil">HR. Bukhari (1936) — Kafarat jima'</td>
+        </tr>
+        <tr>
+          <td data-label="Kondisi">Haidh / Nifas</td>
+          <td data-label="Hukum Puasa"><span class="tbdg tbdg-m">Haram puasa</span></td>
+          <td data-label="Kewajiban">Qadha wajib setelah suci</td>
+          <td data-label="Dalil">HR. Bukhari (304) — Aisyah</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="hl hl-m" style="margin-top:8px;">
+    <div class="hl-label hll-m">✦ Besaran Fidyah</div>
+    <div class="hl-trans">Fidyah adalah memberi makan satu orang miskin untuk setiap satu hari puasa yang ditinggalkan. Besarannya: 1 mud (± 750 gram) makanan pokok (beras, gandum, dll.) per hari. Boleh diberikan bersamaan di akhir Ramadhan. Nilai dalam rupiah disesuaikan dengan harga bahan pokok setempat (±Rp 15.000–25.000 per hari menurut berbagai fatwa ulama Indonesia).</div>
+    <div class="hl-ref hlr-m">QS. Al-Baqarah (2): 184 · Fatwa MUI · BAZNAS</div>
+  </div>
+</div>
+
+<!-- ══ BAB V: PUASA SUNNAH ══ -->
+<div class="chap">
+  <div class="chap-stripe cs-teal"></div>
+  <div class="chap-body cb-teal">
+    <div class="chap-tag ct-teal">✦ Bab Kelima</div>
+    <div class="chap-ar car-teal">صِيَامُ التَّطَوُّعِ</div>
+    <div class="chap-title">Puasa-Puasa Sunnah — Jadwal &amp; Keutamaannya</div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="prose fl-teal teal-lead">
+    <p class="lead">Di luar Ramadhan, terdapat puasa-puasa sunnah yang dicontohkan Nabi ﷺ dengan berbagai keutamaan luar biasa. Bagi yang rajin mengamalkan puasa sunnah, pahalanya berlipat-ganda dan seluruh hidupnya menjadi dipenuhi ibadah.</p>
+  </div>
+
+  <div class="tbl-wrap">
+    <table class="tbl th-t">
+      <thead>
+        <tr>
+          <th style="width:28%">Jenis Puasa Sunnah</th>
+          <th style="width:22%">Waktu</th>
+          <th style="width:50%">Keutamaan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Jenis">Puasa Senin-Kamis</td>
+          <td data-label="Waktu">Setiap Senin &amp; Kamis</td>
+          <td data-label="Keutamaan">"Amal-amal diangkat pada hari Senin dan Kamis, dan aku suka amalku diangkat dalam keadaan aku berpuasa." — HR. Tirmidzi (747). Pintu surga dibuka pada kedua hari ini.</td>
+        </tr>
+        <tr>
+          <td data-label="Jenis">Puasa Ayyamul Bidh</td>
+          <td data-label="Waktu">13, 14, 15 setiap bulan Hijriyah</td>
+          <td data-label="Keutamaan">"Puasa tiga hari setiap bulan seperti puasa seluruh masa." — HR. Bukhari (1979). Pahalanya dilipatgandakan 10× hingga setara puasa sebulan penuh.</td>
+        </tr>
+        <tr>
+          <td data-label="Jenis">Puasa Syawal (6 hari)</td>
+          <td data-label="Waktu">Syawal (setelah Ramadhan)</td>
+          <td data-label="Keutamaan">"Barangsiapa berpuasa Ramadhan kemudian mengikutinya dengan 6 hari Syawal, maka seperti puasa sepanjang tahun." — HR. Muslim (1164).</td>
+        </tr>
+        <tr>
+          <td data-label="Jenis">Puasa Arafah</td>
+          <td data-label="Waktu">9 Dzulhijjah</td>
+          <td data-label="Keutamaan">"Menghapus dosa setahun yang lalu dan setahun yang akan datang." — HR. Muslim (1162). Hanya untuk yang tidak sedang berhaji.</td>
+        </tr>
+        <tr>
+          <td data-label="Jenis">Puasa Asyura</td>
+          <td data-label="Waktu">10 Muharram (+ 9 atau 11)</td>
+          <td data-label="Keutamaan">"Menghapus dosa setahun yang lalu." — HR. Muslim (1162). Dianjurkan ditambah sehari sebelum atau sesudah untuk membedakan dari Yahudi.</td>
+        </tr>
+        <tr>
+          <td data-label="Jenis">Puasa Dawud</td>
+          <td data-label="Waktu">Selang-seling (1 hari puasa, 1 hari tidak)</td>
+          <td data-label="Keutamaan">"Puasa yang paling dicintai Allah adalah puasa Dawud — setengah tahun." — HR. Bukhari (1979). Puasa sunnah paling utama.</td>
+        </tr>
+        <tr>
+          <td data-label="Jenis">Puasa Muharram</td>
+          <td data-label="Waktu">Sepanjang bulan Muharram</td>
+          <td data-label="Keutamaan">"Sebaik-baik puasa setelah Ramadhan adalah puasa di bulan Allah — Muharram." — HR. Muslim (1163).</td>
+        </tr>
+        <tr>
+          <td data-label="Jenis">Puasa Sya'ban</td>
+          <td data-label="Waktu">Bulan Sya'ban (banyak)</td>
+          <td data-label="Keutamaan">Nabi ﷺ berpuasa lebih banyak di bulan Sya'ban dari bulan lainnya selain Ramadhan. — HR. Bukhari (1969) dari 'Aisyah.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="dalil dalil-t">
+    <div class="dbar-t"></div>
+    <div class="dbody">
+      <div class="dtag dtag-t">📜 HR. Muslim — Puasa Syawal seperti Puasa Setahun</div>
+      <div class="dar dar-t">مَنْ صَامَ رَمَضَانَ ثُمَّ أَتْبَعَهُ سِتًّا مِنْ شَوَّالٍ كَانَ كَصِيَامِ الدَّهْرِ</div>
+      <div class="dtrans">"Barangsiapa berpuasa Ramadhan kemudian mengikutinya dengan puasa enam hari di bulan Syawal, maka ia seperti berpuasa sepanjang tahun."</div>
+      <div class="dref dref-t">HR. Muslim (1164) — dari Abu Ayyub Al-Anshari radhiyallahu 'anhu</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ BAB VI: PUASA YANG DILARANG ══ -->
+<div class="chap">
+  <div class="chap-stripe cs-maroon"></div>
+  <div class="chap-body cb-maroon">
+    <div class="chap-tag ct-maroon">⚠ Bab Keenam</div>
+    <div class="chap-ar car-maroon">الصِّيَامُ الْمَنْهِيُّ عَنْهُ</div>
+    <div class="chap-title">Puasa yang Dilarang &amp; Dimakruhkan</div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="tbl-wrap">
+    <table class="tbl th-m">
+      <thead>
+        <tr>
+          <th style="width:30%">Jenis Puasa</th>
+          <th style="width:20%">Hukum</th>
+          <th style="width:50%">Penjelasan &amp; Dalil</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Jenis">Hari Idul Fitri (1 Syawal)</td>
+          <td data-label="Hukum"><span class="tbdg tbdg-m">Haram</span></td>
+          <td data-label="Penjelasan">Nabi ﷺ melarang puasa pada dua hari Id. — HR. Bukhari (1990). Ini adalah hari makan dan minum serta merayakan nikmat Allah.</td>
+        </tr>
+        <tr>
+          <td data-label="Jenis">Hari Idul Adha (10 Dzulhijjah)</td>
+          <td data-label="Hukum"><span class="tbdg tbdg-m">Haram</span></td>
+          <td data-label="Penjelasan">HR. Muslim (1137) — dilarang puasa pada hari-hari penyembelihan. Ini adalah hari makan daging qurban.</td>
+        </tr>
+        <tr>
+          <td data-label="Jenis">Hari Tasyrik (11, 12, 13 Dzulhijjah)</td>
+          <td data-label="Hukum"><span class="tbdg tbdg-m">Haram</span></td>
+          <td data-label="Penjelasan">"Hari-hari Tasyrik adalah hari makan, minum, dan mengingat Allah." — HR. Muslim (1141). Tiga hari setelah Idul Adha tidak boleh dipuasakan kecuali bagi yang tidak mendapat hewan qurban saat haji tamattu'.</td>
+        </tr>
+        <tr>
+          <td data-label="Jenis">Puasa Wishal (sambung tanpa buka)</td>
+          <td data-label="Hukum"><span class="tbdg tbdg-m">Dilarang</span></td>
+          <td data-label="Penjelasan">Puasa yang disambung tanpa berbuka sama sekali. Nabi ﷺ melakukannya namun melarang umatnya. — HR. Bukhari (1962). Khusus untuk beliau saja.</td>
+        </tr>
+        <tr>
+          <td data-label="Jenis">Puasa Hari Jumat Saja</td>
+          <td data-label="Hukum"><span class="tbdg tbdg-gray">Makruh</span></td>
+          <td data-label="Penjelasan">"Jangan berpuasa pada hari Jumat kecuali kamu juga berpuasa sehari sebelum atau sesudahnya." — HR. Bukhari (1985). Boleh jika bersamaan dengan puasa sunnah lain (Senin-Kamis, dsb.).</td>
+        </tr>
+        <tr>
+          <td data-label="Jenis">Puasa Hari Syak (30 Sya'ban)</td>
+          <td data-label="Hukum"><span class="tbdg tbdg-gray">Makruh/Haram</span></td>
+          <td data-label="Penjelasan">Hari ke-30 Sya'ban yang belum jelas apakah sudah masuk Ramadhan. Nabi ﷺ melarang mendahului Ramadhan dengan puasa 1-2 hari. — HR. Bukhari (1983).</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══ BAB VII: HIKMAH PUASA ══ -->
+<div class="chap">
+  <div class="chap-stripe cs-night"></div>
+  <div class="chap-body cb-night">
+    <div class="chap-tag ct-night">✦ Bab Ketujuh — Penutup</div>
+    <div class="chap-ar car-night">حِكْمَةُ الصِّيَامِ — لَعَلَّكُمْ تَتَّقُونَ</div>
+    <div class="chap-title ct-night-title">Hikmah Agung di Balik Perintah Puasa</div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="prose fl-moon">
+    <p class="lead">Allah tidak mewajibkan puasa tanpa hikmah. Kalimat penutup dalam ayat kewajiban puasa — "la'allakum tattaqūn" (agar kalian bertakwa) — sudah menjawab semuanya. Tapi hikmah puasa jauh lebih luas dari sekadar kata itu.</p>
+  </div>
+
+  <div class="feat-grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr));">
+    <div class="feat feat-moon">
+      <span class="feat-icon">🧠</span>
+      <div class="feat-title">Melatih Pengendalian Diri</div>
+      <div class="feat-desc">Orang yang mampu menahan makan ketika lapar akan lebih mudah menahan diri dari dosa. Puasa adalah latihan jiwa terbesar. Nabi ﷺ: "Bukan puasa dari makanan saja, tapi dari ucapan kotor dan perbuatan buruk."</div>
+    </div>
+    <div class="feat feat-moon">
+      <span class="feat-icon">❤️</span>
+      <div class="feat-title">Menumbuhkan Empati</div>
+      <div class="feat-desc">Merasakan lapar dan haus membuat seseorang mengerti betapa beratnya kondisi orang miskin yang kelaparan setiap hari. Puasa adalah jembatan sosial antara yang kaya dan miskin.</div>
+    </div>
+    <div class="feat feat-moon">
+      <span class="feat-icon">🏥</span>
+      <div class="feat-title">Manfaat Kesehatan</div>
+      <div class="feat-desc">Ilmu kedokteran modern mengkonfirmasi: puasa mengaktifkan autofagi (pembersihan sel-sel rusak), mengurangi peradangan, menstabilkan gula darah, dan membersihkan sistem pencernaan. Islam sudah mengetahui ini 14 abad yang lalu.</div>
+    </div>
+    <div class="feat feat-moon">
+      <span class="feat-icon">🕌</span>
+      <div class="feat-title">Membangun Solidaritas Umat</div>
+      <div class="feat-desc">Seluruh umat Islam di seluruh dunia berpuasa bersama dalam satu bulan yang sama — membangun rasa persatuan, kebersamaan, dan identitas kolektif yang tidak dimiliki ibadah lain dengan cara serupa.</div>
+    </div>
+    <div class="feat feat-moon">
+      <span class="feat-icon">🔑</span>
+      <div class="feat-title">Pengampunan Dosa</div>
+      <div class="feat-desc">"Barangsiapa berpuasa Ramadhan dengan iman dan mengharap pahala, dosanya yang telah lalu diampuni." — HR. Bukhari (38). Ramadhan adalah kesempatan terbesar dalam setahun untuk mendapat ampunan total dari Allah.</div>
+    </div>
+    <div class="feat feat-moon">
+      <span class="feat-icon">✨</span>
+      <div class="feat-title">Memurnikan Keikhlasan</div>
+      <div class="feat-desc">Puasa adalah ibadah yang tidak bisa dilihat manusia. Seseorang bisa saja makan sembunyi-sembunyi. Namun ia tidak melakukannya — hanya karena Allah. Inilah ikhlas yang sesungguhnya: beribadah tanpa ada yang menyaksikan kecuali Allah.</div>
+    </div>
+  </div>
+
+  <div class="banner banner-dk">
+    <div class="ban-ar bnar-dk">الصِّيَامُ جُنَّةٌ مِنَ النَّارِ كَجُنَّةِ أَحَدِكُمْ مِنَ الْقِتَالِ</div>
+    <div class="ban-id bnid-dk">"Puasa adalah perisai dari api neraka seperti perisai seseorang dari kalian dalam peperangan." — Nabi ﷺ menggambarkan puasa sebagai tameng perlindungan dari neraka. Selama seseorang berpuasa dengan benar, ia berada dalam perlindungan Allah dari api neraka.</div>
+    <div class="ban-ref bnref-dk">HR. Ahmad (21740) &amp; Nasā'i (2231) — dari Utsman bin Abi Al-'Ash — Shahih</div>
+  </div>
+</div>
+
+</div><!-- end body-wrap -->
+
+<!-- ══════ PENUTUP ══════ -->
+<div class="penutup">
+  <div class="penutup-inner">
+    <div class="penutup-ar">رُبَّ صَائِمٍ لَيْسَ لَهُ مِنْ صِيَامِهِ إِلَّا الْجُوعُ</div>
+    <div class="penutup-div"></div>
+    <p class="penutup-p">"Betapa banyak orang yang berpuasa, namun tidak mendapat apa-apa dari puasanya kecuali rasa lapar." — HR. Ibnu Majah (1690). Peringatan ini mengajarkan bahwa puasa yang diterima Allah bukan sekadar menahan makan-minum — ia adalah puasa yang menjaga lisan, pandangan, pikiran, dan hati dari segala dosa.</p>
+    <p class="penutup-p" style="margin-top:12px;">Semoga Allah menjadikan kita termasuk golongan yang puasanya diterima, yang dosanya diampuni, dan yang berhak masuk surga melalui pintu Ar-Rayyan. Āmīn yā Rabbal 'Ālamīn.</p>
+    <div class="penutup-div"></div>
+    <div class="dalil dalil-dk" style="text-align:left;">
+      <div class="dbar-dk"></div>
+      <div class="dbody">
+        <div class="dtag dtag-dk">📜 Doa di Lailatul Qadar — yang Diajarkan Nabi ﷺ sendiri</div>
+        <div class="dar dar-dk">اللَّهُمَّ إِنَّكَ عَفُوٌّ تُحِبُّ الْعَفْوَ فَاعْفُ عَنِّي</div>
+        <div class="dtrans dtrans-dk">"Ya Allah, sesungguhnya Engkau Maha Pemaaf, Engkau mencintai pemaafan, maka maafkanlah aku."</div>
+        <div class="dref dref-dk">HR. Tirmidzi (3513) &amp; Ibnu Majah (3850) — dari 'Aisyah — Shahih · Doa terbaik untuk 10 malam terakhir Ramadhan</div>
+      </div>
+    </div>
+    <div class="penutup-footer">
+      <div class="logo">كِتَابُ الصِّيَامِ</div>
+      <div class="tag">وَاللّٰهُ أَعْلَمُ بِالصَّوَابِ · Semoga Bermanfaat</div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ══ STAR FIELD ══ */
+const canvas=document.getElementById('canvas');
+const ctx=canvas.getContext('2d');
+let W,H,stars=[];
+
+function resize(){W=canvas.width=innerWidth;H=canvas.height=innerHeight;}
+
+function init(){
+  stars=[];
+  for(let i=0;i<350;i++){
+    const gold=Math.random()<.06;
+    const blue=Math.random()<.08;
+    stars.push({
+      x:Math.random()*W,y:Math.random()*H,
+      r:Math.random()*(gold?2.2:1.6)+.2,
+      a:Math.random()*.7+.1,
+      sp:Math.random()*.4+.06,
+      ph:Math.random()*Math.PI*2,
+      gold,blue
+    });
+  }
+}
+
+let t=0;
+function draw(){
+  ctx.clearRect(0,0,W,H);
+  t+=.007;
+  stars.forEach(s=>{
+    const p=Math.sin(t*s.sp+s.ph)*.32+.68;
+    ctx.beginPath();
+    ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+    if(s.gold){
+      ctx.fillStyle=`rgba(240,210,80,${s.a*p})`;
+      if(s.r>1.5){ctx.shadowBlur=5;ctx.shadowColor='rgba(240,210,80,.5)';}
+    }else if(s.blue){
+      ctx.fillStyle=`rgba(120,160,255,${s.a*p})`;
+      ctx.shadowBlur=0;
+    }else{
+      ctx.fillStyle=`rgba(220,228,255,${s.a*p})`;
+      ctx.shadowBlur=0;
+    }
+    ctx.fill();
+    ctx.shadowBlur=0;
+  });
+
+  /* Occasional meteor */
+  if(Math.random()<.003){
+    const x=Math.random()*W*.7,y=Math.random()*H*.35;
+    const ang=Math.PI/5.5+(Math.random()-.5)*.2;
+    const len=Math.random()*100+50;
+    const g=ctx.createLinearGradient(x,y,x+Math.cos(ang)*len,y+Math.sin(ang)*len);
+    g.addColorStop(0,'rgba(240,210,80,0)');
+    g.addColorStop(.6,'rgba(240,210,80,.5)');
+    g.addColorStop(1,'rgba(255,255,255,.9)');
+    ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x+Math.cos(ang)*len,y+Math.sin(ang)*len);
+    ctx.strokeStyle=g;ctx.lineWidth=1.4;ctx.stroke();
+  }
+  requestAnimationFrame(draw);
+}
+
+window.addEventListener('resize',()=>{resize();init();});
+resize();init();draw();
+</script>
+</body>
+</html>

@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kitab Hibah & Wasiat — Fiqh Pemberian dalam Islam</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,600&family=Amiri:ital,wght@0,400;0,700;1,400&family=Figtree:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+
+:root{
+  --vellum:    #f5f0e2;
+  --parch:     #ede6cc;
+  --parch-d:   #e2d8b8;
+  --parch-dd:  #d4c8a0;
+  --aged:      #c4b488;
+  --line:      rgba(180,160,100,.3);
+  --ink:       #0e0c08;
+  --ink-mid:   #1e1a10;
+  --ink-soft:  #4a4228;
+  --sepia:     #6e5c30;
+  --sepia-lt:  #9a8050;
+  --seal:      #7a1818;
+  --seal-d:    #5a1010;
+  --seal-lt:   #a82828;
+  --seal-pale: #f8eaea;
+  --gold:      #a87810;
+  --gold-lt:   #c89828;
+  --gold-pale: #faf0d0;
+  --cobalt:    #1a2860;
+  --cobalt-d:  #101840;
+  --cobalt-lt: #2a3c88;
+  --cobalt-p:  #e8ecf8;
+  --sage:      #2a5030;
+  --sage-lt:   #3a7048;
+  --sage-p:    #e4f0e8;
+  --b-seal:    rgba(122,24,24,.18);
+  --b-gold:    rgba(168,120,16,.18);
+  --b-cobalt:  rgba(26,40,96,.15);
+  --b-sage:    rgba(42,80,48,.15);
+  --b-ink:     rgba(14,12,8,.12);
+}
+
+html{scroll-behavior:smooth;}
+body{
+  background:var(--vellum);
+  font-family:'IM Fell English',Georgia,serif;
+  color:var(--ink);
+  overflow-x:hidden;
+  /* Paper grain texture */
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
+}
+
+/* Ruled lines overlay 
+body::before{
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:repeating-linear-gradient(
+    0deg,
+    transparent,transparent 31px,
+    var(--line) 31px,var(--line) 32px
+  );
+}*/
+
+/* ══════════════════════════════
+   HERO — GRAND DOCUMENT HEADER
+══════════════════════════════ */
+.hero{
+  position:relative;z-index:1;
+  min-height:100vh;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% 30%,rgba(110,92,48,.12) 0%,transparent 65%),
+    linear-gradient(180deg,#1a150a 0%,#241c0c 25%,#2e240e 50%,#1e1808 75%,#0e0c06 100%);
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;
+  padding:80px 24px 120px;
+  overflow:hidden;
+}
+
+/* Document frame */
+.hero-frame{
+  position:absolute;
+  inset:20px;
+  border:1px solid rgba(168,120,16,.25);
+  pointer-events:none;
+}
+.hero-frame::before,.hero-frame::after{
+  content:'';position:absolute;
+  width:60px;height:60px;
+  border:2px solid rgba(168,120,16,.4);
+}
+.hero-frame::before{top:-1px;left:-1px;border-right:none;border-bottom:none;}
+.hero-frame::after{bottom:-1px;right:-1px;border-left:none;border-top:none;}
+
+.hero-corner-br,.hero-corner-tl{
+  position:absolute;width:60px;height:60px;
+  border:2px solid rgba(168,120,16,.4);
+}
+.hero-corner-br{bottom:-1px;left:-1px;border-right:none;border-top:none;}
+.hero-corner-tl{top:-1px;right:-1px;border-left:none;border-bottom:none;}
+
+/* Wax seal decoration */
+.seal-deco{
+  position:absolute;
+  top:clamp(30px,5vw,60px);
+  right:clamp(30px,6vw,80px);
+  width:clamp(60px,8vw,100px);
+  height:clamp(60px,8vw,100px);
+  border-radius:50%;
+  background:radial-gradient(circle at 40% 35%,var(--seal-lt),var(--seal),var(--seal-d));
+  box-shadow:
+    inset 0 2px 4px rgba(255,255,255,.15),
+    inset 0 -2px 4px rgba(0,0,0,.3),
+    0 4px 16px rgba(122,24,24,.4),
+    0 2px 6px rgba(0,0,0,.4);
+  display:flex;align-items:center;justify-content:center;
+  animation:sealGlow 4s ease-in-out infinite alternate;
+}
+.seal-deco::after{
+  content:'☽';
+  font-size:clamp(1.2rem,2.5vw,2rem);
+  color:rgba(255,240,220,.7);
+  text-shadow:0 0 8px rgba(255,200,150,.4);
+}
+@keyframes sealGlow{
+  from{box-shadow:inset 0 2px 4px rgba(255,255,255,.15),0 4px 16px rgba(122,24,24,.4),0 2px 6px rgba(0,0,0,.4);}
+  to  {box-shadow:inset 0 2px 4px rgba(255,255,255,.15),0 4px 24px rgba(122,24,24,.6),0 2px 8px rgba(0,0,0,.5);}
+}
+
+/* Left seal */
+.seal-deco-l{
+  position:absolute;
+  top:clamp(30px,5vw,60px);
+  left:clamp(30px,6vw,80px);
+  width:clamp(50px,6vw,80px);
+  height:clamp(50px,6vw,80px);
+  border-radius:50%;
+  background:radial-gradient(circle at 40% 35%,var(--cobalt-lt),var(--cobalt),var(--cobalt-d));
+  box-shadow:
+    inset 0 2px 3px rgba(255,255,255,.1),
+    0 3px 12px rgba(26,40,96,.4);
+  display:flex;align-items:center;justify-content:center;
+  opacity:.7;
+}
+.seal-deco-l::after{
+  content:'✦';
+  font-size:clamp(.8rem,1.8vw,1.2rem);
+  color:rgba(200,220,255,.7);
+}
+
+.hero-inner{position:relative;z-index:2;max-width:760px;}
+
+.hero-title-ar{
+  font-family:'Amiri',serif;
+  font-size:clamp(1.8rem,5vw,3.5rem);
+  color:var(--gold-lt);
+  text-shadow:0 0 30px rgba(168,120,16,.4);
+  line-height:1.8;margin-bottom:10px;
+  animation:inkDry 1.8s ease both;
+}
+
+.hero-kicker{
+  font-family:'Tenor Sans',sans-serif;
+  font-size:clamp(.6rem,1.4vw,.74rem);
+  letter-spacing:8px;text-transform:uppercase;
+  color:rgba(168,120,16,.5);
+  margin-bottom:20px;
+  animation:inkDry 1.8s ease both .2s;
+}
+
+.hero-divider-top{
+  display:flex;align-items:center;gap:0;
+  margin:8px auto 18px;
+  width:min(400px,80vw);
+  animation:inkDry 1.8s ease both .3s;
+}
+.hero-divider-top::before,.hero-divider-top::after{
+  content:'';flex:1;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(168,120,16,.35));
+}
+.hero-divider-top::after{background:linear-gradient(90deg,rgba(168,120,16,.35),transparent);}
+.hero-divider-top span{
+  font-family:'Amiri',serif;font-size:1.2rem;
+  color:rgba(168,120,16,.5);padding:0 14px;
+}
+
+.hero-title{
+  font-family:'IM Fell English',serif;
+  font-size:clamp(2.8rem,8vw,6.5rem);
+  line-height:1.05;letter-spacing:-1px;
+  color:#fff;margin-bottom:4px;
+  animation:inkDry 1.8s ease both .05s;
+}
+
+.hero-title-and{
+  display:block;
+  font-style:italic;font-size:.45em;font-weight:400;
+  color:rgba(168,120,16,.7);letter-spacing:2px;
+  margin:-6px 0 2px;
+}
+
+.hero-subtitle{
+  font-family:'IM Fell English',serif;
+  font-style:italic;
+  font-size:clamp(1.2rem,3vw,2rem);
+  color:rgba(212,190,130,.6);
+  margin-bottom:26px;
+  animation:inkDry 1.8s ease both .28s;
+}
+
+.hero-verse{
+  max-width:580px;margin:0 auto;
+  padding:22px 32px;
+  background:rgba(14,12,8,.65);
+  border:1px solid rgba(168,120,16,.22);
+  backdrop-filter:blur(6px);
+  animation:inkDry 1.8s ease both .5s;
+}
+.hv-ar{font-family:'Amiri',serif;font-size:clamp(1rem,2.5vw,1.4rem);color:var(--gold-lt);line-height:2.2;direction:rtl;margin-bottom:10px;}
+.hv-id{font-style:italic;font-size:.83rem;color:rgba(200,185,150,.55);line-height:1.7;}
+
+@keyframes inkDry{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+
+/* ══════════════════════════════
+   DOCUMENT BODY
+══════════════════════════════ */
+.body-wrap{max-width:860px;margin:0 auto;padding:0 16px 80px;position:relative;z-index:1;}
+
+/* ── Stamped Section Headers ── */
+.stamp{
+  margin:52px 0 0;
+  position:relative;
+  display:flex;align-items:stretch;
+}
+
+.stamp-bar{width:6px;flex-shrink:0;}
+.sb-seal{background:var(--seal);}
+.sb-gold{background:var(--gold);}
+.sb-cobalt{background:var(--cobalt);}
+.sb-sage{background:var(--sage);}
+
+.stamp-body{flex:1;padding:16px 20px;}
+.sbody-seal{background:var(--seal-pale);border:1px solid var(--b-seal);border-left:none;}
+.sbody-gold{background:var(--gold-pale);border:1px solid var(--b-gold);border-left:none;}
+.sbody-cobalt{background:var(--cobalt-p);border:1px solid var(--b-cobalt);border-left:none;}
+.sbody-sage{background:var(--sage-p);border:1px solid var(--b-sage);border-left:none;}
+.sbody-dark{background:var(--ink);border:1px solid rgba(168,120,16,.18);border-left:none;}
+
+.stamp-tag{font-family:'Tenor Sans',sans-serif;font-size:.6rem;letter-spacing:5px;text-transform:uppercase;margin-bottom:6px;}
+.st-seal{color:var(--seal-d);}
+.st-gold{color:var(--gold);}
+.st-cobalt{color:var(--cobalt-d);}
+.st-sage{color:var(--sage);}
+.st-dk{color:rgba(168,120,16,.6);}
+
+.stamp-ar{font-family:'Amiri',serif;font-size:clamp(1.1rem,2.8vw,1.6rem);line-height:1.8;margin-bottom:4px;}
+.sar-seal{color:var(--seal-d);}
+.sar-gold{color:var(--gold);}
+.sar-cobalt{color:var(--cobalt-d);}
+.sar-sage{color:var(--sage);}
+.sar-dk{color:var(--gold-lt);}
+
+.stamp-title{font-family:'IM Fell English',serif;font-size:clamp(1.1rem,2.8vw,1.75rem);line-height:1.25;color:var(--ink);}
+.st-dk-title{color:var(--parch);}
+
+/* ── Sections ── */
+.sec{padding:28px 0 22px;border-bottom:1px solid var(--b-ink);}
+.sec:last-child{border-bottom:none;}
+
+/* ── Prose ── */
+.prose p{font-size:clamp(.97rem,2.1vw,1.07rem);line-height:2.15;color:var(--ink-mid);margin-bottom:16px;text-align:justify;}
+.prose p.lead{font-style:italic;color:var(--seal-d);font-size:clamp(1rem,2.2vw,1.12rem);line-height:1.9;}
+.prose.gold-lead p.lead{color:var(--gold);}
+.prose.cobalt-lead p.lead{color:var(--cobalt-d);}
+.prose.sage-lead p.lead{color:var(--sage);}
+.prose p:first-of-type:not(.lead)::first-letter{
+  font-family:'IM Fell English',serif;font-size:4em;line-height:.72;
+  float:left;margin:8px 10px 0 0;
+}
+.prose.fl-seal p:first-of-type:not(.lead)::first-letter{color:var(--seal);}
+.prose.fl-gold p:first-of-type:not(.lead)::first-letter{color:var(--gold);}
+.prose.fl-cobalt p:first-of-type:not(.lead)::first-letter{color:var(--cobalt);}
+.prose.fl-sage p:first-of-type:not(.lead)::first-letter{color:var(--sage);}
+
+/* ── Dalil ── */
+.dalil{margin:24px 0;display:grid;grid-template-columns:4px 1fr;}
+.dalil-seal{background:var(--seal-pale);border:1px solid var(--b-seal);}
+.dalil-gold{background:var(--gold-pale);border:1px solid var(--b-gold);}
+.dalil-cobalt{background:var(--cobalt-p);border:1px solid var(--b-cobalt);}
+.dalil-sage{background:var(--sage-p);border:1px solid var(--b-sage);}
+.dalil-ink{background:var(--ink);border:1px solid rgba(168,120,16,.18);}
+
+.dbar-seal{background:var(--seal);}
+.dbar-gold{background:var(--gold);}
+.dbar-cobalt{background:var(--cobalt);}
+.dbar-sage{background:var(--sage);}
+.dbar-ink{background:var(--gold);}
+
+.dbody{padding:18px 20px 14px;}
+.dtag{font-family:'Tenor Sans',sans-serif;font-size:.6rem;letter-spacing:4px;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:10px;}
+.dtag::after{content:'';flex:1;height:1px;}
+.dtag-seal{color:var(--seal-d);}
+.dtag-seal::after{background:linear-gradient(90deg,var(--b-seal),transparent);}
+.dtag-gold{color:var(--gold);}
+.dtag-gold::after{background:linear-gradient(90deg,var(--b-gold),transparent);}
+.dtag-cobalt{color:var(--cobalt-d);}
+.dtag-cobalt::after{background:linear-gradient(90deg,var(--b-cobalt),transparent);}
+.dtag-sage{color:var(--sage);}
+.dtag-sage::after{background:linear-gradient(90deg,var(--b-sage),transparent);}
+.dtag-ink{color:var(--gold);}
+.dtag-ink::after{background:linear-gradient(90deg,rgba(168,120,16,.2),transparent);}
+
+.dar{font-family:'Amiri',serif;font-size:clamp(1.1rem,2.8vw,1.52rem);line-height:2.2;direction:rtl;text-align:right;margin-bottom:12px;padding-bottom:10px;}
+.dar-seal{color:var(--seal-d);border-bottom:1px dashed var(--b-seal);}
+.dar-gold{color:var(--gold);border-bottom:1px dashed var(--b-gold);}
+.dar-cobalt{color:var(--cobalt-d);border-bottom:1px dashed var(--b-cobalt);}
+.dar-sage{color:var(--sage);border-bottom:1px dashed var(--b-sage);}
+.dar-ink{color:var(--gold-lt);border-bottom:1px dashed rgba(168,120,16,.18);}
+
+.dtrans{font-style:italic;font-size:.92rem;line-height:1.8;color:var(--ink-soft);margin-bottom:7px;}
+.dtrans-ink{color:rgba(210,195,155,.78);}
+.dref{font-family:'Tenor Sans',sans-serif;font-size:.62rem;letter-spacing:2px;text-transform:uppercase;}
+.dref-seal{color:var(--seal);}
+.dref-gold{color:var(--gold);}
+.dref-cobalt{color:var(--cobalt-d);}
+.dref-sage{color:var(--sage);}
+.dref-ink{color:var(--gold);}
+
+/* ══════════════════════════════
+   ARTICLE ITEMS — like legal clauses
+══════════════════════════════ */
+.article-list{margin:20px 0;}
+.article-item{
+  display:flex;gap:0;margin-bottom:6px;
+  border:1px solid;overflow:hidden;
+  background:var(--vellum);
+}
+.ai-seal{border-color:var(--b-seal);}
+.ai-gold{border-color:var(--b-gold);}
+.ai-cobalt{border-color:var(--b-cobalt);}
+.ai-sage{border-color:var(--b-sage);}
+
+.article-num{
+  flex-shrink:0;width:56px;
+  display:flex;align-items:flex-start;justify-content:center;
+  font-family:'IM Fell English',serif;
+  font-size:1.5rem;padding:14px 0 0;
+}
+.an-seal{color:var(--seal);background:var(--seal-pale);border-right:1px solid var(--b-seal);}
+.an-gold{color:var(--gold);background:var(--gold-pale);border-right:1px solid var(--b-gold);}
+.an-cobalt{color:var(--cobalt);background:var(--cobalt-p);border-right:1px solid var(--b-cobalt);}
+.an-sage{color:var(--sage);background:var(--sage-p);border-right:1px solid var(--b-sage);}
+
+.article-body{flex:1;padding:13px 16px;}
+.article-title{font-family:'IM Fell English',serif;font-size:.98rem;margin-bottom:3px;color:var(--ink);}
+.article-ar{font-family:'Amiri',serif;font-size:.98rem;direction:rtl;text-align:right;margin-bottom:5px;line-height:1.9;color:rgba(14,12,8,.28);}
+.article-desc{font-size:.85rem;line-height:1.75;font-style:italic;color:var(--ink-soft);}
+.article-ref{font-family:'Tenor Sans',sans-serif;font-size:.58rem;letter-spacing:2px;text-transform:uppercase;margin-top:7px;display:block;color:var(--sepia-lt);}
+.article-badge{
+  display:inline-block;margin-top:6px;
+  font-family:'Tenor Sans',sans-serif;font-size:.57rem;font-weight:400;
+  letter-spacing:2px;text-transform:uppercase;padding:2px 9px;
+}
+.ab-seal{background:var(--seal-pale);color:var(--seal-d);border:1px solid var(--b-seal);}
+.ab-gold{background:var(--gold-pale);color:var(--gold);border:1px solid var(--b-gold);}
+.ab-cobalt{background:var(--cobalt-p);color:var(--cobalt-d);border:1px solid var(--b-cobalt);}
+.ab-sage{background:var(--sage-p);color:var(--sage);border:1px solid var(--b-sage);}
+.ab-gray{background:rgba(14,12,8,.06);color:var(--sepia);border:1px solid var(--b-ink);}
+
+/* ══════════════════════════════
+   RESPONSIVE TABLE
+══════════════════════════════ */
+.tbl-wrap{margin:22px 0;overflow:hidden;}
+.tbl{width:100%;border-collapse:collapse;font-size:.87rem;table-layout:fixed;}
+.tbl.th-seal thead tr{background:var(--seal-d);color:var(--parch);}
+.tbl.th-gold thead tr{background:var(--gold);color:var(--ink);}
+.tbl.th-cobalt thead tr{background:var(--cobalt-d);color:var(--parch);}
+.tbl.th-sage thead tr{background:var(--sage);color:var(--parch);}
+.tbl.th-ink thead tr{background:var(--ink);color:var(--parch-d);}
+.tbl thead th{padding:10px 12px;text-align:left;font-family:'Tenor Sans',sans-serif;font-size:.6rem;letter-spacing:3px;text-transform:uppercase;}
+.tbl tbody tr{border-bottom:1px solid var(--b-ink);}
+.tbl tbody tr:nth-child(even){background:rgba(14,12,8,.03);}
+.tbl tbody tr:nth-child(odd){background:var(--vellum);}
+.tbl td{padding:10px 12px;line-height:1.65;color:var(--ink-mid);vertical-align:top;word-break:break-word;}
+.tbl td:first-child{font-style:italic;font-weight:400;color:var(--ink);}
+
+.tbdg{display:inline-block;padding:2px 9px;font-family:'Tenor Sans',sans-serif;font-size:.57rem;letter-spacing:1.5px;text-transform:uppercase;white-space:nowrap;}
+.tbdg-seal{background:var(--seal-pale);color:var(--seal-d);border:1px solid var(--b-seal);}
+.tbdg-gold{background:var(--gold-pale);color:var(--gold);border:1px solid var(--b-gold);}
+.tbdg-cobalt{background:var(--cobalt-p);color:var(--cobalt-d);border:1px solid var(--b-cobalt);}
+.tbdg-sage{background:var(--sage-p);color:var(--sage);border:1px solid var(--b-sage);}
+.tbdg-gray{background:rgba(14,12,8,.06);color:var(--sepia);border:1px solid var(--b-ink);}
+
+@media(max-width:580px){
+  .tbl,.tbl thead,.tbl tbody,.tbl th,.tbl td,.tbl tr{display:block;width:100%;}
+  .tbl thead{display:none;}
+  .tbl tbody tr{background:var(--vellum)!important;border:1px solid var(--b-ink);margin-bottom:8px;padding:12px 14px 10px;}
+  .tbl td{padding:4px 0 4px;border:none;display:grid;grid-template-columns:88px 1fr;gap:6px;align-items:start;}
+  .tbl td::before{content:attr(data-label);font-family:'Tenor Sans',sans-serif;font-size:.58rem;letter-spacing:2px;text-transform:uppercase;padding-top:2px;color:var(--seal-d);}
+  .tbl.th-gold td::before{color:var(--gold);}
+  .tbl.th-cobalt td::before{color:var(--cobalt-d);}
+  .tbl.th-sage td::before{color:var(--sage);}
+  .tbl.th-ink td::before{color:var(--sepia);}
+  .tbl td:first-child{font-weight:400;font-size:.93rem;}
+}
+
+/* ══════════════════════════════
+   HIGHLIGHT
+══════════════════════════════ */
+.hl{margin:20px 0;padding:18px 20px;}
+.hl-seal{background:var(--seal-pale);border:1px solid var(--b-seal);border-left:4px solid var(--seal);}
+.hl-gold{background:var(--gold-pale);border:1px solid var(--b-gold);border-left:4px solid var(--gold);}
+.hl-cobalt{background:var(--cobalt-p);border:1px solid var(--b-cobalt);border-left:4px solid var(--cobalt);}
+.hl-sage{background:var(--sage-p);border:1px solid var(--b-sage);border-left:4px solid var(--sage);}
+.hl-ink{background:var(--ink);padding:22px 24px;}
+
+.hl-label{font-family:'Tenor Sans',sans-serif;font-size:.6rem;letter-spacing:3px;text-transform:uppercase;margin-bottom:9px;}
+.hll-seal{color:var(--seal-d);}
+.hll-gold{color:var(--gold);}
+.hll-cobalt{color:var(--cobalt-d);}
+.hll-sage{color:var(--sage);}
+.hll-w{color:rgba(168,120,16,.55);}
+
+.hl-ar{font-family:'Amiri',serif;font-size:clamp(1.05rem,2.5vw,1.4rem);line-height:2;margin-bottom:8px;}
+.hlar-seal{color:var(--seal-d);}
+.hlar-gold{color:var(--gold);}
+.hlar-cobalt{color:var(--cobalt-d);}
+.hlar-sage{color:var(--sage);}
+.hlar-w{color:var(--gold-lt);}
+
+.hl-trans{font-style:italic;font-size:.9rem;line-height:1.8;color:var(--ink-soft);margin-bottom:6px;}
+.hlt-w{color:rgba(210,195,155,.78);}
+
+.hl-ref{font-family:'Tenor Sans',sans-serif;font-size:.6rem;letter-spacing:2px;text-transform:uppercase;}
+.hlr-seal{color:var(--seal);}
+.hlr-gold{color:var(--gold);}
+.hlr-cobalt{color:var(--cobalt-d);}
+.hlr-sage{color:var(--sage);}
+.hlr-w{color:rgba(168,120,16,.4);}
+
+/* ══════════════════════════════
+   BANNER
+══════════════════════════════ */
+.banner{margin:26px 0;padding:24px 28px;text-align:center;}
+.banner-seal{background:var(--seal-d);color:var(--parch);}
+.banner-gold{background:var(--gold-pale);border:2px solid var(--gold);}
+.banner-cobalt{background:var(--cobalt-d);color:var(--parch);}
+.banner-sage{background:var(--sage);color:var(--parch);}
+.banner-ink{background:var(--ink);border:1px solid rgba(168,120,16,.2);}
+
+.ban-ar{font-family:'Amiri',serif;font-size:clamp(1.1rem,2.8vw,1.5rem);line-height:2;margin-bottom:10px;}
+.bnar-lt{color:var(--parch);}
+.bnar-gold{color:var(--gold);}
+.bnar-w{color:var(--gold-lt);}
+
+.ban-id{font-style:italic;font-size:.9rem;line-height:1.78;margin-bottom:6px;}
+.bnid-lt{color:rgba(240,230,200,.85);}
+.bnid-gold{color:var(--ink-soft);}
+.bnid-w{color:rgba(210,195,155,.72);}
+
+.ban-ref{font-family:'Tenor Sans',sans-serif;font-size:.6rem;letter-spacing:3px;text-transform:uppercase;margin-top:7px;}
+.bnref-lt{color:rgba(240,230,200,.45);}
+.bnref-gold{color:rgba(168,120,16,.5);}
+.bnref-w{color:rgba(168,120,16,.4);}
+
+/* ══════════════════════════════
+   ORNAMENTAL SEPARATOR
+══════════════════════════════ */
+.ornament-sep{
+  text-align:center;
+  padding:16px 0;
+  position:relative;
+}
+.ornament-sep::before{
+  content:'';
+  position:absolute;top:50%;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--aged),transparent);
+  transform:translateY(-50%);
+}
+.ornament-sep span{
+  position:relative;z-index:1;
+  background:var(--vellum);
+  padding:0 20px;
+  font-family:'Amiri',serif;
+  font-size:1.2rem;
+  color:var(--aged);
+  letter-spacing:12px;
+}
+
+/* ══════════════════════════════
+   PENUTUP
+══════════════════════════════ */
+.penutup{
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 0%,rgba(110,92,48,.25) 0%,transparent 70%),
+    linear-gradient(180deg,#241c0c 0%,#1a150a 50%,#0e0c06 100%);
+  padding:72px 24px 80px;text-align:center;
+  position:relative;overflow:hidden;margin-top:56px;z-index:1;
+}
+.penutup::after{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--seal-d),var(--gold),var(--seal-d));}
+.penutup-inner{max-width:580px;margin:0 auto;position:relative;z-index:1;}
+.penutup-ar{font-family:'Amiri',serif;font-size:clamp(1.5rem,4vw,2.6rem);color:var(--gold-lt);line-height:2;text-shadow:0 0 20px rgba(168,120,16,.3);margin-bottom:14px;}
+.penutup-div{width:80px;height:1px;background:linear-gradient(90deg,transparent,var(--gold-lt),transparent);margin:18px auto;}
+.penutup-p{font-style:italic;font-size:clamp(.9rem,2vw,1.05rem);color:rgba(210,195,155,.72);line-height:1.92;margin-bottom:12px;}
+.penutup-ref{font-family:'Tenor Sans',sans-serif;font-size:.6rem;letter-spacing:3px;text-transform:uppercase;color:rgba(168,120,16,.4);}
+.penutup-footer{margin-top:40px;padding-top:22px;border-top:1px solid rgba(168,120,16,.1);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+.penutup-footer .logo{font-family:'Amiri',serif;font-size:1.1rem;color:rgba(168,120,16,.35);}
+.penutup-footer .tag{font-family:'Tenor Sans',sans-serif;font-size:.55rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.12);}
+
+@media(max-width:600px){
+  .body-wrap{padding:0 14px 60px;}
+  .hero{padding:56px 20px 80px;}
+  .stamp-body{padding:12px 16px;}
+  .hl,.banner{padding:16px 16px;}
+  .penutup{padding:48px 18px 56px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════ HERO ══════ -->
+<section class="hero">
+  <div class="hero-frame">
+    <div class="hero-corner-br"></div>
+    <div class="hero-corner-tl"></div>
+  </div>
+
+  <div class="hero-inner">
+    <div class="hero-title-ar">كِتَابُ الْهِبَةِ وَالْوَصِيَّةِ</div>
+    <p class="hero-kicker">Kitab Fiqh Muamalah · Berdalil Al-Qur'an &amp; Hadis Shahih · Kajian Komprehensif</p>
+    <div class="hero-divider-top"><span>❖</span></div>
+    <h1 class="hero-title">
+      Kitab Hibah
+      <span class="hero-title-and">&amp;</span>
+      Wasiat
+    </h1>
+    <div class="hero-subtitle">Fiqh Pemberian &amp; Warisan dalam Islam</div>
+    <div class="hero-verse">
+      <div class="hv-ar">وَأَن تَصَّدَّقُوا خَيْرٌ لَّكُمْ ۚ إِن كُنتُمْ تَعْلَمُونَ</div>
+      <div class="hv-id">"Dan jika kamu bersedekah, itu lebih baik bagimu, jika kamu mengetahui."<br><em style="color:rgba(168,120,16,.45)">— QS. Al-Baqarah: 280</em></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ BODY ══════ -->
+<div class="body-wrap">
+
+<!-- ══ PROLOG ══ -->
+<div class="stamp">
+  <div class="stamp-bar sb-seal"></div>
+  <div class="stamp-body sbody-seal">
+    <div class="stamp-tag st-seal">✦ Pembuka</div>
+    <div class="stamp-ar sar-seal">مُقَدِّمَةٌ فِي الْعَطَاءِ وَالتَّبَرُّعِ</div>
+    <div class="stamp-title">Pengantar: Memberi adalah Puncak Akhlak Islam</div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="prose fl-seal">
+    <p class="lead">Islam adalah agama yang memuliakan pemberian. Dari sedekah wajib (zakat) hingga hibah sukarela, dari wasiat menjelang kematian hingga wakaf yang mengalir pahalanya setelah mati — Islam membangun peradaban di atas fondasi kedermawanan yang terstruktur dan berkeadilan.</p>
+    <p>Hibah dan wasiat adalah dua instrumen hukum Islam yang memungkinkan seorang Muslim mendistribusikan hartanya kepada orang-orang yang dicintai dan lembaga yang diyakininya — baik semasa hidup maupun setelah meninggal. Keduanya memiliki aturan yang detail, syarat yang ketat, dan hikmah yang mendalam.</p>
+    <p>Kitab ini membahas keduanya secara komprehensif: definisi, hukum, syarat, rukun, batas-batas yang tidak boleh dilanggar, serta perbedaan-perbedaan pendapat para ulama yang perlu diketahui setiap Muslim yang ingin merencanakan distribusi hartanya dengan bijak dan sesuai syariat.</p>
+  </div>
+
+  <div class="dalil dalil-seal">
+    <div class="dbar-seal"></div>
+    <div class="dbody">
+      <div class="dtag dtag-seal">📜 HR. Bukhari — Perintah Nabi ﷺ untuk Saling Memberi</div>
+      <div class="dar dar-seal">تَهَادَوْا تَحَابُّوا</div>
+      <div class="dtrans">"Saling memberi hadiahlah kalian, niscaya kalian akan saling mencintai."</div>
+      <div class="dref dref-seal">HR. Bukhari dalam Al-Adab Al-Mufrad (594) — dari Abu Hurairah radhiyallahu 'anhu — Hasan</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     BAGIAN I: HIBAH
+══════════════════════════════════════ -->
+<div class="ornament-sep"><span>❖ الْهِبَةُ ❖</span></div>
+
+<!-- ══ BAB I: DEFINISI DAN HUKUM HIBAH ══ -->
+<div class="stamp">
+  <div class="stamp-bar sb-seal"></div>
+  <div class="stamp-body sbody-seal">
+    <div class="stamp-tag st-seal">✦ Bab Pertama</div>
+    <div class="stamp-ar sar-seal">تَعْرِيفُ الْهِبَةِ وَحُكْمُهَا</div>
+    <div class="stamp-title">Hibah — Definisi, Hukum &amp; Kedudukannya dalam Islam</div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="prose fl-seal">
+    <p class="lead">Hibah secara bahasa berarti "pemberian." Dalam istilah fiqh, hibah adalah akad pemindahan kepemilikan suatu harta dari seseorang kepada orang lain tanpa imbalan apapun, dilakukan semasa hidup si pemberi, atas kehendaknya sendiri.</p>
+    <p>Para ulama membedakan hibah dari beberapa konsep yang mirip: berbeda dari sedekah (yang biasanya untuk orang yang membutuhkan dengan niat pahala), berbeda dari hadiah (yang biasanya diberikan sebagai penghargaan), dan berbeda dari wasiat (yang berlaku setelah kematian). Namun dalam banyak penggunaan ulama, ketiga istilah ini sering dipakai bergantian.</p>
+  </div>
+
+  <!-- Jenis-jenis hibah -->
+  <p style="font-family:'Tenor Sans',sans-serif;font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--seal-d);margin:0 0 12px;">Jenis-Jenis Pemberian yang Serupa Hibah</p>
+  <div class="tbl-wrap">
+    <table class="tbl th-seal">
+      <thead>
+        <tr>
+          <th style="width:20%">Istilah</th>
+          <th style="width:26%">Definisi</th>
+          <th style="width:27%">Perbedaan Utama</th>
+          <th style="width:27%">Contoh</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Istilah">Hibah (هِبَة)</td>
+          <td data-label="Definisi">Memberi harta kepada orang lain tanpa imbalan semasa hidup</td>
+          <td data-label="Perbedaan">Umum — bisa untuk siapa saja</td>
+          <td data-label="Contoh">Memberikan rumah kepada anak</td>
+        </tr>
+        <tr>
+          <td data-label="Istilah">Hadiah (هَدِيَّة)</td>
+          <td data-label="Definisi">Hibah yang dikirimkan kepada penerimanya dengan maksud memuliakan</td>
+          <td data-label="Perbedaan">Ada unsur penghormatan/kasih sayang</td>
+          <td data-label="Contoh">Parsel lebaran, kado pernikahan</td>
+        </tr>
+        <tr>
+          <td data-label="Istilah">Sedekah (صَدَقَة)</td>
+          <td data-label="Definisi">Pemberian dengan tujuan pahala dan mendekatkan diri kepada Allah</td>
+          <td data-label="Perbedaan">Niat ibadah — umumnya untuk yang membutuhkan</td>
+          <td data-label="Contoh">Memberi makan orang miskin</td>
+        </tr>
+        <tr>
+          <td data-label="Istilah">Athiyyah (عَطِيَّة)</td>
+          <td data-label="Definisi">Pemberian kepada ahli waris atau kerabat</td>
+          <td data-label="Perbedaan">Khusus untuk kerabat/ahli waris</td>
+          <td data-label="Contoh">Memberi tanah kepada anak semasa hidup</td>
+        </tr>
+        <tr>
+          <td data-label="Istilah">Umra (عُمْرَى)</td>
+          <td data-label="Definisi">Meminjamkan harta selama si penerima hidup</td>
+          <td data-label="Perbedaan">Batas waktu = usia penerima</td>
+          <td data-label="Contoh">"Rumah ini untukmu selama kamu hidup"</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="dalil dalil-seal">
+    <div class="dbar-seal"></div>
+    <div class="dbody">
+      <div class="dtag dtag-seal">📖 QS. Al-Baqarah: 177 — Memberi Harta yang Dicintai</div>
+      <div class="dar dar-seal">وَآتَى الْمَالَ عَلَىٰ حُبِّهِ ذَوِي الْقُرْبَىٰ وَالْيَتَامَىٰ وَالْمَسَاكِينَ</div>
+      <div class="dtrans">"Dan memberikan harta yang dicintainya kepada kerabat, anak-anak yatim, orang-orang miskin..." — Memberi kepada orang yang dicintai, meski harta itu sendiri sangat berharga baginya, adalah puncak dari kebaikan dalam Islam.</div>
+      <div class="dref dref-seal">QS. Al-Baqarah (2): 177</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ BAB II: RUKUN DAN SYARAT HIBAH ══ -->
+<div class="stamp">
+  <div class="stamp-bar sb-seal"></div>
+  <div class="stamp-body sbody-seal">
+    <div class="stamp-tag st-seal">✦ Bab Kedua</div>
+    <div class="stamp-ar sar-seal">أَرْكَانُ الْهِبَةِ وَشُرُوطُهَا</div>
+    <div class="stamp-title">Rukun &amp; Syarat Sahnya Hibah</div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="prose fl-seal">
+    <p>Para ulama fiqh menetapkan empat rukun hibah yang harus terpenuhi agar hibah dianggap sah secara syariat. Jika salah satu rukun tidak terpenuhi, hibah tidak sah dan kepemilikan tidak berpindah.</p>
+  </div>
+
+  <div class="article-list">
+    <div class="article-item ai-seal">
+      <div class="article-num an-seal">١</div>
+      <div class="article-body">
+        <div class="article-title">Wāhib — Pemberi Hibah</div>
+        <div class="article-ar">الْوَاهِبُ</div>
+        <div class="article-desc">Syarat pemberi: (1) Pemilik sah harta yang dihibahkan, (2) Berakal sehat — orang gila tidak sah memberikan hibah, (3) Sudah baligh atau mumayyiz — anak kecil yang belum mumayyiz tidak sah, (4) Tidak dalam kondisi sakit keras menjelang kematian yang membatasi hibah (lihat bab hibah orang sakit), (5) Tidak dalam pengampuan (mahjur 'alaih) karena bangkrut.</div>
+        <span class="article-ref">Fiqhus Sunnah — Sayyid Sabiq · Bab Hibah</span>
+      </div>
+    </div>
+
+    <div class="article-item ai-seal">
+      <div class="article-num an-seal">٢</div>
+      <div class="article-body">
+        <div class="article-title">Mawhūb lahu — Penerima Hibah</div>
+        <div class="article-ar">الْمَوْهُوبُ لَهُ</div>
+        <div class="article-desc">Syarat penerima: (1) Ada/wujud saat hibah diberikan — tidak sah menghibahkan kepada yang belum lahir, (2) Dapat menerima kepemilikan — termasuk anak kecil dan orang gila (melalui walinya), (3) Tidak disyaratkan berakal atau baligh — bayi pun bisa menerima hibah melalui walinya.</div>
+        <span class="article-ref">Al-Mughni — Ibnu Qudamah · Bab Al-Hibah</span>
+      </div>
+    </div>
+
+    <div class="article-item ai-seal">
+      <div class="article-num an-seal">٣</div>
+      <div class="article-body">
+        <div class="article-title">Mawhūb — Harta yang Dihibahkan</div>
+        <div class="article-ar">الْمَوْهُوبُ</div>
+        <div class="article-desc">Syarat harta: (1) Milik pemberi secara sah, (2) Ada wujudnya saat hibah — tidak sah menghibahkan sesuatu yang belum ada (seperti hasil panen yang belum tumbuh), (3) Dapat diserahkan/dipindahtangankan, (4) Bukan harta yang haram (khamr, babi, dsb.), (5) Tertentu dan jelas — tidak boleh terlalu majhul (tidak jelas).</div>
+        <span class="article-ref">Raudhah At-Thalibin — Imam An-Nawawi</span>
+      </div>
+    </div>
+
+    <div class="article-item ai-seal">
+      <div class="article-num an-seal">٤</div>
+      <div class="article-body">
+        <div class="article-title">Shīghah — Ijab dan Qabul</div>
+        <div class="article-ar">الصِّيغَةُ — الإِيجَابُ وَالْقَبُولُ</div>
+        <div class="article-desc">Pernyataan pemberian (ijab) dan penerimaan (qabul). Contoh ijab: "Aku hibahkan rumah ini kepadamu." Contoh qabul: "Aku terima hibah ini." Syarat shīghah: (1) Satu majelis (tidak harus bertemu fisik menurut sebagian ulama kontemporer), (2) Qabul tidak boleh bertentangan dengan ijab, (3) Tidak boleh digantungkan pada syarat yang tidak pasti.</div>
+        <span class="article-ref">Fiqh Al-Islami wa Adillatuhu — Wahbah Az-Zuhaili</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Qabdh -->
+  <div class="hl hl-seal">
+    <div class="hl-label hll-seal">✦ Qabdh (Penerimaan Fisik) — Disyaratkan atau Tidak?</div>
+    <div class="hl-ar hlar-seal">هَلْ يُشْتَرَطُ الْقَبْضُ فِي الْهِبَةِ؟</div>
+    <div class="hl-trans">Para ulama berbeda pendapat: <strong>Jumhur (Hanafi, Maliki, Syafi'i lama)</strong> menyatakan qabdh (penerimaan fisik) diperlukan agar hibah sempurna — sebelum qabdh, hibah masih bisa ditarik kembali. <strong>Pendapat kuat Hanbali dan Syafi'i baru</strong>: hibah sudah sah dengan ijab-qabul saja, dan wajib diserahkan. <strong>Maliki</strong>: qabdh diperlukan khusus untuk menyempurnakan hibah kepada anak kecil.</div>
+    <div class="hl-ref hlr-seal">Ibnu Qudamah dalam Al-Mughni · Al-Nawawi dalam Al-Majmu'</div>
+  </div>
+</div>
+
+<!-- ══ BAB III: ADIL DALAM HIBAH KEPADA ANAK ══ -->
+<div class="stamp">
+  <div class="stamp-bar sb-gold"></div>
+  <div class="stamp-body sbody-gold">
+    <div class="stamp-tag st-gold">✦ Bab Ketiga — Penting</div>
+    <div class="stamp-ar sar-gold">التَّسْوِيَةُ بَيْنَ الأَوْلَادِ فِي الْهِبَةِ</div>
+    <div class="stamp-title">Wajib Adil dalam Hibah kepada Anak-Anak</div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="prose fl-gold">
+    <p class="lead">Salah satu isu paling penting dan paling sering diabaikan dalam praktik hibah adalah kewajiban berlaku adil kepada semua anak. Banyak orang tua yang menghibahkan harta hanya kepada anak tertentu — tanpa menyadari bahwa ini bisa menjadi dosa besar dan sumber pertikaian keluarga.</p>
+  </div>
+
+  <div class="dalil dalil-gold">
+    <div class="dbar-gold"></div>
+    <div class="dbody">
+      <div class="dtag dtag-gold">📜 HR. Bukhari &amp; Muslim — Larangan Tidak Adil dalam Memberi</div>
+      <div class="dar dar-gold">اتَّقُوا اللَّهَ وَاعْدِلُوا بَيْنَ أَوْلَادِكُمْ</div>
+      <div class="dtrans">"Bertakwalah kepada Allah dan berlaku adillah di antara anak-anakmu." — Nu'man bin Basyir bercerita: Ayahnya memberinya hadiah, lalu Nabi ﷺ bertanya: "Apakah semua anakmu kamu beri seperti ini?" Ayahnya menjawab: "Tidak." Nabi ﷺ berkata: "Kembalikan (hadiah itu)." Dan dalam riwayat lain: "Jangan jadikan aku saksi atas kezaliman."</div>
+      <div class="dref dref-gold">HR. Bukhari (2587) &amp; Muslim (1623) — dari Nu'man bin Basyir radhiyallahu 'anhu</div>
+    </div>
+  </div>
+
+  <!-- Ikhtilaf ulama -->
+  <div class="hl hl-gold">
+    <div class="hl-label hll-gold">✦ Ikhtilaf Ulama tentang Hukum Keadilan dalam Hibah</div>
+    <div class="hl-trans">
+      <strong>Hanbali &amp; sebagian Syafi'i:</strong> Wajib menyamakan hibah kepada semua anak. Jika tidak, hibah itu <em>haram</em> dan harus dikembalikan atau disamakan.<br><br>
+      <strong>Syafi'i &amp; Maliki (pendapat masyhur):</strong> Wajib secara akhlak (sunnah kuat), namun hibah tetap sah secara hukum meski tidak adil. Namun berdosa jika tanpa alasan yang dibenarkan syariat.<br><br>
+      <strong>Hanafi:</strong> Sangat dianjurkan adil, namun bukan wajib secara hukum.<br><br>
+      <strong>Kesimpulan praktis:</strong> Para ulama kontemporer sangat menganjurkan mengikuti pendapat Hanbali untuk mencegah konflik keluarga dan sesuai dengan zahir hadis.
+    </div>
+    <div class="hl-ref hlr-gold">Al-Mughni (Ibnu Qudamah) · Al-Majmu' (An-Nawawi) · Fatawa Ibnu Utsaimin</div>
+  </div>
+
+  <div class="hl hl-gold">
+    <div class="hl-label hll-gold">✦ Apakah Anak Laki-laki dan Perempuan Diberi Sama?</div>
+    <div class="hl-trans"><strong>Pendapat yang kuat (Hanbali, dikuatkan Ibnu Taimiyyah):</strong> Hibah kepada anak mengikuti hukum waris — anak laki-laki mendapat dua kali anak perempuan, sesuai QS. An-Nisa': 11. Karena hibah pada hakikatnya adalah taqsim harta sebelum mati.<br><br><strong>Pendapat lain:</strong> Hibah berbeda dari waris — boleh sama rata antara laki-laki dan perempuan, bahkan boleh dilebihkan kepada yang lebih membutuhkan dengan alasan syar'i.<br><br>Yang terpenting: jangan sampai ada anak yang tidak mendapat apapun sementara yang lain mendapat banyak.</div>
+    <div class="hl-ref hlr-gold">Ibnu Taimiyyah dalam Majmu' Fatawa · Ibnu Qayyim dalam I'lam Al-Muwaqqi'in</div>
+  </div>
+</div>
+
+<!-- ══ BAB IV: MENARIK KEMBALI HIBAH ══ -->
+<div class="stamp">
+  <div class="stamp-bar sb-seal"></div>
+  <div class="stamp-body sbody-seal">
+    <div class="stamp-tag st-seal">✦ Bab Keempat</div>
+    <div class="stamp-ar sar-seal">الرُّجُوعُ فِي الْهِبَةِ</div>
+    <div class="stamp-title">Menarik Kembali Hibah — Boleh atau Tidak?</div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="prose fl-seal">
+    <p>Salah satu pertanyaan paling sering dalam fiqh hibah: setelah memberikan hibah, bolehkah ditarik kembali? Jawaban para ulama berbeda berdasarkan siapa pemberinnya dan kepada siapa diberikan.</p>
+  </div>
+
+  <div class="dalil dalil-seal">
+    <div class="dbar-seal"></div>
+    <div class="dbody">
+      <div class="dtag dtag-seal">📜 HR. Abu Dawud &amp; Tirmidzi — Perumpamaan Menarik Kembali Hibah</div>
+      <div class="dar dar-seal">الَّذِي يَرْجِعُ فِي هِبَتِهِ كَالْكَلْبِ يَقِيءُ ثُمَّ يَعُودُ فِي قَيْئِهِ</div>
+      <div class="dtrans">"Orang yang menarik kembali hibahnya seperti anjing yang muntah kemudian memakan kembali muntahannya." — Hadis ini menunjukkan betapa buruknya menarik kembali hibah yang sudah diberikan.</div>
+      <div class="dref dref-seal">HR. Bukhari (2589) &amp; Muslim (1622) — dari Ibnu Abbas radhiyallahu 'anhu</div>
+    </div>
+  </div>
+
+  <div class="tbl-wrap">
+    <table class="tbl th-seal">
+      <thead>
+        <tr>
+          <th style="width:25%">Situasi</th>
+          <th style="width:35%">Hukum Menarik Kembali</th>
+          <th style="width:40%">Penjelasan &amp; Dalil</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Situasi">Hibah kepada bukan mahram (orang lain)</td>
+          <td data-label="Hukum"><span class="tbdg tbdg-seal">Haram</span></td>
+          <td data-label="Penjelasan">Mutlak tidak boleh menarik kembali — berdasarkan hadis di atas. Hibah yang sudah diserahkan adalah hak penuh penerima.</td>
+        </tr>
+        <tr>
+          <td data-label="Situasi">Hibah orang tua kepada anak</td>
+          <td data-label="Hukum"><span class="tbdg tbdg-gold">Boleh (menurut jumhur)</span></td>
+          <td data-label="Penjelasan">HR. Abu Dawud (3539): "Tidak halal bagi seseorang menarik kembali pemberiannya kecuali orang tua kepada anaknya." — Namun dimakruhkan kecuali ada alasan yang kuat.</td>
+        </tr>
+        <tr>
+          <td data-label="Situasi">Hibah sebelum qabdh (belum diserahkan)</td>
+          <td data-label="Hukum"><span class="tbdg tbdg-gold">Boleh (Hanafi &amp; sebagian Syafi'i)</span></td>
+          <td data-label="Penjelasan">Selama belum ada serah terima fisik, pemberi masih bisa membatalkan hibah. Setelah qabdh, tidak boleh kecuali dengan kerelaan penerima.</td>
+        </tr>
+        <tr>
+          <td data-label="Situasi">Hibah dengan imbalan yang belum dipenuhi</td>
+          <td data-label="Hukum"><span class="tbdg tbdg-gold">Boleh dengan syarat</span></td>
+          <td data-label="Penjelasan">Jika hibah disertai syarat tertentu (seperti: "aku hibahkan ini jika kamu merawat aku") dan syarat tidak dipenuhi, boleh ditarik kembali menurut sebagian ulama.</td>
+        </tr>
+        <tr>
+          <td data-label="Situasi">Hibah kepada suami/istri</td>
+          <td data-label="Hukum"><span class="tbdg tbdg-seal">Tidak boleh</span></td>
+          <td data-label="Penjelasan">Pasangan suami-istri dianggap bukan hubungan orang tua-anak, sehingga berlaku hukum umum — tidak boleh menarik kembali.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     BAGIAN II: WASIAT
+══════════════════════════════════════ -->
+<div class="ornament-sep"><span>❖ الْوَصِيَّةُ ❖</span></div>
+
+<!-- ══ BAB V: DEFINISI DAN HUKUM WASIAT ══ -->
+<div class="stamp">
+  <div class="stamp-bar sb-cobalt"></div>
+  <div class="stamp-body sbody-cobalt">
+    <div class="stamp-tag st-cobalt">✦ Bab Kelima</div>
+    <div class="stamp-ar sar-cobalt">تَعْرِيفُ الْوَصِيَّةِ وَحُكْمُهَا</div>
+    <div class="stamp-title">Wasiat — Definisi, Hukum &amp; Kedudukannya</div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="prose fl-cobalt cobalt-lead">
+    <p class="lead">Wasiat adalah pernyataan seseorang yang berlaku setelah kematiannya — berisi pesan tentang pemberian harta, amanah, atau permintaan tertentu kepada pihak lain. Ia adalah jembatan antara kehidupan dan kematian, antara masa sekarang dan warisan yang akan ditinggalkan.</p>
+    <p>Wasiat dalam Islam bukan hanya tentang harta — ia mencakup wasiat tentang agama (seperti meminta keluarga untuk tetap beriman), wasiat tentang anak-anak, wasiat tentang utang yang harus dilunasi, dan wasiat tentang amanah yang belum ditunaikan. Nabi ﷺ bersabda: "Tidak layak bagi seorang Muslim yang memiliki sesuatu yang perlu diwasiatkan untuk bermalam dua malam kecuali wasiatnya sudah tertulis di sisinya."</p>
+  </div>
+
+  <div class="dalil dalil-cobalt">
+    <div class="dbar-cobalt"></div>
+    <div class="dbody">
+      <div class="dtag dtag-cobalt">📜 HR. Bukhari &amp; Muslim — Wasiat Harus Tertulis</div>
+      <div class="dar dar-cobalt">مَا حَقُّ امْرِئٍ مُسْلِمٍ لَهُ شَيْءٌ يُوصِي فِيهِ يَبِيتُ لَيْلَتَيْنِ إِلَّا وَوَصِيَّتُهُ مَكْتُوبَةٌ عِنْدَهُ</div>
+      <div class="dtrans">"Tidak layak bagi seorang Muslim yang memiliki sesuatu yang perlu diwasiatkan untuk bermalam dua malam kecuali wasiatnya sudah tertulis di sisinya."</div>
+      <div class="dref dref-cobalt">HR. Bukhari (2738) &amp; Muslim (1627) — dari Ibnu Umar radhiyallahu 'anhu</div>
+    </div>
+  </div>
+
+  <div class="dalil dalil-cobalt">
+    <div class="dbar-cobalt"></div>
+    <div class="dbody">
+      <div class="dtag dtag-cobalt">📖 QS. Al-Baqarah: 180 — Kewajiban Wasiat</div>
+      <div class="dar dar-cobalt">كُتِبَ عَلَيْكُمْ إِذَا حَضَرَ أَحَدَكُمُ الْمَوْتُ إِن تَرَكَ خَيْرًا الْوَصِيَّةُ لِلْوَالِدَيْنِ وَالْأَقْرَبِينَ بِالْمَعْرُوفِ ۖ حَقًّا عَلَى الْمُتَّقِينَ</div>
+      <div class="dtrans">"Diwajibkan atas kamu, apabila maut hendak menjemput seseorang di antara kamu, jika dia meninggalkan harta, berwasiat untuk kedua orang tua dan karib kerabat dengan cara yang baik, sebagai kewajiban bagi orang-orang yang bertakwa."</div>
+      <div class="dref dref-cobalt">QS. Al-Baqarah (2): 180 — Ayat tentang wasiat sebelum turunnya hukum waris (QS. An-Nisa': 11)</div>
+    </div>
+  </div>
+
+  <!-- Hukum Wasiat — Kontekstual -->
+  <p style="font-family:'Tenor Sans',sans-serif;font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--cobalt-d);margin:20px 0 12px;">Hukum Wasiat dalam Berbagai Kondisi</p>
+
+  <div class="tbl-wrap">
+    <table class="tbl th-cobalt">
+      <thead>
+        <tr>
+          <th style="width:22%">Kondisi</th>
+          <th style="width:20%">Hukum Wasiat</th>
+          <th style="width:58%">Penjelasan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Kondisi">Punya tanggungan yang belum diselesaikan (utang, amanah, dsb.)</td>
+          <td data-label="Hukum"><span class="tbdg tbdg-seal">Wajib</span></td>
+          <td data-label="Penjelasan">Jika ada utang, amanah titipan, atau kewajiban yang belum ditunaikan — wajib hukumnya berwasiat agar diselesaikan setelah meninggal.</td>
+        </tr>
+        <tr>
+          <td data-label="Kondisi">Kerabat yang tidak mendapat waris (cucu dari anak yang sudah meninggal, dll.)</td>
+          <td data-label="Hukum"><span class="tbdg tbdg-cobalt">Sangat Dianjurkan</span></td>
+          <td data-label="Penjelasan">Wasiat wajibah bagi kerabat yang tidak mendapat waris namun berhak mendapat perhatian. Beberapa negara mewajibkan ini secara hukum positif.</td>
+        </tr>
+        <tr>
+          <td data-label="Kondisi">Wasiat untuk keperluan kebaikan (masjid, pesantren, dll.)</td>
+          <td data-label="Hukum"><span class="tbdg tbdg-cobalt">Sunnah</span></td>
+          <td data-label="Penjelasan">Sangat dianjurkan wasiat untuk kepentingan Islam dan kebaikan umum — pahalanya mengalir setelah kematian sebagai sedekah jariyah.</td>
+        </tr>
+        <tr>
+          <td data-label="Kondisi">Wasiat untuk ahli waris</td>
+          <td data-label="Hukum"><span class="tbdg tbdg-seal">Tidak Sah</span></td>
+          <td data-label="Penjelasan">"Tidak ada wasiat bagi ahli waris." — HR. Abu Dawud (2870) &amp; Tirmidzi (2120) — Shahih. Ahli waris sudah mendapat bagian dari hukum waris yang ditetapkan Al-Qur'an.</td>
+        </tr>
+        <tr>
+          <td data-label="Kondisi">Wasiat untuk maksiat (membangun tempat hiburan haram, dll.)</td>
+          <td data-label="Hukum"><span class="tbdg tbdg-seal">Haram</span></td>
+          <td data-label="Penjelasan">Wasiat untuk tujuan yang haram adalah batal dan wajib diabaikan oleh penerima. Tidak ada kewajiban melaksanakan wasiat yang bertentangan dengan syariat.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══ BAB VI: BATAS SEPERTIGA ══ -->
+<div class="stamp">
+  <div class="stamp-bar sb-cobalt"></div>
+  <div class="stamp-body sbody-cobalt">
+    <div class="stamp-tag st-cobalt">✦ Bab Keenam — Sangat Penting</div>
+    <div class="stamp-ar sar-cobalt">حَدُّ الثُّلُثِ فِي الْوَصِيَّةِ</div>
+    <div class="stamp-title">Batas Sepertiga — Aturan Paling Fundamental Wasiat</div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="prose fl-cobalt">
+    <p class="lead">Ini adalah hukum paling penting yang harus diketahui setiap Muslim yang ingin membuat wasiat: wasiat harta tidak boleh melebihi sepertiga dari total harta peninggalan. Jika melebihi sepertiga, wasiat tersebut hanya berlaku pada sepertiga saja — sisanya tidak sah kecuali diizinkan para ahli waris.</p>
+  </div>
+
+  <div class="dalil dalil-cobalt">
+    <div class="dbar-cobalt"></div>
+    <div class="dbody">
+      <div class="dtag dtag-cobalt">📜 HR. Bukhari &amp; Muslim — Wasiat Sepertiga adalah Banyak</div>
+      <div class="dar dar-cobalt">الثُّلُثُ وَالثُّلُثُ كَثِيرٌ إِنَّكَ أَنْ تَذَرَ وَرَثَتَكَ أَغْنِيَاءَ خَيْرٌ مِنْ أَنْ تَذَرَهُمْ عَالَةً يَتَكَفَّفُونَ النَّاسَ</div>
+      <div class="dtrans">"Sepertiga, dan sepertiga itu sudah banyak. Sesungguhnya engkau meninggalkan ahli warismu dalam keadaan kaya lebih baik daripada engkau meninggalkan mereka dalam keadaan miskin meminta-minta kepada orang lain." — Nabi ﷺ berkata kepada Sa'd bin Abi Waqqash yang hendak mewasiatkan dua pertiga hartanya.</div>
+      <div class="dref dref-cobalt">HR. Bukhari (2742) &amp; Muslim (1628) — dari Sa'd bin Abi Waqqash radhiyallahu 'anhu</div>
+    </div>
+  </div>
+
+  <div class="hl hl-cobalt">
+    <div class="hl-label hll-cobalt">✦ Rincian Hukum Batas Sepertiga</div>
+    <div class="hl-trans">
+      <strong>1. Tidak boleh melebihi 1/3</strong> — Jika berwasiat lebih dari 1/3, yang berlaku hanya 1/3-nya, kecuali ahli waris mengizinkan sisanya.<br><br>
+      <strong>2. Izin ahli waris setelah kematian</strong> — Ahli waris yang setuju (setelah pewasiat meninggal) bisa mengizinkan wasiat lebih dari 1/3. Namun izin semasa hidup tidak berlaku.<br><br>
+      <strong>3. Jika tidak ada ahli waris</strong> — Sebagian ulama membolehkan berwasiat lebih dari 1/3 jika memang tidak ada ahli waris yang berhak.<br><br>
+      <strong>4. Dihitung dari harta bersih</strong> — Setelah dikurangi biaya pengurusan jenazah dan pelunasan seluruh utang.
+    </div>
+    <div class="hl-ref hlr-cobalt">Ijma' ulama berdasarkan HR. Bukhari (2742) &amp; Muslim (1628)</div>
+  </div>
+
+  <div class="banner banner-cobalt">
+    <div class="ban-ar bnar-lt">لَا وَصِيَّةَ لِوَارِثٍ</div>
+    <div class="ban-id bnid-lt">"Tidak ada wasiat bagi ahli waris." — Kaidah fiqh yang berasal dari hadis Nabi ﷺ yang diriwayatkan banyak jalur. Makna: ahli waris tidak boleh menerima harta melalui jalur wasiat, karena mereka sudah mendapat bagian melalui hukum waris yang ditetapkan Allah. Ini untuk melindungi keadilan bagi semua ahli waris.</div>
+    <div class="ban-ref bnref-lt">HR. Abu Dawud (2870), Tirmidzi (2120) — Shahih · Kaidah Fiqhiyyah</div>
+  </div>
+</div>
+
+<!-- ══ BAB VII: SYARAT SAH WASIAT ══ -->
+<div class="stamp">
+  <div class="stamp-bar sb-cobalt"></div>
+  <div class="stamp-body sbody-cobalt">
+    <div class="stamp-tag st-cobalt">✦ Bab Ketujuh</div>
+    <div class="stamp-ar sar-cobalt">شُرُوطُ صِحَّةِ الْوَصِيَّةِ</div>
+    <div class="stamp-title">Syarat Sah Wasiat &amp; Cara Membuatnya</div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="article-list">
+    <div class="article-item ai-cobalt">
+      <div class="article-num an-cobalt">١</div>
+      <div class="article-body">
+        <div class="article-title">Pewasiat (Mūshī) Harus Memenuhi Syarat</div>
+        <div class="article-ar">الْمُوصِي</div>
+        <div class="article-desc">Syarat pewasiat: (1) Berakal sehat saat membuat wasiat — wasiat orang gila tidak sah, (2) Sudah baligh atau mumayyiz yang sudah paham menurut sebagian ulama, (3) Bukan dalam kondisi terpaksa — wasiat yang dipaksakan tidak sah, (4) Tidak disyaratkan sehat badan — orang sakit keras pun sah berwasiat.</div>
+        <span class="article-badge ab-cobalt">Syarat Pembuat</span>
+      </div>
+    </div>
+
+    <div class="article-item ai-cobalt">
+      <div class="article-num an-cobalt">٢</div>
+      <div class="article-body">
+        <div class="article-title">Penerima Wasiat (Mūsha lahu) Harus Memenuhi Syarat</div>
+        <div class="article-ar">الْمُوصَى لَهُ</div>
+        <div class="article-desc">Syarat penerima: (1) Bukan ahli waris (berlaku kaidah lā washiyyah li wārith), (2) Ada dan wujud saat pewasiat meninggal — boleh yang belum lahir jika diketahui ada dalam kandungan, (3) Bukan untuk maksiat, (4) Boleh non-Muslim menurut jumhur — berwasiat kepada tetangga non-Muslim adalah halal.</div>
+        <span class="article-badge ab-cobalt">Syarat Penerima</span>
+      </div>
+    </div>
+
+    <div class="article-item ai-cobalt">
+      <div class="article-num an-cobalt">٣</div>
+      <div class="article-body">
+        <div class="article-title">Harta yang Diwasiatkan (Mūsha bihi)</div>
+        <div class="article-ar">الْمُوصَى بِهِ</div>
+        <div class="article-desc">Syarat harta: (1) Tidak melebihi sepertiga dari total harta setelah dikurangi utang, (2) Harta yang diwasiatkan harus milik pewasiat — tidak sah mewasiatkan harta orang lain, (3) Tidak untuk tujuan yang haram, (4) Boleh mewasiatkan manfaat sesuatu (bukan hanya bendanya) — misalnya wasiat agar seseorang boleh tinggal di rumah tertentu.</div>
+        <span class="article-badge ab-cobalt">Syarat Harta</span>
+      </div>
+    </div>
+
+    <div class="article-item ai-cobalt">
+      <div class="article-num an-cobalt">٤</div>
+      <div class="article-body">
+        <div class="article-title">Redaksi Wasiat (Shīghah)</div>
+        <div class="article-ar">الصِّيغَةُ</div>
+        <div class="article-desc">Wasiat bisa diucapkan lisan atau ditulis. Sangat dianjurkan tertulis dan disaksikan dua orang saksi adil. Contoh redaksi: "Aku mewasiatkan sepertiga hartaku untuk pembangunan masjid X" atau "Aku berwasiat agar anakku si A dititipkan kepada paman B jika aku meninggal." Boleh menggunakan bahasa apapun yang dipahami.</div>
+        <span class="article-badge ab-cobalt">Cara Membuat</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="dalil dalil-cobalt">
+    <div class="dbar-cobalt"></div>
+    <div class="dbody">
+      <div class="dtag dtag-cobalt">📖 QS. Al-Mā'idah: 106 — Persaksian dalam Wasiat</div>
+      <div class="dar dar-cobalt">يَا أَيُّهَا الَّذِينَ آمَنُوا شَهَادَةُ بَيْنِكُمْ إِذَا حَضَرَ أَحَدَكُمُ الْمَوْتُ حِينَ الْوَصِيَّةِ اثْنَانِ ذَوَا عَدْلٍ مِّنكُمْ</div>
+      <div class="dtrans">"Wahai orang-orang yang beriman! Persaksian di antara kamu apabila seseorang di antara kamu hendak mati, ketika wasiat, yaitu dua orang yang adil di antara kamu..." — Al-Qur'an menganjurkan wasiat disaksikan dua orang yang adil.</div>
+      <div class="dref dref-cobalt">QS. Al-Mā'idah (5): 106</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ BAB VIII: PERBEDAAN HIBAH DAN WASIAT ══ -->
+<div class="stamp">
+  <div class="stamp-bar sb-sage"></div>
+  <div class="stamp-body sbody-sage">
+    <div class="stamp-tag st-sage">✦ Bab Kedelapan — Ringkasan</div>
+    <div class="stamp-ar sar-sage">الْفَرْقُ بَيْنَ الْهِبَةِ وَالْوَصِيَّةِ</div>
+    <div class="stamp-title">Perbandingan Komprehensif: Hibah vs Wasiat</div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="tbl-wrap">
+    <table class="tbl th-sage">
+      <thead>
+        <tr>
+          <th style="width:22%">Aspek</th>
+          <th style="width:39%">Hibah</th>
+          <th style="width:39%">Wasiat</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Aspek">Waktu Berlaku</td>
+          <td data-label="Hibah"><span class="tbdg tbdg-seal">Semasa Hidup</span> — langsung berlaku saat diberikan</td>
+          <td data-label="Wasiat"><span class="tbdg tbdg-cobalt">Setelah Meninggal</span> — berlaku setelah pewasiat wafat</td>
+        </tr>
+        <tr>
+          <td data-label="Aspek">Batas Jumlah</td>
+          <td data-label="Hibah">Tidak ada batas — boleh memberikan seluruh harta (meski tidak dianjurkan jika merugikan keluarga)</td>
+          <td data-label="Wasiat">Maksimal 1/3 dari harta bersih setelah dikurangi utang</td>
+        </tr>
+        <tr>
+          <td data-label="Aspek">Kepada Ahli Waris</td>
+          <td data-label="Hibah">Boleh — namun harus adil kepada semua anak</td>
+          <td data-label="Wasiat">Tidak boleh — "Lā washiyyah li wārith"</td>
+        </tr>
+        <tr>
+          <td data-label="Aspek">Ditarik Kembali</td>
+          <td data-label="Hibah">Pada umumnya tidak boleh kecuali orang tua kepada anak</td>
+          <td data-label="Wasiat">Boleh selama pewasiat masih hidup dan berakal</td>
+        </tr>
+        <tr>
+          <td data-label="Aspek">Qabul Penerima</td>
+          <td data-label="Hibah">Diperlukan qabul (penerimaan) dari penerima</td>
+          <td data-label="Wasiat">Qabul dilakukan setelah pewasiat meninggal</td>
+        </tr>
+        <tr>
+          <td data-label="Aspek">Prioritas Pembayaran Utang</td>
+          <td data-label="Hibah">Tidak terpengaruh oleh utang pewasiat</td>
+          <td data-label="Wasiat">Hanya berlaku setelah seluruh utang dilunasi dari harta peninggalan</td>
+        </tr>
+        <tr>
+          <td data-label="Aspek">Kepada Non-Muslim</td>
+          <td data-label="Hibah">Boleh kepada non-Muslim (tetangga, sahabat, dll.)</td>
+          <td data-label="Wasiat">Boleh kepada non-Muslim menurut jumhur (kecuali yang memerangi Islam)</td>
+        </tr>
+        <tr>
+          <td data-label="Aspek">Pengurangan Pajak</td>
+          <td data-label="Hibah">Tergantung hukum positif negara</td>
+          <td data-label="Wasiat">Tergantung hukum positif negara · Di Indonesia diatur UU Kewarisan</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Wasiat Wajibah -->
+  <div class="hl hl-sage" style="margin-top:20px;">
+    <div class="hl-label hll-sage">✦ Wasiat Wajibah — Ketentuan Modern di Indonesia</div>
+    <div class="hl-trans">Kompilasi Hukum Islam (KHI) Pasal 209 menetapkan <em>wasiat wajibah</em>: anak angkat atau orang tua angkat yang tidak mendapat waris berhak mendapat wasiat wajibah maksimal 1/3 harta. Beberapa keputusan pengadilan agama juga memberikan wasiat wajibah kepada cucu yang orang tuanya lebih dulu meninggal dari kakeknya — meski ini masih diperdebatkan karena berbeda dari pendapat mayoritas ulama klasik.</div>
+    <div class="hl-ref hlr-sage">KHI Pasal 209 · Putusan Mahkamah Agung RI · Fatwa MUI tentang Waris</div>
+  </div>
+</div>
+
+<!-- ══ BAB IX: HIBAH SAKIT MAUT DAN HIKMAH ══ -->
+<div class="stamp">
+  <div class="stamp-bar sb-gold"></div>
+  <div class="stamp-body sbody-gold">
+    <div class="stamp-tag st-gold">✦ Bab Kesembilan</div>
+    <div class="stamp-ar sar-gold">هِبَةُ الْمَرِيضِ وَحِكْمَةُ التَّبَرُّعِ</div>
+    <div class="stamp-title">Hibah Orang Sakit Menjelang Maut &amp; Hikmah Memberi</div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="prose fl-gold">
+    <p class="lead">Jika seseorang sedang sakit keras yang diperkirakan mengarah kepada kematian (marādhul maut), hibah yang diberikannya diperlakukan berbeda dari hibah orang sehat. Para ulama menetapkan aturan khusus untuk melindungi hak-hak ahli waris.</p>
+  </div>
+
+  <div class="hl hl-gold">
+    <div class="hl-label hll-gold">✦ Hukum Hibah Orang Sakit Menjelang Maut</div>
+    <div class="hl-trans">
+      <strong>Menurut jumhur (Maliki, Hanbali, Syafi'i):</strong> Hibah orang yang sedang sakit maut diperlakukan seperti wasiat — hanya berlaku pada batas sepertiga harta. Jika melebihi sepertiga, berlaku hanya sepertiga saja kecuali diizinkan ahli waris.<br><br>
+      <strong>Menurut Hanafi:</strong> Hibah orang sakit tetap sah seperti hibah orang sehat jika sudah diserahkan (qabdh), namun hukumnya sama dengan wasiat dalam hal batas sepertiga jika belum diserahkan.<br><br>
+      <strong>Hikmah pembatasan ini:</strong> Melindungi ahli waris dari kemungkinan orang sakit dipengaruhi atau tertekan untuk memberikan hartanya kepada pihak tertentu sebelum meninggal.
+    </div>
+    <div class="hl-ref hlr-gold">Al-Mughni — Ibnu Qudamah · Bidayatul Mujtahid — Ibnu Rusyd</div>
+  </div>
+
+  <!-- Hikmah memberi -->
+  <p style="font-family:'Tenor Sans',sans-serif;font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin:24px 0 12px;">Hikmah Agung di Balik Perintah Memberi dalam Islam</p>
+
+  <div class="article-list">
+    <div class="article-item ai-gold">
+      <div class="article-num an-gold">١</div>
+      <div class="article-body">
+        <div class="article-title">Menumbuhkan Kasih Sayang dan Memperkuat Ukhuwwah</div>
+        <div class="article-desc">"Saling memberi hadiahlah, niscaya kalian saling mencintai." — HR. Al-Adab Al-Mufrad (594). Pemberian — sekecil apapun — membangun jembatan hati antar manusia yang tidak bisa dibangun dengan kata-kata. Ini adalah resep Nabi ﷺ untuk ukhuwwah yang kuat.</div>
+      </div>
+    </div>
+    <div class="article-item ai-gold">
+      <div class="article-num an-gold">٢</div>
+      <div class="article-body">
+        <div class="article-title">Membersihkan dan Memberkahi Harta</div>
+        <div class="article-desc">Allah berfirman: "Ambillah zakat dari harta mereka, guna membersihkan dan menyucikan mereka." — QS. At-Tawbah: 103. Prinsip ini berlaku untuk seluruh pemberian: sedekah, hibah, dan wasiat semuanya membersihkan dan memberkahi harta yang tersisa.</div>
+      </div>
+    </div>
+    <div class="article-item ai-gold">
+      <div class="article-num an-gold">٣</div>
+      <div class="article-body">
+        <div class="article-title">Mengurangi Kesenjangan Sosial</div>
+        <div class="article-desc">Islam memandang kemiskinan sebagai masalah sosial bersama, bukan hanya masalah individu. Hibah, wasiat, wakaf, dan sedekah adalah instrumen redistribusi kekayaan yang Allah rancang untuk memastikan tidak ada yang tertinggal jauh dalam kemiskinan.</div>
+      </div>
+    </div>
+    <div class="article-item ai-gold">
+      <div class="article-num an-gold">٤</div>
+      <div class="article-body">
+        <div class="article-title">Melatih Jiwa dari Kecintaan Berlebih pada Dunia</div>
+        <div class="article-desc">Nabi ﷺ bersabda: "Harta tidak berkurang karena sedekah." — HR. Muslim (2588). Memberi melatih jiwa untuk tidak terikat pada harta — membebaskan diri dari penyakit hubb ad-dunya (cinta berlebihan pada dunia) yang merusak.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="banner banner-ink">
+    <div class="ban-ar bnar-w">مَا نَقَصَتْ صَدَقَةٌ مِنْ مَالٍ وَمَا زَادَ اللَّهُ عَبْدًا بِعَفْوٍ إِلَّا عِزًّا</div>
+    <div class="ban-id bnid-w">"Sedekah tidak mengurangi harta, dan Allah tidak menambah seorang hamba dengan pemaafan kecuali kemuliaan." — Prinsip ini berlaku untuk semua bentuk pemberian dalam Islam: memberi tidak membuat seseorang kekurangan — justru Allah menggantinya dengan keberkahan, kemuliaan, dan kelimpahan yang tidak terduga.</div>
+    <div class="ban-ref bnref-w">HR. Muslim (2588) — dari Abu Hurairah radhiyallahu 'anhu</div>
+  </div>
+</div>
+
+</div><!-- end body-wrap -->
+
+<!-- ══════ PENUTUP ══════ -->
+<div class="penutup">
+  <div class="penutup-inner">
+    <div class="penutup-ar">وَمَا تُنفِقُوا مِنْ خَيْرٍ فَإِنَّ اللَّهَ بِهِ عَلِيمٌ</div>
+    <div class="penutup-div"></div>
+    <p class="penutup-p">"Dan apa saja harta yang baik yang kamu infakkan, maka sesungguhnya Allah Maha Mengetahuinya." — QS. Al-Baqarah: 273. Setiap hibah yang diberikan dengan tulus, setiap wasiat yang dibuat dengan adil, setiap harta yang didistribusikan dengan bijak — semuanya tercatat di sisi Allah dan tidak ada yang sia-sia.</p>
+    <p class="penutup-p" style="margin-top:12px;">Rencanakan distribusi hartamu sejak hari ini — baik semasa hidup melalui hibah yang adil, maupun setelah kematian melalui wasiat yang tertulis rapi. Ini bukan sekadar perencanaan finansial — ini adalah ibadah yang menjaga harmoni keluarga, menegakkan keadilan, dan memastikan hartamu menjadi pahala yang terus mengalir.</p>
+    <div class="penutup-div"></div>
+    <div class="dalil dalil-ink" style="text-align:left;">
+      <div class="dbar-ink"></div>
+      <div class="dbody">
+        <div class="dtag dtag-ink">📜 Doa agar Harta Menjadi Berkah dan Warisan yang Baik</div>
+        <div class="dar dar-ink">رَبَّنَا هَبْ لَنَا مِنْ أَزْوَاجِنَا وَذُرِّيَّاتِنَا قُرَّةَ أَعْيُنٍ وَاجْعَلْنَا لِلْمُتَّقِينَ إِمَامًا</div>
+        <div class="dtrans dtrans-ink">"Wahai Rabb kami, anugerahkanlah kepada kami pasangan kami dan keturunan kami sebagai penyenang hati (kami), dan jadikanlah kami pemimpin bagi orang-orang yang bertakwa." — Doa yang bisa diucapkan ketika merencanakan wasiat dan hibah untuk keluarga yang kita cintai.</div>
+        <div class="dref dref-ink">QS. Al-Furqān (25): 74 — Doa hamba Allah yang sejati</div>
+      </div>
+    </div>
+    <div class="penutup-footer">
+      <div class="logo">الْهِبَةُ وَالْوَصِيَّةُ</div>
+      <div class="tag">وَاللّٰهُ أَعْلَمُ بِالصَّوَابِ · Semoga Bermanfaat</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
+
+
