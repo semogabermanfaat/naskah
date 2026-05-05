@@ -1,0 +1,1752 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kitab Hari Jum'at — Sayyidul Ayyam</title>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,300;0,6..96,400;0,6..96,700;0,6..96,900;1,6..96,300;1,6..96,400;1,6..96,700&family=Raleway:wght@200;300;400;500;600&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+
+/* ════════════════════════════════════════
+   DESIGN: "Morning of Jumu'ah"
+   — Pearlescent dawn whites & soft blues
+   — Warm amber light breaks through
+   — Bodoni Moda for aristocratic display
+   — Raleway for clean body text
+   — Animated horizon canvas in hero
+   — Water ripple effect
+   — Fragrance particle effect
+   — Soft layered light atmosphere
+   — FULLY DIFFERENT from all prior pages
+════════════════════════════════════════ */
+
+:root {
+  --dawn:      #F8F4EE;
+  --dawn2:     #F2EBE0;
+  --dawn3:     #E8DDD0;
+  --mist:      #EEF3F8;
+  --mist2:     #E4EDF6;
+  --pearl:     #FDFBF8;
+  --sky:       #C8DCF0;
+  --sky2:      #A8C8E8;
+  --sky3:      #7AAED4;
+  --amber:     #D4820A;
+  --amber2:    #E8A020;
+  --amber3:    #F8C840;
+  --amber-pale:#FDF3DC;
+  --teal:      #2A6B6B;
+  --teal2:     #1A5050;
+  --teal3:     #0E3838;
+  --sage:      #5A7060;
+  --sage2:     #3A5040;
+  --ink:       #141C1C;
+  --ink2:      #1E2A2A;
+  --text:      #2A3830;
+  --text2:     #485850;
+  --muted:     #7A9080;
+  --white:     #FEFEFE;
+  --border:    rgba(42,107,107,.15);
+  --border2:   rgba(42,107,107,.28);
+  --border3:   rgba(212,130,10,.25);
+  --shadow:    rgba(20,28,28,.1);
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Raleway',sans-serif;
+  background:var(--dawn);
+  color:var(--text);
+  overflow-x:hidden;
+  line-height:1.8;
+}
+
+/* ── SUBTLE GRAIN ── */
+body::after{
+  content:'';position:fixed;inset:0;z-index:9999;
+  pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.028'/%3E%3C/svg%3E");
+  mix-blend-mode:multiply;
+}
+
+/* ════════════════════════════════════════
+   NAV — TRANSLUCENT MORNING
+════════════════════════════════════════ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:500;
+  height:56px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 3rem;
+  background:rgba(248,244,238,.92);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+}
+.nav-brand{
+  display:flex;align-items:center;gap:.9rem;
+}
+.nav-icon{
+  width:32px;height:32px;border-radius:50%;
+  background:linear-gradient(135deg,var(--teal),var(--teal2));
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 2px 8px rgba(42,107,107,.3);
+}
+.nav-icon span{
+  font-family:'Amiri',serif;font-size:.9rem;
+  color:var(--amber3);line-height:1;
+}
+.nav-title{
+  font-family:'Bodoni Moda',serif;
+  font-size:.85rem;font-weight:700;
+  letter-spacing:.1em;color:var(--teal2);
+}
+.nav-links{
+  display:flex;gap:2.5rem;list-style:none;
+}
+.nav-links a{
+  font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;transition:color .2s;
+}
+.nav-links a:hover{color:var(--teal);}
+@media(max-width:700px){
+  nav{padding:0 1.2rem;}
+  .nav-links{display:none;}
+}
+
+/* ════════════════════════════════════════
+   HERO — DAWN HORIZON + ANIMATIONS
+════════════════════════════════════════ */
+.hero{
+  position:relative;
+  min-height:100vh;
+  padding-top:56px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  background:linear-gradient(180deg,
+    #E8F0F8 0%,
+    #F0EAE0 40%,
+    #F8F4EE 70%,
+    #FDFBF8 100%);
+}
+
+/* Animated dawn canvas */
+#dawnCanvas{
+  position:absolute;
+  bottom:0;left:0;right:0;
+  height:45%;
+  z-index:0;
+  opacity:.85;
+}
+
+/* Horizon glow */
+.horizon-glow{
+  position:absolute;
+  bottom:38%;left:50%;
+  transform:translateX(-50%);
+  width:900px;height:200px;
+  background:radial-gradient(ellipse,
+    rgba(248,200,64,.25) 0%,
+    rgba(232,160,32,.12) 30%,
+    transparent 70%);
+  pointer-events:none;z-index:1;
+  animation:horizonPulse 8s ease-in-out infinite;
+}
+@keyframes horizonPulse{
+  0%,100%{opacity:.7;transform:translateX(-50%) scaleX(1);}
+  50%{opacity:1;transform:translateX(-50%) scaleX(1.1);}
+}
+
+/* Fragrance particles */
+#fragParticles{
+  position:absolute;inset:0;z-index:2;
+  pointer-events:none;overflow:hidden;
+}
+.frag-p{
+  position:absolute;
+  border-radius:50%;
+  background:radial-gradient(circle,
+    rgba(248,200,64,.6) 0%,transparent 70%);
+  animation:fragRise linear infinite;
+  opacity:0;
+}
+@keyframes fragRise{
+  0%{transform:translateY(0) scale(0);opacity:0;}
+  15%{opacity:.7;}
+  70%{opacity:.3;}
+  100%{transform:translateY(-60vh) scale(2);opacity:0;}
+}
+
+/* Hero content */
+.hero-inner{
+  position:relative;z-index:3;
+  text-align:center;
+  padding:2rem 1.5rem 6rem;
+  max-width:840px;
+}
+
+.hero-kicker{
+  display:inline-flex;align-items:center;gap:.9rem;
+  font-size:.6rem;letter-spacing:.45em;text-transform:uppercase;
+  color:var(--amber);margin-bottom:2rem;
+  opacity:0;animation:dawnRise .9s .15s ease forwards;
+}
+.hero-kicker .bar{width:28px;height:1px;background:var(--amber);opacity:.6;}
+
+.hero-arabic{
+  font-family:'Amiri',serif;
+  font-size:clamp(1.8rem,4.5vw,3rem);
+  color:var(--teal);direction:rtl;
+  line-height:1.65;margin-bottom:.8rem;
+  text-shadow:0 2px 20px rgba(42,107,107,.15);
+  opacity:0;animation:dawnRise .9s .3s ease forwards;
+}
+
+.hero h1{
+  font-family:'Bodoni Moda',serif;
+  font-size:clamp(3rem,8vw,7rem);
+  font-weight:900;
+  color:var(--teak2,var(--teal3));
+  line-height:.92;letter-spacing:-.015em;
+  margin-bottom:1.2rem;
+  opacity:0;animation:dawnRise .9s .45s ease forwards;
+}
+.hero h1 .italic-line{
+  display:block;font-style:italic;font-weight:300;
+  font-size:.52em;color:var(--amber);letter-spacing:.04em;
+  margin-bottom:.12em;
+}
+.hero h1 .main-line{color:var(--teal2);}
+.hero h1 .sub-line{
+  display:block;font-weight:300;font-size:.38em;
+  color:var(--muted);font-style:italic;
+  letter-spacing:.08em;margin-top:.2em;
+}
+
+.hero-desc{
+  font-size:clamp(.92rem,1.8vw,1.05rem);
+  color:var(--text2);max-width:500px;
+  margin:1.5rem auto 2.5rem;
+  line-height:1.85;
+  opacity:0;animation:dawnRise .9s .6s ease forwards;
+}
+
+/* Time chips */
+.hero-chips{
+  display:flex;flex-wrap:wrap;gap:.6rem;
+  justify-content:center;
+  opacity:0;animation:dawnRise .9s .75s ease forwards;
+}
+.h-chip{
+  padding:.38rem 1.1rem;
+  border:1px solid var(--border2);border-radius:100px;
+  font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--teal2);background:rgba(42,107,107,.05);
+  transition:all .25s;
+}
+.h-chip:hover{
+  background:rgba(42,107,107,.1);
+  border-color:var(--border2);
+  transform:translateY(-2px);
+}
+
+/* Scroll line */
+.hero-scroll{
+  position:absolute;bottom:4.5rem;left:50%;
+  transform:translateX(-50%);
+  z-index:3;
+  display:flex;flex-direction:column;align-items:center;gap:.5rem;
+  opacity:0;animation:dawnRise .9s 1s ease forwards;
+}
+.scroll-col{
+  width:1px;height:44px;overflow:hidden;position:relative;
+}
+.scroll-col::before{
+  content:'';position:absolute;
+  top:-100%;left:0;width:100%;height:100%;
+  background:linear-gradient(to bottom,transparent,var(--amber2),transparent);
+  animation:scrollFlow 2s ease-in-out infinite;
+}
+@keyframes scrollFlow{0%{top:-100%;}100%{top:200%;}}
+.hero-scroll span{
+  font-size:.5rem;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--amber);
+}
+
+@keyframes dawnRise{
+  from{opacity:0;transform:translateY(20px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+/* ════════════════════════════════════════
+   INTRO BAND
+════════════════════════════════════════ */
+.intro-band{
+  background:linear-gradient(135deg,var(--teal3),var(--teal2));
+  padding:5rem 2rem;
+  position:relative;overflow:hidden;
+  border-top:1px solid rgba(42,107,107,.3);
+}
+.intro-band::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 80% 50%,
+    rgba(248,200,64,.07) 0%,transparent 55%);
+}
+/* Subtle Arabic pattern */
+.intro-band::after{
+  content:'';position:absolute;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23F8C840' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  pointer-events:none;
+}
+.ib-inner{
+  max-width:880px;margin:0 auto;
+  position:relative;z-index:1;text-align:center;
+}
+.ib-arabic{
+  font-family:'Amiri',serif;
+  font-size:clamp(1.5rem,4vw,2.4rem);
+  color:var(--amber3);direction:rtl;
+  line-height:2.2;margin-bottom:1.2rem;
+  text-shadow:0 0 30px rgba(248,200,64,.2);
+}
+.ib-trans{
+  font-family:'Bodoni Moda',serif;
+  font-style:italic;font-size:clamp(.95rem,2vw,1.15rem);
+  color:rgba(255,255,255,.65);
+  line-height:1.7;margin-bottom:.6rem;
+}
+.ib-ref{
+  font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;
+  color:var(--amber2);
+}
+
+/* ════════════════════════════════════════
+   SECTION LAYOUT
+════════════════════════════════════════ */
+.sec-pearl{
+  padding:5.5rem 2rem;
+  background:var(--pearl);
+  position:relative;
+}
+.sec-mist{
+  padding:5.5rem 2rem;
+  background:var(--mist);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  position:relative;overflow:hidden;
+}
+.sec-mist::before{
+  content:'';position:absolute;
+  width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(circle,rgba(42,107,107,.04) 0%,transparent 70%);
+  top:-150px;right:-100px;
+  animation:mistFloat 18s ease-in-out infinite;
+}
+@keyframes mistFloat{
+  0%,100%{transform:translate(0,0);}
+  50%{transform:translate(-30px,40px);}
+}
+.sec-amber{
+  padding:5.5rem 2rem;
+  background:var(--amber-pale);
+  border-top:1px solid rgba(212,130,10,.2);
+  border-bottom:1px solid rgba(212,130,10,.2);
+}
+.sec-dark{
+  padding:5.5rem 2rem;
+  background:linear-gradient(160deg,var(--teal3),var(--ink2));
+  position:relative;overflow:hidden;
+}
+.sec-dark::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 50% 30%,rgba(248,200,64,.06) 0%,transparent 55%);
+}
+
+.ch-wrap{max-width:1080px;margin:0 auto;position:relative;z-index:1;}
+
+/* Chapter header */
+.ch-top{
+  display:flex;align-items:flex-start;gap:2rem;
+  margin-bottom:3rem;padding-bottom:2rem;
+}
+.ch-top.bordered{
+  border-bottom:1px solid var(--border2);
+}
+.ch-top.bordered-dark{
+  border-bottom:1px solid rgba(248,200,64,.15);
+}
+@media(max-width:640px){
+  .ch-top{flex-direction:column;gap:1rem;}
+}
+
+.ch-num-box{
+  min-width:72px;
+  padding:1rem .8rem;
+  border:1px solid var(--border2);
+  border-radius:3px;
+  display:flex;flex-direction:column;align-items:center;
+  flex-shrink:0;
+}
+.chn-dark{
+  border-color:rgba(248,200,64,.2);
+  background:rgba(248,200,64,.04);
+}
+.ch-n{
+  font-family:'Bodoni Moda',serif;
+  font-size:2.5rem;font-weight:900;
+  color:var(--teal2);line-height:1;
+}
+.chn-dark .ch-n{color:var(--amber3);}
+.ch-n-label{
+  font-size:.48rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--muted);margin-top:.3rem;
+}
+.chn-dark .ch-n-label{color:rgba(255,255,255,.3);}
+
+.ch-title-block{}
+.ch-tag{
+  font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--amber);margin-bottom:.55rem;display:block;
+}
+.ch-tag-dark{color:var(--amber2);}
+.ch-arabic{
+  font-family:'Amiri',serif;
+  font-size:clamp(1.3rem,2.8vw,1.9rem);
+  color:var(--teal);direction:rtl;
+  margin-bottom:.3rem;
+}
+.ch-arabic-dark{color:var(--amber3);}
+.ch-title{
+  font-family:'Bodoni Moda',serif;
+  font-size:clamp(1.8rem,3.8vw,2.8rem);
+  font-weight:700;color:var(--teal3);
+  line-height:1.1;margin-bottom:.5rem;
+}
+.ch-title-dark{color:var(--dawn);}
+.ch-sub{
+  font-size:.93rem;color:var(--text2);max-width:580px;
+  line-height:1.72;
+}
+.ch-sub-dark{color:rgba(240,233,224,.45);}
+
+/* ════ PROSE ════ */
+.prose{
+  font-size:.98rem;line-height:1.95;
+  color:var(--text);
+  text-align:justify;text-justify:inter-word;
+  hyphens:auto;
+}
+.prose p{margin-bottom:1.1rem;}
+.prose p:last-child{margin-bottom:0;}
+.dark-prose{color:rgba(240,233,224,.65);}
+
+.drop-cap::first-letter{
+  font-family:'Bodoni Moda',serif;
+  font-size:4.4rem;font-weight:900;
+  color:var(--teal);float:left;
+  line-height:.76;margin-right:.1em;
+  margin-top:.14em;padding-right:.04em;
+}
+.drop-dark::first-letter{color:var(--amber3);}
+
+/* Two-column */
+.two-col{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:3rem;margin-bottom:1.5rem;
+}
+@media(max-width:768px){.two-col{grid-template-columns:1fr;gap:1.5rem;}}
+
+/* ════ DALIL ════ */
+.dalil{
+  border-radius:4px;padding:1.8rem 2.2rem;
+  margin:1.6rem 0;position:relative;overflow:hidden;
+}
+.dalil-dawn{
+  background:var(--dawn2);
+  border:1px solid var(--border2);
+  border-left:3px solid var(--teal);
+}
+.dalil-amber{
+  background:rgba(212,130,10,.06);
+  border:1px solid rgba(212,130,10,.2);
+  border-left:3px solid var(--amber);
+}
+.dalil-dark{
+  background:rgba(0,0,0,.2);
+  border-left:3px solid var(--amber2);
+}
+.dalil::after{
+  content:'"';
+  position:absolute;bottom:-.8rem;right:1.2rem;
+  font-family:'Bodoni Moda',serif;font-size:7rem;
+  color:rgba(42,107,107,.07);line-height:1;
+}
+.dalil-amber::after{color:rgba(212,130,10,.07);}
+.dalil-dark::after{color:rgba(248,200,64,.05);}
+.d-ar{
+  font-family:'Amiri',serif;
+  font-size:clamp(1.05rem,2.3vw,1.4rem);
+  direction:rtl;text-align:right;
+  line-height:2.2;margin-bottom:.8rem;
+}
+.dalil-dawn .d-ar{color:var(--teal);}
+.dalil-amber .d-ar{color:var(--amber);}
+.dalil-dark .d-ar{color:var(--amber3);}
+.d-tr{
+  font-family:'Bodoni Moda',serif;
+  font-style:italic;font-size:.93rem;
+  line-height:1.72;margin-bottom:.5rem;
+}
+.dalil-dawn .d-tr,.dalil-amber .d-tr{color:var(--text2);}
+.dalil-dark .d-tr{color:rgba(240,233,224,.55);}
+.d-src{
+  font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;
+}
+.dalil-dawn .d-src,.dalil-amber .d-src{color:var(--amber);}
+.dalil-dark .d-src{color:var(--amber2);}
+
+/* Pull quote */
+.pull{
+  float:right;width:40%;
+  margin:.5rem 0 1.5rem 2.5rem;
+  padding:1.2rem 1.5rem;
+  border-top:2px solid var(--teal);
+  background:var(--mist2);
+}
+@media(max-width:600px){.pull{float:none;width:100%;margin:1.2rem 0;}}
+.pull-text{
+  font-family:'Bodoni Moda',serif;
+  font-style:italic;font-size:1.05rem;
+  color:var(--teal2);line-height:1.6;margin-bottom:.4rem;
+}
+.pull-src{
+  font-size:.56rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--teal);
+}
+
+/* ════ ADAB CARDS — for Mandi section ════ */
+.adab-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+  gap:1.2rem;margin:2rem 0;
+}
+.adab-card{
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:4px;
+  overflow:hidden;
+  transition:all .3s cubic-bezier(.34,1.56,.64,1);
+  position:relative;
+}
+.adab-card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 18px 48px var(--shadow);
+  border-color:var(--border2);
+}
+.adab-card::after{
+  content:'';position:absolute;
+  bottom:0;left:0;right:0;height:2px;
+  background:linear-gradient(to right,transparent,var(--teal),transparent);
+  transform:scaleX(0);transition:transform .3s;
+}
+.adab-card:hover::after{transform:scaleX(1);}
+.ac-top{
+  padding:1.5rem 1.8rem 1.1rem;
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:flex-start;gap:1rem;
+}
+.ac-icon{
+  font-size:1.5rem;flex-shrink:0;
+  margin-top:.1rem;
+}
+.ac-titles{}
+.ac-title{
+  font-family:'Bodoni Moda',serif;
+  font-size:1.05rem;font-weight:700;
+  color:var(--teal2);margin-bottom:.1rem;
+}
+.ac-arabic{
+  font-family:'Amiri',serif;font-size:.88rem;
+  color:var(--amber);direction:rtl;
+}
+.ac-body{
+  padding:1.1rem 1.8rem 1.4rem;
+  font-size:.88rem;color:var(--text2);
+  line-height:1.75;text-align:justify;
+}
+.ac-src{
+  font-size:.56rem;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--teal);margin-top:.4rem;display:block;
+}
+
+/* ════ WEWANGIAN FEATURE ════ */
+.fragrance-feature{
+  background:var(--white);
+  border:1px solid var(--border2);
+  border-radius:6px;
+  overflow:hidden;
+  margin:2rem 0;
+  box-shadow:0 4px 24px var(--shadow);
+}
+.ff-head{
+  background:linear-gradient(135deg,var(--teal2),var(--teal3));
+  padding:1.5rem 2rem;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.ff-head h3{
+  font-family:'Bodoni Moda',serif;
+  font-size:1.1rem;font-weight:700;color:var(--dawn);
+}
+.ff-head span{
+  font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--amber2);
+}
+.ff-body{
+  padding:2rem;
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+  gap:1.2rem;
+}
+.ff-item{
+  background:var(--mist);
+  border:1px solid var(--border);
+  border-radius:4px;padding:1.3rem;
+  text-align:center;
+  transition:all .25s;
+}
+.ff-item:hover{
+  border-color:var(--border2);
+  transform:translateY(-2px);
+  background:var(--mist2);
+}
+.ff-icon{font-size:2rem;margin-bottom:.6rem;display:block;}
+.ff-name{
+  font-family:'Bodoni Moda',serif;
+  font-size:.95rem;font-weight:700;
+  color:var(--teal2);margin-bottom:.3rem;
+}
+.ff-desc{
+  font-size:.78rem;color:var(--text2);
+  line-height:1.6;
+}
+
+/* ════ KHUTBAH STEPS ════ */
+.khutbah-steps{
+  display:flex;flex-direction:column;gap:0;
+  margin:2rem 0;position:relative;
+}
+.khutbah-steps::before{
+  content:'';
+  position:absolute;left:2.2rem;top:2.5rem;bottom:2.5rem;
+  width:1px;
+  background:linear-gradient(to bottom,
+    transparent,var(--border2) 10%,
+    var(--border2) 90%,transparent);
+}
+@media(max-width:600px){
+  .khutbah-steps::before{left:1.7rem;}
+}
+
+.ks-item{
+  display:grid;grid-template-columns:4.5rem 1fr;
+  gap:1.5rem;align-items:start;
+  padding:1.5rem 0;
+  border-bottom:1px dashed var(--border);
+  position:relative;
+}
+.ks-item:last-child{border-bottom:none;}
+
+.ks-dot-wrap{
+  display:flex;justify-content:center;padding-top:.3rem;
+}
+.ks-dot{
+  width:14px;height:14px;border-radius:50%;
+  background:var(--teal);
+  border:3px solid var(--pearl);
+  box-shadow:0 0 0 2px var(--teal);
+  flex-shrink:0;
+  transition:all .25s;
+}
+.ks-item:hover .ks-dot{
+  background:var(--amber);
+  box-shadow:0 0 0 2px var(--amber);
+}
+
+.ks-content{}
+.ks-num{
+  font-size:.58rem;letter-spacing:.25em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:.3rem;display:block;
+}
+.ks-title{
+  font-family:'Bodoni Moda',serif;
+  font-size:1.05rem;font-weight:700;
+  color:var(--teal2);margin-bottom:.4rem;
+}
+.ks-body{
+  font-size:.9rem;color:var(--text2);
+  line-height:1.75;text-align:justify;
+}
+.ks-dalil{
+  display:inline-block;
+  font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--amber);margin-top:.4rem;
+  border:1px solid rgba(212,130,10,.25);
+  padding:.15rem .6rem;border-radius:2px;
+}
+
+/* ════ LARANGAN LIST ════ */
+.larangan-list{
+  display:flex;flex-direction:column;gap:.8rem;
+  margin:1.5rem 0;
+}
+.l-item{
+  display:flex;align-items:flex-start;gap:1.2rem;
+  background:var(--dawn2);
+  border:1px solid var(--border);
+  border-radius:4px;padding:1.1rem 1.4rem;
+  transition:all .25s;
+  position:relative;overflow:hidden;
+}
+.l-item::before{
+  content:'';position:absolute;
+  left:0;top:0;bottom:0;width:3px;
+  background:linear-gradient(to bottom,var(--amber),var(--teal));
+}
+.l-item:hover{
+  border-color:var(--border2);
+  transform:translateX(4px);
+}
+.l-icon{
+  font-size:1.2rem;flex-shrink:0;margin-top:.05rem;
+}
+.l-body h4{
+  font-family:'Bodoni Moda',serif;
+  font-size:.95rem;font-weight:700;
+  color:var(--teal2);margin-bottom:.2rem;
+}
+.l-body p{
+  font-size:.86rem;color:var(--text2);
+  line-height:1.7;text-align:justify;
+}
+.l-src{
+  font-size:.55rem;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--amber);
+  margin-top:.25rem;display:block;
+}
+
+/* ════ TIMELINE — WAKTU JUM'AT ════ */
+.timeline-jumat{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+  gap:1px;
+  background:var(--border);
+  border:1px solid var(--border);
+  border-radius:6px;
+  overflow:hidden;
+  margin:2rem 0;
+}
+.tj-item{
+  background:var(--white);
+  padding:1.5rem 1.2rem;
+  text-align:center;
+  transition:background .2s;
+  position:relative;
+}
+.tj-item:hover{background:var(--mist2);}
+.tj-time{
+  font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:.5rem;display:block;
+}
+.tj-icon{font-size:1.5rem;margin-bottom:.5rem;display:block;}
+.tj-name{
+  font-family:'Bodoni Moda',serif;
+  font-size:.92rem;font-weight:700;
+  color:var(--teal2);margin-bottom:.3rem;
+}
+.tj-desc{
+  font-size:.75rem;color:var(--text2);
+  line-height:1.6;
+}
+.tj-priority{
+  position:absolute;top:.5rem;right:.5rem;
+  font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;
+  padding:.12rem .5rem;border-radius:100px;
+}
+.tp-wajib{
+  background:rgba(42,107,107,.08);
+  color:var(--teal2);border:1px solid var(--border);
+}
+.tp-sunnah{
+  background:rgba(212,130,10,.08);
+  color:var(--amber);border:1px solid rgba(212,130,10,.2);
+}
+
+/* ════ KEUTAMAAN JUM'AT ════ */
+.keutamaan-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:1.2rem;margin:2rem 0;
+}
+.k-card{
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(248,200,64,.12);
+  border-radius:4px;padding:1.6rem;
+  transition:all .25s;
+  position:relative;overflow:hidden;
+}
+.k-card:hover{
+  background:rgba(255,255,255,.1);
+  border-color:rgba(248,200,64,.25);
+  transform:translateY(-3px);
+}
+.k-card::before{
+  content:'';position:absolute;
+  bottom:0;left:0;right:0;height:2px;
+  background:linear-gradient(to right,transparent,var(--amber2),transparent);
+  transform:scaleX(0);transition:transform .3s;
+}
+.k-card:hover::before{transform:scaleX(1);}
+.k-num{
+  font-family:'Bodoni Moda',serif;
+  font-size:3.5rem;font-weight:900;
+  color:rgba(248,200,64,.08);line-height:1;
+  margin-bottom:.6rem;
+}
+.k-title{
+  font-family:'Bodoni Moda',serif;
+  font-size:.95rem;font-weight:700;
+  color:var(--amber3);margin-bottom:.5rem;
+  letter-spacing:.03em;
+}
+.k-body{
+  font-size:.86rem;color:rgba(240,233,224,.6);
+  line-height:1.75;text-align:justify;
+}
+
+/* ════ SECTION DIVIDER ════ */
+.div-bar{
+  display:flex;align-items:center;gap:1.5rem;
+  max-width:1080px;margin:0 auto;
+  padding:1.5rem 2rem 0;
+}
+.db-line{
+  flex:1;height:1px;background:var(--border2);
+}
+.db-badge{
+  display:flex;align-items:center;gap:.7rem;white-space:nowrap;
+}
+.db-gem{
+  width:7px;height:7px;
+  background:var(--amber2);transform:rotate(45deg);
+  animation:gemPulse 4s ease-in-out infinite;
+}
+@keyframes gemPulse{
+  0%,100%{box-shadow:0 0 0 0 rgba(212,130,10,.3);}
+  50%{box-shadow:0 0 0 5px rgba(212,130,10,0);}
+}
+.db-text{
+  font-size:.58rem;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--amber);
+}
+
+/* Water ripple decorative */
+.ripple-wrap{
+  position:absolute;
+  bottom:-20px;right:-20px;
+  width:200px;height:200px;
+  pointer-events:none;opacity:.06;
+}
+.ripple-ring{
+  position:absolute;
+  border-radius:50%;
+  border:1px solid var(--teal);
+}
+.ripple-ring:nth-child(1){inset:60px;animation:rippleOut 3s ease-out infinite;}
+.ripple-ring:nth-child(2){inset:40px;animation:rippleOut 3s .6s ease-out infinite;}
+.ripple-ring:nth-child(3){inset:20px;animation:rippleOut 3s 1.2s ease-out infinite;}
+.ripple-ring:nth-child(4){inset:0;animation:rippleOut 3s 1.8s ease-out infinite;}
+@keyframes rippleOut{
+  0%{transform:scale(.5);opacity:1;}
+  100%{transform:scale(1.8);opacity:0;}
+}
+
+/* ════ CLOSING ════ */
+.closing{
+  background:linear-gradient(160deg,var(--teal3),#0A2828,var(--ink2));
+  padding:7rem 2rem;text-align:center;
+  position:relative;overflow:hidden;
+}
+.closing::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 50% 30%,
+    rgba(212,130,10,.08) 0%,transparent 55%);
+  animation:closePulse 10s ease-in-out infinite;
+}
+@keyframes closePulse{
+  0%,100%{opacity:.7;}50%{opacity:1;}
+}
+.closing-top-line{
+  position:absolute;top:0;left:10%;right:10%;height:1px;
+  background:linear-gradient(to right,transparent,rgba(248,200,64,.4),transparent);
+}
+.closing-inner{
+  position:relative;z-index:1;max-width:700px;margin:0 auto;
+}
+.closing-ornament{
+  display:flex;align-items:center;justify-content:center;gap:1rem;
+  margin-bottom:2.5rem;
+}
+.co-line{width:60px;height:1px;background:rgba(248,200,64,.3);}
+.co-gem{
+  width:8px;height:8px;background:var(--amber2);
+  transform:rotate(45deg);
+  box-shadow:0 0 12px rgba(248,200,64,.3);
+  animation:gemPulse 3s ease-in-out infinite;
+}
+.co-gem.sm{width:5px;height:5px;opacity:.5;}
+.closing h2{
+  font-family:'Bodoni Moda',serif;
+  font-size:clamp(2rem,5vw,3.5rem);font-weight:700;
+  color:var(--dawn);line-height:1.15;
+  letter-spacing:-.01em;margin-bottom:1.5rem;
+}
+.closing h2 em{
+  font-style:italic;font-weight:300;color:var(--amber3);
+}
+.closing p{
+  font-size:1rem;color:rgba(240,233,224,.45);
+  line-height:1.9;text-align:justify;
+  text-justify:inter-word;margin-bottom:1rem;
+}
+.closing-ar{
+  font-family:'Amiri',serif;
+  font-size:clamp(1.4rem,3.5vw,2rem);
+  color:var(--amber3);direction:rtl;
+  margin:2.5rem 0 .6rem;line-height:2.1;
+  text-shadow:0 0 30px rgba(248,200,64,.2);
+}
+.closing-tr{
+  font-family:'Bodoni Moda',serif;
+  font-style:italic;font-size:.9rem;
+  color:rgba(240,233,224,.35);
+}
+.closing-ref{
+  font-size:.55rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--amber);margin-top:.3rem;
+}
+.sep-row{
+  display:flex;align-items:center;gap:.8rem;
+  justify-content:center;margin:2.5rem 0;
+}
+.sr-gem{width:6px;height:6px;background:var(--amber2);transform:rotate(45deg);}
+.sr-gem.sm{width:4px;height:4px;opacity:.4;}
+.sr-line{width:60px;height:1px;background:rgba(248,200,64,.2);}
+
+/* FOOTER */
+footer{
+  background:#060E0E;color:rgba(90,112,96,.28);
+  text-align:center;padding:2rem;
+  font-size:.62rem;letter-spacing:.1em;line-height:2.2;
+}
+footer em{color:var(--amber);font-style:normal;}
+</style>
+</head>
+<body>
+
+<!-- ════ NAV ════ -->
+<nav>
+  <div class="nav-brand">
+    <div class="nav-icon"><span>ج</span></div>
+    <div class="nav-title">Kitab Hari Jum'at</div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#keutamaan">Keutamaan</a></li>
+    <li><a href="#mandi">Adab Mandi</a></li>
+    <li><a href="#wewangian">Wewangian</a></li>
+    <li><a href="#khutbah">Khutbah</a></li>
+    <li><a href="#waktu">Waktu Mustajab</a></li>
+  </ul>
+</nav>
+
+<!-- ════ HERO ════ -->
+<header class="hero">
+  <canvas id="dawnCanvas"></canvas>
+  <div class="horizon-glow"></div>
+  <div id="fragParticles"></div>
+
+  <div class="hero-inner">
+    <div class="hero-kicker">
+      <div class="bar"></div>
+      <span>Sayyidul Ayyam — Penghulu Segala Hari</span>
+      <div class="bar"></div>
+    </div>
+    <div class="hero-arabic">يَوْمُ الْجُمُعَةِ — خَيْرُ يَوْمٍ طَلَعَتْ عَلَيْهِ الشَّمْسُ</div>
+    <h1>
+      <span class="italic-line">Kitab</span>
+      <span class="main-line">Hari Jum'at</span>
+      <span class="sub-line">Tata Tertib & Keutamaannya</span>
+    </h1>
+    <p class="hero-desc">Panduan lengkap adab hari Jum'at — mandi wajib, memakai wewangian, berpakaian indah, mendengarkan khutbah dengan khusyuk, dan waktu-waktu mustajab doa.</p>
+    <div class="hero-chips">
+      <span class="h-chip">Mandi Jum'at</span>
+      <span class="h-chip">Wewangian Sunnah</span>
+      <span class="h-chip">Adab Khutbah</span>
+      <span class="h-chip">Waktu Mustajab</span>
+      <span class="h-chip">Shalat Jum'at</span>
+      <span class="h-chip">Surah Al-Kahfi</span>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <div class="scroll-col"></div>
+    <span>Gulir</span>
+  </div>
+</header>
+
+<!-- ════ INTRO BAND ════ -->
+<div class="intro-band">
+  <div class="ib-inner">
+    <p class="ib-arabic">خَيْرُ يَوْمٍ طَلَعَتْ عَلَيْهِ الشَّمْسُ يَوْمُ الْجُمُعَةِ</p>
+    <p class="ib-trans">"Sebaik-baik hari yang matahari terbit padanya adalah hari Jum'at."</p>
+    <p class="ib-ref">HR. Muslim — Sabda Nabi Muhammad ﷺ</p>
+  </div>
+</div>
+
+<!-- ════════════════════
+     BAB I — KEUTAMAAN
+════════════════════ -->
+<div id="keutamaan" class="sec-dark">
+  <div class="ch-wrap">
+    <div class="ch-top ch-top.bordered-dark">
+      <div class="ch-num-box chn-dark">
+        <div class="ch-n">I</div>
+        <div class="ch-n-label">Bab Satu</div>
+      </div>
+      <div class="ch-title-block">
+        <span class="ch-tag ch-tag-dark">Keistimewaan Agung</span>
+        <div class="ch-arabic ch-arabic-dark">فَضَائِلُ يَوْمِ الْجُمُعَةِ</div>
+        <h2 class="ch-title ch-title-dark">Keutamaan<br>Hari Jum'at</h2>
+        <p class="ch-sub ch-sub-dark">Hari Jum'at adalah hari paling mulia dalam seminggu — bahkan lebih mulia dari Idul Fitri dan Idul Adha menurut sebagian ulama.</p>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <div class="prose dark-prose">
+          <p class="drop-cap drop-dark">Hari Jum'at memiliki kedudukan yang sangat istimewa dalam Islam. Rasulullah ﷺ menyebutnya sebagai "sayyidul ayyam" — penghulu segala hari. Pada hari inilah Allah menciptakan Adam alaihissalam, pada hari inilah Adam dimasukkan ke surga, pada hari inilah Adam diturunkan ke bumi, dan pada hari Jum'at pula kiamat akan terjadi.</p>
+          <p>Allah memberikan keistimewaan hari Jum'at kepada umat Islam, sementara umat terdahulu tidak mengetahuinya. Yahudi memiliki hari Sabtu, Nasrani memiliki hari Ahad — namun Allah memilihkan hari Jum'at untuk umat Muhammad ﷺ sebagai tanda kemuliaan dan keistimewaan mereka.</p>
+        </div>
+        <div class="dalil dalil-dark">
+          <p class="d-ar">إِنَّ مِنْ أَفْضَلِ أَيَّامِكُمْ يَوْمَ الْجُمُعَةِ فِيهِ خُلِقَ آدَمُ وَفِيهِ قُبِضَ وَفِيهِ النَّفْخَةُ وَفِيهِ الصَّعْقَةُ</p>
+          <p class="d-tr">"Sesungguhnya di antara hari-hari kalian yang paling utama adalah hari Jum'at. Pada hari itu Adam diciptakan, pada hari itu beliau diwafatkan, pada hari itu sangkakala ditiup, dan pada hari itu terjadi kematian (massal)."</p>
+          <p class="d-src">HR. Abu Dawud & Ibnu Majah (Shahih)</p>
+        </div>
+      </div>
+      <div>
+        <div class="keutamaan-grid" style="grid-template-columns:1fr;">
+          <div class="k-card">
+            <div class="k-num">01</div>
+            <div class="k-title">Penghulu Segala Hari</div>
+            <div class="k-body">Nabi ﷺ bersabda: "Sebaik-baik hari yang matahari terbit padanya adalah hari Jum'at." (HR. Muslim). Ini adalah gelar yang hanya disematkan pada Jum'at — penguasa hari dalam sepekan.</div>
+          </div>
+          <div class="k-card">
+            <div class="k-num">02</div>
+            <div class="k-title">Dosa Diampuni antara Dua Jum'at</div>
+            <div class="k-body">Nabi ﷺ bersabda: "Shalat lima waktu dan Jum'at ke Jum'at berikutnya adalah penghapus dosa antara keduanya selama dosa-dosa besar dijauhi." (HR. Muslim). Setiap Jum'at adalah pencucian bagi jiwa yang menjaganya.</div>
+          </div>
+          <div class="k-card">
+            <div class="k-num">03</div>
+            <div class="k-title">Ada Waktu Mustajab Doa</div>
+            <div class="k-body">Nabi ﷺ bersabda: "Pada hari Jum'at terdapat satu waktu yang tidaklah seorang Muslim tepat memintanya sambil berdiri shalat, melainkan Allah pasti memberi apa yang dimintanya." (HR. Bukhari & Muslim). Waktu yang paling kuat: menjelang Asar hingga terbenam matahari.</div>
+          </div>
+          <div class="k-card">
+            <div class="k-num">04</div>
+            <div class="k-title">Perbanyak Shalawat</div>
+            <div class="k-body">Nabi ﷺ bersabda: "Perbanyaklah shalawat kepadaku pada malam Jum'at dan hari Jum'at." (HR. Al-Baihaqi — Hasan). Shalawat pada hari Jum'at disampaikan langsung kepada Nabi ﷺ dan beliau menjawabnya.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DIVIDER -->
+<div class="div-bar" id="mandi">
+  <div class="db-line"></div>
+  <div class="db-badge"><div class="db-gem"></div><span class="db-text">Bab Kedua</span><div class="db-gem"></div></div>
+  <div class="db-line"></div>
+</div>
+
+<!-- ════════════════════
+     BAB II — MANDI JUM'AT
+════════════════════ -->
+<div class="sec-pearl">
+  <div class="ch-wrap">
+    <div class="ch-top bordered">
+      <div class="ch-num-box">
+        <div class="ch-n">II</div>
+        <div class="ch-n-label">Bab Dua</div>
+      </div>
+      <div class="ch-title-block">
+        <span class="ch-tag">Bersuci & Kebersihan</span>
+        <div class="ch-arabic">غُسْلُ الْجُمُعَةِ وَآدَابُهُ</div>
+        <h2 class="ch-title">Adab Mandi<br>Hari Jum'at</h2>
+        <p class="ch-sub">Mandi hari Jum'at adalah salah satu sunnah muakkadah (sangat ditekankan) yang oleh sebagian ulama dihukumi wajib — berdasarkan perintah tegas Rasulullah ﷺ.</p>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <div class="prose">
+          <p class="drop-cap">Mandi hari Jum'at adalah di antara sunnah yang paling ditekankan oleh Rasulullah ﷺ. Para ulama berbeda pendapat antara wajib dan sunnah muakkadah, namun keduanya sepakat bahwa meninggalkannya tanpa uzur adalah hal yang tercela. Nabi ﷺ bersabda: "Mandi pada hari Jum'at adalah wajib atas setiap Muslim yang sudah baligh." (HR. Bukhari & Muslim).</p>
+          <p>Mayoritas ulama (Hanafiyyah, Malikiyyah, dan pendapat kuat dalam Syafi'iyyah) berpendapat mandi Jum'at adalah sunnah muakkadah, bukan fardhu, karena terdapat hadis lain yang menunjukkan ini adalah keutamaan bukan kewajiban. Imam Ahmad dan sebagian ulama berpendapat wajib berdasarkan hadis di atas.</p>
+          <p>Waktu mandi yang paling sunnah adalah di pagi hari sebelum berangkat ke masjid, sedekat mungkin dengan waktu keberangkatan agar kesegaran dan keharuman tubuh bertahan hingga shalat Jum'at.</p>
+        </div>
+        <div class="dalil dalil-dawn">
+          <p class="d-ar">غُسْلُ يَوْمِ الْجُمُعَةِ وَاجِبٌ عَلَى كُلِّ مُحْتَلِمٍ</p>
+          <p class="d-tr">"Mandi pada hari Jum'at adalah wajib atas setiap orang yang telah baligh (muhtalim)."</p>
+          <p class="d-src">HR. Bukhari & Muslim</p>
+        </div>
+      </div>
+      <div>
+        <div class="prose">
+          <p>Ibnu Umar radhiyallahu 'anhuma meriwayatkan bahwa Umar bin Khattab pernah melihat seorang laki-laki yang masuk masjid pada hari Jum'at dalam keadaan tidak mandi. Umar berkata kepadanya: "Mandi saja!" Ini menunjukkan bahwa para sahabat sangat memperhatikan adab mandi Jum'at.</p>
+          <p>Nabi ﷺ juga bersabda: "Barang siapa mandi pada hari Jum'at seperti mandi janabah (mandi besar), lalu berangkat lebih awal, maka seolah-olah ia berkurban dengan seekor unta." (HR. Bukhari & Muslim). Ini adalah gambaran betapa besarnya pahala mandi Jum'at yang disertai berangkat awal.</p>
+        </div>
+        <div class="dalil dalil-dawn">
+          <p class="d-ar">مَنِ اغْتَسَلَ يَوْمَ الْجُمُعَةِ غُسْلَ الْجَنَابَةِ ثُمَّ رَاحَ فِي السَّاعَةِ الْأُولَى فَكَأَنَّمَا قَرَّبَ بَدَنَةً</p>
+          <p class="d-tr">"Barang siapa mandi pada hari Jum'at seperti mandi janabah kemudian berangkat di waktu pertama, maka seolah-olah ia berkurban dengan seekor unta."</p>
+          <p class="d-src">HR. Bukhari & Muslim</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Adab mandi cards -->
+    <h3 style="font-family:'Bodoni Moda',serif;font-size:1rem;color:var(--teal2);letter-spacing:.15em;text-transform:uppercase;margin:2.5rem 0 1.2rem;display:flex;align-items:center;gap:1rem;">
+      <span style="flex:1;height:1px;background:var(--border2);"></span>
+      Adab-Adab Mandi & Bersuci Hari Jum'at
+      <span style="flex:1;height:1px;background:var(--border2);"></span>
+    </h3>
+
+    <div class="adab-grid">
+      <div class="adab-card">
+        <div class="ac-top">
+          <div class="ac-icon">🚿</div>
+          <div class="ac-titles">
+            <div class="ac-title">Niat & Cara Mandi</div>
+            <div class="ac-arabic">النِّيَّةُ وَكَيْفِيَّةُ الْغُسْلِ</div>
+          </div>
+        </div>
+        <div class="ac-body">
+          Mandi Jum'at dilakukan seperti mandi janabah: niat, memulai dengan membasuh tangan, membersihkan kemaluan, berwudhu sempurna, lalu meratakan air ke seluruh tubuh dimulai dari kepala. Disunnahkan menggosok seluruh badan dan mencuci rambut. Boleh dilakukan setelah Subuh hingga sebelum shalat Jum'at.
+          <span class="ac-src">HR. Bukhari & Muslim — cara mandi Nabi ﷺ</span>
+        </div>
+      </div>
+      <div class="adab-card">
+        <div class="ac-top">
+          <div class="ac-icon">⏰</div>
+          <div class="ac-titles">
+            <div class="ac-title">Waktu Mandi yang Tepat</div>
+            <div class="ac-arabic">وَقْتُ الْغُسْلِ</div>
+          </div>
+        </div>
+        <div class="ac-body">
+          Para ulama sepakat bahwa mandi Jum'at dimulai setelah terbit fajar (Subuh). Waktu terbaik adalah sedekat mungkin dengan keberangkatan ke masjid agar kesegaran tubuh terjaga. Mandi sebelum Subuh tidak menggugurkan sunnah ini, karena yang dimaksud adalah mandi "untuk hari Jum'at" bukan mandi "di hari Jum'at pagi".
+          <span class="ac-src">Al-Majmu' Imam An-Nawawi — Syarh Hadis</span>
+        </div>
+      </div>
+      <div class="adab-card">
+        <div class="ac-top">
+          <div class="ac-icon">✂️</div>
+          <div class="ac-titles">
+            <div class="ac-title">Potong Kuku & Bersihkan Rambut</div>
+            <div class="ac-arabic">قَصُّ الأَظَافِرِ وَالِاسْتِحْدَادُ</div>
+          </div>
+        </div>
+        <div class="ac-body">
+          Hari Jum'at adalah hari yang dianjurkan untuk memotong kuku, merapikan kumis, mencukur bulu ketiak, dan mencabut bulu kemaluan (bagi yang sudah lebih dari 40 hari). Ini termasuk dalam sunnah fitraah yang dianjurkan Rasulullah ﷺ secara umum, dan hari Jum'at adalah waktu yang paling dianjurkan.
+          <span class="ac-src">HR. Bukhari & Muslim — sunnah fitrah</span>
+        </div>
+      </div>
+      <div class="adab-card">
+        <div class="ac-top">
+          <div class="ac-icon">👕</div>
+          <div class="ac-titles">
+            <div class="ac-title">Kenakan Pakaian Terbaik</div>
+            <div class="ac-arabic">لُبْسُ أَحْسَنِ الثِّيَابِ</div>
+          </div>
+        </div>
+        <div class="ac-body">
+          Nabi ﷺ bersabda: "Maka hendaklah ia memakai pakaian terbaiknya." (HR. Ibnu Majah — Hasan). Pakaian putih adalah yang paling dianjurkan berdasarkan hadis: "Pakailah pakaian putih kalian, sesungguhnya ia adalah sebaik-baik pakaian kalian." (HR. Abu Dawud). Ini termasuk menggunakan siwak sebelum berangkat.
+          <span class="ac-src">HR. Ibnu Majah & Abu Dawud</span>
+        </div>
+      </div>
+      <div class="adab-card">
+        <div class="ac-top">
+          <div class="ac-icon">🦷</div>
+          <div class="ac-titles">
+            <div class="ac-title">Bersiwak (Gosok Gigi)</div>
+            <div class="ac-arabic">السِّوَاكُ يَوْمَ الْجُمُعَةِ</div>
+          </div>
+        </div>
+        <div class="ac-body">
+          Nabi ﷺ bersabda: "Sungguh aku menginginkan — seandainya tidak memberatkan umatku — untuk memerintahkan mereka bersiwak setiap kali berwudhu." (HR. Bukhari). Pada hari Jum'at, siwak sangat dianjurkan sebelum berangkat ke masjid, bahkan sebagian ulama menganjurkannya berkali-kali pada hari ini.
+          <span class="ac-src">HR. Bukhari — keutamaan siwak</span>
+        </div>
+      </div>
+      <div class="adab-card">
+        <div class="ac-top">
+          <div class="ac-icon">🕌</div>
+          <div class="ac-titles">
+            <div class="ac-title">Berangkat Awal ke Masjid</div>
+            <div class="ac-arabic">التَّبْكِيرُ إِلَى الْمَسْجِدِ</div>
+          </div>
+        </div>
+        <div class="ac-body">
+          Nabi ﷺ menyebutkan lima tingkatan pahala bagi yang berangkat di waktu pertama hingga kelima. Yang berangkat di waktu pertama (paling awal) seolah berkurban unta, waktu kedua seolah berkurban sapi, ketiga seolah berkurban kambing, keempat seolah berkurban ayam, kelima seolah berkurban telur. (HR. Bukhari & Muslim)
+          <span class="ac-src">HR. Bukhari & Muslim</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Waktu datang ke masjid -->
+    <div class="timeline-jumat">
+      <div class="tj-item">
+        <span class="tj-time">Waktu Pertama</span>
+        <span class="tj-priority tp-sunnah">Terbaik</span>
+        <span class="tj-icon">🐪</span>
+        <div class="tj-name">Setelah Subuh</div>
+        <div class="tj-desc">Seperti berkurban seekor unta — pahala terbesar</div>
+      </div>
+      <div class="tj-item">
+        <span class="tj-time">Waktu Kedua</span>
+        <span class="tj-priority tp-sunnah">Sangat Baik</span>
+        <span class="tj-icon">🐄</span>
+        <div class="tj-name">Pagi Hari</div>
+        <div class="tj-desc">Seperti berkurban seekor sapi</div>
+      </div>
+      <div class="tj-item">
+        <span class="tj-time">Waktu Ketiga</span>
+        <span class="tj-priority tp-sunnah">Baik</span>
+        <span class="tj-icon">🐏</span>
+        <div class="tj-name">Dhuha Awal</div>
+        <div class="tj-desc">Seperti berkurban seekor kambing bertanduk</div>
+      </div>
+      <div class="tj-item">
+        <span class="tj-time">Waktu Keempat</span>
+        <span class="tj-priority tp-sunnah">Cukup</span>
+        <span class="tj-icon">🐔</span>
+        <div class="tj-name">Dhuha Akhir</div>
+        <div class="tj-desc">Seperti berkurban seekor ayam</div>
+      </div>
+      <div class="tj-item">
+        <span class="tj-time">Waktu Kelima</span>
+        <span class="tj-priority tp-wajib">Minimal</span>
+        <span class="tj-icon">🥚</span>
+        <div class="tj-name">Menjelang Adzan</div>
+        <div class="tj-desc">Seperti berkurban sebutir telur</div>
+      </div>
+      <div class="tj-item">
+        <span class="tj-time">Saat Imam Keluar</span>
+        <span class="tj-priority tp-wajib">Catatan Ditutup</span>
+        <span class="tj-icon">📝</span>
+        <div class="tj-name">Imam Naik Mimbar</div>
+        <div class="tj-desc">Malaikat menutup buku catatan pahala</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DIVIDER -->
+<div class="div-bar" id="wewangian">
+  <div class="db-line"></div>
+  <div class="db-badge"><div class="db-gem"></div><span class="db-text">Bab Ketiga</span><div class="db-gem"></div></div>
+  <div class="db-line"></div>
+</div>
+
+<!-- ════════════════════
+     BAB III — WEWANGIAN
+════════════════════ -->
+<div class="sec-mist" style="position:relative">
+  <div class="ripple-wrap">
+    <div class="ripple-ring"></div><div class="ripple-ring"></div>
+    <div class="ripple-ring"></div><div class="ripple-ring"></div>
+  </div>
+  <div class="ch-wrap">
+    <div class="ch-top bordered">
+      <div class="ch-num-box">
+        <div class="ch-n">III</div>
+        <div class="ch-n-label">Bab Tiga</div>
+      </div>
+      <div class="ch-title-block">
+        <span class="ch-tag">Keharuman & Keindahan</span>
+        <div class="ch-arabic">التَّطَيُّبُ وَاسْتِعْمَالُ الطِّيبِ</div>
+        <h2 class="ch-title">Wewangian pada<br>Hari Jum'at</h2>
+        <p class="ch-sub">Menggunakan wewangian pada hari Jum'at adalah sunnah yang sangat ditekankan — sebagai bentuk menghormati hari dan memuliakan majelis shalat bersama kaum Muslimin.</p>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <div class="prose">
+          <p class="drop-cap">Wewangian (thayyib) memiliki tempat yang sangat istimewa dalam Islam. Rasulullah ﷺ adalah manusia yang paling harum — beliau selalu menggunakan wewangian dan sangat menyukainya. Pada hari Jum'at, beliau secara khusus menganjurkan umatnya menggunakan wewangian sebagai bagian dari adab mempersiapkan diri menghadap Allah dalam shalat berjamaah yang paling agung dalam sepekan.</p>
+          <p>Nabi ﷺ bersabda: "Mandi pada hari Jum'at, menggunakan siwak, dan memakai wewangian jika ada — setiap hal itu adalah sunnah." (HR. Bukhari). Para ulama mencatat bahwa anjuran wewangian ini berlaku bagi laki-laki yang hendak ke masjid. Wanita justru dilarang menggunakan wewangian yang tercium dari luar ketika keluar rumah.</p>
+        </div>
+        <div class="dalil dalil-dawn">
+          <p class="d-ar">حَقٌّ لِلَّهِ عَلَى كُلِّ مُسْلِمٍ أَنْ يَغْتَسِلَ فِي كُلِّ سَبْعَةِ أَيَّامٍ يَوْمًا يَغْسِلُ فِيهِ رَأْسَهُ وَجَسَدَهُ</p>
+          <p class="d-tr">"Hak Allah atas setiap Muslim adalah mandi setiap tujuh hari sekali, pada hari itu ia membasuh kepala dan badannya."</p>
+          <p class="d-src">HR. Bukhari & Muslim</p>
+        </div>
+      </div>
+      <div>
+        <div class="prose">
+          <p>Wewangian yang paling disukai Nabi ﷺ adalah misk (minyak kesturi), 'ud (kayu gaharu), dan dzarifah. Beliau juga sering menggunakan minyak rambut dan menyisir rambut dengan indah sebelum ke masjid. Penggunaan wewangian pada hari Jum'at adalah bentuk penghormatan kepada Allah, kepada Rasul-Nya yang menganjurkannya, dan kepada sesama jamaah yang akan berkumpul dalam satu majelis.</p>
+          <p>Ibnu Qayyim al-Jauziyyah dalam Zad al-Ma'ad mencatat bahwa Nabi ﷺ memiliki wadah khusus wewangian yang selalu ada di sisi beliau, dan beliau tidak pernah menolak pemberian wewangian. Ini menunjukkan betapa Nabi ﷺ sangat memperhatikan keharuman diri dan lingkungannya.</p>
+        </div>
+        <div class="dalil dalil-amber">
+          <p class="d-ar">كَانَ رَسُولُ اللَّهِ ﷺ لَا يَرُدُّ الطِّيبَ</p>
+          <p class="d-tr">"Rasulullah ﷺ tidak pernah menolak (pemberian) wewangian."</p>
+          <p class="d-src">HR. Bukhari — Akhlak Nabi ﷺ</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fragrance feature -->
+    <div class="fragrance-feature">
+      <div class="ff-head">
+        <h3>Wewangian Sunnah Nabi ﷺ</h3>
+        <span>Berdasarkan Riwayat Shahih</span>
+      </div>
+      <div class="ff-body">
+        <div class="ff-item">
+          <span class="ff-icon">🌑</span>
+          <div class="ff-name">Misk (Kesturi)</div>
+          <div class="ff-desc">Wewangian paling dicintai Nabi ﷺ. "Penghulu wewangian." Dijadikan bahan sungai-sungai di surga. (HR. Muslim)</div>
+        </div>
+        <div class="ff-item">
+          <span class="ff-icon">🪵</span>
+          <div class="ff-name">'Ud (Gaharu)</div>
+          <div class="ff-desc">Kayu gaharu yang dibakar menghasilkan asap harum. Termasuk wewangian surga yang disebutkan dalam hadis.</div>
+        </div>
+        <div class="ff-item">
+          <span class="ff-icon">🌸</span>
+          <div class="ff-name">Mawar & Bunga</div>
+          <div class="ff-desc">Nabi ﷺ menyukai bunga mawar. Mawar putih adalah bunga yang pertama kali tumbuh dari keringat Nabi saat mi'raj. (Riwayat para ulama)</div>
+        </div>
+        <div class="ff-item">
+          <span class="ff-icon">🌿</span>
+          <div class="ff-name">Za'faran (Saffron)</div>
+          <div class="ff-desc">Nabi ﷺ sering menggunakan za'faran untuk tubuhnya. Namun za'faran untuk laki-laki hanya boleh pada badan, tidak pada wajah. (HR. Abu Dawud)</div>
+        </div>
+        <div class="ff-item">
+          <span class="ff-icon">🫒</span>
+          <div class="ff-name">Minyak Zaitun</div>
+          <div class="ff-desc">Digunakan untuk rambut dan kulit. Nabi ﷺ bersabda: "Makanlah minyak zaitun dan gunakanlah ia (untuk tubuh)." (HR. Tirmidzi — Hasan)</div>
+        </div>
+        <div class="ff-item">
+          <span class="ff-icon">⚫</span>
+          <div class="ff-name">Habatus Sauda</div>
+          <div class="ff-desc">"Habatus sauda adalah obat dari segala penyakit kecuali kematian." (HR. Bukhari). Digunakan pula sebagai minyak rambut oleh Nabi ﷺ.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dalil dalil-dawn" style="margin-top:1rem">
+      <p class="d-ar">أَفْضَلُ الطِّيبِ الْمِسْكُ</p>
+      <p class="d-tr">"Sebaik-baik wewangian adalah misk (kesturi)."</p>
+      <p class="d-src">HR. Muslim & Abu Dawud — Shahih</p>
+    </div>
+  </div>
+</div>
+
+<!-- DIVIDER -->
+<div class="div-bar" id="khutbah">
+  <div class="db-line"></div>
+  <div class="db-badge"><div class="db-gem"></div><span class="db-text">Bab Keempat</span><div class="db-gem"></div></div>
+  <div class="db-line"></div>
+</div>
+
+<!-- ════════════════════
+     BAB IV — KHUTBAH
+════════════════════ -->
+<div class="sec-amber">
+  <div class="ch-wrap">
+    <div class="ch-top bordered" style="border-bottom-color:rgba(212,130,10,.3)">
+      <div class="ch-num-box" style="border-color:rgba(212,130,10,.3);background:rgba(212,130,10,.04)">
+        <div class="ch-n" style="color:var(--amber)">IV</div>
+        <div class="ch-n-label">Bab Empat</div>
+      </div>
+      <div class="ch-title-block">
+        <span class="ch-tag">Mendengarkan dengan Khusyuk</span>
+        <div class="ch-arabic" style="color:var(--amber)">آدَابُ سَمَاعِ الْخُطْبَةِ</div>
+        <h2 class="ch-title" style="color:var(--teal3)">Adab Mendengarkan<br>Khutbah Jum'at</h2>
+        <p class="ch-sub">Mendengarkan khutbah Jum'at dengan penuh perhatian adalah kewajiban — bukan pilihan. Bahkan menegur orang lain saat khutbah pun dilarang.</p>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <div class="prose">
+          <p class="drop-cap">Khutbah Jum'at adalah bagian yang tidak terpisahkan dari shalat Jum'at — ia adalah syarat sah shalat Jum'at menurut jumhur ulama. Mendengarkannya dengan penuh perhatian bukan hanya sunnah melainkan kewajiban yang ditekankan oleh Rasulullah ﷺ dengan ancaman yang sangat keras bagi yang melalaikannya.</p>
+          <p>Nabi ﷺ bersabda: "Apabila kamu berkata kepada temanmu 'diam' ketika imam sedang berkhutbah pada hari Jum'at, sungguh kamu telah berbuat sia-sia." (HR. Bukhari & Muslim). Perhatikan betapa kerasnya peringatan ini — menyuruh orang diam pun, meskipun untuk kebaikan, termasuk hal yang sia-sia yang mengurangi pahala Jum'at.</p>
+        </div>
+        <div class="dalil dalil-amber">
+          <p class="d-ar">إِذَا قُلْتَ لِصَاحِبِكَ أَنْصِتْ يَوْمَ الْجُمُعَةِ وَالإِمَامُ يَخْطُبُ فَقَدْ لَغَوْتَ</p>
+          <p class="d-tr">"Apabila kamu berkata kepada temanmu 'diam' ketika imam sedang berkhutbah pada hari Jum'at, sungguh kamu telah berbuat sia-sia (laghawt)."</p>
+          <p class="d-src">HR. Bukhari & Muslim</p>
+        </div>
+      </div>
+      <div>
+        <div class="prose">
+          <p>Para ulama menerangkan makna "laghawt" (sia-sia) dalam hadis ini: sebagian berpendapat pahala Jum'atnya gugur menjadi seperti shalat Zuhur biasa; sebagian lain berpendapat ia tidak mendapat pahala Jum'at sama sekali, meskipun shalatnya tetap sah. Imam Ahmad berpendapat bahwa berbicara saat khutbah membatalkan shalat Jum'at — pendapat yang paling keras.</p>
+          <p>Adapun menjawab pertanyaan imam yang bersifat penting, atau menjawab salam darurat, atau mengingatkan bahaya yang mengancam — para ulama membolehkan dalam kondisi darurat. Namun prinsip utama: diam total dan perhatikan khutbah sepenuh hati adalah yang terbaik dan paling selamat.</p>
+        </div>
+        <div class="dalil dalil-amber">
+          <p class="d-ar">مَنْ تَكَلَّمَ يَوْمَ الْجُمُعَةِ وَالإِمَامُ يَخْطُبُ فَهُوَ كَالْحِمَارِ يَحْمِلُ أَسْفَارًا</p>
+          <p class="d-tr">"Barang siapa berbicara pada hari Jum'at ketika imam sedang berkhutbah, maka ia bagaikan keledai yang memikul kitab-kitab (tidak mengambil manfaat)."</p>
+          <p class="d-src">HR. Ahmad — Hasan li Ghairihi</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Khutbah steps -->
+    <h3 style="font-family:'Bodoni Moda',serif;font-size:1rem;color:var(--teal2);letter-spacing:.15em;text-transform:uppercase;margin:2.5rem 0 .5rem;display:flex;align-items:center;gap:1rem">
+      <span style="flex:1;height:1px;background:rgba(212,130,10,.3)"></span>
+      Panduan Lengkap Adab Saat Khutbah
+      <span style="flex:1;height:1px;background:rgba(212,130,10,.3)"></span>
+    </h3>
+
+    <div class="khutbah-steps">
+      <div class="ks-item">
+        <div class="ks-dot-wrap"><div class="ks-dot"></div></div>
+        <div class="ks-content">
+          <span class="ks-num">Langkah 01</span>
+          <div class="ks-title">Duduk Menghadap Imam</div>
+          <div class="ks-body">Ketika imam naik mimbar, berpalinglah menghadap imam dengan seluruh badan, bukan hanya wajah. Nabi ﷺ suka melihat para sahabat menghadap beliau saat berkhutbah. Ini menunjukkan penghormatan dan perhatian penuh kepada materi khutbah.</div>
+          <span class="ks-dalil">Shahih Ibnu Khuzaimah</span>
+        </div>
+      </div>
+      <div class="ks-item">
+        <div class="ks-dot-wrap"><div class="ks-dot"></div></div>
+        <div class="ks-content">
+          <span class="ks-num">Langkah 02</span>
+          <div class="ks-title">Berhenti dari Shalat Sunnah</div>
+          <div class="ks-body">Ketika imam naik mimbar dan mulai berkhutbah, shalat sunnah harus dihentikan — kecuali shalat tahiyyatul masjid 2 rakaat yang dianjurkan dikerjakan ringkas sebelum duduk, berdasarkan perintah Nabi ﷺ kepada Sulaik Al-Ghathafani. (HR. Bukhari & Muslim)</div>
+          <span class="ks-dalil">HR. Bukhari & Muslim</span>
+        </div>
+      </div>
+      <div class="ks-item">
+        <div class="ks-dot-wrap"><div class="ks-dot"></div></div>
+        <div class="ks-content">
+          <span class="ks-num">Langkah 03</span>
+          <div class="ks-title">Diam Total — Tidak Berbicara</div>
+          <div class="ks-body">Dilarang berbicara apapun selama khutbah berlangsung — baik berbicara dengan orang di samping, menjawab pesan, maupun membaca zikir dengan suara. Bahkan menyuruh orang lain diam pun termasuk perbuatan sia-sia yang mengurangi pahala Jum'at. (HR. Bukhari & Muslim)</div>
+          <span class="ks-dalil">HR. Bukhari & Muslim — hadis laghawt</span>
+        </div>
+      </div>
+      <div class="ks-item">
+        <div class="ks-dot-wrap"><div class="ks-dot"></div></div>
+        <div class="ks-content">
+          <span class="ks-num">Langkah 04</span>
+          <div class="ks-title">Jangan Bermain-main</div>
+          <div class="ks-body">Dilarang bermain-main dengan jari, menggores pasir/tanah, memainkan handphone, atau melakukan gerakan yang tidak perlu. Nabi ﷺ bersabda: "Barang siapa bermain dengan batu kerikil, sungguh ia telah melakukan hal yang sia-sia." (HR. Muslim). Di era modern ini termasuk memainkan handphone saat khutbah.</div>
+          <span class="ks-dalil">HR. Muslim</span>
+        </div>
+      </div>
+      <div class="ks-item">
+        <div class="ks-dot-wrap"><div class="ks-dot"></div></div>
+        <div class="ks-content">
+          <span class="ks-num">Langkah 05</span>
+          <div class="ks-title">Tetap Terjaga dan Tidak Tidur</div>
+          <div class="ks-body">Jika mengantuk, Nabi ﷺ menganjurkan untuk berpindah tempat duduk atau menyentuh air wajah. Tidur saat khutbah tidak hanya menghilangkan pahala tetapi juga berisiko berbicara saat tidur atau mendengkur yang mengganggu jamaah lain. Tidurlah lebih awal pada malam Kamis.</div>
+          <span class="ks-dalil">HR. Abu Dawud (Hasan)</span>
+        </div>
+      </div>
+      <div class="ks-item">
+        <div class="ks-dot-wrap"><div class="ks-dot"></div></div>
+        <div class="ks-content">
+          <span class="ks-num">Langkah 06</span>
+          <div class="ks-title">Melewati Orang yang Duduk</div>
+          <div class="ks-body">Ketika imam sudah di mimbar, haram melangkahi orang-orang yang sudah duduk untuk mencari tempat di depan. Nabi ﷺ menegur seseorang yang melakukannya: "Duduklah, kamu telah menyakiti (orang lain) dan terlambat." (HR. Abu Dawud). Bergeraklah hanya ke tempat yang kosong terdekat.</div>
+          <span class="ks-dalil">HR. Abu Dawud (Shahih)</span>
+        </div>
+      </div>
+      <div class="ks-item">
+        <div class="ks-dot-wrap"><div class="ks-dot"></div></div>
+        <div class="ks-content">
+          <span class="ks-num">Langkah 07</span>
+          <div class="ks-title">Berdoa Saat Imam Berdoa</div>
+          <div class="ks-body">Ketika imam berdoa pada akhir khutbah, makmum mengaminkan doa tersebut dalam hati atau dengan suara lirih. Ini adalah saat yang mustajab karena merupakan bagian dari "waktu mustajab hari Jum'at" yang disebutkan dalam hadis. Aminkan dengan sepenuh hati.</div>
+          <span class="ks-dalil">HR. Bukhari & Muslim — waktu mustajab</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Larangan saat khutbah -->
+    <h3 style="font-family:'Bodoni Moda',serif;font-size:1rem;color:var(--teal2);letter-spacing:.15em;text-transform:uppercase;margin:2.5rem 0 1.2rem;display:flex;align-items:center;gap:1rem">
+      <span style="flex:1;height:1px;background:rgba(212,130,10,.3)"></span>
+      Larangan-Larangan Saat Khutbah
+      <span style="flex:1;height:1px;background:rgba(212,130,10,.3)"></span>
+    </h3>
+
+    <div class="larangan-list">
+      <div class="l-item">
+        <div class="l-icon">📵</div>
+        <div class="l-body">
+          <h4>Menggunakan Handphone</h4>
+          <p>Di era modern, bermain handphone, mengetik pesan, atau scrolling media sosial saat khutbah adalah perbuatan yang tercela berdasarkan larangan Nabi ﷺ terhadap bermain-main dengan kerikil saat khutbah. Matikan atau silent handphone sebelum masuk masjid.</p>
+          <span class="l-src">Qiyas dari HR. Muslim — larangan main kerikil</span>
+        </div>
+      </div>
+      <div class="l-item">
+        <div class="l-icon">🤫</div>
+        <div class="l-body">
+          <h4>Berbisik atau Bicara Pelan</h4>
+          <p>Meskipun sangat pelan, berbicara saat khutbah tetap termasuk laghawt yang mencela pahala Jum'at. Bahkan mengatakan "diam" kepada teman pun dilarang. Gunakan isyarat jika sangat terpaksa berkomunikasi.</p>
+          <span class="l-src">HR. Bukhari & Muslim — hadis laghawt</span>
+        </div>
+      </div>
+      <div class="l-item">
+        <div class="l-icon">🪑</div>
+        <div class="l-body">
+          <h4>Merangkul Lutut (Ihtiba')</h4>
+          <p>Nabi ﷺ melarang duduk merangkul lutut (ihtiba') saat imam berkhutbah pada hari Jum'at. Hal ini karena posisi tersebut cenderung membuat mengantuk dan melemahkan perhatian terhadap khutbah. (HR. Abu Dawud & Tirmidzi — Hasan)</p>
+          <span class="l-src">HR. Abu Dawud & Tirmidzi (Hasan)</span>
+        </div>
+      </div>
+      <div class="l-item">
+        <div class="l-icon">🚶</div>
+        <div class="l-body">
+          <h4>Masuk Masjid Setelah Khutbah Dimulai (Tanpa Tahiyat)</h4>
+          <p>Jika masuk masjid saat imam sudah berkhutbah, tetap wajib shalat tahiyyatul masjid dua rakaat yang ringkas berdasarkan perintah Nabi ﷺ kepada Sulaik. Namun segera duduk setelah selesai dan jangan berlama-lama. (HR. Bukhari & Muslim)</p>
+          <span class="l-src">HR. Bukhari & Muslim — kisah Sulaik</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DIVIDER -->
+<div class="div-bar" id="waktu">
+  <div class="db-line"></div>
+  <div class="db-badge"><div class="db-gem"></div><span class="db-text">Bab Kelima</span><div class="db-gem"></div></div>
+  <div class="db-line"></div>
+</div>
+
+<!-- ════════════════════
+     BAB V — WAKTU MUSTAJAB & AMALAN
+════════════════════ -->
+<div class="sec-pearl">
+  <div class="ch-wrap">
+    <div class="ch-top bordered">
+      <div class="ch-num-box">
+        <div class="ch-n">V</div>
+        <div class="ch-n-label">Bab Lima</div>
+      </div>
+      <div class="ch-title-block">
+        <span class="ch-tag">Amalan & Waktu Istimewa</span>
+        <div class="ch-arabic">الأَعْمَالُ الْمُسْتَحَبَّةُ وَسَاعَةُ الإِجَابَةِ</div>
+        <h2 class="ch-title">Amalan Sunnah &<br>Waktu Mustajab Jum'at</h2>
+        <p class="ch-sub">Hari Jum'at dipenuhi amalan-amalan sunnah dan terdapat satu waktu istimewa di mana doa pasti dikabulkan.</p>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <div class="prose">
+          <p class="drop-cap">Selain mandi dan wewangian, hari Jum'at memiliki sejumlah amalan sunnah yang seharusnya dikerjakan oleh setiap Muslim yang mengagungkan hari ini. Di antaranya yang paling penting adalah membaca Surah Al-Kahfi — amalan yang dijanjikan Nabi ﷺ dengan cahaya antara dua Jum'at, dan perlindungan dari fitnah Dajjal bagi yang menghafal sepuluh ayat awalnya.</p>
+          <p>Adapun waktu mustajab (saa'atul ijabah) pada hari Jum'at adalah salah satu rahasia Allah yang tidak diketahui secara pasti waktunya agar kaum Muslimin terus berdoa sepanjang hari. Dua pendapat terkuat: pertama, waktu antara duduknya imam di atas mimbar hingga selesai shalat Jum'at. Kedua, setelah shalat Asar hingga terbenam matahari — dan pendapat kedua ini adalah yang paling kuat berdasarkan hadis Abdullah bin Salam. (HR. Abu Dawud — Shahih).</p>
+        </div>
+      </div>
+      <div>
+        <div class="prose">
+          <p>Imam Ibnu Qayyim al-Jauziyyah dalam Zad al-Ma'ad menyebutkan lebih dari 30 keistimewaan hari Jum'at yang jarang diketahui umat. Di antaranya: pada hari Jum'at Allah mengampuni orang yang meninggal pada hari atau malam Jum'at dari fitnah kubur (HR. Tirmidzi), terdapat ayat Al-Qur'an yang diturunkan khusus tentang hari Jum'at (QS. Al-Jumu'ah), dan hari Jum'at adalah hari 'Id (hari raya) mingguan kaum Muslimin.</p>
+          <p>Nabi ﷺ bersabda: "Sesungguhnya Jum'at adalah hari raya ('Id), maka janganlah kalian menjadikannya sebagai hari puasa, kecuali jika kalian berpuasa sehari sebelum atau sesudahnya." (HR. Ibnu Majah — Hasan). Ini menunjukkan bahwa Jum'at bukan hari untuk berpuasa biasa, melainkan hari untuk bergembira dan beribadah secara lebih intensif.</p>
+        </div>
+        <div class="dalil dalil-dawn">
+          <p class="d-ar">مَنْ قَرَأَ سُورَةَ الْكَهْفِ فِي يَوْمِ الْجُمُعَةِ أَضَاءَ لَهُ مِنَ النُّورِ مَا بَيْنَ الْجُمُعَتَيْنِ</p>
+          <p class="d-tr">"Barang siapa membaca Surah Al-Kahfi pada hari Jum'at, maka akan dipancarkan cahaya baginya di antara dua Jum'at."</p>
+          <p class="d-src">HR. Al-Hakim & Al-Baihaqi (Shahih Al-Albani)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Amalan list -->
+    <div class="larangan-list" style="margin-top:2rem">
+      <div class="l-item">
+        <div class="l-icon">📖</div>
+        <div class="l-body">
+          <h4>Membaca Surah Al-Kahfi</h4>
+          <p>Membaca Surah Al-Kahfi pada hari Jum'at (atau malam Jum'at) adalah sunnah yang dijanjikan cahaya antara dua Jum'at. Sepuluh ayat pertamanya melindungi dari fitnah Dajjal. Boleh dibaca kapan saja pada hari Jum'at hingga terbenam matahari, atau pada malam Jum'at (Kamis malam) setelah Maghrib.</p>
+          <span class="l-src">HR. Al-Hakim & Al-Baihaqi — Shahih</span>
+        </div>
+      </div>
+      <div class="l-item">
+        <div class="l-icon">🤲</div>
+        <div class="l-body">
+          <h4>Perbanyak Doa — Terutama Setelah Asar</h4>
+          <p>Waktu mustajab hari Jum'at yang paling kuat adalah setelah shalat Asar hingga terbenam matahari. Perbanyak doa, terutama untuk kebaikan dunia dan akhirat, ampunan, kesehatan, dan keluarga. Jangan sia-siakan waktu ini dengan urusan duniawi.</p>
+          <span class="l-src">HR. Abu Dawud — Shahih (saaat Asar hingga Maghrib)</span>
+        </div>
+      </div>
+      <div class="l-item">
+        <div class="l-icon">🌹</div>
+        <div class="l-body">
+          <h4>Perbanyak Shalawat kepada Nabi ﷺ</h4>
+          <p>Nabi ﷺ bersabda: "Perbanyaklah shalawat kepadaku pada malam Jum'at dan hari Jum'at. Barang siapa bershalawat kepadaku sekali, Allah bershalawat kepadanya sepuluh kali." (HR. Al-Baihaqi — Hasan). Shalawat pada hari Jum'at memiliki keutamaan khusus yang tidak dimiliki hari lain.</p>
+          <span class="l-src">HR. Al-Baihaqi (Hasan)</span>
+        </div>
+      </div>
+      <div class="l-item">
+        <div class="l-icon">🕌</div>
+        <div class="l-body">
+          <h4>Shalat Sunnah Qabliyah & Ba'diyah</h4>
+          <p>Sebelum shalat Jum'at: shalat tahiyyatul masjid dan shalat sunnah bebas selama menunggu. Setelah shalat Jum'at: dianjurkan 4 rakaat atau 2 rakaat. Nabi ﷺ bersabda: "Jika salah seorang dari kalian shalat Jum'at, hendaklah ia shalat empat rakaat setelahnya." (HR. Muslim)</p>
+          <span class="l-src">HR. Muslim — shalat ba'diyah Jum'at</span>
+        </div>
+      </div>
+      <div class="l-item">
+        <div class="l-icon">💀</div>
+        <div class="l-body">
+          <h4>Ingat Kematian & Akhirat</h4>
+          <p>Hari Jum'at adalah hari kiamat akan terjadi — maka sangat dianjurkan memperbanyak ingat mati, mendoakan orang-orang yang telah wafat, dan mengunjungi kubur. Nabi ﷺ bersabda: "Perbanyaklah mengingat penghancur kelezatan (kematian)." (HR. Tirmidzi). Hari Jum'at adalah momentum terbaik untuk refleksi diri.</p>
+          <span class="l-src">HR. Tirmidzi (Hasan)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════ CLOSING ════ -->
+<section class="closing">
+  <div class="closing-top-line"></div>
+  <div class="closing-inner">
+    <div class="closing-ornament">
+      <div class="co-line"></div>
+      <div class="co-gem sm"></div>
+      <div class="co-gem"></div>
+      <div class="co-gem sm"></div>
+      <div class="co-line"></div>
+    </div>
+
+    <h2>Agungkan Jum'at,<br><em>Muliakan Dirimu</em></h2>
+
+    <p>Hari Jum'at adalah hadiah Allah yang paling besar bagi umat Muhammad ﷺ dalam siklus mingguan — sebuah hari raya kecil yang kembali setiap pekan. Setiap Muslim yang mengagungkannya dengan mandi, memakai wewangian, berpakaian indah, berangkat awal, mendengarkan khutbah dengan penuh perhatian, dan memperbanyak doa serta shalawat — ia telah menunaikan hak hari yang paling mulia ini.</p>
+
+    <p>Jangan biarkan Jum'at berlalu seperti hari biasa. Ia adalah peluang ampunan, peluang terkabulnya doa, peluang pengumpulan pahala yang tidak tertandingi oleh hari lain. Imam Ibnu Qayyim berkata: "Barang siapa yang mengagungkan hari Jum'at dan memenuhi hak-haknya, niscaya Allah akan meneranginya dengan cahaya dari Jum'at ke Jum'at."</p>
+
+    <div class="sep-row">
+      <div class="sr-line"></div>
+      <div class="sr-gem sm"></div>
+      <div class="sr-gem"></div>
+      <div class="sr-gem sm"></div>
+      <div class="sr-line"></div>
+    </div>
+
+    <p class="closing-ar">يَا أَيُّهَا الَّذِينَ آمَنُوا إِذَا نُودِيَ لِلصَّلَاةِ مِن يَوْمِ الْجُمُعَةِ فَاسْعَوْا إِلَىٰ ذِكْرِ اللَّهِ</p>
+    <p class="closing-tr">"Wahai orang-orang yang beriman, apabila diseru untuk melaksanakan shalat pada hari Jum'at, maka bersegeralah mengingat Allah..."</p>
+    <p class="closing-ref">QS. Al-Jumu'ah: 9</p>
+  </div>
+</section>
+
+<footer>
+  <p>Disusun berdasarkan <em>Al-Qur'an Al-Karim</em> · <em>Shahih Bukhari & Muslim</em> · <em>Sunan Abu Dawud & Tirmidzi</em> · <em>Zad Al-Ma'ad (Ibnu Qayyim)</em> · <em>Al-Majmu' (An-Nawawi)</em></p>
+  <p>Semoga setiap Jum'at kita jalani dengan penuh adab dan kemuliaan. <em>آمين يا رب العالمين</em></p>
+</footer>
+
+<!-- ════ HERO CANVAS ANIMATION (DAWN) ════ -->
+<script>
+/* Dawn horizon animation */
+(function(){
+  const c = document.getElementById('dawnCanvas');
+  if(!c) return;
+  const ctx = c.getContext('2d');
+  let W, H, t = 0;
+
+  function resize(){
+    W = c.width = c.offsetWidth;
+    H = c.height = c.offsetHeight;
+  }
+
+  function draw(){
+    ctx.clearRect(0, 0, W, H);
+    t += 0.008;
+
+    /* Sky gradient — shifts slowly */
+    const skyGrad = ctx.createLinearGradient(0, 0, 0, H);
+    const r1 = Math.floor(180 + 20 * Math.sin(t * .3));
+    const g1 = Math.floor(210 + 15 * Math.sin(t * .4));
+    skyGrad.addColorStop(0, `rgba(${r1},${g1},240,0.7)`);
+    skyGrad.addColorStop(0.5, `rgba(240,220,180,0.5)`);
+    skyGrad.addColorStop(1, `rgba(250,240,220,0.2)`);
+    ctx.fillStyle = skyGrad;
+    ctx.fillRect(0, 0, W, H);
+
+    /* Sun glow */
+    const sunX = W * 0.5 + Math.sin(t * .2) * 20;
+    const sunY = H * 0.25 + Math.sin(t * .15) * 8;
+    const sunGrad = ctx.createRadialGradient(sunX, sunY, 0, sunX, sunY, 120);
+    sunGrad.addColorStop(0, 'rgba(248,200,64,0.45)');
+    sunGrad.addColorStop(0.3, 'rgba(232,160,32,0.2)');
+    sunGrad.addColorStop(1, 'transparent');
+    ctx.fillStyle = sunGrad;
+    ctx.fillRect(0, 0, W, H);
+
+    /* Horizon line waves */
+    const baseY = H * 0.65;
+    for(let layer = 0; layer < 3; layer++){
+      const alpha = 0.15 - layer * 0.04;
+      const amp = 8 - layer * 2;
+      const freq = 0.008 + layer * 0.002;
+      const speed = t * (0.5 + layer * 0.3);
+      ctx.beginPath();
+      ctx.moveTo(0, baseY + layer * 12);
+      for(let x = 0; x <= W; x += 4){
+        const y = baseY + layer * 12 +
+          Math.sin(x * freq + speed) * amp +
+          Math.sin(x * freq * 1.7 - speed * 0.8) * (amp * 0.4);
+        ctx.lineTo(x, y);
+      }
+      ctx.lineTo(W, H);
+      ctx.lineTo(0, H);
+      ctx.closePath();
+
+      const waveGrad = ctx.createLinearGradient(0, baseY, 0, H);
+      const g = 107 + layer * 20;
+      waveGrad.addColorStop(0, `rgba(42,${g},107,${alpha})`);
+      waveGrad.addColorStop(1, `rgba(14,56,56,${alpha * 0.5})`);
+      ctx.fillStyle = waveGrad;
+      ctx.fill();
+    }
+
+    requestAnimationFrame(draw);
+  }
+
+  resize();
+  draw();
+  window.addEventListener('resize', resize);
+})();
+
+/* Fragrance particles */
+(function(){
+  const wrap = document.getElementById('fragParticles');
+  if(!wrap) return;
+  const COUNT = 22;
+  for(let i = 0; i < COUNT; i++){
+    const p = document.createElement('div');
+    p.className = 'frag-p';
+    const size = 4 + Math.random() * 12;
+    p.style.cssText = `
+      left:${Math.random() * 100}%;
+      bottom:${20 + Math.random() * 30}%;
+      width:${size}px; height:${size}px;
+      animation-duration:${8 + Math.random() * 14}s;
+      animation-delay:${Math.random() * 12}s;
+    `;
+    wrap.appendChild(p);
+  }
+})();
+</script>
+
+</body>
+</html>

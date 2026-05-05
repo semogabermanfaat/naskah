@@ -1,0 +1,1566 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kitab Zakat — Rukun Islam Ketiga</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Mono:ital,wght@0,300;0,400;1,400&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+
+/* ════════════════════════════════════════════
+   DESIGN DIRECTION:
+   "Sacred Grain" — Warm sand, terracotta,
+   burnished copper. Ancient manuscript meets
+   modern editorial. Cormorant serif for all
+   display. DM Mono for data/numbers.
+   Animated tessellation background.
+   Warm and luminous — like afternoon sun
+   on old paper. A complete departure from
+   every previous page in this series.
+════════════════════════════════════════════ */
+
+:root {
+  --sand:        #F5EDD8;
+  --sand2:       #EDE0C4;
+  --sand3:       #E0CFA8;
+  --parch:       #F8F3E8;
+  --terra:       #C4622A;
+  --terra2:      #A84E1E;
+  --terra3:      #8A3C10;
+  --copper:      #B8722A;
+  --copper2:     #D4904A;
+  --copper3:     #EDB870;
+  --saffron:     #D4960A;
+  --saffron2:    #F0B420;
+  --saffron3:    #FAD060;
+  --teak:        #5C3A18;
+  --teak2:       #7A5028;
+  --teak3:       #9A7040;
+  --ink:         #1E1008;
+  --ink2:        #2E1A0C;
+  --text:        #3C2010;
+  --text2:       #6A4828;
+  --muted:       #9A7850;
+  --white:       #FEFAF4;
+  --border:      rgba(184,114,42,0.2);
+  --border2:     rgba(184,114,42,0.35);
+  --border3:     rgba(184,114,42,0.55);
+  --shadow:      rgba(30,16,8,0.15);
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+
+body{
+  font-family:'Cormorant',serif;
+  background:var(--parch);
+  color:var(--text);
+  overflow-x:hidden;
+  line-height:1.8;
+  cursor:default;
+}
+
+/* ── PAPER GRAIN ── */
+body::before{
+  content:'';
+  position:fixed;inset:0;z-index:9999;
+  pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.68' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='0.04'/%3E%3C/svg%3E");
+  mix-blend-mode:multiply;opacity:.7;
+}
+
+/* ════════════════════════════════════════════
+   ANIMATED TESSELLATION CANVAS
+════════════════════════════════════════════ */
+#tessCanvas{
+  position:fixed;inset:0;z-index:0;
+  pointer-events:none;opacity:.06;
+}
+
+/* ════════════════════════════════════════════
+   NAV — MANUSCRIPT STYLE
+════════════════════════════════════════════ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:400;
+  height:54px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 3rem;
+  background:rgba(248,243,232,.94);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border2);
+}
+
+.nav-brand{
+  display:flex;align-items:center;gap:.8rem;
+}
+.nav-ornament{
+  font-family:'Amiri',serif;
+  font-size:1.3rem;color:var(--copper2);
+  line-height:1;
+}
+.nav-title{
+  font-size:.75rem;font-weight:600;
+  letter-spacing:.22em;text-transform:uppercase;
+  color:var(--teak2);
+}
+.nav-links{
+  display:flex;gap:2rem;list-style:none;
+}
+.nav-links a{
+  font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;transition:color .2s;
+}
+.nav-links a:hover{color:var(--terra);}
+@media(max-width:700px){
+  nav{padding:0 1.2rem;}
+  .nav-links{display:none;}
+}
+
+/* ════════════════════════════════════════════
+   HERO — SPLIT LAYOUT WITH ANIMATED COIN
+════════════════════════════════════════════ */
+.hero{
+  min-height:100vh;
+  padding-top:54px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  position:relative;
+  overflow:hidden;
+}
+@media(max-width:768px){
+  .hero{grid-template-columns:1fr;}
+  .hero-right{display:none;}
+}
+
+/* Left panel */
+.hero-left{
+  display:flex;flex-direction:column;
+  justify-content:center;
+  padding:5rem 4rem 5rem 5rem;
+  position:relative;z-index:2;
+  background:var(--parch);
+}
+@media(max-width:768px){
+  .hero-left{padding:3rem 1.5rem;}
+}
+
+.hero-kicker{
+  display:inline-flex;align-items:center;gap:.7rem;
+  font-size:.6rem;letter-spacing:.4em;text-transform:uppercase;
+  color:var(--copper);margin-bottom:1.8rem;
+  opacity:0;animation:slideRight .9s .1s ease forwards;
+}
+.hero-kicker .mark{
+  width:20px;height:1px;background:var(--copper);opacity:.6;
+}
+
+.hero-arabic{
+  font-family:'Amiri',serif;
+  font-size:clamp(1.8rem,4vw,3rem);
+  color:var(--saffron);direction:rtl;
+  line-height:1.6;margin-bottom:1rem;
+  text-shadow:0 2px 20px rgba(212,150,10,.2);
+  opacity:0;animation:slideRight .9s .25s ease forwards;
+}
+
+.hero h1{
+  font-size:clamp(4rem,8vw,7.5rem);
+  font-weight:700;color:var(--teak);
+  line-height:.92;letter-spacing:-.02em;
+  margin-bottom:1rem;
+  opacity:0;animation:slideRight .9s .4s ease forwards;
+}
+.hero h1 .sub{
+  display:block;font-weight:300;font-style:italic;
+  font-size:.42em;color:var(--copper2);
+  letter-spacing:.06em;margin-bottom:.15em;
+}
+.hero h1 .accent{color:var(--terra);}
+
+.hero-tagline{
+  font-size:clamp(.95rem,1.8vw,1.1rem);
+  color:var(--text2);max-width:380px;
+  line-height:1.8;margin-bottom:2.5rem;
+  opacity:0;animation:slideRight .9s .55s ease forwards;
+}
+
+/* Pillar badges */
+.hero-badges{
+  display:flex;flex-wrap:wrap;gap:.6rem;
+  opacity:0;animation:slideRight .9s .7s ease forwards;
+}
+.h-badge{
+  padding:.4rem 1rem;
+  border:1px solid var(--border2);
+  border-radius:2px;
+  font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--teak2);background:rgba(184,114,42,.06);
+  transition:all .25s;
+}
+.h-badge:hover{
+  background:rgba(184,114,42,.12);
+  border-color:var(--border3);
+  color:var(--terra2);
+}
+
+/* Right panel — animated illustration */
+.hero-right{
+  position:relative;
+  background:linear-gradient(160deg,var(--teak) 0%,var(--teak2) 40%,#3C2010 100%);
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+}
+
+.hero-right::before{
+  content:'';position:absolute;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23D4904A' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Animated coin stack SVG */
+.coin-wrap{
+  position:relative;z-index:1;
+  display:flex;flex-direction:column;
+  align-items:center;gap:0;
+}
+
+.coin{
+  width:140px;height:36px;
+  border-radius:50%;
+  background:linear-gradient(180deg,var(--saffron3) 0%,var(--copper2) 50%,var(--saffron) 100%);
+  border:2px solid var(--saffron2);
+  box-shadow:
+    0 2px 0 rgba(0,0,0,.3),
+    inset 0 2px 4px rgba(255,255,255,.2);
+  display:flex;align-items:center;justify-content:center;
+  transform-origin:center bottom;
+}
+
+.coin span{
+  font-family:'Amiri',serif;
+  font-size:.8rem;color:var(--teak3);
+  font-weight:700;letter-spacing:.15em;
+  text-shadow:0 1px 0 rgba(255,255,255,.4);
+}
+
+/* Staggered coin drop animation */
+.coin:nth-child(1){animation:coinDrop 1s .1s cubic-bezier(.34,1.56,.64,1) both;}
+.coin:nth-child(2){animation:coinDrop 1s .22s cubic-bezier(.34,1.56,.64,1) both;}
+.coin:nth-child(3){animation:coinDrop 1s .34s cubic-bezier(.34,1.56,.64,1) both;}
+.coin:nth-child(4){animation:coinDrop 1s .46s cubic-bezier(.34,1.56,.64,1) both;}
+.coin:nth-child(5){animation:coinDrop 1s .58s cubic-bezier(.34,1.56,.64,1) both;}
+.coin:nth-child(6){animation:coinDrop 1s .7s cubic-bezier(.34,1.56,.64,1) both;}
+.coin:nth-child(7){animation:coinDrop 1s .82s cubic-bezier(.34,1.56,.64,1) both;}
+
+@keyframes coinDrop{
+  from{opacity:0;transform:translateY(-60px) scaleY(.5);}
+  to{opacity:1;transform:translateY(0) scaleY(1);}
+}
+
+/* Glowing base under coins */
+.coin-base{
+  width:160px;height:12px;
+  border-radius:50%;
+  background:radial-gradient(ellipse,rgba(212,150,10,.4) 0%,transparent 70%);
+  margin-top:-4px;
+  animation:baseGlow 3s ease-in-out infinite;
+}
+@keyframes baseGlow{
+  0%,100%{transform:scaleX(1);opacity:.7;}
+  50%{transform:scaleX(1.15);opacity:1;}
+}
+
+/* Arabic inscription on coins */
+.coin-label{
+  font-family:'Amiri',serif;
+  font-size:1.5rem;color:var(--saffron3);
+  direction:rtl;letter-spacing:.1em;
+  margin-top:2rem;text-align:center;
+  animation:coinDrop 1s 1s ease both;
+  text-shadow:0 0 20px rgba(212,150,10,.4);
+}
+
+/* Orbiting dots */
+.orbit{
+  position:absolute;
+  width:320px;height:320px;
+  border-radius:50%;
+  border:1px solid rgba(212,150,10,.1);
+  animation:spinOrbit 20s linear infinite;
+}
+.orbit::after{
+  content:'';position:absolute;
+  width:8px;height:8px;
+  border-radius:50%;
+  background:var(--copper2);
+  top:-4px;left:50%;
+  transform:translateX(-50%);
+  box-shadow:0 0 10px var(--copper2);
+}
+.orbit2{
+  position:absolute;
+  width:420px;height:420px;
+  border-radius:50%;
+  border:1px solid rgba(212,150,10,.06);
+  animation:spinOrbit 32s linear infinite reverse;
+}
+.orbit2::after{
+  content:'';position:absolute;
+  width:5px;height:5px;border-radius:50%;
+  background:var(--saffron2);
+  bottom:-3px;right:40%;
+  box-shadow:0 0 8px var(--saffron2);
+}
+@keyframes spinOrbit{to{transform:rotate(360deg);}}
+
+/* Bottom info strip */
+.hero-strip{
+  position:absolute;
+  bottom:0;left:0;right:0;
+  background:var(--teak);
+  border-top:1px solid rgba(212,150,10,.2);
+  display:flex;
+  z-index:3;
+}
+.hs-item{
+  flex:1;padding:1rem 1.5rem;
+  border-right:1px solid rgba(212,150,10,.1);
+  text-decoration:none;transition:background .2s;
+}
+.hs-item:last-child{border-right:none;}
+.hs-item:hover{background:rgba(212,150,10,.06);}
+.hs-num{
+  font-family:'DM Mono',monospace;
+  font-size:.55rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--copper2);
+  margin-bottom:.2rem;
+}
+.hs-label{
+  font-size:clamp(.6rem,1.2vw,.72rem);
+  letter-spacing:.08em;text-transform:uppercase;
+  color:rgba(245,237,216,.45);
+  line-height:1.4;
+}
+@media(max-width:640px){.hero-strip{display:none;}}
+
+@keyframes slideRight{
+  from{opacity:0;transform:translateX(-20px);}
+  to{opacity:1;transform:translateX(0);}
+}
+
+/* ════════════════════════════════════════════
+   SECTION SYSTEM
+════════════════════════════════════════════ */
+
+/* Light sections */
+.sec-light{
+  padding:5.5rem 2rem;
+  background:var(--parch);
+  position:relative;
+}
+
+/* Mid-tone sections */
+.sec-sand{
+  padding:5.5rem 2rem;
+  background:var(--sand2);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  position:relative;overflow:hidden;
+}
+.sec-sand::before{
+  content:'';position:absolute;
+  width:700px;height:700px;border-radius:50%;
+  background:radial-gradient(circle,rgba(184,114,42,.06) 0%,transparent 65%);
+  top:-200px;right:-150px;
+  animation:sandBlob 16s ease-in-out infinite;
+}
+@keyframes sandBlob{
+  0%,100%{transform:translate(0,0);}
+  50%{transform:translate(-30px,40px);}
+}
+
+/* Dark teak sections */
+.sec-dark{
+  padding:5.5rem 2rem;
+  background:var(--teak);
+  border-top:1px solid rgba(212,150,10,.15);
+  border-bottom:1px solid rgba(212,150,10,.15);
+  position:relative;overflow:hidden;
+}
+.sec-dark::before{
+  content:'';position:absolute;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23D4904A' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  pointer-events:none;
+}
+
+.chapter-wrap{
+  max-width:1080px;margin:0 auto;
+  position:relative;z-index:1;
+}
+
+/* Chapter header */
+.ch-head{
+  display:grid;grid-template-columns:70px 1fr;
+  gap:2rem;align-items:start;
+  margin-bottom:3.5rem;
+  padding-bottom:2rem;
+  border-bottom:1px solid var(--border2);
+}
+@media(max-width:640px){
+  .ch-head{grid-template-columns:1fr;}
+}
+.ch-dark .ch-head{border-bottom-color:rgba(212,150,10,.2);}
+
+.ch-num-block{
+  display:flex;flex-direction:column;align-items:center;
+  padding:1rem .5rem;
+  border:1px solid var(--border2);border-radius:2px;
+}
+.ch-num{
+  font-family:'DM Mono',monospace;
+  font-size:2.2rem;font-weight:400;
+  color:var(--copper2);line-height:1;
+}
+.ch-num-label{
+  font-size:.48rem;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--muted);
+  margin-top:.3rem;
+}
+.ch-dark .ch-num-block{
+  border-color:rgba(212,150,10,.2);
+  background:rgba(212,150,10,.04);
+}
+.ch-dark .ch-num{color:var(--saffron2);}
+
+.ch-text{}
+.ch-tag{
+  font-family:'DM Mono',monospace;
+  font-size:.55rem;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--copper);margin-bottom:.6rem;display:block;
+}
+.ch-dark .ch-tag{color:var(--copper2);}
+.ch-arabic{
+  font-family:'Amiri',serif;
+  font-size:clamp(1.3rem,2.8vw,1.9rem);
+  color:var(--saffron);direction:rtl;
+  margin-bottom:.3rem;
+}
+.ch-dark .ch-arabic{color:var(--saffron3);}
+.ch-title{
+  font-size:clamp(1.8rem,3.8vw,2.8rem);
+  font-weight:700;color:var(--teak);
+  line-height:1.1;margin-bottom:.5rem;
+  letter-spacing:-.01em;
+}
+.ch-dark .ch-title{color:var(--sand);}
+.ch-sub{
+  font-size:.95rem;color:var(--text2);max-width:560px;
+  line-height:1.7;
+}
+.ch-dark .ch-sub{color:rgba(245,237,216,.5);}
+
+/* ════ PROSE ════ */
+.prose{
+  font-size:1.02rem;line-height:1.95;
+  color:var(--text);
+  text-align:justify;text-justify:inter-word;hyphens:auto;
+}
+.prose p{margin-bottom:1.1rem;}
+.prose p:last-child{margin-bottom:0;}
+.dark-prose{color:rgba(245,237,216,.7);}
+
+.drop-cap::first-letter{
+  font-size:4.5rem;font-weight:700;
+  color:var(--terra);float:left;
+  line-height:.76;margin-right:.1em;
+  margin-top:.14em;padding-right:.04em;
+}
+.dark-drop::first-letter{color:var(--saffron2);}
+
+/* Two col */
+.two-col{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:3rem;margin-bottom:2rem;
+}
+@media(max-width:768px){.two-col{grid-template-columns:1fr;gap:1.5rem;}}
+
+/* ════ DALIL BOX ════ */
+.dalil{
+  border-radius:4px;padding:1.8rem 2.2rem;
+  margin:1.8rem 0;position:relative;overflow:hidden;
+}
+.dalil-light{
+  background:var(--sand2);
+  border-left:3px solid var(--copper2);
+  border:1px solid var(--border);
+  border-left:3px solid var(--copper2);
+}
+.dalil-dark{
+  background:rgba(0,0,0,.15);
+  border-left:3px solid var(--saffron2);
+}
+.dalil::after{
+  content:'"';
+  position:absolute;bottom:-.8rem;right:1rem;
+  font-family:'Cormorant',serif;font-size:7rem;
+  color:rgba(184,114,42,.08);line-height:1;
+}
+.d-ar{
+  font-family:'Amiri',serif;
+  font-size:clamp(1.05rem,2.3vw,1.4rem);
+  direction:rtl;text-align:right;
+  line-height:2.2;margin-bottom:.8rem;
+}
+.dalil-light .d-ar{color:var(--saffron);}
+.dalil-dark .d-ar{color:var(--saffron3);}
+.d-tr{
+  font-style:italic;font-size:.92rem;
+  line-height:1.75;margin-bottom:.5rem;
+}
+.dalil-light .d-tr{color:var(--text2);}
+.dalil-dark .d-tr{color:rgba(245,237,216,.55);}
+.d-src{
+  font-family:'DM Mono',monospace;
+  font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;
+}
+.dalil-light .d-src{color:var(--copper);}
+.dalil-dark .d-src{color:var(--copper2);}
+
+/* Pull quote */
+.pull{
+  float:right;width:42%;
+  margin:.4rem 0 1.5rem 2rem;
+  padding:1.2rem 1.5rem;
+  border-top:2px solid var(--copper2);
+  border-bottom:1px solid var(--border);
+  background:var(--sand2);
+}
+@media(max-width:600px){.pull{float:none;width:100%;margin:1.2rem 0;}}
+.pull-text{
+  font-style:italic;font-size:1.05rem;
+  color:var(--teak2);line-height:1.65;
+  margin-bottom:.4rem;
+}
+.pull-src{
+  font-family:'DM Mono',monospace;
+  font-size:.56rem;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--copper);
+}
+
+/* ════ JENIS ZAKAT CARDS ════ */
+.zakat-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(310px,1fr));
+  gap:1.3rem;margin:2rem 0;
+}
+
+.zakat-card{
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:4px;
+  overflow:hidden;
+  transition:all .3s cubic-bezier(.34,1.56,.64,1);
+  position:relative;
+}
+.zakat-card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 20px 48px var(--shadow);
+  border-color:var(--border3);
+}
+
+/* Accent top bar */
+.zakat-card::before{
+  content:'';position:absolute;
+  top:0;left:0;right:0;height:3px;
+}
+.zc-terra::before{background:linear-gradient(to right,var(--terra),var(--copper2));}
+.zc-copper::before{background:linear-gradient(to right,var(--copper),var(--saffron));}
+.zc-saffron::before{background:linear-gradient(to right,var(--saffron),var(--copper3));}
+.zc-teak::before{background:linear-gradient(to right,var(--teak2),var(--copper2));}
+
+.zc-top{
+  padding:1.6rem 1.8rem 1.2rem;
+  border-bottom:1px solid var(--border);
+}
+.zc-icon{font-size:1.8rem;margin-bottom:.7rem;}
+.zc-title{
+  font-size:1.2rem;font-weight:700;
+  color:var(--teak);margin-bottom:.2rem;
+}
+.zc-arabic{
+  font-family:'Amiri',serif;
+  font-size:.95rem;color:var(--copper);direction:rtl;
+}
+
+.zc-body{
+  padding:1.2rem 1.8rem 1.5rem;
+  font-size:.9rem;color:var(--text2);
+  line-height:1.75;text-align:justify;
+}
+
+.zc-stats{
+  display:flex;flex-wrap:wrap;
+  gap:.4rem;padding:0 1.8rem 1.2rem;
+}
+.zc-stat{
+  font-family:'DM Mono',monospace;
+  font-size:.62rem;letter-spacing:.1em;
+  padding:.22rem .7rem;
+  border:1px solid var(--border2);border-radius:2px;
+  color:var(--teak2);background:var(--sand3);
+}
+
+/* ════ NISAB CALCULATOR ════ */
+.calc-wrap{
+  background:var(--white);
+  border:1px solid var(--border2);
+  border-radius:6px;
+  overflow:hidden;
+  margin:2.5rem 0;
+  box-shadow:0 8px 32px var(--shadow);
+}
+.calc-head{
+  background:linear-gradient(135deg,var(--teak),var(--teak2));
+  padding:1.5rem 2rem;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.calc-head h3{
+  font-size:1.1rem;font-weight:700;
+  color:var(--sand);letter-spacing:.05em;
+}
+.calc-head span{
+  font-family:'DM Mono',monospace;
+  font-size:.58rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--copper2);
+}
+.calc-body{
+  padding:2rem;
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:2rem;
+}
+@media(max-width:640px){.calc-body{grid-template-columns:1fr;}}
+
+.calc-item{
+  background:var(--sand2);
+  border:1px solid var(--border);border-radius:4px;
+  padding:1.4rem;text-align:center;
+  transition:all .25s;
+}
+.calc-item:hover{
+  border-color:var(--border3);
+  background:var(--sand3);
+  transform:translateY(-2px);
+}
+.ci-label{
+  font-family:'DM Mono',monospace;
+  font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:.7rem;display:block;
+}
+.ci-value{
+  font-family:'DM Mono',monospace;
+  font-size:1.9rem;font-weight:400;
+  color:var(--terra);line-height:1;
+  margin-bottom:.4rem;
+}
+.ci-unit{
+  font-size:.82rem;color:var(--text2);
+}
+.ci-note{
+  font-size:.78rem;font-style:italic;
+  color:var(--muted);margin-top:.4rem;
+}
+
+/* Haul display */
+.haul-bar{
+  background:var(--sand2);
+  border:1px solid var(--border);border-radius:4px;
+  padding:1.2rem 1.6rem;
+  display:flex;align-items:center;justify-content:space-between;
+  margin-top:1rem;
+}
+.hb-label{
+  font-family:'DM Mono',monospace;
+  font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--muted);
+}
+.hb-val{
+  font-family:'DM Mono',monospace;
+  font-size:1.1rem;color:var(--terra2);font-weight:400;
+}
+
+/* ════ ASNAF 8 GRID ════ */
+.asnaf-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+  gap:1.1rem;margin:2rem 0;
+}
+
+.asnaf-card{
+  background:rgba(245,237,216,.06);
+  border:1px solid rgba(212,150,10,.15);
+  border-radius:4px;padding:1.5rem;
+  transition:all .25s;position:relative;
+  overflow:hidden;
+}
+.asnaf-card:hover{
+  background:rgba(245,237,216,.1);
+  border-color:rgba(212,150,10,.3);
+  transform:translateX(4px);
+}
+.asnaf-card::before{
+  content:'';position:absolute;
+  left:0;top:0;bottom:0;width:3px;
+  background:linear-gradient(to bottom,var(--copper2),var(--saffron));
+}
+
+.an-num{
+  font-family:'DM Mono',monospace;
+  font-size:.58rem;letter-spacing:.22em;
+  color:var(--copper2);margin-bottom:.5rem;display:block;
+}
+.an-title{
+  font-size:1.05rem;font-weight:700;
+  color:var(--sand);margin-bottom:.2rem;
+}
+.an-arabic{
+  font-family:'Amiri',serif;font-size:.9rem;
+  color:var(--saffron2);direction:rtl;
+  margin-bottom:.6rem;
+}
+.an-body{
+  font-size:.84rem;color:rgba(245,237,216,.55);
+  line-height:1.7;text-align:justify;
+}
+
+/* ════ KEUTAMAAN LIST ════ */
+.keutamaan-list{
+  display:flex;flex-direction:column;gap:1rem;margin:1.8rem 0;
+}
+.kl-item{
+  display:grid;grid-template-columns:3.5rem 1fr;
+  gap:1.2rem;align-items:start;
+  background:var(--sand2);
+  border:1px solid var(--border);border-radius:4px;
+  padding:1.3rem 1.5rem;
+  transition:all .25s;position:relative;overflow:hidden;
+}
+.kl-item::after{
+  content:'';position:absolute;
+  top:0;right:0;bottom:0;width:3px;
+  background:linear-gradient(to bottom,var(--copper2),var(--saffron));
+  transform:scaleY(0);transition:transform .3s;
+  transform-origin:top;
+}
+.kl-item:hover::after{transform:scaleY(1);}
+.kl-item:hover{
+  border-color:var(--border3);
+  transform:translateX(-4px);
+}
+.kl-num{
+  font-family:'DM Mono',monospace;
+  font-size:2rem;color:rgba(184,114,42,.18);
+  text-align:center;line-height:1;padding-top:.2rem;
+}
+.kl-body h4{
+  font-size:1.05rem;font-weight:700;
+  color:var(--teak);margin-bottom:.3rem;
+}
+.kl-body p{
+  font-size:.88rem;color:var(--text2);
+  line-height:1.72;text-align:justify;
+}
+.kl-src{
+  font-family:'DM Mono',monospace;
+  font-size:.56rem;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--copper);
+  margin-top:.3rem;display:block;
+}
+
+/* ════ SECTION DIVIDER ════ */
+.sec-div{
+  display:flex;align-items:center;gap:1.5rem;
+  max-width:1080px;margin:0 auto;
+  padding:1.5rem 2rem 0;
+}
+.sd-line{flex:1;height:1px;}
+.sd-light .sd-line{background:var(--border2);}
+.sd-dark .sd-line{background:rgba(212,150,10,.2);}
+.sd-badge{
+  display:flex;align-items:center;gap:.6rem;white-space:nowrap;
+}
+.sd-gem{
+  width:7px;height:7px;
+  transform:rotate(45deg);
+  animation:gemSpin 4s ease-in-out infinite;
+}
+.sd-light .sd-gem{background:var(--copper2);}
+.sd-dark .sd-gem{background:var(--saffron2);}
+@keyframes gemSpin{
+  0%,100%{transform:rotate(45deg) scale(1);}
+  50%{transform:rotate(225deg) scale(1.2);}
+}
+.sd-text{
+  font-family:'DM Mono',monospace;
+  font-size:.58rem;letter-spacing:.28em;text-transform:uppercase;
+}
+.sd-light .sd-text{color:var(--copper);}
+.sd-dark .sd-text{color:var(--saffron2);}
+
+/* ════ CLOSING ════ */
+.closing{
+  background:linear-gradient(160deg,var(--ink) 0%,var(--ink2) 50%,#1E0C04 100%);
+  padding:7rem 2rem;text-align:center;
+  position:relative;overflow:hidden;
+}
+.closing::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 50% 50%,
+    rgba(184,114,42,.08) 0%,transparent 60%);
+  animation:closingBreath 10s ease-in-out infinite;
+}
+@keyframes closingBreath{
+  0%,100%{opacity:.8;transform:scale(1);}
+  50%{opacity:1;transform:scale(1.1);}
+}
+/* Animated gold border top/bottom */
+.closing::after{
+  content:'';position:absolute;
+  top:0;left:10%;right:10%;height:1px;
+  background:linear-gradient(to right,transparent,var(--copper2),transparent);
+}
+
+.closing-inner{
+  position:relative;z-index:1;max-width:720px;margin:0 auto;
+}
+.closing-ornament{
+  font-family:'Amiri',serif;
+  font-size:2.5rem;color:var(--saffron);
+  letter-spacing:.3em;margin-bottom:2.5rem;display:block;
+  text-shadow:0 0 30px rgba(212,150,10,.3);
+  animation:closingBreath 6s ease-in-out infinite;
+}
+.closing h2{
+  font-size:clamp(2rem,5vw,3.5rem);font-weight:700;
+  color:var(--sand);line-height:1.15;
+  letter-spacing:-.01em;margin-bottom:1.5rem;
+}
+.closing h2 em{font-style:italic;font-weight:300;color:var(--copper2);}
+.closing p{
+  font-size:1.02rem;color:rgba(245,237,216,.45);
+  line-height:1.9;text-align:justify;
+  text-justify:inter-word;margin-bottom:1rem;
+}
+.closing-ar{
+  font-family:'Amiri',serif;
+  font-size:clamp(1.4rem,3vw,2rem);
+  color:var(--saffron2);direction:rtl;
+  margin:2.5rem 0 .6rem;line-height:2.1;
+  text-shadow:0 0 30px rgba(212,150,10,.2);
+}
+.closing-tr{
+  font-style:italic;font-size:.9rem;
+  color:rgba(245,237,216,.35);
+}
+.closing-ref{
+  font-family:'DM Mono',monospace;
+  font-size:.56rem;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--copper);margin-top:.3rem;
+}
+.sep-row{
+  display:flex;align-items:center;gap:.8rem;
+  justify-content:center;margin:2.5rem 0;
+}
+.sr-gem{width:7px;height:7px;background:var(--copper2);transform:rotate(45deg);}
+.sr-gem.sm{width:4px;height:4px;opacity:.4;}
+.sr-line{width:60px;height:1px;background:rgba(184,114,42,.25);}
+
+/* FOOTER */
+footer{
+  background:var(--ink);
+  color:rgba(154,112,64,.3);
+  text-align:center;padding:2rem;
+  font-family:'DM Mono',monospace;
+  font-size:.6rem;letter-spacing:.1em;
+  text-transform:uppercase;line-height:2.2;
+}
+footer em{color:var(--copper);font-style:normal;}
+
+</style>
+</head>
+<body>
+
+<!-- TESSELLATION CANVAS -->
+<canvas id="tessCanvas"></canvas>
+
+<!-- ════ NAV ════ -->
+<nav>
+  <div class="nav-brand">
+    <div class="nav-ornament">زكاة</div>
+    <div class="nav-title">Kitab Zakat</div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#pengertian">Pengertian</a></li>
+    <li><a href="#jenis">Jenis Zakat</a></li>
+    <li><a href="#nisab">Nisab</a></li>
+    <li><a href="#asnaf">8 Asnaf</a></li>
+    <li><a href="#keutamaan">Keutamaan</a></li>
+  </ul>
+</nav>
+
+<!-- ════ HERO ════ -->
+<header class="hero">
+  <div class="hero-left">
+    <div class="hero-kicker">
+      <div class="mark"></div>
+      <span>Rukun Islam Ketiga</span>
+      <div class="mark"></div>
+    </div>
+    <div class="hero-arabic">كِتَابُ الزَّكَاةِ — فَرِيضَةٌ مِنَ اللَّهِ</div>
+    <h1>
+      <span class="sub">Kitab</span>
+      <span class="accent">Zakat</span>
+    </h1>
+    <p class="hero-tagline">Panduan lengkap zakat — jenis, nisab, haul, mustahiq, dan keutamaan membayar zakat berdasarkan Al-Qur'an dan Hadis Shahih.</p>
+    <div class="hero-badges">
+      <span class="h-badge">Zakat Fitrah</span>
+      <span class="h-badge">Zakat Mal</span>
+      <span class="h-badge">Nisab & Haul</span>
+      <span class="h-badge">8 Asnaf</span>
+      <span class="h-badge">Dalil Shahih</span>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="orbit"></div>
+    <div class="orbit2"></div>
+    <div class="coin-wrap">
+      <div class="coin"><span>زكاة</span></div>
+      <div class="coin"><span>زكاة</span></div>
+      <div class="coin"><span>زكاة</span></div>
+      <div class="coin"><span>زكاة</span></div>
+      <div class="coin"><span>زكاة</span></div>
+      <div class="coin"><span>زكاة</span></div>
+      <div class="coin"><span>زكاة</span></div>
+      <div class="coin-base"></div>
+      <p class="coin-label">فِي سَبِيلِ اللَّهِ</p>
+    </div>
+  </div>
+
+  <div class="hero-strip">
+    <a class="hs-item" href="#pengertian">
+      <div class="hs-num">Bab I</div>
+      <div class="hs-label">Pengertian & Hukum</div>
+    </a>
+    <a class="hs-item" href="#jenis">
+      <div class="hs-num">Bab II</div>
+      <div class="hs-label">Jenis-Jenis Zakat</div>
+    </a>
+    <a class="hs-item" href="#nisab">
+      <div class="hs-num">Bab III</div>
+      <div class="hs-label">Nisab & Haul</div>
+    </a>
+    <a class="hs-item" href="#asnaf">
+      <div class="hs-num">Bab IV</div>
+      <div class="hs-label">8 Golongan Mustahiq</div>
+    </a>
+    <a class="hs-item" href="#keutamaan">
+      <div class="hs-num">Bab V</div>
+      <div class="hs-label">Keutamaan Zakat</div>
+    </a>
+  </div>
+</header>
+
+<!-- ════════════════════════
+     BAB I — PENGERTIAN
+════════════════════════ -->
+<div id="pengertian" class="sec-light">
+  <div class="chapter-wrap">
+    <div class="ch-head">
+      <div class="ch-num-block">
+        <div class="ch-num">I</div>
+        <div class="ch-num-label">Bab Satu</div>
+      </div>
+      <div class="ch-text">
+        <span class="ch-tag">Landasan & Pengertian</span>
+        <div class="ch-arabic">الزَّكَاةُ — مَعْنَاهَا وَحُكْمُهَا</div>
+        <h2 class="ch-title">Pengertian &<br>Hukum Zakat</h2>
+        <p class="ch-sub">Zakat adalah rukun Islam ketiga yang wajib ditunaikan setiap Muslim yang memenuhi syarat — sebuah sistem keadilan sosial yang paling sempurna.</p>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <div class="prose">
+          <p class="drop-cap">Kata <strong style="color:var(--terra)">زَكَاة (zakat)</strong> dalam bahasa Arab memiliki dua makna yang saling melengkapi: <em>tumbuh dan berkembang</em> (az-ziyādah wan-namā'), serta <em>suci dan bersih</em> (ath-thahārah). Keduanya mencerminkan hakikat zakat: harta yang dizakati akan tumbuh berlipat ganda di sisi Allah, sekaligus membersihkan jiwa pemiliknya dari sifat kikir dan cinta dunia yang berlebihan.</p>
+          <p>Dalam terminologi syariat, zakat adalah bagian tertentu dari harta yang wajib dikeluarkan oleh setiap Muslim yang telah memenuhi syarat nisab (batas minimal harta) dan haul (telah berlalu satu tahun), untuk diserahkan kepada golongan-golongan yang telah ditetapkan Allah dalam Al-Qur'an.</p>
+          <p>Zakat adalah salah satu dari lima rukun Islam, disebutkan beriringan dengan shalat dalam Al-Qur'an lebih dari 80 kali. Ini menunjukkan betapa eratnya hubungan antara hubungan vertikal kepada Allah (shalat) dengan hubungan horizontal kepada sesama manusia (zakat).</p>
+        </div>
+      </div>
+      <div>
+        <div class="dalil dalil-light">
+          <p class="d-ar">وَأَقِيمُوا الصَّلَاةَ وَآتُوا الزَّكَاةَ وَمَا تُقَدِّمُوا لِأَنفُسِكُم مِّنْ خَيْرٍ تَجِدُوهُ عِندَ اللَّهِ</p>
+          <p class="d-tr">"Dan dirikanlah shalat, tunaikanlah zakat, dan apa-apa yang kamu usahakan dari kebaikan bagi dirimu, tentu kamu akan mendapat pahalanya di sisi Allah."</p>
+          <p class="d-src">QS. Al-Baqarah: 110</p>
+        </div>
+        <div class="dalil dalil-light" style="margin-top:.8rem">
+          <p class="d-ar">بُنِيَ الإِسْلَامُ عَلَى خَمْسٍ: شَهَادَةِ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَأَنَّ مُحَمَّدًا رَسُولُ اللَّهِ، وَإِقَامِ الصَّلَاةِ، وَإِيتَاءِ الزَّكَاةِ...</p>
+          <p class="d-tr">"Islam dibangun di atas lima perkara: syahadat bahwa tiada tuhan selain Allah dan Muhammad adalah Rasul-Nya, mendirikan shalat, menunaikan zakat..."</p>
+          <p class="d-src">HR. Bukhari & Muslim</p>
+        </div>
+
+        <div class="prose" style="margin-top:1.5rem">
+          <p>Zakat mulai diwajibkan pada tahun kedua Hijriyah di Madinah. Sebelumnya, infak dan sedekah sudah dianjurkan di Mekah, namun kewajiban zakat yang terstruktur dengan nisab, haul, dan kadar tertentu baru ditetapkan setelah kaum Muslimin memiliki komunitas yang mandiri di Madinah. Para ulama sepakat bahwa mengingkari kewajiban zakat hukumnya kafir, sedangkan meninggalkannya karena malas hukumnya dosa besar.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DIVIDER -->
+<div class="sec-div sd-light" id="jenis">
+  <div class="sd-line"></div>
+  <div class="sd-badge">
+    <div class="sd-gem"></div>
+    <span class="sd-text">Bab Kedua</span>
+    <div class="sd-gem"></div>
+  </div>
+  <div class="sd-line"></div>
+</div>
+
+<!-- ════════════════════════
+     BAB II — JENIS ZAKAT
+════════════════════════ -->
+<div class="sec-sand">
+  <div class="chapter-wrap">
+    <div class="ch-head">
+      <div class="ch-num-block">
+        <div class="ch-num">II</div>
+        <div class="ch-num-label">Bab Dua</div>
+      </div>
+      <div class="ch-text">
+        <span class="ch-tag">Macam-Macam Zakat</span>
+        <div class="ch-arabic">أَنْوَاعُ الزَّكَاةِ</div>
+        <h2 class="ch-title">Jenis-Jenis<br>Zakat dalam Islam</h2>
+        <p class="ch-sub">Para ulama membagi zakat menjadi dua kategori utama: zakat jiwa (fitrah) dan zakat harta (mal) yang mencakup berbagai jenis kekayaan.</p>
+      </div>
+    </div>
+
+    <div class="zakat-grid">
+
+      <div class="zakat-card zc-terra">
+        <div class="zc-top">
+          <div class="zc-icon">🌙</div>
+          <div class="zc-title">Zakat Fitrah</div>
+          <div class="zc-arabic">زَكَاةُ الْفِطْرِ</div>
+        </div>
+        <div class="zc-body">Zakat yang wajib dikeluarkan setiap jiwa Muslim menjelang Idul Fitri, sebagai pembersih jiwa dari hal-hal yang mengotori puasa Ramadhan. Rasulullah ﷺ mewajibkannya untuk setiap Muslim — merdeka maupun hamba, laki-laki maupun perempuan, tua maupun muda. Waktu terbaik adalah sebelum shalat Idul Fitri. Kadarnya: 1 sha' (±2,5 kg) makanan pokok (beras, gandum, kurma, dll.).</div>
+        <div class="zc-stats">
+          <span class="zc-stat">1 Sha' ≈ 2.5–3 kg</span>
+          <span class="zc-stat">Tiap Jiwa Muslim</span>
+          <span class="zc-stat">Sebelum Shalat Id</span>
+        </div>
+      </div>
+
+      <div class="zakat-card zc-copper">
+        <div class="zc-top">
+          <div class="zc-icon">🥇</div>
+          <div class="zc-title">Zakat Emas & Perak</div>
+          <div class="zc-arabic">زَكَاةُ الذَّهَبِ وَالْفِضَّةِ</div>
+        </div>
+        <div class="zc-body">Emas dan perak — termasuk uang dan tabungan — wajib dizakati jika telah mencapai nisab dan berlalu satu haul. Nisab emas: 85 gram (setara 20 mitsqal). Nisab perak: 595 gram (setara 200 dirham). Kadar zakat 2,5% dari total nilai. Ini mencakup perhiasan yang ditabung, tabungan bank, deposito, dan investasi moneter.</div>
+        <div class="zc-stats">
+          <span class="zc-stat">Nisab Emas: 85 gr</span>
+          <span class="zc-stat">Nisab Perak: 595 gr</span>
+          <span class="zc-stat">Kadar: 2.5%</span>
+          <span class="zc-stat">Haul: 1 Tahun</span>
+        </div>
+      </div>
+
+      <div class="zakat-card zc-saffron">
+        <div class="zc-top">
+          <div class="zc-icon">🌾</div>
+          <div class="zc-title">Zakat Pertanian</div>
+          <div class="zc-arabic">زَكَاةُ الزُّرُوعِ وَالثِّمَارِ</div>
+        </div>
+        <div class="zc-body">Wajib dizakati saat panen — tidak disyaratkan haul. Nisabnya 5 wasaq (±650 kg). Kadar: 10% jika menggunakan air hujan atau aliran alam, 5% jika menggunakan irigasi buatan (karena ada biaya tambahan). Ini mencakup hasil bumi seperti padi, jagung, gandum, kurma, dan buah-buahan yang menjadi makanan pokok.</div>
+        <div class="zc-stats">
+          <span class="zc-stat">Nisab: ±650 kg</span>
+          <span class="zc-stat">Air Hujan: 10%</span>
+          <span class="zc-stat">Irigasi: 5%</span>
+          <span class="zc-stat">Saat Panen</span>
+        </div>
+      </div>
+
+      <div class="zakat-card zc-teak">
+        <div class="zc-top">
+          <div class="zc-icon">🐪</div>
+          <div class="zc-title">Zakat Ternak</div>
+          <div class="zc-arabic">زَكَاةُ الأَنْعَامِ</div>
+        </div>
+        <div class="zc-body">Meliputi unta, sapi/kerbau, dan kambing/domba yang digembalakan bebas (sa'imah) sepanjang tahun. Nisab unta: 5 ekor. Nisab sapi: 30 ekor. Nisab kambing: 40 ekor. Masing-masing memiliki tabel kadar zakat yang rinci berdasarkan jumlah ternak. Ternak yang dipekerjakan (bukan digembalakan bebas) tidak termasuk menurut mayoritas ulama.</div>
+        <div class="zc-stats">
+          <span class="zc-stat">Nisab Unta: 5 ekor</span>
+          <span class="zc-stat">Nisab Sapi: 30 ekor</span>
+          <span class="zc-stat">Nisab Kambing: 40 ekor</span>
+        </div>
+      </div>
+
+      <div class="zakat-card zc-terra">
+        <div class="zc-top">
+          <div class="zc-icon">💼</div>
+          <div class="zc-title">Zakat Perdagangan</div>
+          <div class="zc-arabic">زَكَاةُ عُرُوضِ التِّجَارَةِ</div>
+        </div>
+        <div class="zc-body">Harta yang diperdagangkan wajib dizakati jika telah berlalu satu haul dan nilainya mencapai nisab emas (setara 85 gr emas). Kadar: 2,5%. Cara menghitung: (nilai stok barang + piutang yang dapat ditagih + kas) dikurangi hutang dagang. Ini termasuk toko, properti yang dijual-belikan, dan bisnis apapun yang menguntungkan.</div>
+        <div class="zc-stats">
+          <span class="zc-stat">Kadar: 2.5%</span>
+          <span class="zc-stat">Haul: 1 Tahun</span>
+          <span class="zc-stat">Nisab = Nisab Emas</span>
+        </div>
+      </div>
+
+      <div class="zakat-card zc-copper">
+        <div class="zc-top">
+          <div class="zc-icon">⛏️</div>
+          <div class="zc-title">Zakat Barang Tambang & Rikaz</div>
+          <div class="zc-arabic">زَكَاةُ الْمَعَادِنِ وَالرِّكَازِ</div>
+        </div>
+        <div class="zc-body">Barang tambang (ma'din): emas, perak, minyak bumi, dan mineral berharga lainnya, dikeluarkan zakatnya saat diperoleh dengan kadar 2,5% (tidak perlu haul). Rikaz (harta karun peninggalan pra-Islam): dikeluarkan 1/5 (20%) saat ditemukan berdasarkan hadis: "Dalam rikaz zakatnya seperlima." (HR. Bukhari & Muslim).</div>
+        <div class="zc-stats">
+          <span class="zc-stat">Tambang: 2.5%</span>
+          <span class="zc-stat">Rikaz/Harta Karun: 20%</span>
+          <span class="zc-stat">Saat Diperoleh</span>
+        </div>
+      </div>
+
+      <div class="zakat-card zc-saffron">
+        <div class="zc-top">
+          <div class="zc-icon">💰</div>
+          <div class="zc-title">Zakat Profesi (Penghasilan)</div>
+          <div class="zc-arabic">زَكَاةُ الرَّوَاتِبِ وَالْمِهَنِ</div>
+        </div>
+        <div class="zc-body">Ini adalah ijtihad ulama kontemporer yang qiyaskan dengan zakat perdagangan. Jika penghasilan dalam satu tahun telah mencapai nisab emas (setara nilai 85 gr emas), maka wajib dizakati 2,5%. Ada dua pendapat: dibayar tahunan setelah haul, atau dibayar bulanan saat terima gaji jika sudah mencapai nisab bulanan. Pendapat Yusuf Al-Qaradhawi dan Majelis Ulama Indonesia (MUI) cenderung pada zakat profesi ini.</div>
+        <div class="zc-stats">
+          <span class="zc-stat">Kadar: 2.5%</span>
+          <span class="zc-stat">Nisab = Nisab Emas</span>
+          <span class="zc-stat">Ijtihad Kontemporer</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="dalil dalil-light">
+      <p class="d-ar">خُذْ مِنْ أَمْوَالِهِمْ صَدَقَةً تُطَهِّرُهُمْ وَتُزَكِّيهِم بِهَا وَصَلِّ عَلَيْهِمْ ۖ إِنَّ صَلَاتَكَ سَكَنٌ لَّهُمْ</p>
+      <p class="d-tr">"Ambillah zakat dari sebagian harta mereka, dengan zakat itu kamu membersihkan dan menyucikan mereka, dan berdoalah untuk mereka. Sesungguhnya doa kamu itu (menjadi) ketenteraman jiwa bagi mereka."</p>
+      <p class="d-src">QS. At-Taubah: 103</p>
+    </div>
+  </div>
+</div>
+
+<!-- DIVIDER -->
+<div class="sec-div sd-light" id="nisab">
+  <div class="sd-line"></div>
+  <div class="sd-badge">
+    <div class="sd-gem"></div>
+    <span class="sd-text">Bab Ketiga</span>
+    <div class="sd-gem"></div>
+  </div>
+  <div class="sd-line"></div>
+</div>
+
+<!-- ════════════════════════
+     BAB III — NISAB & HAUL
+════════════════════════ -->
+<div class="sec-light">
+  <div class="chapter-wrap">
+    <div class="ch-head">
+      <div class="ch-num-block">
+        <div class="ch-num">III</div>
+        <div class="ch-num-label">Bab Tiga</div>
+      </div>
+      <div class="ch-text">
+        <span class="ch-tag">Syarat Wajib Zakat</span>
+        <div class="ch-arabic">النِّصَابُ وَالْحَوْلُ</div>
+        <h2 class="ch-title">Nisab & Haul<br>Syarat Wajib Zakat</h2>
+        <p class="ch-sub">Dua syarat utama wajibnya zakat mal: telah mencapai nisab (batas minimum harta) dan telah berlalu satu haul (satu tahun hijriyah penuh).</p>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <div class="prose">
+          <p class="drop-cap">Nisab secara bahasa berarti "ukuran" atau "kadar". Dalam fiqih zakat, ia adalah batas minimum harta yang jika telah dicapai, menjadikan seseorang wajib mengeluarkan zakat. Syarat nisab ini mengandung hikmah yang mendalam: Islam tidak membebankan zakat kepada orang yang belum memiliki cukup — hanya mereka yang memiliki kelebihan yang wajib berbagi.</p>
+          <p>Adapun haul adalah berlalunya satu tahun hijriyah (354 hari) atas kepemilikan harta yang telah mencapai nisab. Jika harta mencapai nisab di awal tahun kemudian berkurang di tengah tahun lalu kembali mencapai nisab di akhir tahun, maka menurut mayoritas ulama haul dihitung dari awal kembalinya harta ke nisab.</p>
+          <p>Syarat haul tidak berlaku untuk zakat fitrah, zakat pertanian (dibayar saat panen), dan zakat rikaz (harta karun — dibayar saat ditemukan). Hanya zakat harta simpanan yang mensyaratkan haul.</p>
+        </div>
+      </div>
+      <div>
+        <div class="prose">
+          <p>Para ulama sepakat bahwa dasar nisab adalah hadis riwayat Ali bin Abi Thalib tentang nisab emas 20 mitsqal (setara 85 gram emas murni) dan nisab perak 200 dirham (setara 595 gram perak). Nisab-nisab lainnya dikembalikan kepada nilai ini.</p>
+          <p>Dalam konteks modern, para ulama menggunakan dua pendekatan: nisab emas (lebih tinggi nilainya) atau nisab perak (lebih rendah, sehingga lebih banyak yang terkena kewajiban zakat). Yusuf Al-Qaradhawi dan mayoritas lembaga zakat kontemporer menggunakan nisab emas untuk zakat mal dan profesi demi kemudahan perhitungan.</p>
+        </div>
+        <div class="dalil dalil-light">
+          <p class="d-ar">لَيْسَ فِيمَا دُونَ خَمْسِ أَوَاقٍ صَدَقَةٌ، وَلَيْسَ فِيمَا دُونَ خَمْسِ ذَوْدٍ صَدَقَةٌ، وَلَيْسَ فِيمَا دُونَ خَمْسَةِ أَوْسُقٍ صَدَقَةٌ</p>
+          <p class="d-tr">"Tidak ada zakat pada perak di bawah 5 uqiyyah (±200 dirham), tidak ada zakat pada unta di bawah 5 ekor, dan tidak ada zakat pada biji-bijian di bawah 5 wasaq."</p>
+          <p class="d-src">HR. Bukhari & Muslim</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Nisab Calculator Display -->
+    <div class="calc-wrap" id="nisab-calc">
+      <div class="calc-head">
+        <h3>Tabel Nisab & Kadar Zakat</h3>
+        <span>Referensi Fiqih Zakat</span>
+      </div>
+      <div class="calc-body">
+        <div class="calc-item">
+          <span class="ci-label">Nisab Emas</span>
+          <div class="ci-value">85</div>
+          <div class="ci-unit">Gram Emas Murni (24K)</div>
+          <div class="ci-note">20 Mitsqal — HR. Abu Dawud & Ibnu Majah</div>
+        </div>
+        <div class="calc-item">
+          <span class="ci-label">Nisab Perak</span>
+          <div class="ci-value">595</div>
+          <div class="ci-unit">Gram Perak Murni</div>
+          <div class="ci-note">200 Dirham — HR. Bukhari & Muslim</div>
+        </div>
+        <div class="calc-item">
+          <span class="ci-label">Kadar Zakat Mal</span>
+          <div class="ci-value">2.5%</div>
+          <div class="ci-unit">Dari Total Harta</div>
+          <div class="ci-note">Emas, perak, uang, perdagangan, profesi</div>
+        </div>
+        <div class="calc-item">
+          <span class="ci-label">Kadar Zakat Fitrah</span>
+          <div class="ci-value">1 Sha'</div>
+          <div class="ci-unit">≈ 2.5 – 3 kg Beras</div>
+          <div class="ci-note">Per jiwa Muslim, sebelum shalat Id</div>
+        </div>
+        <div class="calc-item">
+          <span class="ci-label">Kadar Zakat Pertanian</span>
+          <div class="ci-value">5–10%</div>
+          <div class="ci-unit">Dari Hasil Panen</div>
+          <div class="ci-note">10% air hujan · 5% irigasi</div>
+        </div>
+        <div class="calc-item">
+          <span class="ci-label">Kadar Zakat Rikaz</span>
+          <div class="ci-value">20%</div>
+          <div class="ci-unit">Dari Nilai Harta Karun</div>
+          <div class="ci-note">Saat ditemukan · HR. Bukhari & Muslim</div>
+        </div>
+      </div>
+      <div style="padding:0 2rem 2rem">
+        <div class="haul-bar">
+          <div>
+            <div class="hb-label">Syarat Haul</div>
+            <div style="font-size:.88rem;color:var(--text2);margin-top:.2rem">1 Tahun Hijriyah (354 hari) kepemilikan di atas nisab</div>
+          </div>
+          <div class="hb-val">354 Hari</div>
+        </div>
+        <div class="haul-bar" style="margin-top:.6rem">
+          <div>
+            <div class="hb-label">Pengecualian Haul</div>
+            <div style="font-size:.88rem;color:var(--text2);margin-top:.2rem">Zakat Fitrah · Zakat Pertanian · Zakat Rikaz</div>
+          </div>
+          <div class="hb-val">Tanpa Haul</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DIVIDER -->
+<div class="sec-div sd-light" id="asnaf">
+  <div class="sd-line"></div>
+  <div class="sd-badge">
+    <div class="sd-gem"></div>
+    <span class="sd-text">Bab Keempat</span>
+    <div class="sd-gem"></div>
+  </div>
+  <div class="sd-line"></div>
+</div>
+
+<!-- ════════════════════════
+     BAB IV — 8 ASNAF
+════════════════════════ -->
+<div class="sec-dark">
+  <div class="chapter-wrap ch-dark">
+    <div class="ch-head">
+      <div class="ch-num-block">
+        <div class="ch-num">IV</div>
+        <div class="ch-num-label">Bab Empat</div>
+      </div>
+      <div class="ch-text">
+        <span class="ch-tag">Mustahiq Zakat</span>
+        <div class="ch-arabic">أَصْنَافُ مُسْتَحِقِّي الزَّكَاةِ الثَّمَانِيَةُ</div>
+        <h2 class="ch-title">8 Golongan<br>Penerima Zakat</h2>
+        <p class="ch-sub">Allah menentukan sendiri 8 golongan yang berhak menerima zakat dalam Al-Qur'an, tidak meninggalkannya kepada ijtihad manusia — tanda betapa pentingnya distribusi zakat.</p>
+      </div>
+    </div>
+
+    <div class="dalil dalil-dark" style="margin-bottom:2.5rem">
+      <p class="d-ar">إِنَّمَا الصَّدَقَاتُ لِلْفُقَرَاءِ وَالْمَسَاكِينِ وَالْعَامِلِينَ عَلَيْهَا وَالْمُؤَلَّفَةِ قُلُوبُهُمْ وَفِي الرِّقَابِ وَالْغَارِمِينَ وَفِي سَبِيلِ اللَّهِ وَابْنِ السَّبِيلِ ۖ فَرِيضَةً مِّنَ اللَّهِ</p>
+      <p class="d-tr">"Sesungguhnya zakat itu hanyalah untuk orang-orang fakir, orang-orang miskin, para amil zakat, orang-orang yang dilunakkan hatinya (mualaf), untuk memerdekakan hamba sahaya, untuk orang-orang yang berutang, untuk jalan Allah, dan orang-orang yang sedang dalam perjalanan — sebagai kewajiban dari Allah."</p>
+      <p class="d-src">QS. At-Taubah: 60 — Satu-satunya ayat yang menentukan mustahiq zakat</p>
+    </div>
+
+    <div class="asnaf-grid">
+      <div class="asnaf-card">
+        <span class="an-num">Asnaf 01</span>
+        <div class="an-title">Fakir</div>
+        <div class="an-arabic">الْفُقَرَاءُ</div>
+        <div class="an-body">Orang yang tidak memiliki harta dan pekerjaan sama sekali, atau penghasilannya tidak mencukupi setengah kebutuhan pokoknya. Mereka mendapat porsi zakat yang cukup untuk memenuhi kebutuhan hidup minimal selama setahun menurut mayoritas ulama.</div>
+      </div>
+      <div class="asnaf-card">
+        <span class="an-num">Asnaf 02</span>
+        <div class="an-title">Miskin</div>
+        <div class="an-arabic">الْمَسَاكِينُ</div>
+        <div class="an-body">Berbeda dari fakir — orang miskin memiliki penghasilan namun tidak mencukupi kebutuhan pokoknya. Ada yang berpendapat miskin lebih buruk kondisinya dari fakir. Khadijah, istri Nabi ﷺ, pernah memberi zakat kepada orang miskin yang tampaknya berkecukupan dari luar.</div>
+      </div>
+      <div class="asnaf-card">
+        <span class="an-num">Asnaf 03</span>
+        <div class="an-title">Amil Zakat</div>
+        <div class="an-arabic">الْعَامِلُونَ عَلَيْهَا</div>
+        <div class="an-body">Mereka yang bekerja mengumpulkan, mengelola, mendistribusikan, dan mencatat zakat. Ini adalah pengelola zakat yang sah — boleh menerima bagian zakat sebagai upah atas kerja mereka, meskipun mereka sendiri adalah orang kaya. Bagian amil maksimal 1/8 dari total zakat.</div>
+      </div>
+      <div class="asnaf-card">
+        <span class="an-num">Asnaf 04</span>
+        <div class="an-title">Mualaf</div>
+        <div class="an-arabic">الْمُؤَلَّفَةُ قُلُوبُهُمْ</div>
+        <div class="an-body">Orang yang baru masuk Islam yang perlu dikuatkan imannya, atau tokoh yang diharapkan masuk Islam atau menahan diri dari menyakiti umat Islam. Di zaman Nabi ﷺ, beberapa tokoh Quraisy mendapat bagian ini. Para ulama berbeda apakah golongan ini masih berlaku di era sekarang.</div>
+      </div>
+      <div class="asnaf-card">
+        <span class="an-num">Asnaf 05</span>
+        <div class="an-title">Riqab (Memerdekakan Budak)</div>
+        <div class="an-arabic">فِي الرِّقَابِ</div>
+        <div class="an-body">Bagian zakat yang digunakan untuk memerdekakan hamba sahaya. Di era modern di mana perbudakan telah dihapuskan, para ulama kontemporer berbeda pendapat: sebagian menganggap golongan ini sudah tidak relevan, sebagian lain memperluas maknanya kepada pembebasan manusia dari segala bentuk penghambaan.</div>
+      </div>
+      <div class="asnaf-card">
+        <span class="an-num">Asnaf 06</span>
+        <div class="an-title">Gharimin (Orang Berutang)</div>
+        <div class="an-arabic">الْغَارِمُونَ</div>
+        <div class="an-body">Orang yang berutang untuk keperluan yang dibolehkan syariat dan tidak mampu membayarnya. Ini dibagi dua: berutang untuk kebutuhan pribadi yang halal, dan berutang untuk mendamaikan dua pihak yang berselisih (ishlah). Keduanya berhak mendapat zakat untuk melunasi hutangnya.</div>
+      </div>
+      <div class="asnaf-card">
+        <span class="an-num">Asnaf 07</span>
+        <div class="an-title">Fi Sabilillah</div>
+        <div class="an-arabic">فِي سَبِيلِ اللَّهِ</div>
+        <div class="an-body">Secara asal merujuk kepada para pejuang di jalan Allah yang tidak mendapat gaji dari negara. Para ulama kontemporer memperluas maknanya kepada semua kegiatan yang bermanfaat bagi Islam: pendidikan Islam, dakwah, pembangunan masjid, dll. Ini adalah asnaf dengan penafsiran paling luas dalam fiqih kontemporer.</div>
+      </div>
+      <div class="asnaf-card">
+        <span class="an-num">Asnaf 08</span>
+        <div class="an-title">Ibnus Sabil (Musafir)</div>
+        <div class="an-arabic">ابْنُ السَّبِيلِ</div>
+        <div class="an-body">Orang yang sedang dalam perjalanan dan kehabisan bekal, meskipun di negerinya ia adalah orang kaya. Ini adalah bentuk solidaritas luar biasa Islam: orang kaya pun bisa menjadi mustahiq zakat ketika dalam kondisi terputus dari kekayaannya dan membutuhkan pertolongan di perjalanan.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DIVIDER -->
+<div class="sec-div sd-light" id="keutamaan">
+  <div class="sd-line"></div>
+  <div class="sd-badge">
+    <div class="sd-gem"></div>
+    <span class="sd-text">Bab Kelima</span>
+    <div class="sd-gem"></div>
+  </div>
+  <div class="sd-line"></div>
+</div>
+
+<!-- ════════════════════════
+     BAB V — KEUTAMAAN
+════════════════════════ -->
+<div class="sec-sand">
+  <div class="chapter-wrap">
+    <div class="ch-head">
+      <div class="ch-num-block">
+        <div class="ch-num">V</div>
+        <div class="ch-num-label">Bab Lima</div>
+      </div>
+      <div class="ch-text">
+        <span class="ch-tag">Fadhilah Zakat</span>
+        <div class="ch-arabic">فَضَائِلُ الزَّكَاةِ وَعَوَاقِبُ مَنْعِهَا</div>
+        <h2 class="ch-title">Keutamaan Zakat<br>& Ancaman Menolaknya</h2>
+        <p class="ch-sub">Allah menjanjikan balasan yang berlipat ganda bagi yang menunaikan zakat, dan ancaman yang sangat keras bagi yang menolaknya.</p>
+      </div>
+    </div>
+
+    <div class="two-col" style="margin-bottom:1.5rem">
+      <div>
+        <div class="prose">
+          <p class="drop-cap">Zakat bukan sekadar kewajiban fiskal — ia adalah ibadah yang menyucikan jiwa, mendekatkan kepada Allah, dan menjadi jaminan keselamatan di dunia dan akhirat. Rasulullah ﷺ menggambarkan orang yang tidak menunaikan zakat dengan gambaran yang sangat menakutkan: hartanya akan menjadi ular berbisa yang melilitnya di hari kiamat. Sebaliknya, orang yang menunaikanya dijanjikan naungan di hari tiada naungan kecuali naungan Allah.</p>
+          <p>Imam Al-Ghazali dalam Ihya Ulumuddin menjelaskan bahwa keutamaan zakat tidak hanya pada pahala di akhirat, melainkan juga pada dampak sosialnya yang nyata: ketika zakat ditunaikan dengan benar, tidak ada kemiskinan yang tersisa dalam masyarakat Muslim. Sahabat Muadz bin Jabal pernah mengalami di Yaman bahwa tidak ada yang mau menerima zakat karena semua sudah berkecukupan.</p>
+        </div>
+      </div>
+      <div>
+        <div class="dalil dalil-light">
+          <p class="d-ar">مَثَلُ الَّذِينَ يُنفِقُونَ أَمْوَالَهُمْ فِي سَبِيلِ اللَّهِ كَمَثَلِ حَبَّةٍ أَنبَتَتْ سَبْعَ سَنَابِلَ فِي كُلِّ سُنبُلَةٍ مِّائَةُ حَبَّةٍ</p>
+          <p class="d-tr">"Perumpamaan orang yang menginfakkan hartanya di jalan Allah seperti sebutir biji yang menumbuhkan tujuh tangkai, pada setiap tangkai ada seratus biji."</p>
+          <p class="d-src">QS. Al-Baqarah: 261 — Balasan 700 kali lipat</p>
+        </div>
+        <div class="dalil dalil-light" style="margin-top:.8rem">
+          <p class="d-ar">وَالَّذِينَ يَكْنِزُونَ الذَّهَبَ وَالْفِضَّةَ وَلَا يُنفِقُونَهَا فِي سَبِيلِ اللَّهِ فَبَشِّرْهُم بِعَذَابٍ أَلِيمٍ</p>
+          <p class="d-tr">"Dan orang-orang yang menyimpan emas dan perak serta tidak menginfakkannya di jalan Allah, maka berikanlah kabar gembira kepada mereka (bahwa mereka akan mendapat) azab yang pedih."</p>
+          <p class="d-src">QS. At-Taubah: 34 — Ancaman bagi yang tidak berzakat</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="keutamaan-list">
+
+      <div class="kl-item">
+        <div class="kl-num">01</div>
+        <div class="kl-body">
+          <h4>Mensucikan Harta & Jiwa</h4>
+          <p>Allah berfirman: "Ambillah zakat dari sebagian harta mereka, dengan zakat itu kamu membersihkan dan mensucikan mereka." (QS. At-Taubah: 103). Zakat membersihkan harta dari hak orang lain yang mungkin "tersembunyi" di dalamnya, dan membersihkan jiwa dari sifat bakhil (kikir) yang merupakan penyakit hati yang sangat berbahaya.</p>
+          <span class="kl-src">QS. At-Taubah: 103</span>
+        </div>
+      </div>
+
+      <div class="kl-item">
+        <div class="kl-num">02</div>
+        <div class="kl-body">
+          <h4>Berlipat Ganda di Akhirat</h4>
+          <p>Allah menjanjikan balasan minimal 700 kali lipat dari setiap infak di jalan-Nya (QS. Al-Baqarah: 261). Dalam hadis qudsi, Allah berfirman: "Wahai anak Adam, infakkanlah (hartamu), niscaya Aku akan memberi nafkah kepadamu." (HR. Muslim). Ini adalah "investasi" dengan imbal hasil yang tidak ada tandingannya.</p>
+          <span class="kl-src">QS. Al-Baqarah: 261 · HR. Muslim</span>
+        </div>
+      </div>
+
+      <div class="kl-item">
+        <div class="kl-num">03</div>
+        <div class="kl-body">
+          <h4>Mendapat Naungan di Hari Kiamat</h4>
+          <p>Nabi ﷺ menyebut tujuh golongan yang mendapat naungan Allah di hari tiada naungan selain naungan-Nya, di antaranya: "Seseorang yang bersedekah secara diam-diam hingga tangan kirinya tidak mengetahui apa yang diinfakkan tangan kanannya." (HR. Bukhari & Muslim). Zakat yang ditunaikan dengan ikhlas termasuk dalam golongan ini.</p>
+          <span class="kl-src">HR. Bukhari & Muslim</span>
+        </div>
+      </div>
+
+      <div class="kl-item">
+        <div class="kl-num">04</div>
+        <div class="kl-body">
+          <h4>Menolak Bala dan Mendatangkan Keberkahan</h4>
+          <p>Nabi ﷺ bersabda: "Bentengilah harta kalian dengan zakat, obatilah orang sakit kalian dengan sedekah, dan hadapilah gelombang bala dengan doa." (HR. Abu Dawud & Al-Baihaqi — Hasan). Zakat adalah perisai dari musibah dan pembuka pintu rezeki yang lebih besar — bukan mengurangi harta, melainkan menambahnya dengan keberkahan yang tidak tampak.</p>
+          <span class="kl-src">HR. Abu Dawud & Al-Baihaqi (Hasan)</span>
+        </div>
+      </div>
+
+      <div class="kl-item">
+        <div class="kl-num">05</div>
+        <div class="kl-body">
+          <h4>Mendapat Doa Malaikat Setiap Hari</h4>
+          <p>Nabi ﷺ bersabda: "Tidak ada satu pagi hari pun yang dialami para hamba kecuali dua malaikat turun. Salah satunya berkata: 'Ya Allah, berilah ganti kepada orang yang berinfak.' Yang lain berkata: 'Ya Allah, berilah kerusakan kepada orang yang menahan (hartanya).'" (HR. Bukhari & Muslim). Doa malaikat adalah doa yang paling dikabulkan.</p>
+          <span class="kl-src">HR. Bukhari & Muslim</span>
+        </div>
+      </div>
+
+      <div class="kl-item">
+        <div class="kl-num">06</div>
+        <div class="kl-body">
+          <h4>Tanda Keislaman yang Sempurna</h4>
+          <p>Abu Bakar Ash-Shiddiq memerangi orang yang membedakan antara shalat dan zakat — yaitu mereka yang tetap mau shalat namun menolak membayar zakat. Beliau berkata: "Demi Allah, aku akan memerangi siapa saja yang membedakan antara shalat dan zakat." Ini menunjukkan bahwa zakat adalah tanda keislaman yang sama wajibnya dengan shalat.</p>
+          <span class="kl-src">HR. Bukhari — Perang Riddah Abu Bakar</span>
+        </div>
+      </div>
+
+      <div class="kl-item">
+        <div class="kl-num">07</div>
+        <div class="kl-body">
+          <h4>Ancaman bagi yang Menolak: Ular Berbisa</h4>
+          <p>Nabi ﷺ bersabda: "Barang siapa yang Allah karuniakan harta namun ia tidak mengeluarkan zakatnya, maka hartanya itu akan dijadikan seekor ular jantan yang gundul (berbisa) yang akan melilitnya di lehernya pada hari kiamat, kemudian ular itu menggigit kedua pipinya seraya berkata: 'Aku adalah hartamu, aku adalah simpananmu.'" (HR. Bukhari). Lalu Nabi membaca QS. Ali Imran: 180.</p>
+          <span class="kl-src">HR. Bukhari — Ancaman meninggalkan zakat</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ════ CLOSING ════ -->
+<section class="closing">
+  <div class="closing-inner">
+    <span class="closing-ornament">زكاة</span>
+    <h2>Zakat adalah<br><em>Jembatan Keadilan</em></h2>
+    <p>Zakat bukan pajak dan bukan belas kasihan — ia adalah hak yang Allah tetapkan bagi kaum yang membutuhkan dalam harta orang-orang yang berkecukupan. Ketika zakat ditunaikan dengan benar, ia menjadi jembatan antara yang kaya dan yang miskin, antara yang berkelebihan dan yang kekurangan, mewujudkan masyarakat yang adil dan saling peduli.</p>
+    <p>Allah menamainya "zakat" — yang berarti tumbuh dan suci — bukan kebetulan. Karena setiap dirham yang dizakatkan akan tumbuh berlipat di sisi Allah, dan setiap jiwa yang menunaikannya akan tersucikan dari penyakit cinta dunia yang merusak. Inilah keindahan Islam: ibadah yang sekaligus menjadi solusi sosial.</p>
+    <div class="sep-row">
+      <div class="sr-line"></div>
+      <div class="sr-gem sm"></div>
+      <div class="sr-gem"></div>
+      <div class="sr-gem sm"></div>
+      <div class="sr-line"></div>
+    </div>
+    <p class="closing-ar">وَأَقِيمُوا الصَّلَاةَ وَآتُوا الزَّكَاةَ وَأَطِيعُوا الرَّسُولَ لَعَلَّكُمْ تُرْحَمُونَ</p>
+    <p class="closing-tr">"Dan dirikanlah shalat, tunaikanlah zakat, dan taatilah Rasul, agar kamu diberi rahmat."</p>
+    <p class="closing-ref">QS. An-Nur: 56</p>
+  </div>
+</section>
+
+<footer>
+  <p>Disusun berdasarkan <em>Al-Qur'an Al-Karim</em> · <em>Shahih Bukhari & Muslim</em> · <em>Fiqhuz Zakat (Yusuf Al-Qaradhawi)</em> · <em>Al-Majmu' (An-Nawawi)</em> · <em>Al-Mughni (Ibnu Qudamah)</em></p>
+  <p>Semoga menjadi ilmu yang bermanfaat dan mendorong kita menunaikan zakat. <em>آمين</em></p>
+</footer>
+
+<!-- ════ ANIMATED TESSELLATION JS ════ -->
+<script>
+(function(){
+  const c = document.getElementById('tessCanvas');
+  if(!c) return;
+  const ctx = c.getContext('2d');
+  let W, H, t = 0;
+
+  function resize(){
+    W = c.width = window.innerWidth;
+    H = c.height = window.innerHeight;
+  }
+
+  // Draw animated Islamic 8-pointed star tessellation
+  function drawTess(){
+    ctx.clearRect(0, 0, W, H);
+    const size = 80;
+    const cols = Math.ceil(W / size) + 2;
+    const rows = Math.ceil(H / size) + 2;
+    const offX = (t * .2) % size;
+    const offY = (t * .1) % size;
+
+    ctx.strokeStyle = 'rgba(184,114,42,1)';
+    ctx.lineWidth = .8;
+
+    for(let r = -1; r < rows; r++){
+      for(let col = -1; col < cols; col++){
+        const cx = col * size - offX;
+        const cy = r * size - offY;
+        // offset every other row
+        const ox = (r % 2 === 0) ? 0 : size / 2;
+        drawStar(ctx, cx + ox, cy, size * .38);
+      }
+    }
+
+    t += .3;
+    requestAnimationFrame(drawTess);
+  }
+
+  function drawStar(ctx, x, y, r){
+    const pts = 8;
+    const inner = r * .42;
+    ctx.beginPath();
+    for(let i = 0; i < pts * 2; i++){
+      const angle = (i * Math.PI) / pts - Math.PI / 2;
+      const rad = i % 2 === 0 ? r : inner;
+      const px = x + Math.cos(angle) * rad;
+      const py = y + Math.sin(angle) * rad;
+      i === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
+    }
+    ctx.closePath();
+    ctx.stroke();
+  }
+
+  resize();
+  drawTess();
+  window.addEventListener('resize', resize);
+})();
+</script>
+
+</body>
+</html>

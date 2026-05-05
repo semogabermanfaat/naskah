@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kitab Udhiyyah — Panduan Lengkap Ibadah Kurban</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Amiri:ital,wght@0,400;0,700;1,400&family=Archivo+Narrow:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  /* Crimson heritage palette */
+  --blood:    #5a0c0c;
+  --crimson:  #7a1818;
+  --crim-lt:  #a02828;
+  --crim-pale:#fdf0f0;
+  --crim-mid: #e8d0d0;
+  --rust:     #8a3420;
+  --rust-lt:  #c05030;
+  --rust-p:   #fde8e0;
+  --umber:    #6b3810;
+  --gold:     #b87808;
+  --gold-lt:  #d09020;
+  --gold-pale:#fdf4d0;
+  --gold-mid: #e8d890;
+  --stone:    #f5ede0;
+  --stone-d:  #ede0cc;
+  --stone-dd: #e0cfb4;
+  --parch:    #faf5eb;
+  --parch-d:  #f2e8d4;
+  --slate:    #2a1e14;
+  --slate-lt: #3c2c1c;
+  --ink:      #1a100a;
+  --ink-mid:  #2a1a10;
+  --ink-soft: #6a4828;
+  --sepia:    #8a6840;
+  --b-crim:   rgba(122,24,24,.18);
+  --b-gold:   rgba(184,120,8,.18);
+  --b-rust:   rgba(138,52,32,.18);
+  --b-umber:  rgba(107,56,16,.15);
+  --b-ink:    rgba(26,16,10,.1);
+}
+
+html{scroll-behavior:smooth;}
+
+/* Parchment body with stone texture */
+body{
+  background:var(--parch);
+  font-family:'Libre Baskerville',Georgia,serif;
+  color:var(--ink);
+  overflow-x:hidden;
+}
+body::before{
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"),
+    repeating-linear-gradient(0deg,transparent,transparent 34px,rgba(107,56,16,.04) 34px,rgba(107,56,16,.04) 35px);
+}
+
+/* ══════════════════════════════════════
+   HERO — BLOOD & STONE
+══════════════════════════════════════ */
+.hero{
+  min-height:100vh;
+  position:relative;z-index:1;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 30%,rgba(90,12,12,.3) 0%,transparent 65%),
+    radial-gradient(ellipse 100% 35% at 50% 100%,rgba(26,16,10,.98) 0%,transparent 55%),
+    linear-gradient(160deg,
+      #0e0806 0%,
+      #180e0a 15%,
+      #2a1208 28%,
+      #5a1010 45%,
+      #7a1818 62%,
+      #a02828 75%,
+      #c84040 85%,
+      #d86060 92%,
+      #e8a090 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:80px 24px 130px;overflow:hidden;
+}
+
+/* Stone block pattern */
+.hero::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background-image:
+    repeating-linear-gradient(0deg,transparent,transparent 59px,rgba(255,255,255,.04) 59px,rgba(255,255,255,.04) 60px),
+    repeating-linear-gradient(90deg,transparent,transparent 79px,rgba(255,255,255,.03) 79px,rgba(255,255,255,.03) 80px);
+}
+
+/* Sacrificial flame glow at bottom */
+.hero-glow{
+  position:absolute;bottom:0;left:50%;transform:translateX(-50%);
+  width:min(600px,100vw);height:200px;pointer-events:none;
+  background:radial-gradient(ellipse 60% 100% at 50% 100%,rgba(200,64,64,.3) 0%,rgba(184,120,8,.1) 50%,transparent 80%);
+  filter:blur(20px);
+}
+
+/* Dark horizon */
+.hero-horizon{position:absolute;bottom:0;left:0;right:0;height:30%;
+  background:linear-gradient(0deg,rgba(14,8,6,.98) 0%,transparent 100%);pointer-events:none;}
+
+/* Stars */
+.hero-stars{position:absolute;top:0;left:0;right:0;height:55%;pointer-events:none;}
+.hstar{position:absolute;border-radius:50%;background:#fff;
+  animation:starPulse var(--st,3s) ease-in-out infinite alternate;}
+@keyframes starPulse{from{opacity:var(--so,.25);}to{opacity:calc(var(--so,.25)*2.5);}}
+
+.hero-inner{position:relative;z-index:2;max-width:760px;}
+
+.hero-moon{
+  font-size:clamp(2rem,6vw,4rem);
+  display:block;margin-bottom:10px;
+  animation:mrise 2s ease both;
+  filter:drop-shadow(0 0 12px rgba(216,176,128,.5));
+}
+
+.hero-bismillah{
+  font-family:'Amiri',serif;
+  font-size:clamp(1.5rem,4.5vw,2.9rem);
+  color:rgba(232,208,144,.95);
+  text-shadow:0 0 25px rgba(200,64,64,.5),0 0 60px rgba(184,120,8,.2);
+  line-height:1.9;margin-bottom:14px;
+  animation:mrise 2s ease both .1s;
+}
+.hero-kicker{
+  font-family:'Archivo Narrow',sans-serif;font-weight:400;
+  font-size:clamp(.6rem,1.4vw,.74rem);letter-spacing:8px;text-transform:uppercase;
+  color:rgba(200,160,120,.45);margin-bottom:20px;
+  animation:mrise 2s ease both .22s;
+}
+.hero-title{
+  font-family:'Libre Baskerville',serif;font-weight:700;
+  font-size:clamp(2.6rem,8vw,6.5rem);line-height:1.02;letter-spacing:-1.5px;
+  color:#fff;margin-bottom:6px;animation:mrise 2s ease both .07s;
+}
+.hero-title em{
+  display:block;font-style:italic;font-weight:400;
+  font-size:.55em;letter-spacing:2px;
+  color:rgba(232,160,128,.7);margin-top:2px;
+}
+.hero-ar-sub{
+  font-family:'Amiri',serif;
+  font-size:clamp(1.1rem,2.8vw,1.9rem);color:rgba(232,208,144,.6);
+  line-height:2;margin-bottom:24px;animation:mrise 2s ease both .28s;
+}
+.hero-rule{
+  display:flex;align-items:center;justify-content:center;gap:14px;
+  margin:0 auto 26px;animation:mrise 2s ease both .38s;
+}
+.hero-rule span{width:80px;height:1px;background:linear-gradient(90deg,transparent,rgba(200,64,64,.4));}
+.hero-rule span:last-child{background:linear-gradient(90deg,rgba(200,64,64,.4),transparent);}
+.hero-rule em{color:rgba(232,208,144,.55);font-style:normal;letter-spacing:8px;}
+.hero-verse{
+  max-width:580px;margin:0 auto;padding:22px 32px;
+  background:rgba(14,8,6,.65);border:1px solid rgba(200,64,64,.22);
+  backdrop-filter:blur(10px);animation:mrise 2s ease both .5s;
+}
+.hv-ar{font-family:'Amiri',serif;font-size:clamp(1rem,2.5vw,1.42rem);color:rgba(232,208,144,.95);line-height:2.2;direction:rtl;margin-bottom:10px;}
+.hv-id{font-style:italic;font-size:.83rem;color:rgba(200,180,140,.55);line-height:1.7;}
+@keyframes mrise{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+
+/* ══════════════════════════════════════
+   BODY
+══════════════════════════════════════ */
+.wrap{max-width:880px;margin:0 auto;padding:0 16px 80px;position:relative;z-index:1;}
+
+/* Chapter headers */
+.chap{margin:52px 0 0;display:flex;align-items:stretch;}
+.chap-stripe{width:6px;flex-shrink:0;}
+.cs-crim{background:var(--crimson);}
+.cs-gold{background:var(--gold);}
+.cs-rust{background:var(--rust);}
+.cs-umb{background:var(--umber);}
+.cs-dk{background:var(--blood);}
+
+.chap-body{flex:1;padding:16px 22px;}
+.cb-crim{background:var(--crim-pale);border:1px solid var(--b-crim);border-left:none;}
+.cb-gold{background:var(--gold-pale);border:1px solid var(--b-gold);border-left:none;}
+.cb-rust{background:var(--rust-p);border:1px solid var(--b-rust);border-left:none;}
+.cb-umb{background:var(--stone);border:1px solid var(--b-umber);border-left:none;}
+.cb-dk{background:var(--blood);border:1px solid rgba(200,64,64,.2);border-left:none;}
+
+.chap-tag{font-family:'Archivo Narrow',sans-serif;font-weight:600;font-size:.6rem;letter-spacing:5px;text-transform:uppercase;margin-bottom:6px;}
+.ct-crim{color:var(--crimson);}
+.ct-gold{color:var(--gold);}
+.ct-rust{color:var(--rust);}
+.ct-umb{color:var(--umber);}
+.ct-dk{color:rgba(232,208,144,.6);}
+
+.chap-ar{font-family:'Amiri',serif;font-size:clamp(1.1rem,2.8vw,1.65rem);line-height:1.8;margin-bottom:4px;}
+.car-crim{color:var(--crimson);}
+.car-gold{color:var(--gold);}
+.car-rust{color:var(--rust);}
+.car-umb{color:var(--umber);}
+.car-dk{color:rgba(232,208,144,.9);}
+
+.chap-title{font-family:'Libre Baskerville',serif;font-weight:700;font-size:clamp(1.1rem,2.8vw,1.75rem);line-height:1.25;color:var(--ink);}
+.ct-dk-title{color:var(--stone-d);}
+
+/* Sections */
+.sec{padding:30px 0 24px;border-bottom:1px solid var(--b-ink);}
+.sec:last-child{border-bottom:none;}
+
+/* Prose - JUSTIFIED */
+.prose p{
+  font-size:clamp(.97rem,2.1vw,1.07rem);line-height:2.1;
+  color:var(--ink-mid);margin-bottom:16px;
+  text-align:justify;hyphens:auto;-webkit-hyphens:auto;
+}
+.prose p.lead{font-style:italic;color:var(--crimson);font-size:clamp(1rem,2.2vw,1.12rem);line-height:1.92;text-align:justify;}
+.prose.gl p.lead{color:var(--gold);}
+.prose.rl p.lead{color:var(--rust);}
+.prose.ul p.lead{color:var(--umber);}
+.prose p:first-of-type:not(.lead)::first-letter{
+  font-family:'Libre Baskerville',serif;font-weight:700;
+  font-size:4em;line-height:.72;float:left;margin:8px 12px 0 0;
+}
+.prose.fl-c p:first-of-type:not(.lead)::first-letter{color:var(--crimson);}
+.prose.fl-g p:first-of-type:not(.lead)::first-letter{color:var(--gold);}
+.prose.fl-r p:first-of-type:not(.lead)::first-letter{color:var(--rust);}
+.prose.fl-u p:first-of-type:not(.lead)::first-letter{color:var(--umber);}
+
+/* Dalil */
+.dalil{margin:24px 0;display:grid;grid-template-columns:4px 1fr;}
+.d-c{background:var(--crim-pale);border:1px solid var(--b-crim);}
+.d-g{background:var(--gold-pale);border:1px solid var(--b-gold);}
+.d-r{background:var(--rust-p);border:1px solid var(--b-rust);}
+.d-u{background:var(--stone);border:1px solid var(--b-umber);}
+.d-dk{background:rgba(14,8,6,.88);border:1px solid rgba(200,64,64,.2);}
+.db-c{background:var(--crimson);}
+.db-g{background:var(--gold);}
+.db-r{background:var(--rust);}
+.db-u{background:var(--umber);}
+.db-dk{background:var(--gold);}
+.dbody{padding:18px 20px 14px;}
+.dtag{font-family:'Archivo Narrow',sans-serif;font-weight:600;font-size:.6rem;letter-spacing:4px;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:10px;}
+.dtag::after{content:'';flex:1;height:1px;}
+.dtag-c{color:var(--crimson);}
+.dtag-c::after{background:linear-gradient(90deg,var(--b-crim),transparent);}
+.dtag-g{color:var(--gold);}
+.dtag-g::after{background:linear-gradient(90deg,var(--b-gold),transparent);}
+.dtag-r{color:var(--rust);}
+.dtag-r::after{background:linear-gradient(90deg,var(--b-rust),transparent);}
+.dtag-u{color:var(--umber);}
+.dtag-u::after{background:linear-gradient(90deg,var(--b-umber),transparent);}
+.dtag-dk{color:var(--gold);}
+.dtag-dk::after{background:linear-gradient(90deg,rgba(184,120,8,.2),transparent);}
+.dar{font-family:'Amiri',serif;font-size:clamp(1.1rem,2.8vw,1.52rem);line-height:2.2;direction:rtl;text-align:right;margin-bottom:12px;padding-bottom:10px;}
+.dar-c{color:var(--crimson);border-bottom:1px dashed var(--b-crim);}
+.dar-g{color:var(--gold);border-bottom:1px dashed var(--b-gold);}
+.dar-r{color:var(--rust);border-bottom:1px dashed var(--b-rust);}
+.dar-u{color:var(--umber);border-bottom:1px dashed var(--b-umber);}
+.dar-dk{color:rgba(232,208,144,.95);border-bottom:1px dashed rgba(184,120,8,.2);}
+.dtrans{font-style:italic;font-size:.92rem;line-height:1.82;color:var(--ink-soft);margin-bottom:7px;text-align:justify;}
+.dtrans-dk{color:rgba(215,195,155,.8);}
+.dref{font-family:'Archivo Narrow',sans-serif;font-weight:600;font-size:.62rem;letter-spacing:2px;text-transform:uppercase;}
+.dref-c{color:var(--crimson);}
+.dref-g{color:var(--gold);}
+.dref-r{color:var(--rust);}
+.dref-u{color:var(--umber);}
+.dref-dk{color:var(--gold);}
+
+/* Ritual steps */
+.rsteps{margin:20px 0;}
+.rstep{display:flex;gap:0;margin-bottom:6px;border:1px solid;overflow:hidden;background:var(--parch);}
+.rs-c{border-color:var(--b-crim);}
+.rs-g{border-color:var(--b-gold);}
+.rs-r{border-color:var(--b-rust);}
+.rs-u{border-color:var(--b-umber);}
+.rs-num{flex-shrink:0;width:52px;display:flex;align-items:flex-start;justify-content:center;font-family:'Libre Baskerville',serif;font-weight:700;font-size:1.3rem;padding:12px 0 0;}
+.rn-c{color:var(--crimson);background:var(--crim-pale);border-right:1px solid var(--b-crim);}
+.rn-g{color:var(--gold);background:var(--gold-pale);border-right:1px solid var(--b-gold);}
+.rn-r{color:var(--rust);background:var(--rust-p);border-right:1px solid var(--b-rust);}
+.rn-u{color:var(--umber);background:var(--stone);border-right:1px solid var(--b-umber);}
+.rs-body{flex:1;padding:12px 16px;}
+.rs-title{font-family:'Libre Baskerville',serif;font-weight:700;font-size:.97rem;margin-bottom:3px;color:var(--ink);}
+.rs-ar{font-family:'Amiri',serif;font-size:.97rem;direction:rtl;text-align:right;margin-bottom:4px;line-height:1.9;color:rgba(26,16,10,.25);}
+.rs-desc{font-size:.85rem;line-height:1.75;font-style:italic;color:var(--ink-soft);text-align:justify;}
+.rs-badge{display:inline-block;margin-top:6px;font-family:'Archivo Narrow',sans-serif;font-size:.58rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:2px 8px;}
+.rb-c{background:var(--crim-pale);color:var(--crimson);border:1px solid var(--b-crim);}
+.rb-g{background:var(--gold-pale);color:var(--gold);border:1px solid var(--b-gold);}
+.rb-r{background:var(--rust-p);color:var(--rust);border:1px solid var(--b-rust);}
+.rb-u{background:var(--stone);color:var(--umber);border:1px solid var(--b-umber);}
+.rb-gray{background:rgba(26,16,10,.06);color:var(--ink-soft);border:1px solid var(--b-ink);}
+
+/* Highlight box */
+.hl{margin:20px 0;padding:18px 20px;}
+.hl-c{background:var(--crim-pale);border:1px solid var(--b-crim);border-left:4px solid var(--crimson);}
+.hl-g{background:var(--gold-pale);border:1px solid var(--b-gold);border-left:4px solid var(--gold);}
+.hl-r{background:var(--rust-p);border:1px solid var(--b-rust);border-left:4px solid var(--rust);}
+.hl-u{background:var(--stone);border:1px solid var(--b-umber);border-left:4px solid var(--umber);}
+.hl-dk{background:var(--blood);padding:22px 24px;}
+.hl-label{font-family:'Archivo Narrow',sans-serif;font-weight:600;font-size:.6rem;letter-spacing:3px;text-transform:uppercase;margin-bottom:9px;}
+.hll-c{color:var(--crimson);}
+.hll-g{color:var(--gold);}
+.hll-r{color:var(--rust);}
+.hll-u{color:var(--umber);}
+.hll-w{color:rgba(232,208,144,.55);}
+.hl-ar{font-family:'Amiri',serif;font-size:clamp(1.05rem,2.5vw,1.42rem);line-height:2;margin-bottom:8px;}
+.hlar-c{color:var(--crimson);}
+.hlar-g{color:var(--gold);}
+.hlar-r{color:var(--rust);}
+.hlar-u{color:var(--umber);}
+.hlar-dk{color:rgba(232,208,144,.95);}
+.hl-trans{font-style:italic;font-size:.9rem;line-height:1.82;color:var(--ink-soft);margin-bottom:6px;text-align:justify;}
+.hlt-dk{color:rgba(215,195,155,.78);}
+.hl-ref{font-family:'Archivo Narrow',sans-serif;font-weight:600;font-size:.6rem;letter-spacing:2px;text-transform:uppercase;}
+.hlr-c{color:var(--crimson);}
+.hlr-g{color:var(--gold);}
+.hlr-r{color:var(--rust);}
+.hlr-u{color:var(--umber);}
+.hlr-dk{color:rgba(184,120,8,.45);}
+
+/* Responsive table */
+.tbl-wrap{margin:22px 0;overflow:hidden;}
+.tbl{width:100%;border-collapse:collapse;font-size:.87rem;table-layout:fixed;}
+.tbl.th-c thead tr{background:var(--blood);color:var(--stone-d);}
+.tbl.th-g thead tr{background:var(--gold);color:var(--ink);}
+.tbl.th-r thead tr{background:var(--rust);color:#fff;}
+.tbl.th-u thead tr{background:var(--umber);color:var(--stone-d);}
+.tbl.th-dk thead tr{background:var(--slate);color:var(--stone-d);}
+.tbl thead th{padding:10px 12px;text-align:left;font-family:'Archivo Narrow',sans-serif;font-size:.6rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;}
+.tbl tbody tr{border-bottom:1px solid var(--b-ink);}
+.tbl tbody tr:nth-child(even){background:rgba(26,16,10,.03);}
+.tbl tbody tr:nth-child(odd){background:var(--parch);}
+.tbl td{padding:10px 12px;line-height:1.68;color:var(--ink-mid);vertical-align:top;word-break:break-word;text-align:left;}
+.tbl td:first-child{font-weight:700;color:var(--ink);}
+.tbdg{display:inline-block;padding:2px 8px;font-family:'Archivo Narrow',sans-serif;font-size:.57rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;white-space:nowrap;}
+.tbdg-c{background:var(--crim-pale);color:var(--crimson);border:1px solid var(--b-crim);}
+.tbdg-g{background:var(--gold-pale);color:var(--gold);border:1px solid var(--b-gold);}
+.tbdg-r{background:var(--rust-p);color:var(--rust);border:1px solid var(--b-rust);}
+.tbdg-u{background:var(--stone);color:var(--umber);border:1px solid var(--b-umber);}
+.tbdg-gray{background:rgba(26,16,10,.06);color:var(--ink-soft);border:1px solid var(--b-ink);}
+@media(max-width:580px){
+  .tbl,.tbl thead,.tbl tbody,.tbl th,.tbl td,.tbl tr{display:block;width:100%;}
+  .tbl thead{display:none;}
+  .tbl tbody tr{background:var(--parch-d)!important;border:1px solid var(--b-ink);margin-bottom:8px;padding:12px 14px 10px;}
+  .tbl td{padding:4px 0 4px;border:none;display:grid;grid-template-columns:90px 1fr;gap:6px;align-items:start;}
+  .tbl td::before{content:attr(data-label);font-family:'Archivo Narrow',sans-serif;font-size:.58rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding-top:2px;color:var(--crimson);}
+  .tbl.th-g td::before{color:var(--gold);}
+  .tbl.th-r td::before{color:var(--rust);}
+  .tbl.th-u td::before{color:var(--umber);}
+  .tbl.th-dk td::before{color:var(--sepia);}
+  .tbl td:first-child{font-weight:700;font-size:.93rem;}
+}
+
+/* Banner */
+.banner{margin:26px 0;padding:24px 28px;text-align:center;}
+.banner-c{background:var(--blood);}
+.banner-g{background:var(--gold-pale);border:2px solid var(--gold);}
+.banner-r{background:var(--rust);color:#fff;}
+.banner-u{background:var(--stone-dd);border:2px solid var(--umber);}
+.banner-dk{background:var(--slate);border:1px solid rgba(200,64,64,.2);}
+.ban-ar{font-family:'Amiri',serif;font-size:clamp(1.1rem,2.8vw,1.52rem);line-height:2;margin-bottom:10px;}
+.bnar-lt{color:var(--stone-d);}
+.bnar-g{color:var(--gold);}
+.bnar-dk{color:rgba(232,208,144,.95);}
+.ban-id{font-style:italic;font-size:.9rem;line-height:1.8;margin-bottom:6px;text-align:justify;}
+.bnid-lt{color:rgba(240,228,210,.88);}
+.bnid-g{color:var(--ink-soft);}
+.bnid-dk{color:rgba(215,195,155,.74);}
+.ban-ref{font-family:'Archivo Narrow',sans-serif;font-weight:600;font-size:.6rem;letter-spacing:3px;text-transform:uppercase;margin-top:7px;}
+.bnref-lt{color:rgba(240,228,210,.45);}
+.bnref-g{color:var(--gold);}
+.bnref-dk{color:rgba(184,120,8,.45);}
+
+/* Separator */
+.sep{text-align:center;padding:12px 0;background:var(--stone-dd);border-top:1px solid var(--b-crim);border-bottom:1px solid var(--b-crim);}
+.sep span{color:var(--crimson);letter-spacing:12px;font-size:.72rem;opacity:.45;}
+
+/* Penutup */
+.penutup{
+  background:linear-gradient(160deg,var(--slate-lt) 0%,var(--slate) 40%,var(--blood) 70%,#0e0806 100%);
+  padding:72px 24px 80px;text-align:center;
+  position:relative;overflow:hidden;margin-top:56px;z-index:1;
+}
+.penutup::after{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--blood),var(--crimson),var(--gold),var(--crimson),var(--blood));}
+.penutup-inner{max-width:600px;margin:0 auto;position:relative;z-index:1;}
+.penutup-ar{font-family:'Amiri',serif;font-size:clamp(1.4rem,4vw,2.6rem);color:rgba(232,208,144,.95);line-height:2;text-shadow:0 0 20px rgba(200,64,64,.3);margin-bottom:14px;}
+.penutup-div{width:80px;height:1px;background:linear-gradient(90deg,transparent,var(--gold-lt),transparent);margin:18px auto;}
+.penutup-p{font-style:italic;font-size:clamp(.9rem,2vw,1.04rem);color:rgba(215,195,155,.72);line-height:1.95;margin-bottom:12px;text-align:justify;}
+.penutup-footer{margin-top:40px;padding-top:22px;border-top:1px solid rgba(255,255,255,.05);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+.penutup-footer .logo{font-family:'Amiri',serif;font-size:1.1rem;color:rgba(200,64,64,.35);}
+.penutup-footer .tag{font-family:'Archivo Narrow',sans-serif;font-weight:600;font-size:.55rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.12);}
+
+@media(max-width:600px){
+  .wrap{padding:0 14px 60px;}
+  .hero{padding:56px 20px 100px;}
+  .chap-body{padding:12px 16px;}
+  .hl,.banner{padding:16px 16px;}
+  .penutup{padding:50px 18px 56px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-horizon"></div>
+  <div class="hero-stars" id="stars"></div>
+
+  <div class="hero-inner">
+    <span class="hero-moon">🌙</span>
+    <div class="hero-bismillah">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
+    <p class="hero-kicker">Kitab Fiqh Ibadah · Berdalil Al-Qur'an &amp; Hadis Shahih · Panduan Lengkap &amp; Mendalam</p>
+    <h1 class="hero-title">
+      Kitab Udhiyyah
+      <em>Panduan Lengkap Ibadah Kurban</em>
+    </h1>
+    <div class="hero-ar-sub">كِتَابُ الأُضْحِيَّةِ</div>
+    <div class="hero-rule"><span></span><em>✦ ❖ ✦</em><span></span></div>
+    <div class="hero-verse">
+      <div class="hv-ar">فَصَلِّ لِرَبِّكَ وَانْحَرْ</div>
+      <div class="hv-id">"Maka laksanakanlah shalat karena Tuhanmu, dan berkurbanlah (sebagai ibadah dan mendekatkan diri kepada Allah)."<br><em style="color:rgba(200,64,64,.45)">— QS. Al-Kawtsar: 2</em></div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+
+<!-- ══ PROLOG ══ -->
+<div class="chap">
+  <div class="chap-stripe cs-crim"></div>
+  <div class="chap-body cb-crim">
+    <div class="chap-tag ct-crim">✦ Pembuka</div>
+    <div class="chap-ar car-crim">تَعْرِيفُ الأُضْحِيَّةِ وَمَكَانَتُهَا</div>
+    <div class="chap-title">Definisi Udhiyyah &amp; Kedudukannya dalam Islam</div>
+  </div>
+</div>
+<div class="sec">
+  <div class="prose fl-c">
+    <p class="lead">Udhiyyah (الأُضْحِيَّة) — atau yang lebih dikenal dalam masyarakat Indonesia dengan istilah "kurban" — adalah hewan ternak yang disembelih sebagai ibadah kepada Allah pada Hari Raya Idul Adha (10 Dzulhijjah) dan tiga hari Tasyrik sesudahnya (11, 12, 13 Dzulhijjah), dengan memenuhi syarat-syarat yang telah ditetapkan syariat.</p>
+    <p>Ibadah kurban memiliki akar sejarah yang sangat dalam — ia adalah sunnah Nabi Ibrahim 'alaihissalam yang diabadikan oleh Allah dalam Al-Qur'an dan diwajibkan (atau dianjurkan dengan sangat kuat) kepada umat Muhammad ﷺ. Nabi ﷺ sendiri senantiasa berkurban setiap tahun sejak disyariatkannya kurban hingga beliau wafat — tidak pernah sekalipun melewatkannya, meskipun dalam kondisi apapun.</p>
+    <p>Para ulama berbeda pendapat tentang hukum udhiyyah: antara wajib (menurut Abu Hanifah dan Imam Ahmad dalam satu riwayat) bagi yang mampu, atau sunnah muakkadah yang sangat ditekankan (menurut jumhur: Maliki, Syafi'i, dan pendapat masyhur Hanbali). Terlepas dari perbedaan ini, seluruh ulama sepakat bahwa meninggalkan kurban bagi yang mampu adalah kerugian yang sangat besar.</p>
+  </div>
+
+  <div class="dalil d-c">
+    <div class="db-c"></div>
+    <div class="dbody">
+      <div class="dtag dtag-c">📜 HR. Ibnu Majah — Peringatan bagi yang Meninggalkan Kurban</div>
+      <div class="dar dar-c">مَنْ كَانَ لَهُ سَعَةٌ وَلَمْ يُضَحِّ فَلَا يَقْرَبَنَّ مُصَلَّانَا</div>
+      <div class="dtrans">"Barangsiapa yang memiliki keluasan (kemampuan) namun tidak berkurban, maka janganlah ia mendekati tempat shalat kami."</div>
+      <div class="dref dref-c">HR. Ibnu Majah (3123) &amp; Ahmad (8273) — dari Abu Hurairah — Hasan · Menunjukkan betapa ditekankannya kurban bagi yang mampu</div>
+    </div>
+  </div>
+
+  <div class="dalil d-c">
+    <div class="db-c"></div>
+    <div class="dbody">
+      <div class="dtag dtag-c">📖 QS. Al-Hajj: 34 — Kurban adalah Syariat Semua Umat</div>
+      <div class="dar dar-c">وَلِكُلِّ أُمَّةٍ جَعَلْنَا مَنسَكًا لِّيَذْكُرُوا اسْمَ اللَّهِ عَلَىٰ مَا رَزَقَهُم مِّن بَهِيمَةِ الْأَنْعَامِ</div>
+      <div class="dtrans">"Dan bagi setiap umat telah Kami syariatkan penyembelihan (kurban) agar mereka menyebut nama Allah atas rezeki yang Dia berikan kepada mereka berupa hewan ternak."</div>
+      <div class="dref dref-c">QS. Al-Hajj (22): 34 — Kurban adalah syariat yang ada pada setiap umat para nabi</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ BAB I: HUKUM & SYARAT WAJIB ══ -->
+<div class="chap">
+  <div class="chap-stripe cs-crim"></div>
+  <div class="chap-body cb-crim">
+    <div class="chap-tag ct-crim">✦ Bab Pertama</div>
+    <div class="chap-ar car-crim">حُكْمُ الأُضْحِيَّةِ وَشُرُوطُ وُجُوبِهَا</div>
+    <div class="chap-title">Hukum Kurban &amp; Siapa yang Diwajibkan/Dianjurkan</div>
+  </div>
+</div>
+<div class="sec">
+  <div class="tbl-wrap">
+    <table class="tbl th-c">
+      <thead>
+        <tr>
+          <th style="width:20%">Madzhab</th>
+          <th style="width:22%">Hukum</th>
+          <th style="width:58%">Penjelasan &amp; Dalil</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Madzhab">Hanafi</td>
+          <td data-label="Hukum"><span class="tbdg tbdg-c">Wajib</span></td>
+          <td data-label="Penjelasan">Wajib atas Muslim yang baligh, berakal, mukim (bukan musafir), dan mampu — yaitu memiliki nisab zakat atau lebih. Jika tidak berkurban padahal wajib, ia berdosa dan bisa ditebus dengan membayar harga hewan kurban.</td>
+        </tr>
+        <tr>
+          <td data-label="Madzhab">Maliki</td>
+          <td data-label="Hukum"><span class="tbdg tbdg-r">Sunnah Muakkadah</span></td>
+          <td data-label="Penjelasan">Sunnah muakkadah yang mendekati wajib bagi yang mampu — bagi kepala keluarga untuk keluarganya. Meninggalkannya sangat dimakruhkan dan mendekati haram.</td>
+        </tr>
+        <tr>
+          <td data-label="Madzhab">Syafi'i</td>
+          <td data-label="Hukum"><span class="tbdg tbdg-r">Sunnah Muakkadah</span></td>
+          <td data-label="Penjelasan">Sunnah muakkadah bagi setiap Muslim yang mampu — baik individu maupun untuk keluarga. Pendapat kuat: satu kambing cukup untuk satu orang, bukan satu keluarga.</td>
+        </tr>
+        <tr>
+          <td data-label="Madzhab">Hanbali</td>
+          <td data-label="Hukum"><span class="tbdg tbdg-r">Sunnah Muakkadah</span></td>
+          <td data-label="Penjelasan">Sunnah muakkadah yang sangat ditekankan. Sebagian ulama Hanbali mengatakan wajib bagi yang mampu. Makruh meninggalkannya tanpa uzur.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="hl hl-c">
+    <div class="hl-label hll-c">✦ Siapakah yang Dianjurkan Berkurban?</div>
+    <div class="hl-trans">Kurban dianjurkan atas setiap Muslim yang: (1) <strong>Mampu secara finansial</strong> — yaitu memiliki harta yang cukup untuk membeli hewan kurban setelah kebutuhan pokok dirinya dan keluarganya terpenuhi pada Hari Raya. Tidak harus memiliki nisab zakat menurut jumhur. (2) <strong>Baligh dan berakal</strong> — anak kecil boleh dikurbankan dari harta sendirinya atas izin walinya. (3) <strong>Mukim</strong> menurut Hanafi — musafir tidak wajib, namun boleh menurut jumhur. (4) <strong>Satu kurban untuk satu orang</strong> sudah cukup, namun boleh diniatkan untuk seluruh anggota keluarga menurut sunnah Nabi ﷺ.</div>
+    <div class="hl-ref hlr-c">Fiqhus Sunnah — Sayyid Sabiq · Fiqh Al-Islami — Wahbah Az-Zuhaili</div>
+  </div>
+</div>
+
+<!-- ══ BAB II: WAKTU PENYEMBELIHAN ══ -->
+<div class="chap">
+  <div class="chap-stripe cs-gold"></div>
+  <div class="chap-body cb-gold">
+    <div class="chap-tag ct-gold">✦ Bab Kedua — Sangat Penting</div>
+    <div class="chap-ar car-gold">وَقْتُ الذَّبْحِ — الأَيَّامُ الْمَشْرُوعَةُ</div>
+    <div class="chap-title">Waktu Penyembelihan — Kapan Mulai &amp; Kapan Berakhir?</div>
+  </div>
+</div>
+<div class="sec">
+  <div class="prose fl-g gl">
+    <p class="lead">Waktu penyembelihan kurban adalah salah satu syarat sahnya kurban yang paling sering diabaikan. Menyembelih sebelum waktu yang ditentukan membuat sembelihan itu tidak dianggap kurban — hanya sedekah daging biasa. Para ulama menetapkan batas awal dan batas akhir yang harus diperhatikan dengan seksama.</p>
+    <p>Batas awal penyembelihan: setelah shalat Idul Adha (dan dua khutbah sesudahnya menurut sebagian ulama) pada tanggal 10 Dzulhijjah. Batas akhir: terbenamnya matahari pada tanggal 13 Dzulhijjah (akhir hari Tasyrik ketiga). Dengan demikian, total waktu penyembelihan yang sah adalah empat hari: 10, 11, 12, dan 13 Dzulhijjah.</p>
+  </div>
+
+  <div class="dalil d-g">
+    <div class="db-g"></div>
+    <div class="dbody">
+      <div class="dtag dtag-g">📜 HR. Bukhari &amp; Muslim — Larangan Menyembelih Sebelum Shalat Id</div>
+      <div class="dar dar-g">مَنْ ذَبَحَ قَبْلَ أَنْ يُصَلِّيَ فَلْيَذْبَحْ مَكَانَهَا أُخْرَى وَمَنْ لَمْ يَذْبَحْ فَلْيَذْبَحْ بِاسْمِ اللَّهِ</div>
+      <div class="dtrans">"Barangsiapa menyembelih sebelum shalat (Id), maka hendaklah ia menyembelih lagi sebagai gantinya. Dan barangsiapa belum menyembelih, maka hendaklah ia menyembelih dengan nama Allah."</div>
+      <div class="dref dref-g">HR. Bukhari (5562) &amp; Muslim (1960) — dari Jabir bin Abdillah radhiyallahu 'anhu</div>
+    </div>
+  </div>
+
+  <div class="dalil d-g">
+    <div class="db-g"></div>
+    <div class="dbody">
+      <div class="dtag dtag-g">📜 HR. Abu Dawud — Hari Tasyrik adalah Hari Penyembelihan</div>
+      <div class="dar dar-g">كُلُّ أَيَّامِ التَّشْرِيقِ ذَبْحٌ</div>
+      <div class="dtrans">"Seluruh hari Tasyrik adalah hari penyembelihan (kurban)."</div>
+      <div class="dref dref-g">HR. Ahmad (16327) &amp; Al-Baihaqi — dari Jubair bin Muth'im — Shahih menurut sebagian ulama · Menjadi dalil bahwa penyembelihan boleh hingga 13 Dzulhijjah</div>
+    </div>
+  </div>
+
+  <p style="font-family:'Archivo Narrow',sans-serif;font-weight:600;font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin:20px 0 12px;">Rincian Waktu Penyembelihan — Ikhtilaf Ulama</p>
+  <div class="tbl-wrap">
+    <table class="tbl th-g">
+      <thead>
+        <tr>
+          <th style="width:22%">Aspek</th>
+          <th style="width:36%">Pendapat Jumhur (Syafi'i, Hanbali, Maliki)</th>
+          <th style="width:42%">Pendapat Hanafi &amp; Keterangan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Aspek">Batas Awal</td>
+          <td data-label="Jumhur">Setelah shalat Idul Adha dan dua khutbah. Jika imamnya berkurban, setelah imam selesai menyembelih.</td>
+          <td data-label="Hanafi">Setelah shalat Id — tidak harus menunggu khutbah selesai. Daerah yang tidak ada shalat Id: setelah waktu shalat Id masuk (setelah matahari naik sepenggalah).</td>
+        </tr>
+        <tr>
+          <td data-label="Aspek">Batas Akhir</td>
+          <td data-label="Jumhur">Terbenamnya matahari pada 13 Dzulhijjah (akhir hari Tasyrik ketiga). Total: 4 hari.</td>
+          <td data-label="Hanafi">Akhir 12 Dzulhijjah (sebelum fajar 13 Dzulhijjah). Total: 3 hari. Pendapat ini lebih ketat.</td>
+        </tr>
+        <tr>
+          <td data-label="Aspek">Waktu Terbaik</td>
+          <td data-label="Jumhur">Pagi hari tanggal 10 Dzulhijjah, setelah shalat Id — mengikuti sunnah Nabi ﷺ.</td>
+          <td data-label="Hanafi">Sama — afdhal di pagi 10 Dzulhijjah setelah shalat Id.</td>
+        </tr>
+        <tr>
+          <td data-label="Aspek">Malam Hari</td>
+          <td data-label="Jumhur">Boleh menyembelih di malam hari tasyrik (malam 11, 12, 13 Dzulhijjah) meski dimakruhkan karena rentan salah.</td>
+          <td data-label="Hanafi">Dimakruhkan menyembelih di malam hari — dianjurkan siang hari saja.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="hl hl-g">
+    <div class="hl-label hll-g">✦ Kesimpulan Praktis — Waktu Kurban</div>
+    <div class="hl-trans">Waktu penyembelihan kurban yang <strong>paling aman dan paling utama</strong>: setelah shalat Idul Adha pada pagi 10 Dzulhijjah. Batas akhir yang paling banyak dipegang ulama kontemporer: terbenamnya matahari pada 13 Dzulhijjah. Menyembelih sebelum shalat Id tidak sah sebagai kurban — hanya daging sedekah biasa. Jika terlanjur menyembelih sebelum shalat Id, wajib menggantinya dengan hewan lain setelah shalat Id.</div>
+    <div class="hl-ref hlr-g">HR. Bukhari (5562) · Fatwa MUI No. 37 Tahun 2019</div>
+  </div>
+</div>
+
+<!-- ══ BAB III: SYARAT HEWAN KURBAN ══ -->
+<div class="chap">
+  <div class="chap-stripe cs-crim"></div>
+  <div class="chap-body cb-crim">
+    <div class="chap-tag ct-crim">✦ Bab Ketiga</div>
+    <div class="chap-ar car-crim">شُرُوطُ الأُضْحِيَّةِ</div>
+    <div class="chap-title">Syarat-Syarat Hewan Kurban yang Sah</div>
+  </div>
+</div>
+<div class="sec">
+  <div class="prose fl-c">
+    <p>Tidak semua hewan bisa dijadikan kurban. Islam menetapkan syarat-syarat yang sangat spesifik tentang jenis, usia, dan kondisi hewan agar kurban diterima. Memahami syarat-syarat ini adalah kewajiban setiap orang yang hendak berkurban.</p>
+  </div>
+
+  <p style="font-family:'Archivo Narrow',sans-serif;font-weight:600;font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--crimson);margin:0 0 12px;">Jenis Hewan yang Boleh Dijadikan Kurban</p>
+  <div class="hl hl-c">
+    <div class="hl-label hll-c">✦ Hanya Hewan An'ām (Ternak) — QS. Al-Hajj: 34</div>
+    <div class="hl-ar hlar-c">مِّن بَهِيمَةِ الْأَنْعَامِ</div>
+    <div class="hl-trans">Kurban hanya boleh dari hewan an'ām — yaitu <strong>kambing/domba, sapi/kerbau, dan unta</strong>. Tidak sah berkurban dengan ayam, bebek, kuda, rusa, atau hewan lainnya meskipun dagingnya halal. Ini adalah ijma' (kesepakatan) seluruh ulama berdasarkan QS. Al-Hajj: 34 dan sunnah Nabi ﷺ.</div>
+    <div class="hl-ref hlr-c">QS. Al-Hajj (22): 34 · Ijma' Ulama</div>
+  </div>
+
+  <p style="font-family:'Archivo Narrow',sans-serif;font-weight:600;font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--crimson);margin:20px 0 12px;">Syarat Usia Minimal Hewan Kurban</p>
+  <div class="tbl-wrap">
+    <table class="tbl th-c">
+      <thead>
+        <tr>
+          <th style="width:22%">Jenis Hewan</th>
+          <th style="width:22%">Usia Minimal</th>
+          <th style="width:28%">Keterangan</th>
+          <th style="width:28%">Jumlah Kurban</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Jenis">Unta</td>
+          <td data-label="Usia"><span class="tbdg tbdg-c">5 Tahun</span> (masuk tahun ke-6)</td>
+          <td data-label="Keterangan">Unta betina dan jantan keduanya boleh. Unta memberikan manfaat daging paling banyak.</td>
+          <td data-label="Jumlah">1 unta untuk 7 orang</td>
+        </tr>
+        <tr>
+          <td data-label="Jenis">Sapi / Kerbau</td>
+          <td data-label="Usia"><span class="tbdg tbdg-c">2 Tahun</span> (masuk tahun ke-3)</td>
+          <td data-label="Keterangan">Sapi dan kerbau hukumnya sama — keduanya masuk kategori baqar. Betina dan jantan boleh.</td>
+          <td data-label="Jumlah">1 sapi/kerbau untuk 7 orang</td>
+        </tr>
+        <tr>
+          <td data-label="Jenis">Kambing / Domba</td>
+          <td data-label="Usia"><span class="tbdg tbdg-c">1 Tahun</span> (masuk tahun ke-2)</td>
+          <td data-label="Keterangan">Menurut jumhur: kambing minimal 1 tahun. Domba/biri-biri: boleh 6 bulan jika sudah besar/gemuk (jadzah) menurut Hanafi dan Syafi'i.</td>
+          <td data-label="Jumlah">1 kambing untuk 1 orang</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p style="font-family:'Archivo Narrow',sans-serif;font-weight:600;font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--crimson);margin:20px 0 12px;">Cacat yang Membatalkan Kurban</p>
+  <div class="dalil d-c">
+    <div class="db-c"></div>
+    <div class="dbody">
+      <div class="dtag dtag-c">📜 HR. Abu Dawud &amp; Tirmidzi — Empat Cacat yang Tidak Sah</div>
+      <div class="dar dar-c">أَرْبَعٌ لَا تُجْزِئُ فِي الأَضَاحِيِّ الْعَوْرَاءُ الْبَيِّنُ عَوَرُهَا وَالْمَرِيضَةُ الْبَيِّنُ مَرَضُهَا وَالْعَرْجَاءُ الْبَيِّنُ ضَلْعُهَا وَالْعَجْفَاءُ الَّتِي لَا تُنْقِي</div>
+      <div class="dtrans">"Empat (cacat) yang tidak sah pada hewan kurban: (1) buta sebelah yang jelas butanya, (2) sakit yang jelas sakitnya, (3) pincang yang jelas pincangnya, (4) kurus yang tidak ada sumsumnya (sangat kurus)."</div>
+      <div class="dref dref-c">HR. Abu Dawud (2802), Tirmidzi (1497), Nasā'i (4369) — dari Al-Bara' bin 'Azib — Shahih</div>
+    </div>
+  </div>
+
+  <div class="tbl-wrap">
+    <table class="tbl th-c">
+      <thead>
+        <tr>
+          <th style="width:28%">Cacat</th>
+          <th style="width:22%">Hukum</th>
+          <th style="width:50%">Penjelasan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Cacat">Buta sebelah (jelas)</td>
+          <td data-label="Hukum"><span class="tbdg tbdg-c">Tidak Sah</span></td>
+          <td data-label="Penjelasan">Buta sebelah yang jelas dan nyata. Buta sedikit yang tidak begitu kentara masih diperbolehkan menurut sebagian ulama.</td>
+        </tr>
+        <tr>
+          <td data-label="Cacat">Sakit yang jelas</td>
+          <td data-label="Hukum"><span class="tbdg tbdg-c">Tidak Sah</span></td>
+          <td data-label="Penjelasan">Penyakit yang jelas terlihat dan mempengaruhi kondisi hewan secara signifikan — seperti kudis yang parah, demam tinggi, atau penyakit yang mempengaruhi daging.</td>
+        </tr>
+        <tr>
+          <td data-label="Cacat">Pincang yang jelas</td>
+          <td data-label="Hukum"><span class="tbdg tbdg-c">Tidak Sah</span></td>
+          <td data-label="Penjelasan">Pincang hingga tidak bisa berjalan normal ke tempat penyembelihan. Pincang ringan yang tidak mengganggu jalannya masih diperbolehkan.</td>
+        </tr>
+        <tr>
+          <td data-label="Cacat">Sangat kurus</td>
+          <td data-label="Hukum"><span class="tbdg tbdg-c">Tidak Sah</span></td>
+          <td data-label="Penjelasan">Kurus ekstrem hingga tidak ada sumsum dalam tulangnya — menunjukkan hewan tidak sehat dan dagingnya tidak berkualitas.</td>
+        </tr>
+        <tr>
+          <td data-label="Cacat">Gila / Tidak waras</td>
+          <td data-label="Hukum"><span class="tbdg tbdg-c">Tidak Sah</span></td>
+          <td data-label="Penjelasan">Hewan yang bertingkah tidak wajar akibat penyakit syaraf atau kondisi lain yang mengindikasikan ketidaknormalan otak.</td>
+        </tr>
+        <tr>
+          <td data-label="Cacat">Telinga/tanduk patah (sebagian)</td>
+          <td data-label="Hukum"><span class="tbdg tbdg-r">Makruh (boleh)</span></td>
+          <td data-label="Penjelasan">Telinga terpotong atau tanduk patah sebagian — sah namun makruh menurut jumhur. Nabi ﷺ menyukai kambing yang utuh dan tidak cacat.</td>
+        </tr>
+        <tr>
+          <td data-label="Cacat">Dikebiri</td>
+          <td data-label="Hukum"><span class="tbdg tbdg-gray">Boleh — Dianjurkan</span></td>
+          <td data-label="Penjelasan">Hewan jantan yang dikebiri (khasiy) boleh dijadikan kurban — bahkan Nabi ﷺ sendiri berkurban dengan dua kambing jantan yang dikebiri karena dagingnya lebih lembut.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══ BAB IV: TATA CARA PENYEMBELIHAN ══ -->
+<div class="chap">
+  <div class="chap-stripe cs-rust"></div>
+  <div class="chap-body cb-rust">
+    <div class="chap-tag ct-rust">✦ Bab Keempat</div>
+    <div class="chap-ar car-rust">كَيْفِيَّةُ الذَّبْحِ — السُّنَنُ وَالشُّرُوطُ</div>
+    <div class="chap-title">Tata Cara Penyembelihan — Syarat, Sunnah &amp; Bacaan</div>
+  </div>
+</div>
+<div class="sec">
+  <div class="prose fl-r rl">
+    <p class="lead">Penyembelihan kurban bukan sekadar memotong hewan — ia adalah ritual ibadah yang memiliki syarat keabsahan dan sunnah-sunnah yang harus diperhatikan agar sembelihan halal dan kurban diterima Allah. Nabi ﷺ sendiri menyembelih dengan tangannya sendiri sambil membaca basmalah dan takbir.</p>
+    <p>Penyembelih disunnahkan adalah shohibul kurban (pemilik kurban) sendiri. Jika tidak bisa, ia boleh mewakilkan kepada orang lain — namun disunnahkan hadir dan menyaksikan penyembelihan. Nabi ﷺ pernah menyembelih beberapa hewan sendiri dan mewakilkan sisanya kepada Ali bin Abi Thalib radhiyallahu 'anhu saat haji wada'.</p>
+  </div>
+
+  <p style="font-family:'Archivo Narrow',sans-serif;font-weight:600;font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--rust);margin:0 0 12px;">Langkah-Langkah Tata Cara Penyembelihan</p>
+  <div class="rsteps">
+    <div class="rstep rs-r">
+      <div class="rs-num rn-r">1</div>
+      <div class="rs-body">
+        <div class="rs-title">Gunakan Pisau yang Sangat Tajam</div>
+        <div class="rs-ar">إِحْدَادُ السِّكِّينِ</div>
+        <div class="rs-desc">Nabi ﷺ bersabda: "Sesungguhnya Allah mewajibkan ihsan (kebaikan) pada segala sesuatu. Maka jika kalian membunuh, bunuhlah dengan cara yang baik. Dan jika kalian menyembelih, sembelihlah dengan cara yang baik, dan hendaklah salah seorang dari kalian menajamkan pisaunya agar meringankan sembelihannya." — HR. Muslim (1955). Mengasah pisau tidak boleh di hadapan hewan.</div>
+        <span class="rs-badge rb-r">Wajib memenuhi standar kebaikan (ihsan)</span>
+      </div>
+    </div>
+    <div class="rstep rs-r">
+      <div class="rs-num rn-r">2</div>
+      <div class="rs-body">
+        <div class="rs-title">Menghadapkan Hewan ke Kiblat &amp; Membaringkan dengan Lembut</div>
+        <div class="rs-ar">تَوْجِيهُ الذَّبِيحَةِ نَحْوَ الْقِبْلَةِ</div>
+        <div class="rs-desc">Hewan dibaringkan di sisi kirinya dengan kepala menghadap kiblat — sunnah yang diajarkan Nabi ﷺ. Perlakukan hewan dengan lembut saat membaringkan, tidak menyeretnya kasar atau memukul. Nabi ﷺ melarang menyiksa hewan.</div>
+        <span class="rs-badge rb-r">Sunnah</span>
+      </div>
+    </div>
+    <div class="rstep rs-r">
+      <div class="rs-num rn-r">3</div>
+      <div class="rs-body">
+        <div class="rs-title">Membaca Basmalah &amp; Takbir</div>
+        <div class="rs-ar">بِسْمِ اللَّهِ وَاللَّهُ أَكْبَرُ</div>
+        <div class="rs-desc"><em style="color:var(--rust);">Bismillāh, Allāhu Akbar</em> — ini adalah bacaan wajib saat penyembelihan. Tanpa basmalah yang disengaja, sembelihan tidak halal menurut jumhur. Boleh ditambah dengan: <em>"Allāhumma hādzā minka wa laka, Allāhumma taqabbal minnī"</em> (Ya Allah, ini dari-Mu dan untuk-Mu, Ya Allah terimalah dariku).</div>
+        <span class="rs-badge rb-r">Wajib — Basmalah mutlak disyaratkan</span>
+      </div>
+    </div>
+    <div class="rstep rs-r">
+      <div class="rs-num rn-r">4</div>
+      <div class="rs-body">
+        <div class="rs-title">Memotong Hulqum, Mari', &amp; Wadajain</div>
+        <div class="rs-ar">قَطْعُ الْحُلْقُومِ وَالْمَرِيءِ وَالْوَدَجَيْنِ</div>
+        <div class="rs-desc">Wajib memotong setidaknya dua dari empat saluran: hulqum (tenggorokan/saluran nafas), mari' (kerongkongan/saluran makan), dan dua wadaj (dua urat leher). Menurut Syafi'i: wajib memotong hulqum dan mari'. Menurut jumhur: wajib hulqum, mari', dan keduanya atau salah satu wadaj. Potongan harus dilakukan dengan cepat dan tidak boleh diangkat pisau sebelum selesai.</div>
+        <span class="rs-badge rb-r">Rukun Penyembelihan</span>
+      </div>
+    </div>
+    <div class="rstep rs-r">
+      <div class="rs-num rn-r">5</div>
+      <div class="rs-body">
+        <div class="rs-title">Menunggu hingga Hewan Benar-benar Mati</div>
+        <div class="rs-desc">Tidak boleh langsung menguliti atau memotong bagian lain sebelum hewan benar-benar mati. Haram menguliti hewan saat masih hidup karena menyiksa. Tanda kematian: gerakan berhenti total dan bola mata tidak bergerak. Darah harus mengalir keluar sepenuhnya.</div>
+        <span class="rs-badge rb-r">Wajib — demi ihsan kepada hewan</span>
+      </div>
+    </div>
+    <div class="rstep rs-r">
+      <div class="rs-num rn-r">6</div>
+      <div class="rs-body">
+        <div class="rs-title">Doa Setelah Penyembelihan</div>
+        <div class="rs-ar">اللَّهُمَّ تَقَبَّلْ مِنِّي كَمَا تَقَبَّلْتَ مِنْ إِبْرَاهِيمَ خَلِيلِكَ</div>
+        <div class="rs-desc"><em style="color:var(--rust);">Allāhumma taqabbal minnī kamā taqabbalta min Ibrāhīma khalīlik</em> — "Ya Allah, terimalah dariku sebagaimana Engkau menerima dari Ibrahim kekasih-Mu." Ini adalah doa yang diajarkan Nabi ﷺ setelah menyembelih kurban. Disunnahkan mengucapkannya dengan penuh kekhusyuan.</div>
+        <span class="rs-badge rb-gray">Sunnah setelah penyembelihan</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bacaan lengkap -->
+  <div class="hl hl-dk">
+    <div class="hl-label hll-w">✦ Bacaan Lengkap saat Menyembelih Kurban</div>
+    <div class="hl-ar hlar-dk">بِسْمِ اللَّهِ وَاللَّهُ أَكْبَرُ ۝ اللَّهُمَّ هَذَا مِنْكَ وَلَكَ ۝ اللَّهُمَّ تَقَبَّلْ مِنِّي</div>
+    <div class="hl-trans hlt-dk"><em>Bismillāh, Allāhu Akbar. Allāhumma hādzā minka wa laka. Allāhumma taqabbal minnī.</em><br>"Dengan nama Allah, Allah Maha Besar. Ya Allah, ini dari-Mu dan untuk-Mu. Ya Allah, terimalah dariku." — Jika berkurban untuk orang lain: ganti "minnī" dengan "min [nama orang tersebut]".</div>
+    <div class="hl-ref hlr-dk">HR. Abu Dawud (2795) &amp; Ahmad — dari Jabir bin Abdillah — Shahih</div>
+  </div>
+</div>
+
+<!-- ══ BAB V: PEMBAGIAN DAGING KURBAN ══ -->
+<div class="chap">
+  <div class="chap-stripe cs-umb"></div>
+  <div class="chap-body cb-umb">
+    <div class="chap-tag ct-umb">✦ Bab Kelima</div>
+    <div class="chap-ar car-umb">تَوْزِيعُ لَحْمِ الأُضْحِيَّةِ</div>
+    <div class="chap-title">Pembagian Daging Kurban — Hak-Hak yang Harus Ditunaikan</div>
+  </div>
+</div>
+<div class="sec">
+  <div class="prose fl-u ul">
+    <p class="lead">Daging kurban memiliki aturan pembagian yang spesifik dalam fiqh Islam. Tidak semua daging boleh dikonsumsi sendiri, dan tidak semua harus dibagikan. Allah menyebutkan dua golongan penerima manfaat kurban secara eksplisit dalam Al-Qur'an: yang memakannya sendiri dan yang memberi makan kepada orang lain yang membutuhkan.</p>
+  </div>
+
+  <div class="dalil d-u">
+    <div class="db-u"></div>
+    <div class="dbody">
+      <div class="dtag dtag-u">📖 QS. Al-Hajj: 28 &amp; 36 — Perintah Membagikan Daging Kurban</div>
+      <div class="dar dar-u">فَكُلُوا مِنْهَا وَأَطْعِمُوا الْبَائِسَ الْفَقِيرَ ۝ فَكُلُوا مِنْهَا وَأَطْعِمُوا الْقَانِعَ وَالْمُعْتَرَّ</div>
+      <div class="dtrans">"Makanlah sebagian darinya dan berilah makan orang-orang yang sengsara lagi fakir." (28) — "Makanlah sebagian darinya dan berilah makan orang yang merasa cukup (tidak meminta-minta) dan orang yang meminta-minta." (36)</div>
+      <div class="dref dref-u">QS. Al-Hajj (22): 28 &amp; 36 — Dua ayat tentang distribusi daging kurban</div>
+    </div>
+  </div>
+
+  <div class="tbl-wrap">
+    <table class="tbl th-u">
+      <thead>
+        <tr>
+          <th style="width:22%">Bagian</th>
+          <th style="width:22%">Proporsi Anjuran</th>
+          <th style="width:56%">Penjelasan &amp; Hukum</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Bagian">Dimakan Sendiri (shohibul kurban &amp; keluarga)</td>
+          <td data-label="Proporsi"><span class="tbdg tbdg-u">1/3</span></td>
+          <td data-label="Penjelasan">Shohibul kurban dan keluarganya berhak makan dari daging kurbannya — bahkan dianjurkan. Nabi ﷺ memakan dari kurban beliau sendiri. Tidak ada batasan minimal, namun dianjurkan tidak semua dikonsumsi sendiri.</td>
+        </tr>
+        <tr>
+          <td data-label="Bagian">Dihadiahkan kepada Tetangga/Kerabat/Teman</td>
+          <td data-label="Proporsi"><span class="tbdg tbdg-u">1/3</span></td>
+          <td data-label="Penjelasan">Memberi hadiah kepada kerabat, tetangga, dan teman — termasuk yang tidak membutuhkan secara finansial — adalah sunnah yang mempererat silaturrahmi dan menyebarkan kebahagiaan Idul Adha.</td>
+        </tr>
+        <tr>
+          <td data-label="Bagian">Disedekahkan kepada Fakir Miskin</td>
+          <td data-label="Proporsi"><span class="tbdg tbdg-c">1/3</span></td>
+          <td data-label="Penjelasan">Wajib menurut sebagian ulama untuk menyedekahkan sebagian kepada fakir miskin. Ini adalah inti dari hikmah kurban — berbagi kebahagiaan dengan yang membutuhkan. Tidak boleh dijual kepada penyembelih sebagai upah.</td>
+        </tr>
+        <tr>
+          <td data-label="Bagian">Boleh Dijual?</td>
+          <td data-label="Proporsi"><span class="tbdg tbdg-c">Tidak Boleh</span></td>
+          <td data-label="Penjelasan">Daging, kulit, lemak, dan bagian lain hewan kurban tidak boleh dijual. Penyembelih/jagal tidak boleh diberi upah berupa daging kurban. Boleh memberi sedekah berupa kulit kepada fakir miskin. — HR. Bukhari (1717)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="hl hl-u">
+    <div class="hl-label hll-u">✦ Catatan Penting tentang Kulit &amp; Jeroan Kurban</div>
+    <div class="hl-trans">Kulit hewan kurban boleh dimanfaatkan sendiri (dijadikan alas, tempat air, dll.) atau disedekahkan. Tidak boleh dijual oleh shohibul kurban — namun penerima sedekah boleh memanfaatkan atau menjualnya. Jeroan (hati, jantung, ginjal, paru-paru) boleh dikonsumsi dan termasuk bagian yang dianjurkan dibagikan. Panitia kurban yang mengelola penyembelihan boleh diberi upah dari uang, bukan dari daging atau kulit kurban.</div>
+    <div class="hl-ref hlr-u">HR. Bukhari (1717) — dari Ali bin Abi Thalib · Fiqhus Sunnah — Sayyid Sabiq</div>
+  </div>
+</div>
+
+<!-- ══ BAB VI: SUNNAH-SUNNAH BERKURBAN ══ -->
+<div class="chap">
+  <div class="chap-stripe cs-gold"></div>
+  <div class="chap-body cb-gold">
+    <div class="chap-tag ct-gold">✦ Bab Keenam</div>
+    <div class="chap-ar car-gold">سُنَنُ الأُضْحِيَّةِ وَآدَابُهَا</div>
+    <div class="chap-title">Sunnah-Sunnah &amp; Adab Berkurban</div>
+  </div>
+</div>
+<div class="sec">
+  <div class="rsteps">
+    <div class="rstep rs-g">
+      <div class="rs-num rn-g">١</div>
+      <div class="rs-body">
+        <div class="rs-title">Menahan Diri dari Memotong Rambut &amp; Kuku Sejak 1 Dzulhijjah</div>
+        <div class="rs-ar">الإِمْسَاكُ عَنِ الشَّعْرِ وَالأَظْفَارِ مِنْ أَوَّلِ ذِي الْحِجَّةِ</div>
+        <div class="rs-desc">Nabi ﷺ bersabda: "Apabila kalian melihat hilal Dzulhijjah dan salah seorang dari kalian ingin berkurban, maka hendaklah ia menahan diri dari (memotong) rambut dan kukunya." — HR. Muslim (1977). Ini berlaku sejak masuk 1 Dzulhijjah hingga selesai menyembelih.</div>
+        <span class="rs-badge rb-g">HR. Muslim (1977) — Sunnah Muakkadah</span>
+      </div>
+    </div>
+    <div class="rstep rs-g">
+      <div class="rs-num rn-g">٢</div>
+      <div class="rs-body">
+        <div class="rs-title">Memilih Hewan yang Paling Gemuk, Sempurna &amp; Mahal</div>
+        <div class="rs-desc">Nabi ﷺ berkurban dengan dua ekor kambing kibas (domba) besar, gemuk, bertanduk, berwarna hitam-putih — hewan yang terbaik. Semakin mahal dan semakin sempurna hewan kurban, semakin besar pahalanya. Jangan memilih hewan yang murah sekedarnya.</div>
+        <span class="rs-badge rb-g">HR. Bukhari (5558) &amp; Muslim (1966)</span>
+      </div>
+    </div>
+    <div class="rstep rs-g">
+      <div class="rs-num rn-g">٣</div>
+      <div class="rs-body">
+        <div class="rs-title">Menyembelih Sendiri atau Hadir saat Penyembelihan</div>
+        <div class="rs-desc">Disunnahkan shohibul kurban menyembelih sendiri. Jika mewakilkan, disunnahkan hadir dan menyaksikan. Nabi ﷺ memerintahkan Fatimah agar hadir menyaksikan kurbannya: "Wahai Fatimah, berdirilah dan saksikanlah hewan kurbanmu, karena sejak tetes darah pertamanya, dosamu yang telah lalu diampuni." — HR. Baihaqi.</div>
+        <span class="rs-badge rb-g">HR. Al-Baihaqi (19280) — Hasan</span>
+      </div>
+    </div>
+    <div class="rstep rs-g">
+      <div class="rs-num rn-g">٤</div>
+      <div class="rs-body">
+        <div class="rs-title">Berkurban Satu Kambing Untuk Satu Keluarga</div>
+        <div class="rs-ar">الأُضْحِيَّةُ عَنِ الرَّجُلِ وَأَهْلِ بَيْتِهِ</div>
+        <div class="rs-desc">Satu kambing cukup untuk satu keluarga (kepala keluarga + seluruh anggotanya) berdasarkan hadis Nabi ﷺ bahwa Abu Ayyub Al-Anshari berkurban satu kambing untuk diri dan keluarganya. Ini adalah sunnah yang menunjukkan kemurahan Allah — satu kambing pahala kurbannya mengalir untuk seluruh keluarga.</div>
+        <span class="rs-badge rb-g">HR. Tirmidzi (1505) — Shahih</span>
+      </div>
+    </div>
+    <div class="rstep rs-g">
+      <div class="rs-num rn-g">٥</div>
+      <div class="rs-body">
+        <div class="rs-title">Niat Kurban untuk Diri Sendiri dan Seluruh Umat Muhammad ﷺ</div>
+        <div class="rs-desc">Nabi ﷺ pernah menyembelih kurban dengan niat: "Ya Allah, terimalah ini dari Muhammad dan keluarga Muhammad dan dari umat Muhammad." — HR. Muslim (1967). Seorang Muslim yang berkurban boleh meniatkan pahalanya untuk Nabi ﷺ, orang tua, kerabat yang sudah meninggal, dan seluruh umat Islam.</div>
+        <span class="rs-badge rb-g">HR. Muslim (1967) — dari Jabir radhiyallahu 'anhu</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ BAB VII: KURBAN UNTUK ORANG YANG SUDAH MENINGGAL ══ -->
+<div class="chap">
+  <div class="chap-stripe cs-crim"></div>
+  <div class="chap-body cb-crim">
+    <div class="chap-tag ct-crim">✦ Bab Ketujuh</div>
+    <div class="chap-ar car-crim">الأُضْحِيَّةُ عَنِ الْمَيِّتِ</div>
+    <div class="chap-title">Kurban untuk Orang yang Sudah Meninggal</div>
+  </div>
+</div>
+<div class="sec">
+  <div class="prose fl-c">
+    <p class="lead">Banyak masyarakat Muslim yang ingin berkurban atas nama orang tua atau kerabat yang sudah meninggal. Pertanyaan ini memiliki dua dimensi: (1) Apakah kurban atas nama orang yang sudah meninggal sah? (2) Apakah pahalanya sampai kepada mereka?</p>
+    <p>Para ulama berbeda pendapat tentang hal ini. Jumhur ulama membolehkan berkurban untuk orang yang sudah meninggal — karena hukumnya sama dengan sedekah untuk mayyit yang pahalanya diijma'kan sampai. Ulama Syafi'i mensyaratkan agar orang yang meninggal berwasiat demikian, atau dilakukan dari bagian hartanya. Jika dari harta ahli waris tanpa wasiat, hukumnya sedekah biasa namun pahalanya tetap bisa dihadiahkan kepada mayyit.</p>
+  </div>
+
+  <div class="tbl-wrap">
+    <table class="tbl th-c">
+      <thead>
+        <tr>
+          <th style="width:28%">Situasi</th>
+          <th style="width:22%">Hukum</th>
+          <th style="width:50%">Penjelasan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Situasi">Orang meninggal berwasiat agar dikurbankan</td>
+          <td data-label="Hukum"><span class="tbdg tbdg-g">Wajib dilaksanakan</span></td>
+          <td data-label="Penjelasan">Jika almarhum berwasiat, kurban dikeluarkan dari 1/3 harta peninggalannya. Wajib dilaksanakan oleh ahli waris atau penerima wasiat. Pahalanya untuk almarhum.</td>
+        </tr>
+        <tr>
+          <td data-label="Situasi">Anak berkurban atas nama orang tua yang meninggal</td>
+          <td data-label="Hukum"><span class="tbdg tbdg-g">Boleh — Dianjurkan</span></td>
+          <td data-label="Penjelasan">Boleh berkurban dari harta sendiri dengan niat pahalanya untuk orang tua yang meninggal. Ini termasuk birrul walidain (berbakti kepada orang tua) meskipun sudah tiada. Pahalanya insyā'allāh sampai.</td>
+        </tr>
+        <tr>
+          <td data-label="Situasi">Berkurban atas nama orang hidup saja</td>
+          <td data-label="Hukum"><span class="tbdg tbdg-g">Lebih Utama</span></td>
+          <td data-label="Penjelasan">Nabi ﷺ dan para sahabat memprioritaskan kurban untuk diri sendiri yang masih hidup. Kurban untuk diri sendiri yang masih hidup lebih utama dari kurban untuk orang yang sudah meninggal.</td>
+        </tr>
+        <tr>
+          <td data-label="Situasi">Kurban untuk Nabi ﷺ</td>
+          <td data-label="Hukum"><span class="tbdg tbdg-gray">Boleh — Khilaf</span></td>
+          <td data-label="Penjelasan">Sebagian ulama membolehkan berkurban atas nama Nabi ﷺ sebagai bentuk kecintaan, sebagaimana beliau sendiri berkurban untuk umatnya. Namun ini bukan sunnah yang diperintahkan secara khusus.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══ BAB VIII: HIKMAH KURBAN ══ -->
+<div class="chap">
+  <div class="chap-stripe cs-dk"></div>
+  <div class="chap-body cb-dk">
+    <div class="chap-tag ct-dk">✦ Bab Kedelapan — Penutup</div>
+    <div class="chap-ar car-dk">حِكْمَةُ الأُضْحِيَّةِ وَمَقَاصِدُهَا</div>
+    <div class="chap-title ct-dk-title">Hikmah Agung di Balik Ibadah Kurban</div>
+  </div>
+</div>
+<div class="sec" style="border-bottom:none;">
+  <div class="prose fl-c">
+    <p class="lead">Kurban bukan sekadar ritual menyembelih hewan — ia adalah pernyataan keimanan, latihan pengorbanan, dan ekspresi syukur yang paling konkret. Allah berfirman: "Daging dan darahnya tidak akan sampai kepada Allah, tetapi yang sampai kepada-Nya adalah ketakwaanmu." — QS. Al-Hajj: 37.</p>
+    <p>Pertama, kurban adalah menghidupkan sunnah Ibrahim 'alaihissalam — bapak seluruh nabi, yang rela mengorbankan putra tercintanya demi Allah. Setiap pisau yang diacungkan ke leher hewan kurban adalah pengingat: apakah kita juga siap mengorbankan apa yang paling kita cintai untuk Allah? Kedua, kurban adalah distribusi sosial yang Allah syariatkan — memastikan bahwa pada hari paling bahagia, kaum fakir miskin pun bisa merasakan nikmatnya memakan daging.</p>
+    <p>Ketiga, kurban adalah ungkapan syukur yang paling nyata atas segala rezeki yang Allah berikan. Dalam setiap tetes darah kurban tersimpan rasa terima kasih seorang hamba kepada Rabbnya. Dan keempat, kurban adalah latihan mengalahkan sifat kikir — bahwa harta yang paling berharga pun rela diberikan demi mendekatkan diri kepada Allah Yang Maha Pemberi.</p>
+  </div>
+
+  <div class="dalil d-dk">
+    <div class="db-dk"></div>
+    <div class="dbody">
+      <div class="dtag dtag-dk">📖 QS. Al-Hajj: 37 — Yang Sampai kepada Allah Bukan Dagingnya</div>
+      <div class="dar dar-dk">لَن يَنَالَ اللَّهَ لُحُومُهَا وَلَا دِمَاؤُهَا وَلَٰكِن يَنَالُهُ التَّقْوَىٰ مِنكُمْ</div>
+      <div class="dtrans dtrans-dk">"Daging dan darahnya tidak akan sampai kepada Allah, tetapi yang sampai kepada-Nya adalah ketakwaanmu. Demikianlah Dia menundukkannya untukmu agar kamu mengagungkan Allah atas petunjuk yang Dia berikan kepadamu."</div>
+      <div class="dref dref-dk">QS. Al-Hajj (22): 37 — Inti dari seluruh ibadah kurban adalah ketakwaan</div>
+    </div>
+  </div>
+
+  <div class="banner banner-c">
+    <div class="ban-ar bnar-lt">وَلِكُلِّ أُمَّةٍ جَعَلْنَا مَنسَكًا لِّيَذْكُرُوا اسْمَ اللَّهِ عَلَىٰ مَا رَزَقَهُم مِّن بَهِيمَةِ الْأَنْعَامِ ۗ فَإِلَٰهُكُمْ إِلَٰهٌ وَاحِدٌ فَلَهُ أَسْلِمُوا</div>
+    <div class="ban-id bnid-lt">"Dan bagi setiap umat telah Kami syariatkan penyembelihan (kurban) agar mereka menyebut nama Allah atas rezeki yang Dia berikan kepada mereka berupa hewan ternak. Maka Tuhanmu ialah Tuhan Yang Maha Esa, karena itu berserahdirilah kamu kepada-Nya." — Kurban bukan ritual yang berdiri sendiri — ia adalah bagian dari pengakuan tauhid yang paling menyeluruh: bahwa semua yang kita miliki berasal dari Allah dan layak dikembalikan kepada-Nya.</div>
+    <div class="ban-ref bnref-lt">QS. Al-Hajj (22): 34</div>
+  </div>
+</div>
+
+</div><!-- end wrap -->
+
+<!-- ══ PENUTUP ══ -->
+<div class="penutup">
+  <div class="penutup-inner">
+    <div class="penutup-ar">إِنَّ صَلَاتِي وَنُسُكِي وَمَحْيَايَ وَمَمَاتِي لِلَّهِ رَبِّ الْعَالَمِينَ</div>
+    <div class="penutup-div"></div>
+    <p class="penutup-p">"Sesungguhnya shalatku, ibadah (kurban)ku, hidupku, dan matiku hanyalah untuk Allah, Rabb semesta alam." — QS. Al-An'ām: 162. Kalimat ini adalah jiwa dari seluruh ibadah kurban — bahwa pisau yang diacungkan, darah yang tumpah, dan daging yang dibagikan semuanya adalah persembahan seorang hamba yang menyerahkan diri sepenuhnya kepada Rabbnya.</p>
+    <p class="penutup-p" style="margin-top:10px;">Semoga Allah menerima kurban kita, menjadikannya penghapus dosa, pengangkat derajat, dan pembuka pintu rezeki yang lebih luas. Dan semoga kita senantiasa menjadi manusia yang mampu mengorbankan apa yang paling kita cintai demi kecintaan kepada Allah — mengikuti jejak Ibrahim kekasih Allah 'alaihissalam.</p>
+    <div class="penutup-div"></div>
+    <div class="dalil d-dk" style="text-align:left;">
+      <div class="db-dk"></div>
+      <div class="dbody">
+        <div class="dtag dtag-dk">📜 Doa Lengkap Menyembelih Kurban · HR. Abu Dawud</div>
+        <div class="dar dar-dk">بِسْمِ اللَّهِ وَاللَّهُ أَكْبَرُ ۝ اللَّهُمَّ هَذَا مِنْكَ وَلَكَ ۝ اللَّهُمَّ تَقَبَّلْ مِنِّي كَمَا تَقَبَّلْتَ مِنْ إِبْرَاهِيمَ خَلِيلِكَ</div>
+        <div class="dtrans dtrans-dk">"Dengan nama Allah, Allah Maha Besar. Ya Allah, ini dari-Mu dan untuk-Mu. Ya Allah, terimalah dariku sebagaimana Engkau menerima dari Ibrahim kekasih-Mu."</div>
+        <div class="dref dref-dk">HR. Abu Dawud (2795) &amp; Al-Baihaqi — Shahih · Doa yang dibaca Nabi ﷺ saat menyembelih kurban</div>
+      </div>
+    </div>
+    <div class="penutup-footer">
+      <div class="logo">كِتَابُ الأُضْحِيَّةِ</div>
+      <div class="tag">وَاللّٰهُ أَعْلَمُ بِالصَّوَابِ · Semoga Bermanfaat</div>
+    </div>
+  </div>
+</div>
+
+<script>
+const sf=document.getElementById('stars');
+for(let i=0;i<200;i++){
+  const s=document.createElement('div');s.className='hstar';
+  const sz=Math.random()*1.8+.2;
+  const gold=Math.random()<.05;
+  s.style.cssText=`width:${sz}px;height:${sz}px;left:${Math.random()*100}%;top:${Math.random()*80}%;--st:${(Math.random()*4+2).toFixed(1)}s;--so:${(Math.random()*.5+.1).toFixed(2)};animation-delay:${(Math.random()*6).toFixed(1)}s;${gold?'background:rgba(230,200,100,.9);':''}`;
+  sf.appendChild(s);
+}
+</script>
+</body>
+</html>

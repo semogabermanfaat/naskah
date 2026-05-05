@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kitab Haji — Panduan Lengkap Ibadah Haji</title>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&family=Amiri:ital,wght@0,400;0,700;1,400&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --sand:#faf4e6;--dune:#f0e4c4;--dune-d:#e4d4a8;
+  --amber:#d4920a;--amber-d:#a87008;--amber-lt:#e8aa20;--amber-pale:#fef6d8;
+  --terra:#8a3820;--terra-d:#6a2810;--terra-pale:#fde8e0;
+  --cobalt:#1a3878;--cobalt-d:#102860;--cobalt-p:#e4ecf8;
+  --forest:#1e4a30;--forest-d:#143820;--forest-p:#e0f0e4;
+  --night:#0e0c06;--night-mid:#1a1608;
+  --cream:#fdfaf2;--ivory:#f8f4ea;
+  --ink:#100e08;--ink-mid:#201a0a;--ink-soft:#584828;--sepia:#7a6030;
+  --b-amber:rgba(212,146,10,.18);--b-terra:rgba(138,56,32,.18);
+  --b-cobalt:rgba(26,56,120,.15);--b-forest:rgba(30,74,48,.15);--b-ink:rgba(16,14,8,.1);
+}
+html{scroll-behavior:smooth;}
+body{background:var(--sand);font-family:'Spectral',Georgia,serif;color:var(--ink);overflow-x:hidden;}
+
+/* ══ HERO ══ */
+.hero{
+  min-height:100vh;position:relative;z-index:1;
+  background:linear-gradient(180deg,#0a0804 0%,#141008 12%,#3a2c10 40%,#c89028 68%,#f8d870 88%,#fefadc 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:80px 24px 130px;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 100% 40% at 50% 100%,rgba(14,12,6,.98) 0%,transparent 55%);
+  pointer-events:none;
+}
+.hero-stars{position:absolute;top:0;left:0;right:0;height:45%;pointer-events:none;}
+.hstar{position:absolute;border-radius:50%;background:#fff;animation:twkl var(--st,3s) ease-in-out infinite alternate;}
+@keyframes twkl{from{opacity:var(--so,.3);}to{opacity:calc(var(--so,.3)*2.2);}}
+
+/* Kaaba silhouette */
+.hero-kaaba{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:min(700px,100vw);pointer-events:none;opacity:.2;}
+
+.hero-inner{position:relative;z-index:2;max-width:780px;}
+.hero-bismillah{font-family:'Amiri',serif;font-size:clamp(1.5rem,4vw,2.8rem);color:rgba(254,240,160,.95);text-shadow:0 0 30px rgba(212,146,10,.5);line-height:1.9;margin-bottom:14px;animation:grise 2s ease both;}
+.hero-kicker{font-family:'Barlow',sans-serif;font-weight:300;font-size:.72rem;letter-spacing:8px;text-transform:uppercase;color:rgba(212,146,10,.5);margin-bottom:18px;animation:grise 2s ease both .2s;}
+.hero-title{font-family:'Spectral',serif;font-weight:800;font-size:clamp(2.8rem,9vw,7rem);line-height:1.0;letter-spacing:-2px;color:#fff;margin-bottom:4px;animation:grise 2s ease both .06s;}
+.hero-sub{display:block;font-family:'Amiri',serif;font-size:clamp(1.1rem,3vw,2rem);color:rgba(248,216,112,.65);line-height:2;margin-bottom:24px;animation:grise 2s ease both .28s;}
+.hero-rule{display:flex;align-items:center;justify-content:center;gap:14px;margin:0 auto 26px;animation:grise 2s ease both .38s;}
+.hero-rule span{width:80px;height:1px;background:linear-gradient(90deg,transparent,rgba(212,146,10,.4));}
+.hero-rule span:last-child{background:linear-gradient(90deg,rgba(212,146,10,.4),transparent);}
+.hero-rule em{color:rgba(248,216,112,.6);font-style:normal;letter-spacing:8px;}
+.hero-verse{max-width:580px;margin:0 auto;padding:22px 30px;background:rgba(10,8,4,.65);border:1px solid rgba(212,146,10,.22);backdrop-filter:blur(10px);animation:grise 2s ease both .5s;}
+.hv-ar{font-family:'Amiri',serif;font-size:clamp(1rem,2.5vw,1.4rem);color:rgba(248,216,112,.95);line-height:2.2;direction:rtl;margin-bottom:10px;}
+.hv-id{font-style:italic;font-size:.83rem;color:rgba(200,180,120,.55);line-height:1.7;}
+@keyframes grise{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+
+/* ══ BODY ══ */
+.wrap{max-width:880px;margin:0 auto;padding:0 16px 80px;position:relative;z-index:1;}
+
+/* Chapter bars */
+.chap{margin:52px 0 0;display:flex;align-items:stretch;}
+.chap-stripe{width:6px;flex-shrink:0;}
+.cs-a{background:var(--amber);}
+.cs-t{background:var(--terra);}
+.cs-c{background:var(--cobalt);}
+.cs-f{background:var(--forest);}
+.cs-n{background:var(--night-mid);}
+.chap-body{flex:1;padding:16px 20px;}
+.cb-a{background:var(--amber-pale);border:1px solid var(--b-amber);border-left:none;}
+.cb-t{background:var(--terra-pale);border:1px solid var(--b-terra);border-left:none;}
+.cb-c{background:var(--cobalt-p);border:1px solid var(--b-cobalt);border-left:none;}
+.cb-f{background:var(--forest-p);border:1px solid var(--b-forest);border-left:none;}
+.cb-n{background:var(--night-mid);border:1px solid rgba(212,146,10,.18);border-left:none;}
+.chap-tag{font-family:'Barlow',sans-serif;font-weight:600;font-size:.6rem;letter-spacing:5px;text-transform:uppercase;margin-bottom:6px;}
+.ct-a{color:var(--amber-d);}
+.ct-t{color:var(--terra-d);}
+.ct-c{color:var(--cobalt-d);}
+.ct-f{color:var(--forest-d);}
+.ct-n{color:rgba(212,146,10,.6);}
+.chap-ar{font-family:'Amiri',serif;font-size:clamp(1.1rem,2.8vw,1.6rem);line-height:1.8;margin-bottom:4px;}
+.car-a{color:var(--amber-d);}
+.car-t{color:var(--terra-d);}
+.car-c{color:var(--cobalt-d);}
+.car-f{color:var(--forest-d);}
+.car-n{color:rgba(248,216,112,.9);}
+.chap-title{font-family:'Spectral',serif;font-weight:700;font-size:clamp(1.1rem,2.8vw,1.7rem);line-height:1.25;color:var(--ink);}
+.ct-n-title{color:var(--dune);}
+
+/* Sections */
+.sec{padding:28px 0 22px;border-bottom:1px solid var(--b-ink);}
+.sec:last-child{border-bottom:none;}
+
+/* Prose - JUSTIFIED */
+.prose p{font-size:clamp(.97rem,2.1vw,1.07rem);line-height:2.08;color:var(--ink-mid);margin-bottom:16px;text-align:justify;hyphens:auto;-webkit-hyphens:auto;}
+.prose p.lead{font-style:italic;color:var(--amber-d);font-size:clamp(1rem,2.2vw,1.12rem);line-height:1.92;text-align:justify;}
+.prose.t-lead p.lead{color:var(--terra-d);}
+.prose.c-lead p.lead{color:var(--cobalt-d);}
+.prose.f-lead p.lead{color:var(--forest-d);}
+.prose p:first-of-type:not(.lead)::first-letter{font-family:'Spectral',serif;font-weight:800;font-size:4em;line-height:.72;float:left;margin:8px 10px 0 0;}
+.prose.fl-a p:first-of-type:not(.lead)::first-letter{color:var(--amber);}
+.prose.fl-t p:first-of-type:not(.lead)::first-letter{color:var(--terra);}
+.prose.fl-c p:first-of-type:not(.lead)::first-letter{color:var(--cobalt);}
+.prose.fl-f p:first-of-type:not(.lead)::first-letter{color:var(--forest);}
+
+/* Dalil */
+.dalil{margin:24px 0;display:grid;grid-template-columns:4px 1fr;}
+.da-a{background:var(--amber-pale);border:1px solid var(--b-amber);}
+.da-t{background:var(--terra-pale);border:1px solid var(--b-terra);}
+.da-c{background:var(--cobalt-p);border:1px solid var(--b-cobalt);}
+.da-f{background:var(--forest-p);border:1px solid var(--b-forest);}
+.da-dk{background:rgba(10,8,4,.88);border:1px solid rgba(212,146,10,.2);}
+.db-a{background:var(--amber);}
+.db-t{background:var(--terra);}
+.db-c{background:var(--cobalt);}
+.db-f{background:var(--forest);}
+.db-dk{background:var(--amber);}
+.dbody{padding:18px 20px 14px;}
+.dtag{font-family:'Barlow',sans-serif;font-weight:600;font-size:.6rem;letter-spacing:4px;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:10px;}
+.dtag::after{content:'';flex:1;height:1px;}
+.dtag-a{color:var(--amber-d);}
+.dtag-a::after{background:linear-gradient(90deg,var(--b-amber),transparent);}
+.dtag-t{color:var(--terra-d);}
+.dtag-t::after{background:linear-gradient(90deg,var(--b-terra),transparent);}
+.dtag-c{color:var(--cobalt-d);}
+.dtag-c::after{background:linear-gradient(90deg,var(--b-cobalt),transparent);}
+.dtag-f{color:var(--forest-d);}
+.dtag-f::after{background:linear-gradient(90deg,var(--b-forest),transparent);}
+.dtag-dk{color:var(--amber);}
+.dtag-dk::after{background:linear-gradient(90deg,rgba(212,146,10,.2),transparent);}
+.dar{font-family:'Amiri',serif;font-size:clamp(1.1rem,2.8vw,1.52rem);line-height:2.2;direction:rtl;text-align:right;margin-bottom:12px;padding-bottom:10px;}
+.dar-a{color:var(--amber-d);border-bottom:1px dashed var(--b-amber);}
+.dar-t{color:var(--terra-d);border-bottom:1px dashed var(--b-terra);}
+.dar-c{color:var(--cobalt-d);border-bottom:1px dashed var(--b-cobalt);}
+.dar-f{color:var(--forest-d);border-bottom:1px dashed var(--b-forest);}
+.dar-dk{color:rgba(248,216,112,.95);border-bottom:1px dashed rgba(212,146,10,.2);}
+.dtrans{font-style:italic;font-size:.92rem;line-height:1.82;color:var(--ink-soft);margin-bottom:7px;text-align:justify;}
+.dtrans-dk{color:rgba(215,198,155,.8);}
+.dref{font-family:'Barlow',sans-serif;font-weight:600;font-size:.62rem;letter-spacing:2px;text-transform:uppercase;}
+.dref-a{color:var(--amber-d);}
+.dref-t{color:var(--terra-d);}
+.dref-c{color:var(--cobalt-d);}
+.dref-f{color:var(--forest-d);}
+.dref-dk{color:var(--amber);}
+
+/* Miqat cards */
+.miqat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:5px;margin:22px 0;}
+.miqat-card{padding:18px 16px;border:1px solid var(--b-amber);background:var(--ivory);border-top:3px solid var(--amber);position:relative;overflow:hidden;}
+.mc-num{font-family:'Spectral',serif;font-weight:800;font-size:2rem;color:rgba(212,146,10,.1);position:absolute;top:8px;right:12px;line-height:1;}
+.mc-ar{font-family:'Amiri',serif;font-size:1.1rem;color:var(--amber-d);margin-bottom:3px;}
+.mc-name{font-family:'Spectral',serif;font-weight:700;font-size:.95rem;color:var(--ink);margin-bottom:5px;}
+.mc-for{font-family:'Barlow',sans-serif;font-weight:600;font-size:.68rem;letter-spacing:2px;text-transform:uppercase;color:var(--amber-d);margin-bottom:5px;}
+.mc-desc{font-size:.83rem;line-height:1.72;font-style:italic;color:var(--ink-soft);text-align:justify;}
+.mc-dist{font-family:'Barlow',sans-serif;font-weight:600;font-size:.6rem;letter-spacing:2px;text-transform:uppercase;margin-top:8px;display:block;color:var(--amber-d);}
+
+/* Ritual steps */
+.rsteps{margin:20px 0;}
+.rstep{display:flex;gap:0;margin-bottom:6px;border:1px solid;overflow:hidden;background:var(--ivory);}
+.rs-a{border-color:var(--b-amber);}
+.rs-t{border-color:var(--b-terra);}
+.rs-c{border-color:var(--b-cobalt);}
+.rs-f{border-color:var(--b-forest);}
+.rs-num{flex-shrink:0;width:52px;display:flex;align-items:flex-start;justify-content:center;font-family:'Spectral',serif;font-weight:800;font-size:1.3rem;padding:12px 0 0;}
+.rn-a{color:var(--amber-d);background:var(--amber-pale);border-right:1px solid var(--b-amber);}
+.rn-t{color:var(--terra-d);background:var(--terra-pale);border-right:1px solid var(--b-terra);}
+.rn-c{color:var(--cobalt-d);background:var(--cobalt-p);border-right:1px solid var(--b-cobalt);}
+.rn-f{color:var(--forest-d);background:var(--forest-p);border-right:1px solid var(--b-forest);}
+.rs-body{flex:1;padding:12px 16px;}
+.rs-title{font-family:'Spectral',serif;font-weight:700;font-size:.97rem;margin-bottom:3px;color:var(--ink);}
+.rs-ar{font-family:'Amiri',serif;font-size:.97rem;direction:rtl;text-align:right;margin-bottom:4px;line-height:1.9;color:rgba(16,14,8,.25);}
+.rs-desc{font-size:.85rem;line-height:1.75;font-style:italic;color:var(--ink-soft);text-align:justify;}
+.rs-badge{display:inline-block;margin-top:6px;font-family:'Barlow',sans-serif;font-size:.57rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:2px 8px;}
+.rb-a{background:var(--amber-pale);color:var(--amber-d);border:1px solid var(--b-amber);}
+.rb-t{background:var(--terra-pale);color:var(--terra-d);border:1px solid var(--b-terra);}
+.rb-c{background:var(--cobalt-p);color:var(--cobalt-d);border:1px solid var(--b-cobalt);}
+.rb-f{background:var(--forest-p);color:var(--forest-d);border:1px solid var(--b-forest);}
+.rb-gray{background:rgba(16,14,8,.06);color:var(--ink-soft);border:1px solid var(--b-ink);}
+
+/* Highlight */
+.hl{margin:20px 0;padding:18px 20px;}
+.hl-a{background:var(--amber-pale);border:1px solid var(--b-amber);border-left:4px solid var(--amber);}
+.hl-t{background:var(--terra-pale);border:1px solid var(--b-terra);border-left:4px solid var(--terra);}
+.hl-c{background:var(--cobalt-p);border:1px solid var(--b-cobalt);border-left:4px solid var(--cobalt);}
+.hl-f{background:var(--forest-p);border:1px solid var(--b-forest);border-left:4px solid var(--forest);}
+.hl-dk{background:var(--night-mid);padding:22px 24px;}
+.hl-label{font-family:'Barlow',sans-serif;font-weight:600;font-size:.6rem;letter-spacing:3px;text-transform:uppercase;margin-bottom:9px;}
+.hll-a{color:var(--amber-d);}
+.hll-t{color:var(--terra-d);}
+.hll-c{color:var(--cobalt-d);}
+.hll-f{color:var(--forest-d);}
+.hll-w{color:rgba(212,146,10,.55);}
+.hl-ar{font-family:'Amiri',serif;font-size:clamp(1.05rem,2.5vw,1.4rem);line-height:2;margin-bottom:8px;}
+.hlar-a{color:var(--amber-d);}
+.hlar-t{color:var(--terra-d);}
+.hlar-c{color:var(--cobalt-d);}
+.hlar-f{color:var(--forest-d);}
+.hlar-dk{color:rgba(248,216,112,.95);}
+.hl-trans{font-style:italic;font-size:.9rem;line-height:1.82;color:var(--ink-soft);margin-bottom:6px;text-align:justify;}
+.hlt-dk{color:rgba(215,198,155,.78);}
+.hl-ref{font-family:'Barlow',sans-serif;font-weight:600;font-size:.6rem;letter-spacing:2px;text-transform:uppercase;}
+.hlr-a{color:var(--amber);}
+.hlr-t{color:var(--terra);}
+.hlr-c{color:var(--cobalt);}
+.hlr-f{color:var(--forest);}
+.hlr-dk{color:rgba(212,146,10,.45);}
+
+/* Responsive table */
+.tbl-wrap{margin:22px 0;overflow:hidden;}
+.tbl{width:100%;border-collapse:collapse;font-size:.87rem;table-layout:fixed;}
+.tbl.th-a thead tr{background:var(--amber-d);color:#fff;}
+.tbl.th-t thead tr{background:var(--terra-d);color:#fff;}
+.tbl.th-c thead tr{background:var(--cobalt-d);color:#fff;}
+.tbl.th-f thead tr{background:var(--forest-d);color:#fff;}
+.tbl.th-n thead tr{background:var(--night-mid);color:var(--dune);}
+.tbl thead th{padding:10px 12px;text-align:left;font-family:'Barlow',sans-serif;font-size:.6rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;}
+.tbl tbody tr{border-bottom:1px solid var(--b-ink);}
+.tbl tbody tr:nth-child(even){background:rgba(16,14,8,.03);}
+.tbl tbody tr:nth-child(odd){background:var(--sand);}
+.tbl td{padding:10px 12px;line-height:1.68;color:var(--ink-mid);vertical-align:top;word-break:break-word;}
+.tbl td:first-child{font-weight:600;color:var(--ink);}
+.tbdg{display:inline-block;padding:2px 8px;font-family:'Barlow',sans-serif;font-size:.57rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;white-space:nowrap;}
+.tbdg-a{background:var(--amber-pale);color:var(--amber-d);border:1px solid var(--b-amber);}
+.tbdg-t{background:var(--terra-pale);color:var(--terra-d);border:1px solid var(--b-terra);}
+.tbdg-c{background:var(--cobalt-p);color:var(--cobalt-d);border:1px solid var(--b-cobalt);}
+.tbdg-f{background:var(--forest-p);color:var(--forest-d);border:1px solid var(--b-forest);}
+.tbdg-gray{background:rgba(16,14,8,.06);color:var(--ink-soft);border:1px solid var(--b-ink);}
+@media(max-width:590px){
+  .tbl,.tbl thead,.tbl tbody,.tbl th,.tbl td,.tbl tr{display:block;width:100%;}
+  .tbl thead{display:none;}
+  .tbl tbody tr{background:var(--ivory)!important;border:1px solid var(--b-ink);margin-bottom:8px;padding:12px 14px 10px;}
+  .tbl td{padding:4px 0 4px;border:none;display:grid;grid-template-columns:90px 1fr;gap:6px;align-items:start;}
+  .tbl td::before{content:attr(data-label);font-family:'Barlow',sans-serif;font-size:.58rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding-top:2px;color:var(--amber-d);}
+  .tbl.th-t td::before{color:var(--terra-d);}
+  .tbl.th-c td::before{color:var(--cobalt-d);}
+  .tbl.th-f td::before{color:var(--forest-d);}
+  .tbl.th-n td::before{color:var(--sepia);}
+  .tbl td:first-child{font-weight:700;font-size:.93rem;}
+}
+
+/* Banner */
+.banner{margin:26px 0;padding:24px 28px;text-align:center;}
+.banner-dk{background:var(--night-mid);border:1px solid rgba(212,146,10,.2);}
+.banner-a{background:var(--amber-pale);border:2px solid var(--amber);}
+.banner-t{background:var(--terra-d);}
+.ban-ar{font-family:'Amiri',serif;font-size:clamp(1.1rem,2.8vw,1.52rem);line-height:2;margin-bottom:10px;}
+.bnar-dk{color:rgba(248,216,112,.95);}
+.bnar-a{color:var(--amber-d);}
+.bnar-w{color:#fff;}
+.ban-id{font-style:italic;font-size:.9rem;line-height:1.8;margin-bottom:6px;text-align:justify;}
+.bnid-dk{color:rgba(215,198,155,.74);}
+.bnid-a{color:var(--ink-soft);}
+.bnid-w{color:rgba(255,255,255,.88);}
+.ban-ref{font-family:'Barlow',sans-serif;font-weight:600;font-size:.6rem;letter-spacing:3px;text-transform:uppercase;margin-top:7px;}
+.bnref-dk{color:rgba(212,146,10,.45);}
+.bnref-a{color:var(--amber-d);}
+
+/* Separator */
+.sep{text-align:center;padding:12px 0;background:var(--dune);border-top:1px solid var(--b-amber);border-bottom:1px solid var(--b-amber);}
+.sep span{color:var(--amber-d);letter-spacing:12px;font-size:.72rem;opacity:.5;}
+
+/* Penutup */
+.penutup{
+  background:linear-gradient(180deg,#281e08 0%,#1a1406 40%,#0e0c06 80%,#080604 100%);
+  padding:72px 24px 80px;text-align:center;
+  position:relative;overflow:hidden;margin-top:56px;z-index:1;
+}
+.penutup::after{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--terra-d),var(--amber),var(--amber-lt),var(--amber),var(--terra-d));}
+.penutup-inner{max-width:600px;margin:0 auto;position:relative;z-index:1;}
+.penutup-ar{font-family:'Amiri',serif;font-size:clamp(1.4rem,4vw,2.6rem);color:rgba(248,216,112,.95);line-height:2;text-shadow:0 0 20px rgba(212,146,10,.3);margin-bottom:14px;}
+.penutup-div{width:80px;height:1px;background:linear-gradient(90deg,transparent,var(--amber),transparent);margin:18px auto;}
+.penutup-p{font-style:italic;font-size:clamp(.9rem,2vw,1.04rem);color:rgba(215,198,155,.72);line-height:1.95;margin-bottom:12px;text-align:justify;}
+.penutup-footer{margin-top:40px;padding-top:22px;border-top:1px solid rgba(255,255,255,.05);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+.penutup-footer .logo{font-family:'Amiri',serif;font-size:1.1rem;color:rgba(212,146,10,.35);}
+.penutup-footer .tag{font-family:'Barlow',sans-serif;font-weight:600;font-size:.55rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.12);}
+
+@media(max-width:600px){
+  .wrap{padding:0 14px 60px;}
+  .hero{padding:56px 20px 100px;}
+  .chap-body{padding:12px 16px;}
+  .hl,.banner{padding:16px 16px;}
+  .penutup{padding:50px 18px 56px;}
+  .miqat-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-stars" id="stars"></div>
+
+  <div class="hero-kaaba">
+    <svg viewBox="0 0 700 200" xmlns="http://www.w3.org/2000/svg" fill="rgba(16,12,4,1)">
+      <rect x="0" y="140" width="700" height="60"/>
+      <rect x="30" y="50" width="28" height="100" rx="4"/>
+      <rect x="642" y="50" width="28" height="100" rx="4"/>
+      <rect x="110" y="70" width="20" height="80" rx="3"/>
+      <rect x="570" y="70" width="20" height="80" rx="3"/>
+      <polygon points="44,50 58,20 72,50"/>
+      <polygon points="656,50 670,20 684,50"/>
+      <polygon points="120,70 130,45 140,70"/>
+      <polygon points="580,70 590,45 600,70"/>
+      <ellipse cx="350" cy="130" rx="70" ry="50"/>
+      <ellipse cx="210" cy="137" rx="40" ry="30"/>
+      <ellipse cx="490" cy="137" rx="40" ry="30"/>
+      <rect x="316" y="65" width="68" height="78" rx="2"/>
+    </svg>
+  </div>
+
+  <div class="hero-inner">
+    <div class="hero-bismillah">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
+    <p class="hero-kicker">Kitab Fiqh Ibadah · Berdalil Al-Qur'an &amp; Hadis Shahih · Panduan Lengkap</p>
+    <h1 class="hero-title">Kitab Haji<span class="hero-sub">الْحَجُّ — Rukun Islam Kelima</span></h1>
+    <div class="hero-rule"><span></span><em>☪ ✦ ☪</em><span></span></div>
+    <div class="hero-verse">
+      <div class="hv-ar">وَلِلَّهِ عَلَى النَّاسِ حِجُّ الْبَيْتِ مَنِ اسْتَطَاعَ إِلَيْهِ سَبِيلًا</div>
+      <div class="hv-id">"Dan (di antara) kewajiban manusia terhadap Allah adalah melaksanakan ibadah haji ke Baitullah, yaitu bagi orang-orang yang mampu mengadakan perjalanan ke sana."<br><em style="color:rgba(212,146,10,.45)">— QS. Āli 'Imrān: 97</em></div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+
+<!-- ══ PROLOG ══ -->
+<div class="chap">
+  <div class="chap-stripe cs-a"></div>
+  <div class="chap-body cb-a">
+    <div class="chap-tag ct-a">✦ Pembuka</div>
+    <div class="chap-ar car-a">فَضْلُ الْحَجِّ وَمَكَانَتُهُ</div>
+    <div class="chap-title">Keutamaan Haji &amp; Kedudukannya dalam Islam</div>
+  </div>
+</div>
+<div class="sec">
+  <div class="prose fl-a">
+    <p class="lead">Haji adalah rukun Islam kelima dan puncak dari seluruh ekspresi keimanan seorang Muslim. Ia adalah perjalanan fisik yang sekaligus menjadi perjalanan spiritual — meninggalkan segala kenyamanan dunia, mengenakan pakaian ihram yang menyamakan semua manusia tanpa memandang kekayaan dan jabatan, lalu berdiri bersama di hadapan Allah di Padang Arafah.</p>
+    <p>Allah menjanjikan balasan yang luar biasa bagi haji yang mabrur. Nabi ﷺ bersabda: "Tidak ada balasan bagi haji mabrur kecuali surga." Ini adalah janji tertinggi yang Allah berikan untuk satu amalan. Haji juga menggugurkan seluruh dosa — seorang yang kembali dari haji yang sah bagaikan bayi yang baru dilahirkan ibunya, bersih tanpa noda.</p>
+  </div>
+  <div class="dalil da-a">
+    <div class="db-a"></div>
+    <div class="dbody">
+      <div class="dtag dtag-a">📜 HR. Bukhari &amp; Muslim — Balasan Haji Mabrur</div>
+      <div class="dar dar-a">الْحَجُّ الْمَبْرُورُ لَيْسَ لَهُ جَزَاءٌ إِلَّا الْجَنَّةُ</div>
+      <div class="dtrans">"Haji yang mabrur tidak ada balasannya kecuali surga."</div>
+      <div class="dref dref-a">HR. Bukhari (1773) &amp; Muslim (1349) — dari Abu Hurairah radhiyallahu 'anhu</div>
+    </div>
+  </div>
+  <div class="dalil da-a">
+    <div class="db-a"></div>
+    <div class="dbody">
+      <div class="dtag dtag-a">📜 HR. Bukhari &amp; Muslim — Haji Menghapus Dosa</div>
+      <div class="dar dar-a">مَنْ حَجَّ فَلَمْ يَرْفُثْ وَلَمْ يَفْسُقْ رَجَعَ كَيَوْمِ وَلَدَتْهُ أُمُّهُ</div>
+      <div class="dtrans">"Barangsiapa berhaji lalu tidak berkata kotor dan tidak berbuat kefasikan, ia kembali seperti hari ia dilahirkan ibunya — bersih dari dosa."</div>
+      <div class="dref dref-a">HR. Bukhari (1819) &amp; Muslim (1350) — dari Abu Hurairah radhiyallahu 'anhu</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ BAB I: SYARAT WAJIB ══ -->
+<div class="chap">
+  <div class="chap-stripe cs-a"></div>
+  <div class="chap-body cb-a">
+    <div class="chap-tag ct-a">✦ Bab Pertama</div>
+    <div class="chap-ar car-a">شُرُوطُ وُجُوبِ الْحَجِّ</div>
+    <div class="chap-title">Syarat Wajib Haji &amp; Hukum Pelaksanaannya</div>
+  </div>
+</div>
+<div class="sec">
+  <div class="tbl-wrap">
+    <table class="tbl th-a">
+      <thead>
+        <tr>
+          <th style="width:20%">Syarat</th>
+          <th style="width:45%">Penjelasan</th>
+          <th style="width:35%">Catatan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Syarat">Islam</td>
+          <td data-label="Penjelasan">Hanya wajib atas orang Muslim. Orang kafir tidak diwajibkan dan hajinya tidak sah.</td>
+          <td data-label="Catatan">Murtad lalu kembali Islam wajib mengulangi haji.</td>
+        </tr>
+        <tr>
+          <td data-label="Syarat">Baligh</td>
+          <td data-label="Penjelasan">Anak belum baligh tidak wajib, namun hajinya sah. Wajib berhaji lagi setelah baligh.</td>
+          <td data-label="Catatan">HR. Muslim (1336): Haji saat kecil tidak menggugurkan kewajiban setelah baligh.</td>
+        </tr>
+        <tr>
+          <td data-label="Syarat">Berakal Sehat</td>
+          <td data-label="Penjelasan">Orang gila tidak wajib dan hajinya tidak sah. Tidak dapat diwakilkan oleh wali.</td>
+          <td data-label="Catatan">Haji adalah ibadah badaniyah yang tidak bisa diwakilkan untuk orang yang tidak punya akal.</td>
+        </tr>
+        <tr>
+          <td data-label="Syarat">Merdeka</td>
+          <td data-label="Penjelasan">Budak tidak wajib karena fisiknya milik tuannya. Jika diizinkan hajinya sah tapi tidak menggugurkan kewajiban.</td>
+          <td data-label="Catatan">Relevan secara historis; di era modern bermakna kebebasan pribadi.</td>
+        </tr>
+        <tr>
+          <td data-label="Syarat">Istitha'ah (Mampu)</td>
+          <td data-label="Penjelasan">Mampu fisik dan finansial. Finansial: punya bekal perjalanan pulang-pergi + nafkah keluarga. Fisik: dapat menempuh perjalanan.</td>
+          <td data-label="Catatan">QS. Āli 'Imrān: 97. Yang mampu finansial tapi tidak mampu fisik wajib mengirim wakil (hajj badal).</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="hl hl-a">
+    <div class="hl-label hll-a">✦ Haji Badal — Mewakilkan Haji</div>
+    <div class="hl-trans">Orang yang sudah wajib haji namun tidak mampu fisik (sakit kronis, sangat tua) boleh mewakilkan hajinya kepada orang lain. Syarat: (1) Orang yang mewakili sudah berhaji untuk dirinya sendiri; (2) diniatkan untuk orang yang diwakili. Haji badal juga boleh untuk orang yang sudah meninggal. Dalil: HR. Bukhari (1854) — seorang wanita bertanya tentang ayahnya yang tidak mampu, Nabi ﷺ berkata: "Hajikanlah ia."</div>
+    <div class="hl-ref hlr-a">HR. Bukhari (1854) &amp; Muslim (1335) — dari Ibnu Abbas radhiyallahu 'anhu</div>
+  </div>
+</div>
+
+<!-- ══ BAB II: IHRAM ══ -->
+<div class="chap">
+  <div class="chap-stripe cs-t"></div>
+  <div class="chap-body cb-t">
+    <div class="chap-tag ct-t">✦ Bab Kedua</div>
+    <div class="chap-ar car-t">الإِحْرَامُ — بَابُ الْحَجِّ</div>
+    <div class="chap-title">Ihram — Gerbang Haji, Tata Cara &amp; Larangan</div>
+  </div>
+</div>
+<div class="sec">
+  <div class="prose fl-t t-lead">
+    <p class="lead">Ihram adalah niat untuk memasuki ibadah haji atau umrah yang ditandai dengan mengenakan pakaian ihram dan mengucapkan talbiyah. Ia adalah rukun pertama haji — tanpa ihram, seseorang belum dianggap memulai ibadah haji. Dengan berihram, seseorang mengharamkan dirinya dari berbagai hal yang sebelumnya halal.</p>
+    <p>Pakaian ihram laki-laki terdiri dari dua helai kain tak berjahit: satu dililitkan di pinggang (izār) dan satu disampirkan di bahu (ridā'). Wanita berihram dengan pakaian biasa yang menutup seluruh aurat kecuali wajah dan telapak tangan. Ihram dimulai dari miqat — melewatinya tanpa ihram adalah pelanggaran yang wajib dikompensasi dengan dam (denda).</p>
+  </div>
+
+  <p style="font-family:'Barlow',sans-serif;font-weight:600;font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--terra-d);margin:0 0 12px;">Tata Cara Memulai Ihram</p>
+  <div class="rsteps">
+    <div class="rstep rs-t">
+      <div class="rs-num rn-t">1</div>
+      <div class="rs-body">
+        <div class="rs-title">Mandi Sunnah Sebelum Ihram</div>
+        <div class="rs-desc">Nabi ﷺ mandi sebelum berihram. Dilakukan di miqat atau sebelumnya. Boleh menggunakan wewangian sebelum ihram di badan (bukan di pakaian ihram) — ini adalah kesempatan terakhir sebelum memasuki ihram.</div>
+        <span class="rs-badge rb-gray">Sunnah</span>
+      </div>
+    </div>
+    <div class="rstep rs-t">
+      <div class="rs-num rn-t">2</div>
+      <div class="rs-body">
+        <div class="rs-title">Mengenakan Pakaian Ihram</div>
+        <div class="rs-ar">لُبْسُ ثَوْبَيِ الإِحْرَامِ</div>
+        <div class="rs-desc">Laki-laki: dua helai kain putih tak berjahit — izār (kain bawah) dan ridā' (kain atas) beserta sandal terbuka. Wanita: pakaian biasa yang menutup seluruh aurat, tidak boleh memakai sarung tangan atau menutup wajah dengan cadar saat ihram.</div>
+        <span class="rs-badge rb-t">Wajib untuk laki-laki</span>
+      </div>
+    </div>
+    <div class="rstep rs-t">
+      <div class="rs-num rn-t">3</div>
+      <div class="rs-body">
+        <div class="rs-title">Shalat Sunnah Dua Rakaat Ihram</div>
+        <div class="rs-desc">Disunnahkan shalat dua rakaat sebelum niat ihram — dianjurkan membaca Al-Kāfirūn di rakaat pertama dan Al-Ikhlāsh di rakaat kedua.</div>
+        <span class="rs-badge rb-gray">Sunnah</span>
+      </div>
+    </div>
+    <div class="rstep rs-t">
+      <div class="rs-num rn-t">4</div>
+      <div class="rs-body">
+        <div class="rs-title">Niat Ihram</div>
+        <div class="rs-ar">نَوَيْتُ الْحَجَّ وَأَحْرَمْتُ بِهِ لِلَّهِ تَعَالَى</div>
+        <div class="rs-desc">Niat dalam hati untuk memulai haji. Boleh diucapkan: "Labbayka Allāhumma ḥajjan" untuk haji, atau "Labbayka Allāhumma 'umratan" untuk umrah. Niat dilakukan di miqat.</div>
+        <span class="rs-badge rb-t">Rukun — Wajib</span>
+      </div>
+    </div>
+    <div class="rstep rs-t">
+      <div class="rs-num rn-t">5</div>
+      <div class="rs-body">
+        <div class="rs-title">Membaca Talbiyah</div>
+        <div class="rs-ar">لَبَّيْكَ اللَّهُمَّ لَبَّيْكَ، لَبَّيْكَ لَا شَرِيكَ لَكَ لَبَّيْكَ، إِنَّ الْحَمْدَ وَالنِّعْمَةَ لَكَ وَالْمُلْكَ، لَا شَرِيكَ لَكَ</div>
+        <div class="rs-desc">Dibaca dengan suara keras (bagi laki-laki) sesering mungkin — saat naik kendaraan, turun, berjalan, dan terus hingga melempar jumrah 'Aqabah pada Hari Idul Adha (untuk haji), atau hingga memulai thawaf (untuk umrah).</div>
+        <span class="rs-badge rb-t">Wajib menurut Hanbali · Sunnah muakkadah menurut jumhur</span>
+      </div>
+    </div>
+  </div>
+
+  <p style="font-family:'Barlow',sans-serif;font-weight:600;font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--terra-d);margin:20px 0 12px;">Larangan saat Ihram (Muḥarramāt Al-Iḥrām)</p>
+  <div class="tbl-wrap">
+    <table class="tbl th-t">
+      <thead>
+        <tr>
+          <th style="width:25%">Larangan</th>
+          <th style="width:22%">Berlaku untuk</th>
+          <th style="width:30%">Dam (Denda)</th>
+          <th style="width:23%">Dalil</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Larangan">Memotong/mencabut rambut</td>
+          <td data-label="Berlaku">Laki-laki &amp; Perempuan</td>
+          <td data-label="Dam">Fidyah: puasa 3 hari, atau sedekah 3 sha', atau sembelih kambing</td>
+          <td data-label="Dalil">QS. Al-Baqarah: 196</td>
+        </tr>
+        <tr>
+          <td data-label="Larangan">Memotong kuku</td>
+          <td data-label="Berlaku">Laki-laki &amp; Perempuan</td>
+          <td data-label="Dam">Dam fidyah seperti mencukur rambut</td>
+          <td data-label="Dalil">Qiyas atas larangan rambut</td>
+        </tr>
+        <tr>
+          <td data-label="Larangan">Memakai wewangian</td>
+          <td data-label="Berlaku">Laki-laki &amp; Perempuan</td>
+          <td data-label="Dam">Dam fidyah jika sengaja</td>
+          <td data-label="Dalil">HR. Bukhari (1838)</td>
+        </tr>
+        <tr>
+          <td data-label="Larangan">Memakai pakaian berjahit</td>
+          <td data-label="Berlaku">Laki-laki saja</td>
+          <td data-label="Dam">Dam fidyah jika sehari penuh</td>
+          <td data-label="Dalil">HR. Bukhari &amp; Muslim (1177)</td>
+        </tr>
+        <tr>
+          <td data-label="Larangan">Menutup kepala</td>
+          <td data-label="Berlaku">Laki-laki saja</td>
+          <td data-label="Dam">Dam fidyah</td>
+          <td data-label="Dalil">HR. Bukhari (1838)</td>
+        </tr>
+        <tr>
+          <td data-label="Larangan">Berburu binatang darat</td>
+          <td data-label="Berlaku">Laki-laki &amp; Perempuan</td>
+          <td data-label="Dam">Jaza' mitsil (binatang sejenis)</td>
+          <td data-label="Dalil">QS. Al-Mā'idah: 95</td>
+        </tr>
+        <tr>
+          <td data-label="Larangan">Berhubungan suami-istri (jima')</td>
+          <td data-label="Berlaku">Laki-laki &amp; Perempuan</td>
+          <td data-label="Dam"><strong>Dam terberat: unta.</strong> Haji batal jika sebelum tahallul pertama</td>
+          <td data-label="Dalil">QS. Al-Baqarah: 197</td>
+        </tr>
+        <tr>
+          <td data-label="Larangan">Menikah/menikahkan</td>
+          <td data-label="Berlaku">Laki-laki &amp; Perempuan</td>
+          <td data-label="Dam">Akad nikah tidak sah · tidak ada dam menurut jumhur</td>
+          <td data-label="Dalil">HR. Muslim (1409)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══ BAB III: MIQAT ══ -->
+<div class="chap">
+  <div class="chap-stripe cs-a"></div>
+  <div class="chap-body cb-a">
+    <div class="chap-tag ct-a">✦ Bab Ketiga</div>
+    <div class="chap-ar car-a">الْمَوَاقِيتُ الْمَكَانِيَّةُ</div>
+    <div class="chap-title">Miqat — Lima Batas Tempat Berihram</div>
+  </div>
+</div>
+<div class="sec">
+  <div class="prose fl-a">
+    <p class="lead">Miqat adalah batas tempat yang ditetapkan Nabi ﷺ sebagai titik wajib berihram. Melewati miqat tanpa ihram bagi yang hendak berhaji adalah pelanggaran yang wajib dikenai dam — menyembelih seekor kambing atau berpuasa tiga hari atau bersedekah kepada enam orang miskin.</p>
+  </div>
+  <div class="miqat-grid">
+    <div class="miqat-card">
+      <div class="mc-num">١</div>
+      <div class="mc-ar">ذُو الْحُلَيْفَةِ (أَبْيَارُ عَلِيٍّ)</div>
+      <div class="mc-name">Dzul Hulaifah — Bir Ali</div>
+      <div class="mc-for">Penduduk Madinah &amp; Lewat Madinah</div>
+      <div class="mc-desc">Miqat paling jauh dari Makkah. Ini adalah miqat yang Nabi ﷺ gunakan saat berhaji dari Madinah. Jamaah haji Indonesia yang berangkat via Madinah berihram di sini.</div>
+      <span class="mc-dist">± 450 km dari Makkah · HR. Bukhari (1524)</span>
+    </div>
+    <div class="miqat-card">
+      <div class="mc-num">٢</div>
+      <div class="mc-ar">الْجُحْفَةُ (رَابِغُ)</div>
+      <div class="mc-name">Al-Juhfah — Rabigh</div>
+      <div class="mc-for">Penduduk Syam, Mesir, Eropa, Afrika</div>
+      <div class="mc-desc">Saat ini jamaah dari barat berihram di Rabigh yang dekat Al-Juhfah. Jamaah Indonesia via jalur udara mendarat Jeddah sering berihram di sini atau di pesawat sebelum melewatinya.</div>
+      <span class="mc-dist">± 182 km dari Makkah · HR. Bukhari (1524)</span>
+    </div>
+    <div class="miqat-card">
+      <div class="mc-num">٣</div>
+      <div class="mc-ar">قَرْنُ الْمَنَازِلِ</div>
+      <div class="mc-name">Qarn Al-Manazil (As-Sail)</div>
+      <div class="mc-for">Penduduk Najd, Qatar, UAE, Kuwait</div>
+      <div class="mc-desc">Terletak di arah timur Makkah. Ditetapkan Nabi ﷺ untuk penduduk Najd. Jamaah dari kawasan Teluk Arab berihram di sini.</div>
+      <span class="mc-dist">± 94 km dari Makkah · HR. Bukhari (1524)</span>
+    </div>
+    <div class="miqat-card">
+      <div class="mc-num">٤</div>
+      <div class="mc-ar">يَلَمْلَمُ</div>
+      <div class="mc-name">Yalamlam (As-Sa'diyah)</div>
+      <div class="mc-for">Penduduk Yaman, Indonesia, India, Malaysia</div>
+      <div class="mc-desc">Miqat untuk yang datang dari arah selatan. Jamaah haji Indonesia yang datang dari jalur selatan atau via udara berihram saat pesawat mendekati miqat ini.</div>
+      <span class="mc-dist">± 92 km dari Makkah · HR. Bukhari (1524)</span>
+    </div>
+    <div class="miqat-card">
+      <div class="mc-num">٥</div>
+      <div class="mc-ar">ذَاتُ عِرْقٍ</div>
+      <div class="mc-name">Dzatu 'Irq</div>
+      <div class="mc-for">Penduduk Irak, Iran, Asia Tengah</div>
+      <div class="mc-desc">Miqat untuk yang datang dari arah timur laut. Ditetapkan oleh Umar bin Khattab radhiyallahu 'anhu sesuai arah dari Irak berdasarkan ijtihad beliau.</div>
+      <span class="mc-dist">± 94 km dari Makkah · HR. Bukhari (1531)</span>
+    </div>
+  </div>
+  <div class="hl hl-a">
+    <div class="hl-label hll-a">✦ Panduan Praktis Miqat bagi Jamaah Indonesia</div>
+    <div class="hl-trans">Via Madinah: berihram di Bir Ali (Dzul Hulaifah). Via Jeddah langsung: berihram di pesawat saat pilot mengumumkan mendekati miqat Yalamlam atau Rabigh — yang paling aman dan sesuai sunnah. Jika terlewat tanpa ihram, wajib kembali ke miqat atau membayar dam (menyembelih kambing). Ikuti arahan resmi Kemenag RI atau fatwa ulama terpercaya untuk memastikan keabsahan ihram.</div>
+    <div class="hl-ref hlr-a">Fatwa MUI · Panduan Haji Resmi BPIH · Kemenag RI</div>
+  </div>
+</div>
+
+<!-- ══ BAB IV: JENIS HAJI ══ -->
+<div class="chap">
+  <div class="chap-stripe cs-t"></div>
+  <div class="chap-body cb-t">
+    <div class="chap-tag ct-t">✦ Bab Keempat</div>
+    <div class="chap-ar car-t">أَنْوَاعُ الْحَجِّ الثَّلَاثَةُ</div>
+    <div class="chap-title">Tiga Jenis Haji — Ifrad, Tamattu', &amp; Qiran</div>
+  </div>
+</div>
+<div class="sec">
+  <div class="tbl-wrap">
+    <table class="tbl th-t">
+      <thead>
+        <tr>
+          <th style="width:18%">Jenis</th>
+          <th style="width:30%">Cara Pelaksanaan</th>
+          <th style="width:18%">Dam</th>
+          <th style="width:34%">Keterangan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Jenis"><strong>Ifrad</strong> — الإِفْرَادُ</td>
+          <td data-label="Cara">Berihram untuk haji saja tanpa umrah dalam satu perjalanan. Umrah dilakukan terpisah di luar musim haji.</td>
+          <td data-label="Dam"><span class="tbdg tbdg-f">Tidak ada dam</span></td>
+          <td data-label="Keterangan">Banyak dipilih para ulama klasik. Umar bin Khattab dan Ibnu Umar sangat menganjurkan ini.</td>
+        </tr>
+        <tr>
+          <td data-label="Jenis"><strong>Tamattu'</strong> — التَّمَتُّعُ</td>
+          <td data-label="Cara">Berihram untuk umrah di bulan haji → selesai umrah bertahallul → berihram lagi untuk haji pada 8 Dzulhijjah.</td>
+          <td data-label="Dam"><span class="tbdg tbdg-t">Sembelih kambing (wajib)</span></td>
+          <td data-label="Keterangan">Paling banyak dipilih jamaah haji Indonesia. Paling mudah secara teknis. Nabi ﷺ menganjurkan sahabat yang tidak membawa hewan qurban untuk bertamattu'.</td>
+        </tr>
+        <tr>
+          <td data-label="Jenis"><strong>Qiran</strong> — الْقِرَانُ</td>
+          <td data-label="Cara">Berihram untuk haji dan umrah sekaligus dalam satu niat — tidak bertahallul di antara keduanya. Thawaf dan sa'i satu kali untuk keduanya.</td>
+          <td data-label="Dam"><span class="tbdg tbdg-t">Sembelih kambing (wajib)</span></td>
+          <td data-label="Keterangan">Menurut sebagian riwayat ini yang dilakukan Nabi ﷺ pada Haji Wada'. Lebih berat fisik karena ihram lebih lama.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══ BAB V: THAWAF ══ -->
+<div class="chap">
+  <div class="chap-stripe cs-c"></div>
+  <div class="chap-body cb-c">
+    <div class="chap-tag ct-c">✦ Bab Kelima</div>
+    <div class="chap-ar car-c">الطَّوَافُ حَوْلَ الْبَيْتِ الْعَتِيقِ</div>
+    <div class="chap-title">Thawaf — Mengelilingi Ka'bah Tujuh Putaran</div>
+  </div>
+</div>
+<div class="sec">
+  <div class="prose fl-c c-lead">
+    <p class="lead">Thawaf adalah mengelilingi Ka'bah sebanyak tujuh putaran dimulai dan diakhiri di Hajar Aswad, dengan Ka'bah selalu berada di sebelah kiri. Ia adalah salah satu rukun haji yang paling agung — jutaan manusia dari seluruh penjuru bumi berputar dalam satu arah, bersatu dalam satu titik cinta: Ka'bah yang dibangun Ibrahim 'alaihissalam.</p>
+    <p>Ada beberapa jenis thawaf: Thawaf Qudum (kedatangan), Thawaf Ifadhah/Ziyarah (rukun haji pada 10 Dzulhijjah), dan Thawaf Wada' (perpisahan). Yang merupakan rukun haji adalah Thawaf Ifadhah — tanpanya haji tidak sah.</p>
+  </div>
+
+  <p style="font-family:'Barlow',sans-serif;font-weight:600;font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--cobalt-d);margin:0 0 12px;">Syarat-Syarat Sahnya Thawaf</p>
+  <div class="rsteps">
+    <div class="rstep rs-c">
+      <div class="rs-num rn-c">١</div>
+      <div class="rs-body">
+        <div class="rs-title">Suci dari Hadats &amp; Najis</div>
+        <div class="rs-desc">Thawaf disyaratkan dalam keadaan suci (berwudhu) menurut jumhur — karena Nabi ﷺ berwudhu sebelum thawaf. Nabi ﷺ bersabda: "Thawaf adalah shalat, hanya saja Allah menghalalkan bicara di dalamnya." Wanita haidh atau nifas tidak boleh thawaf hingga suci.</div>
+        <span class="rs-badge rb-c">Wajib menurut Syafi'i &amp; Hanbali</span>
+      </div>
+    </div>
+    <div class="rstep rs-c">
+      <div class="rs-num rn-c">٢</div>
+      <div class="rs-body">
+        <div class="rs-title">Ka'bah di Sebelah Kiri — Berlawanan Arah Jarum Jam</div>
+        <div class="rs-ar">جَعْلُ الْكَعْبَةِ عَنِ الْيَسَارِ</div>
+        <div class="rs-desc">Thawaf harus berlawanan arah jarum jam (counterclockwise) — Ka'bah selalu di sebelah kiri. Jika Ka'bah berada di kanan, putaran itu tidak dihitung.</div>
+        <span class="rs-badge rb-c">Rukun</span>
+      </div>
+    </div>
+    <div class="rstep rs-c">
+      <div class="rs-num rn-c">٣</div>
+      <div class="rs-body">
+        <div class="rs-title">Dimulai dari Hajar Aswad — Tujuh Putaran</div>
+        <div class="rs-ar">الِابْتِدَاءُ مِنَ الْحَجَرِ الأَسْوَدِ</div>
+        <div class="rs-desc">Setiap putaran dimulai dan diakhiri di garis sejajar Hajar Aswad. Saat memulai dan tiap melewatinya, disunnahkan mengusap/menciumnya, atau jika tidak memungkinkan, cukup mengisyaratkan tangan ke arahnya sambil bertakbir. Total tujuh putaran.</div>
+        <span class="rs-badge rb-c">Syarat — Rukun</span>
+      </div>
+    </div>
+    <div class="rstep rs-c">
+      <div class="rs-num rn-c">٤</div>
+      <div class="rs-body">
+        <div class="rs-title">Di Luar Hijr Ismail — Di Dalam Masjidil Haram</div>
+        <div class="rs-desc">Thawaf harus di luar Hijr Ismail (teras setengah lingkaran di sisi utara Ka'bah), karena Hijr Ismail adalah bagian Ka'bah. Thawaf yang memotong Hijr Ismail tidak sah untuk putaran tersebut.</div>
+        <span class="rs-badge rb-c">Syarat</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hl hl-c">
+    <div class="hl-label hll-c">✦ Sunnah-Sunnah Thawaf</div>
+    <div class="hl-trans">Raml (berlari-lari kecil) di tiga putaran pertama Thawaf Qudum untuk laki-laki · Idhtibā' (membuka bahu kanan dari ridā') untuk laki-laki · Mengusap Rukun Yamani (sudut selatan Ka'bah) dengan tangan tanpa menciumnya · Berdoa antara Rukun Yamani dan Hajar Aswad dengan: "Rabbanā ātinā fid-dunyā ḥasanah..." · Shalat dua rakaat di belakang Maqam Ibrahim setelah selesai thawaf.</div>
+    <div class="hl-ref hlr-c">HR. Bukhari (1603) — Raml · HR. Abu Dawud (1878) — Doa Rukun Yamani</div>
+  </div>
+</div>
+
+<!-- ══ BAB VI: SA'I ══ -->
+<div class="chap">
+  <div class="chap-stripe cs-t"></div>
+  <div class="chap-body cb-t">
+    <div class="chap-tag ct-t">✦ Bab Keenam</div>
+    <div class="chap-ar car-t">السَّعْيُ بَيْنَ الصَّفَا وَالْمَرْوَةِ</div>
+    <div class="chap-title">Sa'i — Berlari Kecil antara Shafa &amp; Marwah</div>
+  </div>
+</div>
+<div class="sec">
+  <div class="prose fl-t t-lead">
+    <p class="lead">Sa'i adalah berjalan (dan berlari kecil di bagian tertentu) antara bukit Shafa dan Marwah sebanyak tujuh kali. Ia adalah rukun haji dan umrah yang mengabadikan perjuangan Hajar — ibu Nabi Ismail — yang berlari mencari air untuk anaknya yang kehausan di padang tandus. Allah mengabadikan kisah ini dalam ritual haji untuk seluruh umat Islam hingga akhir zaman.</p>
+    <p>Sa'i dimulai dari Shafa dan diakhiri di Marwah. Shafa ke Marwah dihitung satu, dan Marwah ke Shafa dihitung satu — sehingga total tujuh kali. Dilakukan setelah thawaf. Sa'i tidak disyaratkan dalam keadaan suci menurut pendapat yang lebih kuat, namun tetap dianjurkan.</p>
+  </div>
+
+  <div class="dalil da-t">
+    <div class="db-t"></div>
+    <div class="dbody">
+      <div class="dtag dtag-t">📖 QS. Al-Baqarah: 158 — Shafa &amp; Marwah Syiar Allah</div>
+      <div class="dar dar-t">إِنَّ الصَّفَا وَالْمَرْوَةَ مِن شَعَائِرِ اللَّهِ ۖ فَمَنْ حَجَّ الْبَيْتَ أَوِ اعْتَمَرَ فَلَا جُنَاحَ عَلَيْهِ أَن يَطَّوَّفَ بِهِمَا</div>
+      <div class="dtrans">"Sesungguhnya Shafa dan Marwah merupakan sebagian syiar-syiar Allah. Maka barangsiapa beribadah haji ke Baitullah atau berumrah, tidak ada dosa baginya mengerjakan sa'i antara keduanya."</div>
+      <div class="dref dref-t">QS. Al-Baqarah (2): 158</div>
+    </div>
+  </div>
+
+  <p style="font-family:'Barlow',sans-serif;font-weight:600;font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--terra-d);margin:16px 0 12px;">Tata Cara Sa'i</p>
+  <div class="rsteps">
+    <div class="rstep rs-t">
+      <div class="rs-num rn-t">١</div>
+      <div class="rs-body">
+        <div class="rs-title">Naik ke Shafa — Membaca Doa &amp; Menghadap Kiblat</div>
+        <div class="rs-desc">Sa'i dimulai dari Shafa. Saat mendekatinya, baca: "Innash-Shafā wal-Marwata min sya'ā'irillāh." Naik ke Shafa hingga bisa melihat Ka'bah, menghadap kiblat, bertakbir tiga kali, lalu berdoa: "Lā ilāha illallāhu waḥdahu lā syarīka lah, lahul-mulku..." (dibaca 3 kali).</div>
+        <span class="rs-badge rb-t">Putaran dimulai dari Shafa</span>
+      </div>
+    </div>
+    <div class="rstep rs-t">
+      <div class="rs-num rn-t">٢</div>
+      <div class="rs-body">
+        <div class="rs-title">Berjalan ke Marwah — Berlari Kecil di Tanda Hijau</div>
+        <div class="rs-desc">Berjalan dari Shafa ke Marwah. Di antara dua tanda hijau (Mil Akhdar) di lembah, laki-laki berlari-lari kecil (harwalah). Wanita berjalan biasa. Sepanjang perjalanan berdoa dan berzikir sesuai keinginan.</div>
+        <span class="rs-badge rb-t">Shafa → Marwah = Putaran 1</span>
+      </div>
+    </div>
+    <div class="rstep rs-t">
+      <div class="rs-num rn-t">٣–٦</div>
+      <div class="rs-body">
+        <div class="rs-title">Doa di Marwah — Lanjut Bolak-balik</div>
+        <div class="rs-desc">Di Marwah, menghadap Ka'bah, berdoa seperti di Shafa. Kemudian kembali ke Shafa (= putaran ke-2). Demikian seterusnya hingga putaran ke-7 yang berakhir di Marwah.</div>
+        <span class="rs-badge rb-t">Putaran ke-7 berakhir di Marwah</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ BAB VII: WUKUF ══ -->
+<div class="chap">
+  <div class="chap-stripe cs-n"></div>
+  <div class="chap-body cb-n">
+    <div class="chap-tag ct-n">✦ Bab Ketujuh — Puncak Haji</div>
+    <div class="chap-ar car-n">الْوُقُوفُ بِعَرَفَةَ — رُكْنُ الْحَجِّ الأَعْظَمُ</div>
+    <div class="chap-title ct-n-title">Wukuf di Arafah — Rukun Haji yang Paling Agung</div>
+  </div>
+</div>
+<div class="sec">
+  <div class="prose fl-a">
+    <p class="lead" style="color:var(--amber-d);">"Al-Ḥajju 'Arafah" — "Haji itu (intinya) adalah Arafah." Wukuf di Arafah adalah rukun haji yang paling utama — siapapun yang melewatkan wukuf maka hajinya batal dan harus mengulang di tahun berikutnya. Wukuf dilakukan pada tanggal 9 Dzulhijjah dari tergelincirnya matahari (Zhuhur) hingga terbit fajar hari berikutnya.</p>
+    <p>Di Arafah tidak ada ritual khusus selain kehadiran, zikir, doa, dan taubat. Inilah momen yang paling dinantikan — saat Allah turun ke langit dunia dan membanggakan para hamba-Nya yang hadir kepada para malaikat. Doa-doa mustajab. Air mata tumpah. Dosa-dosa diampuni. Dan kehidupan dimulai kembali sebagai manusia baru.</p>
+  </div>
+
+  <div class="dalil da-dk">
+    <div class="db-dk"></div>
+    <div class="dbody">
+      <div class="dtag dtag-dk">📜 HR. Abu Dawud &amp; Tirmidzi — Haji itu Arafah</div>
+      <div class="dar dar-dk">الْحَجُّ عَرَفَةُ فَمَنْ أَدْرَكَ عَرَفَةَ فَقَدْ أَدْرَكَ الْحَجَّ</div>
+      <div class="dtrans dtrans-dk">"Haji itu (intinya) adalah Arafah. Barangsiapa yang mendapatkan (wukuf di) Arafah, maka ia telah mendapatkan haji."</div>
+      <div class="dref dref-dk">HR. Abu Dawud (1949), Tirmidzi (889) — dari Abdurrahman bin Ya'mar — Shahih</div>
+    </div>
+  </div>
+
+  <div class="dalil da-dk">
+    <div class="db-dk"></div>
+    <div class="dbody">
+      <div class="dtag dtag-dk">📜 HR. Muslim — Allah Membanggakan Jamaah Haji di Arafah</div>
+      <div class="dar dar-dk">إِنَّ اللَّهَ يُبَاهِي بِأَهْلِ عَرَفَاتٍ مَلَائِكَتَهُ يَقُولُ انْظُرُوا إِلَى عِبَادِي أَتَوْنِي شُعْثًا غُبْرًا</div>
+      <div class="dtrans dtrans-dk">"Sesungguhnya Allah membanggakan jamaah Arafah kepada para malaikat-Nya dan berkata: 'Lihatlah hamba-hamba-Ku, mereka datang kepada-Ku dalam keadaan kusut dan berdebu.'"</div>
+      <div class="dref dref-dk">HR. Muslim (1348) — dari Abu Hurairah radhiyallahu 'anhu</div>
+    </div>
+  </div>
+
+  <p style="font-family:'Barlow',sans-serif;font-weight:600;font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--amber-d);margin:16px 0 12px;">Amalan Wukuf di Arafah</p>
+  <div class="rsteps">
+    <div class="rstep rs-a">
+      <div class="rs-num rn-a">١</div>
+      <div class="rs-body">
+        <div class="rs-title">Shalat Zhuhur &amp; Ashar Jamak Qasar di Arafah</div>
+        <div class="rs-desc">Menjamak Zhuhur dan Ashar dengan qashar (masing-masing 2 rakaat) di waktu Zhuhur tanpa jeda — agar lebih banyak waktu untuk wukuf dan berdoa. Sunnah Nabi ﷺ yang sangat dianjurkan.</div>
+        <span class="rs-badge rb-a">HR. Bukhari (1664) &amp; Muslim (1218)</span>
+      </div>
+    </div>
+    <div class="rstep rs-a">
+      <div class="rs-num rn-a">٢</div>
+      <div class="rs-body">
+        <div class="rs-title">Memperbanyak Doa, Zikir &amp; Talbiyah</div>
+        <div class="rs-ar">خَيْرُ الدُّعَاءِ دُعَاءُ يَوْمِ عَرَفَةَ</div>
+        <div class="rs-desc">"Doa terbaik adalah doa hari Arafah." — HR. Tirmidzi (3585). Perbanyak doa dalam bahasa apapun, taubat tulus, talbiyah, dan dzikir. Nabi ﷺ mengangkat tangan saat berdoa di Arafah. Dianjurkan membaca: "Lā ilāha illallāhu waḥdahu lā syarīka lah, lahul-mulku wa lahul-ḥamd, wa huwa 'alā kulli syay'in qadīr."</div>
+        <span class="rs-badge rb-a">HR. Tirmidzi (3585) — Hasan</span>
+      </div>
+    </div>
+    <div class="rstep rs-a">
+      <div class="rs-num rn-a">٣</div>
+      <div class="rs-body">
+        <div class="rs-title">Berangkat ke Muzdalifah Setelah Maghrib</div>
+        <div class="rs-ar">الدَّفْعُ إِلَى مُزْدَلِفَةَ بَعْدَ الْغُرُوبِ</div>
+        <div class="rs-desc">Wajib menunggu hingga matahari terbenam sebelum meninggalkan Arafah — ini adalah larangan yang tegas. Berangkat ke Muzdalifah dengan tenang. Di sana shalat Maghrib + Isya dijamak dan diqashar. Bermalam minimal hingga pertengahan malam.</div>
+        <span class="rs-badge rb-a">Wajib — tidak boleh sebelum Maghrib</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="banner banner-dk">
+    <div class="ban-ar bnar-dk">خَيْرُ الدُّعَاءِ دُعَاءُ يَوْمِ عَرَفَةَ وَخَيْرُ مَا قُلْتُ أَنَا وَالنَّبِيُّونَ مِنْ قَبْلِي لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ</div>
+    <div class="ban-id bnid-dk">"Doa terbaik adalah doa hari Arafah, dan sebaik-baik yang aku dan para nabi sebelumku ucapkan adalah: Lā ilāha illallāhu waḥdahu lā syarīka lah, lahul-mulku wa lahul-ḥamd, wa huwa 'alā kulli syay'in qadīr." — Perbanyak kalimat ini saat wukuf di Padang Arafah.</div>
+    <div class="ban-ref bnref-dk">HR. Tirmidzi (3585) &amp; Malik dalam Al-Muwaththa' — Hasan</div>
+  </div>
+</div>
+
+<!-- ══ BAB VIII: RANGKAIAN RITUAL SETELAH WUKUF ══ -->
+<div class="chap">
+  <div class="chap-stripe cs-f"></div>
+  <div class="chap-body cb-f">
+    <div class="chap-tag ct-f">✦ Bab Kedelapan</div>
+    <div class="chap-ar car-f">مَنَاسِكُ الْحَجِّ بَعْدَ عَرَفَةَ</div>
+    <div class="chap-title">Rangkaian Ritual Setelah Wukuf hingga Selesai Haji</div>
+  </div>
+</div>
+<div class="sec">
+  <div class="tbl-wrap">
+    <table class="tbl th-f">
+      <thead>
+        <tr>
+          <th style="width:18%">Waktu</th>
+          <th style="width:22%">Ritual</th>
+          <th style="width:15%">Status</th>
+          <th style="width:45%">Penjelasan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Waktu">9 Dzulhijjah malam</td>
+          <td data-label="Ritual">Bermalam di Muzdalifah</td>
+          <td data-label="Status"><span class="tbdg tbdg-f">Wajib</span></td>
+          <td data-label="Penjelasan">Bermalam minimal hingga pertengahan malam. Shalat Maghrib + Isya dijamak taakhir. Kumpulkan 7 kerikil untuk jumrah 'Aqabah. Kaum lemah boleh berangkat lebih awal.</td>
+        </tr>
+        <tr>
+          <td data-label="Waktu">10 Dzulhijjah pagi</td>
+          <td data-label="Ritual">Melempar Jumrah 'Aqabah</td>
+          <td data-label="Status"><span class="tbdg tbdg-f">Wajib</span></td>
+          <td data-label="Penjelasan">Lempar 7 kerikil ke Jumrah Aqabah satu per satu sambil membaca "Bismillāh, Allāhu Akbar." Saat melempar, talbiyah dihentikan. Boleh dilakukan sejak setelah tengah malam bagi kaum lemah.</td>
+        </tr>
+        <tr>
+          <td data-label="Waktu">10 Dzulhijjah</td>
+          <td data-label="Ritual">Sembelih Hewan Qurban (Dam)</td>
+          <td data-label="Status"><span class="tbdg tbdg-f">Wajib (Tamattu' &amp; Qiran)</span></td>
+          <td data-label="Penjelasan">Sembelih satu kambing atau 1/7 sapi/unta sebagai dam tamattu' atau qiran. Boleh diwakilkan melalui lembaga resmi. Haji ifrad tidak wajib dam.</td>
+        </tr>
+        <tr>
+          <td data-label="Waktu">10 Dzulhijjah</td>
+          <td data-label="Ritual">Cukur/Potong Rambut (Tahallul Awal)</td>
+          <td data-label="Status"><span class="tbdg tbdg-f">Wajib</span></td>
+          <td data-label="Penjelasan">Laki-laki mencukur seluruh kepala (afdhal) atau memendekkan. Wanita memendekkan sekitar 3 cm. Setelah ini semua larangan ihram dibolehkan kecuali jima' (tahallul awal).</td>
+        </tr>
+        <tr>
+          <td data-label="Waktu">10–13 Dzulhijjah</td>
+          <td data-label="Ritual">Thawaf Ifadhah + Sa'i</td>
+          <td data-label="Status"><span class="tbdg tbdg-t">Rukun — Wajib</span></td>
+          <td data-label="Penjelasan">Rukun haji yang tidak boleh ditinggalkan. Setelah thawaf ifadhah dan sa'i, tahallul sempurna (tahallul tsani) — seluruh larangan ihram dibolehkan kembali termasuk jima'.</td>
+        </tr>
+        <tr>
+          <td data-label="Waktu">11, 12, 13 Dzulhijjah</td>
+          <td data-label="Ritual">Bermalam di Mina &amp; Melempar 3 Jumrah</td>
+          <td data-label="Status"><span class="tbdg tbdg-f">Wajib</span></td>
+          <td data-label="Penjelasan">Bermalam di Mina pada malam 11-12 (wajib). Setiap siang melempar 3 jumrah (Ula, Wustha, Aqabah) masing-masing 7 batu setelah Zhuhur. Boleh nafar awal (pulang 12 Dzulhijjah) atau nafar tsani (13 Dzulhijjah).</td>
+        </tr>
+        <tr>
+          <td data-label="Waktu">Sebelum meninggalkan Makkah</td>
+          <td data-label="Ritual">Thawaf Wada'</td>
+          <td data-label="Status"><span class="tbdg tbdg-f">Wajib</span></td>
+          <td data-label="Penjelasan">Thawaf terakhir sebelum meninggalkan Makkah. Jika ditinggalkan tanpa uzur wajib bayar dam. Wanita haidh atau nifas dikecualikan menurut pendapat yang kuat.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══ HIKMAH HAJI ══ -->
+<div class="chap">
+  <div class="chap-stripe cs-a"></div>
+  <div class="chap-body cb-a">
+    <div class="chap-tag ct-a">✦ Penutup</div>
+    <div class="chap-ar car-a">حِكَمُ الْحَجِّ الْعَظِيمَةُ</div>
+    <div class="chap-title">Hikmah Agung di Balik Ibadah Haji</div>
+  </div>
+</div>
+<div class="sec" style="border-bottom:none;">
+  <div class="prose fl-a">
+    <p class="lead">Setiap ritual haji menyimpan makna yang dalam. Pakaian ihram yang menyamakan semua manusia mengajarkan bahwa di hadapan Allah tidak ada kelas sosial. Wukuf di Arafah adalah latihan Hari Kiamat — semua manusia berkumpul tanpa kecuali. Sa'i adalah penghormatan kepada perjuangan seorang ibu. Melempar jumrah adalah deklarasi perang total melawan setan. Dan thawaf adalah ekspresi cinta yang paling murni kepada Allah.</p>
+    <p>Haji yang mabrur mengubah cara seorang Muslim memandang dirinya, dunia, dan Allah. Ia kembali dengan jiwa yang bersih seperti hari lahir — siap memulai lembaran baru yang lebih baik, lebih tunduk, dan lebih cinta kepada Allah dan sesama manusia.</p>
+  </div>
+
+  <div class="dalil da-a">
+    <div class="db-a"></div>
+    <div class="dbody">
+      <div class="dtag dtag-a">📜 HR. Tirmidzi — Haji &amp; Umrah Menghapus Dosa</div>
+      <div class="dar dar-a">تَابِعُوا بَيْنَ الْحَجِّ وَالْعُمْرَةِ فَإِنَّهُمَا يَنْفِيَانِ الْفَقْرَ وَالذُّنُوبَ كَمَا يَنْفِي الْكِيرُ خَبَثَ الْحَدِيدِ</div>
+      <div class="dtrans">"Iringilah antara haji dan umrah, karena keduanya menghapus kemiskinan dan dosa sebagaimana api pandai besi menghilangkan kotoran besi."</div>
+      <div class="dref dref-a">HR. Tirmidzi (810) &amp; Nasā'i (2630) — dari Ibnu Mas'ud radhiyallahu 'anhu — Shahih</div>
+    </div>
+  </div>
+
+  <div class="banner banner-a">
+    <div class="ban-ar bnar-a">لَبَّيْكَ اللَّهُمَّ لَبَّيْكَ ۚ لَبَّيْكَ لَا شَرِيكَ لَكَ لَبَّيْكَ ۚ إِنَّ الْحَمْدَ وَالنِّعْمَةَ لَكَ وَالْمُلْكَ ۚ لَا شَرِيكَ لَكَ</div>
+    <div class="ban-id bnid-a">"Aku penuhi panggilan-Mu ya Allah, aku penuhi. Tidak ada sekutu bagi-Mu, aku penuhi. Sesungguhnya segala pujian, kenikmatan, dan kerajaan hanya milik-Mu. Tidak ada sekutu bagi-Mu." — Talbiyah ini adalah jawaban atas panggilan Ibrahim 'alaihissalam yang diabadikan Al-Qur'an (QS. Al-Hajj: 27) — panggilan yang masih bergema hingga hari ini di bibir jutaan jamaah haji setiap tahunnya.</div>
+    <div class="ban-ref bnref-a">HR. Bukhari (1549) &amp; Muslim (1184) — Talbiyah yang diajarkan Nabi ﷺ</div>
+  </div>
+</div>
+
+</div><!-- end wrap -->
+
+<!-- ══ PENUTUP ══ -->
+<div class="penutup">
+  <div class="penutup-inner">
+    <div class="penutup-ar">وَأَذِّن فِي النَّاسِ بِالْحَجِّ يَأْتُوكَ رِجَالًا وَعَلَىٰ كُلِّ ضَامِرٍ يَأْتِينَ مِن كُلِّ فَجٍّ عَمِيقٍ</div>
+    <div class="penutup-div"></div>
+    <p class="penutup-p">"Dan serulah manusia untuk mengerjakan haji, niscaya mereka akan datang kepadamu dengan berjalan kaki, dan mengendarai setiap unta yang kurus, mereka datang dari segenap penjuru yang jauh." — QS. Al-Hajj: 27. Seruan Ibrahim 'alaihissalam masih bergema ribuan tahun kemudian, dijawab oleh jutaan manusia setiap tahun dari seluruh penjuru bumi.</p>
+    <p class="penutup-p" style="margin-top:10px;">Semoga Allah memberikan kemampuan kepada kita semua untuk menunaikan rukun Islam yang kelima ini, menerima haji kita sebagai haji yang mabrur, mengampuni seluruh dosa kita, dan memperkenankan kita kembali ke tanah haram berkali-kali hingga akhir hayat kita. Āmīn yā Rabbal 'Ālamīn.</p>
+    <div class="penutup-div"></div>
+    <div class="dalil da-dk" style="text-align:left;">
+      <div class="db-dk"></div>
+      <div class="dbody">
+        <div class="dtag dtag-dk">📜 Doa Memohon Haji Mabrur</div>
+        <div class="dar dar-dk">اللَّهُمَّ ارْزُقْنَا حَجَّ بَيْتِكَ الْحَرَامِ وَزِيَارَةَ قَبْرِ نَبِيِّكَ ﷺ وَاجْعَلْ حَجَّنَا مَبْرُورًا وَسَعْيَنَا مَشْكُورًا وَذَنْبَنَا مَغْفُورًا</div>
+        <div class="dtrans dtrans-dk">"Ya Allah, anugerahkanlah kepada kami haji ke Baitullah Al-Haram dan ziarah ke makam Nabi-Mu ﷺ, jadikanlah haji kami mabrur, sa'i kami diterima, dan dosa kami diampuni."</div>
+        <div class="dref dref-dk">Doa yang banyak dibaca para ulama dan jamaah yang merindukan Baitullah</div>
+      </div>
+    </div>
+    <div class="penutup-footer">
+      <div class="logo">كِتَابُ الْحَجِّ</div>
+      <div class="tag">وَاللّٰهُ أَعْلَمُ بِالصَّوَابِ · Semoga Bermanfaat</div>
+    </div>
+  </div>
+</div>
+
+<script>
+// Star field
+const sf=document.getElementById('stars');
+for(let i=0;i<180;i++){
+  const s=document.createElement('div');s.className='hstar';
+  const sz=Math.random()*1.8+.3;
+  s.style.cssText=`width:${sz}px;height:${sz}px;left:${Math.random()*100}%;top:${Math.random()*80}%;--st:${(Math.random()*4+2).toFixed(1)}s;--so:${(Math.random()*.5+.1).toFixed(2)};animation-delay:${(Math.random()*5).toFixed(1)}s;${Math.random()<.06?'background:rgba(248,216,112,.9);':''}`;
+  sf.appendChild(s);
+}
+</script>
+</body>
+</html>
