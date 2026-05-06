@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Perjalanan Setelah Kiamat — Dari Kebangkitan hingga Surga & Neraka</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;900&family=Amiri:ital,wght@0,400;0,700;1,400&family=Raleway:ital,wght@0,200;0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+
+:root{
+  --void:     #000000;
+  --abyss:    #02020a;
+  --deep:     #050510;
+  --cosmos:   #080820;
+  --midnight: #0c0c30;
+  --indigo:   #10104a;
+  --royal:    #181870;
+  --cobalt:   #2020a0;
+  --azure:    #3040c0;
+  --silver:   #a0b0d0;
+  --moon:     #d8e4f8;
+  --white:    #ffffff;
+  --gold:     #c8a000;
+  --gold-lt:  #e8c010;
+  --gold-pale:#fffae0;
+  --dawn:     #f8e4b0;
+  --amber:    #e08000;
+  --ember:    #d04000;
+  --lava:     #a82000;
+  --blood:    #700000;
+  --jade:     #006060;
+  --jade-lt:  #00a888;
+  --jade-pale:#e0fff8;
+  --violet:   #6000a0;
+  --violet-lt:#9030d0;
+  --b-gold:   rgba(200,160,0,.2);
+  --b-silver: rgba(160,176,208,.15);
+  --b-jade:   rgba(0,168,136,.18);
+  --b-ember:  rgba(208,64,0,.2);
+  --b-violet: rgba(96,0,160,.18);
+}
+
+html{scroll-behavior:smooth;}
+body{background:var(--abyss);font-family:'Cinzel',serif;color:var(--moon);overflow-x:hidden;}
+
+/* CANVAS STARFIELD */
+#canvas{position:fixed;inset:0;z-index:0;pointer-events:none;}
+
+/* ══════════════════════════════
+   HERO — THE LAST TRUMPET
+══════════════════════════════ */
+.hero{
+  min-height:100vh;position:relative;z-index:1;
+  background:radial-gradient(ellipse 60% 40% at 50% 50%,rgba(32,32,160,.15) 0%,transparent 70%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:80px 24px 120px;overflow:hidden;
+}
+
+/* Shockwave rings */
+.rings{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
+.ring{
+  position:absolute;top:50%;left:50%;border-radius:50%;
+  border:1px solid rgba(200,160,0,.15);
+  animation:ringExpand 8s ease-out infinite;
+}
+.ring:nth-child(1){width:200px;height:200px;margin:-100px 0 0 -100px;animation-delay:0s;}
+.ring:nth-child(2){width:400px;height:400px;margin:-200px 0 0 -200px;animation-delay:2s;}
+.ring:nth-child(3){width:700px;height:700px;margin:-350px 0 0 -350px;animation-delay:4s;}
+.ring:nth-child(4){width:1100px;height:1100px;margin:-550px 0 0 -550px;animation-delay:6s;}
+@keyframes ringExpand{
+  0%{transform:scale(.3);opacity:.8;}
+  100%{transform:scale(1);opacity:0;}
+}
+
+.hero-inner{position:relative;z-index:2;max-width:780px;}
+
+.hero-icon{
+  font-size:clamp(2rem,6vw,4rem);
+  display:block;margin-bottom:14px;
+  animation:hrise 2s ease both;
+  filter:drop-shadow(0 0 16px rgba(200,160,0,.6));
+}
+
+.hero-bismillah{
+  font-family:'Amiri',serif;
+  font-size:clamp(1.5rem,4.5vw,2.9rem);
+  color:var(--gold-lt);
+  text-shadow:0 0 30px rgba(200,160,0,.5);
+  line-height:1.9;margin-bottom:14px;
+  animation:hrise 2s ease both .1s;
+}
+
+.hero-kicker{
+  font-family:'Raleway',sans-serif;font-weight:300;
+  font-size:clamp(.6rem,1.4vw,.74rem);letter-spacing:8px;text-transform:uppercase;
+  color:rgba(160,176,208,.45);margin-bottom:20px;
+  animation:hrise 2s ease both .22s;
+}
+
+.hero-title{
+  font-family:'Cinzel',serif;font-weight:900;
+  font-size:clamp(2.4rem,7.5vw,6rem);
+  line-height:1.05;letter-spacing:-1px;
+  background:linear-gradient(160deg,var(--white) 0%,var(--gold-lt) 35%,var(--moon) 65%,var(--silver) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  margin-bottom:6px;animation:hrise 2s ease both .07s;
+}
+
+.hero-sub{
+  display:block;
+  font-family:'Raleway',sans-serif;font-weight:300;font-style:italic;
+  font-size:clamp(1rem,2.5vw,1.7rem);
+  color:rgba(160,176,208,.6);letter-spacing:2px;
+  margin-bottom:26px;animation:hrise 2s ease both .28s;
+}
+
+.hero-rule{
+  display:flex;align-items:center;justify-content:center;gap:14px;
+  margin:0 auto 28px;animation:hrise 2s ease both .38s;
+}
+.hero-rule span{width:80px;height:1px;background:linear-gradient(90deg,transparent,rgba(200,160,0,.4));}
+.hero-rule span:last-child{background:linear-gradient(90deg,rgba(200,160,0,.4),transparent);}
+.hero-rule em{color:rgba(200,160,0,.6);font-style:normal;letter-spacing:8px;}
+
+.hero-verse{
+  max-width:600px;margin:0 auto;padding:22px 32px;
+  background:rgba(2,2,10,.7);border:1px solid rgba(200,160,0,.2);
+  backdrop-filter:blur(10px);animation:hrise 2s ease both .5s;
+}
+.hv-ar{font-family:'Amiri',serif;font-size:clamp(1rem,2.5vw,1.42rem);color:var(--gold-lt);line-height:2.2;direction:rtl;margin-bottom:10px;}
+.hv-id{font-family:'Raleway',sans-serif;font-weight:300;font-style:italic;font-size:.83rem;color:rgba(160,176,208,.55);line-height:1.7;}
+
+@keyframes hrise{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+
+/* ══════════════════════════════
+   BODY
+══════════════════════════════ */
+.wrap{max-width:920px;margin:0 auto;padding:0 16px 80px;position:relative;z-index:1;}
+
+/* Stage markers — numbered circles on timeline */
+.stage{
+  margin:56px 0 0;
+  position:relative;
+  padding:0 0 0 80px;
+}
+.stage::before{
+  content:'';
+  position:absolute;left:28px;top:0;bottom:-56px;
+  width:2px;
+  background:linear-gradient(180deg,var(--stage-color, rgba(200,160,0,.4)),rgba(200,160,0,.1));
+}
+.stage:last-child::before{display:none;}
+
+.stage-circle{
+  position:absolute;left:0;top:0;
+  width:58px;height:58px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Cinzel',serif;font-weight:900;
+  font-size:1.1rem;
+  background:var(--stage-color,var(--gold));
+  box-shadow:0 0 20px var(--stage-glow,rgba(200,160,0,.4));
+  z-index:2;
+  transition:box-shadow .3s;
+}
+
+.stage-header{padding:12px 0 0;}
+.stage-num-label{
+  font-family:'Raleway',sans-serif;font-weight:600;
+  font-size:.6rem;letter-spacing:5px;text-transform:uppercase;
+  margin-bottom:6px;
+  color:var(--stage-color,var(--gold));
+}
+.stage-ar{
+  font-family:'Amiri',serif;
+  font-size:clamp(1.2rem,3vw,1.9rem);
+  line-height:1.8;margin-bottom:4px;
+  color:var(--stage-color,var(--gold));
+}
+.stage-title{
+  font-family:'Cinzel',serif;font-weight:700;
+  font-size:clamp(1.1rem,2.8vw,1.8rem);
+  line-height:1.2;color:var(--white);
+  margin-bottom:20px;
+}
+
+/* Stage content area */
+.stage-content{
+  padding:24px 28px;
+  border:1px solid var(--stage-border,rgba(200,160,0,.15));
+  background:var(--stage-bg,rgba(8,8,32,.6));
+  backdrop-filter:blur(8px);
+}
+
+/* ══════════════════════════════
+   PROSE — JUSTIFIED
+══════════════════════════════ */
+.prose p{
+  font-family:'Raleway',sans-serif;font-weight:300;
+  font-size:clamp(.97rem,2.1vw,1.06rem);
+  line-height:2.1;color:rgba(216,228,248,.82);
+  margin-bottom:15px;
+  text-align:justify;hyphens:auto;-webkit-hyphens:auto;
+}
+.prose p.lead{
+  font-style:italic;font-weight:400;
+  font-size:clamp(1rem,2.2vw,1.1rem);
+  line-height:1.92;
+  color:var(--stage-color,var(--gold));
+  text-align:justify;
+}
+.prose p:first-of-type:not(.lead)::first-letter{
+  font-family:'Cinzel',serif;font-weight:900;
+  font-size:4em;line-height:.72;
+  float:left;margin:8px 12px 0 0;
+  color:var(--stage-color,var(--gold));
+}
+
+/* ══════════════════════════════
+   DALIL
+══════════════════════════════ */
+.dalil{margin:22px 0;display:grid;grid-template-columns:4px 1fr;}
+.dalil-body{padding:16px 20px 13px;}
+.dalil-bar{/* set per instance */}
+.d-tag{font-family:'Raleway',sans-serif;font-weight:600;font-size:.6rem;letter-spacing:4px;text-transform:uppercase;margin-bottom:9px;display:flex;align-items:center;gap:10px;}
+.d-tag::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--stage-line,rgba(200,160,0,.2)),transparent);}
+.d-ar{font-family:'Amiri',serif;font-size:clamp(1.1rem,2.8vw,1.5rem);line-height:2.2;direction:rtl;text-align:right;margin-bottom:11px;padding-bottom:9px;border-bottom:1px dashed var(--stage-line,rgba(200,160,0,.18));}
+.d-trans{font-family:'Raleway',sans-serif;font-weight:300;font-style:italic;font-size:.92rem;line-height:1.82;color:rgba(192,208,240,.75);margin-bottom:7px;text-align:justify;}
+.d-ref{font-family:'Raleway',sans-serif;font-weight:600;font-size:.6rem;letter-spacing:2px;text-transform:uppercase;}
+
+/* ══════════════════════════════
+   INFO CARDS — grid
+══════════════════════════════ */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:5px;margin:20px 0;}
+.card{padding:18px 16px;border:1px solid var(--stage-border,rgba(200,160,0,.15));background:rgba(0,0,0,.3);}
+.card-icon{font-size:1.5rem;margin-bottom:8px;display:block;}
+.card-title{font-family:'Cinzel',serif;font-size:.88rem;letter-spacing:.5px;margin-bottom:5px;color:var(--stage-color,var(--gold));}
+.card-desc{font-family:'Raleway',sans-serif;font-weight:300;font-size:.83rem;line-height:1.72;font-style:italic;color:rgba(192,208,240,.65);text-align:justify;}
+
+/* ══════════════════════════════
+   RESPONSIVE TABLE
+══════════════════════════════ */
+.tbl-wrap{margin:20px 0;overflow:hidden;}
+.tbl{width:100%;border-collapse:collapse;font-size:.87rem;table-layout:fixed;}
+.tbl thead th{padding:10px 12px;text-align:left;font-family:'Raleway',sans-serif;font-size:.6rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;}
+.tbl tbody tr{border-bottom:1px solid rgba(160,176,208,.08);}
+.tbl tbody tr:nth-child(even){background:rgba(255,255,255,.03);}
+.tbl tbody tr:nth-child(odd){background:rgba(0,0,0,.2);}
+.tbl td{padding:10px 12px;line-height:1.68;vertical-align:top;word-break:break-word;font-family:'Raleway',sans-serif;font-weight:300;}
+.tbl td:first-child{font-weight:600;color:var(--white);}
+.tbdg{display:inline-block;padding:2px 8px;font-family:'Raleway',sans-serif;font-size:.57rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;white-space:nowrap;}
+@media(max-width:580px){
+  .tbl,.tbl thead,.tbl tbody,.tbl th,.tbl td,.tbl tr{display:block;width:100%;}
+  .tbl thead{display:none;}
+  .tbl tbody tr{border:1px solid rgba(160,176,208,.1);margin-bottom:8px;padding:12px 14px 10px;}
+  .tbl td{padding:4px 0 4px;border:none;display:grid;grid-template-columns:80px 1fr;gap:6px;align-items:start;}
+  .tbl td::before{content:attr(data-label);font-family:'Raleway',sans-serif;font-size:.58rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding-top:2px;}
+  .tbl td:first-child{font-weight:600;font-size:.93rem;}
+}
+
+/* ══════════════════════════════
+   HIGHLIGHT
+══════════════════════════════ */
+.hl{margin:18px 0;padding:18px 20px;border-left:4px solid var(--stage-color,var(--gold));background:rgba(0,0,0,.35);}
+.hl-label{font-family:'Raleway',sans-serif;font-weight:600;font-size:.6rem;letter-spacing:3px;text-transform:uppercase;margin-bottom:8px;color:var(--stage-color,var(--gold));}
+.hl-ar{font-family:'Amiri',serif;font-size:clamp(1.05rem,2.5vw,1.42rem);line-height:2;margin-bottom:8px;color:var(--stage-color,var(--gold));}
+.hl-trans{font-family:'Raleway',sans-serif;font-weight:300;font-style:italic;font-size:.9rem;line-height:1.82;color:rgba(192,208,240,.75);margin-bottom:6px;text-align:justify;}
+.hl-ref{font-family:'Raleway',sans-serif;font-weight:600;font-size:.6rem;letter-spacing:2px;text-transform:uppercase;color:rgba(160,176,208,.5);}
+
+/* ══════════════════════════════
+   BANNER
+══════════════════════════════ */
+.banner{margin:22px 0;padding:22px 26px;text-align:center;border:1px solid var(--stage-border,rgba(200,160,0,.2));background:rgba(0,0,0,.45);}
+.ban-ar{font-family:'Amiri',serif;font-size:clamp(1.1rem,2.8vw,1.52rem);line-height:2;margin-bottom:10px;color:var(--stage-color,var(--gold));}
+.ban-id{font-family:'Raleway',sans-serif;font-weight:300;font-style:italic;font-size:.9rem;line-height:1.8;margin-bottom:6px;color:rgba(192,208,240,.72);text-align:justify;}
+.ban-ref{font-family:'Raleway',sans-serif;font-weight:600;font-size:.6rem;letter-spacing:3px;text-transform:uppercase;color:rgba(160,176,208,.45);}
+
+/* separator */
+.sep{text-align:center;padding:10px 0;position:relative;z-index:1;}
+.sep span{color:rgba(200,160,0,.3);letter-spacing:12px;font-size:.7rem;}
+
+/* ══════════════════════════════
+   PENUTUP
+══════════════════════════════ */
+.penutup{
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 0%,rgba(200,160,0,.12) 0%,transparent 70%),
+    linear-gradient(180deg,var(--indigo) 0%,var(--cosmos) 40%,var(--abyss) 100%);
+  padding:72px 24px 80px;text-align:center;
+  position:relative;overflow:hidden;margin-top:60px;z-index:1;
+}
+.penutup::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--gold),var(--white),var(--gold),transparent);}
+.penutup-inner{max-width:600px;margin:0 auto;position:relative;z-index:1;}
+.penutup-ar{font-family:'Amiri',serif;font-size:clamp(1.4rem,4vw,2.6rem);color:var(--gold-lt);line-height:2;text-shadow:0 0 20px rgba(200,160,0,.3);margin-bottom:14px;}
+.penutup-div{width:80px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:18px auto;}
+.penutup-p{font-family:'Raleway',sans-serif;font-weight:300;font-style:italic;font-size:clamp(.9rem,2vw,1.04rem);color:rgba(192,208,240,.72);line-height:1.95;margin-bottom:12px;text-align:justify;}
+.penutup-footer{margin-top:40px;padding-top:22px;border-top:1px solid rgba(255,255,255,.05);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+.penutup-footer .logo{font-family:'Amiri',serif;font-size:1.1rem;color:rgba(200,160,0,.35);}
+.penutup-footer .tag{font-family:'Raleway',sans-serif;font-weight:600;font-size:.55rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.12);}
+
+@media(max-width:600px){
+  .wrap{padding:0 14px 60px;}
+  .hero{padding:56px 20px 100px;}
+  .stage{padding-left:68px;}
+  .stage-circle{width:48px;height:48px;font-size:.9rem;}
+  .stage::before{left:23px;}
+  .stage-content{padding:18px 18px;}
+  .hl,.banner{padding:14px 14px;}
+  .penutup{padding:50px 18px 56px;}
+}
+</style>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="rings">
+    <div class="ring"></div><div class="ring"></div>
+    <div class="ring"></div><div class="ring"></div>
+  </div>
+  <div class="hero-inner">
+    <span class="hero-icon">☽</span>
+    <div class="hero-bismillah">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
+    <p class="hero-kicker">Kitab Akidah · Alam Akhirat · Berdalil Al-Qur'an &amp; Hadis Shahih</p>
+    <h1 class="hero-title">Perjalanan<br>Setelah Kiamat</h1>
+    <span class="hero-sub">Dari Kebangkitan hingga Surga &amp; Neraka</span>
+    <div class="hero-rule"><span></span><em>✦ ✦ ✦</em><span></span></div>
+    <div class="hero-verse">
+      <div class="hv-ar">يَوْمَ تَجِدُ كُلُّ نَفْسٍ مَّا عَمِلَتْ مِنْ خَيْرٍ مُّحْضَرًا وَمَا عَمِلَتْ مِن سُوءٍ تَوَدُّ لَوْ أَنَّ بَيْنَهَا وَبَيْنَهُ أَمَدًا بَعِيدًا</div>
+      <div class="hv-id">"Pada hari ketika setiap jiwa mendapati semua kebaikan yang telah dilakukannya dihadirkan, dan semua keburukan yang telah dilakukannya — ia berharap sekiranya ada jarak yang jauh antara dirinya dan hari itu."<br><em style="color:rgba(200,160,0,.45)">— QS. Āli 'Imrān: 30</em></div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+
+<!-- ══════════════════════════════════════
+     TAHAP 0: SANGKAKALA & KIAMAT
+══════════════════════════════════════ -->
+<div class="stage" style="--stage-color:rgba(192,176,208,.9);--stage-glow:rgba(160,140,200,.5);--stage-bg:rgba(16,8,32,.7);--stage-border:rgba(160,140,200,.2);--stage-line:rgba(160,140,200,.2);">
+  <div class="stage-circle" style="background:linear-gradient(135deg,#4020a0,#6030c0);color:#d0c0ff;">0</div>
+  <div class="stage-header">
+    <div class="stage-num-label">✦ Mukadimah</div>
+    <div class="stage-ar">النَّفْخُ فِي الصُّورِ</div>
+    <div class="stage-title">Tiupan Sangkakala — Pintu Masuk Akhirat</div>
+  </div>
+  <div class="stage-content">
+    <div class="prose">
+      <p class="lead">Seluruh perjalanan akhirat dimulai dari satu peristiwa: tiupan sangkakala Israfil 'alaihissalam. Dua tiupan yang memisahkan dunia dari akhirat, yang memisahkan kefanaan dari keabadian, yang memisahkan waktu dari kekekalan.</p>
+      <p>Tiupan pertama (nafkhatus sha'iq) menghancurkan seluruh makhluk yang masih hidup — seluruh manusia, jin, hewan, bahkan malaikat kecuali yang Allah kehendaki. Gunung-gunung hancur seperti kapas beterbangan, lautan meluap dan bergolak, bumi diratakan. Seluruh semesta yang Allah ciptakan dalam miliaran tahun — musnah dalam sekejap. Tiupan kedua (nafkhatul ba'ts) adalah kebangkitan: manusia pertama hingga manusia terakhir, semuanya bangkit dari kuburnya.</p>
+    </div>
+    <div class="dalil" style="background:rgba(16,8,32,.7);border:1px solid rgba(160,140,200,.2);">
+      <div class="dalil-bar" style="background:#6030c0;"></div>
+      <div class="dalil-body">
+        <div class="d-tag" style="color:#a080e0;">📜 HR. Bukhari &amp; Muslim — Dua Tiupan Sangkakala</div>
+        <div class="d-ar" style="color:#c0a0ff;">بَيْنَ النَّفْخَتَيْنِ أَرْبَعُونَ قَالَ أَرْبَعُونَ يَوْمًا قَالَ أَبَيْتُ قَالَ أَرْبَعُونَ شَهْرًا قَالَ أَبَيْتُ قَالَ أَرْبَعُونَ سَنَةً</div>
+        <div class="d-trans">"Antara dua tiupan (sangkakala) adalah empat puluh." Ditanya: "Empat puluh hari?" Ia berkata: "Aku tidak tahu." Ditanya: "Empat puluh bulan?" Ia berkata: "Aku tidak tahu." Ditanya: "Empat puluh tahun?" Ia berkata: "Aku tidak tahu." — Jarak antara dua tiupan adalah rahasia Allah.</div>
+        <div class="d-ref" style="color:#9060d0;">HR. Bukhari (4814) &amp; Muslim (2955) — dari Abu Hurairah radhiyallahu 'anhu</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TAHAP 1: KEBANGKITAN ══ -->
+<div class="stage" style="--stage-color:#e8c010;--stage-glow:rgba(232,192,16,.5);--stage-bg:rgba(8,8,24,.7);--stage-border:rgba(200,160,0,.2);--stage-line:rgba(200,160,0,.2);">
+  <div class="stage-circle" style="background:linear-gradient(135deg,#c8a000,#e8c010);color:#0a0808;">1</div>
+  <div class="stage-header">
+    <div class="stage-num-label">✦ Tahap Pertama</div>
+    <div class="stage-ar">الْبَعْثُ وَالنُّشُورُ</div>
+    <div class="stage-title">Al-Ba'ts — Kebangkitan dari Kubur</div>
+  </div>
+  <div class="stage-content">
+    <div class="prose">
+      <p class="lead">Setelah tiupan kedua, manusia bangkit dari kuburnya — dari setiap sudut bumi, dari dasar lautan, dari perut binatang, dari abu yang terbakar. Allah mengumpulkan kembali seluruh bagian tubuh yang telah bercerai-berai, memulihkan jiwa yang telah lama berpisah dari raganya, dan membangunkan seluruh umat manusia dari Adam hingga manusia terakhir.</p>
+      <p>Nabi ﷺ menggambarkan kondisi saat kebangkitan: manusia dibangkitkan dalam keadaan telanjang, tidak beralas kaki, dan belum dikhitan — persis seperti hari mereka dilahirkan. Aisyah radhiyallahu 'anha bertanya: "Bukankah laki-laki dan perempuan akan saling melihat satu sama lain?" Nabi ﷺ menjawab: "Keadaan (pada hari itu) terlalu berat untuk memikirkan hal itu." — HR. Bukhari (6527). Setiap orang terpacu oleh kepanikan dan ketakutan yang belum pernah dirasakan sebelumnya.</p>
+    </div>
+    <div class="dalil" style="background:rgba(8,8,24,.7);border:1px solid rgba(200,160,0,.2);">
+      <div class="dalil-bar" style="background:#e8c010;"></div>
+      <div class="dalil-body">
+        <div class="d-tag" style="color:#e8c010;">📖 QS. Az-Zumar: 68 — Tiupan Kedua &amp; Kebangkitan</div>
+        <div class="d-ar" style="color:#e8c010;">ثُمَّ نُفِخَ فِيهِ أُخْرَىٰ فَإِذَا هُمْ قِيَامٌ يَنظُرُونَ</div>
+        <div class="d-trans">"Kemudian ditiup sangkakala itu sekali lagi, maka seketika itu mereka berdiri menunggu (keputusan Allah)."</div>
+        <div class="d-ref" style="color:rgba(200,160,0,.6);">QS. Az-Zumar (39): 68</div>
+      </div>
+    </div>
+    <div class="hl">
+      <div class="hl-label">✦ Tulang Ekor (Ajbuz-Zanab) — Benih Kebangkitan</div>
+      <div class="hl-ar">كُلُّ ابْنِ آدَمَ يَأْكُلُهُ التُّرَابُ إِلَّا عَجْبَ الذَّنَبِ مِنْهُ خُلِقَ وَمِنْهُ يُرَكَّبُ</div>
+      <div class="hl-trans">"Seluruh tubuh anak Adam akan dimakan tanah kecuali tulang ekornya (ajbuz-zanab) — dari situlah ia diciptakan dan dari situlah ia akan disusun kembali." — Tulang kecil di ujung tulang belakang inilah yang tidak hancur meskipun seluruh tubuh telah menjadi tanah, dan dari situlah Allah membangun kembali tubuh manusia pada hari kebangkitan.</div>
+      <div class="hl-ref">HR. Bukhari (4814) &amp; Muslim (2955) — dari Abu Hurairah radhiyallahu 'anhu</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TAHAP 2: PADANG MAHSYAR ══ -->
+<div class="stage" style="--stage-color:#a0b8e0;--stage-glow:rgba(160,184,224,.4);--stage-bg:rgba(4,8,20,.75);--stage-border:rgba(128,160,208,.2);--stage-line:rgba(128,160,208,.18);">
+  <div class="stage-circle" style="background:linear-gradient(135deg,#2040a0,#4060c0);color:#c0d4f0;">2</div>
+  <div class="stage-header">
+    <div class="stage-num-label">✦ Tahap Kedua</div>
+    <div class="stage-ar">الْمَحْشَرُ — الْمَوْقِفُ</div>
+    <div class="stage-title">Al-Mahsyar — Padang Pengumpulan</div>
+  </div>
+  <div class="stage-content">
+    <div class="prose">
+      <p class="lead">Setelah bangkit dari kubur, seluruh manusia digiring menuju satu tempat: Al-Mahsyar — padang bumi yang putih bersih, rata, tidak ada tanda apapun. Di sanalah seluruh umat manusia berdiri dan menunggu, dalam keadaan matahari didekatkan hingga jaraknya hanya satu mil dari kepala manusia.</p>
+      <p>Nabi ﷺ menggambarkan kondisi di Padang Mahsyar dengan detail yang membuat hati gemetar: keringat membenamkan orang-orang sesuai amal mereka. Ada yang keringatnya sampai mata kaki, ada yang sampai lutut, ada yang sampai pinggang, bahkan ada yang tenggelam dalam keringatnya sendiri. Sementara itu, tujuh golongan akan berada dalam naungan Allah ketika tidak ada naungan selain naungan-Nya.</p>
+    </div>
+    <div class="dalil" style="background:rgba(4,8,20,.75);border:1px solid rgba(128,160,208,.2);">
+      <div class="dalil-bar" style="background:#4060c0;"></div>
+      <div class="dalil-body">
+        <div class="d-tag" style="color:#a0b8e0;">📜 HR. Bukhari &amp; Muslim — Kondisi di Padang Mahsyar</div>
+        <div class="d-ar" style="color:#c0d4f0;">تُدْنَى الشَّمْسُ يَوْمَ الْقِيَامَةِ مِنَ الْخَلْقِ حَتَّى تَكُونَ مِنْهُمْ كَمِقْدَارِ مِيلٍ</div>
+        <div class="d-trans">"Matahari didekatkan pada hari kiamat dari manusia hingga jaraknya seperti satu mil." — Ibnu Al-Musayyib berkata: "Aku tidak tahu apakah yang dimaksud 'mil' adalah ukuran jarak atau batang celak." Keringat manusia merendam mereka sesuai amal mereka.</div>
+        <div class="d-ref" style="color:rgba(128,160,208,.6);">HR. Muslim (2864) — dari Al-Miqdad bin Al-Aswad radhiyallahu 'anhu</div>
+      </div>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <span class="card-icon">👑</span>
+        <div class="card-title">7 Golongan dalam Naungan Allah</div>
+        <div class="card-desc">Imam yang adil · Pemuda yang tumbuh dalam ibadah · Yang hatinya terpaut masjid · Dua orang bersahabat karena Allah · Yang menolak ajakan zina karena takut Allah · Yang bersedekah secara rahasia · Yang berdzikir sampai meneteskan air mata — HR. Bukhari (660)</div>
+      </div>
+      <div class="card">
+        <span class="card-icon">⏳</span>
+        <div class="card-title">Lamanya Penantian</div>
+        <div class="card-desc">Penantian di Mahsyar terasa seperti 50.000 tahun bagi yang berat amalnya. Namun bagi mukmin yang amalnya baik, ia terasa seperti shalat wajib atau lebih ringan. — QS. Al-Ma'ārij: 4 · HR. Muslim (179)</div>
+      </div>
+      <div class="card">
+        <span class="card-icon">🙏</span>
+        <div class="card-title">Syafaat Kubra — Nabi ﷺ</div>
+        <div class="card-desc">Manusia memohon kepada Adam, Nuh, Ibrahim, Musa, Isa — semua menolak karena diri sendiri. Akhirnya Nabi Muhammad ﷺ yang memperoleh maqam mahmud: bersujud memuji Allah hingga diizinkan memberi syafaat bagi dimulainya hisab. — HR. Bukhari (7510)</div>
+      </div>
+    </div>
+    <div class="dalil" style="background:rgba(4,8,20,.75);border:1px solid rgba(128,160,208,.2);">
+      <div class="dalil-bar" style="background:#4060c0;"></div>
+      <div class="dalil-body">
+        <div class="d-tag" style="color:#a0b8e0;">📖 QS. Ibrahim: 48 — Bumi Diganti</div>
+        <div class="d-ar" style="color:#c0d4f0;">يَوْمَ تُبَدَّلُ الْأَرْضُ غَيْرَ الْأَرْضِ وَالسَّمَاوَاتُ ۖ وَبَرَزُوا لِلَّهِ الْوَاحِدِ الْقَهَّارِ</div>
+        <div class="d-trans">"(Yaitu) pada hari (ketika) bumi diganti dengan bumi yang lain dan (demikian pula) langit, dan mereka (manusia) bermunculan di hadapan Allah Yang Maha Esa lagi Maha Perkasa."</div>
+        <div class="d-ref" style="color:rgba(128,160,208,.6);">QS. Ibrāhīm (14): 48</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TAHAP 3: HISAB ══ -->
+<div class="stage" style="--stage-color:#00d0a0;--stage-glow:rgba(0,208,160,.45);--stage-bg:rgba(0,16,12,.75);--stage-border:rgba(0,168,128,.2);--stage-line:rgba(0,168,128,.18);">
+  <div class="stage-circle" style="background:linear-gradient(135deg,#006050,#00a888);color:#d0fff8;">3</div>
+  <div class="stage-header">
+    <div class="stage-num-label">✦ Tahap Ketiga</div>
+    <div class="stage-ar">الْحِسَابُ</div>
+    <div class="stage-title">Al-Hisab — Perhitungan Amal</div>
+  </div>
+  <div class="stage-content">
+    <div class="prose">
+      <p class="lead">Setelah penantian panjang di Mahsyar, tibalah saatnya setiap jiwa dipanggil untuk mempertanggungjawabkan seluruh perbuatannya di dunia. Al-Hisab adalah perhitungan yang adil — tidak ada yang terlewat, tidak ada yang dikurangi, tidak ada yang ditambah. Setiap niat, setiap kata, setiap langkah, setiap detik kehidupan akan dipertanggungjawabkan.</p>
+      <p>Nabi ﷺ membagi hisab menjadi tiga jenis: Ada yang dihisab dengan mudah (hisāban yasīrā) — mereka adalah mukmin yang diperlihatkan amalnya lalu diampuni. Ada yang dihisab dengan rinci dan detail — ini sudah merupakan azab. Dan ada yang masuk surga tanpa hisab sama sekali — 70.000 orang yang tidak meminta ruqyah, tidak bertathayur, tidak melakukan kay (pengobatan bakar), dan bertawakal penuh kepada Allah.</p>
+    </div>
+    <div class="dalil" style="background:rgba(0,16,12,.75);border:1px solid rgba(0,168,128,.2);">
+      <div class="dalil-bar" style="background:#00a888;"></div>
+      <div class="dalil-body">
+        <div class="d-tag" style="color:#00d0a0;">📜 HR. Bukhari &amp; Muslim — Tidak Ada yang Luput dari Hisab</div>
+        <div class="d-ar" style="color:#80fff0;">مَا مِنْكُمْ مِنْ أَحَدٍ إِلَّا سَيُكَلِّمُهُ رَبُّهُ لَيْسَ بَيْنَهُ وَبَيْنَهُ تَرْجُمَانٌ</div>
+        <div class="d-trans">"Tidak seorang pun dari kalian kecuali Allah akan berbicara langsung kepadanya — tidak ada penerjemah antara dia dan Allah." — Setiap manusia akan berdialog langsung dengan Allah, mempertanggungjawabkan amalnya satu per satu.</div>
+        <div class="d-ref" style="color:rgba(0,168,128,.6);">HR. Bukhari (7443) &amp; Muslim (1016) — dari 'Adi bin Hatim radhiyallahu 'anhu</div>
+      </div>
+    </div>
+    <div class="tbl-wrap">
+      <table class="tbl" style="--c:#00a888;">
+        <thead style="background:rgba(0,80,60,.8);">
+          <tr>
+            <th style="width:28%;color:#80fff0;">Jenis Hisab</th>
+            <th style="width:32%;color:#80fff0;">Siapa</th>
+            <th style="width:40%;color:#80fff0;">Keterangan</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="Jenis" style="color:#00d0a0;">Tanpa Hisab</td>
+            <td data-label="Siapa" style="color:rgba(192,255,240,.8);">70.000 (atau lebih) dari umat Nabi ﷺ</td>
+            <td data-label="Keterangan" style="color:rgba(160,220,210,.7);">Langsung masuk surga. Ciri-ciri: tidak minta ruqyah, tidak bertathayur, tidak melakukan kay, dan bertawakal penuh. — HR. Bukhari (6541)</td>
+          </tr>
+          <tr>
+            <td data-label="Jenis" style="color:#00d0a0;">Hisab Mudah</td>
+            <td data-label="Siapa" style="color:rgba(192,255,240,.8);">Mukmin yang dimaafkan</td>
+            <td data-label="Keterangan" style="color:rgba(160,220,210,.7);">Diperlihatkan amalnya, diakui dosa-dosanya, lalu diampuni tanpa dipermalukan. Disebutkan amalnya satu per satu dalam dialog yang penuh rahmat.</td>
+          </tr>
+          <tr>
+            <td data-label="Jenis" style="color:#00d0a0;">Hisab Rinci</td>
+            <td data-label="Siapa" style="color:rgba(192,255,240,.8);">Yang dihisab detail</td>
+            <td data-label="Keterangan" style="color:rgba(160,220,210,.7);">"Barangsiapa yang dihisab (dengan rinci), ia pasti binasa." — HR. Bukhari (103). Ini adalah keadaan yang berat, namun masih berakhir dengan masuk surga jika amalnya berat.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="hl">
+      <div class="hl-label">✦ Hak-Hak Sesama Manusia Diselesaikan di Sini</div>
+      <div class="hl-ar">أَتَدْرُونَ مَنِ الْمُفْلِسُ؟</div>
+      <div class="hl-trans">"Tahukah kalian siapakah orang yang bangkrut (muflis)?" Para sahabat menjawab: "Orang yang bangkrut di antara kami adalah yang tidak punya dirham dan tidak punya harta." Nabi ﷺ bersabda: "Orang yang bangkrut dari umatku adalah yang datang pada hari kiamat dengan membawa shalat, puasa, dan zakat — namun ia pernah mencela si fulan, menuduh si fulan, memakan harta si fulan, menumpahkan darah si fulan, memukul si fulan. Maka diberikanlah kebaikan-kebaikannya kepada si fulan dan si fulan. Jika kebaikannya habis sebelum hutangnya lunas, diambillah kejelekan-kejelekan mereka lalu ditimpakan kepadanya, kemudian ia dilemparkan ke neraka."</div>
+      <div class="hl-ref">HR. Muslim (2581) — dari Abu Hurairah radhiyallahu 'anhu</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TAHAP 4: MIZAN ══ -->
+<div class="stage" style="--stage-color:#f0c000;--stage-glow:rgba(240,192,0,.5);--stage-bg:rgba(10,8,0,.8);--stage-border:rgba(200,160,0,.22);--stage-line:rgba(200,160,0,.2);">
+  <div class="stage-circle" style="background:linear-gradient(135deg,#c08000,#f0c000);color:#1a1000;">4</div>
+  <div class="stage-header">
+    <div class="stage-num-label">✦ Tahap Keempat</div>
+    <div class="stage-ar">الْمِيزَانُ</div>
+    <div class="stage-title">Al-Mizan — Timbangan Amal</div>
+  </div>
+  <div class="stage-content">
+    <div class="prose">
+      <p class="lead">Al-Mizan adalah timbangan nyata yang Allah bentangkan pada hari kiamat untuk menimbang amal seluruh manusia. Ia adalah timbangan yang haq — tidak ada yang dizalimi sedikitpun, tidak ada amal terlalu kecil yang tidak ditimbang, tidak ada yang bisa memanipulasi hasilnya.</p>
+      <p>Al-Qur'an menegaskan bahwa timbangan hari itu adalah haq (kebenaran murni). Orang yang berat timbangannya akan berada dalam kehidupan yang diridhai. Dan orang yang ringan timbangannya — maka tempat kembalinya adalah neraka Hawiyah. Imam Ahmad meriwayatkan bahwa Mizan memiliki dua daun timbangan yang sangat besar, hingga langit dan bumi bisa masuk ke dalamnya.</p>
+    </div>
+    <div class="dalil" style="background:rgba(10,8,0,.8);border:1px solid rgba(200,160,0,.22);">
+      <div class="dalil-bar" style="background:#f0c000;"></div>
+      <div class="dalil-body">
+        <div class="d-tag" style="color:#f0c000;">📜 HR. Bukhari — Dua Kalimat Ringan di Lisan, Berat di Timbangan</div>
+        <div class="d-ar" style="color:#ffe080;">كَلِمَتَانِ خَفِيفَتَانِ عَلَى اللِّسَانِ ثَقِيلَتَانِ فِي الْمِيزَانِ حَبِيبَتَانِ إِلَى الرَّحْمَنِ سُبْحَانَ اللَّهِ وَبِحَمْدِهِ سُبْحَانَ اللَّهِ الْعَظِيمِ</div>
+        <div class="d-trans">"Dua kalimat yang ringan di lisan, berat di timbangan (amal), dan dicintai oleh Ar-Rahman: Subḥānallāhi wa biḥamdih, Subḥānallāhil-'aẓīm." — Betapa mulianya Allah yang memberikan pahala sangat berat hanya dari dua kalimat yang mudah diucapkan.</div>
+        <div class="d-ref" style="color:rgba(200,160,0,.6);">HR. Bukhari (6682) &amp; Muslim (2694) — dari Abu Hurairah radhiyallahu 'anhu</div>
+      </div>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <span class="card-icon">⚖️</span>
+        <div class="card-title">Berat Timbangan = Surga</div>
+        <div class="card-desc">QS. Al-Qāri'ah: 6–7 — "Adapun orang yang berat timbangannya, maka ia berada dalam kehidupan yang diridhai (surga)." Amal shalih yang tulus akan memberatkan timbangan kebaikan.</div>
+      </div>
+      <div class="card">
+        <span class="card-icon">💔</span>
+        <div class="card-title">Ringan Timbangan = Neraka</div>
+        <div class="card-desc">QS. Al-Qāri'ah: 8–11 — "Dan adapun orang yang ringan timbangannya, maka tempat kembalinya adalah neraka Hawiyah." — Orang yang besar fisiknya namun sedikit amalnya, di sisi Allah lebih ringan dari sayap nyamuk. — HR. Bukhari (6254)</div>
+      </div>
+      <div class="card">
+        <span class="card-icon">📜</span>
+        <div class="card-title">Bithaqa — Kartu Kalimat Tauhid</div>
+        <div class="card-desc">Seorang manusia dibawakan 99 sijill (gulungan catatan dosa) sepanjang mata memandang. Kemudian dikeluarkan satu kartu berisi "Lā ilāha illallāh Muḥammadur rasūlullāh" — dan kartu itu mengalahkan seluruh gulungan dosa. — HR. Tirmidzi (2639)</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TAHAP 5: SHIRATH ══ -->
+<div class="stage" style="--stage-color:#ff6030;--stage-glow:rgba(255,96,48,.5);--stage-bg:rgba(16,4,0,.8);--stage-border:rgba(200,80,0,.22);--stage-line:rgba(200,80,0,.2);">
+  <div class="stage-circle" style="background:linear-gradient(135deg,#a02000,#e04000);color:#ffc0a0;">5</div>
+  <div class="stage-header">
+    <div class="stage-num-label">✦ Tahap Kelima</div>
+    <div class="stage-ar">الصِّرَاطُ</div>
+    <div class="stage-title">Ash-Shirath — Jembatan di atas Neraka</div>
+  </div>
+  <div class="stage-content">
+    <div class="prose">
+      <p class="lead">Ash-Shirath adalah jembatan yang dibentangkan di atas neraka Jahannam — semua manusia harus menyeberanginya. Ia lebih tipis dari sehelai rambut dan lebih tajam dari pedang. Di bawahnya adalah jurang neraka yang menyala-nyala. Ini adalah ujian terakhir sebelum memasuki surga.</p>
+      <p>Kecepatan seseorang melewati Shirath bergantung pada amal mereka di dunia. Ada yang melewatinya secepat kilat, ada seperti angin kencang, ada seperti kuda berlari, ada seperti manusia berlari, ada yang berjalan, ada yang merangkak, dan ada yang jatuh ke dalam neraka karena tidak mampu melewatinya. Para malaikat berdiri di sisi Shirath dengan pengait untuk menangkap orang-orang yang terpeleset.</p>
+    </div>
+    <div class="dalil" style="background:rgba(16,4,0,.8);border:1px solid rgba(200,80,0,.22);">
+      <div class="dalil-bar" style="background:#e04000;"></div>
+      <div class="dalil-body">
+        <div class="d-tag" style="color:#ff6030;">📜 HR. Bukhari &amp; Muslim — Gambaran Shirath</div>
+        <div class="d-ar" style="color:#ffa080;">ثُمَّ يُضْرَبُ الْجِسْرُ عَلَى جَهَنَّمَ وَتَحِلُّ الشَّفَاعَةُ</div>
+        <div class="d-trans">"Kemudian dibentangkanlah jembatan di atas Jahannam dan berlaku syafaat." Nabi ﷺ bersabda: "Aku dan umatku adalah orang pertama yang melewatinya. Tidak ada yang berbicara saat itu kecuali para rasul. Dan doa para rasul saat itu adalah: 'Ya Allah, selamatkanlah, selamatkanlah.'"</div>
+        <div class="d-ref" style="color:rgba(200,80,0,.6);">HR. Bukhari (7439) &amp; Muslim (182) — dari Abu Hurairah radhiyallahu 'anhu</div>
+      </div>
+    </div>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead style="background:rgba(80,20,0,.8);">
+          <tr>
+            <th style="width:30%;color:#ffa080;">Kecepatan Melewati</th>
+            <th style="width:40%;color:#ffa080;">Gambaran</th>
+            <th style="width:30%;color:#ffa080;">Akhir</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="Kecepatan" style="color:#ff6030;">Seperti kilat</td>
+            <td data-label="Gambaran" style="color:rgba(255,180,150,.75);">Melewati dalam sekejap mata — para nabi dan shiddiqin</td>
+            <td data-label="Akhir" style="color:rgba(0,200,160,.8);">Selamat — masuk surga</td>
+          </tr>
+          <tr>
+            <td data-label="Kecepatan" style="color:#ff6030;">Seperti angin / kuda</td>
+            <td data-label="Gambaran" style="color:rgba(255,180,150,.75);">Sangat cepat — para syuhada dan shalihin</td>
+            <td data-label="Akhir" style="color:rgba(0,200,160,.8);">Selamat — masuk surga</td>
+          </tr>
+          <tr>
+            <td data-label="Kecepatan" style="color:#ff6030;">Berlari / berjalan</td>
+            <td data-label="Gambaran" style="color:rgba(255,180,150,.75);">Sesuai kadar amal — ada yang berjalan tertatih</td>
+            <td data-label="Akhir" style="color:rgba(0,200,160,.8);">Selamat — masuk surga</td>
+          </tr>
+          <tr>
+            <td data-label="Kecepatan" style="color:#ff6030;">Merangkak</td>
+            <td data-label="Gambaran" style="color:rgba(255,180,150,.75);">Sangat berat amal buruknya, pengait mulai menyentuh</td>
+            <td data-label="Akhir" style="color:rgba(255,160,100,.8);">Ada yang selamat setelah terluka</td>
+          </tr>
+          <tr>
+            <td data-label="Kecepatan" style="color:#ff6030;">Jatuh</td>
+            <td data-label="Gambaran" style="color:rgba(255,180,150,.75);">Ditangkap pengait malaikat dan jatuh ke neraka</td>
+            <td data-label="Akhir" style="color:rgba(255,80,40,.8);">Masuk neraka (sementara atau selamanya)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="hl">
+      <div class="hl-label">✦ Doa yang Diajarkan Nabi ﷺ untuk Melewati Shirath</div>
+      <div class="hl-ar">رَبَّنَا أَتْمِمْ لَنَا نُورَنَا وَاغْفِرْ لَنَا</div>
+      <div class="hl-trans">"Wahai Rabb kami, sempurnakanlah cahaya kami dan ampunilah kami." — Doa para mukmin saat berjalan di atas Shirath, saat orang-orang munafik kehilangan cahayanya. Cahaya seorang mukmin di Shirath sebanding dengan amal shalihnya di dunia — ada yang cahayanya sepenggalah, segunung, dan ada yang cahayanya memenuhi seluruh hadapannya.</div>
+      <div class="hl-ref">QS. At-Tahrīm (66): 8 · HR. Bukhari (806) — dari Abu Sa'id Al-Khudri</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TAHAP 6: TELAGA KAUTSAR ══ -->
+<div class="stage" style="--stage-color:#60d0f0;--stage-glow:rgba(96,208,240,.4);--stage-bg:rgba(0,8,16,.78);--stage-border:rgba(32,160,200,.2);--stage-line:rgba(32,160,200,.18);">
+  <div class="stage-circle" style="background:linear-gradient(135deg,#004878,#0070c0);color:#c0eeff;">6</div>
+  <div class="stage-header">
+    <div class="stage-num-label">✦ Tahap Keenam</div>
+    <div class="stage-ar">الْحَوْضُ — الْكَوْثَرُ</div>
+    <div class="stage-title">Al-Hawdh Al-Kautsar — Telaga Nabi ﷺ</div>
+  </div>
+  <div class="stage-content">
+    <div class="prose">
+      <p class="lead">Sebelum masuk surga, umat Nabi Muhammad ﷺ akan mendatangi telaga beliau: Al-Hawdh Al-Kautsar. Telaga yang airnya lebih putih dari susu, lebih manis dari madu, lebih dingin dari salju, lebih wangi dari misk. Barangsiapa minum darinya sekali, tidak akan pernah haus selamanya.</p>
+      <p>Telaga Kautsar adalah anugerah terbesar yang Allah berikan kepada Nabi Muhammad ﷺ — QS. Al-Kawtsar: 1 menyebutnya sebagai inna a'thaynāka al-kawtsara (Kami telah memberikan kepadamu Al-Kautsar). Nabi ﷺ sangat merindukan umatnya di telaga ini — namun beliau juga bersedih ketika ada sebagian yang dihalang-halangi oleh malaikat karena mereka merubah agama sepeninggal beliau.</p>
+    </div>
+    <div class="dalil" style="background:rgba(0,8,16,.78);border:1px solid rgba(32,160,200,.2);">
+      <div class="dalil-bar" style="background:#0070c0;"></div>
+      <div class="dalil-body">
+        <div class="d-tag" style="color:#60d0f0;">📜 HR. Bukhari &amp; Muslim — Gambaran Telaga Kautsar</div>
+        <div class="d-ar" style="color:#a0e8ff;">أَنَا فَرَطُكُمْ عَلَى الْحَوْضِ مَنْ وَرَدَهُ شَرِبَ وَمَنْ شَرِبَ لَمْ يَظْمَأْ أَبَدًا</div>
+        <div class="d-trans">"Aku mendahului kalian ke telaga. Barangsiapa mendatanginya ia minum, dan barangsiapa minum tidak akan pernah haus selamanya." — Ukuran telaga: seluas antara Ailah (Jordan) dan Aden (Yaman) atau antara Makkah dan Amman. Bejananya sebanyak bintang-bintang di langit.</div>
+        <div class="d-ref" style="color:rgba(32,160,200,.6);">HR. Bukhari (6579) &amp; Muslim (2291) — dari Ibnu Mas'ud radhiyallahu 'anhu</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TAHAP 7: SURGA ══ -->
+<div class="stage" style="--stage-color:#80ffb0;--stage-glow:rgba(128,255,176,.5);--stage-bg:rgba(0,10,4,.8);--stage-border:rgba(0,200,100,.22);--stage-line:rgba(0,200,100,.2);">
+  <div class="stage-circle" style="background:linear-gradient(135deg,#006030,#00c060);color:#d0fff0;">7</div>
+  <div class="stage-header">
+    <div class="stage-num-label">✦ Tahap Ketujuh — Tujuan Para Mukmin</div>
+    <div class="stage-ar">الْجَنَّةُ — دَارُ النَّعِيمِ</div>
+    <div class="stage-title">Al-Jannah — Surga: Kenikmataan Abadi</div>
+  </div>
+  <div class="stage-content">
+    <div class="prose">
+      <p class="lead">Surga adalah tujuan tertinggi yang Allah siapkan bagi hamba-hamba yang beriman dan beramal shalih. Ia bukan sekadar tempat istirahat — ia adalah kehidupan yang sebenarnya, kenikmatan yang tidak pernah terlintas dalam bayangan manusia, kebahagiaan yang tidak ternoda oleh kesedihan sekecil apapun, dan keabadian yang tidak tersentuh kematian.</p>
+      <p>Al-Qur'an dan hadis menggambarkan surga dengan gambaran yang sangat detail: sungai-sungai yang mengalir, taman-taman yang menakjubkan, istana-istana dari mutiara dan permata, bidadari-bidadari bermata indah, pelayan-pelayan yang abadi, dan segala yang diinginkan jiwa tersedia seketika. Namun dari semua kenikmatan surga, yang paling agung adalah satu: melihat wajah Allah Yang Maha Mulia — sebuah kenikmatan yang membuat semua kenikmatan lain terasa kecil tak berarti.</p>
+    </div>
+    <div class="dalil" style="background:rgba(0,10,4,.8);border:1px solid rgba(0,200,100,.22);">
+      <div class="dalil-bar" style="background:#00c060;"></div>
+      <div class="dalil-body">
+        <div class="d-tag" style="color:#80ffb0;">📜 HR. Bukhari &amp; Muslim — Kenikmatan Surga yang Tak Terbayangkan</div>
+        <div class="d-ar" style="color:#c0ffd8;">أَعْدَدْتُ لِعِبَادِيَ الصَّالِحِينَ مَا لَا عَيْنٌ رَأَتْ وَلَا أُذُنٌ سَمِعَتْ وَلَا خَطَرَ عَلَى قَلْبِ بَشَرٍ</div>
+        <div class="d-trans">"Aku telah menyiapkan untuk hamba-hamba-Ku yang shalih apa yang tidak pernah dilihat mata, tidak pernah didengar telinga, dan tidak pernah terlintas dalam hati manusia." — Hadis Qudsi yang merangkum seluruh keagungan surga dalam satu kalimat.</div>
+        <div class="d-ref" style="color:rgba(0,160,80,.6);">HR. Bukhari (3244) &amp; Muslim (2824) — dari Abu Hurairah radhiyallahu 'anhu · Hadis Qudsi</div>
+      </div>
+    </div>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead style="background:rgba(0,60,30,.8);">
+          <tr>
+            <th style="width:25%;color:#80ffb0;">Nama Surga</th>
+            <th style="width:40%;color:#80ffb0;">Penghuni</th>
+            <th style="width:35%;color:#80ffb0;">Keterangan</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="Nama" style="color:#00e080;">Firdaus</td>
+            <td data-label="Penghuni" style="color:rgba(180,255,200,.8);">Derajat tertinggi — para nabi, shiddiqin, syuhada, shalihin</td>
+            <td data-label="Keterangan" style="color:rgba(160,220,180,.7);">"Jika kalian memohon kepada Allah, mintalah Al-Firdaus — karena ia adalah surga yang paling tengah dan paling tinggi. Di atasnya adalah Arsy Ar-Rahman." — HR. Bukhari (2790)</td>
+          </tr>
+          <tr>
+            <td data-label="Nama" style="color:#00e080;">Adn (Eden)</td>
+            <td data-label="Penghuni" style="color:rgba(180,255,200,.8);">Para orang beriman yang sabar</td>
+            <td data-label="Keterangan" style="color:rgba(160,220,180,.7);">QS. Ar-Ra'd: 23 — surga tempat masuknya orang-orang shalih bersama orang tua, pasangan, dan anak-anak mereka.</td>
+          </tr>
+          <tr>
+            <td data-label="Nama" style="color:#00e080;">Na'im</td>
+            <td data-label="Penghuni" style="color:rgba(180,255,200,.8);">Orang-orang yang penuh nikmat</td>
+            <td data-label="Keterangan" style="color:rgba(160,220,180,.7);">Disebut 11 kali dalam Al-Qur'an. Tempat penuh kenikmatan yang sempurna. — QS. Al-Wāqi'ah: 12</td>
+          </tr>
+          <tr>
+            <td data-label="Nama" style="color:#00e080;">Dārul Khulud</td>
+            <td data-label="Penghuni" style="color:rgba(180,255,200,.8);">Negeri keabadian — semua penghuni surga</td>
+            <td data-label="Keterangan" style="color:rgba(160,220,180,.7);">Surga adalah negeri yang kekal — tidak ada kematian, tidak ada penuaan, tidak ada kesedihan selamanya.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <span class="card-icon">👁️</span>
+        <div class="card-title">Kenikmatan Tertinggi — Melihat Allah</div>
+        <div class="card-desc">"Ketika penghuni surga masuk surga, Allah berfirman: 'Apakah kalian ingin sesuatu lagi yang Aku tambahkan?' Mereka berkata: 'Bukankah Engkau telah memutihkan wajah kami, memasukkan kami ke surga, dan menyelamatkan kami dari neraka?' Lalu Allah menyingkap hijab-Nya — dan tidak ada kenikmatan yang lebih mereka sukai dari melihat Rabb mereka." — HR. Muslim (181)</div>
+      </div>
+      <div class="card">
+        <span class="card-icon">💎</span>
+        <div class="card-title">Bangunan Surga</div>
+        <div class="card-desc">Surga dibangun dari batu bata emas dan batu bata perak. Tanahnya dari misk yang harum, kerikil-kerikil dari mutiara dan yakut, rumputnya dari saffron. — HR. Tirmidzi (2526) — Hasan · "Seandainya setetes dari kenikmatan surga dikeluarkan ke dunia, niscaya seluruh dunia menjadi harum." — HR. Tirmidzi</div>
+      </div>
+      <div class="card">
+        <span class="card-icon">🌿</span>
+        <div class="card-title">Pohon Surga yang Menakjubkan</div>
+        <div class="card-desc">"Di surga ada pohon yang pengendara cepat berjalan di bawah naungannya selama seratus tahun belum juga selesai." — HR. Bukhari (3251). Dan pohon Sidratul Muntaha yang Nabi ﷺ saksikan pada malam Mi'raj — dikelilingi oleh kupu-kupu emas dan cahaya yang memenuhi pandangan.</div>
+      </div>
+    </div>
+    <div class="hl">
+      <div class="hl-label">✦ Tingkatan Surga — 100 Derajat</div>
+      <div class="hl-ar">إِنَّ فِي الْجَنَّةِ مِئَةَ دَرَجَةٍ أَعَدَّهَا اللَّهُ لِلْمُجَاهِدِينَ فِي سَبِيلِهِ</div>
+      <div class="hl-trans">"Sesungguhnya di surga terdapat seratus tingkatan yang Allah siapkan bagi para mujahidin di jalan-Nya. Jarak antara satu tingkatan dengan tingkatan lainnya seperti jarak antara langit dan bumi." — Surga memiliki 100 tingkat dan yang paling tinggi adalah Firdaus — tempat di mana Arsy Ar-Rahman berada di atasnya. Setiap tingkat ditempati oleh orang-orang yang berbeda derajat amalnya.</div>
+      <div class="hl-ref">HR. Bukhari (2790) — dari Abu Hurairah radhiyallahu 'anhu</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TAHAP 8: NERAKA ══ -->
+<div class="stage" style="--stage-color:#ff4020;--stage-glow:rgba(255,64,32,.55);--stage-bg:rgba(16,2,0,.85);--stage-border:rgba(200,40,0,.22);--stage-line:rgba(200,40,0,.2);">
+  <div class="stage-circle" style="background:linear-gradient(135deg,#800000,#c00000);color:#ffc0a0;">8</div>
+  <div class="stage-header">
+    <div class="stage-num-label">✦ Tahap Kedelapan — Tempat yang Kita Berlindung darinya</div>
+    <div class="stage-ar">جَهَنَّمُ — دَارُ الْعَذَابِ</div>
+    <div class="stage-title">Jahannam — Neraka: Azab yang Tiada Tara</div>
+  </div>
+  <div class="stage-content">
+    <div class="prose">
+      <p class="lead">Jahannam adalah tempat yang Allah siapkan sebagai balasan atas kekufuran, kemunafikan, dan dosa-dosa besar yang tidak diampuni. Ia adalah kebalikan mutlak dari surga — di sana tidak ada kenikmatan, tidak ada kedamaian, tidak ada cahaya, tidak ada harapan kecuali bagi orang mukmin yang masuk sementara karena dosa-dosanya.</p>
+      <p>Al-Qur'an menggambarkan neraka dengan gambaran yang menggetarkan hati: api yang melalap segalanya, rantai-rantai besi, penjaga-penjaga yang keras dan kasar, makanan berupa zaqqum dan ghislin (nanah), minuman berupa air yang mendidih yang membakar isi perut. Nabi ﷺ bersabda: "Api kalian di dunia ini hanya satu bagian dari tujuh puluh bagian api neraka Jahannam." — HR. Bukhari (3265).</p>
+    </div>
+    <div class="dalil" style="background:rgba(16,2,0,.85);border:1px solid rgba(200,40,0,.22);">
+      <div class="dalil-bar" style="background:#c00000;"></div>
+      <div class="dalil-body">
+        <div class="d-tag" style="color:#ff4020;">📜 HR. Bukhari &amp; Muslim — Api Neraka 70 Kali Lebih Panas</div>
+        <div class="d-ar" style="color:#ffa090;">نَارُكُمْ هَذِهِ جُزْءٌ مِنْ سَبْعِينَ جُزْءًا مِنْ نَارِ جَهَنَّمَ كُلُّ جُزْءٍ مِنْهَا مِثْلُ حَرِّ نَارِكُمْ هَذِهِ</div>
+        <div class="d-trans">"Api kalian ini (di dunia) hanya satu bagian dari tujuh puluh bagian api Jahannam. Setiap satu bagiannya sama panasnya dengan api kalian ini." — Bayangkan: api dunia yang mampu melelehkan besi, membakar hutan — hanyalah 1/70 dari panasnya Jahannam.</div>
+        <div class="d-ref" style="color:rgba(200,80,0,.6);">HR. Bukhari (3265) &amp; Muslim (2843) — dari Abu Hurairah radhiyallahu 'anhu</div>
+      </div>
+    </div>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead style="background:rgba(80,0,0,.8);">
+          <tr>
+            <th style="width:22%;color:#ffa080;">Lapisan Neraka</th>
+            <th style="width:38%;color:#ffa080;">Penghuninya</th>
+            <th style="width:40%;color:#ffa080;">Keterangan</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="Lapisan" style="color:#ff6040;">Jahannam (1)</td>
+            <td data-label="Penghuni" style="color:rgba(255,180,160,.8);">Orang-orang berdosa besar dari umat Islam</td>
+            <td data-label="Keterangan" style="color:rgba(220,160,140,.7);">Lapisan paling atas — penghuninya akan keluar setelah disucikan dari dosa-dosanya</td>
+          </tr>
+          <tr>
+            <td data-label="Lapisan" style="color:#ff6040;">Lazha (2)</td>
+            <td data-label="Penghuni" style="color:rgba(255,180,160,.8);">Orang-orang yang menolak dan berpaling</td>
+            <td data-label="Keterangan" style="color:rgba(220,160,140,.7);">QS. Al-Ma'ārij: 15 — api yang menyala-nyala menjilat kulit kepala</td>
+          </tr>
+          <tr>
+            <td data-label="Lapisan" style="color:#ff6040;">Huthamah (3)</td>
+            <td data-label="Penghuni" style="color:rgba(255,180,160,.8);">Para penghina, penumpuk harta, pencela</td>
+            <td data-label="Keterangan" style="color:rgba(220,160,140,.7);">QS. Al-Humazah: 4–7 — api yang membakar hingga ke dalam hati</td>
+          </tr>
+          <tr>
+            <td data-label="Lapisan" style="color:#ff6040;">Sa'ir (4)</td>
+            <td data-label="Penghuni" style="color:rgba(255,180,160,.8);">Orang-orang kafir</td>
+            <td data-label="Keterangan" style="color:rgba(220,160,140,.7);">QS. An-Nisā': 10 — azab bagi yang memakan harta anak yatim</td>
+          </tr>
+          <tr>
+            <td data-label="Lapisan" style="color:#ff6040;">Saqar (5)</td>
+            <td data-label="Penghuni" style="color:rgba(255,180,160,.8);">Orang-orang yang meninggalkan shalat</td>
+            <td data-label="Keterangan" style="color:rgba(220,160,140,.7);">QS. Al-Muddatstsir: 26–27 — dijaga 19 malaikat penjaga yang keras</td>
+          </tr>
+          <tr>
+            <td data-label="Lapisan" style="color:#ff6040;">Jahim (6)</td>
+            <td data-label="Penghuni" style="color:rgba(255,180,160,.8);">Orang-orang musyrik</td>
+            <td data-label="Keterangan" style="color:rgba(220,160,140,.7);">QS. Ash-Shu'arā': 91 — api besar yang menyala-nyala untuk mereka</td>
+          </tr>
+          <tr>
+            <td data-label="Lapisan" style="color:#ff6040;">Hawiyah (7)</td>
+            <td data-label="Penghuni" style="color:rgba(255,180,160,.8);">Orang-orang munafik — lapisan terdalam</td>
+            <td data-label="Keterangan" style="color:rgba(220,160,140,.7);">QS. An-Nisā': 145 — "Sesungguhnya orang-orang munafik itu (ditempatkan) pada lapisan terbawah dari neraka."</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="hl">
+      <div class="hl-label">✦ Mukmin Berdosa — Masuk Sementara, Lalu Keluar</div>
+      <div class="hl-ar">يَخْرُجُ مِنَ النَّارِ مَنْ قَالَ لَا إِلَهَ إِلَّا اللَّهُ وَفِي قَلْبِهِ مِثْقَالُ ذَرَّةٍ مِنْ خَيْرٍ</div>
+      <div class="hl-trans">"Akan keluar dari neraka barangsiapa yang mengucapkan lā ilāha illallāh dan di dalam hatinya ada kebaikan seberat biji sawi." — Ini adalah rahmat Allah yang agung: orang mukmin yang berdosa mungkin masuk neraka sementara untuk disucikan, namun pada akhirnya — karena tauhid yang ada di hatinya — ia akan dikeluarkan dari neraka dan dimasukkan ke surga oleh syafaat Nabi ﷺ dan rahmat Allah. Orang kafir dan munafik tinggal di dalamnya selamanya.</div>
+      <div class="hl-ref">HR. Bukhari (6565) &amp; Muslim (193) — dari Anas bin Malik radhiyallahu 'anhu</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TAHAP 9: A'RAF ══ -->
+<div class="stage" style="--stage-color:#d0b060;--stage-glow:rgba(208,176,96,.4);--stage-bg:rgba(8,6,0,.8);--stage-border:rgba(180,140,40,.2);--stage-line:rgba(180,140,40,.18);">
+  <div class="stage-circle" style="background:linear-gradient(135deg,#806010,#b09020);color:#fff8d0;">9</div>
+  <div class="stage-header">
+    <div class="stage-num-label">✦ Tahap Kesembilan — Yang Sering Terlupakan</div>
+    <div class="stage-ar">الأَعْرَافُ</div>
+    <div class="stage-title">Al-A'raf — Batas antara Surga &amp; Neraka</div>
+  </div>
+  <div class="stage-content">
+    <div class="prose">
+      <p class="lead">Di antara surga dan neraka terdapat sebuah tempat yang disebut Al-A'raf — tembok atau tempat yang tinggi. Penghuninya adalah manusia-manusia yang amal baik dan buruknya sama beratnya — sehingga tidak cukup masuk surga namun tidak layak masuk neraka. Mereka berada di sana sementara, dalam keadaan menunggu keputusan Allah.</p>
+      <p>Al-Qur'an Surah Al-A'raf (7: 46–49) menggambarkan kondisi mereka dengan detail yang unik: mereka mengenali para penghuni surga dan para penghuni neraka. Mereka memanggil dan berbicara kepada keduanya. Mereka sangat ingin masuk surga. Dan pada akhirnya — berdasarkan rahmat Allah — mereka akan dimasukkan ke surga tanpa melalui azab apapun. Tidak ada yang kekal di Al-A'raf.</p>
+    </div>
+    <div class="dalil" style="background:rgba(8,6,0,.8);border:1px solid rgba(180,140,40,.2);">
+      <div class="dalil-bar" style="background:#b09020;"></div>
+      <div class="dalil-body">
+        <div class="d-tag" style="color:#d0b060;">📖 QS. Al-A'rāf: 46–47 — Gambaran Penghuni A'raf</div>
+        <div class="d-ar" style="color:#ffe890;">وَعَلَى الْأَعْرَافِ رِجَالٌ يَعْرِفُونَ كُلًّا بِسِيمَاهُمْ ۚ وَنَادَوْا أَصْحَابَ الْجَنَّةِ أَن سَلَامٌ عَلَيْكُمْ ۚ لَمْ يَدْخُلُوهَا وَهُمْ يَطْمَعُونَ</div>
+        <div class="d-trans">"Dan di atas Al-A'raf terdapat orang-orang yang mengenal masing-masing (penghuni surga dan neraka) dengan tanda-tanda mereka. Dan mereka menyeru para penghuni surga: 'Keselamatan atas kalian.' Mereka belum masuk surga, namun mereka sangat mengharapkannya."</div>
+        <div class="d-ref" style="color:rgba(180,140,40,.6);">QS. Al-A'rāf (7): 46</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TAHAP 10: KENIKMATAN TERTINGGI ══ -->
+<div class="stage" style="--stage-color:#ffffff;--stage-glow:rgba(255,255,255,.5);--stage-bg:rgba(0,0,8,.9);--stage-border:rgba(200,220,255,.2);--stage-line:rgba(200,220,255,.15);">
+  <div class="stage-circle" style="background:linear-gradient(135deg,#8090c0,#d0e0ff);color:#000010;">∞</div>
+  <div class="stage-header">
+    <div class="stage-num-label">✦ Puncak Tertinggi</div>
+    <div class="stage-ar">رُؤْيَةُ اللَّهِ تَعَالَى</div>
+    <div class="stage-title">Ru'yatullāh — Melihat Allah: Kenikmatan di Atas Segala Kenikmatan</div>
+  </div>
+  <div class="stage-content">
+    <div class="prose">
+      <p class="lead">Di atas seluruh kenikmatan surga, di atas bidadari dan istana permata, di atas sungai susu dan madu, di atas makanan yang paling lezat — ada satu kenikmatan yang tak tertandingi: melihat Allah Yang Maha Mulia dengan mata kepala sendiri. Inilah puncak dari seluruh perjalanan panjang ini.</p>
+      <p>Nabi ﷺ bersabda: "Apabila penghuni surga masuk surga, Allah berfirman: 'Apakah kalian ingin Aku tambahkan sesuatu?' Mereka menjawab: 'Bukankah Engkau telah memutihkan wajah kami, memasukkan kami ke surga, dan menyelamatkan kami dari neraka?' Kemudian Allah menyingkap hijab-Nya — maka tidak ada satu pun kenikmatan yang lebih mereka sukai dari melihat Rabb mereka Yang Maha Agung. Itulah tambahan (yang dimaksud)." Kemudian Nabi ﷺ membaca: "Bagi orang-orang yang berbuat baik, ada pahala yang terbaik (surga) dan tambahannya (melihat Allah)." — QS. Yunus: 26.</p>
+    </div>
+    <div class="dalil" style="background:rgba(0,0,8,.9);border:1px solid rgba(200,220,255,.2);">
+      <div class="dalil-bar" style="background:#d0e0ff;"></div>
+      <div class="dalil-body">
+        <div class="d-tag" style="color:#c0d8ff;">📜 HR. Muslim — Melihat Allah seperti Melihat Bulan Purnama</div>
+        <div class="d-ar" style="color:#e8f4ff;">إِنَّكُمْ سَتَرَوْنَ رَبَّكُمْ كَمَا تَرَوْنَ الْقَمَرَ لَيْلَةَ الْبَدْرِ لَا تُضَامُّونَ فِي رُؤْيَتِهِ</div>
+        <div class="d-trans">"Sesungguhnya kalian akan melihat Rabb kalian sebagaimana kalian melihat bulan pada malam purnama — kalian tidak akan berdesak-desakan dalam melihat-Nya." — Penglihatan terhadap Allah adalah haq (nyata) yang diyakini Ahlus Sunnah, bukan sekadar metafora atau penglihatan batin, melainkan penglihatan nyata yang menjadi puncak dari seluruh kenikmatan akhirat.</div>
+        <div class="d-ref" style="color:rgba(180,200,240,.6);">HR. Bukhari (7434) &amp; Muslim (633) — dari Abu Hurairah radhiyallahu 'anhu</div>
+      </div>
+    </div>
+    <div class="banner">
+      <div class="ban-ar">لِّلَّذِينَ أَحْسَنُوا الْحُسْنَىٰ وَزِيَادَةٌ</div>
+      <div class="ban-id">"Bagi orang-orang yang berbuat baik, ada pahala yang terbaik (surga) dan tambahannya (melihat Allah)." — Para ulama tafsir sepakat bahwa "ziyadah" (tambahan) dalam ayat ini adalah melihat wajah Allah. Tidak ada kenikmatan yang lebih tinggi dari ini. Tidak ada tujuan yang lebih mulia untuk diperjuangkan selama hidup di dunia ini.</div>
+      <div class="ban-ref">QS. Yunus (10): 26 · Tafsir Ibnu Katsir &amp; Al-Qurthubi</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end wrap -->
+
+<!-- ══ PENUTUP ══ -->
+<div class="penutup">
+  <div class="penutup-inner">
+    <div class="penutup-ar">كُلُّ نَفْسٍ ذَائِقَةُ الْمَوْتِ ۗ وَإِنَّمَا تُوَفَّوْنَ أُجُورَكُمْ يَوْمَ الْقِيَامَةِ</div>
+    <div class="penutup-div"></div>
+    <p class="penutup-p">"Setiap jiwa pasti akan merasakan kematian. Dan hanyalah pada hari kiamat sajalah diberikan dengan sempurna balasanmu." — QS. Āli 'Imrān: 185. Perjalanan ini — dari kebangkitan, mahsyar, hisab, mizan, shirath, telaga, hingga surga atau neraka — bukan teori abstrak. Ia adalah kepastian yang lebih pasti dari matahari terbit esok hari.</p>
+    <p class="penutup-p" style="margin-top:10px;">Semoga dengan memahami perjalanan ini, kita semakin bersungguh-sungguh mempersiapkan bekal terbaik: iman yang kokoh, amal shalih yang terus-menerus, akhlak yang mulia, hak-hak sesama manusia yang selalu ditunaikan, dan hati yang selalu terhubung kepada Allah — Sang Pemilik hari pembalasan itu.</p>
+    <div class="penutup-div"></div>
+    <div class="dalil" style="background:rgba(4,4,16,.9);border:1px solid rgba(200,160,0,.18);text-align:left;">
+      <div style="background:var(--gold);width:4px;"></div>
+      <div class="dalil-body">
+        <div class="d-tag" style="color:var(--gold);">📜 Doa Memohon Husnul Khatimah &amp; Surga</div>
+        <div class="d-ar" style="color:var(--gold-lt);">اللَّهُمَّ إِنِّي أَسْأَلُكَ الْجَنَّةَ وَمَا قَرَّبَ إِلَيْهَا مِنْ قَوْلٍ أَوْ عَمَلٍ وَأَعُوذُ بِكَ مِنَ النَّارِ وَمَا قَرَّبَ إِلَيْهَا مِنْ قَوْلٍ أَوْ عَمَلٍ</div>
+        <div class="d-trans">"Ya Allah, sesungguhnya aku memohon kepada-Mu surga dan segala ucapan dan amalan yang mendekatkan kepadanya. Dan aku berlindung kepada-Mu dari neraka dan segala ucapan dan amalan yang mendekatkan kepadanya."</div>
+        <div class="d-ref" style="color:rgba(200,160,0,.6);">HR. Ibnu Majah (3846) &amp; Ahmad — dari Ibnu Mas'ud — Shahih</div>
+      </div>
+    </div>
+    <div class="penutup-footer">
+      <div class="logo">أَحْوَالُ الآخِرَةِ</div>
+      <div class="tag">وَاللّٰهُ أَعْلَمُ بِالصَّوَابِ · Semoga Bermanfaat</div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ═══ CANVAS — DEEP SPACE STARFIELD ═══ */
+const canvas=document.getElementById('canvas');
+const ctx=canvas.getContext('2d');
+let W,H,stars=[],nebulae=[];
+
+function resize(){W=canvas.width=innerWidth;H=canvas.height=innerHeight;}
+
+function init(){
+  stars=[];
+  for(let i=0;i<500;i++){
+    const type=Math.random();
+    stars.push({
+      x:Math.random()*W,y:Math.random()*H,
+      r:type<.05?2.5+Math.random()*1.5:type<.2?1.2+Math.random():.3+Math.random()*.8,
+      a:Math.random()*.7+.15,
+      sp:Math.random()*.3+.05,
+      ph:Math.random()*Math.PI*2,
+      gold:type<.04,
+      blue:type<.12&&type>=.04,
+      white:type>=.12
+    });
+  }
+  nebulae=[];
+  for(let i=0;i<5;i++){
+    nebulae.push({
+      x:Math.random()*W,y:Math.random()*H,
+      rx:100+Math.random()*200,
+      ry:60+Math.random()*120,
+      hue:Math.random()<.5?220+Math.random()*40:280+Math.random()*40,
+      a:.04+Math.random()*.06
+    });
+  }
+}
+
+let t=0;
+function draw(){
+  ctx.clearRect(0,0,W,H);
+  t+=.006;
+  nebulae.forEach(n=>{
+    const g=ctx.createRadialGradient(n.x,n.y,0,n.x,n.y,Math.max(n.rx,n.ry));
+    g.addColorStop(0,`hsla(${n.hue},80%,60%,${n.a})`);
+    g.addColorStop(1,'transparent');
+    ctx.beginPath();
+    ctx.ellipse(n.x,n.y,n.rx,n.ry,0,0,Math.PI*2);
+    ctx.fillStyle=g;ctx.fill();
+  });
+  stars.forEach(s=>{
+    const p=Math.sin(t*s.sp+s.ph)*.35+.65;
+    let color;
+    if(s.gold) color=`rgba(240,200,60,${s.a*p})`;
+    else if(s.blue) color=`rgba(100,160,255,${s.a*p})`;
+    else color=`rgba(210,225,255,${s.a*p})`;
+    ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+    ctx.fillStyle=color;
+    if(s.gold&&s.r>2){ctx.shadowBlur=6;ctx.shadowColor='rgba(240,200,60,.6)';}
+    ctx.fill();ctx.shadowBlur=0;
+  });
+  /* Occasional shooting star */
+  if(Math.random()<.002){
+    const x=Math.random()*W*.8,y=Math.random()*H*.4;
+    const ang=Math.PI/5+(Math.random()-.5)*.3;
+    const len=80+Math.random()*120;
+    const g2=ctx.createLinearGradient(x,y,x+Math.cos(ang)*len,y+Math.sin(ang)*len);
+    g2.addColorStop(0,'rgba(255,255,255,0)');
+    g2.addColorStop(.6,'rgba(200,200,255,.4)');
+    g2.addColorStop(1,'rgba(255,255,255,.9)');
+    ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x+Math.cos(ang)*len,y+Math.sin(ang)*len);
+    ctx.strokeStyle=g2;ctx.lineWidth=1.2;ctx.stroke();
+  }
+  requestAnimationFrame(draw);
+}
+window.addEventListener('resize',()=>{resize();init();});
+resize();init();draw();
+</script>
+</body>
+</html>
