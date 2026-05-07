@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fajar Islam di Nusantara — Perkembangan Awal Islam di Indonesia</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;900&family=Amiri:ital,wght@0,400;0,700;1,400&family=Raleway:ital,wght@0,200;0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+
+:root{
+  --void:     #000000;
+  --abyss:    #01060a;
+  --deep:     #020c12;
+  --cosmos:   #041018;
+  --midnight: #061824;
+  --ocean:    #082030;
+  --teal:     #0a3040;
+  --cobalt:   #104060;
+  --azure:    #186080;
+  --silver:   #90b0c8;
+  --moon:     #cce0f0;
+  --white:    #ffffff;
+  --gold:     #c8900a;
+  --gold-lt:  #e8b020;
+  --gold-pale:#fff8e0;
+  --spice:    #c06010;
+  --spice-lt: #e08030;
+  --dawn:     #f0d890;
+  --jade:     #107050;
+  --jade-lt:  #20a070;
+  --jade-pale:#d8f4e8;
+  --sand:     #c8a060;
+  --sand-lt:  #e0c080;
+  --terra:    #904020;
+  --terra-lt: #c06030;
+  --b-gold:   rgba(200,144,10,.2);
+  --b-silver: rgba(144,176,200,.15);
+  --b-jade:   rgba(16,112,80,.18);
+  --b-spice:  rgba(192,96,16,.2);
+}
+
+html{scroll-behavior:smooth;}
+body{background:var(--abyss);font-family:'Cinzel',serif;color:var(--moon);overflow-x:hidden;}
+
+/* CANVAS */
+#canvas{position:fixed;inset:0;z-index:0;pointer-events:none;}
+
+/* ══════════════════════════════
+   HERO
+══════════════════════════════ */
+.hero{
+  min-height:100vh;position:relative;z-index:1;
+  background:
+    radial-gradient(ellipse 50% 35% at 50% 50%,rgba(16,80,64,.2) 0%,transparent 65%),
+    radial-gradient(ellipse 80% 60% at 50% 100%,rgba(8,32,48,.4) 0%,transparent 70%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:80px 24px 120px;overflow:hidden;
+}
+
+/* Ripple rings */
+.rings{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
+.ring{
+  position:absolute;top:50%;left:50%;border-radius:50%;
+  border:1px solid rgba(16,112,80,.18);
+  animation:ringExpand 10s ease-out infinite;
+}
+.ring:nth-child(1){width:160px;height:160px;margin:-80px 0 0 -80px;animation-delay:0s;}
+.ring:nth-child(2){width:360px;height:360px;margin:-180px 0 0 -180px;animation-delay:2.5s;}
+.ring:nth-child(3){width:640px;height:640px;margin:-320px 0 0 -320px;animation-delay:5s;}
+.ring:nth-child(4){width:1000px;height:1000px;margin:-500px 0 0 -500px;animation-delay:7.5s;}
+@keyframes ringExpand{
+  0%{transform:scale(.25);opacity:.9;}
+  100%{transform:scale(1);opacity:0;}
+}
+
+/* Decorative dhow silhouette particles */
+.dhow{
+  position:absolute;
+  font-size:1.2rem;opacity:.06;
+  animation:dhowDrift linear infinite;
+  pointer-events:none;
+}
+@keyframes dhowDrift{
+  from{transform:translateX(-60px) translateY(0);}
+  to{transform:translateX(calc(100vw + 60px)) translateY(-20px);}
+}
+
+.hero-inner{position:relative;z-index:2;max-width:800px;}
+
+.hero-bismillah{
+  font-family:'Amiri',serif;
+  font-size:clamp(1.4rem,4vw,2.6rem);
+  color:var(--gold-lt);
+  text-shadow:0 0 30px rgba(200,144,10,.5);
+  line-height:2;margin-bottom:16px;
+  animation:hrise 2s ease both .1s;
+  direction:rtl;
+}
+
+.hero-kicker{
+  font-family:'Raleway',sans-serif;font-weight:300;
+  font-size:clamp(.58rem,1.4vw,.72rem);letter-spacing:8px;text-transform:uppercase;
+  color:rgba(144,176,200,.4);margin-bottom:20px;
+  animation:hrise 2s ease both .22s;
+}
+
+.hero-icon{
+  font-size:clamp(2.5rem,7vw,4.5rem);display:block;
+  margin-bottom:16px;
+  animation:hrise 2s ease both, iconGlow 4s ease-in-out infinite 2s;
+  filter:drop-shadow(0 0 20px rgba(200,144,10,.5));
+}
+@keyframes iconGlow{
+  0%,100%{filter:drop-shadow(0 0 14px rgba(200,144,10,.4));}
+  50%{filter:drop-shadow(0 0 36px rgba(200,144,10,.8)) drop-shadow(0 0 70px rgba(16,112,80,.3));}
+}
+
+.hero-title{
+  font-family:'Cinzel',serif;font-weight:900;
+  font-size:clamp(2.2rem,7vw,5.5rem);
+  line-height:1.05;letter-spacing:-1px;
+  background:linear-gradient(160deg,var(--white) 0%,var(--gold-lt) 30%,var(--jade-lt) 60%,var(--moon) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  margin-bottom:6px;animation:hrise 2s ease both .07s;
+}
+
+.hero-sub{
+  display:block;
+  font-family:'Raleway',sans-serif;font-weight:300;font-style:italic;
+  font-size:clamp(.95rem,2.4vw,1.6rem);
+  color:rgba(144,176,200,.55);letter-spacing:2px;
+  margin-bottom:26px;animation:hrise 2s ease both .28s;
+}
+
+.hero-rule{
+  display:flex;align-items:center;justify-content:center;gap:14px;
+  margin:0 auto 28px;animation:hrise 2s ease both .38s;
+}
+.hero-rule span{width:80px;height:1px;background:linear-gradient(90deg,transparent,rgba(200,144,10,.4));}
+.hero-rule span:last-child{background:linear-gradient(90deg,rgba(200,144,10,.4),transparent);}
+.hero-rule em{color:rgba(200,144,10,.6);font-style:normal;letter-spacing:8px;}
+
+.hero-verse{
+  max-width:620px;margin:0 auto;padding:22px 32px;
+  background:rgba(1,6,10,.75);border:1px solid rgba(200,144,10,.2);
+  backdrop-filter:blur(12px);animation:hrise 2s ease both .5s;
+}
+.hv-ar{font-family:'Amiri',serif;font-size:clamp(.95rem,2.4vw,1.38rem);color:var(--gold-lt);line-height:2.3;direction:rtl;margin-bottom:10px;}
+.hv-id{font-family:'Raleway',sans-serif;font-weight:300;font-style:italic;font-size:.82rem;color:rgba(144,176,200,.55);line-height:1.72;}
+
+@keyframes hrise{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+
+/* ══════════════════════════════
+   WRAP
+══════════════════════════════ */
+.wrap{max-width:920px;margin:0 auto;padding:0 16px 80px;position:relative;z-index:1;}
+
+/* ══════════════════════════════
+   STAGE
+══════════════════════════════ */
+.stage{
+  margin:56px 0 0;
+  position:relative;
+  padding:0 0 0 80px;
+}
+.stage::before{
+  content:'';
+  position:absolute;left:28px;top:0;bottom:-56px;
+  width:2px;
+  background:linear-gradient(180deg,var(--stage-color,rgba(200,144,10,.4)),rgba(200,144,10,.08));
+}
+.stage:last-child::before{display:none;}
+
+.stage-circle{
+  position:absolute;left:0;top:0;
+  width:58px;height:58px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Cinzel',serif;font-weight:900;
+  font-size:1.1rem;
+  box-shadow:0 0 24px var(--stage-glow,rgba(200,144,10,.4));
+  z-index:2;
+}
+
+.stage-header{padding:12px 0 0;}
+.stage-num-label{
+  font-family:'Raleway',sans-serif;font-weight:600;
+  font-size:.6rem;letter-spacing:5px;text-transform:uppercase;
+  margin-bottom:6px;color:var(--stage-color,var(--gold));
+}
+.stage-ar{
+  font-family:'Amiri',serif;
+  font-size:clamp(1.1rem,2.8vw,1.8rem);
+  line-height:1.85;margin-bottom:4px;
+  color:var(--stage-color,var(--gold));
+  direction:rtl;
+}
+.stage-title{
+  font-family:'Cinzel',serif;font-weight:700;
+  font-size:clamp(1rem,2.6vw,1.7rem);
+  line-height:1.2;color:var(--white);
+  margin-bottom:20px;
+}
+
+.stage-content{
+  padding:24px 28px;
+  border:1px solid var(--stage-border,rgba(200,144,10,.15));
+  background:var(--stage-bg,rgba(4,16,24,.65));
+  backdrop-filter:blur(8px);
+}
+
+/* ══════════════════════════════
+   PROSE
+══════════════════════════════ */
+.prose p{
+  font-family:'Raleway',sans-serif;font-weight:300;
+  font-size:clamp(.95rem,2.1vw,1.05rem);
+  line-height:2.1;color:rgba(200,224,240,.82);
+  margin-bottom:15px;
+  text-align:justify;hyphens:auto;-webkit-hyphens:auto;
+}
+.prose p.lead{
+  font-style:italic;font-weight:400;
+  font-size:clamp(.98rem,2.2vw,1.08rem);
+  line-height:1.95;
+  color:var(--stage-color,var(--gold));
+  text-align:justify;
+}
+.prose p:first-of-type:not(.lead)::first-letter{
+  font-family:'Cinzel',serif;font-weight:900;
+  font-size:4em;line-height:.72;
+  float:left;margin:8px 12px 0 0;
+  color:var(--stage-color,var(--gold));
+}
+
+/* ══════════════════════════════
+   DALIL
+══════════════════════════════ */
+.dalil{margin:22px 0;display:grid;grid-template-columns:4px 1fr;}
+.dalil-body{padding:16px 20px 13px;}
+.d-tag{font-family:'Raleway',sans-serif;font-weight:600;font-size:.6rem;letter-spacing:4px;text-transform:uppercase;margin-bottom:9px;display:flex;align-items:center;gap:10px;}
+.d-tag::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--stage-line,rgba(200,144,10,.2)),transparent);}
+.d-ar{font-family:'Amiri',serif;font-size:clamp(1.05rem,2.6vw,1.45rem);line-height:2.2;direction:rtl;text-align:right;margin-bottom:11px;padding-bottom:9px;border-bottom:1px dashed var(--stage-line,rgba(200,144,10,.18));}
+.d-trans{font-family:'Raleway',sans-serif;font-weight:300;font-style:italic;font-size:.91rem;line-height:1.82;color:rgba(180,210,232,.72);margin-bottom:7px;text-align:justify;}
+.d-ref{font-family:'Raleway',sans-serif;font-weight:600;font-size:.6rem;letter-spacing:2px;text-transform:uppercase;}
+
+/* ══════════════════════════════
+   CARDS
+══════════════════════════════ */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:5px;margin:20px 0;}
+.card{padding:18px 16px;border:1px solid var(--stage-border,rgba(200,144,10,.15));background:rgba(0,0,0,.3);}
+.card-icon{font-size:1.5rem;margin-bottom:8px;display:block;}
+.card-title{font-family:'Cinzel',serif;font-size:.86rem;letter-spacing:.5px;margin-bottom:5px;color:var(--stage-color,var(--gold));}
+.card-desc{font-family:'Raleway',sans-serif;font-weight:300;font-size:.82rem;line-height:1.72;font-style:italic;color:rgba(180,210,232,.62);text-align:justify;}
+
+/* ══════════════════════════════
+   TABLE
+══════════════════════════════ */
+.tbl-wrap{margin:20px 0;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.tbl{width:100%;border-collapse:collapse;font-size:.86rem;}
+.tbl thead th{padding:10px 12px;text-align:left;font-family:'Raleway',sans-serif;font-size:.58rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--stage-color,var(--gold));background:rgba(0,0,0,.4);border-bottom:1px solid var(--stage-border,rgba(200,144,10,.15));white-space:nowrap;}
+.tbl tbody tr{border-bottom:1px solid rgba(144,176,200,.08);}
+.tbl tbody tr:nth-child(even){background:rgba(255,255,255,.03);}
+.tbl tbody tr:nth-child(odd){background:rgba(0,0,0,.18);}
+.tbl td{padding:9px 12px;line-height:1.65;vertical-align:top;font-family:'Raleway',sans-serif;font-weight:300;font-size:.84rem;color:rgba(200,224,240,.8);}
+.tbl td:first-child{font-weight:600;color:var(--white);}
+@media(max-width:560px){
+  .tbl-wrap{border:1px solid var(--stage-border,rgba(200,144,10,.12));}
+  .tbl,.tbl thead,.tbl tbody,.tbl th,.tbl td,.tbl tr{display:block;width:100%;}
+  .tbl thead{display:none;}
+  .tbl tbody tr{padding:12px 14px;border-bottom:1px solid rgba(144,176,200,.1);}
+  .tbl td{padding:3px 0;border:none;display:grid;grid-template-columns:90px 1fr;gap:6px;align-items:start;}
+  .tbl td::before{content:attr(data-label);font-family:'Raleway',sans-serif;font-size:.56rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;opacity:.5;padding-top:2px;}
+}
+
+/* ══════════════════════════════
+   HIGHLIGHT
+══════════════════════════════ */
+.hl{margin:18px 0;padding:18px 20px;border-left:4px solid var(--stage-color,var(--gold));background:rgba(0,0,0,.35);}
+.hl-label{font-family:'Raleway',sans-serif;font-weight:600;font-size:.58rem;letter-spacing:3px;text-transform:uppercase;margin-bottom:8px;color:var(--stage-color,var(--gold));}
+.hl-ar{font-family:'Amiri',serif;font-size:clamp(1rem,2.5vw,1.38rem);line-height:2.1;margin-bottom:8px;color:var(--stage-color,var(--gold));direction:rtl;text-align:right;}
+.hl-trans{font-family:'Raleway',sans-serif;font-weight:300;font-style:italic;font-size:.89rem;line-height:1.82;color:rgba(180,210,232,.72);margin-bottom:6px;text-align:justify;}
+.hl-ref{font-family:'Raleway',sans-serif;font-weight:600;font-size:.6rem;letter-spacing:2px;text-transform:uppercase;color:rgba(144,176,200,.5);}
+
+/* ══════════════════════════════
+   BANNER
+══════════════════════════════ */
+.banner{margin:22px 0;padding:22px 26px;text-align:center;border:1px solid var(--stage-border,rgba(200,144,10,.2));background:rgba(0,0,0,.42);}
+.ban-ar{font-family:'Amiri',serif;font-size:clamp(1.05rem,2.6vw,1.46rem);line-height:2.1;margin-bottom:10px;color:var(--stage-color,var(--gold));direction:rtl;}
+.ban-id{font-family:'Raleway',sans-serif;font-weight:300;font-style:italic;font-size:.89rem;line-height:1.8;margin-bottom:6px;color:rgba(180,210,232,.7);text-align:justify;}
+.ban-ref{font-family:'Raleway',sans-serif;font-weight:600;font-size:.6rem;letter-spacing:3px;text-transform:uppercase;color:rgba(144,176,200,.42);}
+
+/* sep */
+.sep{text-align:center;padding:10px 0;position:relative;z-index:1;}
+.sep span{color:rgba(200,144,10,.3);letter-spacing:12px;font-size:.7rem;}
+
+/* ══════════════════════════════
+   PENUTUP
+══════════════════════════════ */
+.penutup{
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 0%,rgba(16,112,80,.14) 0%,transparent 65%),
+    radial-gradient(ellipse 40% 40% at 80% 80%,rgba(200,144,10,.08) 0%,transparent 60%),
+    linear-gradient(180deg,var(--ocean) 0%,var(--cosmos) 40%,var(--abyss) 100%);
+  padding:72px 24px 80px;text-align:center;
+  position:relative;overflow:hidden;margin-top:60px;z-index:1;
+}
+.penutup::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--jade-lt),var(--gold-lt),var(--jade-lt),transparent);}
+.penutup-inner{max-width:620px;margin:0 auto;position:relative;z-index:1;}
+.penutup-ar{font-family:'Amiri',serif;font-size:clamp(1.3rem,3.8vw,2.4rem);color:var(--gold-lt);line-height:2.1;text-shadow:0 0 20px rgba(200,144,10,.3);margin-bottom:14px;}
+.penutup-div{width:80px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:18px auto;}
+.penutup-p{font-family:'Raleway',sans-serif;font-weight:300;font-style:italic;font-size:clamp(.88rem,2vw,1.02rem);color:rgba(180,210,232,.7);line-height:1.96;margin-bottom:12px;text-align:justify;}
+.penutup-footer{margin-top:40px;padding-top:22px;border-top:1px solid rgba(255,255,255,.05);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+.penutup-footer .logo{font-family:'Amiri',serif;font-size:1.1rem;color:rgba(200,144,10,.35);}
+.penutup-footer .tag{font-family:'Raleway',sans-serif;font-weight:600;font-size:.55rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.1);}
+
+/* ══════════════════════════════
+   WALI GRID
+══════════════════════════════ */
+.wali-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:6px;margin:20px 0;}
+.wali-card{
+  padding:16px 14px;
+  border:1px solid var(--stage-border,rgba(32,160,112,.15));
+  background:rgba(0,0,0,.3);
+  position:relative;overflow:hidden;
+}
+.wali-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:var(--stage-color,var(--jade-lt));
+  opacity:.5;
+}
+.wali-num{font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:3px;color:var(--stage-color,var(--jade-lt));opacity:.6;margin-bottom:4px;}
+.wali-name{font-family:'Cinzel',serif;font-size:.92rem;font-weight:700;color:var(--white);margin-bottom:3px;}
+.wali-area{font-family:'Raleway',sans-serif;font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--stage-color,var(--jade-lt));opacity:.7;margin-bottom:6px;}
+.wali-desc{font-family:'Raleway',sans-serif;font-weight:300;font-size:.8rem;line-height:1.68;color:rgba(180,210,232,.58);font-style:italic;text-align:justify;}
+
+/* ══════════════════════════════
+   TIMELINE MINI
+══════════════════════════════ */
+.mini-tl{margin:18px 0;}
+.mt-item{display:grid;grid-template-columns:72px 1fr;gap:14px;margin-bottom:10px;align-items:start;}
+.mt-year{font-family:'Cinzel',serif;font-size:.8rem;font-weight:700;color:var(--stage-color,var(--gold));text-align:right;padding-top:2px;line-height:1.4;}
+.mt-body{border-left:2px solid var(--stage-color,rgba(200,144,10,.3));padding-left:14px;padding-bottom:10px;}
+.mt-title{font-family:'Cinzel',serif;font-size:.88rem;color:var(--white);margin-bottom:3px;}
+.mt-text{font-family:'Raleway',sans-serif;font-weight:300;font-size:.82rem;line-height:1.68;color:rgba(180,210,232,.6);font-style:italic;text-align:justify;}
+
+@media(max-width:600px){
+  .wrap{padding:0 14px 60px;}
+  .hero{padding:56px 20px 100px;}
+  .stage{padding-left:68px;}
+  .stage-circle{width:48px;height:48px;font-size:.9rem;}
+  .stage::before{left:23px;}
+  .stage-content{padding:18px 16px;}
+  .hl,.banner{padding:14px 14px;}
+  .penutup{padding:50px 18px 56px;}
+  .mt-item{grid-template-columns:60px 1fr;gap:10px;}
+}
+</style>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="rings">
+    <div class="ring"></div><div class="ring"></div>
+    <div class="ring"></div><div class="ring"></div>
+  </div>
+  <div class="hero-inner">
+    <span class="hero-icon">🌙</span>
+    <div class="hero-bismillah">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
+    <p class="hero-kicker">Sejarah Islam · Nusantara · Abad VII — XVI Masehi</p>
+    <h1 class="hero-title">Fajar Islam<br>di Nusantara</h1>
+    <span class="hero-sub">Perkembangan Awal Islam di Indonesia</span>
+    <div class="hero-rule"><span></span><em>✦ ✦ ✦</em><span></span></div>
+    <div class="hero-verse">
+      <div class="hv-ar">وَقُلْ رَبِّ أَدْخِلْنِي مُدْخَلَ صِدْقٍ وَأَخْرِجْنِي مُخْرَجَ صِدْقٍ وَاجْعَل لِّي مِن لَّدُنكَ سُلْطَانًا نَّصِيرًا</div>
+      <div class="hv-id">"Dan katakanlah: 'Ya Tuhanku, masukkanlah aku dengan cara yang benar dan keluarkanlah aku dengan cara yang benar pula, dan berikanlah kepadaku dari sisi-Mu kekuasaan yang menolong.'"<br><em style="color:rgba(200,144,10,.45)">— QS. Al-Isrā': 80 — Doa yang sering dibaca para penyebar Islam di tanah baru</em></div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+
+<!-- ══ TAHAP 0: MUKADIMAH ══ -->
+<div class="stage" style="--stage-color:rgba(200,192,160,.9);--stage-glow:rgba(200,160,80,.4);--stage-bg:rgba(8,12,4,.7);--stage-border:rgba(200,160,80,.18);--stage-line:rgba(200,160,80,.16);">
+  <div class="stage-circle" style="background:linear-gradient(135deg,#4a3808,#806018);color:#ffe8a0;">✦</div>
+  <div class="stage-header">
+    <div class="stage-num-label">✦ Mukadimah</div>
+    <div class="stage-ar">فَجْرُ الْإِسْلَامِ فِي الْأَرْخَبِيلِ</div>
+    <div class="stage-title">Fajar Islam di Kepulauan Nusantara</div>
+  </div>
+  <div class="stage-content">
+    <div class="prose">
+      <p class="lead">Di antara gugus kepulauan terbesar di dunia — terbentang dari Sabang sampai Merauke, dari Miangas hingga Pulau Rote — cahaya Islam datang bukan dengan pedang, tetapi dengan layar kapal, aroma rempah, dan kesaksian lisan pedagang yang menyebut nama Allah di setiap perjalanannya.</p>
+      <p>Indonesia hari ini adalah negara dengan populasi Muslim terbesar di dunia: lebih dari 230 juta jiwa, hampir 87% dari total penduduk. Namun bagaimana sebuah agama yang lahir di Jazirah Arabia pada abad ke-7 Masehi, di bawah terik matahari padang pasir, bisa berakar begitu dalam di bumi tropis yang basah, di antara budaya Hindu-Buddha yang telah berusia berabad-abad? Inilah kisah yang lebih menakjubkan dari sekadar penaklukan militer.</p>
+      <p>Penyebaran Islam di Nusantara berlangsung secara bertahap, damai, dan bergelombang — melalui jalur perdagangan, pernikahan, dakwah para ulama, tasawuf yang menyentuh kalbu, dan pesantren yang mendidik generasi demi generasi. Ia adalah proses transformasi peradaban terpanjang dan terdamai dalam sejarah agama-agama dunia.</p>
+    </div>
+    <div class="hl">
+      <div class="hl-label">✦ Allah Maha Mengatur Perjalanan Cahaya-Nya</div>
+      <div class="hl-ar">يُرِيدُونَ لِيُطْفِئُوا نُورَ اللَّهِ بِأَفْوَاهِهِمْ وَاللَّهُ مُتِمُّ نُورِهِ وَلَوْ كَرِهَ الْكَافِرُونَ</div>
+      <div class="hl-trans">"Mereka hendak memadamkan cahaya Allah dengan mulut mereka, tetapi Allah tetap menyempurnakan cahaya-Nya, meskipun orang-orang kafir membencinya."</div>
+      <div class="hl-ref">QS. Ash-Shaff (61): 8</div>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <span class="card-icon">🌊</span>
+        <div class="card-title">Jalur Perdagangan</div>
+        <div class="card-desc">Islam datang melalui jalur rempah Nusantara — rute laut yang menghubungkan Arabia, India, Persia, dan kepulauan Indonesia sejak abad ke-7 M.</div>
+      </div>
+      <div class="card">
+        <span class="card-icon">🤝</span>
+        <div class="card-title">Dakwah Damai</div>
+        <div class="card-desc">Tidak ada catatan sejarah penaklukan militer dalam proses islamisasi Indonesia. Islam disebarkan melalui keteladanan akhlak pedagang dan ulama.</div>
+      </div>
+      <div class="card">
+        <span class="card-icon">📿</span>
+        <div class="card-title">Tasawuf & Seni</div>
+        <div class="card-desc">Pendekatan sufistik dan penggunaan seni budaya lokal — wayang, gamelan, tembang — menjadi strategi dakwah yang sangat efektif di Jawa.</div>
+      </div>
+      <div class="card">
+        <span class="card-icon">🏫</span>
+        <div class="card-title">Pesantren</div>
+        <div class="card-desc">Lembaga pendidikan Islam asli Nusantara yang melahirkan ulama-ulama besar dan menjadi tulang punggung keberlangsungan Islam di Indonesia.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TAHAP 1: TEORI MASUKNYA ISLAM ══ -->
+<div class="stage" style="--stage-color:#e8b020;--stage-glow:rgba(232,176,32,.5);--stage-bg:rgba(8,6,0,.75);--stage-border:rgba(200,144,10,.2);--stage-line:rgba(200,144,10,.2);">
+  <div class="stage-circle" style="background:linear-gradient(135deg,#c8900a,#e8b020);color:#1a0c00;">1</div>
+  <div class="stage-header">
+    <div class="stage-num-label">✦ Babak Pertama · Abad VII — XII M</div>
+    <div class="stage-ar">نَظَرِيَّاتُ دُخُولِ الإِسْلَامِ</div>
+    <div class="stage-title">Teori-Teori Masuknya Islam ke Nusantara</div>
+  </div>
+  <div class="stage-content">
+    <div class="prose">
+      <p class="lead">Para sejarawan telah berdebat selama lebih dari seabad mengenai asal-usul, waktu, dan jalur masuknya Islam ke Nusantara. Tidak ada satu teori pun yang diterima bulat-bulat, karena Islam datang bukan melalui satu gelombang tunggal, melainkan melalui proses panjang yang melibatkan banyak aktor dari berbagai penjuru dunia.</p>
+      <p>Nusantara sejak ribuan tahun sebelumnya telah menjadi persimpangan jalur perdagangan dunia. Rempah-rempah — cengkeh dari Maluku, pala dari Banda, lada dari Sumatera dan Jawa — adalah komoditas paling berharga di dunia kuno. Siapa yang menguasai rempah, menguasai dunia. Maka tidak mengherankan jika para pedagang Arab, Persia, India, dan Cina sudah berlabuh di pelabuhan-pelabuhan Nusantara jauh sebelum Islam lahir. Ketika Islam menyebar dari Mekah dan Madinah, para pedagang Muslim inilah yang pertama-tama membawa cahayanya ke Timur Jauh.</p>
+    </div>
+
+    <div class="dalil" style="background:rgba(8,6,0,.75);border:1px solid rgba(200,144,10,.2);">
+      <div class="dalil-bar" style="background:#e8b020;"></div>
+      <div class="dalil-body">
+        <div class="d-tag" style="color:#e8b020;">📜 Hadits — Perintah Menuntut Ilmu Hingga ke Negeri Terjauh</div>
+        <div class="d-ar" style="color:#e8c040;">اُطْلُبُوا الْعِلْمَ وَلَوْ بِالصِّيْنِ</div>
+        <div class="d-trans">"Tuntutlah ilmu meskipun sampai ke negeri Cina." — Hadits ini, walaupun diperdebatkan keshahihannya, mencerminkan semangat umat Islam awal yang mendorong mereka menyeberangi samudra untuk berdagang, berdakwah, dan menuntut ilmu. Semangat inilah yang membawa pedagang Muslim melewati Selat Malaka menuju kepulauan Nusantara.</div>
+        <div class="d-ref" style="color:rgba(200,144,10,.6);">Disebutkan oleh Al-Baihaqi dalam Syu'abul Iman — diperselisihkan keshahihannya</div>
+      </div>
+    </div>
+
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead>
+          <tr>
+            <th>Teori</th>
+            <th>Pendukung Utama</th>
+            <th>Asal Pembawa</th>
+            <th>Bukti & Argumen</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="Teori">Gujarat (India)</td>
+            <td data-label="Pendukung" style="color:rgba(200,224,240,.7);">Snouck Hurgronje, Moquette</td>
+            <td data-label="Asal" style="color:rgba(200,224,240,.7);">Pedagang Muslim Gujarat, India</td>
+            <td data-label="Bukti" style="color:rgba(200,224,240,.7);">Kesamaan batu nisan, corak tasawuf, abad XIII–XIV</td>
+          </tr>
+          <tr>
+            <td data-label="Teori">Arab (Langsung)</td>
+            <td data-label="Pendukung" style="color:rgba(200,224,240,.7);">Hamka, Al-Attas</td>
+            <td data-label="Asal" style="color:rgba(200,224,240,.7);">Pedagang Arab dari Hadramaut, Yaman</td>
+            <td data-label="Bukti" style="color:rgba(200,224,240,.7);">Berita Cina abad VII, perkampungan Arab di Sumatera</td>
+          </tr>
+          <tr>
+            <td data-label="Teori">Persia</td>
+            <td data-label="Pendukung" style="color:rgba(200,224,240,.7);">Hoesein Djajadiningrat</td>
+            <td data-label="Asal" style="color:rgba(200,224,240,.7);">Pedagang Persia (Iran)</td>
+            <td data-label="Bukti" style="color:rgba(200,224,240,.7);">Pengaruh Syiah awal, istilah Persia dalam Islam Nusantara</td>
+          </tr>
+          <tr>
+            <td data-label="Teori">Cina (Tiongkok)</td>
+            <td data-label="Pendukung" style="color:rgba(200,224,240,.7);">Sumanto Al-Qurtuby</td>
+            <td data-label="Asal" style="color:rgba(200,224,240,.7);">Muslim Cina (Hui), era Dinasti Tang–Ming</td>
+            <td data-label="Bukti" style="color:rgba(200,224,240,.7);">Ekspedisi Zheng He, masjid bergaya Tiongkok di pesisir Jawa</td>
+          </tr>
+          <tr>
+            <td data-label="Teori">Benggala</td>
+            <td data-label="Pendukung" style="color:rgba(200,224,240,.7);">S.Q. Fatimi</td>
+            <td data-label="Asal" style="color:rgba(200,224,240,.7);">Muslim Benggala (Bangladesh)</td>
+            <td data-label="Bukti" style="color:rgba(200,224,240,.7);">Hubungan erat Pasai dengan Benggala abad XIV</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="prose">
+      <p>Seminar Masuknya Islam ke Indonesia yang diadakan di Medan (1963) dan Aceh (1978) menyimpulkan bahwa Islam masuk ke Indonesia pertama kali pada abad ke-7 M langsung dari Arab, dan telah membentuk masyarakat Muslim di Nusantara sejak abad ke-13 M. Para sejarawan kini cenderung berpendapat bahwa Islam datang melalui <em>banyak jalur sekaligus</em>, bukan hanya satu jalur tunggal — dan proses islamisasi berlangsung bergelombang selama berabad-abad.</p>
+    </div>
+
+    <div class="hl">
+      <div class="hl-label">✦ Bukti Tertua — Berita Cina (Abad VII M)</div>
+      <div class="hl-trans">Kronik Cina dari Dinasti Tang (618–907 M) menyebutkan adanya permukiman pedagang Arab Muslim di pantai barat Sumatera. Utusan Kesultanan Arab ke Cina pada masa Khalifah Utsman bin Affan radhiyallahu 'anhu (644–656 M) melewati kepulauan Nusantara. Ini menunjukkan kontak Islam dengan Nusantara sudah terjadi hanya 12–20 tahun setelah wafatnya Nabi Muhammad ﷺ.</div>
+      <div class="hl-ref">Sumber: Kronik Dinasti Tang (Tang Shu) · Analisis T.W. Arnold dalam "The Preaching of Islam" (1913)</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TAHAP 2: SAMUDRA PASAI ══ -->
+<div class="stage" style="--stage-color:#20c890;--stage-glow:rgba(32,200,144,.4);--stage-bg:rgba(0,10,8,.75);--stage-border:rgba(16,160,96,.2);--stage-line:rgba(16,160,96,.18);">
+  <div class="stage-circle" style="background:linear-gradient(135deg,#0a5a38,#10a060);color:#d0fff0;">2</div>
+  <div class="stage-header">
+    <div class="stage-num-label">✦ Babak Kedua · Abad XIII M</div>
+    <div class="stage-ar">سَلْطَنَةُ سَمُودَرَا بَاسَاي</div>
+    <div class="stage-title">Samudra Pasai — Kesultanan Islam Pertama di Nusantara</div>
+  </div>
+  <div class="stage-content">
+    <div class="prose">
+      <p class="lead">Di ujung utara Pulau Sumatera, di tepi Selat Malaka yang sibuk, berdiri sebuah kesultanan kecil namun bersejarah luar biasa: Samudra Pasai. Didirikan sekitar tahun 1267 M oleh Marah Silu yang kemudian bergelar Sultan Malik as-Shalih, inilah kerajaan Islam pertama di Nusantara — jauh sebelum negara-negara Islam besar di Jawa tumbuh.</p>
+      <p>Marah Silu, menurut Hikayat Raja-Raja Pasai, bermimpi bertemu Nabi Muhammad ﷺ yang meludahi mulutnya — dan ketika terbangun, ia mendapati dirinya bisa membaca Al-Qur'an tanpa pernah belajar sebelumnya. Apakah mimpi itu historis atau legenda, ia mencerminkan keyakinan mendalam masyarakat bahwa konversi raja ke Islam adalah peristiwa yang sakral dan bukan sekadar keputusan politik.</p>
+      <p>Samudra Pasai segera menjadi pusat perdagangan dan pusat keilmuan Islam di Asia Tenggara. Ibnu Battutah, musafir termasyhur asal Maroko, mengunjungi Pasai pada tahun 1345 M dan memuji Sultan Al-Malik Az-Zahir yang sangat alim, rajin berdiskusi ilmu agama, dan majelisnya penuh dengan ulama dari berbagai penjuru dunia. Pasai menerbitkan mata uang emas bergaya Islam dan menggunakan bahasa Arab dalam administrasi kerajaan.</p>
+    </div>
+
+    <div class="dalil" style="background:rgba(0,10,8,.75);border:1px solid rgba(16,160,96,.2);">
+      <div class="dalil-bar" style="background:#10a060;"></div>
+      <div class="dalil-body">
+        <div class="d-tag" style="color:#20c890;">📜 Ibnu Battutah — Rihla (1345 M)</div>
+        <div class="d-ar" style="color:#60f0c0;font-size:1rem;">وَصَلْتُ إِلَى مَدِينَةِ سُمُطْرَةَ وَهِيَ مَدِينَةٌ كَبِيرَةٌ حَسَنَةٌ وَسُلْطَانُهَا عَظِيمُ الْإِسْلَامِ</div>
+        <div class="d-trans">"Aku tiba di kota Samuthrah (Sumatera/Pasai), ia adalah kota yang besar dan indah, dan sultannya adalah seorang yang agung dalam Islam." — Ibnu Battutah juga mencatat bahwa sang sultan selalu menghadiri shalat Jumat dengan berjalan kaki bersama rakyatnya, dan setelah shalat mengadakan majelis ilmu hingga tengah hari.</div>
+        <div class="d-ref" style="color:rgba(16,160,96,.6);">Ibnu Battutah, Tuhfatun-Nuzhar (Rihlah Ibnu Battutah), Vol. IV · 1345 M</div>
+      </div>
+    </div>
+
+    <div class="mini-tl">
+      <div class="mt-item">
+        <div class="mt-year">~1267</div>
+        <div class="mt-body">
+          <div class="mt-title">Berdirinya Samudra Pasai</div>
+          <div class="mt-text">Sultan Malik as-Shalih (Marah Silu) mendirikan Kesultanan Samudra Pasai. Nisan makamnya yang bertulisan Arab ditemukan di Gampong Beuringin, Lhokseumawe — menjadi bukti arkeologis tertua keberadaan kesultanan Islam di Nusantara.</div>
+        </div>
+      </div>
+      <div class="mt-item">
+        <div class="mt-year">1297</div>
+        <div class="mt-body">
+          <div class="mt-title">Wafatnya Sultan Malik as-Shalih</div>
+          <div class="mt-text">Nisan makamnya bertanggal 696 H (1297 M), merupakan prasasti bertanggal tertua bertulisan Arab di Nusantara yang menjadi bukti kuat Pasai sebagai kerajaan Islam pertama.</div>
+        </div>
+      </div>
+      <div class="mt-item">
+        <div class="mt-year">1345</div>
+        <div class="mt-body">
+          <div class="mt-title">Kunjungan Ibnu Battutah</div>
+          <div class="mt-text">Musafir besar Maroko ini menghabiskan waktu di Pasai dan memuji tingginya ilmu Islam di sana. Catatan perjalanannya menjadi salah satu sumber sejarah paling berharga tentang Islam awal di Nusantara.</div>
+        </div>
+      </div>
+      <div class="mt-item">
+        <div class="mt-year">1521</div>
+        <div class="mt-body">
+          <div class="mt-title">Jatuh ke Tangan Portugis</div>
+          <div class="mt-text">Setelah lebih dari dua abad berdiri sebagai mercusuar Islam di Nusantara, Samudra Pasai ditaklukkan Portugis. Namun warisan ilmu dan budaya Islamnya telah menyebar jauh ke seluruh kepulauan.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="banner" style="border:1px solid rgba(16,160,96,.2);">
+      <div class="ban-ar">وَمَن يَتَّقِ اللَّهَ يَجْعَل لَّهُ مَخْرَجًا ۝ وَيَرْزُقْهُ مِنْ حَيْثُ لَا يَحْتَسِبُ</div>
+      <div class="ban-id">"Dan barangsiapa bertakwa kepada Allah, niscaya Dia akan membukakan jalan keluar baginya, dan Dia memberinya rezeki dari arah yang tidak disangka-sangkanya." — Ayat ini tercermin dalam keberkahan Samudra Pasai: kota kecil di ujung Sumatera yang menjadi pusat perdagangan dan keilmuan Islam dunia selama lebih dari dua abad.</div>
+      <div class="ban-ref">QS. Ath-Thalaq (65): 2-3 · Ayat yang sering dikutip para pedagang Muslim Nusantara</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TAHAP 3: KESULTANAN MALAKA ══ -->
+<div class="stage" style="--stage-color:#60b8f0;--stage-glow:rgba(96,184,240,.4);--stage-bg:rgba(0,8,20,.78);--stage-border:rgba(48,128,200,.2);--stage-line:rgba(48,128,200,.18);">
+  <div class="stage-circle" style="background:linear-gradient(135deg,#083060,#186090);color:#b0d8f8;">3</div>
+  <div class="stage-header">
+    <div class="stage-num-label">✦ Babak Ketiga · Abad XV M</div>
+    <div class="stage-ar">سَلْطَنَةُ مَلَقَّا</div>
+    <div class="stage-title">Kesultanan Malaka — Pusat Islamisasi Nusantara</div>
+  </div>
+  <div class="stage-content">
+    <div class="prose">
+      <p class="lead">Jika Samudra Pasai adalah benih pertama, maka Kesultanan Malaka adalah pohon rindang yang menaungi seluruh Nusantara. Didirikan sekitar tahun 1400 M oleh Parameswara — seorang pangeran Sriwijaya yang melarikan diri dari tekanan Majapahit — Malaka tumbuh menjadi kota pelabuhan terpenting di Asia dalam waktu kurang dari satu abad.</p>
+      <p>Parameswara memeluk Islam sekitar tahun 1414 M setelah menikahi putri Sultan Pasai, dan berganti nama menjadi Raja Iskandar Shah. Keputusan ini bukan sekadar pernikahan diplomatik — ia membuka pintu bagi islamisasi massal seluruh kerajaan. Para pedagang Muslim dari Gujarat, Arab, Persia, dan India berbondong-bondong ke Malaka, menjadikannya hub perdagangan paling ramai di dunia pada masanya. Di puncak kejayaannya, Malaka menguasai perdagangan rempah global dan 84 bahasa diucapkan di pelabuhannya.</p>
+      <p>Dari Malaka, Islam menyebar bagai ombak: ke Semenanjung Melayu, Jawa, Kalimantan, Filipina, Maluku. Para ulama Malaka dan pedagang Muslimnya menjadi agen islamisasi yang paling efektif yang pernah ada di Asia Tenggara. Bahasa Melayu yang menjadi lingua franca perdagangan turut menjadi bahasa Islam, dan istilah-istilah Arab diserap ke dalam Melayu menjadi fondasi bahasa Indonesia modern.</p>
+    </div>
+
+    <div class="dalil" style="background:rgba(0,8,20,.78);border:1px solid rgba(48,128,200,.2);">
+      <div class="dalil-bar" style="background:#186090;"></div>
+      <div class="dalil-body">
+        <div class="d-tag" style="color:#60b8f0;">📖 Tome Pires — Suma Oriental (1512–1515 M)</div>
+        <div class="d-ar" style="color:#90d0f8;font-size:.9rem; direction:ltr; text-align:left; font-family:'Raleway',sans-serif; font-style:italic;">"Whoever is lord of Malacca has his hand on the throat of Venice."</div>
+        <div class="d-trans">Tome Pires, apoteker Portugis yang tinggal di Malaka setelah penaklukannya pada 1511, menulis dalam Suma Oriental: "Barangsiapa yang menjadi tuan Malaka, tangannya berada di leher Venesia." — Ungkapan ini menggambarkan betapa sentralnya Malaka dalam ekonomi global. Namun Malaka bukan hanya pusat ekonomi, ia adalah juga pusat Islam yang mencetak ulama dan menyebarkan agama ke seluruh Asia Tenggara.</div>
+        <div class="d-ref" style="color:rgba(48,128,200,.6);">Tome Pires, Suma Oriental (1512–1515) · Diterjemahkan A. Cortesão, 1944</div>
+      </div>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <span class="card-icon">⚓</span>
+        <div class="card-title">Pelabuhan Terbesar Asia</div>
+        <div class="card-desc">Pada awal abad ke-15 M, Malaka menguasai hampir seluruh perdagangan rempah global. Lebih dari 84 bahasa diucapkan di pelabuhannya yang sibuk.</div>
+      </div>
+      <div class="card">
+        <span class="card-icon">📚</span>
+        <div class="card-title">Pusat Keilmuan Islam</div>
+        <div class="card-desc">Para ulama dari Timur Tengah, India, dan Nusantara berkumpul di Malaka. Bahasa Melayu menjadi bahasa Islam pertama di Asia Tenggara.</div>
+      </div>
+      <div class="card">
+        <span class="card-icon">🌏</span>
+        <div class="card-title">Agen Islamisasi</div>
+        <div class="card-desc">Dari Malaka, Islam menyebar ke Jawa, Kalimantan, Sulawesi, Maluku, Filipina, dan seluruh semenanjung Melayu dalam waktu kurang dari seabad.</div>
+      </div>
+      <div class="card">
+        <span class="card-icon">⚔️</span>
+        <div class="card-title">Jatuh 1511 M</div>
+        <div class="card-desc">Alfonso de Albuquerque dari Portugal menaklukkan Malaka pada 1511 M. Namun para ulama dan pedagang Muslim melarikan diri, justru memperluas penyebaran Islam.</div>
+      </div>
+    </div>
+
+    <div class="hl">
+      <div class="hl-label">✦ Warisan Malaka: Bahasa Melayu-Islam</div>
+      <div class="hl-trans">Kesultanan Malaka mewariskan bahasa Melayu-Islam sebagai lingua franca yang menyatukan Nusantara. Ribuan kata Arab masuk ke bahasa Melayu melalui Islam: <em>ilmu, kitab, majelis, adil, hakim, akal, alam, hak, kabar, syarat, wajib, shalat, zakat, halal, haram, doa, iman, taubat, berkah</em> — dan ratusan kata lainnya. Ketika bahasa Indonesia dibentuk pada abad ke-20, ia mewarisi fondasi ini secara langsung.</div>
+      <div class="hl-ref">Sumber: Anthony Reid, "Southeast Asia in the Age of Commerce" · R.O. Winstedt, "A History of Malaya"</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TAHAP 4: KERAJAAN DEMAK ══ -->
+<div class="stage" style="--stage-color:#e07030;--stage-glow:rgba(224,112,48,.45);--stage-bg:rgba(10,4,0,.78);--stage-border:rgba(180,80,20,.2);--stage-line:rgba(180,80,20,.18);">
+  <div class="stage-circle" style="background:linear-gradient(135deg,#802010,#c04020);color:#ffe0c0;">4</div>
+  <div class="stage-header">
+    <div class="stage-num-label">✦ Babak Keempat · Abad XV — XVI M</div>
+    <div class="stage-ar">سَلْطَنَةُ دِمَاك</div>
+    <div class="stage-title">Kesultanan Demak — Kerajaan Islam Pertama di Jawa</div>
+  </div>
+  <div class="stage-content">
+    <div class="prose">
+      <p class="lead">Di pantai utara Jawa Tengah, tidak jauh dari reruntuhan Majapahit yang tengah runtuh, berdiri kota pelabuhan kecil bernama Demak. Di sinilah, pada akhir abad ke-15 M, kerajaan Islam pertama di Jawa lahir — sebuah peralihan peradaban yang mengubah wajah pulau terpadat di dunia untuk selamanya.</p>
+      <p>Raden Patah (1478–1518 M) adalah pendiri Kesultanan Demak sekaligus sultannya yang pertama. Ia disebut-sebut sebagai putra raja Majapahit Brawijaya V dari seorang ibu keturunan Cina yang Muslim. Ketika Majapahit mulai goyah di bawah serangan Girindrawardhana, Raden Patah — yang telah lama tinggal di lingkungan para wali — mendirikan kerajaan sendiri di Demak. Kesultanan ini berdiri dengan restu penuh dari Wali Songo, khususnya Sunan Ampel dan Sunan Kalijaga.</p>
+      <p>Masjid Agung Demak, yang dibangun atas gotong royong para Wali Songo, menjadi simbol paling kuat dari kelahiran Islam di Jawa. Salah satu tiangnya, yang disebut <em>saka tatal</em> (tiang dari kepingan kayu yang direkatkan), konon dibangun oleh Sunan Kalijaga dalam semalam. Masjid ini tetap berdiri hingga hari ini, menjadi masjid bersejarah tertua di Jawa.</p>
+    </div>
+
+    <div class="dalil" style="background:rgba(10,4,0,.78);border:1px solid rgba(180,80,20,.2);">
+      <div class="dalil-bar" style="background:#c04020;"></div>
+      <div class="dalil-body">
+        <div class="d-tag" style="color:#e07030;">📜 Serat Kanda — Babat Tanah Jawa</div>
+        <div class="d-ar" style="color:#f0a060;font-size:.85rem;direction:ltr;text-align:left;font-family:'Raleway',sans-serif;font-style:italic;">"Poro wali ngumpul kabeh, padha rembukan babagan agamanipun Islam ing tanah Jawa..."</div>
+        <div class="d-trans">"Para wali berkumpul semua, bermusyawarah mengenai agama Islam di tanah Jawa..." — Demak didirikan bukan hanya sebagai entitas politik, tetapi sebagai proyek peradaban yang dirancang bersama oleh para ulama Wali Songo. Setiap keputusan besar dimusyawarahkan dalam majelis para wali yang berpusat di Demak.</div>
+        <div class="d-ref" style="color:rgba(180,80,20,.6);">Babat Tanah Jawi · Serat Kanda · Tradisi lisan dan tertulis Jawa</div>
+      </div>
+    </div>
+
+    <div class="mini-tl">
+      <div class="mt-item">
+        <div class="mt-year">~1478</div>
+        <div class="mt-body">
+          <div class="mt-title">Berdirinya Kesultanan Demak</div>
+          <div class="mt-text">Raden Patah mendirikan Demak sebagai kerajaan Islam. Masjid Agung Demak dibangun sebagai simbol keislaman Jawa, dengan para wali ikut serta dalam pembangunannya.</div>
+        </div>
+      </div>
+      <div class="mt-item">
+        <div class="mt-year">1511</div>
+        <div class="mt-body">
+          <div class="mt-title">Ekspedisi ke Malaka</div>
+          <div class="mt-text">Demak mengirimkan armada untuk membantu Malaka yang diserang Portugis — menunjukkan solidaritas Islam lintas-nusantara. Meskipun gagal, ekspedisi ini menegaskan identitas Islam Demak.</div>
+        </div>
+      </div>
+      <div class="mt-item">
+        <div class="mt-year">1527</div>
+        <div class="mt-body">
+          <div class="mt-title">Penaklukan Sunda Kelapa</div>
+          <div class="mt-text">Di bawah Fatahillah (Falatehan), Demak merebut Sunda Kelapa dari Portugis dan mengganti namanya menjadi Jayakarta — cikal bakal Jakarta. Peristiwa ini diperingati setiap tahun sebagai Hari Jadi Kota Jakarta (22 Juni).</div>
+        </div>
+      </div>
+      <div class="mt-item">
+        <div class="mt-year">1546</div>
+        <div class="mt-body">
+          <div class="mt-title">Wafat Sultan Trenggana</div>
+          <div class="mt-text">Sultan terbesar Demak wafat dalam ekspedisi ke Panarukan. Setelah ini, Demak mengalami konflik internal dan kekuasaan Islam di Jawa beralih ke Pajang, kemudian Mataram.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TAHAP 5: WALI SONGO ══ -->
+<div class="stage" style="--stage-color:#a0e080;--stage-glow:rgba(160,224,128,.4);--stage-bg:rgba(2,12,0,.8);--stage-border:rgba(80,160,40,.2);--stage-line:rgba(80,160,40,.18);">
+  <div class="stage-circle" style="background:linear-gradient(135deg,#204810,#408020);color:#d0f8a0;">5</div>
+  <div class="stage-header">
+    <div class="stage-num-label">✦ Babak Kelima · Abad XV — XVI M</div>
+    <div class="stage-ar">وَلِيُّ اللهِ التِّسْعَةُ</div>
+    <div class="stage-title">Wali Songo — Sembilan Wali Allah Penyebar Islam di Jawa</div>
+  </div>
+  <div class="stage-content">
+    <div class="prose">
+      <p class="lead">Tidak ada kisah islamisasi yang lebih mengagumkan dari kisah Wali Songo — sembilan wali Allah yang dalam kurun waktu kurang dari satu abad berhasil mengubah Jawa dari negeri Hindu-Buddha menjadi pulau Muslim terbesar di dunia, tanpa pertumpahan darah yang berarti.</p>
+      <p>Wali Songo bukan sekadar tokoh agama. Mereka adalah perancang peradaban: ahli fiqh dan tasawuf, seniman dan budayawan, diplomat dan negarawan, petani dan pengusaha. Mereka memahami bahwa Islam tidak bisa dipaksakan dari luar — ia harus tumbuh dari dalam hati manusia. Maka mereka menggunakan wayang untuk bercerita tentang aqidah, gamelan untuk menyampaikan pesan taubat, dan tembang macapat untuk mengajarkan akhlak.</p>
+      <p>Metode dakwah mereka bertumpu pada dua prinsip besar: <em>bil hikmah wal mau'izhah al-hasanah</em> — dengan kebijaksanaan dan nasihat yang baik — sebagaimana yang diperintahkan Al-Qur'an. Mereka tidak menghancurkan budaya Jawa; mereka membasuhnya dengan tauhid, memberinya makna baru, dan mengarahkannya kepada Allah Yang Maha Esa.</p>
+    </div>
+
+    <div class="hl">
+      <div class="hl-label">✦ Landasan Dakwah Para Wali</div>
+      <div class="hl-ar">اُدْعُ إِلَىٰ سَبِيلِ رَبِّكَ بِالْحِكْمَةِ وَالْمَوْعِظَةِ الْحَسَنَةِ وَجَادِلْهُم بِالَّتِي هِيَ أَحْسَنُ</div>
+      <div class="hl-trans">"Serulah (manusia) kepada jalan Tuhanmu dengan hikmah dan pengajaran yang baik, dan debatlah mereka dengan cara yang lebih baik." — Inilah ayat yang menjadi fondasi seluruh metodologi dakwah Wali Songo. Mereka tidak pernah memaksa, tidak pernah menghina, tidak pernah merusak — mereka mengajak dengan kata-kata yang lembut dan perbuatan yang mulia.</div>
+      <div class="hl-ref">QS. An-Nahl (16): 125</div>
+    </div>
+
+    <div class="wali-grid">
+      <div class="wali-card" style="--stage-color:#a0e080;--stage-border:rgba(80,160,40,.2);">
+        <div class="wali-num">WALI I</div>
+        <div class="wali-name">Sunan Gresik</div>
+        <div class="wali-area">Maulana Malik Ibrahim · Gresik</div>
+        <div class="wali-desc">Wali tertua, datang dari Samarkand sekitar 1404 M. Mendirikan pesantren pertama di Jawa dan mendekati rakyat jelata melalui pertanian dan perdagangan.</div>
+      </div>
+      <div class="wali-card" style="--stage-color:#a0e080;--stage-border:rgba(80,160,40,.2);">
+        <div class="wali-num">WALI II</div>
+        <div class="wali-name">Sunan Ampel</div>
+        <div class="wali-area">Raden Rahmat · Surabaya</div>
+        <div class="wali-desc">Putra ulama besar Champa. Mendirikan pesantren Ampel Denta di Surabaya — pesantren paling berpengaruh di Jawa. Ayah Sunan Bonang, mertua Sunan Giri.</div>
+      </div>
+      <div class="wali-card" style="--stage-color:#a0e080;--stage-border:rgba(80,160,40,.2);">
+        <div class="wali-num">WALI III</div>
+        <div class="wali-name">Sunan Bonang</div>
+        <div class="wali-area">Raden Makhdum Ibrahim · Tuban</div>
+        <div class="wali-desc">Putra Sunan Ampel, maestro seni Islam-Jawa. Menciptakan gamelan bonang dan tembang-tembang sufi yang masih dinyanyikan hingga kini.</div>
+      </div>
+      <div class="wali-card" style="--stage-color:#a0e080;--stage-border:rgba(80,160,40,.2);">
+        <div class="wali-num">WALI IV</div>
+        <div class="wali-name">Sunan Drajat</div>
+        <div class="wali-area">Raden Qasim · Lamongan</div>
+        <div class="wali-desc">Terkenal dengan kepedulian sosialnya yang luar biasa — mendirikan panti asuhan, mendistribusikan makanan kepada fakir miskin, dan mengajarkan Islam melalui semangat gotong royong.</div>
+      </div>
+      <div class="wali-card" style="--stage-color:#a0e080;--stage-border:rgba(80,160,40,.2);">
+        <div class="wali-num">WALI V</div>
+        <div class="wali-name">Sunan Giri</div>
+        <div class="wali-area">Raden Ainul Yaqin · Gresik</div>
+        <div class="wali-desc">Ulama paling 'alim di antara Wali Songo dalam ilmu fiqh. Fatwa-fatwanya diterima dari Jawa hingga Maluku. Pesantrennya di Bukit Giri menjadi pusat pendidikan Islam paling bergengsi di Jawa.</div>
+      </div>
+      <div class="wali-card" style="--stage-color:#a0e080;--stage-border:rgba(80,160,40,.2);">
+        <div class="wali-num">WALI VI</div>
+        <div class="wali-name">Sunan Kalijaga</div>
+        <div class="wali-area">Raden Said · Jawa Tengah</div>
+        <div class="wali-desc">Wali yang paling ikonik. Ahli wayang, tembang, dan seni. Menciptakan baju takwa, bedug masjid, dan tembang "Lir-ilir" yang menjadi syair islami paling masyhur di Jawa hingga hari ini.</div>
+      </div>
+      <div class="wali-card" style="--stage-color:#a0e080;--stage-border:rgba(80,160,40,.2);">
+        <div class="wali-num">WALI VII</div>
+        <div class="wali-name">Sunan Kudus</div>
+        <div class="wali-area">Ja'far Shadiq · Kudus</div>
+        <div class="wali-desc">Ulama fiqh yang sangat ketat. Mendirikan Masjid Al-Aqsha (Masjid Menara Kudus) dengan arsitektur yang menggabungkan elemen Hindu sebagai simbol akomodasi budaya lokal.</div>
+      </div>
+      <div class="wali-card" style="--stage-color:#a0e080;--stage-border:rgba(80,160,40,.2);">
+        <div class="wali-num">WALI VIII</div>
+        <div class="wali-name">Sunan Muria</div>
+        <div class="wali-area">Raden Umar Said · Kudus Utara</div>
+        <div class="wali-desc">Putra Sunan Kalijaga. Berdakwah di antara petani dan nelayan di pedesaan terpencil. Dikenal dengan pendekatan yang sangat merakyat dan tidak suka kemewahan.</div>
+      </div>
+      <div class="wali-card" style="--stage-color:#a0e080;--stage-border:rgba(80,160,40,.2);">
+        <div class="wali-num">WALI IX</div>
+        <div class="wali-name">Sunan Gunung Jati</div>
+        <div class="wali-area">Syarif Hidayatullah · Cirebon</div>
+        <div class="wali-desc">Penguasa dan ulama sekaligus. Mendirikan Kesultanan Cirebon dan Banten, menyebarkan Islam ke Sunda (Jawa Barat) dan Banten. Kakek buyut dari dinasti yang masih ada.</div>
+      </div>
+    </div>
+
+    <div class="dalil" style="background:rgba(2,12,0,.8);border:1px solid rgba(80,160,40,.2);margin-top:18px;">
+      <div class="dalil-bar" style="background:#408020;"></div>
+      <div class="dalil-body">
+        <div class="d-tag" style="color:#a0e080;">📿 Tembang Lir-Ilir — Sunan Kalijaga</div>
+        <div class="d-ar" style="color:#c0f890;font-size:.9rem;direction:ltr;text-align:left;font-family:'Raleway',sans-serif;font-style:italic;line-height:1.9;">"Lir-ilir, lir-ilir, tandure wis sumilir, tak ijo royo-royo, tak sengguh temanten anyar..." · (Bangunlah, bangunlah, tanaman sudah bertunas, hijau bersinar-sinar, seperti pengantin baru...)</div>
+        <div class="d-trans">Tembang Jawa karya Sunan Kalijaga ini adalah dakwah dalam bentuk puisi. "Lir-ilir" berarti "bangkitlah" — seruan kepada masyarakat Jawa untuk bangun dari kegelapan dan menyambut cahaya Islam. "Tanaman yang sudah bertunas" melambangkan iman yang mulai tumbuh di tanah Jawa. Pesan Islam yang dalam, disampaikan dengan cara yang menyentuh hati rakyat Jawa tanpa menghakimi masa lalu mereka.</div>
+        <div class="d-ref" style="color:rgba(80,160,40,.6);">Tembang Macapat — Sunan Kalijaga · Abad XV-XVI M</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TAHAP 6: NUSANTARA TIMUR & KESULTANAN ══ -->
+<div class="stage" style="--stage-color:#f090c0;--stage-glow:rgba(240,144,192,.4);--stage-bg:rgba(14,2,8,.78);--stage-border:rgba(180,48,96,.2);--stage-line:rgba(180,48,96,.18);">
+  <div class="stage-circle" style="background:linear-gradient(135deg,#700028,#a03050);color:#ffd0e0;">6</div>
+  <div class="stage-header">
+    <div class="stage-num-label">✦ Babak Keenam · Abad XIV — XVI M</div>
+    <div class="stage-ar">الإِسْلَامُ فِي جُزُرِ التَّوَابِلِ</div>
+    <div class="stage-title">Islam di Kepulauan Rempah — Maluku & Sulawesi</div>
+  </div>
+  <div class="stage-content">
+    <div class="prose">
+      <p class="lead">Sementara Wali Songo menanam benih Islam di Jawa, di ujung timur Nusantara — di Kepulauan Maluku yang dikenal sebagai "Spice Islands" atau Kepulauan Rempah — Islam telah lebih dahulu berakar melalui jalur perdagangan cengkeh dan pala yang menghubungkan Maluku dengan dunia Islam.</p>
+      <p>Kesultanan Ternate adalah salah satu kesultanan tertua dan terkuat di kawasan timur Nusantara. Berdiri sekitar tahun 1257 M, Ternate menjadi Muslim penuh pada pertengahan abad ke-14 ketika Sultan Baab Mashur Malamo memeluk Islam. Bersama Kesultanan Tidore, Bacan, dan Jailolo, Ternate membentuk konfederasi kesultanan Islam di Maluku yang menguasai perdagangan cengkeh — komoditas yang nilainya setara emas di pasar Eropa.</p>
+      <p>Di Sulawesi, Kerajaan Gowa-Tallo mengalami transformasi serupa pada 1605 M ketika Raja Gowa XIV, Karaeng Matoaya, memeluk Islam dan berganti nama menjadi Sultan Abdullah Awalul Islam. Ulama yang mengislamkan Gowa adalah Datuk ri Bandang dari Minangkabau — membuktikan betapa eratnya jaringan ulama antar-nusantara dalam proses islamisasi.</p>
+    </div>
+
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead>
+          <tr>
+            <th>Kesultanan</th>
+            <th>Wilayah</th>
+            <th>Berdiri/Masuk Islam</th>
+            <th>Peran Penting</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="Nama">Ternate</td>
+            <td data-label="Wilayah" style="color:rgba(200,224,240,.7);">Maluku Utara</td>
+            <td data-label="Tahun" style="color:rgba(200,224,240,.7);">~1257 / abad XIV M</td>
+            <td data-label="Peran" style="color:rgba(200,224,240,.7);">Pusat perdagangan cengkeh; berjuang melawan Portugis dan Spanyol</td>
+          </tr>
+          <tr>
+            <td data-label="Nama">Tidore</td>
+            <td data-label="Wilayah" style="color:rgba(200,224,240,.7);">Maluku Utara</td>
+            <td data-label="Tahun" style="color:rgba(200,224,240,.7);">Abad XIV–XV M</td>
+            <td data-label="Peran" style="color:rgba(200,224,240,.7);">Rival sekaligus mitra Ternate; menguasai pala dan fuli</td>
+          </tr>
+          <tr>
+            <td data-label="Nama">Gowa-Tallo</td>
+            <td data-label="Wilayah" style="color:rgba(200,224,240,.7);">Sulawesi Selatan</td>
+            <td data-label="Tahun" style="color:rgba(200,224,240,.7);">1605 M</td>
+            <td data-label="Peran" style="color:rgba(200,224,240,.7);">Pusat maritim Sulawesi; menyebarkan Islam ke Sulawesi Timur dan Kalimantan</td>
+          </tr>
+          <tr>
+            <td data-label="Nama">Kutai</td>
+            <td data-label="Wilayah" style="color:rgba(200,224,240,.7);">Kalimantan Timur</td>
+            <td data-label="Tahun" style="color:rgba(200,224,240,.7);">~1575 M</td>
+            <td data-label="Peran" style="color:rgba(200,224,240,.7);">Kerajaan tertua di Kalimantan; transisi dari Hindu ke Islam</td>
+          </tr>
+          <tr>
+            <td data-label="Nama">Banjar</td>
+            <td data-label="Wilayah" style="color:rgba(200,224,240,.7);">Kalimantan Selatan</td>
+            <td data-label="Tahun" style="color:rgba(200,224,240,.7);">1526 M</td>
+            <td data-label="Peran" style="color:rgba(200,224,240,.7);">Diislamkan atas bantuan Demak; pusat Islam di Kalimantan</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="hl">
+      <div class="hl-label">✦ Islam & Perlawanan terhadap Penjajahan</div>
+      <div class="hl-trans">Sultan Baab Ullah (1570–1583 M) dari Ternate adalah salah satu pemimpin anti-kolonial pertama di Asia Tenggara. Ia berhasil mengusir Portugis dari Ternate setelah ayahnya, Sultan Hairun, dibunuh dengan pengkhianatan oleh Portugis pada 1570 M. Perlawanan Ternate berlangsung selama 13 tahun dan berakhir dengan pengusiran total Portugis. Semangat jihad Islam menjadi fondasi perlawanan ini — Islam bukan hanya agama, tetapi juga identitas anti-kolonial yang kuat di Nusantara.</div>
+      <div class="hl-ref">Sumber: Leonard Andaya, "The World of Maluku" · Willard A. Hanna & Des Alwi, "Turbulent Times Past in Ternate and Tidore"</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TAHAP 7: PESANTREN & PENDIDIKAN ══ -->
+<div class="stage" style="--stage-color:#c0d0f0;--stage-glow:rgba(192,208,240,.35);--stage-bg:rgba(2,4,16,.8);--stage-border:rgba(80,96,160,.2);--stage-line:rgba(80,96,160,.18);">
+  <div class="stage-circle" style="background:linear-gradient(135deg,#203080,#3050b0);color:#d0dcff;">7</div>
+  <div class="stage-header">
+    <div class="stage-num-label">✦ Babak Ketujuh · Abad XV — XVII M</div>
+    <div class="stage-ar">الْمَعَاهِدُ الإِسْلَامِيَّةُ النُّوسَنْتَارِيَّةُ</div>
+    <div class="stage-title">Pesantren — Benteng Pendidikan Islam Nusantara</div>
+  </div>
+  <div class="stage-content">
+    <div class="prose">
+      <p class="lead">Dari seluruh warisan perkembangan Islam di Nusantara, tidak ada yang lebih abadi dan lebih menentukan dari pesantren. Lembaga pendidikan yang unik ini — tidak ada padanannya di dunia Islam manapun — adalah tulang punggung yang memastikan Islam tidak hanya hadir sesaat tetapi berakar dalam selama berabad-abad.</p>
+      <p>Pesantren pertama di Nusantara didirikan oleh Maulana Malik Ibrahim (Sunan Gresik) sekitar awal abad ke-15 M. Kemudian dikembangkan oleh Sunan Ampel di Ampel Denta (Surabaya), Sunan Giri di Bukit Giri (Gresik), dan para ulama lainnya. Model pendidikan pesantren menggabungkan penguasaan ilmu-ilmu Islam klasik — Al-Qur'an, hadits, fiqh, akidah, tasawuf, nahwu, sharaf — dengan kehidupan asrama yang membentuk karakter dan akhlak.</p>
+      <p>Sistem pesantren menciptakan jaringan ulama yang luar biasa kuat di seluruh Nusantara. Seorang santri yang lulus dari pesantren besar akan mendirikan pesantren baru di kampungnya, melatih santri-santri baru, yang kemudian menyebar lagi ke seluruh penjuru negeri. Dalam dua abad, jaringan pesantren ini mencakup seluruh Jawa, Madura, Sumatera, Kalimantan, dan seterusnya.</p>
+    </div>
+
+    <div class="dalil" style="background:rgba(2,4,16,.8);border:1px solid rgba(80,96,160,.2);">
+      <div class="dalil-bar" style="background:#3050b0;"></div>
+      <div class="dalil-body">
+        <div class="d-tag" style="color:#c0d0f0;">📖 Hadits — Keutamaan Menuntut Ilmu</div>
+        <div class="d-ar" style="color:#d8e4ff;">مَنْ سَلَكَ طَرِيقًا يَلْتَمِسُ فِيهِ عِلْمًا سَهَّلَ اللَّهُ لَهُ بِهِ طَرِيقًا إِلَى الْجَنَّةِ</div>
+        <div class="d-trans">"Barangsiapa menempuh jalan untuk mencari ilmu, Allah akan mudahkan baginya jalan menuju surga." — Hadits inilah yang menjadi motivasi utama ratusan ribu santri yang meninggalkan kampung halamannya, berjalan kaki berhari-hari, hanya untuk duduk di kaki seorang kyai dan belajar Al-Qur'an serta ilmu-ilmu Islam.</div>
+        <div class="d-ref" style="color:rgba(80,96,160,.6);">HR. Muslim (2699) — dari Abu Hurairah radhiyallahu 'anhu</div>
+      </div>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <span class="card-icon">🕌</span>
+        <div class="card-title">Ampel Denta</div>
+        <div class="card-desc">Pesantren Sunan Ampel di Surabaya — induk pesantren Jawa. Melahirkan Sunan Bonang, Sunan Drajat, dan ratusan ulama yang menyebar ke seluruh Jawa.</div>
+      </div>
+      <div class="card">
+        <span class="card-icon">⛰️</span>
+        <div class="card-title">Giri Kedaton</div>
+        <div class="card-desc">Pesantren Sunan Giri di bukit Gresik — universitas Islam pertama di Jawa. Pengaruh fatwanya dirasakan dari Jawa hingga Maluku dan Banda.</div>
+      </div>
+      <div class="card">
+        <span class="card-icon">📜</span>
+        <div class="card-title">Kitab Kuning</div>
+        <div class="card-desc">Para santri belajar dari kitab-kitab Arab klasik yang disebut "kitab kuning" — karena warna kertasnya kekuningan. Tradisi ini masih berlanjut di ribuan pesantren hingga hari ini.</div>
+      </div>
+      <div class="card">
+        <span class="card-icon">👳</span>
+        <div class="card-title">Kyai & Santri</div>
+        <div class="card-desc">Hubungan kyai-santri adalah warisan luhur Islam Nusantara. Lebih dari sekadar guru-murid, ia adalah ikatan spiritual dan intelektual yang membentuk karakter ulama.</div>
+      </div>
+    </div>
+
+    <div class="hl">
+      <div class="hl-label">✦ Al-Qur'an Pertama di Nusantara</div>
+      <div class="hl-trans">Mushaf Al-Qur'an tertua yang ditemukan di Nusantara adalah Mushaf Qur'an Koleksi Perpustakaan Nasional yang diperkirakan berasal dari abad ke-16–17 M. Namun tradisi hafalan Al-Qur'an (tahfidz) di pesantren-pesantren Nusantara jauh lebih tua — para ulama Pasai telah menghafalkan Al-Qur'an sejak abad ke-13 M. Sehingga Al-Qur'an tidak hanya hadir dalam tulisan, tetapi juga tersimpan dalam jutaan dada para hafidz Nusantara dari generasi ke generasi.</div>
+      <div class="hl-ref">Sumber: Perpustakaan Nasional RI · Penelitian Oman Fathurahman, PPIM UIN Jakarta</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TAHAP 8: ULAMA BESAR NUSANTARA ══ -->
+<div class="stage" style="--stage-color:#d8a840;--stage-glow:rgba(216,168,64,.4);--stage-bg:rgba(10,6,0,.8);--stage-border:rgba(160,112,16,.2);--stage-line:rgba(160,112,16,.18);">
+  <div class="stage-circle" style="background:linear-gradient(135deg,#704808,#b08020);color:#fff0c0;">8</div>
+  <div class="stage-header">
+    <div class="stage-num-label">✦ Babak Kedelapan · Abad XVI — XVII M</div>
+    <div class="stage-ar">عُلَمَاءُ النُّوسَنْتَارَا</div>
+    <div class="stage-title">Ulama Besar Nusantara — Penerus Warisan Kenabian</div>
+  </div>
+  <div class="stage-content">
+    <div class="prose">
+      <p class="lead">Setelah generasi Wali Songo, Islam Nusantara melahirkan ulama-ulama besar yang karya-karyanya diakui di dunia Islam internasional. Mereka menulis dalam bahasa Arab, Melayu, dan Jawa — membangun perpustakaan intelektual Islam Nusantara yang menjadi kebanggaan peradaban.</p>
+      <p>Hamzah Fansuri dari Aceh (wafat ~1590 M) adalah penyair sufi pertama Nusantara yang karya-karyanya berbahasa Melayu. Syair-syairnya tentang cinta kepada Allah dan pencarian hakikat menjadi landasan tradisi sastra Islam Melayu. Syamsuddin as-Sumatrani meneruskan tradisi ini dan menjadi mufti besar Kesultanan Aceh Darussalam.</p>
+      <p>Nuruddin ar-Raniri (wafat 1658 M), ulama asal Gujarat yang bermukim di Aceh, menulis "Bustanus Salatin" — ensiklopedia besar sejarah dan ilmu pengetahuan Islam berbahasa Melayu. Sementara Syaikh Yusuf al-Makassari (1626–1699 M) dari Gowa, Sulawesi, adalah ulama sufi sekaligus pejuang kemerdekaan pertama Nusantara yang diasingkan VOC ke Cape Town, Afrika Selatan, karena perlawanannya yang gigih.</p>
+    </div>
+
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead>
+          <tr>
+            <th>Nama Ulama</th>
+            <th>Asal / Era</th>
+            <th>Karya Utama</th>
+            <th>Bidang</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="Nama">Hamzah Fansuri</td>
+            <td data-label="Asal" style="color:rgba(200,224,240,.7);">Aceh · ~wafat 1590 M</td>
+            <td data-label="Karya" style="color:rgba(200,224,240,.7);">Asrar al-'Arifin, Sharab al-'Asyiqin</td>
+            <td data-label="Bidang" style="color:rgba(200,224,240,.7);">Tasawuf, Sastra Melayu</td>
+          </tr>
+          <tr>
+            <td data-label="Nama">Nuruddin ar-Raniri</td>
+            <td data-label="Asal" style="color:rgba(200,224,240,.7);">Gujarat–Aceh · wafat 1658 M</td>
+            <td data-label="Karya" style="color:rgba(200,224,240,.7);">Bustanus Salatin, Sirat al-Mustaqim</td>
+            <td data-label="Bidang" style="color:rgba(200,224,240,.7);">Fiqh, Sejarah, Ensiklopedi</td>
+          </tr>
+          <tr>
+            <td data-label="Nama">Abdurrauf as-Singkili</td>
+            <td data-label="Asal" style="color:rgba(200,224,240,.7);">Aceh · 1615–1693 M</td>
+            <td data-label="Karya" style="color:rgba(200,224,240,.7);">Tarjuman al-Mustafid (Tafsir Al-Qur'an Melayu pertama)</td>
+            <td data-label="Bidang" style="color:rgba(200,224,240,.7);">Tafsir, Tasawuf, Hadits</td>
+          </tr>
+          <tr>
+            <td data-label="Nama">Syaikh Yusuf al-Makassari</td>
+            <td data-label="Asal" style="color:rgba(200,224,240,.7);">Gowa · 1626–1699 M</td>
+            <td data-label="Karya" style="color:rgba(200,224,240,.7);">Zubdat al-Asrar, berbagai risalah tasawuf</td>
+            <td data-label="Bidang" style="color:rgba(200,224,240,.7);">Tasawuf, Jihad, Perlawanan Kolonial</td>
+          </tr>
+          <tr>
+            <td data-label="Nama">Muhammad Nafis al-Banjari</td>
+            <td data-label="Asal" style="color:rgba(200,224,240,.7);">Banjar · abad XVIII M</td>
+            <td data-label="Karya" style="color:rgba(200,224,240,.7);">Ad-Durr an-Nafis (kitab tasawuf paling populer Nusantara)</td>
+            <td data-label="Bidang" style="color:rgba(200,224,240,.7);">Tasawuf, Akidah</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="dalil" style="background:rgba(10,6,0,.8);border:1px solid rgba(160,112,16,.2);">
+      <div class="dalil-bar" style="background:#b08020;"></div>
+      <div class="dalil-body">
+        <div class="d-tag" style="color:#d8a840;">📜 Abdurrauf as-Singkili — Tarjuman al-Mustafid</div>
+        <div class="d-ar" style="color:#f0d060;">هَٰذَا كِتَابٌ عَظِيمُ الشَّأْنِ جَلِيلُ الْمَكَانِ يُسَمَّى تُرْجُمَانَ الْمُسْتَفِيدِ</div>
+        <div class="d-trans">"Inilah kitab yang agung kedudukannya dan mulia tempatnya, dinamakan Tarjuman al-Mustafid." — Abdurrauf as-Singkili (Syiah Kuala) menulis tafsir Al-Qur'an lengkap 30 juz dalam bahasa Melayu untuk pertama kalinya pada pertengahan abad ke-17 M. Karya monumental ini memungkinkan jutaan Muslim Nusantara yang tidak mengerti bahasa Arab untuk memahami Al-Qur'an dalam bahasa ibu mereka.</div>
+        <div class="d-ref" style="color:rgba(160,112,16,.6);">Abdurrauf as-Singkili, Tarjuman al-Mustafid (1675 M) · Tafsir Al-Qur'an berbahasa Melayu pertama di dunia</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TAHAP 9: ACEH — SERAMBI MEKAH ══ -->
+<div class="stage" style="--stage-color:#40e8f0;--stage-glow:rgba(64,232,240,.38);--stage-bg:rgba(0,8,12,.8);--stage-border:rgba(16,128,160,.2);--stage-line:rgba(16,128,160,.18);">
+  <div class="stage-circle" style="background:linear-gradient(135deg,#084060,#0c70a0);color:#a0f0ff;">9</div>
+  <div class="stage-header">
+    <div class="stage-num-label">✦ Babak Kesembilan · Abad XVI — XVII M</div>
+    <div class="stage-ar">سَلْطَنَةُ آتِشِيه دَارُ السَّلَام</div>
+    <div class="stage-title">Kesultanan Aceh Darussalam — Serambi Mekah</div>
+  </div>
+  <div class="stage-content">
+    <div class="prose">
+      <p class="lead">Setelah kejatuhan Malaka di tangan Portugis pada 1511 M, kepemimpinan Islam Nusantara beralih ke Aceh. Kesultanan Aceh Darussalam tumbuh menjadi kekuatan maritim Islam terbesar di Asia Tenggara — satu-satunya kerajaan yang berhasil menahan ekspansi Portugis dan bahkan menyerang balik di wilayah mereka sendiri.</p>
+      <p>Di bawah Sultan Iskandar Muda (1607–1636 M) — sultan terbesar dalam sejarah Aceh — Kesultanan Aceh mencapai puncak kejayaannya. Armada Aceh mengusai selat Malaka, ekspedisi militer berhasil merebut berbagai wilayah dari Aru hingga Pahang, dan Banda Aceh menjadi kota kosmopolitan yang dikunjungi ulama, pedagang, dan diplomat dari seluruh dunia. Istananya, yang disebut Dalam/Darud-Dunia, dikelilingi taman yang indah dan perpustakaan besar.</p>
+      <p>Aceh dijuluki "Serambi Mekah" bukan tanpa alasan. Ribuan jamaah haji dari seluruh Nusantara transit di Banda Aceh sebelum berlayar ke Jeddah. Para ulama dari Mekah, Madinah, Yaman, dan India singgah di Aceh dan sering menetap. Aceh menjadi gerbang pertukaran ilmu antara dunia Arab dan dunia Melayu-Indonesia — sebuah peran yang dimainkannya selama lebih dari tiga abad.</p>
+    </div>
+
+    <div class="dalil" style="background:rgba(0,8,12,.8);border:1px solid rgba(16,128,160,.2);">
+      <div class="dalil-bar" style="background:#0c70a0;"></div>
+      <div class="dalil-body">
+        <div class="d-tag" style="color:#40e8f0;">📜 Surat Sultan Aceh kepada Raja Inggris (1615 M)</div>
+        <div class="d-ar" style="color:#80f8ff;font-size:.85rem;direction:ltr;text-align:left;font-family:'Raleway',sans-serif;font-style:italic;line-height:1.9;">"...Bahwa kita daripada keturunan raja-raja Islam yang mulia, dan agama kita tiada akan berubah selama-lamanya..."</div>
+        <div class="d-trans">Sultan Iskandar Muda berkorespondensi langsung dengan Raja James I dari Inggris, meminta kerjasama melawan Portugis. Surat ini ditulis dalam bahasa Melayu dan tersimpan di arsip Inggris hingga hari ini — bukti betapa Aceh adalah kekuatan diplomatik bertaraf internasional yang berinteraksi setara dengan kerajaan-kerajaan Eropa.</div>
+        <div class="d-ref" style="color:rgba(16,128,160,.6);">Arsip Nasional Inggris (British National Archives) · Surat Sultan Iskandar Muda kepada James I, 1615 M</div>
+      </div>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <span class="card-icon">⚔️</span>
+        <div class="card-title">Perlawanan vs Portugis</div>
+        <div class="card-desc">Aceh melakukan lebih dari 10 ekspedisi militer ke Malaka untuk mengusir Portugis. Pada 1629 M, Aceh mengirimkan armada terbesar yang pernah dilihat Asia Tenggara — 236 kapal perang.</div>
+      </div>
+      <div class="card">
+        <span class="card-icon">👑</span>
+        <div class="card-title">Sulthanah — Ratu Islam</div>
+        <div class="card-desc">Aceh memiliki empat sultan perempuan (1641–1699 M): Safiatuddin, Naqiatuddin, Zakiatuddin, dan Kamalat Shah — fenomena unik dalam sejarah Islam dunia.</div>
+      </div>
+      <div class="card">
+        <span class="card-icon">🤝</span>
+        <div class="card-title">Aliansi Turki Utsmani</div>
+        <div class="card-desc">Aceh menjalin aliansi militer dengan Kekhalifahan Turki Utsmani — satu-satunya kerajaan Asia Tenggara yang masuk dalam orbit kekhalifahan Islam global.</div>
+      </div>
+      <div class="card">
+        <span class="card-icon">📚</span>
+        <div class="card-title">Pusat Ilmu Islam</div>
+        <div class="card-desc">Hamzah Fansuri, Syamsuddin as-Sumatrani, Nuruddin ar-Raniri, dan Abdurrauf as-Singkili — semua ulama besar ini berkarir di Aceh. Tidak ada kota lain di Nusantara yang melahirkan sebanyak ini.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TAHAP 10: WARISAN & RELEVANSI ══ -->
+<div class="stage" style="--stage-color:#ffffff;--stage-glow:rgba(255,255,240,.4);--stage-bg:rgba(2,4,2,.85);--stage-border:rgba(200,200,160,.18);--stage-line:rgba(200,200,160,.15);">
+  <div class="stage-circle" style="background:linear-gradient(135deg,#404830,#707860);color:#f8fff0;">∞</div>
+  <div class="stage-header">
+    <div class="stage-num-label">✦ Warisan Abadi</div>
+    <div class="stage-ar">إِرْثُ الإِسْلَامِ فِي النُّوسَنْتَارَا</div>
+    <div class="stage-title">Warisan Islam Nusantara — Dari Sejarah ke Masa Depan</div>
+  </div>
+  <div class="stage-content">
+    <div class="prose">
+      <p class="lead">Sejarah perkembangan awal Islam di Indonesia bukan hanya kisah masa lampau. Ia adalah fondasi yang menopang identitas lebih dari 230 juta Muslim Indonesia hari ini — dan pelajaran berharga tentang bagaimana sebuah agama dapat menyebar secara damai, harmonis, dan mengakar dalam di tengah keberagaman budaya yang luar biasa.</p>
+      <p>Islam Nusantara mengajarkan bahwa dakwah yang paling efektif bukanlah dengan paksaan, bukan dengan perang, bukan dengan penghancuran budaya lain — tetapi dengan akhlak yang mulia, ilmu yang mendalam, dan kebijaksanaan dalam memahami manusia. Para wali, ulama, dan sultan Muslim terdahulu tidak memaksakan jubah Arab kepada orang Jawa, tidak menghancurkan gamelan sebagai benda haram, tidak mengusir pengrajin ukir dari masjid. Mereka mengisi wadah budaya lokal dengan isi Islam yang hakiki: tauhid, akhlak, dan ukhuwwah.</p>
+      <p>Indonesia dengan 230 juta Muslim-nya hari ini adalah bukti hidup dari keberhasilan model islamisasi yang penuh hikmat ini. Tantangan ke depan adalah meneruskan semangat itu: membawa Islam yang rahmatan lil 'alamin, yang merangkul bukan menolak, yang membangun bukan merobohkan, yang mempersatukan bukan memecah belah.</p>
+    </div>
+
+    <div class="dalil" style="background:rgba(2,4,2,.85);border:1px solid rgba(200,200,160,.18);">
+      <div class="dalil-bar" style="background:#707860;"></div>
+      <div class="dalil-body">
+        <div class="d-tag" style="color:#e0e8c0;">📖 QS. Al-Anbiya: 107 — Risalah Islam sebagai Rahmat</div>
+        <div class="d-ar" style="color:#f0f8d0;">وَمَا أَرْسَلْنَاكَ إِلَّا رَحْمَةً لِّلْعَالَمِينَ</div>
+        <div class="d-trans">"Dan Kami tidak mengutus engkau (Muhammad) melainkan sebagai rahmat bagi seluruh alam." — Ayat ini adalah ruh dari seluruh penyebaran Islam di Nusantara. Para wali dan ulama terdahulu memahami bahwa Islam adalah rahmat — bukan azab, bukan ancaman, bukan penaklukan. Dan dengan pemahaman itulah mereka mengubah Nusantara.</div>
+        <div class="d-ref" style="color:rgba(160,160,80,.6);">QS. Al-Anbiya' (21): 107 · Ayat yang menjadi jiwa Islam Rahmatan Lil 'Alamin</div>
+      </div>
+    </div>
+
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead>
+          <tr>
+            <th>Era</th>
+            <th>Peristiwa Kunci</th>
+            <th>Tokoh</th>
+            <th>Dampak</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="Era">Abad VII M</td>
+            <td data-label="Peristiwa" style="color:rgba(200,224,240,.7);">Kontak Islam pertama di Nusantara</td>
+            <td data-label="Tokoh" style="color:rgba(200,224,240,.7);">Pedagang Arab, era Utsman bin Affan</td>
+            <td data-label="Dampak" style="color:rgba(200,224,240,.7);">Benih pertama Islam di pesisir Sumatera</td>
+          </tr>
+          <tr>
+            <td data-label="Era">Abad XIII M</td>
+            <td data-label="Peristiwa" style="color:rgba(200,224,240,.7);">Berdirinya Samudra Pasai (1267 M)</td>
+            <td data-label="Tokoh" style="color:rgba(200,224,240,.7);">Sultan Malik as-Shalih</td>
+            <td data-label="Dampak" style="color:rgba(200,224,240,.7);">Kerajaan Islam pertama, pusat ilmu abad XIV</td>
+          </tr>
+          <tr>
+            <td data-label="Era">Abad XIV–XV M</td>
+            <td data-label="Peristiwa" style="color:rgba(200,224,240,.7);">Kesultanan Malaka (1400 M)</td>
+            <td data-label="Tokoh" style="color:rgba(200,224,240,.7);">Parameswara / Raja Iskandar Shah</td>
+            <td data-label="Dampak" style="color:rgba(200,224,240,.7);">Islamisasi masif seluruh Asia Tenggara</td>
+          </tr>
+          <tr>
+            <td data-label="Era">Abad XV M</td>
+            <td data-label="Peristiwa" style="color:rgba(200,224,240,.7);">Wali Songo berdakwah di Jawa</td>
+            <td data-label="Tokoh" style="color:rgba(200,224,240,.7);">Sunan Ampel, Kalijaga, Giri, dll.</td>
+            <td data-label="Dampak" style="color:rgba(200,224,240,.7);">Jawa menjadi Muslim dalam 1 abad</td>
+          </tr>
+          <tr>
+            <td data-label="Era">Abad XVI M</td>
+            <td data-label="Peristiwa" style="color:rgba(200,224,240,.7);">Kesultanan Demak & Aceh</td>
+            <td data-label="Tokoh" style="color:rgba(200,224,240,.7);">Raden Patah, Sultan Iskandar Muda</td>
+            <td data-label="Dampak" style="color:rgba(200,224,240,.7);">Islam sebagai kekuatan politik & militer</td>
+          </tr>
+          <tr>
+            <td data-label="Era">Abad XVII M</td>
+            <td data-label="Peristiwa" style="color:rgba(200,224,240,.7);">Ulama besar & tafsir Melayu</td>
+            <td data-label="Tokoh" style="color:rgba(200,224,240,.7);">Abdurrauf as-Singkili, ar-Raniri</td>
+            <td data-label="Dampak" style="color:rgba(200,224,240,.7);">Tradisi intelektual Islam Nusantara mengakar</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="banner" style="border:1px solid rgba(200,200,160,.18);">
+      <div class="ban-ar">كُنتُمْ خَيْرَ أُمَّةٍ أُخْرِجَتْ لِلنَّاسِ تَأْمُرُونَ بِالْمَعْرُوفِ وَتَنْهَوْنَ عَنِ الْمُنكَرِ وَتُؤْمِنُونَ بِاللَّهِ</div>
+      <div class="ban-id">"Kamu adalah umat terbaik yang dilahirkan untuk manusia: menyuruh kepada yang ma'ruf, mencegah dari yang mungkar, dan beriman kepada Allah." — Inilah misi yang dipegang teguh para penyebar Islam di Nusantara. Mereka bukan sekadar pedagang yang mencari keuntungan materi, bukan sekadar penakluk yang mencari kekuasaan. Mereka adalah du'at — penyeru kepada Allah — yang memahami bahwa misi tertinggi seorang Muslim adalah menjadi rahmat bagi dunia di sekitarnya.</div>
+      <div class="ban-ref">QS. Ali 'Imran (3): 110 · Ayat tentang misi umat Islam di muka bumi</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end wrap -->
+
+<!-- ══ PENUTUP ══ -->
+<div class="penutup">
+  <div class="penutup-inner">
+    <div class="penutup-ar">إِنَّ هَٰذَا الْقُرْآنَ يَهْدِي لِلَّتِي هِيَ أَقْوَمُ</div>
+    <div class="penutup-div"></div>
+    <p class="penutup-p">"Sesungguhnya Al-Qur'an ini memberi petunjuk kepada (jalan) yang lebih lurus." — QS. Al-Isrā': 9. Inilah yang dibawa para pedagang Arab, ulama Gujarat, wali-wali Jawa, dan sultan-sultan Nusantara ke setiap sudut kepulauan ini: sebuah kitab yang menerangi akal, melembutkan hati, dan meluruskan jalan hidup manusia.</p>
+    <p class="penutup-p" style="margin-top:10px;">Lebih dari tujuh abad setelah Samudra Pasai berdiri, lebih dari lima abad setelah Wali Songo berdakwah, Islam tetap hidup dan berkembang di bumi Nusantara. Pesantren masih mendidik jutaan santri. Azan masih berkumandang dari Sabang sampai Merauke. Al-Qur'an masih dibaca, dihafal, dan diamalkan. Inilah warisan para pendahulu kita — amanah yang harus kita jaga, teruskan, dan kembangkan untuk generasi yang akan datang.</p>
+    <div class="penutup-div"></div>
+    <div class="dalil" style="background:rgba(2,6,4,.9);border:1px solid rgba(200,144,10,.15);text-align:left;">
+      <div style="background:var(--gold);width:4px;"></div>
+      <div class="dalil-body">
+        <div class="d-tag" style="color:var(--gold);">📿 Doa untuk Keberkahan Islam di Nusantara</div>
+        <div class="d-ar" style="color:var(--gold-lt);">رَبَّنَا لَا تُزِغْ قُلُوبَنَا بَعْدَ إِذْ هَدَيْتَنَا وَهَبْ لَنَا مِن لَّدُنكَ رَحْمَةً ۚ إِنَّكَ أَنتَ الْوَهَّابُ</div>
+        <div class="d-trans">"Ya Tuhan kami, janganlah Engkau condongkan hati kami kepada kesesatan setelah Engkau memberi petunjuk kepada kami, dan karuniakanlah kepada kami rahmat dari sisi-Mu. Sesungguhnya Engkau Maha Pemberi."</div>
+        <div class="d-ref" style="color:rgba(200,144,10,.6);">QS. Ali 'Imran (3): 8 · Doa yang dibaca oleh para ulama Nusantara sejak zaman Wali Songo</div>
+      </div>
+    </div>
+    <div class="penutup-footer">
+      <div class="logo">فَجْرُ الإِسْلَامِ فِي النُّوسَنْتَارَا</div>
+      <div class="tag">وَاللّٰهُ أَعْلَمُ بِالصَّوَابِ · Semoga Bermanfaat</div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ═══ CANVAS — NUSANTARA NIGHT SKY ═══ */
+const canvas=document.getElementById('canvas');
+const ctx=canvas.getContext('2d');
+let W,H,stars=[],nebulae=[],dhows=[];
+
+function resize(){W=canvas.width=innerWidth;H=canvas.height=innerHeight;}
+
+function init(){
+  stars=[];
+  for(let i=0;i<520;i++){
+    const t=Math.random();
+    stars.push({
+      x:Math.random()*W,y:Math.random()*H,
+      r:t<.04?2.6+Math.random()*1.6:t<.18?1.1+Math.random()*.8:.3+Math.random()*.7,
+      a:Math.random()*.65+.15,
+      sp:Math.random()*.28+.04,
+      ph:Math.random()*Math.PI*2,
+      gold:t<.04,
+      teal:t<.13&&t>=.04,
+      white:t>=.13
+    });
+  }
+  nebulae=[];
+  /* Ocean-teal nebula clouds */
+  const nebulaConfigs=[
+    {hue:180,sat:60},{hue:160,sat:50},{hue:220,sat:40},
+    {hue:40,sat:50},{hue:200,sat:45}
+  ];
+  for(let i=0;i<5;i++){
+    nebulae.push({
+      x:Math.random()*W,y:Math.random()*H,
+      rx:120+Math.random()*180,ry:60+Math.random()*100,
+      hue:nebulaConfigs[i].hue,sat:nebulaConfigs[i].sat,
+      a:.035+Math.random()*.05
+    });
+  }
+}
+
+let tick=0;
+function draw(){
+  ctx.clearRect(0,0,W,H);
+  tick+=.005;
+
+  /* Nebulae */
+  nebulae.forEach(n=>{
+    const drift=Math.sin(tick*0.3+n.x*.001)*0.008;
+    const g=ctx.createRadialGradient(n.x,n.y,0,n.x,n.y,Math.max(n.rx,n.ry));
+    g.addColorStop(0,`hsla(${n.hue},${n.sat}%,50%,${n.a+drift})`);
+    g.addColorStop(1,'transparent');
+    ctx.beginPath();
+    ctx.ellipse(n.x,n.y,n.rx,n.ry,Math.sin(tick*.1)*0.1,0,Math.PI*2);
+    ctx.fillStyle=g;ctx.fill();
+  });
+
+  /* Stars */
+  stars.forEach(s=>{
+    const p=Math.sin(tick*s.sp*8+s.ph)*.32+.68;
+    let color;
+    if(s.gold)       color=`rgba(248,200,64,${s.a*p})`;
+    else if(s.teal)  color=`rgba(64,220,200,${s.a*p})`;
+    else             color=`rgba(200,220,240,${s.a*p})`;
+    ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+    ctx.fillStyle=color;
+    if(s.gold&&s.r>2){ctx.shadowBlur=8;ctx.shadowColor='rgba(248,200,64,.5)';}
+    else if(s.teal&&s.r>1.5){ctx.shadowBlur=5;ctx.shadowColor='rgba(64,220,200,.4)';}
+    ctx.fill();ctx.shadowBlur=0;
+  });
+
+  /* Shooting stars / meteor */
+  if(Math.random()<.0018){
+    const sx=Math.random()*W*.9,sy=Math.random()*H*.35;
+    const ang=Math.PI/5+(Math.random()-.5)*.35;
+    const len=70+Math.random()*130;
+    const gm=ctx.createLinearGradient(sx,sy,sx+Math.cos(ang)*len,sy+Math.sin(ang)*len);
+    gm.addColorStop(0,'rgba(255,255,255,0)');
+    gm.addColorStop(.55,'rgba(180,240,220,.35)');
+    gm.addColorStop(1,'rgba(255,255,255,.88)');
+    ctx.beginPath();ctx.moveTo(sx,sy);
+    ctx.lineTo(sx+Math.cos(ang)*len,sy+Math.sin(ang)*len);
+    ctx.strokeStyle=gm;ctx.lineWidth=1.3;ctx.stroke();
+  }
+
+  /* Subtle ocean wave shimmer at the very bottom */
+  const waveY=H-30;
+  for(let x=0;x<W;x+=3){
+    const wy=waveY+Math.sin(x*0.02+tick*2)*4+Math.sin(x*0.04+tick*3)*2;
+    const wa=0.04+0.03*Math.sin(x*0.015+tick);
+    ctx.fillStyle=`rgba(16,200,180,${wa})`;
+    ctx.fillRect(x,wy,2,1);
+  }
+
+  requestAnimationFrame(draw);
+}
+
+window.addEventListener('resize',()=>{resize();init();});
+resize();init();draw();
+
+/* ═══ SCROLL REVEAL ═══ */
+const stages=document.querySelectorAll('.stage');
+const obs=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.style.opacity='1';
+      e.target.style.transform='translateY(0)';
+    }
+  });
+},{threshold:.06});
+stages.forEach(s=>{
+  s.style.opacity='0';
+  s.style.transform='translateY(30px)';
+  s.style.transition='opacity .7s ease, transform .7s ease';
+  obs.observe(s);
+});
+</script>
+</body>
+</html>
