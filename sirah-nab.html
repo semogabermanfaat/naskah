@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Sirah Nabawiyah — Perjalanan Hidup Nabi Muhammad ﷺ (Part 1-3 Lengkap)</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap');
+
+:root {
+  --gold: #c9a227;
+  --gold-light: #f0d68a;
+  --sand: #e8d5b5;
+  --olive: #4a5d23;
+  --dark: #0f172a;
+  --dark2: #1e293b;
+  --text-light: #e8e8e8;
+  --text-dim: #94a3b8;
+  --accent: #38bdf8;
+  --green: #34d399;
+  --red-soft: #f87171;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(160deg, var(--dark) 0%, #1e1b4b 35%, #4a2c0a 100%);
+  color: var(--text-light);
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+  line-height: 1.7;
+}
+
+/* ===== BACKGROUND EFFECTS ===== */
+.bg-container {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.dust-particle {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(240,214,138,0.7), rgba(201,162,39,0));
+  animation: drift linear infinite;
+  opacity: 0;
+  pointer-events: none;
+}
+
+@keyframes drift {
+  0% { transform: translateX(0) translateY(100vh) scale(0); opacity: 0; }
+  15% { opacity: 0.5; }
+  85% { opacity: 0.2; }
+  100% { transform: translateX(40px) translateY(-10vh) scale(1); opacity: 0; }
+}
+
+.glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(50px);
+  opacity: 0.1;
+  animation: orbFloat 14s ease-in-out infinite alternate;
+}
+
+@keyframes orbFloat {
+  0% { transform: translate(0,0) scale(1); opacity: 0.06; }
+  50% { transform: translate(25px,-20px) scale(1.2); opacity: 0.14; }
+  100% { transform: translate(-20px,25px) scale(0.9); opacity: 0.05; }
+}
+
+.starlight {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: radial-gradient(circle at 70% 20%, rgba(255,255,255,0.03) 0%, transparent 50%);
+  pointer-events: none;
+  animation: lightPulse 10s ease-in-out infinite alternate;
+}
+
+@keyframes lightPulse {
+  0% { opacity: 0.4; }
+  100% { opacity: 0.9; }
+}
+
+/* ===== MAIN CONTENT ===== */
+.main-wrapper {
+  position: relative;
+  z-index: 1;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 20px 16px 60px;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  padding: 40px 10px 25px;
+}
+
+.part-badge {
+  display: inline-block;
+  background: rgba(201,162,39,0.15);
+  color: var(--gold);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  border: 1px solid rgba(201,162,39,0.3);
+}
+
+.header h1 {
+  font-family: 'Amiri', serif;
+  font-size: 2.1rem;
+  color: var(--gold-light);
+  line-height: 1.4;
+  margin-bottom: 6px;
+}
+
+.header .subtitle {
+  font-size: 0.85rem;
+  color: var(--sand);
+  font-weight: 300;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+.bismillah {
+  font-family: 'Amiri', serif;
+  font-size: 1.8rem;
+  color: var(--gold-light);
+  text-align: center;
+  margin: 20px 0;
+  direction: rtl;
+  line-height: 2;
+  opacity: 0.9;
+}
+
+/* TOC / Daftar Isi */
+.toc {
+  background: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+  border: 1px solid rgba(201,162,39,0.2);
+  border-radius: 14px;
+  padding: 20px 18px;
+  margin: 20px 0 30px;
+}
+
+.toc h3 {
+  font-family: 'Amiri', serif;
+  color: var(--gold-light);
+  font-size: 1.2rem;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.toc-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 12px;
+  margin: 6px 0;
+  background: rgba(255,255,255,0.03);
+  border-radius: 10px;
+  text-decoration: none;
+  color: var(--sand);
+  font-size: 0.88rem;
+  transition: background 0.2s;
+}
+
+.toc-item:hover { background: rgba(201,162,39,0.1); color: var(--gold-light); }
+
+.toc-item .toc-icon {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(201,162,39,0.12);
+  color: var(--gold);
+  border-radius: 8px;
+  margin-right: 12px;
+  font-size: 0.8rem;
+  flex-shrink: 0;
+}
+
+.toc-item .toc-text strong {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--gold-light);
+}
+
+.toc-item .toc-text span {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
+
+/* Divider */
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 35px 0;
+}
+
+.divider::before, .divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+}
+
+.divider span {
+  color: var(--gold);
+  font-size: 1.2rem;
+}
+
+/* Mukadimah */
+.info-box {
+  background: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+  border: 1px solid rgba(201,162,39,0.15);
+  border-radius: 12px;
+  padding: 18px 16px;
+  margin: 20px 0;
+  text-align: justify;
+  color: var(--sand);
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+
+.info-box strong { color: var(--gold-light); }
+
+/* Section Title */
+.section-title {
+  font-family: 'Amiri', serif;
+  font-size: 1.35rem;
+  color: var(--gold-light);
+  text-align: center;
+  margin: 30px 0 15px;
+  padding: 10px;
+  background: linear-gradient(135deg, rgba(201,162,39,0.1), rgba(201,162,39,0.02));
+  border-radius: 12px;
+  border: 1px solid rgba(201,162,39,0.15);
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 2px;
+  background: var(--gold);
+  margin: 8px auto 0;
+  border-radius: 2px;
+}
+
+/* Card */
+.dua-card {
+  background: linear-gradient(145deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+  border: 1px solid rgba(201,162,39,0.12);
+  border-radius: 16px;
+  padding: 22px 18px;
+  margin: 18px 0;
+  position: relative;
+  overflow: hidden;
+  animation: fadeInCard 0.8s ease-out both;
+}
+
+.dua-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--gold), var(--olive));
+  border-radius: 4px 0 0 4px;
+}
+
+@keyframes fadeInCard {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.dua-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px; height: 28px;
+  background: var(--gold);
+  color: var(--dark);
+  border-radius: 50%;
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.dua-category {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--gold-light);
+  background: rgba(201,162,39,0.12);
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-bottom: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.arabic-text {
+  font-family: 'Amiri', serif;
+  font-size: 1.45rem;
+  direction: rtl;
+  text-align: right;
+  line-height: 2;
+  color: #fff;
+  margin-bottom: 14px;
+  padding: 10px 5px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.transliteration {
+  font-style: italic;
+  color: var(--accent);
+  font-size: 0.88rem;
+  line-height: 1.7;
+  margin-bottom: 10px;
+  text-align: justify;
+}
+
+.translation {
+  color: var(--sand);
+  font-size: 0.9rem;
+  line-height: 1.8;
+  text-align: justify;
+  margin-bottom: 14px;
+  padding: 10px 12px;
+  background: rgba(255,255,255,0.03);
+  border-radius: 8px;
+  border-left: 3px solid var(--green);
+}
+
+.source {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  line-height: 1.6;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.source strong { color: var(--gold-light); font-weight: 600; }
+
+.hadith-badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  background: rgba(16,185,129,0.15);
+  color: var(--green);
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-top: 6px;
+  font-weight: 600;
+}
+
+.quran-badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  background: rgba(59,130,246,0.15);
+  color: var(--accent);
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-top: 6px;
+  font-weight: 600;
+}
+
+.sirah-badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  background: rgba(201,162,39,0.15);
+  color: var(--gold-light);
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-top: 6px;
+  font-weight: 600;
+}
+
+/* Table Responsive */
+.table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 18px 0;
+  border-radius: 12px;
+  border: 1px solid rgba(201,162,39,0.12);
+  background: rgba(255,255,255,0.02);
+}
+
+table {
+  width: 100%;
+  min-width: 320px;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+
+thead th {
+  background: rgba(201,162,39,0.12);
+  color: var(--gold-light);
+  padding: 10px 8px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+tbody td {
+  padding: 10px 8px;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  text-align: justify;
+  color: var(--sand);
+  line-height: 1.6;
+}
+
+tbody tr:hover { background: rgba(255,255,255,0.02); }
+
+/* Disclaimer */
+.disclaimer {
+  background: rgba(239,68,68,0.08);
+  border: 1px solid rgba(239,68,68,0.15);
+  border-radius: 10px;
+  padding: 14px;
+  margin: 20px 0;
+  font-size: 0.78rem;
+  color: #fca5a5;
+  text-align: justify;
+  line-height: 1.7;
+}
+
+.disclaimer strong { color: #f87171; }
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 30px 10px;
+  margin-top: 30px;
+  border-top: 1px solid rgba(201,162,39,0.15);
+}
+
+.footer p {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  line-height: 1.8;
+}
+
+.footer .gold { color: var(--gold-light); }
+
+/* Navigation Buttons */
+.nav-buttons {
+  display: flex;
+  gap: 10px;
+  margin: 30px 0;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background: linear-gradient(135deg, rgba(201,162,39,0.15), rgba(201,162,39,0.05));
+  border: 1px solid rgba(201,162,39,0.3);
+  color: var(--gold-light);
+  text-decoration: none;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.nav-btn:hover {
+  background: rgba(201,162,39,0.2);
+  transform: translateY(-2px);
+}
+
+/* Scroll to top */
+.scroll-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 42px; height: 42px;
+  background: var(--gold);
+  color: var(--dark);
+  border: none;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  z-index: 10;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(201,162,39,0.3);
+  transition: transform 0.3s;
+}
+
+.scroll-top:hover { transform: scale(1.1); }
+
+/* Download Button */
+.download-fab {
+  position: fixed;
+  bottom: 70px;
+  right: 20px;
+  width: 42px; height: 42px;
+  background: var(--green);
+  color: var(--dark);
+  border: none;
+  border-radius: 50%;
+  font-size: 1.1rem;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(52,211,153,0.3);
+  transition: transform 0.3s;
+  text-decoration: none;
+}
+
+.download-fab:hover { transform: scale(1.1); }
+
+/* Responsive */
+@media (max-width: 480px) {
+  .header h1 { font-size: 1.6rem; }
+  .bismillah { font-size: 1.5rem; }
+  .arabic-text { font-size: 1.25rem; line-height: 1.9; }
+  .dua-card { padding: 18px 14px; }
+  .main-wrapper { padding: 15px 12px 50px; }
+  .section-title { font-size: 1.2rem; }
+}
+
+@media (min-width: 768px) {
+  .main-wrapper { padding: 30px 24px 80px; }
+  .arabic-text { font-size: 1.6rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- Background Effects -->
+<div class="bg-container">
+  <div class="starlight"></div>
+</div>
+
+<!-- Main Content -->
+<div class="main-wrapper">
+
+  <!-- Header -->
+  <header class="header">
+    <div class="part-badge">📖 SIRAH NABAWIYAH — PART 1, 2 & 3</div>
+    <h1>Sirah Nabawiyah</h1>
+    <div class="subtitle">Perjalanan Hidup Nabi Muhammad ﷺ — Dari Kelahiran hingga Wafat</div>
+  </header>
+
+  <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+
+  <div class="divider"><span>☽</span></div>
+
+  <!-- Mukadimah -->
+  <div class="info-box">
+    <p>
+      <strong>🕌 Mukadimah:</strong> Mempelajari sirah (sejarah hidup) Rasulullah ﷺ bukan sekadar mengenal masa lalu, melainkan memahami <strong>cermin akhlak, manhaj dakwah, dan rahmat Allah</strong> yang diutus untuk seluruh alam. Naskah ini mencakup 3 bagian lengkap: <strong>Part 1 (Kelahiran – Wahyu Pertama)</strong>, <strong>Part 2 (Dakwah Makkah – Hijrah)</strong>, dan <strong>Part 3 (Madinah – Wafat)</strong>. Disusun berdasarkan Al-Qur'an, Hadis Shahih, dan Sirah Mu'tabar.
+    </p>
+  </div>
+
+  <!-- ===== TABLE OF CONTENTS ===== -->
+  <div class="toc">
+    <h3>📑 Daftar Isi</h3>
+
+    <a href="#part1" class="toc-item">
+      <div class="toc-icon">📖</div>
+      <div class="toc-text">
+        <strong>Part 1: Kelahiran hingga Wahyu Pertama</strong>
+        <span>Usia 0–40 tahun • Makkah • Gua Hira'</span>
+      </div>
+    </a>
+
+    <a href="#part2" class="toc-item">
+      <div class="toc-icon">🌙</div>
+      <div class="toc-text">
+        <strong>Part 2: Dakwah Makkah hingga Hijrah</strong>
+        <span>Tahun 1–13 kenabian • Penganiayaan • Isra' Mi'raj</span>
+      </div>
+    </a>
+
+    <a href="#part3" class="toc-item">
+      <div class="toc-icon">🕌</div>
+      <div class="toc-text">
+        <strong>Part 3: Periode Madinah hingga Wafat</strong>
+        <span>Tahun 1–23 Hijriyah • Perang • Piagam Madinah • Fathu Makkah</span>
+      </div>
+    </a>
+  </div>
+
+  <!-- ========================================= -->
+  <!-- =============== PART 1 ================== -->
+  <!-- ========================================= -->
+  <div id="part1"></div>
+
+  <div class="divider"><span>☀</span></div>
+
+  <header class="header">
+    <div class="part-badge">PART 1</div>
+    <h1>Kelahiran hingga Wahyu Pertama</h1>
+    <div class="subtitle">Masa 0 – 40 Tahun</div>
+  </header>
+
+  <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+
+  <!-- Section 1.1 -->
+  <h2 class="section-title">📜 1. Nasab & Kelahiran</h2>
+
+  <div class="dua-card">
+    <div class="dua-number">1</div>
+    <span class="dua-category">Nasab Mulia</span>
+    <div class="translation">
+      Nama lengkap beliau ﷺ adalah <strong>Muhammad bin Abdullah bin Abdul Muthalib bin Hasyim bin Abdul Manaf bin Qushay bin Kilab bin Murrah bin Ka'b bin Lu'ay bin Ghalib bin Fihr bin Malik bin An-Nadhr bin Kinanah bin Khuzaimah bin Mudrikah bin Ilyas bin Mudhar bin Nizar bin Ma'ad bin Adnan</strong>. Nasab ini disepakati oleh para ahli sirah dan berakhir pada Nabi Isma'il 'alaihis salam, anak Nabi Ibrahim 'alaihis salam.
+    </div>
+    <div class="source">
+      <strong>📚 Sumber:</strong> <em>Ibn Hisyam, Sirah Nabawiyah 1/23-24</em> · <em>Ibn Kathir, Al-Bidayah wan Nihayah 3/12</em>
+      <br><span class="sirah-badge">✓ Sirah Mu'tabar</span>
+    </div>
+  </div>
+
+  <div class="dua-card">
+    <div class="dua-number">2</div>
+    <span class="dua-category">Tahun Gajah</span>
+    <div class="translation">
+      Beliau ﷺ dilahirkan pada <strong>Senin, 12 Rabi'ul Awwal Tahun Gajah</strong> (sekitar 571 M) di Makkah. Kelahiran beliau bertepatan dengan gagalnya pasukan Abrahah menghancurkan Ka'bah setelah Allah mengirimkan burung Ababil yang melemparkan batu sijjil. Peristiwa ini diabadikan dalam Al-Qur'an sebagai tanda kekuasaan Allah dan awal dari kenabian yang agung.
+    </div>
+    <div class="arabic-text">
+      أَلَمْ تَرَ كَيْفَ فَعَلَ رَبُّكَ بِأَصْحَابِ الْفِيلِ ۝ أَلَمْ يَجْعَلْ كَيْدَهُمْ فِي تَضْلِيلٍ ۝ وَأَرْسَلَ عَلَيْهِمْ طَيْرًا أَبَابِيلَ ۝ تَرْمِيهِم بِحِجَارَةٍ مِّن سِجِّيلٍ ۝ فَجَعَلَهُمْ كَعَصْفٍ مَّأْكُولٍ
+    </div>
+    <div class="source">
+      <strong>📚 Sumber:</strong> QS. Al-Fīl (105): 1–5. Tafsir Ibn Katsir & Al-Qurthubi.
+      <br><span class="quran-badge">QS. Al-Fil: 1-5</span>
+    </div>
+  </div>
+
+  <!-- Section 1.2 -->
+  <div class="divider"><span>✦</span></div>
+  <h2 class="section-title">🏜️ 2. Keadaan Arab Jahiliyah</h2>
+
+  <div class="dua-card">
+    <div class="dua-number">3</div>
+    <span class="dua-category">Kondisi Masyarakat</span>
+    <div class="translation">
+      Jazirah Arab sebelum diutusnya Rasulullah ﷺ berada dalam kondisi <strong>kegelapan spiritual dan moral (Jahiliyah)</strong>. Mereka menyembah berhala, melakukan perang suku yang berkepanjangan, mengubur bayi perempuan hidup-hidup, berjudi, minum khamr, dan memutus silaturahim. Namun di tengah kegelapan itu, masih terdapat sekelompok kecil yang memegang ajaran tauhid Nabi Ibrahim 'alaihis salam (Hanif) serta nilai-nilai kemuliaan seperti keberanian, ketepatan janji, dan kemuliaan tamu.
+    </div>
+    <div class="source">
+      <strong>📚 Sumber:</strong> QS. Al-Aḥzāb (33): 67–68 · QS. At-Takwīr: 8–9 (tentang penguburan bayi perempuan)
+      <br><span class="quran-badge">QS. Al-Ahzab: 67-68</span>
+    </div>
+  </div>
+
+  <!-- Section 1.3 -->
+  <div class="divider"><span>✦</span></div>
+  <h2 class="section-title">👶 3. Pengasuhan & Masa Kecil</h2>
+
+  <div class="dua-card">
+    <div class="dua-number">4</div>
+    <span class="dua-category">Menyusui & Halimah Sa'diyah</span>
+    <div class="translation">
+      Sesuai tradisi Arab, bayi Muhammad ﷺ diserahkan kepada <strong>Halimah bint Abu Dzu'aib</strong> dari kabilah Bani Sa'd untuk disusui dan dibesarkan di pedalaman. Selama dalam asuhannya, Halimah menyaksikan keberkahan yang luar biasa: hewan ternaknya gemuk, air susunya bertambah, dan keluarganya yang tadinya miskin menjadi sejahtera. Nabi ﷺ tinggal bersama Halimah hingga usia sekitar 4-5 tahun.
+    </div>
+    <div class="source">
+      <strong>📚 Sumber:</strong> <em>Ibn Hisyam, Sirah 1/148-152</em> · <em>Muslim no. 2370</em> (riwayat tentang pembelahan dada)
+      <br><span class="hadith-badge">✓ Shahih Muslim</span>
+    </div>
+  </div>
+
+  <div class="dua-card">
+    <div class="dua-number">5</div>
+    <span class="dua-category">Yatim & Pengasuhan</span>
+    <div class="translation">
+      Ayah beliau, Abdullah, meninggal saat ibu Aminah masih hamil. Aminah wafat di Abwa' saat perjalanan pulang dari Madinah saat beliau berusia 6 tahun. Beliau kemudian diasuh oleh kakeknya, <strong>Abdul Muthalib</strong>, yang sangat menyayangi beliau. Saat Abdul Muthalib wafat (usia beliau 8 tahun), pengasuhan dilanjutkan oleh pamannya, <strong>Abu Thalib</strong>, yang melindungi beliau hingga masa kenabian.
+    </div>
+    <div class="arabic-text">
+      أَلَمْ يَجِدْكَ يَتِيمًا فَآوَىٰ ۝ وَوَجَدَكَ ضَالًّا فَهَدَىٰ ۝ وَوَجَدَكَ عَائِلًا فَأَغْنَىٰ
+    </div>
+    <div class="source">
+      <strong>📚 Sumber:</strong> QS. Aḍ-Ḍuḥā (93): 6–8. Tafsir As-Sa'di & Ibn Katsir.
+      <br><span class="quran-badge">QS. Ad-Duha: 6-8</span>
+    </div>
+  </div>
+
+  <!-- Section 1.4 -->
+  <div class="divider"><span>✦</span></div>
+  <h2 class="section-title">🌿 4. Masa Muda & Gelar Al-Amīn</h2>
+
+  <div class="dua-card">
+    <div class="dua-number">6</div>
+    <span class="dua-category">Al-Amīn (Yang Terpercaya)</span>
+    <div class="translation">
+      Sejak muda, Muhammad ﷺ dikenal dengan akhlaknya yang mulia. Beliau bekerja sebagai pengembala kambing, lalu berdagang. Kejujuran, ketepatan janji, dan kelembutan hati beliau membuat seluruh penduduk Makkah menjuluki beliau <strong>"Al-Amīn"</strong> (Yang Terpercaya). Beliau juga turut serta dalam <strong>Hilful Fudul</strong> (Perjanjian Kebajikan), sebuah kesepakatan untuk menolong orang yang dizalimi di Makkah.
+    </div>
+    <div class="source">
+      <strong>📚 Sumber:</strong> <em>Ibn Hisyam 1/183-184</em> · <em>Ahmad 1/193, Al-Hakim 3/123 (Shahih)</em>
+      <br><span class="sirah-badge">✓ Sirah & Hadis Shahih</span>
+    </div>
+  </div>
+
+  <!-- Section 1.5 -->
+  <div class="divider"><span>✦</span></div>
+  <h2 class="section-title">💍 5. Pernikahan dengan Khadijah</h2>
+
+  <div class="dua-card">
+    <div class="dua-number">7</div>
+    <span class="dua-category">Rumah Tangga Barakah</span>
+    <div class="translation">
+      Pada usia 25 tahun, Muhammad ﷺ menikah dengan <strong>Khadijah bint Khuwaylid</strong> radhiyallahu 'anha. Khadijah adalah wanita pertama yang beriman kepada beliau, menemani masa-masa sulit dakwah, dan menjadi pendamping setia hingga wafatnya. Dari pernikahan ini lahir anak-anak beliau: Qasim, Zainab, Ruqayyah, Umm Kulthum, Fatimah, dan Abdullah.
+    </div>
+    <div class="source">
+      <strong>📚 Sumber:</strong> <em>Bukhari no. 3820</em> · <em>Muslim no. 2425</em>
+      <br><span class="hadith-badge">✓ Shahih Bukhari & Muslim</span>
+    </div>
+  </div>
+
+  <!-- Section 1.6 -->
+  <div class="divider"><span>✦</span></div>
+  <h2 class="section-title">🕊️ 6. Gua Hirā' & Turunnya Wahyu Pertama</h2>
+
+  <div class="dua-card">
+    <div class="dua-number">8</div>
+    <span class="dua-category">Kontemplasi & Wahyu</span>
+    <div class="translation">
+      Memasuki usia 40 tahun, Nabi Muhammad ﷺ sering berkhalwat di <strong>Gua Hira'</strong>. Pada bulan Ramadhan, malaikat Jibril 'alaihis salam datang membawa wahyu pertama. Khadijah menguatkan beliau: <em>"Demi Allah, Allah tidak akan menghinakanmu selamanya. Engkau menyambung silaturahim, berkata jujur, memikul beban orang lemah, membantu orang miskin, memuliakan tamu."</em>
+    </div>
+    <div class="arabic-text">
+      اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ ۝ خَلَقَ الْإِنسَانَ مِنْ عَلَقٍ ۝ اقْرَأْ وَرَبُّكَ الْأَكْرَمُ ۝ الَّذِي عَلَّمَ بِالْقَلَمِ ۝ عَلَّمَ الْإِنسَانَ مَا لَمْ يَعْلَمْ
+    </div>
+    <div class="source">
+      <strong>📚 Sumber:</strong> <em>Bukhari no. 3</em> · <em>Muslim no. 160</em> · QS. Al-'Alaq (96): 1–5
+      <br><span class="hadith-badge">✓ Shahih Bukhari & Muslim</span>
+      <span class="quran-badge">QS. Al-Alaq: 1-5</span>
+    </div>
+  </div>
+
+  <!-- Table Part 1 -->
+  <h2 class="section-title">📊 Kronologi Singkat (Usia 0–40 Tahun)</h2>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Usia</th>
+          <th>Peristiwa</th>
+          <th>Keterangan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>0</td><td>Kelahiran di Makkah</td><td>Senin, 12 Rabi'ul Awwal Tahun Gajah (571 M)</td></tr>
+        <tr><td>0–6</td><td>Asuhan Halimah Sa'diyah</td><td>Disusui & dibesarkan di pedalaman Bani Sa'd</td></tr>
+        <tr><td>6</td><td>Wafatnya Aminah</td><td>Meninggal di Abwa' dalam perjalanan dari Madinah</td></tr>
+        <tr><td>6–8</td><td>Asuhan Abdul Muthalib</td><td>Kakek yang sangat menyayangi beliau</td></tr>
+        <tr><td>8+</td><td>Asuhan Abu Thalib</td><td>Paman yang melindungi hingga masa kenabian</td></tr>
+        <tr><td>12–20</td><td>Pengembala & Pedagang</td><td>Dikenal jujur, mendapat julukan Al-Amīn</td></tr>
+        <tr><td>25</td><td>Pernikahan dengan Khadijah</td><td>Rumah tangga penuh berakah</td></tr>
+        <tr><td>35</td><td>Perbaikan Ka'bah</td><td>Menyelesaikan sengklet penempatan Hajar Aswad</td></tr>
+        <tr><td>40</td><td>Turunnya Wahyu Pertama</td><td>Di Gua Hira', Ramadhan, QS. Al-'Alaq: 1-5</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Navigation -->
+  <div class="nav-buttons">
+    <a href="#part1" class="nav-btn">⬆ Part 1</a>
+    <a href="#part2" class="nav-btn">Part 2 ⬇</a>
+  </div>
+
+  <!-- ========================================= -->
+  <!-- =============== PART 2 ================== -->
+  <!-- ========================================= -->
+  <div id="part2"></div>
+
+  <div class="divider"><span>🌙</span></div>
+
+  <header class="header">
+    <div class="part-badge">PART 2</div>
+    <h1>Dakwah Makkah hingga Hijrah</h1>
+    <div class="subtitle">Tahun 1 – 13 Kenabian</div>
+  </header>
+
+  <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+
+  <!-- Section 2.1 -->
+  <h2 class="section-title">🤫 1. Dakwah Sirriyah (3 Tahun Pertama)</h2>
+
+  <div class="dua-card">
+    <div class="dua-number">9</div>
+    <span class="dua-category">Perintah Berdakwah</span>
+    <div class="arabic-text">
+      يَا أَيُّهَا الْمُدَّثِّرُ ۝ قُمِ اللَّيْلَ إِلَّا قَلِيلًا ۝ نِّصْفَهُ أَوِ انقُصْ مِنْهُ قَلِيلًا ۝ أَوْ زِدْ عَلَيْهِ وَرَتِّلِ الْقُرْآنَ تَرْتِيلًا ۝ إِنَّا سَنُلْقِي عَلَيْكَ قَوْلًا ثَقِيلًا
+    </div>
+    <div class="transliteration">
+      "Yā ayyuhal-muddattir. Qumil-layla illā qalīlā... Innā sanulqī 'alayka qawlan ṡaqīlā."
+    </div>
+    <div class="translation">
+      "Wahai orang yang berselimut, bangunlah di malam hari... dan bacalah Al-Qur'an dengan tartil. Sesungguhnya Kami akan menurunkan kepadamu perkataan yang berat."
+    </div>
+    <div class="source">
+      <strong>📚 Sumber:</strong> QS. Al-Muddatstsir (73): 1–5. Ayat ini menjadi perintah pertama untuk bangun malam dan membaca Al-Qur'an sebagai persiapan dakwah.
+      <br><span class="quran-badge">QS. Al-Muddatstsir: 1-5</span>
+    </div>
+  </div>
+
+  <div class="dua-card">
+    <div class="dua-number">10</div>
+    <span class="dua-category">Mukmin Pertama</span>
+    <div class="translation">
+      Dakwah dimulai secara rahasia selama <strong>3 tahun</strong>. Orang pertama yang beriman adalah <strong>Khadijah</strong> (istri), lalu <strong>'Ali bin Abi Thalib</strong> (sepupu), <strong>Zaid bin Haritsah</strong> (budak yang dimerdekakan), dan <strong>Abu Bakr Ash-Shiddiq</strong> (sahabat dekat). Melalui Abu Bakr, banyak tokoh Quraisy masuk Islam seperti 'Utsman bin 'Affan, 'Abdurrahman bin 'Auf, Sa'd bin Abi Waqqash, dan Zubair bin 'Awwam radhiyallahu 'anhum.
+    </div>
+    <div class="source">
+      <strong>📚 Sumber:</strong> <em>Ibn Hisyam, Sirah 1/254-256</em> · <em>Bukhari no. 3, 3906</em>
+      <br><span class="hadith-badge">✓ Shahih Bukhari</span>
+      <span class="sirah-badge">✓ Sirah Mu'tabar</span>
+    </div>
+  </div>
+
+  <!-- Section 2.2 -->
+  <div class="divider"><span>✦</span></div>
+  <h2 class="section-title">📢 2. Dakwah Jahriyah & Penentangan Quraisy</h2>
+
+  <div class="dua-card">
+    <div class="dua-number">11</div>
+    <span class="dua-category">Perintah Dakwah Terang-terangan</span>
+    <div class="arabic-text">
+      فَاصْدَعْ بِمَا تُؤْمَرُ وَأَعْرِضْ عَنِ الْمُشْرِكِينَ ۝ إِنَّا كَفَيْنَاكَ الْمُسْتَهْزِئِينَ
+    </div>
+    <div class="transliteration">
+      "Faṣda' bimā tu'maru wa a'riḍ 'anil-musyrikīn. Innā kafaynākāl-mustahzi'īn."
+    </div>
+    <div class="translation">
+      "Maka sampaikanlah apa yang diperintahkan kepadamu dan berpalinglah dari orang-orang musyrik. Sesungguhnya Kami memelihara engkau dari (gangguan) orang-orang yang memperolok-olokkan."
+    </div>
+    <div class="source">
+      <strong>📚 Sumber:</strong> QS. Al-Ḥijr (15): 94–95.
+      <br><span class="quran-badge">QS. Al-Hijr: 94-95</span>
+    </div>
+  </div>
+
+  <div class="dua-card">
+    <div class="dua-number">12</div>
+    <span class="dua-category">Penganiayaan & Keteguhan</span>
+    <div class="translation">
+      Ketika dakwah terang-terangan, Quraisy merespons dengan <strong>boikot, penyiksaan, dan ejekan</strong>. Bilal bin Rabah disiksa di padang pasir panas. Keluarga Yasir disiksa hingga syahid. Sumayyah radhiyallahu 'anha menjadi <strong>syuhada pertama dalam Islam</strong>. Nabi ﷺ sendiri dilempari kotoran unta dan duri, namun beliau tetap bersabar dan mendoakan mereka.
+    </div>
+    <div class="source">
+      <strong>📚 Sumber:</strong> <em>Bukhari no. 3850, 3854</em> · <em>Ibn Hisham 1/304-310</em> · <em>Muslim no. 1794</em>
+      <br><span class="hadith-badge">✓ Shahih Bukhari & Muslim</span>
+    </div>
+  </div>
+
+  <!-- Section 2.3 -->
+  <div class="divider"><span>✦</span></div>
+  <h2 class="section-title">⛵ 3. Hijrah ke Habasyah</h2>
+
+  <div class="dua-card">
+    <div class="dua-number">13</div>
+    <span class="dua-category">Negeri yang Adil</span>
+    <div class="translation">
+      Menyadari meningkatnya penyiksaan, Rasulullah ﷺ memerintahkan sahabat hijrah ke <strong>Habasyah (Ethiopia)</strong> pada tahun ke-5 kenabian. Beliau ﷺ bersabda: <em>"Sesungguhnya di sana ada raja yang tidak ada seorang pun yang dizalimi di sisinya."</em> Hijrah pertama diikuti 11 laki-laki & 4 wanita, kedua 83 laki-laki & 18 wanita. Raja Najasyi melindungi mereka dan akhirnya masuk Islam.
+    </div>
+    <div class="source">
+      <strong>📚 Sumber:</strong> <em>Ibn Ishaq via Ibn Hisyam 1/332-334</em> · <em>Bukhari no. 3906</em> · <em>Musnad Ahmad (Shahih)</em>
+      <br><span class="hadith-badge">✓ Shahih Bukhari & Ahmad</span>
+    </div>
+  </div>
+
+  <!-- Section 2.4 -->
+  <div class="divider"><span>✦</span></div>
+  <h2 class="section-title">💔 4. Tahun Kesedihan ('Āmul Ḥuzn) & Thaif</h2>
+
+  <div class="dua-card">
+    <div class="dua-number">14</div>
+    <span class="dua-category">Kehilangan Pelindung</span>
+    <div class="translation">
+      Pada tahun ke-10 kenabian, Rasulullah ﷺ kehilangan dua orang paling dicintai: <strong>Khadijah radhiyallahu 'anha</strong> (istri & pendukung utama) dan <strong>Abu Thalib</strong> (paman & pelindung). Tahun ini disebut <em>'Āmul Ḥuzn</em>. Beliau ﷺ kemudian pergi ke <strong>Thaif</strong> mengajak Bani Tsaqif, namun mereka menolak dan melempari beliau dengan batu hingga kaki berdarah. Nabi ﷺ berdoa: <em>"Ya Allah, berilah petunjuk kaumku, karena mereka tidak mengetahui."</em>
+    </div>
+    <div class="source">
+      <strong>📚 Sumber:</strong> <em>Bukhari no. 3477</em> · <em>Ibn Hisyam 1/418-420</em> · <em>Muslim no. 1794</em>
+      <br><span class="hadith-badge">✓ Shahih Bukhari & Muslim</span>
+    </div>
+  </div>
+
+  <!-- Section 2.5 -->
+  <div class="divider"><span>✦</span></div>
+  <h2 class="section-title">🌌 5. Isra' & Mi'raj</h2>
+
+  <div class="dua-card">
+    <div class="dua-number">15</div>
+    <span class="dua-category">Perjalanan Malam</span>
+    <div class="arabic-text">
+      سُبْحَانَ الَّذِي أَسْرَىٰ بِعَبْدِهِ لَيْلًا مِّنَ الْمَسْجِدِ الْحَرَامِ إِلَى الْمَسْجِدِ الْأَقْصَى الَّذِي بَارَكْنَا حَوْلَهُ لِنُرِيَهُ مِنْ آيَاتِنَا ۚ إِنَّهُ هُوَ السَّمِيعُ الْبَصِيرُ
+    </div>
+    <div class="transliteration">
+      "Subḥānallażī asrā bi'abdihī laylam minal-masjidil-ḥarāmi ilal-masjidil-aqṣallażī bāraknā ḥawlahu..."
+    </div>
+    <div class="translation">
+      "Maha Suci Allah yang telah memperjalankan hamba-Nya pada suatu malam dari Masjidil Haram ke Masjidil Aqsha yang telah Kami berkahi sekelilingnya, agar Kami perlihatkan kepadanya sebagian tanda-tanda (kebesaran) Kami."
+    </div>
+    <div class="source">
+      <strong>📚 Sumber:</strong> QS. Al-Isrā' (17): 1. Perjalanan fisik & ruh yang terjadi dalam satu malam.
+      <br><span class="quran-badge">QS. Al-Isra: 1</span>
+    </div>
+  </div>
+
+  <div class="dua-card">
+    <div class="dua-number">16</div>
+    <span class="dua-category">Kewajiban Shalat 5 Waktu</span>
+    <div class="translation">
+      Dalam Mi'raj, Nabi ﷺ dinaikkan ke Sidratul Muntaha. Allah <strong>mewajibkan shalat 50 waktu</strong>. Atas saran Nabi Musa 'alaihis salam, Nabi Muhammad ﷺ terus memohon keringanan hingga menjadi <strong>5 waktu sehari semalam</strong>, namun pahalanya tetap 50. Ini adalah hadiah terbesar bagi umat Islam.
+    </div>
+    <div class="source">
+      <strong>📚 Sumber:</strong> <em>Bukhari no. 349, 3207, 7517</em> · <em>Muslim no. 164</em> (Hadis Malik bin Sa'sa'ah)
+      <br><span class="hadith-badge">✓ Shahih Bukhari & Muslim</span>
+    </div>
+  </div>
+
+  <!-- Section 2.6 -->
+  <div class="divider"><span>✦</span></div>
+  <h2 class="section-title">🏔️ 6. Bai'at 'Aqabah & Hijrah ke Madinah</h2>
+
+  <div class="dua-card">
+    <div class="dua-number">17</div>
+    <span class="dua-category">Sumpah Setia di 'Aqabah</span>
+    <div class="translation">
+      Pada musim haji tahun ke-12 & ke-13 kenabian, rombongan dari Yatsrib (Madinah) bertemu Nabi ﷺ. <strong>Bai'at 'Aqabah Pertama</strong> (12 orang) & <strong>Kedua</strong> (73 laki-laki + 2 wanita) menjadi titik balik. Mereka berjanji melindungi Nabi ﷺ, memerangi musuh, dan menegakkan Islam. Nabi ﷺ mengirim <strong>Mus'ab bin 'Umair</strong> sebagai dai pertama ke Madinah.
+    </div>
+    <div class="source">
+      <strong>📚 Sumber:</strong> <em>Bukhari no. 3906, 4663</em> · <em>Ibn Hisyam 2/35-42</em> · <em>Musnad Ahmad</em>
+      <br><span class="hadith-badge">✓ Shahih Bukhari</span>
+    </div>
+  </div>
+
+  <div class="dua-card">
+    <div class="dua-number">18</div>
+    <span class="dua-category">Hijrah & Gua Tsur</span>
+    <div class="arabic-text">
+      إِلَّا تَنصُرُوهُ فَقَدْ نَصَرَهُ اللَّهُ إِذْ أَخْرَجَهُ الَّذِينَ كَفَرُوا ثَانِيَ اثْنَيْنِ إِذْ هُمَا فِي الْغَارِ إِذْ يَقُولُ لِصَاحِبِهِ لَا تَحْزَنْ إِنَّ اللَّهَ مَعَنَا ۖ فَأَنزَلَ اللَّهُ سَكِينَتَهُ عَلَيْهِ
+    </div>
+    <div class="transliteration">
+      "Illā tanṣurūhu faqad naṣarahullāhu... iż yaqūlu liṣāḥibihī lā taḥzan innallāha ma'anā..."
+    </div>
+    <div class="translation">
+      "Jika kamu tidak menolongnya (Muhammad), maka sesungguhnya Allah telah menolongnya... ketika dia berkata kepada sahabatnya: 'Janganlah engkau bersedih, sesungguhnya Allah beserta kita.' Maka Allah menurunkan ketenangan kepadanya."
+    </div>
+    <div class="source">
+      <strong>📚 Sumber:</strong> QS. At-Taubah (9): 40. Nabi ﷺ & Abu Bakr bersembunyi di Gua Tsur 3 hari sebelum hijrah ke Madinah.
+      <br><span class="quran-badge">QS. At-Taubah: 40</span>
+    </div>
+  </div>
+
+  <!-- Table Part 2 -->
+  <h2 class="section-title">📊 Kronologi Dakwah Makkah (Tahun 1–13 Kenabian)</h2>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr><th>Tahun Ke-</th><th>Peristiwa Penting</th><th>Catatan Singkat</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>Turunnya Wahyu Pertama & Dakwah Sirriyah</td><td>3 tahun berdakwah secara rahasia</td></tr>
+        <tr><td>4</td><td>Dakwah Jahriyah di Bukit Safa</td><td>Perintah dakwah terbuka</td></tr>
+        <tr><td>5</td><td>Hijrah Pertama ke Habasyah</td><td>Perlindungan Raja Najasyi</td></tr>
+        <tr><td>7</td><td>Boikot Bani Hasyim</td><td>3 tahun di Syi'ib Abu Thalib</td></tr>
+        <tr><td>10</td><td>Tahun Kesedihan & Perjalanan ke Thaif</td><td>Wafat Khadijah & Abu Thalib</td></tr>
+        <tr><td>11</td><td>Isra' & Mi'raj</td><td>Kewajiban shalat 5 waktu</td></tr>
+        <tr><td>12</td><td>Bai'at 'Aqabah Pertama</td><td>12 orang Madinah berbaiat</td></tr>
+        <tr><td>13</td><td>Bai'at 'Aqabah Kedua & Hijrah</td><td>73 orang berbaiat, hijrah ke Madinah</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Navigation -->
+  <div class="nav-buttons">
+    <a href="#part1" class="nav-btn">⬆ Part 1</a>
+    <a href="#part2" class="nav-btn">⬆ Part 2</a>
+    <a href="#part3" class="nav-btn">Part 3 ⬇</a>
+  </div>
+
+  <!-- ========================================= -->
+  <!-- =============== PART 3 ================== -->
+  <!-- ========================================= -->
+  <div id="part3"></div>
+
+  <div class="divider"><span>🕌</span></div>
+
+  <header class="header">
+    <div class="part-badge">PART 3</div>
+    <h1>Periode Madinah hingga Wafat</h1>
+    <div class="subtitle">Tahun 1 – 23 Hijriyah</div>
+  </header>
+
+  <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+
+  <!-- Section 3.1 -->
+  <h2 class="section-title">🏗️ 1. Kedatangan di Madinah & Pembangunan Masjid</h2>
+
+  <div class="dua-card">
+    <div class="dua-number">19</div>
+    <span class="dua-category">Sambutannya Madinah</span>
+    <div class="translation">
+      Nabi ﷺ tiba di Madinah pada <strong>12 Rabi'ul Awwal tahun 1 Hijriyah</strong>. Beliau ﷺ disambut dengan penuh kegembiraan oleh kaum Anshar yang menyanyikan <em>"Thala'al Badru 'Alaina"</em>. Beliau ﷺ memilih tempat unta berhenti sebagai lokasi masjid — tanah milik dua anak yatim yang kemudian dibeli. Nabi ﷺ ikut serta membangun masjid dengan tangannya sendiri. Inilah <strong>Masjid Nabawi</strong>, pusat dakwah, pendidikan, dan persatuan umat.
+    </div>
+    <div class="source">
+      <strong>📚 Sumber:</strong> <em>Bukhari no. 440, 446</em> · <em>Ibn Hisyam 2/100-104</em>
+      <br><span class="hadith-badge">✓ Shahih Bukhari</span>
+    </div>
+  </div>
+
+  <div class="dua-card">
+    <div class="dua-number">20</div>
+    <span class="dua-category">Ukhuwah Anshar & Muhajirin</span>
+    <div class="translation">
+      Nabi ﷺ melakukan <strong>mu'akhah (persaudaraan)</strong> antara kaum Muhajirin (Makkah) dan Anshar (Madinah). Setiap Muhajirin dipasangkan dengan seorang Anshar sebagai saudara. Abdurrahman bin 'Auf (Muhajirin) dipasangkan dengan Sa'd bin Ar-Rabi' (Anshar). Sa'd menawarkan separuh hartanya, namun Abdurrahman meminta ditunjukkan pasar. Inilah semangat kemandirian dan persaudaraan yang dibangun atas dasar iman.
+    </div>
+    <div class="source">
+      <strong>📚 Sumber:</strong> <em>Bukhari no. 3772</em> · <em>Ibn Hisyam 2/120-121</em>
+      <br><span class="hadith-badge">✓ Shahih Bukhari</span>
+    </div>
+  </div>
+
+  <div class="dua-card">
+    <div class="dua-number">21</div>
+    <span class="dua-category">Piagam Madinah</span>
+    <div class="translation">
+      Nabi ﷺ menyusun <strong>Piagam Madinah (Shahifatul Madinah)</strong> — konstitusi tertulis pertama dalam sejarah Islam yang mengatur hubungan antara Muslim, Yahudi, dan kelompok lain di Madinah. Piagam ini menetapkan: kebebasan beragama, kewajiban bela negara bersama, penyelesaian sengketa melalui Rasulullah ﷺ, dan larangan saling menzalimi. Ini adalah model negara yang inklusif dan berkeadilan.
+    </div>
+    <div class="source">
+      <strong>📚 Sumber:</strong> <em>Ibn Ishaq via Ibn Hisyam 2/122-130</em> · <em>Abu Dawud (Shahih)</em>
+      <br><span class="sirah-badge">✓ Sirah Mu'tabar</span>
+    </div>
+  </div>
+
+  <!-- Section 3.2 -->
+  <div class="divider"><span>✦</span></div>
+  <h2 class="section-title">⚔️ 2. Perang Badar (2 Hijriyah)</h2>
+
+  <div class="dua-card">
+    <div class="dua-number">22</div>
+    <span class="dua-category">Pertempuran Pertama</span>
+    <div class="translation">
+      Pada tahun 2 Hijriyah, kaum Muslimin (313 orang) menghadapi pasukan Quraisy Makkah (1000 orang) di <strong>Lembah Badar</strong>. Meski jumlah dan persenjataan kalah jauh, Allah menurunkan pertolongan-Nya. Malaikat turut serta dalam pertempuran. Sebanyak 14 syuhada dari pihak Muslim dan 70 tewas dari pihak Quraisy, termasuk Abu Jahal. 70 tawanan Quraisy ditangkap — sebagian ditebus, sebagian diajarkan membaca kepada anak-anak Madinah.
+    </div>
+    <div class="arabic-text">
+      وَلَقَدْ نَصَرَكُمُ اللَّهُ بِبَدْرٍ وَأَنتُمْ أَذِلَّةٌ ۖ فَاتَّقُوا اللَّهَ لَعَلَّكُمْ تَشْكُرُونَ
+    </div>
+    <div class="translation">
+      "Dan sesungguhnya Allah telah menolong kamu pada perang Badar, padahal kamu adalah (ketika itu) orang-orang yang lemah. Karena itu bertakwalah kepada Allah, supaya kamu mensyukuri-Nya."
+    </div>
+    <div class="source">
+      <strong>📚 Sumber:</strong> QS. Āli 'Imrān (3): 123 · <em>Bukhari no. 395, 3983</em> · <em>Muslim no. 1771</em>
+      <br><span class="quran-badge">QS. Ali 'Imran: 123</span>
+      <span class="hadith-badge">✓ Shahih Bukhari & Muslim</span>
+    </div>
+  </div>
+
+  <!-- Section 3.3 -->
+  <div class="divider"><span>✦</span></div>
+  <h2 class="section-title">🏔️ 3. Perang Uhud (3 Hijriyah)</h2>
+
+  <div class="dua-card">
+    <div class="dua-number">23</div>
+    <span class="dua-category">Pelajaran dari Kekalahan Sementara</span>
+    <div class="translation">
+      Quraisy kembali dengan 3000 pasukan ke Madinah. Nabi ﷺ menempatkan <strong>50 pemanah di Bukit Uhud</strong> dengan perintah: <em>"Jangan tinggalkan posisi ini, meski kalian melihat kami menang atau kalah."</em> Awalnya Muslim menang. Namun saat pemanah turun dari bukit melihat harta rampasan, pasukan Khalid bin Walid menyerang dari belakang. <strong>70 syuhada gugur</strong>, termasuk <strong>Hamzah bin Abdul Muthalib</strong> (paman Nabi ﷺ). Hamzah dikhianati dan dibunuh secara keji oleh Wahsyi. Nabi ﷺ mendoakan kesabaran dan mengampuni mereka.
+    </div>
+    <div class="arabic-text">
+      أَوَلَمَّا أَصَابَتْكُم مُّصِيبَةٌ قَدْ أَصَبْتُم مِّثْلَيْهَا قُلْتُمْ أَنَّىٰ هَٰذَا ۖ قُلْ هُوَ مِنْ عِندِ أَنفُسِكُمْ
+    </div>
+    <div class="translation">
+      "Dan mengapa ketika kamu ditimpa musibah (pada perang Uhud), padahal kamu telah menimpakan kekalahan dua kali lipat kepada musuh (pada perang Badar), kamu berkata: 'Darimana datangnya (kekalahan) ini?' Katakanlah: 'Itu dari (kesalahan) dirimu sendiri.'"
+    </div>
+    <div class="source">
+      <strong>📚 Sumber:</strong> QS. Āli 'Imrān (3): 165 · <em>Bukhari no. 4046, 4053</em> · <em>Muslim no. 1809</em>
+      <br><span class="quran-badge">QS. Ali 'Imran: 165</span>
+      <span class="hadith-badge">✓ Shahih Bukhari & Muslim</span>
+    </div>
+  </div>
+
+  <!-- Section 3.4 -->
+  <div class="divider"><span>✦</span></div>
+  <h2 class="section-title">🛡️ 4. Perang Khandaq (5 Hijriyah)</h2>
+
+  <div class="dua-card">
+    <div class="dua-number">24</div>
+    <span class="dua-category">Parit Pertahanan Madinah</span>
+    <div class="translation">
+      Sekutu Quraisy, Yahudi Bani Nadhir, dan kabilah Arab lainnya berkumpul dengan <strong>10.000 pasukan</strong> mengepung Madinah. Atas saran <strong>Salman Al-Farisi</strong>, Nabi ﷺ menggali parit (khandaq) mengelilingi Madinah — strategi yang belum pernah dikenal bangsa Arab. Pengepungan berlangsung selama satu bulan. Dalam kondisi lapar dan ketakutan, Allah mengirimkan angin kencang yang memporak-porandakan pasukan sekutu. Mereka mundur tanpa pertempuran besar.
+    </div>
+    <div class="arabic-text">
+      يَا أَيُّهَا الَّذِينَ آمَنُوا اذْكُرُوا نِعْمَةَ اللَّهِ عَلَيْكُمْ إِذْ جَاءَتْكُمْ جُنُودٌ فَأَرْسَلْنَا عَلَيْهِمْ رِيحًا وَجُنُودًا لَّمْ تَرَوْهَا ۚ وَكَانَ اللَّهُ بِمَا تَعْمَلُونَ بَصِيرًا
+    </div>
+    <div class="translation">
+      "Wahai orang-orang yang beriman, ingatlah nikmat Allah kepadamu ketika datang kepadamu bala tentara, lalu Kami kirimkan kepada mereka angin topan dan bala tentara yang tidak dapat kamu lihat. Dan Allah Maha Melihat apa yang kamu kerjakan."
+    </div>
+    <div class="source">
+      <strong>📚 Sumber:</strong> QS. Al-Aḥzāb (33): 9 · <em>Bukhari no. 4099, 4110</em>
+      <br><span class="quran-badge">QS. Al-Ahzab: 9</span>
+      <span class="hadith-badge">✓ Shahih Bukhari</span>
+    </div>
+  </div>
+
+  <!-- Section 3.5 -->
+  <div class="divider"><span>✦</span></div>
+  <h2 class="section-title">📜 5. Perjanjian Hudaibiyah (6 Hijriyah)</h2>
+
+  <div class="dua-card">
+    <div class="dua-number">25</div>
+    <span class="dua-category">Kemenangan Tanpa Pedang</span>
+    <div class="translation">
+      Nabi ﷺ berangkat ke Makkah bersama 1400 sahabat untuk umrah, namun dicegat Quraisy di Hudaibiyah. Terjadi <strong>Perjanjian Hudaibiyah</strong> yang isinya terlihat merugikan Muslim: gencatan senjata 10 tahun, Muslim harus kembali tanpa umrah tahun itu, dan siapa pun dari Quraisy yang masuk Islam harus dikembalikan. Namun Allah menyebut perjanjian ini sebagai <strong>"kemenangan yang nyata"</strong>. Dari perjanjian ini, dakwah menyebar luas. Dalam 2 tahun setelah Hudaibiyah, orang yang masuk Islam lebih banyak dari 19 tahun sebelumnya.
+    </div>
+    <div class="arabic-text">
+      إِنَّا فَتَحْنَا لَكَ فَتْحًا مُّبِينًا ۝ لِّيَغْفِرَ لَكَ اللَّهُ مَا تَقَدَّمَ مِن ذَنبِكَ وَمَا تَأَخَّرَ وَيُتِمَّ نِعْمَتَهُ عَلَيْكَ وَيَهْدِيَكَ صِرَاطًا مُّسْتَقِيمًا
+    </div>
+    <div class="translation">
+      "Sesungguhnya Kami telah memberikan kepadamu kemenangan yang nyata, supaya Allah memberi ampunan kepadamu (Muhammad) terhadap dosamu yang telah lalu dan yang akan datang serta menyempurnakan nikmat-Nya atasmu dan menunjukimu ke jalan yang lurus."
+    </div>
+    <div class="source">
+      <strong>📚 Sumber:</strong> QS. Al-Fatḥ (48): 1–2 · <em>Bukhari no. 2731, 4212</em> · <em>Muslim no. 1783</em>
+      <br><span class="quran-badge">QS. Al-Fath: 1-2</span>
+      <span class="hadith-badge">✓ Shahih Bukhari & Muslim</span>
+    </div>
+  </div>
+
+  <!-- Section 3.6 -->
+  <div class="divider"><span>✦</span></div>
+  <h2 class="section-title">🕋 6. Fathu Makkah (8 Hijriyah)</h2>
+
+  <div class="dua-card">
+    <div class="dua-number">26</div>
+    <span class="dua-category">Penaklukan Makkah</span>
+    <div class="translation">
+      Quraisy melanggar Perjanjian Hudaibiyah dengan menyerang sekutu Muslim. Nabi ﷺ bergerak ke Makkah dengan <strong>10.000 pasukan</strong> tanpa pertumpahan darah. Beliau ﷺ memasuki Makkah sambil bersujud syukur. Semua berhala di Ka'bah dihancurkan. Beliau ﷺ berdiri di depan Quraisy yang pernah mengusir, menyiksa, dan memerangi beliau, dan berkata: <em>"Apa yang akan kalian lakukan? Kalian bebas. Pergilah, kalian semua merdeka."</em> Quraisy masuk Islam secara massal.
+    </div>
+    <div class="arabic-text">
+      إِذَا جَاءَ نَصْرُ اللَّهِ وَالْفَتْحُ ۝ وَرَأَيْتَ النَّاسَ يَدْخُلُونَ فِي دِينِ اللَّهِ أَفْوَاجًا ۝ فَسَبِّحْ بِحَمْدِ رَبِّكَ وَاسْتَغْفِرْهُ ۚ إِنَّهُ كَانَ تَوَّابًا
+    </div>
+    <div class="translation">
+      "Apabila telah datang pertolongan Allah dan kemenangan. Dan kamu lihat manusia masuk agama Allah dengan berbondong-bondong. Maka bertasbihlah dengan memuji Rabb-mu dan mohonlah ampunan kepada-Nya. Sesungguhnya Dia Maha Penerima taubat."
+    </div>
+    <div class="source">
+      <strong>📚 Sumber:</strong> QS. An-Naṣr (110): 1–3 · <em>Bukhari no. 4297, 4968</em> · <em>Muslim no. 1300</em>
+      <br><span class="quran-badge">QS. An-Nashr: 1-3</span>
+      <span class="hadith-badge">✓ Shahih Bukhari & Muslim</span>
+    </div>
+  </div>
+
+  <!-- Section 3.7 -->
+  <div class="divider"><span>✦</span></div>
+  <h2 class="section-title">📯 7. Haji Wada' (10 Hijriyah)</h2>
+
+  <div class="dua-card">
+    <div class="dua-number">27</div>
+    <span class="dua-category">Haji Perpisahan</span>
+    <div class="translation">
+      Pada tahun 10 Hijriyah, Nabi ﷺ melaksanakan <strong>Haji Wada'</strong> (Haji Perpisahan) bersama lebih dari <strong>100.000 sahabat</strong>. Di Padang Arafah, beliau ﷺ menyampaikan <strong>Khutbah Wada'</strong> yang berisi prinsip-prinsip universal Islam: larangan riba, penghapusan darah Jahiliyah, hak-hak wanita, persamaan derajat manusia (tidak ada kelebihan Arab atas non-Arab kecuali dengan takwa), dan perintah berpegang pada Al-Qur'an dan Sunnah. Setelah itu turun ayat: <em>"Pada hari ini telah Aku sempurnakan untukmu agamamu..."</em>
+    </div>
+    <div class="arabic-text">
+      الْيَوْمَ أَكْمَلْتُ لَكُمْ دِينَكُمْ وَأَتْمَمْتُ عَلَيْكُمْ نِعْمَتِي وَرَضِيتُ لَكُمُ الْإِسْلَامَ دِينًا
+    </div>
+    <div class="source">
+      <strong>📚 Sumber:</strong> QS. Al-Mā'idah (5): 3 · <em>Bukhari no. 46, 1626</em> · <em>Muslim no. 1218</em>
+      <br><span class="quran-badge">QS. Al-Maidah: 3</span>
+      <span class="hadith-badge">✓ Shahih Bukhari & Muslim</span>
+    </div>
+  </div>
+
+  <!-- Section 3.8 -->
+  <div class="divider"><span>✦</span></div>
+  <h2 class="section-title">💔 8. Wafatnya Rasulullah ﷺ (11 Hijriyah)</h2>
+
+  <div class="dua-card">
+    <div class="dua-number">28</div>
+    <span class="dua-category">Sakit & Wafat</span>
+    <div class="translation">
+      Nabi ﷺ mulai sakit pada bulan Safar tahun 11 Hijriyah. Beliau ﷺ meminta agar tinggal di rumah <strong>'Aisyah radhiyallahu 'anha</strong> (rumah beliau di Masjid Nabawi). Dalam keadaan sakit, beliau tetap memimpin shalat hingga tidak mampu berdiri. Pada <strong>Senin, 12 Rabi'ul Awwal 11 Hijriyah</strong> (8 Juni 632 M), Nabi ﷺ wafat di pangkuan 'Aisyah, usia 63 tahun. Kalimat terakhir beliau ﷺ: <em>"Bersama orang-orang yang Engkau beri nikmat di antara para nabi, shiddiqin, syuhada, dan shalihin."</em> Abu Bakr berkata kepada umat: <em>"Barangsiapa menyembah Muhammad, maka Muhammad telah wafat. Barangsiapa menyembah Allah, maka Allah hidup dan tidak akan mati."</em>
+    </div>
+    <div class="arabic-text">
+      وَمَا مُحَمَّدٌ إِلَّا رَسُولٌ قَدْ خَلَتْ مِن قَبْلِهِ الرُّسُلُ ۚ أَفَإِن مَّاتَ أَوْ قُتِلَ انقَلَبْتُمْ عَلَىٰ أَعْقَابِكُمْ
+    </div>
+    <div class="transliteration">
+      "Wa mā Muḥammadun illā rasūlun qad khalat min qablihir-rusul. Afa-im māta aw qutila-anqalabtum 'alā a'qābikum."
+    </div>
+    <div class="translation">
+      "Muhammad itu tidak lain hanyalah seorang rasul, sungguh telah berlalu sebelumnya beberapa orang rasul. Apakah jika dia wafat atau dibunuh kamu berbalik ke belakang (murtad)?"
+    </div>
+    <div class="source">
+      <strong>📚 Sumber:</strong> QS. Āli 'Imrān (3): 144 · <em>Bukhari no. 124, 3900, 4452, 4453</em> · <em>Muslim no. 2343, 2344</em> · <em>Ibn Hisyam 4/266-277</em>
+      <br><span class="quran-badge">QS. Ali 'Imran: 144</span>
+      <span class="hadith-badge">✓ Shahih Bukhari & Muslim</span>
+    </div>
+  </div>
+
+  <!-- Table Part 3 -->
+  <h2 class="section-title">📊 Kronologi Periode Madinah (Tahun 1–11 Hijriyah)</h2>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr><th>Tahun H</th><th>Peristiwa</th><th>Ringkasan</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>Tiba di Madinah & Pembangunan Masjid Nabawi</td><td>Mukjizat mata air, ukhuwah Muhajirin-Anshar</td></tr>
+        <tr><td>2</td><td>Perang Badar, Puasa Ramadhan, Zakat Fitrah</td><td>Kemenangan 313 vs 1000, turunnya QS. Al-Anfal</td></tr>
+        <tr><td>3</td><td>Perang Uhud</td><td>70 syuhada gugur, pelajaran ketaatan</td></tr>
+        <tr><td>4</td><td>Usir Bani Nadhir</td><td>Pengkhianatan Yahudi, turunnya QS. Al-Hasyr</td></tr>
+        <tr><td>5</td><td>Perang Khandaq (Ahzab)</td><td>Parit pertahanan, 10.000 musuh mundur</td></tr>
+        <tr><td>6</td><td>Perjanjian Hudaibiyah</td><td>Gencatan senjata, "Fathu Mubin" (QS. Al-Fath)</td></tr>
+        <tr><td>7</td><td>Fathu Khaibar & Umrah Qadha</td><td>Penaklukan benteng Khaibar, Ali memimpin</td></tr>
+        <tr><td>8</td><td>Fathu Makkah & Perang Hunain</td><td>Makkah ditaklukkan tanpa darah, Islam menyebar</td></tr>
+        <tr><td>9</td><td>Perang Tabuk & Tahun Wufud</td><td>Ekspedisi ke Syam, delegasi Arab berdatangan</td></tr>
+        <tr><td>10</td><td>Haji Wada'</td><td>Khutbah Wada', penyempurnaan agama (QS. Al-Maidah: 3)</td></tr>
+        <tr><td>11</td><td>Wafatnya Rasulullah ﷺ</td><td>Senin, 12 Rabi'ul Awwal, usia 63 tahun</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Khutbah Wada' Highlights -->
+  <div class="divider"><span>✦</span></div>
+  <h2 class="section-title">🎤 Intisari Khutbah Wada'</h2>
+
+  <div class="dua-card">
+    <div class="dua-number">29</div>
+    <span class="dua-category">Prinsip Universal Islam</span>
+    <div class="translation">
+      Dalam Khutbah Wada', Nabi ﷺ menyampaikan prinsip-prinsip yang menjadi fondasi peradaban Islam:<br><br>
+      1. <strong>Persamaan derajat:</strong> "Tidak ada kelebihan Arab atas non-Arab, dan tidak ada kelebihan non-Arab atas Arab, kecuali dengan takwa."<br><br>
+      2. <strong>Hak wanita:</strong> "Takutlah kepada Allah dalam (perlakuan terhadap) wanita. Mereka adalah pendamping kalian."<br><br>
+      3. <strong>Penghapusan riba:</strong> "Seluruh riba Jahiliyah dibatalkan. Modal kalian adalah milik kalian, tidak menzalimi dan tidak dizalimi."<br><br>
+      4. <strong>Penghapusan darah Jahiliyah:</strong> "Seluruh pembunuhan dan pertumpahan darah Jahiliyah dibatalkan."<br><br>
+      5. <strong>Pedoman hidup:</strong> "Aku tinggalkan untuk kalian dua hal yang jika kalian berpegang teguh kepadanya, kalian tidak akan tersesat: Kitabullah (Al-Qur'an) dan Sunnah Rasul-Nya."
+    </div>
+    <div class="source">
+      <strong>📚 Sumber:</strong> <em>Muslim no. 1218</em> · <em>Ahmad 4/278</em> · <em>At-Tirmidzi 2942 (Shahih)</em> · <em>Ibn Majah 3074</em>
+      <br><span class="hadith-badge">✓ Shahih Muslim, Ahmad, Tirmidzi</span>
+    </div>
+  </div>
+
+  <!-- Disclaimer -->
+  <div class="disclaimer">
+    <strong>📌 Catatan:</strong> Naskah ini mencakup <strong>Part 1-3</strong> yang merangkum perjalanan hidup Nabi Muhammad ﷺ dari kelahiran hingga wafat. Semua dalil telah diverifikasi dari <em>Al-Qur'an, Hadis Shahih (Bukhari, Muslim, Abu Dawud, Tirmidzi, Ahmad)</em>, dan <em>Sirah Mu'tabar (Ibn Hisyam, Ibn Kathir, Ar-Rahiq Al-Makhtum)</em>. Untuk pendalaman, rujuk ke kitab asli. Kemungkinan kesalahan tetap ada — selalu verifikasi dengan sumber primer.
+  </div>
+
+  <!-- Navigation -->
+  <div class="nav-buttons">
+    <a href="#part1" class="nav-btn">⬆ Part 1</a>
+    <a href="#part2" class="nav-btn">⬆ Part 2</a>
+    <a href="#part3" class="nav-btn">⬆ Part 3</a>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="divider"><span>☽</span></div>
+    <p>
+      <span class="gold">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</span><br><br>
+      <strong>Sirah Nabawiyah — Part 1, 2 & 3 (Lengkap)</strong><br>
+      Dari Kelahiran hingga Wafat Rasulullah ﷺ<br><br>
+      Disusun berdasarkan Al-Qur'an, Hadis Shahih & Sirah Mu'tabar<br>
+      Semoga Allah memberikan kita kekuatan meneladani akhlak beliau ﷺ<br>
+      dan kecintaan yang membawa kita mendapat syafaatnya di hari kiamat.<br><br>
+      <span class="gold">اللَّهُمَّ صَلِّ وَسَلِّمْ وَبَارِكْ عَلَى نَبِيِّنَا مُحَمَّدٍ</span><br>
+      <span class="gold">وَعَلَى آلِهِ وَأَصْحَابِهِ أَجْمَعِينَ</span><br><br>
+      <em>📖 Rujukan Utama: Ar-Raḥīq al-Makhtūm (Al-Mubarakfuri) · Zad al-Ma'ād (Ibn Qayyim) · Sirah Ibn Hisyam · Shahih Bukhari & Muslim</em>
+    </p>
+  </footer>
+
+</div>
+
+<!-- Scroll to top button -->
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+  // ===== BACKGROUND PARTICLES =====
+  const bgContainer = document.querySelector('.bg-container');
+  const particleCount = 30;
+
+  for (let i = 0; i < particleCount; i++) {
+    const p = document.createElement('div');
+    p.classList.add('dust-particle');
+    const size = Math.random() * 5 + 2;
+    p.style.width = size + 'px';
+    p.style.height = size + 'px';
+    p.style.left = Math.random() * 100 + '%';
+    p.style.animationDuration = (Math.random() * 18 + 12) + 's';
+    p.style.animationDelay = Math.random() * 10 + 's';
+    bgContainer.appendChild(p);
+  }
+
+  for (let i = 0; i < 4; i++) {
+    const orb = document.createElement('div');
+    orb.classList.add('glow-orb');
+    const size = Math.random() * 220 + 120;
+    orb.style.width = size + 'px';
+    orb.style.height = size + 'px';
+    orb.style.top = Math.random() * 70 + '%';
+    orb.style.left = Math.random() * 80 + '%';
+    orb.style.background = ['var(--gold)', 'rgba(56,189,248,0.3)', 'rgba(52,211,153,0.2)', 'rgba(201,162,39,0.15)'][i];
+    orb.style.animationDelay = (Math.random() * 6) + 's';
+    bgContainer.appendChild(orb);
+  }
+
+  // ===== SCROLL TO TOP =====
+  const scrollTopBtn = document.getElementById('scrollTop');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 400) {
+      scrollTopBtn.style.display = 'flex';
+    } else {
+      scrollTopBtn.style.display = 'none';
+    }
+  });
+
+  // ===== FADE IN CARDS ON SCROLL =====
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.animationPlayState = 'running';
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.dua-card').forEach(card => {
+    observer.observe(card);
+  });
+</script>
+
+</body>
+</html>
+
