@@ -1,0 +1,1495 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iman Kepada Allah — Rukun Iman Pertama</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,700&family=Amiri:ital,wght@0,400;0,700;1,400&family=EB+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cinzel+Decorative:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+
+:root{
+  /* === CORE PALETTE — Illuminated Manuscript + Divine Light === */
+  --ink:         #04000a;
+  --vellum:      #09000f;
+  --deep:        #0e0014;
+  --maroon:      #1a000a;
+  --crimson-dk:  #2a0010;
+  --crimson:     #4a0020;
+  --crimson-md:  #6b0030;
+  --ruby:        #900040;
+  --gold-dk:     #7a4800;
+  --gold:        #c8860a;
+  --gold-lt:     #e8a820;
+  --gold-pale:   #f8d870;
+  --gold-glow:   #ffeea0;
+  --amber:       #d06010;
+  --amber-lt:    #f08030;
+  --ivory:       #f8f0d8;
+  --ivory-dk:    #e8d8a8;
+  --cream:       #fff8e8;
+  --copper:      #b06030;
+  --copper-lt:   #d08050;
+  --silver:      #c0a870;
+  --divine:      rgba(248,230,160,.12);
+  --b-gold:      rgba(200,134,10,.2);
+  --b-ruby:      rgba(144,0,64,.25);
+}
+
+html{scroll-behavior:smooth;}
+
+body{
+  background:var(--ink);
+  font-family:'EB Garamond',Georgia,serif;
+  color:var(--ivory-dk);
+  overflow-x:hidden;
+  /* Grain texture overlay */
+  position:relative;
+}
+body::before{
+  content:'';
+  position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  opacity:.025;
+  pointer-events:none;
+  z-index:999;
+}
+
+/* ═══════════════════════════
+   CANVAS — Divine Particles
+═══════════════════════════ */
+#divineCanvas{
+  position:fixed;inset:0;
+  z-index:0;pointer-events:none;
+}
+
+/* ═══════════════════════════
+   DECORATIVE BORDER FRAME
+═══════════════════════════ */
+.frame-tl,.frame-tr,.frame-bl,.frame-br{
+  position:fixed;
+  width:90px;height:90px;
+  z-index:10;pointer-events:none;
+  opacity:.35;
+}
+.frame-tl{top:12px;left:12px;border-top:1px solid var(--gold);border-left:1px solid var(--gold);}
+.frame-tr{top:12px;right:12px;border-top:1px solid var(--gold);border-right:1px solid var(--gold);}
+.frame-bl{bottom:12px;left:12px;border-bottom:1px solid var(--gold);border-left:1px solid var(--gold);}
+.frame-br{bottom:12px;right:12px;border-bottom:1px solid var(--gold);border-right:1px solid var(--gold);}
+@media(max-width:520px){.frame-tl,.frame-tr,.frame-bl,.frame-br{width:48px;height:48px;}}
+
+/* ═══════════════════════════
+   HERO — DIVINE OPENING
+═══════════════════════════ */
+.hero{
+  min-height:100vh;position:relative;z-index:1;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:80px 24px 100px;overflow:hidden;
+}
+
+/* Radial divine light burst */
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 55% 45% at 50% 48%, rgba(200,134,10,.16) 0%, rgba(144,0,64,.08) 35%, transparent 65%),
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(74,0,32,.4) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 50% at 50% 100%, rgba(14,0,20,.6) 0%, transparent 60%);
+}
+
+/* Arabesque pattern rings */
+.halo-rings{position:absolute;inset:0;overflow:hidden;pointer-events:none;}
+.halo{
+  position:absolute;top:50%;left:50%;border-radius:50%;
+  transform-origin:center;
+  animation:haloExpand 12s ease-out infinite;
+}
+.halo:nth-child(1){
+  width:280px;height:280px;margin:-140px 0 0 -140px;
+  border:1px solid rgba(200,134,10,.22);
+  animation-delay:0s;
+}
+.halo:nth-child(2){
+  width:520px;height:520px;margin:-260px 0 0 -260px;
+  border:1px dashed rgba(200,134,10,.12);
+  animation-delay:3s;
+}
+.halo:nth-child(3){
+  width:820px;height:820px;margin:-410px 0 0 -410px;
+  border:1px solid rgba(144,0,64,.1);
+  animation-delay:6s;
+}
+.halo:nth-child(4){
+  width:1200px;height:1200px;margin:-600px 0 0 -600px;
+  border:1px dashed rgba(200,134,10,.06);
+  animation-delay:9s;
+}
+@keyframes haloExpand{
+  0%{transform:scale(.2);opacity:.9;}
+  100%{transform:scale(1);opacity:0;}
+}
+
+/* Light rays */
+.rays{position:absolute;inset:0;overflow:hidden;pointer-events:none;}
+.ray{
+  position:absolute;top:0;left:50%;
+  width:1px;height:100vh;
+  background:linear-gradient(180deg,rgba(248,230,160,.08) 0%,transparent 60%);
+  transform-origin:top center;
+  animation:rayPulse 8s ease-in-out infinite;
+}
+.ray:nth-child(1){transform:rotate(-30deg);animation-delay:0s;}
+.ray:nth-child(2){transform:rotate(-18deg);animation-delay:1.2s;}
+.ray:nth-child(3){transform:rotate(-6deg);animation-delay:2.4s;}
+.ray:nth-child(4){transform:rotate(6deg);animation-delay:3.6s;}
+.ray:nth-child(5){transform:rotate(18deg);animation-delay:4.8s;}
+.ray:nth-child(6){transform:rotate(30deg);animation-delay:6s;}
+@keyframes rayPulse{
+  0%,100%{opacity:.4;}
+  50%{opacity:1;}
+}
+
+.hero-inner{position:relative;z-index:2;max-width:800px;}
+
+.hero-medallion{
+  display:inline-block;
+  width:90px;height:90px;
+  border:1px solid var(--gold);
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 22px;
+  font-family:'Amiri',serif;
+  font-size:2.2rem;
+  color:var(--gold-lt);
+  box-shadow:
+    0 0 0 6px rgba(200,134,10,.08),
+    0 0 0 12px rgba(200,134,10,.04),
+    0 0 40px rgba(200,134,10,.2);
+  animation:medalGlow 4s ease-in-out infinite, hrise 1.4s ease both;
+}
+@keyframes medalGlow{
+  0%,100%{box-shadow:0 0 0 6px rgba(200,134,10,.08),0 0 0 12px rgba(200,134,10,.04),0 0 30px rgba(200,134,10,.15);}
+  50%{box-shadow:0 0 0 8px rgba(200,134,10,.14),0 0 0 16px rgba(200,134,10,.07),0 0 60px rgba(200,134,10,.35),0 0 100px rgba(144,0,64,.15);}
+}
+
+.hero-kicker{
+  font-family:'EB Garamond',serif;font-size:.72rem;
+  letter-spacing:9px;text-transform:uppercase;
+  color:rgba(192,168,112,.4);margin-bottom:18px;
+  animation:hrise 1.6s ease both .1s;
+}
+
+.hero-bismillah{
+  font-family:'Amiri',serif;
+  font-size:clamp(1.6rem,5vw,3rem);
+  color:var(--gold-lt);
+  text-shadow:0 0 40px rgba(200,134,10,.6),0 0 80px rgba(200,134,10,.2);
+  line-height:1.9;margin-bottom:20px;
+  direction:rtl;
+  animation:hrise 1.6s ease both .2s, textGlow 5s ease-in-out infinite 2s;
+}
+@keyframes textGlow{
+  0%,100%{text-shadow:0 0 30px rgba(200,134,10,.4);}
+  50%{text-shadow:0 0 60px rgba(200,134,10,.8),0 0 100px rgba(248,200,80,.3);}
+}
+
+.hero-title{
+  font-family:'Playfair Display',serif;font-weight:900;
+  font-size:clamp(2.6rem,8vw,6.5rem);
+  line-height:1;letter-spacing:-1px;
+  background:linear-gradient(165deg,var(--gold-glow) 0%,var(--gold-lt) 25%,var(--ivory) 50%,var(--gold) 75%,var(--copper-lt) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  margin-bottom:4px;
+  animation:hrise 1.6s ease both .08s;
+  text-shadow:none;
+}
+
+.hero-sub{
+  display:block;
+  font-family:'EB Garamond',serif;font-style:italic;font-weight:300;
+  font-size:clamp(1rem,2.8vw,1.65rem);
+  color:rgba(192,168,112,.5);letter-spacing:3px;
+  margin-bottom:28px;
+  animation:hrise 1.6s ease both .3s;
+}
+
+.hero-ornament{
+  display:flex;align-items:center;justify-content:center;gap:12px;
+  margin:0 auto 28px;
+  animation:hrise 1.6s ease both .4s;
+}
+.hero-ornament span{
+  height:1px;width:70px;
+  background:linear-gradient(90deg,transparent,rgba(200,134,10,.5));
+}
+.hero-ornament span:last-child{background:linear-gradient(90deg,rgba(200,134,10,.5),transparent);}
+.hero-ornament em{
+  font-family:'Amiri',serif;font-style:normal;
+  color:rgba(200,134,10,.55);font-size:1rem;letter-spacing:6px;
+}
+
+.hero-verse{
+  max-width:640px;margin:0 auto;
+  padding:24px 30px;
+  background:linear-gradient(135deg,rgba(10,0,2,.85) 0%,rgba(26,0,10,.9) 100%);
+  border:1px solid rgba(200,134,10,.22);
+  border-top:2px solid rgba(200,134,10,.4);
+  animation:hrise 1.6s ease both .55s;
+  position:relative;
+}
+.hero-verse::before,.hero-verse::after{
+  content:'✦';
+  position:absolute;top:-10px;
+  font-size:.75rem;color:var(--gold);
+  background:var(--ink);padding:0 6px;
+}
+.hero-verse::before{left:24px;}
+.hero-verse::after{right:24px;}
+.hv-ar{font-family:'Amiri',serif;font-size:clamp(1.05rem,2.8vw,1.52rem);color:var(--gold-lt);line-height:2.3;direction:rtl;margin-bottom:10px;}
+.hv-id{font-family:'EB Garamond',serif;font-weight:300;font-style:italic;font-size:.9rem;color:rgba(192,168,112,.58);line-height:1.75;}
+
+@keyframes hrise{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+
+/* ═══════════════════════════
+   MAIN WRAP
+═══════════════════════════ */
+.wrap{max-width:880px;margin:0 auto;padding:0 18px 80px;position:relative;z-index:1;}
+
+/* ═══════════════════════════
+   CHAPTERS — Manuscript Style
+═══════════════════════════ */
+.chapter{
+  margin:52px 0 0;
+  position:relative;
+}
+
+/* Chapter number roset */
+.chapter-roset{
+  display:flex;align-items:center;gap:0;margin-bottom:0;
+}
+.roset-num{
+  flex-shrink:0;
+  width:64px;height:64px;
+  border:1px solid var(--ch-color,var(--gold));
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  flex-direction:column;
+  box-shadow:0 0 20px var(--ch-glow,rgba(200,134,10,.3));
+  background:var(--ch-bg,rgba(10,0,2,.9));
+  position:relative;z-index:2;
+}
+.roset-num::before{
+  content:'';
+  position:absolute;inset:-5px;
+  border-radius:50%;
+  border:1px dashed var(--ch-color,rgba(200,134,10,.3));
+  opacity:.4;
+}
+.roset-n{
+  font-family:'Cinzel Decorative',serif;
+  font-size:.82rem;color:var(--ch-color,var(--gold));
+  line-height:1;
+}
+.roset-label{
+  font-family:'EB Garamond',serif;
+  font-size:.5rem;letter-spacing:2px;text-transform:uppercase;
+  color:var(--ch-color,var(--gold));opacity:.6;
+  margin-top:1px;
+}
+.roset-line{
+  flex:1;height:1px;
+  background:linear-gradient(90deg,var(--ch-color,rgba(200,134,10,.4)),transparent);
+  opacity:.4;
+}
+
+.chapter-head{padding:14px 0 0;}
+.ch-kicker{
+  font-family:'EB Garamond',serif;font-size:.6rem;letter-spacing:5px;text-transform:uppercase;
+  color:var(--ch-color,var(--gold));margin-bottom:5px;opacity:.7;
+}
+.ch-ar{
+  font-family:'Amiri',serif;
+  font-size:clamp(1.2rem,3.2vw,2rem);
+  color:var(--ch-color,var(--gold));
+  direction:rtl;line-height:1.9;margin-bottom:5px;
+}
+.ch-title{
+  font-family:'Playfair Display',serif;font-weight:700;
+  font-size:clamp(1.1rem,2.8vw,1.75rem);
+  color:var(--ivory);line-height:1.2;margin-bottom:22px;
+}
+
+/* Chapter content panel */
+.ch-panel{
+  padding:26px 28px;
+  border:1px solid var(--ch-border,rgba(200,134,10,.15));
+  background:var(--ch-bg-panel,rgba(10,0,4,.7));
+  backdrop-filter:blur(6px);
+  position:relative;
+  overflow:hidden;
+}
+/* Illuminated corner decoration */
+.ch-panel::before{
+  content:'';
+  position:absolute;top:0;right:0;
+  width:60px;height:60px;
+  background:radial-gradient(ellipse at top right,var(--ch-color,rgba(200,134,10,.08)) 0%,transparent 70%);
+  pointer-events:none;
+}
+.ch-panel::after{
+  content:'';
+  position:absolute;bottom:0;left:0;
+  width:60px;height:60px;
+  background:radial-gradient(ellipse at bottom left,var(--ch-color,rgba(200,134,10,.06)) 0%,transparent 70%);
+  pointer-events:none;
+}
+
+/* ═══════════════════════════
+   PROSE
+═══════════════════════════ */
+.prose p{
+  font-family:'EB Garamond',serif;font-size:clamp(.98rem,2.2vw,1.08rem);
+  font-weight:400;line-height:2.15;
+  color:rgba(232,216,168,.82);
+  margin-bottom:16px;
+  text-align:justify;hyphens:auto;-webkit-hyphens:auto;
+}
+.prose p.lead{
+  font-style:italic;font-size:clamp(1rem,2.4vw,1.12rem);
+  line-height:2;color:var(--ch-color,var(--gold));
+  text-align:justify;
+}
+.prose p:first-of-type:not(.lead)::first-letter{
+  font-family:'Playfair Display',serif;font-weight:900;
+  font-size:4.2em;line-height:.7;
+  float:left;margin:8px 12px 0 0;
+  color:var(--ch-color,var(--gold));
+  text-shadow:0 0 20px var(--ch-glow,rgba(200,134,10,.4));
+}
+
+/* ═══════════════════════════
+   AYAT / DALIL BOX
+═══════════════════════════ */
+.ayat{
+  margin:22px 0;
+  display:grid;grid-template-columns:3px 1fr;
+  background:var(--ch-bg-panel,rgba(10,0,4,.7));
+  border:1px solid var(--ch-border,rgba(200,134,10,.15));
+}
+.ayat-bar{/* set per instance */}
+.ayat-body{padding:16px 20px 14px;}
+.ayat-tag{
+  font-family:'EB Garamond',serif;font-weight:600;
+  font-size:.58rem;letter-spacing:4px;text-transform:uppercase;
+  margin-bottom:10px;color:var(--ch-color,var(--gold));
+  display:flex;align-items:center;gap:10px;
+}
+.ayat-tag::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--ch-border,rgba(200,134,10,.2)),transparent);}
+.ayat-ar{
+  font-family:'Amiri',serif;
+  font-size:clamp(1.1rem,2.8vw,1.52rem);
+  line-height:2.3;direction:rtl;text-align:right;
+  margin-bottom:11px;padding-bottom:10px;
+  border-bottom:1px dashed var(--ch-border,rgba(200,134,10,.18));
+}
+.ayat-id{
+  font-family:'EB Garamond',serif;font-weight:300;font-style:italic;
+  font-size:.93rem;line-height:1.85;
+  color:rgba(192,168,112,.7);margin-bottom:6px;text-align:justify;
+}
+.ayat-ref{
+  font-family:'EB Garamond',serif;font-weight:500;
+  font-size:.62rem;letter-spacing:2px;text-transform:uppercase;
+  color:var(--ch-color,rgba(200,134,10,.5));
+  opacity:.7;
+}
+
+/* ═══════════════════════════
+   HIGHLIGHT CALLOUT
+═══════════════════════════ */
+.callout{
+  margin:18px 0;padding:18px 20px;
+  border-left:3px solid var(--ch-color,var(--gold));
+  background:rgba(0,0,0,.35);
+  position:relative;
+}
+.callout-label{
+  font-family:'EB Garamond',serif;font-weight:600;
+  font-size:.58rem;letter-spacing:3px;text-transform:uppercase;
+  margin-bottom:8px;color:var(--ch-color,var(--gold));
+}
+.callout-ar{
+  font-family:'Amiri',serif;
+  font-size:clamp(1.05rem,2.5vw,1.42rem);
+  line-height:2.1;margin-bottom:8px;
+  color:var(--ch-color,var(--gold));direction:rtl;text-align:right;
+}
+.callout-id{
+  font-family:'EB Garamond',serif;font-weight:300;font-style:italic;
+  font-size:.9rem;line-height:1.85;
+  color:rgba(192,168,112,.72);margin-bottom:5px;text-align:justify;
+}
+.callout-ref{
+  font-family:'EB Garamond',serif;font-weight:500;
+  font-size:.6rem;letter-spacing:2px;text-transform:uppercase;
+  color:rgba(192,168,112,.45);
+}
+
+/* ═══════════════════════════
+   INFO CARDS
+═══════════════════════════ */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:6px;margin:20px 0;}
+.card{
+  padding:18px 16px;
+  border:1px solid var(--ch-border,rgba(200,134,10,.15));
+  background:rgba(0,0,0,.3);
+  position:relative;overflow:hidden;
+  transition:border-color .3s;
+}
+.card:hover{border-color:var(--ch-color,rgba(200,134,10,.4));}
+.card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--ch-color,rgba(200,134,10,.4)),transparent);
+}
+.card-glyph{
+  font-size:1.6rem;margin-bottom:9px;display:block;
+  filter:drop-shadow(0 0 8px var(--ch-glow,rgba(200,134,10,.3)));
+}
+.card-title{
+  font-family:'Playfair Display',serif;font-size:.9rem;
+  font-weight:700;letter-spacing:.3px;margin-bottom:5px;
+  color:var(--ch-color,var(--gold));
+}
+.card-body{
+  font-family:'EB Garamond',serif;font-weight:300;font-style:italic;
+  font-size:.85rem;line-height:1.75;
+  color:rgba(192,168,112,.62);text-align:justify;
+}
+
+/* ═══════════════════════════
+   RESPONSIVE TABLE
+═══════════════════════════ */
+.tbl-wrap{margin:18px 0;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.tbl{width:100%;border-collapse:collapse;font-size:.87rem;}
+.tbl thead th{
+  padding:10px 14px;text-align:left;
+  font-family:'EB Garamond',serif;font-weight:600;
+  font-size:.6rem;letter-spacing:3px;text-transform:uppercase;
+  color:var(--ch-color,var(--gold));
+  background:rgba(0,0,0,.4);
+  border-bottom:1px solid var(--ch-border,rgba(200,134,10,.18));
+  white-space:nowrap;
+}
+.tbl tbody tr{border-bottom:1px solid rgba(192,168,112,.07);}
+.tbl tbody tr:nth-child(even){background:rgba(255,255,255,.025);}
+.tbl td{
+  padding:9px 14px;line-height:1.68;vertical-align:top;
+  font-family:'EB Garamond',serif;font-weight:300;
+  font-size:.88rem;color:rgba(220,200,152,.78);
+}
+.tbl td:first-child{font-weight:600;color:var(--ivory);}
+@media(max-width:560px){
+  .tbl,.tbl thead,.tbl tbody,.tbl th,.tbl td,.tbl tr{display:block;width:100%;}
+  .tbl thead{display:none;}
+  .tbl tbody tr{padding:12px 14px;border-bottom:1px solid rgba(192,168,112,.1);}
+  .tbl td{padding:3px 0;border:none;display:grid;grid-template-columns:88px 1fr;gap:6px;}
+  .tbl td::before{content:attr(data-label);font-size:.56rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;opacity:.45;padding-top:2px;font-family:'EB Garamond',serif;}
+}
+
+/* ═══════════════════════════
+   BANNER / QUOTE
+═══════════════════════════ */
+.banner{
+  margin:22px 0;padding:22px 28px;
+  text-align:center;
+  border:1px solid var(--ch-border,rgba(200,134,10,.2));
+  background:rgba(0,0,0,.4);
+  position:relative;
+}
+.banner::before,.banner::after{
+  content:'◆';
+  position:absolute;top:50%;transform:translateY(-50%);
+  font-size:.6rem;color:var(--ch-color,var(--gold));opacity:.4;
+}
+.banner::before{left:12px;}
+.banner::after{right:12px;}
+.ban-ar{
+  font-family:'Amiri',serif;
+  font-size:clamp(1.1rem,3vw,1.6rem);
+  line-height:2.2;margin-bottom:10px;
+  color:var(--ch-color,var(--gold));direction:rtl;
+}
+.ban-id{
+  font-family:'EB Garamond',serif;font-weight:300;font-style:italic;
+  font-size:.92rem;line-height:1.85;
+  margin-bottom:6px;color:rgba(192,168,112,.68);text-align:justify;
+}
+.ban-ref{
+  font-family:'EB Garamond',serif;font-weight:500;
+  font-size:.6rem;letter-spacing:3px;text-transform:uppercase;
+  color:rgba(192,168,112,.38);
+}
+
+/* separator */
+.sep{text-align:center;padding:8px 0;z-index:1;position:relative;}
+.sep em{color:rgba(200,134,10,.28);font-style:normal;letter-spacing:14px;font-size:.65rem;}
+
+/* ═══════════════════════════
+   NUMBER LIST (PILLARS)
+═══════════════════════════ */
+.pillars{margin:18px 0;}
+.pillar-item{
+  display:grid;grid-template-columns:48px 1fr;gap:14px;
+  margin-bottom:14px;align-items:start;
+}
+.pillar-n{
+  flex-shrink:0;
+  width:44px;height:44px;
+  border:1px solid var(--ch-color,var(--gold));
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Cinzel Decorative',serif;font-size:.85rem;
+  color:var(--ch-color,var(--gold));
+  background:rgba(0,0,0,.4);
+  box-shadow:0 0 12px var(--ch-glow,rgba(200,134,10,.15));
+  flex-shrink:0;
+}
+.pillar-body{}
+.pillar-title{
+  font-family:'Playfair Display',serif;font-weight:700;
+  font-size:.95rem;color:var(--ivory);margin-bottom:3px;
+}
+.pillar-ar{
+  font-family:'Amiri',serif;font-size:1.05rem;
+  color:var(--ch-color,var(--gold));direction:rtl;
+  line-height:1.8;margin-bottom:4px;
+}
+.pillar-desc{
+  font-family:'EB Garamond',serif;font-weight:300;font-style:italic;
+  font-size:.87rem;line-height:1.78;
+  color:rgba(192,168,112,.65);text-align:justify;
+}
+
+/* ═══════════════════════════
+   ASMA WA SIFAT GRID
+═══════════════════════════ */
+.asma-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
+  gap:5px;margin:18px 0;
+}
+.asma-card{
+  padding:12px 10px;
+  border:1px solid var(--ch-border,rgba(200,134,10,.15));
+  background:rgba(0,0,0,.32);
+  text-align:center;
+  transition:background .2s,border-color .2s;
+  cursor:default;
+}
+.asma-card:hover{
+  background:rgba(200,134,10,.06);
+  border-color:var(--ch-color,rgba(200,134,10,.4));
+}
+.asma-ar{
+  font-family:'Amiri',serif;font-size:1.2rem;
+  color:var(--gold-lt);line-height:1.8;direction:rtl;
+  margin-bottom:3px;
+}
+.asma-latin{
+  font-family:'EB Garamond',serif;font-style:italic;
+  font-size:.72rem;color:var(--copper-lt);margin-bottom:2px;
+}
+.asma-id{
+  font-family:'EB Garamond',serif;
+  font-size:.75rem;color:rgba(192,168,112,.55);
+}
+
+/* ═══════════════════════════
+   PENUTUP
+═══════════════════════════ */
+.penutup{
+  background:
+    radial-gradient(ellipse 55% 50% at 50% 0%,rgba(144,0,64,.12) 0%,transparent 60%),
+    radial-gradient(ellipse 40% 35% at 50% 100%,rgba(200,134,10,.1) 0%,transparent 55%),
+    linear-gradient(180deg,rgba(26,0,10,.95) 0%,rgba(14,0,20,.98) 40%,rgba(4,0,10,1) 100%);
+  padding:70px 24px 80px;text-align:center;
+  position:relative;overflow:hidden;margin-top:60px;z-index:1;
+}
+.penutup::after{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--crimson-md),var(--gold),var(--gold-lt),var(--gold),var(--crimson-md),transparent);
+}
+.penutup-inner{max-width:600px;margin:0 auto;position:relative;z-index:1;}
+.penutup-ar{
+  font-family:'Amiri',serif;
+  font-size:clamp(1.4rem,4.5vw,2.8rem);
+  color:var(--gold-lt);line-height:2.1;
+  text-shadow:0 0 30px rgba(200,134,10,.4);
+  margin-bottom:14px;
+}
+.penutup-div{
+  display:flex;align-items:center;justify-content:center;gap:12px;
+  margin:16px auto;
+}
+.penutup-div span{width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--gold));}
+.penutup-div span:last-child{background:linear-gradient(90deg,var(--gold),transparent);}
+.penutup-div em{color:rgba(200,134,10,.45);font-style:normal;letter-spacing:8px;font-size:.7rem;}
+.penutup-p{
+  font-family:'EB Garamond',serif;font-weight:300;font-style:italic;
+  font-size:clamp(.9rem,2.1vw,1.04rem);
+  color:rgba(192,168,112,.68);line-height:2;
+  margin-bottom:12px;text-align:justify;
+}
+.penutup-footer{
+  margin-top:40px;padding-top:22px;
+  border-top:1px solid rgba(255,255,255,.04);
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;
+}
+.penutup-footer .logo{font-family:'Amiri',serif;font-size:1.15rem;color:rgba(200,134,10,.3);}
+.penutup-footer .tag{font-family:'EB Garamond',serif;font-size:.56rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.1);}
+
+@media(max-width:600px){
+  .wrap{padding:0 14px 60px;}
+  .hero{padding:56px 18px 90px;}
+  .ch-panel{padding:18px 16px;}
+  .callout,.banner{padding:14px 14px;}
+  .penutup{padding:50px 18px 56px;}
+  .pillar-item{grid-template-columns:42px 1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- Decorative corner frames -->
+<div class="frame-tl"></div>
+<div class="frame-tr"></div>
+<div class="frame-bl"></div>
+<div class="frame-br"></div>
+
+<canvas id="divineCanvas"></canvas>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="halo-rings">
+    <div class="halo"></div><div class="halo"></div>
+    <div class="halo"></div><div class="halo"></div>
+  </div>
+  <div class="rays">
+    <div class="ray"></div><div class="ray"></div><div class="ray"></div>
+    <div class="ray"></div><div class="ray"></div><div class="ray"></div>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-medallion">الله</div>
+    <p class="hero-kicker">Rukun Iman Pertama · Akidah Islamiyyah · Berdalil Al-Qur'an &amp; Hadis Shahih</p>
+    <div class="hero-bismillah">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
+    <h1 class="hero-title">Iman<br>Kepada Allah</h1>
+    <span class="hero-sub">الإِيمَانُ بِاللهِ تَعَالَى</span>
+    <div class="hero-ornament"><span></span><em>✦ ✦ ✦</em><span></span></div>
+    <div class="hero-verse">
+      <div class="hv-ar">آمَنَ الرَّسُولُ بِمَا أُنزِلَ إِلَيْهِ مِن رَّبِّهِ وَالْمُؤْمِنُونَ ۚ كُلٌّ آمَنَ بِاللَّهِ وَمَلَائِكَتِهِ وَكُتُبِهِ وَرُسُلِهِ</div>
+      <div class="hv-id">"Rasul (Muhammad) beriman kepada apa yang diturunkan kepadanya dari Tuhannya, dan demikian pula orang-orang yang beriman. Semua beriman kepada Allah, malaikat-malaikat-Nya, kitab-kitab-Nya, dan rasul-rasul-Nya."<br><em style="color:rgba(200,134,10,.4);">— QS. Al-Baqarah: 285</em></div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+
+<!-- ══ BAB 1: DEFINISI IMAN ══ -->
+<div class="chapter" style="--ch-color:#e8a820;--ch-glow:rgba(232,168,32,.4);--ch-bg:rgba(10,4,0,.8);--ch-bg-panel:rgba(12,4,2,.75);--ch-border:rgba(200,134,10,.2);">
+  <div class="chapter-roset">
+    <div class="roset-num">
+      <span class="roset-n">I</span>
+      <span class="roset-label">Bab</span>
+    </div>
+    <div class="roset-line"></div>
+  </div>
+  <div class="chapter-head">
+    <div class="ch-kicker">✦ Definisi &amp; Hakikat</div>
+    <div class="ch-ar">تَعْرِيفُ الإِيمَانِ وَحَقِيقَتُهُ</div>
+    <div class="ch-title">Pengertian Iman dan Hakikatnya</div>
+  </div>
+  <div class="ch-panel">
+    <div class="prose">
+      <p class="lead">Iman adalah cahaya pertama yang Allah ﷻ tanamkan ke dalam hati seorang hamba — sebuah keyakinan yang bukan sekadar kata di lisan, bukan sekadar perasaan di dada, tetapi sebuah kenyataan hidup yang mengubah seluruh cara seorang manusia memandang dirinya, dunianya, dan Tuhannya.</p>
+      <p>Secara bahasa, <em>iman</em> (الإِيمَان) berasal dari kata <em>amana</em> yang bermakna percaya, membenarkan, dan merasa aman. Secara istilah syariat, ulama Ahlus Sunnah wal Jama'ah mendefinisikan iman sebagai: <strong>keyakinan dalam hati, diucapkan dengan lisan, dan diamalkan dengan anggota badan</strong> (تَصْدِيقٌ بِالقَلْبِ، وَإِقْرَارٌ بِاللِّسَانِ، وَعَمَلٌ بِالجَوَارِحِ). Iman bertambah dengan ketaatan dan berkurang dengan kemaksiatan.</p>
+      <p>Rukun iman ada enam: beriman kepada Allah, kepada malaikat-Nya, kepada kitab-kitab-Nya, kepada para rasul-Nya, kepada Hari Akhir, dan kepada takdir yang baik maupun buruk. Dan yang pertama, yang paling agung, yang menjadi fondasi dari seluruh bangunan iman adalah: <strong>Iman kepada Allah ﷻ</strong>.</p>
+    </div>
+
+    <div class="ayat" style="background:rgba(12,4,2,.75);border:1px solid rgba(200,134,10,.2);">
+      <div class="ayat-bar" style="background:#c8860a;"></div>
+      <div class="ayat-body">
+        <div class="ayat-tag" style="color:#e8a820;">📜 HR. Bukhari &amp; Muslim — Definisi Iman dari Nabi ﷺ</div>
+        <div class="ayat-ar" style="color:#e8c040;">اَلإِيمَانُ أَنْ تُؤْمِنَ بِاللَّهِ وَمَلَائِكَتِهِ وَكُتُبِهِ وَرُسُلِهِ وَالْيَوْمِ الآخِرِ وَتُؤْمِنَ بِالْقَدَرِ خَيْرِهِ وَشَرِّهِ</div>
+        <div class="ayat-id">"Iman adalah engkau beriman kepada Allah, kepada malaikat-malaikat-Nya, kepada kitab-kitab-Nya, kepada para rasul-Nya, kepada Hari Akhir, dan engkau beriman kepada takdir yang baik maupun yang buruk." — Inilah jawaban Jibril 'alaihissalam ketika bertanya kepada Nabi ﷺ tentang iman, dan Nabi ﷺ bersabda: "Dia telah berkata benar."</div>
+        <div class="ayat-ref" style="color:rgba(200,134,10,.6);">HR. Muslim (8) — dari Umar bin Khaththab radhiyallahu 'anhu · Hadits Jibril</div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">✦ Iman Bertambah dan Berkurang</div>
+      <div class="callout-ar">إِنَّمَا الْمُؤْمِنُونَ الَّذِينَ إِذَا ذُكِرَ اللَّهُ وَجِلَتْ قُلُوبُهُمْ وَإِذَا تُلِيَتْ عَلَيْهِمْ آيَاتُهُ زَادَتْهُمْ إِيمَانًا</div>
+      <div class="callout-id">"Sesungguhnya orang-orang yang beriman adalah mereka yang apabila disebut nama Allah gemetar hatinya, dan apabila dibacakan ayat-ayat-Nya kepada mereka, bertambahlah imannya." — Ayat ini menjadi dalil bahwa iman bisa bertambah dan berkurang, sebagaimana diyakini Ahlus Sunnah wal Jama'ah.</div>
+      <div class="callout-ref">QS. Al-Anfal (8): 2</div>
+    </div>
+
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead>
+          <tr>
+            <th>Unsur Iman</th>
+            <th>Penjelasan</th>
+            <th>Dalil</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="Unsur">Tashdiq bil Qalb</td>
+            <td data-label="Penjelasan" style="color:rgba(220,200,152,.78);">Membenarkan dengan hati — keyakinan yang kokoh tanpa keraguan</td>
+            <td data-label="Dalil" style="color:rgba(220,200,152,.78);">QS. Al-Hujurat: 14–15</td>
+          </tr>
+          <tr>
+            <td data-label="Unsur">Iqrar bil Lisan</td>
+            <td data-label="Penjelasan" style="color:rgba(220,200,152,.78);">Pengakuan dengan lisan — mengucapkan syahadat dengan penuh kesadaran</td>
+            <td data-label="Dalil" style="color:rgba(220,200,152,.78);">HR. Bukhari (1)</td>
+          </tr>
+          <tr>
+            <td data-label="Unsur">'Amal bil Jawarih</td>
+            <td data-label="Penjelasan" style="color:rgba(220,200,152,.78);">Mengamalkan dengan anggota badan — iman tanpa amal adalah iman yang cacat</td>
+            <td data-label="Dalil" style="color:rgba(220,200,152,.78);">QS. Al-'Ashr: 1–3</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="sep"><em>✦ ✦ ✦</em></div>
+
+<!-- ══ BAB 2: TAUHID RUBUBIYYAH ══ -->
+<div class="chapter" style="--ch-color:#d08050;--ch-glow:rgba(208,128,80,.4);--ch-bg:rgba(10,4,0,.8);--ch-bg-panel:rgba(12,3,0,.75);--ch-border:rgba(180,80,20,.2);">
+  <div class="chapter-roset">
+    <div class="roset-num" style="border-color:#d08050;box-shadow:0 0 20px rgba(208,128,80,.3);background:rgba(10,3,0,.9);">
+      <span class="roset-n" style="color:#d08050;">II</span>
+      <span class="roset-label" style="color:#d08050;">Bab</span>
+    </div>
+    <div class="roset-line" style="background:linear-gradient(90deg,rgba(208,128,80,.4),transparent);"></div>
+  </div>
+  <div class="chapter-head">
+    <div class="ch-kicker">✦ Aspek Pertama Iman kepada Allah</div>
+    <div class="ch-ar">تَوْحِيدُ الرُّبُوبِيَّةِ</div>
+    <div class="ch-title">Tauhid Rububiyyah — Mengesakan Allah dalam Perbuatan-Nya</div>
+  </div>
+  <div class="ch-panel">
+    <div class="prose">
+      <p class="lead">Tauhid Rububiyyah adalah keyakinan yang kokoh bahwa hanya Allah ﷻ satu-satunya Rabb — Pencipta, Pemelihara, Pengatur, dan Penguasa seluruh alam semesta. Tidak ada sekutu bagi-Nya dalam menciptakan, tidak ada yang menyaingi-Nya dalam memberi rizki, tidak ada yang menandingi-Nya dalam mengatur alam semesta dari atom terkecil hingga galaksi terjauh.</p>
+      <p>Tauhid jenis ini sebenarnya sudah diakui bahkan oleh kaum musyrikin Arab di zaman Nabi ﷺ. Mereka mengakui Allah sebagai Pencipta langit dan bumi, namun mereka tetap menyembah berhala — sehingga pengakuan rububiyyah saja tidak cukup untuk menjadikan seseorang seorang Muslim. Yang membedakan seorang mukmin sejati adalah ia menerima konsekuensi dari tauhid rububiyyah ini: yaitu tauhid uluhiyyah — menyembah Allah semata.</p>
+    </div>
+
+    <div class="ayat" style="background:rgba(12,3,0,.75);border:1px solid rgba(180,80,20,.2);">
+      <div class="ayat-bar" style="background:#c06030;"></div>
+      <div class="ayat-body">
+        <div class="ayat-tag" style="color:#d08050;">📖 QS. Az-Zumar: 62 — Allah Pencipta Segala Sesuatu</div>
+        <div class="ayat-ar" style="color:#e8a060;">اللَّهُ خَالِقُ كُلِّ شَيْءٍ وَهُوَ عَلَىٰ كُلِّ شَيْءٍ وَكِيلٌ</div>
+        <div class="ayat-id">"Allah-lah pencipta segala sesuatu, dan Dia Maha Pemelihara atas segala sesuatu."</div>
+        <div class="ayat-ref" style="color:rgba(180,80,20,.6);">QS. Az-Zumar (39): 62</div>
+      </div>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <span class="card-glyph">🌌</span>
+        <div class="card-title">Al-Khaliq — Maha Pencipta</div>
+        <div class="card-body">Allah menciptakan langit, bumi, dan seluruh isinya dari tiada menjadi ada. Tidak ada satu makhluk pun yang mampu menciptakan sesuatu dari ketiadaan.</div>
+      </div>
+      <div class="card">
+        <span class="card-glyph">🌱</span>
+        <div class="card-title">Ar-Razzaq — Maha Pemberi Rizki</div>
+        <div class="card-body">Hanya Allah yang memberi rizki kepada seluruh makhluk-Nya. Tidak ada satupun makhluk yang hidup kecuali Allah yang menanggung rizkinya.</div>
+      </div>
+      <div class="card">
+        <span class="card-glyph">⚖️</span>
+        <div class="card-title">Al-Mudabbir — Maha Pengatur</div>
+        <div class="card-body">Allah mengatur segala urusan alam semesta — peredaran bintang, pergantian musim, siklus kehidupan dan kematian — semuanya tunduk pada aturan-Nya.</div>
+      </div>
+      <div class="card">
+        <span class="card-glyph">👑</span>
+        <div class="card-title">Al-Malik — Maha Merajai</div>
+        <div class="card-body">Seluruh kerajaan langit dan bumi adalah milik-Nya. Tidak ada satu jengkal pun di alam semesta ini yang luput dari kekuasaan dan kepemilikan-Nya.</div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">✦ Pengakuan Musyrikin atas Rububiyyah Allah</div>
+      <div class="callout-ar">وَلَئِن سَأَلْتَهُم مَّنْ خَلَقَ السَّمَاوَاتِ وَالْأَرْضَ لَيَقُولُنَّ اللَّهُ ۚ قُلِ الْحَمْدُ لِلَّهِ</div>
+      <div class="callout-id">"Dan sungguh jika engkau tanyakan kepada mereka: 'Siapakah yang menciptakan langit dan bumi?' Niscaya mereka akan menjawab: 'Allah.' Katakanlah: 'Segala puji bagi Allah.'" — Ayat ini menunjukkan bahwa pengakuan rububiyyah saja tidak cukup — yang membedakan mukmin dan musyrik adalah tauhid uluhiyyah.</div>
+      <div class="callout-ref">QS. Luqman (31): 25</div>
+    </div>
+  </div>
+</div>
+
+<div class="sep"><em>✦ ✦ ✦</em></div>
+
+<!-- ══ BAB 3: TAUHID ULUHIYYAH ══ -->
+<div class="chapter" style="--ch-color:#c050a0;--ch-glow:rgba(192,80,160,.4);--ch-bg:rgba(10,0,8,.8);--ch-bg-panel:rgba(12,0,8,.75);--ch-border:rgba(160,32,112,.22);">
+  <div class="chapter-roset">
+    <div class="roset-num" style="border-color:#c050a0;box-shadow:0 0 20px rgba(192,80,160,.3);background:rgba(10,0,8,.9);">
+      <span class="roset-n" style="color:#c050a0;">III</span>
+      <span class="roset-label" style="color:#c050a0;">Bab</span>
+    </div>
+    <div class="roset-line" style="background:linear-gradient(90deg,rgba(192,80,160,.4),transparent);"></div>
+  </div>
+  <div class="chapter-head">
+    <div class="ch-kicker">✦ Aspek Kedua Iman kepada Allah</div>
+    <div class="ch-ar">تَوْحِيدُ الأُلُوهِيَّةِ</div>
+    <div class="ch-title">Tauhid Uluhiyyah — Mengesakan Allah dalam Ibadah</div>
+  </div>
+  <div class="ch-panel">
+    <div class="prose">
+      <p class="lead">Tauhid Uluhiyyah adalah inti dari risalah seluruh para nabi dan rasul — dari Nuh hingga Muhammad ﷺ. Ia adalah keyakinan dan pengamalan bahwa hanya Allah ﷻ yang berhak disembah, diibadahi, dan ditujukan seluruh bentuk penghambaaan. Inilah makna <em>lā ilāha illallāh</em> yang sebenarnya: tidak ada yang berhak diibadahi selain Allah.</p>
+      <p>Tauhid jenis inilah yang paling sering dilanggar oleh manusia. Ketika seseorang berdoa kepada selain Allah, memohon pertolongan kepada orang mati, menyembelih untuk selain Allah, bernazar kepada kuburan wali, atau memakai jimat sebagai pelindung — ia telah merobohkan tauhid uluhiyyah-nya. Karena itu, para nabi diutus terutama untuk memperbaiki tauhid uluhiyyah ini.</p>
+      <p>Syaikh Muhammad bin Abdul Wahhab rahimahullah menyebutkan bahwa tauhid uluhiyyah ini adalah tauhid yang diperjuangkan oleh seluruh nabi — dan ia adalah tema utama Al-Qur'an. Kata <em>"Allah"</em> disebut lebih dari 2.700 kali dalam Al-Qur'an, dan sebagian besar ayatnya berkaitan dengan pengesaan Allah dalam ibadah.</p>
+    </div>
+
+    <div class="ayat" style="background:rgba(12,0,8,.75);border:1px solid rgba(160,32,112,.22);">
+      <div class="ayat-bar" style="background:#900070;"></div>
+      <div class="ayat-body">
+        <div class="ayat-tag" style="color:#c050a0;">📖 QS. Az-Zariyat: 56 — Tujuan Penciptaan</div>
+        <div class="ayat-ar" style="color:#e080c0;">وَمَا خَلَقْتُ الْجِنَّ وَالْإِنسَ إِلَّا لِيَعْبُدُونِ</div>
+        <div class="ayat-id">"Dan Aku tidak menciptakan jin dan manusia melainkan agar mereka beribadah kepada-Ku." — Inilah tujuan penciptaan manusia yang paling agung. Seluruh kehidupan seorang mukmin seharusnya diorientasikan kepada penghambaan yang tulus kepada Allah ﷻ semata.</div>
+        <div class="ayat-ref" style="color:rgba(160,32,112,.6);">QS. Adz-Dzariyat (51): 56</div>
+      </div>
+    </div>
+
+    <div class="ayat" style="background:rgba(12,0,8,.75);border:1px solid rgba(160,32,112,.22);">
+      <div class="ayat-bar" style="background:#900070;"></div>
+      <div class="ayat-body">
+        <div class="ayat-tag" style="color:#c050a0;">📖 QS. Al-Anbiya': 25 — Risalah Seluruh Nabi</div>
+        <div class="ayat-ar" style="color:#e080c0;">وَمَا أَرْسَلْنَا مِن قَبْلِكَ مِن رَّسُولٍ إِلَّا نُوحِي إِلَيْهِ أَنَّهُ لَا إِلَٰهَ إِلَّا أَنَا فَاعْبُدُونِ</div>
+        <div class="ayat-id">"Dan Kami tidak mengutus seorang rasul pun sebelum engkau, melainkan Kami wahyukan kepadanya bahwa tidak ada Tuhan yang berhak disembah selain Aku, maka sembahlah Aku." — Inilah satu risalah yang diemban semua nabi sepanjang sejarah umat manusia.</div>
+        <div class="ayat-ref" style="color:rgba(160,32,112,.6);">QS. Al-Anbiya' (21): 25</div>
+      </div>
+    </div>
+
+    <div class="pillars">
+      <div class="pillar-item">
+        <div class="pillar-n" style="border-color:#c050a0;color:#c050a0;box-shadow:0 0 12px rgba(192,80,160,.2);">1</div>
+        <div class="pillar-body">
+          <div class="pillar-title">Makna Lā (لَا) — Penolakan</div>
+          <div class="pillar-ar">لَا إِلَهَ</div>
+          <div class="pillar-desc">Menolak segala sesuatu yang disembah selain Allah — menafikan seluruh bentuk penghambaan kepada selain Allah, apapun wujudnya: berhala, kuburan, orang tua, kekuasaan, hawa nafsu.</div>
+        </div>
+      </div>
+      <div class="pillar-item">
+        <div class="pillar-n" style="border-color:#c050a0;color:#c050a0;box-shadow:0 0 12px rgba(192,80,160,.2);">2</div>
+        <div class="pillar-body">
+          <div class="pillar-title">Makna Illallāh (إِلَّا اللَّه) — Penetapan</div>
+          <div class="pillar-ar">إِلَّا اللَّهُ</div>
+          <div class="pillar-desc">Menetapkan bahwa hanya Allah yang berhak mendapat ibadah — mengokohkan seluruh bentuk penghambaan hanya untuk Allah ﷻ: shalat, doa, tawakkal, harap, takut, cinta.</div>
+        </div>
+      </div>
+      <div class="pillar-item">
+        <div class="pillar-n" style="border-color:#c050a0;color:#c050a0;box-shadow:0 0 12px rgba(192,80,160,.2);">3</div>
+        <div class="pillar-body">
+          <div class="pillar-title">Syarat Syahadat yang Sah</div>
+          <div class="pillar-ar">شُرُوطُ الشَّهَادَةِ</div>
+          <div class="pillar-desc">Para ulama menyebutkan tujuh syarat syahadat: <em>ilmu</em> (pengetahuan), <em>yaqin</em> (keyakinan), <em>qabul</em> (penerimaan), <em>inqiyad</em> (ketundukan), <em>shidq</em> (kejujuran), <em>ikhlas</em> (ketulusan), dan <em>mahabbah</em> (kecintaan).</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="sep"><em>✦ ✦ ✦</em></div>
+
+<!-- ══ BAB 4: TAUHID ASMA WA SIFAT ══ -->
+<div class="chapter" style="--ch-color:#40d0c0;--ch-glow:rgba(64,208,192,.35);--ch-bg:rgba(0,8,8,.82);--ch-bg-panel:rgba(0,8,8,.78);--ch-border:rgba(16,128,120,.22);">
+  <div class="chapter-roset">
+    <div class="roset-num" style="border-color:#40d0c0;box-shadow:0 0 20px rgba(64,208,192,.28);background:rgba(0,6,6,.92);">
+      <span class="roset-n" style="color:#40d0c0;">IV</span>
+      <span class="roset-label" style="color:#40d0c0;">Bab</span>
+    </div>
+    <div class="roset-line" style="background:linear-gradient(90deg,rgba(64,208,192,.4),transparent);"></div>
+  </div>
+  <div class="chapter-head">
+    <div class="ch-kicker">✦ Aspek Ketiga Iman kepada Allah</div>
+    <div class="ch-ar">تَوْحِيدُ الأَسْمَاءِ وَالصِّفَاتِ</div>
+    <div class="ch-title">Tauhid Asma' wa Sifat — Asmaul Husna &amp; Sifat-sifat Allah</div>
+  </div>
+  <div class="ch-panel">
+    <div class="prose">
+      <p class="lead">Tauhid Asma' wa Sifat adalah menetapkan bagi Allah ﷻ segala nama dan sifat yang telah Dia tetapkan untuk diri-Nya dalam Al-Qur'an dan yang telah Nabi ﷺ tetapkan dalam hadits yang shahih — tanpa tahrif (mengubah maknanya), tanpa ta'thil (mengingkarinya), tanpa takyif (menanyakan bagaimana caranya), dan tanpa tamtsil (menyerupakan dengan makhluk).</p>
+      <p>Allah ﷻ memiliki 99 nama yang dikenal sebagai Asmaul Husna — nama-nama yang paling indah. Setiap nama mencerminkan sifat kesempurnaan yang mutlak — tidak ada satu kekurangan pun pada Allah ﷻ. Barangsiapa menghafal, memahami, dan mengamalkan konsekuensi dari Asmaul Husna, Nabi ﷺ menjanjikan surga baginya.</p>
+    </div>
+
+    <div class="ayat" style="background:rgba(0,8,8,.78);border:1px solid rgba(16,128,120,.22);">
+      <div class="ayat-bar" style="background:#108078;"></div>
+      <div class="ayat-body">
+        <div class="ayat-tag" style="color:#40d0c0;">📖 QS. Al-A'raf: 180 — Berdoa dengan Asmaul Husna</div>
+        <div class="ayat-ar" style="color:#70f0e0;">وَلِلَّهِ الْأَسْمَاءُ الْحُسْنَىٰ فَادْعُوهُ بِهَا وَذَرُوا الَّذِينَ يُلْحِدُونَ فِي أَسْمَائِهِ</div>
+        <div class="ayat-id">"Dan Allah memiliki asmaul husna (nama-nama yang terbaik), maka bermohonlah kepada-Nya dengan menyebut nama-nama itu, dan tinggalkanlah orang-orang yang menyimpang dalam nama-nama-Nya."</div>
+        <div class="ayat-ref" style="color:rgba(16,128,120,.6);">QS. Al-A'raf (7): 180</div>
+      </div>
+    </div>
+
+    <div class="ayat" style="background:rgba(0,8,8,.78);border:1px solid rgba(16,128,120,.22);">
+      <div class="ayat-bar" style="background:#108078;"></div>
+      <div class="ayat-body">
+        <div class="ayat-tag" style="color:#40d0c0;">📜 HR. Bukhari &amp; Muslim — Keutamaan Asmaul Husna</div>
+        <div class="ayat-ar" style="color:#70f0e0;">إِنَّ لِلَّهِ تِسْعَةً وَتِسْعِينَ اسْمًا مِائَةً إِلَّا وَاحِدًا مَنْ أَحْصَاهَا دَخَلَ الْجَنَّةَ</div>
+        <div class="ayat-id">"Sesungguhnya Allah memiliki 99 nama — seratus kurang satu — barangsiapa yang <em>ahsha</em>-nya (menghafalnya, memahaminya, dan beribadah kepada Allah dengannya), ia masuk surga." — Para ulama menjelaskan bahwa makna <em>ahsha</em> bukan sekadar hafal, tetapi memahami maknanya dan beribadah kepada Allah sesuai tuntutan nama-nama tersebut.</div>
+        <div class="ayat-ref" style="color:rgba(16,128,120,.6);">HR. Bukhari (2736) &amp; Muslim (2677) — dari Abu Hurairah radhiyallahu 'anhu</div>
+      </div>
+    </div>
+
+    <div class="asma-grid">
+      <div class="asma-card">
+        <div class="asma-ar">اَللَّهُ</div>
+        <div class="asma-latin">Allāh</div>
+        <div class="asma-id">Nama Zat Tertinggi</div>
+      </div>
+      <div class="asma-card">
+        <div class="asma-ar">اَلرَّحْمَنُ</div>
+        <div class="asma-latin">Ar-Rahmān</div>
+        <div class="asma-id">Maha Pengasih</div>
+      </div>
+      <div class="asma-card">
+        <div class="asma-ar">اَلرَّحِيمُ</div>
+        <div class="asma-latin">Ar-Rahīm</div>
+        <div class="asma-id">Maha Penyayang</div>
+      </div>
+      <div class="asma-card">
+        <div class="asma-ar">اَلْمَلِكُ</div>
+        <div class="asma-latin">Al-Malik</div>
+        <div class="asma-id">Maha Merajai</div>
+      </div>
+      <div class="asma-card">
+        <div class="asma-ar">اَلْقُدُّوسُ</div>
+        <div class="asma-latin">Al-Quddūs</div>
+        <div class="asma-id">Maha Suci</div>
+      </div>
+      <div class="asma-card">
+        <div class="asma-ar">اَلسَّلَامُ</div>
+        <div class="asma-latin">As-Salām</div>
+        <div class="asma-id">Maha Sejahtera</div>
+      </div>
+      <div class="asma-card">
+        <div class="asma-ar">اَلْعَزِيزُ</div>
+        <div class="asma-latin">Al-'Azīz</div>
+        <div class="asma-id">Maha Perkasa</div>
+      </div>
+      <div class="asma-card">
+        <div class="asma-ar">اَلْخَالِقُ</div>
+        <div class="asma-latin">Al-Khāliq</div>
+        <div class="asma-id">Maha Pencipta</div>
+      </div>
+      <div class="asma-card">
+        <div class="asma-ar">اَلرَّزَّاقُ</div>
+        <div class="asma-latin">Ar-Razzāq</div>
+        <div class="asma-id">Maha Pemberi Rizki</div>
+      </div>
+      <div class="asma-card">
+        <div class="asma-ar">اَلْعَلِيمُ</div>
+        <div class="asma-latin">Al-'Alīm</div>
+        <div class="asma-id">Maha Mengetahui</div>
+      </div>
+      <div class="asma-card">
+        <div class="asma-ar">اَلسَّمِيعُ</div>
+        <div class="asma-latin">As-Samī'</div>
+        <div class="asma-id">Maha Mendengar</div>
+      </div>
+      <div class="asma-card">
+        <div class="asma-ar">اَلْبَصِيرُ</div>
+        <div class="asma-latin">Al-Bashīr</div>
+        <div class="asma-id">Maha Melihat</div>
+      </div>
+      <div class="asma-card">
+        <div class="asma-ar">اَلْحَكِيمُ</div>
+        <div class="asma-latin">Al-Hakīm</div>
+        <div class="asma-id">Maha Bijaksana</div>
+      </div>
+      <div class="asma-card">
+        <div class="asma-ar">اَلْغَفُورُ</div>
+        <div class="asma-latin">Al-Ghafūr</div>
+        <div class="asma-id">Maha Pengampun</div>
+      </div>
+      <div class="asma-card">
+        <div class="asma-ar">اَلْوَدُودُ</div>
+        <div class="asma-latin">Al-Wadūd</div>
+        <div class="asma-id">Maha Mencintai</div>
+      </div>
+      <div class="asma-card">
+        <div class="asma-ar">اَلتَّوَّابُ</div>
+        <div class="asma-latin">At-Tawwāb</div>
+        <div class="asma-id">Maha Penerima Taubat</div>
+      </div>
+      <div class="asma-card">
+        <div class="asma-ar">اَلْقَرِيبُ</div>
+        <div class="asma-latin">Al-Qarīb</div>
+        <div class="asma-id">Maha Dekat</div>
+      </div>
+      <div class="asma-card">
+        <div class="asma-ar">اَلْوَهَّابُ</div>
+        <div class="asma-latin">Al-Wahhāb</div>
+        <div class="asma-id">Maha Pemberi Anugerah</div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">✦ Prinsip Emas dalam Tauhid Asma' wa Sifat</div>
+      <div class="callout-ar">لَيْسَ كَمِثْلِهِ شَيْءٌ ۖ وَهُوَ السَّمِيعُ الْبَصِيرُ</div>
+      <div class="callout-id">"Tidak ada sesuatu pun yang serupa dengan Dia, dan Dia Maha Mendengar, Maha Melihat." — Ayat ini adalah kunci seluruh akidah Ahlus Sunnah tentang sifat-sifat Allah: kita menetapkan sifat-sifat Allah sebagaimana yang Allah tetapkan (Al-Asma', As-Sami', Al-Bashir), namun kita menolak keserupaan-Nya dengan makhluk (Laisa kamitslihi syai'). Ini disebut prinsip <em>itsba' bila tamtsil wa tanzih bila ta'thil</em>.</div>
+      <div class="callout-ref">QS. Asy-Syura (42): 11</div>
+    </div>
+  </div>
+</div>
+
+<div class="sep"><em>✦ ✦ ✦</em></div>
+
+<!-- ══ BAB 5: BUAH IMAN ══ -->
+<div class="chapter" style="--ch-color:#60c840;--ch-glow:rgba(96,200,64,.35);--ch-bg:rgba(0,8,0,.82);--ch-bg-panel:rgba(0,8,2,.76);--ch-border:rgba(40,128,16,.2);">
+  <div class="chapter-roset">
+    <div class="roset-num" style="border-color:#60c840;box-shadow:0 0 20px rgba(96,200,64,.28);background:rgba(0,6,0,.92);">
+      <span class="roset-n" style="color:#60c840;">V</span>
+      <span class="roset-label" style="color:#60c840;">Bab</span>
+    </div>
+    <div class="roset-line" style="background:linear-gradient(90deg,rgba(96,200,64,.4),transparent);"></div>
+  </div>
+  <div class="chapter-head">
+    <div class="ch-kicker">✦ Dampak &amp; Manfaat</div>
+    <div class="ch-ar">ثِمَارُ الإِيمَانِ بِاللهِ</div>
+    <div class="ch-title">Buah-Buah Iman kepada Allah dalam Kehidupan</div>
+  </div>
+  <div class="ch-panel">
+    <div class="prose">
+      <p class="lead">Iman yang benar kepada Allah bukan sekadar teori akidah yang tersimpan di lembar-lembar kitab. Ia adalah kekuatan hidup yang mengubah watak seorang manusia dari dalam — memberikannya ketenangan di tengah badai, kekuatan di tengah kelemahan, dan harapan di tengah keputusasaan.</p>
+      <p>Seorang mukmin yang benar-benar beriman kepada Allah tidak akan pernah merasa sendiri, karena ia tahu Allah selalu bersamanya. Ia tidak akan pernah merasa putus asa, karena ia yakin rahmat Allah lebih luas dari segala dosa. Ia tidak akan pernah tunduk kepada selain Allah, karena hatinya hanya terikat kepada Yang Maha Kuasa. Ia tidak akan pernah takut kepada manusia, karena rasa takutnya hanya kepada Allah.</p>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <span class="card-glyph">🌿</span>
+        <div class="card-title">Ketenangan Hati</div>
+        <div class="card-body">"Ketahuilah, hanya dengan mengingat Allah hati menjadi tenang." (QS. Ar-Ra'd: 28). Iman adalah sumber ketenangan hakiki yang tidak bisa digantikan oleh apapun.</div>
+      </div>
+      <div class="card">
+        <span class="card-glyph">🛡️</span>
+        <div class="card-title">Perlindungan dari Dosa</div>
+        <div class="card-body">Iman yang kuat adalah perisai dari kemaksiatan. Nabi ﷺ bersabda: "Tidaklah seorang pezina berzina sementara ia dalam keadaan beriman." (HR. Bukhari, 2475)</div>
+      </div>
+      <div class="card">
+        <span class="card-glyph">💪</span>
+        <div class="card-title">Kekuatan Menghadapi Ujian</div>
+        <div class="card-body">"Sungguh menakjubkan urusan seorang mukmin — seluruh urusannya adalah kebaikan. Jika ia mendapat nikmat, ia bersyukur; jika ditimpa kesusahan, ia bersabar." (HR. Muslim, 2999)</div>
+      </div>
+      <div class="card">
+        <span class="card-glyph">✨</span>
+        <div class="card-title">Kehidupan yang Baik</div>
+        <div class="card-body">"Barangsiapa beramal shalih dari laki-laki atau perempuan sedangkan ia beriman, maka sungguh Kami akan memberikannya kehidupan yang baik." (QS. An-Nahl: 97)</div>
+      </div>
+      <div class="card">
+        <span class="card-glyph">🚀</span>
+        <div class="card-title">Kebebasan dari Perbudakan</div>
+        <div class="card-body">Iman kepada Allah membebaskan manusia dari perbudakan hawa nafsu, manusia lain, materi, dan dunia. Seorang mukmin hanya "hamba" bagi Allah semata.</div>
+      </div>
+      <div class="card">
+        <span class="card-glyph">🌟</span>
+        <div class="card-title">Jaminan Surga</div>
+        <div class="card-body">"Barangsiapa bersaksi bahwa tidak ada Tuhan selain Allah dan Muhammad adalah utusan Allah, Allah mengharamkan neraka baginya." (HR. Muslim, 29)</div>
+      </div>
+    </div>
+
+    <div class="ayat" style="background:rgba(0,8,2,.76);border:1px solid rgba(40,128,16,.2);">
+      <div class="ayat-bar" style="background:#308010;"></div>
+      <div class="ayat-body">
+        <div class="ayat-tag" style="color:#60c840;">📖 QS. An-Nahl: 97 — Kehidupan yang Baik untuk Orang Beriman</div>
+        <div class="ayat-ar" style="color:#90e860;">مَنْ عَمِلَ صَالِحًا مِّن ذَكَرٍ أَوْ أُنثَىٰ وَهُوَ مُؤْمِنٌ فَلَنُحْيِيَنَّهُ حَيَاةً طَيِّبَةً ۖ وَلَنَجْزِيَنَّهُمْ أَجْرَهُم بِأَحْسَنِ مَا كَانُوا يَعْمَلُونَ</div>
+        <div class="ayat-id">"Barangsiapa mengerjakan kebajikan, baik laki-laki maupun perempuan dalam keadaan beriman, maka pasti akan Kami berikan kepadanya kehidupan yang baik dan akan Kami beri balasan dengan pahala yang lebih baik dari apa yang telah mereka kerjakan."</div>
+        <div class="ayat-ref" style="color:rgba(40,128,16,.6);">QS. An-Nahl (16): 97</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="sep"><em>✦ ✦ ✦</em></div>
+
+<!-- ══ BAB 6: BAHAYA SYIRIK ══ -->
+<div class="chapter" style="--ch-color:#e04040;--ch-glow:rgba(224,64,64,.4);--ch-bg:rgba(12,0,0,.82);--ch-bg-panel:rgba(14,0,0,.78);--ch-border:rgba(160,20,20,.22);">
+  <div class="chapter-roset">
+    <div class="roset-num" style="border-color:#e04040;box-shadow:0 0 20px rgba(224,64,64,.3);background:rgba(10,0,0,.92);">
+      <span class="roset-n" style="color:#e04040;">VI</span>
+      <span class="roset-label" style="color:#e04040;">Bab</span>
+    </div>
+    <div class="roset-line" style="background:linear-gradient(90deg,rgba(224,64,64,.4),transparent);"></div>
+  </div>
+  <div class="chapter-head">
+    <div class="ch-kicker">✦ Bahaya Terbesar — Kebalikan Iman</div>
+    <div class="ch-ar">خَطَرُ الشِّرْكِ بِاللهِ</div>
+    <div class="ch-title">Bahaya Syirik — Dosa yang Tidak Diampuni</div>
+  </div>
+  <div class="ch-panel">
+    <div class="prose">
+      <p class="lead">Jika iman kepada Allah adalah cahaya tertinggi, maka syirik kepada-Nya adalah kegelapan terdalam. Syirik adalah dosa yang paling besar di sisi Allah ﷻ — dosa yang jika seseorang meninggal dunia dalam keadaan melakukannya, Allah tidak akan mengampuninya. Memahami bahaya syirik adalah bagian tidak terpisahkan dari iman kepada Allah.</p>
+      <p>Syirik terbagi dua: <strong>syirik akbar</strong> (besar) yang mengeluarkan pelakunya dari Islam — seperti berdoa kepada selain Allah, bernazar kepada orang mati, menyembelih untuk jin; dan <strong>syirik ashghar</strong> (kecil) yang tidak mengeluarkan dari Islam namun merupakan dosa besar — yang paling berbahaya di antaranya adalah riya' (beramal untuk dilihat manusia).</p>
+      <p>Nabi Ibrahim 'alaihissalam — bapak para nabi — berdoa memohon perlindungan dari syirik: <em>"Ya Rabbku, jadikanlah negeri ini (Mekah) negeri yang aman, dan jauhkanlah aku beserta anak cucuku dari menyembah berhala."</em> (QS. Ibrahim: 35). Bahkan seorang nabi sekelas Ibrahim pun berdoa meminta perlindungan dari syirik — menunjukkan betapa seriusnya ancaman ini bagi setiap insan.</p>
+    </div>
+
+    <div class="ayat" style="background:rgba(14,0,0,.78);border:1px solid rgba(160,20,20,.22);">
+      <div class="ayat-bar" style="background:#a01010;"></div>
+      <div class="ayat-body">
+        <div class="ayat-tag" style="color:#e04040;">📖 QS. An-Nisa': 48 — Dosa Syirik Tidak Diampuni</div>
+        <div class="ayat-ar" style="color:#f07070;">إِنَّ اللَّهَ لَا يَغْفِرُ أَن يُشْرَكَ بِهِ وَيَغْفِرُ مَا دُونَ ذَٰلِكَ لِمَن يَشَاءُ ۚ وَمَن يُشْرِكْ بِاللَّهِ فَقَدِ افْتَرَىٰ إِثْمًا عَظِيمًا</div>
+        <div class="ayat-id">"Sesungguhnya Allah tidak akan mengampuni (dosa) karena mempersekutukan-Nya (syirik), dan Dia mengampuni apa yang selain dari itu bagi siapa yang Dia kehendaki. Barangsiapa mempersekutukan Allah, sungguh ia telah berbuat dosa yang sangat besar."</div>
+        <div class="ayat-ref" style="color:rgba(160,20,20,.6);">QS. An-Nisa' (4): 48</div>
+      </div>
+    </div>
+
+    <div class="ayat" style="background:rgba(14,0,0,.78);border:1px solid rgba(160,20,20,.22);">
+      <div class="ayat-bar" style="background:#a01010;"></div>
+      <div class="ayat-body">
+        <div class="ayat-tag" style="color:#e04040;">📜 HR. Bukhari &amp; Muslim — Dosa Terbesar</div>
+        <div class="ayat-ar" style="color:#f07070;">أَكْبَرُ الْكَبَائِرِ الإِشْرَاكُ بِاللَّهِ وَعُقُوقُ الْوَالِدَيْنِ وَشَهَادَةُ الزُّورِ</div>
+        <div class="ayat-id">"Dosa-dosa terbesar adalah: menyekutukan Allah, durhaka kepada orang tua, dan bersaksi palsu." — Nabi ﷺ ketika ditanya tentang dosa terbesar, menyebut syirik sebagai yang pertama dan paling besar.</div>
+        <div class="ayat-ref" style="color:rgba(160,20,20,.6);">HR. Bukhari (2654) &amp; Muslim (87) — dari Anas bin Malik radhiyallahu 'anhu</div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">✦ Syirik Kecil yang Paling Ditakutkan Nabi ﷺ</div>
+      <div class="callout-ar">إِنَّ أَخْوَفَ مَا أَخَافُ عَلَيْكُمُ الشِّرْكُ الأَصْغَرُ قَالُوا وَمَا الشِّرْكُ الأَصْغَرُ يَا رَسُولَ اللهِ قَالَ الرِّيَاءُ</div>
+      <div class="callout-id">"Sesungguhnya sesuatu yang paling aku takutkan menimpa kalian adalah syirik kecil." Mereka bertanya: "Apakah syirik kecil itu wahai Rasulullah?" Beliau menjawab: "Riya' (beramal untuk dilihat orang lain)." — Riya' disebut syirik kecil karena pelakunya menjadikan pandangan manusia sebagai tujuan amalnya, bukan Allah ﷻ.</div>
+      <div class="callout-ref">HR. Ahmad (5/428) — Shahih · dari Mahmud bin Lubayd radhiyallahu 'anhu</div>
+    </div>
+  </div>
+</div>
+
+<div class="sep"><em>✦ ✦ ✦</em></div>
+
+<!-- ══ BAB 7: MEMPERKUAT IMAN ══ -->
+<div class="chapter" style="--ch-color:#80a0e8;--ch-glow:rgba(128,160,232,.35);--ch-bg:rgba(2,4,14,.82);--ch-bg-panel:rgba(2,4,16,.78);--ch-border:rgba(48,80,160,.22);">
+  <div class="chapter-roset">
+    <div class="roset-num" style="border-color:#80a0e8;box-shadow:0 0 20px rgba(128,160,232,.28);background:rgba(2,2,12,.92);">
+      <span class="roset-n" style="color:#80a0e8;">VII</span>
+      <span class="roset-label" style="color:#80a0e8;">Bab</span>
+    </div>
+    <div class="roset-line" style="background:linear-gradient(90deg,rgba(128,160,232,.4),transparent);"></div>
+  </div>
+  <div class="chapter-head">
+    <div class="ch-kicker">✦ Amalan Praktis</div>
+    <div class="ch-ar">طُرُقُ تَقْوِيَةِ الإِيمَانِ</div>
+    <div class="ch-title">Cara-cara Memperkuat dan Memperbarui Iman</div>
+  </div>
+  <div class="ch-panel">
+    <div class="prose">
+      <p class="lead">Iman bukanlah aset tetap yang sekali dimiliki tidak perlu dijaga. Ia adalah tanaman hidup yang membutuhkan siraman, pupuk, dan perhatian terus-menerus. Nabi ﷺ bersabda: "Perbaruilah iman kalian." Mereka bertanya: "Bagaimana caranya ya Rasulullah?" Beliau menjawab: "Perbanyaklah mengucapkan lā ilāha illallāh." (HR. Ahmad — Hasan)</p>
+    </div>
+
+    <div class="pillars">
+      <div class="pillar-item">
+        <div class="pillar-n" style="border-color:#80a0e8;color:#80a0e8;box-shadow:0 0 12px rgba(128,160,232,.2);">1</div>
+        <div class="pillar-body">
+          <div class="pillar-title">Membaca dan Merenungi Al-Qur'an</div>
+          <div class="pillar-ar">تِلَاوَةُ الْقُرْآنِ وَتَدَبُّرُهُ</div>
+          <div class="pillar-desc">"Sesungguhnya Al-Qur'an ini memberi petunjuk kepada (jalan) yang lebih lurus." (QS. Al-Isra': 9). Tidak ada sesuatu yang lebih kuat menambah iman selain Al-Qur'an — karena Al-Qur'an adalah firman Allah yang langsung menyentuh hati.</div>
+        </div>
+      </div>
+      <div class="pillar-item">
+        <div class="pillar-n" style="border-color:#80a0e8;color:#80a0e8;box-shadow:0 0 12px rgba(128,160,232,.2);">2</div>
+        <div class="pillar-body">
+          <div class="pillar-title">Mempelajari Asmaul Husna</div>
+          <div class="pillar-ar">تَعَلُّمُ أَسْمَاءِ اللهِ الْحُسْنَى</div>
+          <div class="pillar-desc">Semakin dalam seseorang mengenal Allah — nama-nama-Nya, sifat-sifat-Nya, perbuatan-perbuatan-Nya — semakin besar rasa cinta, takut, harap, dan penghambaannya kepada Allah.</div>
+        </div>
+      </div>
+      <div class="pillar-item">
+        <div class="pillar-n" style="border-color:#80a0e8;color:#80a0e8;box-shadow:0 0 12px rgba(128,160,232,.2);">3</div>
+        <div class="pillar-body">
+          <div class="pillar-title">Memperbanyak Dzikir</div>
+          <div class="pillar-ar">كَثْرَةُ ذِكْرِ اللهِ</div>
+          <div class="pillar-desc">"Ketahuilah, hanya dengan mengingat Allah hati menjadi tenang." (QS. Ar-Ra'd: 28). Dzikir adalah makanan hati — tanpa dzikir, hati lapar dan melemah imannya. Imam Ibnul Qayyim berkata: "Dzikir adalah kehidupan hati."</div>
+        </div>
+      </div>
+      <div class="pillar-item">
+        <div class="pillar-n" style="border-color:#80a0e8;color:#80a0e8;box-shadow:0 0 12px rgba(128,160,232,.2);">4</div>
+        <div class="pillar-body">
+          <div class="pillar-title">Merenungi Tanda-tanda Kebesaran Allah</div>
+          <div class="pillar-ar">التَّفَكُّرُ فِي آيَاتِ اللهِ الْكَوْنِيَّةِ</div>
+          <div class="pillar-desc">"Sesungguhnya dalam penciptaan langit dan bumi serta silih bergantinya malam dan siang, terdapat tanda-tanda bagi orang-orang yang berakal." (QS. Ali 'Imran: 190). Merenungi alam semesta adalah jalan menuju iman.</div>
+        </div>
+      </div>
+      <div class="pillar-item">
+        <div class="pillar-n" style="border-color:#80a0e8;color:#80a0e8;box-shadow:0 0 12px rgba(128,160,232,.2);">5</div>
+        <div class="pillar-body">
+          <div class="pillar-title">Mengingat Kematian dan Akhirat</div>
+          <div class="pillar-ar">ذِكْرُ الْمَوْتِ وَالْآخِرَةِ</div>
+          <div class="pillar-desc">"Perbanyaklah mengingat penghancur segala kenikmatan (kematian)." (HR. Tirmidzi — Hasan). Mengingat kematian menumbuhkan kesadaran bahwa hidup ini singkat dan yang abadi hanya akhirat.</div>
+        </div>
+      </div>
+      <div class="pillar-item">
+        <div class="pillar-n" style="border-color:#80a0e8;color:#80a0e8;box-shadow:0 0 12px rgba(128,160,232,.2);">6</div>
+        <div class="pillar-body">
+          <div class="pillar-title">Bergaul dengan Orang Shalih</div>
+          <div class="pillar-ar">مُصَاحَبَةُ الصَّالِحِينَ</div>
+          <div class="pillar-desc">"Seseorang tergantung agama temannya, maka hendaklah salah seorang dari kalian melihat siapa yang ia jadikan teman." (HR. Abu Dawud — Hasan). Lingkungan yang baik adalah salah satu penjaga iman terkuat.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="banner" style="border:1px solid rgba(48,80,160,.22);">
+      <div class="ban-ar">يَا أَيُّهَا الَّذِينَ آمَنُوا آمِنُوا بِاللَّهِ وَرَسُولِهِ وَالْكِتَابِ الَّذِي نَزَّلَ عَلَىٰ رَسُولِهِ وَالْكِتَابِ الَّذِي أَنزَلَ مِن قَبْلُ</div>
+      <div class="ban-id">"Wahai orang-orang yang beriman! Tetaplah beriman kepada Allah dan Rasul-Nya dan kepada Kitab yang diturunkan kepada Rasul-Nya, serta Kitab yang diturunkan sebelumnya." — Ayat yang ditujukan kepada orang yang sudah beriman, dengan seruan untuk terus memperbarui dan mempertahankan iman mereka. Iman bukan sesuatu yang dicapai sekali, ia harus dijaga seumur hidup.</div>
+      <div class="ban-ref">QS. An-Nisa' (4): 136</div>
+    </div>
+  </div>
+</div>
+
+<div class="sep"><em>✦ ✦ ✦</em></div>
+
+<!-- ══ BAB 8: KEDUDUKAN IMAN ══ -->
+<div class="chapter" style="--ch-color:#f0d060;--ch-glow:rgba(240,208,96,.4);--ch-bg:rgba(10,8,0,.82);--ch-bg-panel:rgba(12,8,0,.78);--ch-border:rgba(180,148,20,.22);">
+  <div class="chapter-roset">
+    <div class="roset-num" style="border-color:#f0d060;box-shadow:0 0 20px rgba(240,208,96,.3);background:rgba(8,6,0,.92);">
+      <span class="roset-n" style="color:#f0d060;">VIII</span>
+      <span class="roset-label" style="color:#f0d060;">Bab</span>
+    </div>
+    <div class="roset-line" style="background:linear-gradient(90deg,rgba(240,208,96,.4),transparent);"></div>
+  </div>
+  <div class="chapter-head">
+    <div class="ch-kicker">✦ Penutup — Kedudukan &amp; Muhasabah</div>
+    <div class="ch-ar">مَكَانَةُ الإِيمَانِ فِي حَيَاةِ الْمُسْلِمِ</div>
+    <div class="ch-title">Kedudukan Iman dalam Kehidupan Seorang Muslim</div>
+  </div>
+  <div class="ch-panel">
+    <div class="prose">
+      <p class="lead">Iman kepada Allah adalah harta paling berharga yang bisa dimiliki seorang manusia. Ia lebih berharga dari seluruh emas di dunia, lebih indah dari seluruh keindahan alam, lebih abadi dari seluruh kekuasaan dunia. Dan kita memintanya kepada Allah dengan penuh kerendahan hati.</p>
+      <p>Tidak ada manusia yang bisa mengklaim imannya sempurna. Bahkan para sahabat Nabi ﷺ yang mulia pun meyakini bahwa iman mereka bisa bertambah dan berkurang. Maka muhasabah (introspeksi) iman adalah kewajiban setiap mukmin: seberapa dalam kita mengenal Allah? Seberapa kuat keyakinan kita? Seberapa besar pengaruh iman terhadap akhlak dan ibadah kita?</p>
+      <p>Yang terpenting: kita tidak boleh putus asa dari rahmat Allah ﷻ. Pintu taubat selalu terbuka selama nyawa belum sampai ke tenggorokan. Allah ﷻ berfirman dengan penuh kelembutan: <em>"Katakanlah: Wahai hamba-hamba-Ku yang melampaui batas terhadap diri mereka sendiri! Janganlah kalian berputus asa dari rahmat Allah. Sesungguhnya Allah mengampuni dosa-dosa semuanya."</em> (QS. Az-Zumar: 53)</p>
+    </div>
+
+    <div class="ayat" style="background:rgba(12,8,0,.78);border:1px solid rgba(180,148,20,.22);">
+      <div class="ayat-bar" style="background:#b09010;"></div>
+      <div class="ayat-body">
+        <div class="ayat-tag" style="color:#f0d060;">📖 QS. Al-Hujurat: 14–15 — Iman yang Sejati</div>
+        <div class="ayat-ar" style="color:#f8e880;">إِنَّمَا الْمُؤْمِنُونَ الَّذِينَ آمَنُوا بِاللَّهِ وَرَسُولِهِ ثُمَّ لَمْ يَرْتَابُوا وَجَاهَدُوا بِأَمْوَالِهِمْ وَأَنفُسِهِمْ فِي سَبِيلِ اللَّهِ ۚ أُولَٰئِكَ هُمُ الصَّادِقُونَ</div>
+        <div class="ayat-id">"Sesungguhnya orang-orang yang beriman itu hanyalah orang-orang yang beriman kepada Allah dan Rasul-Nya, kemudian mereka tidak ragu-ragu lagi, dan mereka berjuang dengan harta dan jiwa mereka di jalan Allah. Mereka itulah orang-orang yang benar." — Tiga ciri iman yang sejati: beriman kepada Allah dan Rasul-Nya, tidak ada keraguan, dan berjuang di jalan Allah.</div>
+        <div class="ayat-ref" style="color:rgba(180,148,20,.6);">QS. Al-Hujurat (49): 15</div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">✦ Manisnya Iman — Hadits yang Mengubah Hidup</div>
+      <div class="callout-ar">ثَلَاثٌ مَنْ كُنَّ فِيهِ وَجَدَ حَلَاوَةَ الإِيمَانِ أَنْ يَكُونَ اللَّهُ وَرَسُولُهُ أَحَبَّ إِلَيْهِ مِمَّا سِوَاهُمَا وَأَنْ يُحِبَّ الْمَرْءَ لَا يُحِبُّهُ إِلَّا لِلَّهِ وَأَنْ يَكْرَهَ أَنْ يَعُودَ فِي الْكُفْرِ كَمَا يَكْرَهُ أَنْ يُقْذَفَ فِي النَّارِ</div>
+      <div class="callout-id">"Tiga hal, barangsiapa yang memilikinya akan merasakan manisnya iman: (1) Allah dan Rasul-Nya lebih ia cintai dari selainnya, (2) ia mencintai seseorang hanya karena Allah, (3) ia benci kembali kepada kekufuran sebagaimana ia benci dilempar ke dalam api neraka." — Inilah standar iman yang membawa kebahagiaan hakiki.</div>
+      <div class="callout-ref">HR. Bukhari (16) &amp; Muslim (43) — dari Anas bin Malik radhiyallahu 'anhu</div>
+    </div>
+
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead>
+          <tr>
+            <th>Tingkatan Iman</th>
+            <th>Ciri-ciri</th>
+            <th>Kondisi Hati</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="Tingkatan">Iman yang Sempurna</td>
+            <td data-label="Ciri" style="color:rgba(220,200,152,.78);">Taat sepenuhnya, menjauhi dosa, hati selalu dzikir</td>
+            <td data-label="Kondisi" style="color:rgba(220,200,152,.78);">Hidup yang damai, tenang, dan penuh berkah</td>
+          </tr>
+          <tr>
+            <td data-label="Tingkatan">Iman yang Kurang</td>
+            <td data-label="Ciri" style="color:rgba(220,200,152,.78);">Sering lalai, melakukan dosa-dosa kecil</td>
+            <td data-label="Kondisi" style="color:rgba(220,200,152,.78);">Hati tidak sepenuhnya tenang, perlu muhasabah</td>
+          </tr>
+          <tr>
+            <td data-label="Tingkatan">Iman yang Lemah</td>
+            <td data-label="Ciri" style="color:rgba(220,200,152,.78);">Meninggalkan kewajiban, sering bermaksiat</td>
+            <td data-label="Kondisi" style="color:rgba(220,200,152,.78);">Hati keras, jauh dari Allah, perlu taubat segera</td>
+          </tr>
+          <tr>
+            <td data-label="Tingkatan">Hilang Iman (Na'udzubillah)</td>
+            <td data-label="Ciri" style="color:rgba(220,200,152,.78);">Mengingkari Allah atau menyekutukan-Nya</td>
+            <td data-label="Kondisi" style="color:rgba(220,200,152,.78);">Wajib segera kembali kepada Islam dengan taubat</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+</div><!-- end wrap -->
+
+<!-- ══ PENUTUP ══ -->
+<div class="penutup">
+  <div class="penutup-inner">
+    <div class="penutup-ar">اللَّهُمَّ يَا مُقَلِّبَ الْقُلُوبِ ثَبِّتْ قَلْبِي عَلَى دِينِكَ</div>
+    <div class="penutup-div"><span></span><em>✦ ✦ ✦</em><span></span></div>
+    <p class="penutup-p">"Ya Allah, wahai Dzat yang membolak-balikkan hati, teguhkanlah hatiku di atas agama-Mu." — HR. Tirmidzi (2140), shahih. Inilah doa yang sering dipanjatkan Nabi ﷺ — karena hati seorang manusia bisa berubah kapan saja. Maka memohon keteguhan iman kepada Allah adalah kewajiban yang tidak boleh diabaikan seorang mukmin.</p>
+    <p class="penutup-p" style="margin-top:10px;">Iman kepada Allah bukan sekadar akidah di atas kertas — ia adalah fondasi yang menentukan kebahagiaan dunia dan akhirat. Ia adalah cahaya yang menerangi setiap langkah perjalanan hidup. Ia adalah tali yang menghubungkan hamba dengan Penciptanya. Dan ia adalah kunci yang membuka pintu surga. Semoga Allah ﷻ senantiasa menjaga, menambah, dan menyempurnakan iman kita hingga akhir hayat — dan mengangkat kita bersama orang-orang yang Dia cintai.</p>
+    <div class="penutup-div"><span></span><em>✦ ✦ ✦</em><span></span></div>
+    <div class="ayat" style="background:rgba(12,0,8,.9);border:1px solid rgba(200,134,10,.15);text-align:left;">
+      <div style="background:var(--gold);width:4px;"></div>
+      <div class="ayat-body">
+        <div class="ayat-tag" style="color:var(--gold);">📿 Doa Memohon Iman yang Sempurna</div>
+        <div class="ayat-ar" style="color:var(--gold-lt);">اللَّهُمَّ إِنِّي أَسْأَلُكَ الإِيمَانَ الَّذِي لَا يَرْتَدُّ وَنَعِيمًا لَا يَنْفَدُ وَمُرَافَقَةَ نَبِيِّكَ مُحَمَّدٍ ﷺ فِي أَعْلَى الْجَنَّةِ جَنَّةِ الْخُلْدِ</div>
+        <div class="ayat-id">"Ya Allah, sesungguhnya aku memohon kepada-Mu iman yang tidak akan kembali (kepada kekufuran), kenikmatan yang tidak akan habis, dan (kebersamaan dengan) Nabi-Mu Muhammad ﷺ di surga yang paling tinggi, surga yang kekal."</div>
+        <div class="ayat-ref" style="color:rgba(200,134,10,.6);">HR. An-Nasa'i dalam 'Amal Al-Yaum wal-Lailah (no. 625) — Shahih</div>
+      </div>
+    </div>
+    <div class="penutup-footer">
+      <div class="logo">الإِيمَانُ بِاللهِ تَعَالَى</div>
+      <div class="tag">وَاللّٰهُ أَعْلَمُ بِالصَّوَابِ · Semoga Bermanfaat</div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ═══ CANVAS — DIVINE GOLD DUST + ARABESQUE ═══ */
+const canvas = document.getElementById('divineCanvas');
+const ctx = canvas.getContext('2d');
+let W, H, particles = [], stars = [], beams = [];
+
+function resize() {
+  W = canvas.width = innerWidth;
+  H = canvas.height = innerHeight;
+}
+
+function init() {
+  /* Gold dust particles rising upward */
+  particles = [];
+  for (let i = 0; i < 140; i++) {
+    particles.push({
+      x: Math.random() * W,
+      y: Math.random() * H,
+      r: Math.random() * 1.8 + 0.4,
+      vy: -(Math.random() * 0.6 + 0.15),      // drift upward
+      vx: (Math.random() - 0.5) * 0.25,
+      a: Math.random() * 0.5 + 0.1,
+      life: Math.random() * Math.PI * 2,
+      speed: Math.random() * 0.02 + 0.008,
+      hue: 35 + Math.random() * 20,            // gold range
+      ruby: Math.random() < 0.12               // some are ruby-red
+    });
+  }
+
+  /* Distant static stars */
+  stars = [];
+  for (let i = 0; i < 200; i++) {
+    const t = Math.random();
+    stars.push({
+      x: Math.random() * W,
+      y: Math.random() * H,
+      r: t < 0.05 ? 1.8 + Math.random() : 0.4 + Math.random() * 0.9,
+      a: Math.random() * 0.55 + 0.08,
+      ph: Math.random() * Math.PI * 2,
+      sp: Math.random() * 0.015 + 0.004,
+      gold: t < 0.07,
+      ruby: t < 0.13 && t >= 0.07
+    });
+  }
+}
+
+let tick = 0;
+function draw() {
+  ctx.clearRect(0, 0, W, H);
+  tick += 0.007;
+
+  /* Background radial divine glow */
+  const cx = W / 2, cy = H * 0.46;
+  const glow = ctx.createRadialGradient(cx, cy, 0, cx, cy, Math.min(W, H) * 0.55);
+  glow.addColorStop(0, 'rgba(160,80,10,0.05)');
+  glow.addColorStop(0.5, 'rgba(100,0,40,0.04)');
+  glow.addColorStop(1, 'transparent');
+  ctx.fillStyle = glow;
+  ctx.fillRect(0, 0, W, H);
+
+  /* Static stars (shimmer) */
+  stars.forEach(s => {
+    const p = Math.sin(tick * s.sp * 8 + s.ph) * 0.3 + 0.7;
+    let col;
+    if (s.gold)      col = `rgba(240,190,60,${s.a * p})`;
+    else if (s.ruby) col = `rgba(200,40,80,${s.a * p * 0.7})`;
+    else             col = `rgba(200,170,120,${s.a * p * 0.6})`;
+    ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+    ctx.fillStyle = col;
+    if (s.gold && s.r > 1.4) { ctx.shadowBlur = 6; ctx.shadowColor = 'rgba(240,190,60,.5)'; }
+    ctx.fill(); ctx.shadowBlur = 0;
+  });
+
+  /* Rising gold dust particles */
+  particles.forEach(p => {
+    p.life += p.speed;
+    p.x += p.vx + Math.sin(p.life * 3) * 0.15;
+    p.y += p.vy;
+    if (p.y < -8) { p.y = H + 8; p.x = Math.random() * W; }
+
+    const pulse = Math.sin(p.life) * 0.25 + 0.75;
+    const alpha = p.a * pulse;
+
+    if (p.ruby) {
+      ctx.fillStyle = `hsla(340,80%,55%,${alpha * 0.6})`;
+    } else {
+      ctx.fillStyle = `hsla(${p.hue},90%,65%,${alpha})`;
+    }
+
+    ctx.beginPath(); ctx.arc(p.x, p.y, p.r * pulse, 0, Math.PI * 2);
+    if (!p.ruby && p.r > 1.2) {
+      ctx.shadowBlur = 4; ctx.shadowColor = `hsla(${p.hue},90%,70%,.4)`;
+    }
+    ctx.fill(); ctx.shadowBlur = 0;
+
+    /* Tiny cross sparkle for larger gold particles */
+    if (!p.ruby && p.r > 1.4 && Math.sin(p.life * 2) > 0.7) {
+      const sz = p.r * 2.5;
+      ctx.strokeStyle = `hsla(${p.hue},90%,80%,${alpha * 0.4})`;
+      ctx.lineWidth = 0.5;
+      ctx.beginPath();
+      ctx.moveTo(p.x - sz, p.y); ctx.lineTo(p.x + sz, p.y);
+      ctx.moveTo(p.x, p.y - sz); ctx.lineTo(p.x, p.y + sz);
+      ctx.stroke();
+    }
+  });
+
+  /* Rare divine light beam from top */
+  if (Math.random() < 0.003) {
+    const bx = W * 0.3 + Math.random() * W * 0.4;
+    const bw = 40 + Math.random() * 80;
+    const bg = ctx.createLinearGradient(bx, 0, bx, H * 0.7);
+    bg.addColorStop(0, 'rgba(240,200,80,0.06)');
+    bg.addColorStop(0.5, 'rgba(200,120,20,0.025)');
+    bg.addColorStop(1, 'transparent');
+    ctx.beginPath();
+    ctx.moveTo(bx - bw / 2, 0);
+    ctx.lineTo(bx + bw / 2, 0);
+    ctx.lineTo(bx + bw * 1.5, H * 0.7);
+    ctx.lineTo(bx - bw * 1.5, H * 0.7);
+    ctx.closePath();
+    ctx.fillStyle = bg; ctx.fill();
+  }
+
+  requestAnimationFrame(draw);
+}
+
+window.addEventListener('resize', () => { resize(); init(); });
+resize(); init(); draw();
+
+/* ═══ SCROLL REVEAL ═══ */
+const chapters = document.querySelectorAll('.chapter');
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.05 });
+
+chapters.forEach(c => {
+  c.style.opacity = '0';
+  c.style.transform = 'translateY(28px)';
+  c.style.transition = 'opacity .65s ease, transform .65s ease';
+  revealObs.observe(c);
+});
+</script>
+</body>
+</html>
