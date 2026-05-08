@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tuntunan Shalat — Madzhab Syafi'i</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,600&family=Amiri:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Josefin+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+
+:root{
+  /* Kitab Kuning palette */
+  --paper:    #fdf6e3;
+  --parch:    #f7edcf;
+  --parch-d:  #eed9a8;
+  --parch-dd: #e0c880;
+  --aged:     #c8a84b;
+  --aged-d:   #a88830;
+  --line:     rgba(168,136,48,.12);
+  --vermillion:#c01818;
+  --verm-d:   #8a1010;
+  --verm-p:   #fdf0f0;
+  --verm-mid: #e8c0c0;
+  --emerald:  #1a6040;
+  --emr-d:    #104030;
+  --emr-p:    #e8f5ee;
+  --emr-mid:  #b0d8c0;
+  --cobalt:   #1a3c78;
+  --cob-d:    #102858;
+  --cob-p:    #e8eef8;
+  --cob-mid:  #b0c4e8;
+  --umber:    #7a4818;
+  --umb-d:    #5a3010;
+  --umb-p:    #f5ebe0;
+  --umb-mid:  #d0a880;
+  --ink:      #18100a;
+  --ink-mid:  #281808;
+  --ink-soft: #5a3a20;
+  --sepia:    #8a6030;
+  --b-aged:   rgba(168,136,48,.18);
+  --b-verm:   rgba(192,24,24,.15);
+  --b-emr:    rgba(26,96,64,.14);
+  --b-cob:    rgba(26,60,120,.13);
+  --b-umb:    rgba(122,72,24,.14);
+  --b-ink:    rgba(24,16,10,.1);
+}
+
+html{scroll-behavior:smooth;}
+
+body{
+  background:var(--paper);
+  font-family:'Source Serif 4',Georgia,serif;
+  color:var(--ink);
+  overflow-x:hidden;
+}
+
+/* Paper grain & ruled lines */
+body::before{
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0.2'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E"),
+    repeating-linear-gradient(0deg,transparent,transparent 32px,var(--line) 32px,var(--line) 33px);
+}
+
+/* ════════════════════════════════
+   HEADER — KITAB TITLE PAGE
+════════════════════════════════ */
+header{
+  position:relative;z-index:10;
+  background:var(--parch);
+  border-bottom:3px solid var(--vermillion);
+  padding:0;overflow:hidden;
+}
+
+/* Red decorative border lines */
+header::before{
+  content:'';position:absolute;top:8px;left:8px;right:8px;bottom:8px;
+  border:1px solid rgba(192,24,24,.2);
+  pointer-events:none;z-index:1;
+}
+
+.header-inner{
+  position:relative;z-index:2;
+  padding:clamp(32px,6vw,56px) 24px clamp(24px,4vw,40px);
+  text-align:center;
+  max-width:700px;margin:0 auto;
+}
+
+/* Corner ornaments */
+.corner{
+  position:absolute;font-size:clamp(.8rem,2vw,1.2rem);
+  color:rgba(192,24,24,.35);line-height:1;
+}
+.corner.tl{top:16px;left:16px;}
+.corner.tr{top:16px;right:16px;}
+.corner.bl{bottom:16px;left:16px;}
+.corner.br{bottom:16px;right:16px;}
+
+.header-kicker{
+  font-family:'Josefin Sans',sans-serif;font-weight:300;
+  font-size:clamp(.55rem,1.3vw,.68rem);letter-spacing:8px;text-transform:uppercase;
+  color:var(--sepia);margin-bottom:14px;
+  animation:pRise 1.5s ease both .2s;
+}
+
+.header-ar{
+  font-family:'Amiri',serif;
+  font-size:clamp(1.4rem,4vw,3rem);
+  color:var(--vermillion);
+  text-shadow:1px 1px 0 rgba(192,24,24,.15);
+  line-height:1.8;margin-bottom:8px;
+  animation:pRise 1.5s ease both;
+}
+
+.header-title{
+  font-family:'Playfair Display',serif;font-weight:900;
+  font-size:clamp(2rem,6vw,5rem);
+  line-height:1.05;letter-spacing:-1px;color:var(--ink);
+  margin-bottom:6px;
+  animation:pRise 1.5s ease both .05s;
+}
+
+.header-title em{
+  display:block;font-style:italic;font-weight:400;
+  font-size:.5em;color:var(--sepia);letter-spacing:2px;margin-top:4px;
+}
+
+.header-rule{
+  display:flex;align-items:center;justify-content:center;gap:12px;
+  margin:14px auto;
+  animation:pRise 1.5s ease both .3s;
+}
+.header-rule span{width:70px;height:1px;background:linear-gradient(90deg,transparent,var(--aged));}
+.header-rule span:last-child{background:linear-gradient(90deg,var(--aged),transparent);}
+.header-rule em{font-style:normal;color:var(--vermillion);font-size:.85rem;letter-spacing:6px;}
+
+.header-verse{
+  max-width:520px;margin:0 auto;
+  padding:16px 24px;
+  background:rgba(192,24,24,.04);
+  border:1px solid var(--b-verm);
+  animation:pRise 1.5s ease both .45s;
+}
+.hv-ar{font-family:'Amiri',serif;font-size:clamp(1rem,2.5vw,1.3rem);color:var(--verm-d);line-height:2.2;direction:rtl;margin-bottom:8px;}
+.hv-id{font-style:italic;font-size:.8rem;color:var(--sepia);line-height:1.7;}
+
+@keyframes pRise{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+
+/* ════════════════════════════════
+   NAVIGATION TABS
+════════════════════════════════ */
+.nav-wrap{
+  position:sticky;top:0;z-index:20;
+  background:rgba(253,246,227,.97);
+  border-bottom:2px solid var(--vermillion);
+  backdrop-filter:blur(8px);
+  overflow-x:auto;scrollbar-width:none;
+}
+.nav-wrap::-webkit-scrollbar{display:none;}
+
+.nav-tabs{
+  display:flex;gap:0;
+  min-width:max-content;padding:0 16px;
+}
+
+.nav-tab{
+  display:flex;align-items:center;gap:7px;
+  padding:13px 16px;
+  font-family:'Josefin Sans',sans-serif;font-weight:500;
+  font-size:clamp(.65rem,1.4vw,.75rem);letter-spacing:2px;text-transform:uppercase;
+  color:var(--sepia);cursor:pointer;
+  border:none;background:none;
+  border-bottom:3px solid transparent;
+  transition:all .2s;white-space:nowrap;
+}
+.nav-tab:hover{color:var(--vermillion);background:rgba(192,24,24,.04);}
+.nav-tab.active{color:var(--vermillion);border-bottom-color:var(--vermillion);background:rgba(192,24,24,.06);}
+.nav-tab .ti{font-size:.9rem;}
+
+/* ════════════════════════════════
+   BODY
+════════════════════════════════ */
+.wrap{max-width:860px;margin:0 auto;padding:0 16px 80px;position:relative;z-index:1;}
+
+/* Section */
+.section{display:none;animation:secFade .35s ease both;}
+.section.active{display:block;}
+@keyframes secFade{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+
+.sec-header{
+  text-align:center;
+  padding:clamp(24px,5vw,44px) 0 clamp(16px,3vw,28px);
+}
+.sec-badge{
+  display:inline-block;
+  font-family:'Josefin Sans',sans-serif;font-weight:600;
+  font-size:.6rem;letter-spacing:5px;text-transform:uppercase;
+  padding:5px 16px;margin-bottom:12px;
+  border:1px solid var(--b-verm);
+  color:var(--vermillion);background:var(--verm-p);
+}
+.sec-ar{font-family:'Amiri',serif;font-size:clamp(1.1rem,3vw,1.8rem);color:var(--vermillion);line-height:1.9;margin-bottom:4px;}
+.sec-title{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(1.2rem,3.5vw,1.9rem);color:var(--ink);margin-bottom:8px;}
+.sec-sub{font-family:'Josefin Sans',sans-serif;font-weight:300;font-style:italic;font-size:.82rem;color:var(--sepia);letter-spacing:1px;}
+.sec-div{width:60px;height:2px;margin:12px auto 0;background:linear-gradient(90deg,transparent,var(--vermillion),transparent);}
+
+/* ════════════════════════════════
+   PROSE
+════════════════════════════════ */
+.prose p{
+  font-size:clamp(.96rem,2vw,1.05rem);line-height:2.1;
+  color:var(--ink-mid);margin-bottom:14px;
+  text-align:justify;hyphens:auto;-webkit-hyphens:auto;
+}
+.prose p.lead{font-style:italic;color:var(--verm-d);}
+.prose.emr-lead p.lead{color:var(--emr-d);}
+.prose.cob-lead p.lead{color:var(--cob-d);}
+
+/* ════════════════════════════════
+   STEPS — ritual steps
+════════════════════════════════ */
+.step{
+  margin-bottom:6px;
+  border:1px solid;overflow:hidden;
+  background:var(--paper);
+  transition:box-shadow .2s;
+}
+.step:hover{box-shadow:2px 2px 0 var(--parch-d);}
+
+.step-header{
+  display:flex;align-items:center;gap:0;
+  cursor:pointer;
+}
+.step-num{
+  flex-shrink:0;width:52px;min-height:52px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;font-weight:700;
+  font-size:1.2rem;
+}
+.step-info{flex:1;padding:12px 14px;}
+.step-name{font-family:'Playfair Display',serif;font-weight:700;font-size:.95rem;color:var(--ink);margin-bottom:2px;}
+.step-ar-sm{font-family:'Amiri',serif;font-size:.92rem;color:rgba(24,16,10,.28);direction:rtl;text-align:right;}
+.step-hukum{
+  display:inline-block;margin-top:4px;
+  font-family:'Josefin Sans',sans-serif;font-weight:600;
+  font-size:.57rem;letter-spacing:2px;text-transform:uppercase;padding:2px 8px;
+}
+.step-toggle{flex-shrink:0;width:36px;display:flex;align-items:center;justify-content:center;font-size:.65rem;transition:transform .25s;}
+.step.open .step-toggle{transform:rotate(180deg);}
+
+/* step body */
+.step-body{max-height:0;overflow:hidden;transition:max-height .35s ease;}
+.step.open .step-body{max-height:2000px;}
+.step-inner{padding:16px 18px 14px;border-top:1px dashed;}
+
+/* Arabic */
+.arabic{
+  font-family:'Amiri',serif;
+  font-size:clamp(1.2rem,3vw,1.65rem);
+  line-height:2.4;direction:rtl;text-align:right;
+  margin-bottom:11px;padding-bottom:10px;
+}
+/* Latin */
+.latin{
+  font-family:'Source Serif 4',serif;font-style:italic;
+  font-size:clamp(.82rem,1.9vw,.92rem);line-height:2;
+  margin-bottom:9px;
+}
+/* Translation */
+.trans{
+  font-family:'Source Serif 4',serif;
+  font-size:clamp(.88rem,2vw,.97rem);line-height:1.9;
+  font-style:italic;margin-bottom:9px;
+  text-align:justify;color:var(--ink-soft);
+}
+/* Note */
+.note{
+  font-family:'Source Serif 4',serif;
+  font-size:.83rem;line-height:1.78;
+  font-style:italic;margin-top:8px;padding-top:8px;
+  color:var(--sepia);text-align:justify;
+}
+
+/* ════ COLOR VARIANTS ════ */
+/* Vermillion / Rukun */
+.sv-verm{border-color:var(--b-verm);}
+.sv-verm .step-num{background:var(--verm-p);color:var(--vermillion);border-right:1px solid var(--b-verm);}
+.sv-verm .step-inner{border-top-color:var(--b-verm);background:var(--verm-p);}
+.sv-verm .arabic{color:var(--verm-d);border-bottom:1px dashed var(--b-verm);}
+.sv-verm .latin{color:var(--verm-d);}
+.sv-verm .step-toggle{color:var(--verm-d);}
+.sv-verm.open .step-header{background:rgba(192,24,24,.04);}
+.sh-verm{background:var(--verm-p);color:var(--verm-d);border:1px solid var(--b-verm);}
+
+/* Emerald / Wajib */
+.sv-emr{border-color:var(--b-emr);}
+.sv-emr .step-num{background:var(--emr-p);color:var(--emerald);border-right:1px solid var(--b-emr);}
+.sv-emr .step-inner{border-top-color:var(--b-emr);background:var(--emr-p);}
+.sv-emr .arabic{color:var(--emr-d);border-bottom:1px dashed var(--b-emr);}
+.sv-emr .latin{color:var(--emr-d);}
+.sv-emr .step-toggle{color:var(--emerald);}
+.sv-emr.open .step-header{background:rgba(26,96,64,.04);}
+.sh-emr{background:var(--emr-p);color:var(--emr-d);border:1px solid var(--b-emr);}
+
+/* Cobalt / Sunnah */
+.sv-cob{border-color:var(--b-cob);}
+.sv-cob .step-num{background:var(--cob-p);color:var(--cobalt);border-right:1px solid var(--b-cob);}
+.sv-cob .step-inner{border-top-color:var(--b-cob);background:var(--cob-p);}
+.sv-cob .arabic{color:var(--cob-d);border-bottom:1px dashed var(--b-cob);}
+.sv-cob .latin{color:var(--cob-d);}
+.sv-cob .step-toggle{color:var(--cobalt);}
+.sv-cob.open .step-header{background:rgba(26,60,120,.03);}
+.sh-cob{background:var(--cob-p);color:var(--cob-d);border:1px solid var(--b-cob);}
+
+/* Umber / Info */
+.sv-umb{border-color:var(--b-umb);}
+.sv-umb .step-num{background:var(--umb-p);color:var(--umber);border-right:1px solid var(--b-umb);}
+.sv-umb .step-inner{border-top-color:var(--b-umb);background:var(--umb-p);}
+.sv-umb .arabic{color:var(--umb-d);border-bottom:1px dashed var(--b-umb);}
+.sv-umb .latin{color:var(--umb-d);}
+.sv-umb .step-toggle{color:var(--umber);}
+.sv-umb.open .step-header{background:rgba(122,72,24,.04);}
+.sh-umb{background:var(--umb-p);color:var(--umb-d);border:1px solid var(--b-umb);}
+
+/* ════════════════════════════════
+   HIGHLIGHT BOX
+════════════════════════════════ */
+.hl{margin:18px 0;padding:16px 18px;}
+.hl-v{background:var(--verm-p);border:1px solid var(--b-verm);border-left:4px solid var(--vermillion);}
+.hl-e{background:var(--emr-p);border:1px solid var(--b-emr);border-left:4px solid var(--emerald);}
+.hl-c{background:var(--cob-p);border:1px solid var(--b-cob);border-left:4px solid var(--cobalt);}
+.hl-u{background:var(--umb-p);border:1px solid var(--b-umb);border-left:4px solid var(--umber);}
+.hl-label{font-family:'Josefin Sans',sans-serif;font-weight:600;font-size:.6rem;letter-spacing:3px;text-transform:uppercase;margin-bottom:8px;}
+.hll-v{color:var(--verm-d);}
+.hll-e{color:var(--emr-d);}
+.hll-c{color:var(--cob-d);}
+.hll-u{color:var(--umb-d);}
+.hl-ar{font-family:'Amiri',serif;font-size:clamp(1.05rem,2.5vw,1.38rem);line-height:2;margin-bottom:6px;}
+.hlar-v{color:var(--verm-d);}
+.hlar-e{color:var(--emr-d);}
+.hlar-c{color:var(--cob-d);}
+.hl-trans{font-style:italic;font-size:.9rem;line-height:1.8;color:var(--ink-soft);text-align:justify;}
+.hl-ref{font-family:'Josefin Sans',sans-serif;font-weight:600;font-size:.58rem;letter-spacing:2px;text-transform:uppercase;margin-top:7px;display:block;}
+.hlr-v{color:var(--vermillion);}
+.hlr-e{color:var(--emerald);}
+.hlr-c{color:var(--cobalt);}
+
+/* ════════════════════════════════
+   LEGEND
+════════════════════════════════ */
+.legend{
+  display:flex;flex-wrap:wrap;gap:6px;
+  margin:16px 0;padding:14px 16px;
+  background:var(--parch);border:1px solid var(--b-aged);
+}
+.leg-item{display:flex;align-items:center;gap:8px;}
+.leg-dot{width:12px;height:12px;border-radius:2px;flex-shrink:0;}
+.leg-text{font-family:'Josefin Sans',sans-serif;font-size:.65rem;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink-soft);}
+
+/* ════════════════════════════════
+   RESPONSIVE TABLE
+════════════════════════════════ */
+.tbl-wrap{margin:18px 0;overflow:hidden;}
+.tbl{width:100%;border-collapse:collapse;font-size:.87rem;table-layout:fixed;}
+.tbl.th-v thead tr{background:var(--verm-d);color:var(--parch);}
+.tbl.th-e thead tr{background:var(--emr-d);color:var(--parch);}
+.tbl.th-c thead tr{background:var(--cob-d);color:var(--parch);}
+.tbl.th-u thead tr{background:var(--umb-d);color:var(--parch);}
+.tbl.th-dk thead tr{background:var(--ink);color:var(--parch);}
+.tbl thead th{padding:9px 12px;text-align:left;font-family:'Josefin Sans',sans-serif;font-size:.6rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;}
+.tbl tbody tr{border-bottom:1px solid var(--b-ink);}
+.tbl tbody tr:nth-child(even){background:var(--parch);}
+.tbl tbody tr:nth-child(odd){background:var(--paper);}
+.tbl td{padding:9px 12px;line-height:1.65;color:var(--ink-mid);vertical-align:top;word-break:break-word;}
+.tbl td:first-child{font-weight:600;color:var(--ink);}
+.tbdg{display:inline-block;padding:2px 8px;font-family:'Josefin Sans',sans-serif;font-size:.57rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;white-space:nowrap;}
+.tbdg-v{background:var(--verm-p);color:var(--verm-d);border:1px solid var(--b-verm);}
+.tbdg-e{background:var(--emr-p);color:var(--emr-d);border:1px solid var(--b-emr);}
+.tbdg-c{background:var(--cob-p);color:var(--cob-d);border:1px solid var(--b-cob);}
+.tbdg-u{background:var(--umb-p);color:var(--umb-d);border:1px solid var(--b-umb);}
+.tbdg-gray{background:rgba(24,16,10,.06);color:var(--sepia);border:1px solid var(--b-ink);}
+@media(max-width:580px){
+  .tbl,.tbl thead,.tbl tbody,.tbl th,.tbl td,.tbl tr{display:block;width:100%;}
+  .tbl thead{display:none;}
+  .tbl tbody tr{background:var(--parch)!important;border:1px solid var(--b-ink);margin-bottom:6px;padding:10px 12px 8px;}
+  .tbl td{padding:3px 0 3px;border:none;display:grid;grid-template-columns:82px 1fr;gap:6px;align-items:start;}
+  .tbl td::before{content:attr(data-label);font-family:'Josefin Sans',sans-serif;font-size:.57rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding-top:2px;color:var(--verm-d);}
+  .tbl.th-e td::before{color:var(--emr-d);}
+  .tbl.th-c td::before{color:var(--cob-d);}
+  .tbl.th-u td::before{color:var(--umb-d);}
+  .tbl td:first-child{font-weight:700;font-size:.92rem;}
+}
+
+/* ════════════════════════════════
+   ORNAMENT SEPARATOR
+════════════════════════════════ */
+.ornament{
+  text-align:center;padding:14px 0;
+  position:relative;
+}
+.ornament::before{
+  content:'';position:absolute;top:50%;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--aged),transparent);
+  transform:translateY(-50%);
+}
+.ornament span{
+  position:relative;z-index:1;
+  background:var(--paper);padding:0 16px;
+  font-family:'Amiri',serif;font-size:1rem;
+  color:rgba(168,136,48,.45);letter-spacing:10px;
+}
+
+/* ════════════════════════════════
+   BANNER
+════════════════════════════════ */
+.banner{margin:20px 0;padding:20px 22px;text-align:center;}
+.banner-v{background:var(--verm-d);color:var(--parch);}
+.banner-e{background:var(--emr-d);color:var(--parch);}
+.banner-parch{background:var(--parch-d);border:2px solid var(--aged);}
+.ban-ar{font-family:'Amiri',serif;font-size:clamp(1.1rem,2.8vw,1.5rem);line-height:2;margin-bottom:8px;}
+.bnar-lt{color:var(--parch);}
+.bnar-aged{color:var(--aged-d);}
+.ban-id{font-style:italic;font-size:.88rem;line-height:1.8;margin-bottom:6px;text-align:justify;}
+.bnid-lt{color:rgba(253,246,227,.88);}
+.bnid-aged{color:var(--ink-soft);}
+.ban-ref{font-family:'Josefin Sans',sans-serif;font-weight:600;font-size:.58rem;letter-spacing:3px;text-transform:uppercase;margin-top:6px;}
+.bnref-lt{color:rgba(253,246,227,.45);}
+.bnref-aged{color:var(--aged);}
+
+/* ════════════════════════════════
+   PENUTUP
+════════════════════════════════ */
+.penutup{
+  background:var(--ink);
+  padding:56px 24px 64px;text-align:center;
+  position:relative;overflow:hidden;margin-top:56px;z-index:1;
+}
+.penutup::after{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--verm-d),var(--vermillion),var(--aged),var(--vermillion),var(--verm-d));}
+.penutup-inner{max-width:540px;margin:0 auto;}
+.penutup-ar{font-family:'Amiri',serif;font-size:clamp(1.3rem,3.5vw,2.2rem);color:var(--aged);line-height:2;margin-bottom:12px;}
+.penutup-div{width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--aged),transparent);margin:14px auto;}
+.penutup-p{font-style:italic;font-size:clamp(.88rem,2vw,1rem);color:rgba(200,175,120,.7);line-height:1.95;text-align:justify;}
+.penutup-footer{margin-top:32px;padding-top:18px;border-top:1px solid rgba(255,255,255,.05);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+.penutup-footer .logo{font-family:'Amiri',serif;font-size:1rem;color:rgba(192,24,24,.35);}
+.penutup-footer .tag{font-family:'Josefin Sans',sans-serif;font-size:.55rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.12);}
+
+@media(max-width:600px){
+  .wrap{padding:0 12px 60px;}
+  header{border-bottom-width:2px;}
+  .step-inner{padding:12px 14px 10px;}
+  .hl,.banner{padding:13px 14px;}
+  .penutup{padding:40px 16px 48px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ════════ HEADER ════════ -->
+<header>
+  <div class="corner tl">❖</div>
+  <div class="corner tr">❖</div>
+  <div class="corner bl">❖</div>
+  <div class="corner br">❖</div>
+  <div class="header-inner">
+    <div class="header-kicker">Fiqh Ibadah · Madzhab Imam Asy-Syafi'i · Berdalil Al-Qur'an &amp; Hadis</div>
+    <div class="header-ar">تُنْتُونَ الصَّلَاةِ عَلَى مَذْهَبِ الشَّافِعِيِّ</div>
+    <h1 class="header-title">
+      Tuntunan Shalat
+      <em>Madzhab Imam Asy-Syafi'i رحمه الله</em>
+    </h1>
+    <div class="header-rule"><span></span><em>✦ ❖ ✦</em><span></span></div>
+    <div class="header-verse">
+      <div class="hv-ar">صَلُّوا كَمَا رَأَيْتُمُونِي أُصَلِّي</div>
+      <div class="hv-id">"Shalatlah kalian sebagaimana kalian melihat aku shalat."<br><em style="color:var(--aged);">— HR. Bukhari (631) dari Malik bin Al-Huwairits radhiyallahu 'anhu</em></div>
+    </div>
+  </div>
+</header>
+
+<!-- ════════ NAV ════════ -->
+<nav class="nav-wrap">
+  <div class="nav-tabs">
+    <button class="nav-tab active" onclick="showSec('mukadimah')" id="tab-mukadimah"><span class="ti">📜</span> Mukadimah</button>
+    <button class="nav-tab" onclick="showSec('syarat')" id="tab-syarat"><span class="ti">📋</span> Syarat Shalat</button>
+    <button class="nav-tab" onclick="showSec('niat')" id="tab-niat"><span class="ti">🤲</span> Niat &amp; Takbir</button>
+    <button class="nav-tab" onclick="showSec('berdiri')" id="tab-berdiri"><span class="ti">🕌</span> Berdiri &amp; Fatihah</button>
+    <button class="nav-tab" onclick="showSec('ruku')" id="tab-ruku"><span class="ti">🙇</span> Ruku'</button>
+    <button class="nav-tab" onclick="showSec('sujud')" id="tab-sujud"><span class="ti">🛐</span> Sujud</button>
+    <button class="nav-tab" onclick="showSec('tasyahhud')" id="tab-tasyahhud"><span class="ti">📿</span> Tasyahhud</button>
+    <button class="nav-tab" onclick="showSec('batalkan')" id="tab-batalkan"><span class="ti">⚠️</span> Pembatal</button>
+    <button class="nav-tab" onclick="showSec('dzikir')" id="tab-dzikir"><span class="ti">✨</span> Dzikir Setelah</button>
+  </div>
+</nav>
+
+<div class="wrap">
+
+<!-- ════ MUKADIMAH ════ -->
+<div class="section active" id="sec-mukadimah">
+  <div class="sec-header">
+    <div class="sec-badge">✦ Mukadimah</div>
+    <div class="sec-ar">مُقَدِّمَةٌ فِي الصَّلَاةِ</div>
+    <div class="sec-title">Pengantar: Kedudukan Shalat dalam Islam</div>
+    <div class="sec-div"></div>
+  </div>
+  <div class="prose">
+    <p class="lead">Shalat adalah tiang agama. Nabi ﷺ bersabda: "Ra'sul amri al-Islāmu wa 'amūduhus-salātu wa dzirwatu sinānihil-jihādu fī sabīlillāh" — "Pokok urusan adalah Islam, tiangnya adalah shalat, dan puncaknya adalah jihad di jalan Allah." — HR. Tirmidzi (2616). Shalat adalah ibadah pertama yang akan dihisab pada hari kiamat, dan jika shalatnya baik maka seluruh amalnya baik.</p>
+    <p>Panduan ini disusun berdasarkan madzhab Imam Muhammad bin Idris Asy-Syafi'i (150–204 H) rahimahullāh — salah satu dari empat imam madzhab yang paling banyak diikuti umat Islam di Indonesia, Asia Tenggara, dan kawasan lainnya. Panduan ini mencakup seluruh rukun, wajib, dan sunnah-sunnah shalat berdasarkan kitab-kitab mu'tamad (standar) Syafi'iyah: Al-Majmu' karya Imam An-Nawawi dan Minhaj At-Thalibin.</p>
+  </div>
+
+  <div class="legend">
+    <div class="leg-item">
+      <div class="leg-dot" style="background:var(--vermillion);"></div>
+      <div class="leg-text">Rukun — Wajib, harus ada</div>
+    </div>
+    <div class="leg-item">
+      <div class="leg-dot" style="background:var(--emerald);"></div>
+      <div class="leg-text">Wajib — Dosa jika sengaja ditinggal</div>
+    </div>
+    <div class="leg-item">
+      <div class="leg-dot" style="background:var(--cobalt);"></div>
+      <div class="leg-text">Sunnah — Dianjurkan, berpahala</div>
+    </div>
+    <div class="leg-item">
+      <div class="leg-dot" style="background:var(--umber);"></div>
+      <div class="leg-text">Info / Keterangan Tambahan</div>
+    </div>
+  </div>
+
+  <div class="hl hl-v">
+    <div class="hl-label hll-v">✦ Hadis Pokok tentang Shalat</div>
+    <div class="hl-ar hlar-v">الصَّلَاةُ عِمَادُ الدِّينِ مَنْ أَقَامَهَا فَقَدْ أَقَامَ الدِّينَ وَمَنْ هَدَمَهَا فَقَدْ هَدَمَ الدِّينَ</div>
+    <div class="hl-trans">"Shalat adalah tiang agama. Barangsiapa yang mendirikannya, maka ia telah menegakkan agama. Dan barangsiapa yang merobohkannya, maka ia telah merobohkan agama."</div>
+    <div class="hl-ref hlr-v">HR. Al-Baihaqi dalam Syu'abul Iman (2399) — dari Umar bin Khattab radhiyallahu 'anhu</div>
+  </div>
+
+  <div class="tbl-wrap">
+    <table class="tbl th-v">
+      <thead><tr>
+        <th style="width:22%">Rukun Shalat</th>
+        <th style="width:78%">Daftar 13 Rukun Shalat Madzhab Syafi'i</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td data-label="No">1–2</td>
+          <td data-label="Rukun">Niat + Takbiratul Ihram</td>
+        </tr>
+        <tr>
+          <td data-label="No">3</td>
+          <td data-label="Rukun">Berdiri bagi yang mampu (dalam shalat fardhu)</td>
+        </tr>
+        <tr>
+          <td data-label="No">4</td>
+          <td data-label="Rukun">Membaca Al-Fatihah di setiap rakaat</td>
+        </tr>
+        <tr>
+          <td data-label="No">5</td>
+          <td data-label="Rukun">Ruku' dengan thuma'ninah</td>
+        </tr>
+        <tr>
+          <td data-label="No">6</td>
+          <td data-label="Rukun">I'tidal (bangkit dari ruku') dengan thuma'ninah</td>
+        </tr>
+        <tr>
+          <td data-label="No">7</td>
+          <td data-label="Rukun">Sujud dua kali setiap rakaat dengan thuma'ninah</td>
+        </tr>
+        <tr>
+          <td data-label="No">8</td>
+          <td data-label="Rukun">Duduk antara dua sujud dengan thuma'ninah</td>
+        </tr>
+        <tr>
+          <td data-label="No">9</td>
+          <td data-label="Rukun">Tasyahhud akhir (duduk terakhir)</td>
+        </tr>
+        <tr>
+          <td data-label="No">10</td>
+          <td data-label="Rukun">Membaca tasyahhud akhir</td>
+        </tr>
+        <tr>
+          <td data-label="No">11</td>
+          <td data-label="Rukun">Membaca shalawat atas Nabi ﷺ dalam tasyahhud akhir</td>
+        </tr>
+        <tr>
+          <td data-label="No">12</td>
+          <td data-label="Rukun">Salam pertama</td>
+        </tr>
+        <tr>
+          <td data-label="No">13</td>
+          <td data-label="Rukun">Tertib (berurutan sesuai urutan rukun)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="ornament"><span>❖ ✦ ❖</span></div>
+</div>
+
+<!-- ════ SYARAT SHALAT ════ -->
+<div class="section" id="sec-syarat">
+  <div class="sec-header">
+    <div class="sec-badge">✦ Syarat Shalat</div>
+    <div class="sec-ar">شُرُوطُ الصَّلَاةِ</div>
+    <div class="sec-title">Syarat Sah &amp; Syarat Wajib Shalat</div>
+    <div class="sec-div"></div>
+  </div>
+
+  <div class="tbl-wrap">
+    <table class="tbl th-e">
+      <thead><tr>
+        <th style="width:28%">Syarat</th>
+        <th style="width:50%">Penjelasan</th>
+        <th style="width:22%">Hukum</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td data-label="Syarat">Islam</td>
+          <td data-label="Penjelasan">Shalat hanya sah dari orang Muslim. Orang kafir tidak wajib shalat (tidak sah), namun dihisab di akhirat.</td>
+          <td data-label="Hukum"><span class="tbdg tbdg-v">Syarat Sah</span></td>
+        </tr>
+        <tr>
+          <td data-label="Syarat">Suci dari Hadats</td>
+          <td data-label="Penjelasan">Suci dari hadats kecil (wudhu) dan hadats besar (mandi wajib). QS. Al-Mā'idah: 6.</td>
+          <td data-label="Hukum"><span class="tbdg tbdg-v">Syarat Sah</span></td>
+        </tr>
+        <tr>
+          <td data-label="Syarat">Suci Pakaian, Badan, Tempat</td>
+          <td data-label="Penjelasan">Pakaian, badan, dan tempat shalat harus suci dari najis. Jika ada najis yang terlihat dan bisa dihilangkan, wajib dihilangkan.</td>
+          <td data-label="Hukum"><span class="tbdg tbdg-v">Syarat Sah</span></td>
+        </tr>
+        <tr>
+          <td data-label="Syarat">Menutup Aurat</td>
+          <td data-label="Penjelasan">Laki-laki: antara pusar dan lutut. Perempuan: seluruh tubuh kecuali wajah dan telapak tangan (menurut pendapat mu'tamad). Harus dengan bahan yang tidak tembus pandang.</td>
+          <td data-label="Hukum"><span class="tbdg tbdg-v">Syarat Sah</span></td>
+        </tr>
+        <tr>
+          <td data-label="Syarat">Menghadap Kiblat</td>
+          <td data-label="Penjelasan">Menghadap ke arah Ka'bah di Makkah. Bagi yang jauh, cukup menghadap ke arah (jihah) kiblat. QS. Al-Baqarah: 144.</td>
+          <td data-label="Hukum"><span class="tbdg tbdg-v">Syarat Sah</span></td>
+        </tr>
+        <tr>
+          <td data-label="Syarat">Masuk Waktu</td>
+          <td data-label="Penjelasan">Shalat hanya sah pada waktunya masing-masing. Tidak boleh shalat fardhu sebelum waktunya masuk.</td>
+          <td data-label="Hukum"><span class="tbdg tbdg-v">Syarat Sah</span></td>
+        </tr>
+        <tr>
+          <td data-label="Syarat">Mengetahui Tata Cara</td>
+          <td data-label="Penjelasan">Mengetahui bahwa shalat adalah fardhu dan mengetahui cara melaksanakannya (rukun-rukunnya).</td>
+          <td data-label="Hukum"><span class="tbdg tbdg-e">Syarat Wajib</span></td>
+        </tr>
+        <tr>
+          <td data-label="Syarat">Baligh &amp; Berakal</td>
+          <td data-label="Penjelasan">Shalat wajib atas mukallaf (baligh dan berakal). Anak kecil sunnah diajari sejak usia 7 tahun dan dipukul (ringan) jika meninggalkan pada usia 10 tahun.</td>
+          <td data-label="Hukum"><span class="tbdg tbdg-e">Syarat Wajib</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="hl hl-e">
+    <div class="hl-label hll-e">✦ Waktu-Waktu Shalat Fardhu</div>
+    <div class="hl-trans">
+      <strong>Subuh:</strong> Fajar shadiq → terbit matahari<br>
+      <strong>Zhuhur:</strong> Tergelincir matahari → bayangan sepanjang benda aslinya (+1)<br>
+      <strong>Ashar:</strong> Setelah waktu Zhuhur habis → terbenam matahari (afdhal: sebelum menguning)<br>
+      <strong>Maghrib:</strong> Terbenam matahari → hilangnya syafaq ahmar (mega merah)<br>
+      <strong>Isya:</strong> Hilangnya mega merah → terbit fajar shadiq (afdhal: sebelum 1/3 malam)
+    </div>
+    <div class="hl-ref hlr-e">QS. Al-Isrā': 78 · QS. Thā Hā: 130 · HR. Muslim (612) — hadis waktu-waktu shalat</div>
+  </div>
+  <div class="ornament"><span>❖ ✦ ❖</span></div>
+</div>
+
+<!-- ════ NIAT & TAKBIR ════ -->
+<div class="section" id="sec-niat">
+  <div class="sec-header">
+    <div class="sec-badge">✦ Niat &amp; Takbiratul Ihram</div>
+    <div class="sec-ar">النِّيَّةُ وَتَكْبِيرَةُ الإِحْرَامِ</div>
+    <div class="sec-title">Niat, Takbir, &amp; Doa Iftitah</div>
+    <div class="sec-div"></div>
+    <div class="sec-sub">Tiga langkah pertama sebelum memasuki shalat</div>
+  </div>
+
+  <!-- Niat -->
+  <div class="step sv-verm">
+    <div class="step-header" onclick="toggleStep(this.parentElement)">
+      <div class="step-num">١</div>
+      <div class="step-info">
+        <div class="step-name">Niat dalam Hati</div>
+        <div class="step-ar-sm">النِّيَّةُ فِي الْقَلْبِ</div>
+        <span class="step-hukum sh-verm">Rukun</span>
+      </div>
+      <div class="step-toggle">▼</div>
+    </div>
+    <div class="step-body">
+      <div class="step-inner">
+        <div class="arabic" style="font-size:1.3rem;">نَوَيْتُ أُصَلِّيَ فَرْضَ الظُّهْرِ أَرْبَعَ رَكَعَاتٍ أَدَاءً مُسْتَقْبِلَ الْقِبْلَةِ لِلَّهِ تَعَالَى</div>
+        <div class="latin">Nawaytu ushallī fardhal-zhuhri arba'a raka'ātin adā'an mustaqbilal-qiblati lillāhi ta'ālā.</div>
+        <div class="trans">"Aku niat shalat fardhu Zhuhur empat rakaat, tepat waktu, menghadap kiblat, karena Allah Ta'ala." (ganti nama shalat dan jumlah rakaat sesuai shalat yang dikerjakan)</div>
+        <div class="note">Menurut Syafi'i: <strong>niat wajib dalam hati</strong>, dan disunnahkan dilafazkan (diucapkan) untuk membantu hati. Niat harus bersamaan dengan takbiratul ihram — tidak boleh mendahului atau tertinggal terlalu jauh. Niat mencakup: (1) jenis shalat, (2) fardhu/sunnah, (3) jumlah rakaat (menurut sebagian ulama).</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Takbiratul Ihram -->
+  <div class="step sv-verm">
+    <div class="step-header" onclick="toggleStep(this.parentElement)">
+      <div class="step-num">٢</div>
+      <div class="step-info">
+        <div class="step-name">Takbiratul Ihram</div>
+        <div class="step-ar-sm">تَكْبِيرَةُ الإِحْرَامِ</div>
+        <span class="step-hukum sh-verm">Rukun</span>
+      </div>
+      <div class="step-toggle">▼</div>
+    </div>
+    <div class="step-body">
+      <div class="step-inner">
+        <div class="arabic">اَللَّهُ أَكْبَرُ</div>
+        <div class="latin">Allāhu Akbar.</div>
+        <div class="trans">"Allah Maha Besar."</div>
+        <div class="note">Syarat takbiratul ihram menurut Syafi'i: (1) Wajib menggunakan lafaz "Allāhu Akbar" — tidak boleh selainnya, (2) Harus dalam keadaan berdiri (bagi yang mampu), (3) Harus terdengar oleh dirinya sendiri, (4) Bersamaan dengan niat dalam hati, (5) Mengangkat kedua tangan sejajar bahu atau daun telinga adalah sunnah.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mengangkat tangan -->
+  <div class="step sv-cob">
+    <div class="step-header" onclick="toggleStep(this.parentElement)">
+      <div class="step-num">٣</div>
+      <div class="step-info">
+        <div class="step-name">Mengangkat Kedua Tangan saat Takbir</div>
+        <div class="step-ar-sm">رَفْعُ الْيَدَيْنِ عِنْدَ التَّكْبِيرِ</div>
+        <span class="step-hukum sh-cob">Sunnah</span>
+      </div>
+      <div class="step-toggle">▼</div>
+    </div>
+    <div class="step-body">
+      <div class="step-inner">
+        <div class="note" style="margin-top:0;padding-top:0;border-top:none;">Mengangkat kedua tangan sejajar bahu atau sejajar daun telinga saat: (1) takbiratul ihram, (2) akan ruku', (3) bangkit dari ruku' (i'tidal), (4) bangkit dari tasyahhud pertama menuju rakaat ketiga — menurut Syafi'i ini sunnah. Jari-jari tangan direnggangkan sedang (tidak rapat tidak terlalu renggang), telapak menghadap kiblat. — HR. Bukhari (735)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sedekap / Bersedakep -->
+  <div class="step sv-cob">
+    <div class="step-header" onclick="toggleStep(this.parentElement)">
+      <div class="step-num">٤</div>
+      <div class="step-info">
+        <div class="step-name">Bersedekap (Meletakkan Tangan di Dada)</div>
+        <div class="step-ar-sm">وَضْعُ الْيَدَيْنِ عَلَى الصَّدْرِ</div>
+        <span class="step-hukum sh-cob">Sunnah</span>
+      </div>
+      <div class="step-toggle">▼</div>
+    </div>
+    <div class="step-body">
+      <div class="step-inner">
+        <div class="note" style="margin-top:0;padding-top:0;border-top:none;">Setelah takbir, letakkan tangan kanan di atas tangan kiri di atas dada (bawah dada, di atas pusar menurut pendapat mu'tamad Syafi'i). Tangan kanan menggenggam pergelangan tangan kiri. Posisi ini disebut qabd atau bersedekap. Pandangan mata ke tempat sujud. — HR. Bukhari (740) dari Sahl bin Sa'd</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Doa Iftitah -->
+  <div class="step sv-cob">
+    <div class="step-header" onclick="toggleStep(this.parentElement)">
+      <div class="step-num">٥</div>
+      <div class="step-info">
+        <div class="step-name">Doa Iftitah</div>
+        <div class="step-ar-sm">دُعَاءُ الاِسْتِفْتَاحِ</div>
+        <span class="step-hukum sh-cob">Sunnah</span>
+      </div>
+      <div class="step-toggle">▼</div>
+    </div>
+    <div class="step-body">
+      <div class="step-inner">
+        <div class="arabic">وَجَّهْتُ وَجْهِيَ لِلَّذِي فَطَرَ السَّمَاوَاتِ وَالْأَرْضَ حَنِيفًا وَمَا أَنَا مِنَ الْمُشْرِكِينَ ۝ إِنَّ صَلَاتِي وَنُسُكِي وَمَحْيَايَ وَمَمَاتِي لِلَّهِ رَبِّ الْعَالَمِينَ ۝ لَا شَرِيكَ لَهُ وَبِذَٰلِكَ أُمِرْتُ وَأَنَا مِنَ الْمُسْلِمِينَ</div>
+        <div class="latin">Wajjahtu wajhiya lilladī fatharas-samāwāti wal-arḍa ḥanīfā, wa mā ana minal-musyrikīn. Inna ṣalātī wa nusukī wa maḥyāya wa mamātī lillāhi rabbil-'ālamīn. Lā syarīka lahu wa bidzālika umirtu wa ana minal-muslimīn.</div>
+        <div class="trans">"Aku hadapkan wajahku kepada Dzat yang menciptakan langit dan bumi dengan lurus, dan aku bukanlah termasuk orang-orang musyrik. Sesungguhnya shalatku, ibadahku, hidupku, dan matiku hanya untuk Allah Rabb semesta alam. Tidak ada sekutu bagi-Nya, dan dengan itulah aku diperintahkan dan aku termasuk orang-orang Muslim."</div>
+        <div class="note">Dibaca setelah takbiratul ihram, sebelum ta'awwudz dan Al-Fatihah. Ada beberapa versi doa iftitah yang shahih; yang paling masyhur dalam madzhab Syafi'i adalah doa ini. — HR. Muslim (771) dari Ali bin Abi Thalib radhiyallahu 'anhu</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ta'awwudz & Basmalah -->
+  <div class="step sv-cob">
+    <div class="step-header" onclick="toggleStep(this.parentElement)">
+      <div class="step-num">٦</div>
+      <div class="step-info">
+        <div class="step-name">Ta'awwudz &amp; Basmalah</div>
+        <div class="step-ar-sm">التَّعَوُّذُ وَالْبَسْمَلَةُ</div>
+        <span class="step-hukum sh-cob">Sunnah (Ta'awwudz) · Rukun (Basmalah)</span>
+      </div>
+      <div class="step-toggle">▼</div>
+    </div>
+    <div class="step-body">
+      <div class="step-inner">
+        <div class="arabic">أَعُوذُ بِاللَّهِ مِنَ الشَّيْطَانِ الرَّجِيمِ</div>
+        <div class="latin">A'ūdzu billāhi minasy-syayṭānir-rajīm.</div>
+        <div class="trans">"Aku berlindung kepada Allah dari setan yang terkutuk." (Ta'awwudz — sunnah)</div>
+        <div style="height:10px;"></div>
+        <div class="arabic">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+        <div class="latin">Bismillāhir-raḥmānir-raḥīm.</div>
+        <div class="trans">"Dengan nama Allah Yang Maha Pengasih lagi Maha Penyayang." (Basmalah — <strong>Rukun</strong> menurut Syafi'i: bagian dari Al-Fatihah)</div>
+        <div class="note">Syafi'i berpendapat basmalah adalah ayat pertama Al-Fatihah dan wajib dibaca keras (jahr) dalam shalat jahr (Subuh, Maghrib, Isya). Ini adalah pendapat yang membedakan Syafi'i dari Hanafi dan Maliki.</div>
+      </div>
+    </div>
+  </div>
+  <div class="ornament"><span>❖ ✦ ❖</span></div>
+</div>
+
+<!-- ════ BERDIRI & FATIHAH ════ -->
+<div class="section" id="sec-berdiri">
+  <div class="sec-header">
+    <div class="sec-badge">✦ Qiyam &amp; Al-Fatihah</div>
+    <div class="sec-ar">الْقِيَامُ وَقِرَاءَةُ الْفَاتِحَةِ</div>
+    <div class="sec-title">Berdiri, Membaca Al-Fatihah &amp; Surah</div>
+    <div class="sec-div"></div>
+  </div>
+
+  <!-- Al-Fatihah -->
+  <div class="step sv-verm">
+    <div class="step-header" onclick="toggleStep(this.parentElement)">
+      <div class="step-num">١</div>
+      <div class="step-info">
+        <div class="step-name">Membaca Al-Fatihah</div>
+        <div class="step-ar-sm">قِرَاءَةُ الْفَاتِحَةِ</div>
+        <span class="step-hukum sh-verm">Rukun — di setiap rakaat</span>
+      </div>
+      <div class="step-toggle">▼</div>
+    </div>
+    <div class="step-body">
+      <div class="step-inner">
+        <div class="arabic">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ ۝ الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ ۝ الرَّحْمَٰنِ الرَّحِيمِ ۝ مَالِكِ يَوْمِ الدِّينِ ۝ إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ ۝ اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ ۝ صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ</div>
+        <div class="latin">Bismillāhir-raḥmānir-raḥīm. Alḥamdulillāhi rabbil-'ālamīn. Ar-raḥmānir-raḥīm. Māliki yawmid-dīn. Iyyāka na'budu wa iyyāka nasta'īn. Ihdinaṣ-ṣirāṭal-mustaqīm. Ṣirāṭal-ladzīna an'amta 'alayhim, ghayril-maghḍūbi 'alayhim wa laḍ-ḍāllīn.</div>
+        <div class="trans">"Dengan nama Allah Yang Maha Pengasih lagi Maha Penyayang. Segala puji bagi Allah, Rabb semesta alam. Yang Maha Pengasih lagi Maha Penyayang. Raja di Hari Pembalasan. Hanya kepada-Mu kami menyembah dan hanya kepada-Mu kami memohon pertolongan. Tunjukkanlah kami jalan yang lurus. Jalan orang-orang yang telah Engkau beri nikmat, bukan jalan mereka yang dimurkai dan bukan pula orang-orang yang sesat."</div>
+        <div class="note">Wajib dibaca di setiap rakaat, termasuk rakaat yang diikuti makmum. <strong>Menurut Syafi'i: makmum wajib membaca Al-Fatihah</strong> sendiri, bahkan di belakang imam — ini berbeda dari Hanafi yang berpendapat makmum tidak perlu membaca. Bacaan Āmīn setelah Al-Fatihah adalah sunnah. — HR. Bukhari (756) &amp; Muslim (394)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Amin -->
+  <div class="step sv-cob">
+    <div class="step-header" onclick="toggleStep(this.parentElement)">
+      <div class="step-num">٢</div>
+      <div class="step-info">
+        <div class="step-name">Membaca Āmīn</div>
+        <div class="step-ar-sm">قَوْلُ آمِينَ</div>
+        <span class="step-hukum sh-cob">Sunnah Muakkadah</span>
+      </div>
+      <div class="step-toggle">▼</div>
+    </div>
+    <div class="step-body">
+      <div class="step-inner">
+        <div class="arabic" style="font-size:2rem;">آمِينَ</div>
+        <div class="latin">Āmīn.</div>
+        <div class="trans">"Kabulkanlah (doa kami)."</div>
+        <div class="note">Dibaca setelah Al-Fatihah selesai. Dalam shalat jahr (keras): imam dan makmum sama-sama mengeraskan āmīn. Dalam shalat sirr: dibaca pelan. Nabi ﷺ bersabda: "Jika imam membaca āmīn, ucapkanlah āmīn, karena barangsiapa āmīn-nya bersamaan dengan āmīn malaikat, dosanya yang telah lalu diampuni." — HR. Bukhari (780)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Surah -->
+  <div class="step sv-cob">
+    <div class="step-header" onclick="toggleStep(this.parentElement)">
+      <div class="step-num">٣</div>
+      <div class="step-info">
+        <div class="step-name">Membaca Surah setelah Al-Fatihah</div>
+        <div class="step-ar-sm">قِرَاءَةُ السُّورَةِ</div>
+        <span class="step-hukum sh-cob">Sunnah (2 rakaat pertama)</span>
+      </div>
+      <div class="step-toggle">▼</div>
+    </div>
+    <div class="step-body">
+      <div class="step-inner">
+        <div class="note" style="margin-top:0;padding-top:0;border-top:none;">Membaca surah atau beberapa ayat setelah Al-Fatihah di dua rakaat pertama adalah sunnah muakkadah. Tidak ada surah yang diwajibkan, namun ada sunnah-sunnah tertentu: Subuh = surah panjang (60-100 ayat), Zhuhur &amp; Ashar = surah menengah, Maghrib = surah pendek, Isya = surah menengah. Pada rakaat ketiga dan keempat: cukup Al-Fatihah saja (menurut Syafi'i). — HR. Muslim (453)</div>
+      </div>
+    </div>
+  </div>
+  <div class="ornament"><span>❖ ✦ ❖</span></div>
+</div>
+
+<!-- ════ RUKU' ════ -->
+<div class="section" id="sec-ruku">
+  <div class="sec-header">
+    <div class="sec-badge">✦ Ruku' &amp; I'tidal</div>
+    <div class="sec-ar">الرُّكُوعُ وَالاِعْتِدَالُ</div>
+    <div class="sec-title">Ruku', Bacaannya, &amp; I'tidal</div>
+    <div class="sec-div"></div>
+  </div>
+
+  <div class="step sv-verm">
+    <div class="step-header" onclick="toggleStep(this.parentElement)">
+      <div class="step-num">١</div>
+      <div class="step-info">
+        <div class="step-name">Ruku' dengan Thuma'ninah</div>
+        <div class="step-ar-sm">الرُّكُوعُ مَعَ الطُّمَأْنِينَةِ</div>
+        <span class="step-hukum sh-verm">Rukun</span>
+      </div>
+      <div class="step-toggle">▼</div>
+    </div>
+    <div class="step-body">
+      <div class="step-inner">
+        <div class="note" style="margin-top:0;padding-top:0;border-top:none;">Membungkukkan badan hingga telapak tangan bisa menyentuh lutut — punggung dan kepala sejajar (lurus/datar). Ini adalah batas minimal ruku'. Thuma'ninah: diam sejenak dalam posisi ruku' setelah semua anggota badan tenang (tidak dalam gerakan). Thuma'ninah adalah rukun tersendiri menurut Syafi'i. — HR. Bukhari (790)</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step sv-cob">
+    <div class="step-header" onclick="toggleStep(this.parentElement)">
+      <div class="step-num">٢</div>
+      <div class="step-info">
+        <div class="step-name">Bacaan Tasbih Ruku' (Pilihan 1)</div>
+        <div class="step-ar-sm">تَسْبِيحُ الرُّكُوعِ</div>
+        <span class="step-hukum sh-cob">Sunnah</span>
+      </div>
+      <div class="step-toggle">▼</div>
+    </div>
+    <div class="step-body">
+      <div class="step-inner">
+        <div class="arabic">سُبْحَانَ رَبِّيَ الْعَظِيمِ</div>
+        <div class="latin">Subḥāna rabbiyal-'aẓīm.</div>
+        <div class="trans">"Maha Suci Rabbku Yang Maha Agung." (dibaca minimal 3×)</div>
+        <div class="note">Disunnahkan membacanya 3× atau lebih. Ada bacaan lain yang juga shahih: "Subḥānaka Allāhumma rabbanā wa biḥamdika, Allāhummaghfir lī" — HR. Bukhari (794). — HR. Muslim (772)</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step sv-verm">
+    <div class="step-header" onclick="toggleStep(this.parentElement)">
+      <div class="step-num">٣</div>
+      <div class="step-info">
+        <div class="step-name">I'tidal — Bangkit dari Ruku'</div>
+        <div class="step-ar-sm">الاِعْتِدَالُ</div>
+        <span class="step-hukum sh-verm">Rukun</span>
+      </div>
+      <div class="step-toggle">▼</div>
+    </div>
+    <div class="step-body">
+      <div class="step-inner">
+        <div class="arabic">سَمِعَ اللَّهُ لِمَنْ حَمِدَهُ</div>
+        <div class="latin">Sami'allāhu liman ḥamidah.</div>
+        <div class="trans">"Allah mendengar orang yang memuji-Nya." (dibaca saat bangkit dari ruku')</div>
+        <div style="height:10px;"></div>
+        <div class="arabic">رَبَّنَا لَكَ الْحَمْدُ حَمْدًا كَثِيرًا طَيِّبًا مُبَارَكًا فِيهِ</div>
+        <div class="latin">Rabbanā lakal-ḥamdu ḥamdan katsīran ṭayyiban mubārakan fīh.</div>
+        <div class="trans">"Ya Rabb kami, bagi-Mu segala puji, pujian yang banyak, baik, dan penuh berkah." (dibaca setelah berdiri tegak — i'tidal)</div>
+        <div class="note">Imam: membaca "sami'allāhu liman ḥamidah" saat bangkit, lalu diam sejenak. Makmum: membaca "rabbanā lakal-ḥamd..." saat berdiri tegak. Shalat sendiri (munfarid): membaca keduanya. Thuma'ninah dalam i'tidal adalah rukun. — HR. Bukhari (795)</div>
+      </div>
+    </div>
+  </div>
+  <div class="ornament"><span>❖ ✦ ❖</span></div>
+</div>
+
+<!-- ════ SUJUD ════ -->
+<div class="section" id="sec-sujud">
+  <div class="sec-header">
+    <div class="sec-badge">✦ Sujud</div>
+    <div class="sec-ar">السُّجُودُ وَالْجُلُوسُ</div>
+    <div class="sec-title">Sujud, Bacaan &amp; Duduk Antara Dua Sujud</div>
+    <div class="sec-div"></div>
+  </div>
+
+  <div class="step sv-verm">
+    <div class="step-header" onclick="toggleStep(this.parentElement)">
+      <div class="step-num">١</div>
+      <div class="step-info">
+        <div class="step-name">Sujud dengan Tujuh Anggota</div>
+        <div class="step-ar-sm">السُّجُودُ عَلَى سَبْعَةِ أَعْضَاءٍ</div>
+        <span class="step-hukum sh-verm">Rukun</span>
+      </div>
+      <div class="step-toggle">▼</div>
+    </div>
+    <div class="step-body">
+      <div class="step-inner">
+        <div class="note" style="margin-top:0;padding-top:0;border-top:none;">Tujuh anggota sujud: (1) dahi + hidung, (2) telapak tangan kanan, (3) telapak tangan kiri, (4) lutut kanan, (5) lutut kiri, (6) ujung jari kaki kanan, (7) ujung jari kaki kiri. Nabi ﷺ bersabda: "Aku diperintahkan untuk sujud di atas tujuh tulang: dahi — dan beliau menunjuk hidungnya — kedua tangan, kedua lutut, dan ujung kedua kaki." — HR. Bukhari (812). Thuma'ninah dalam sujud adalah rukun. Siku tidak boleh diletakkan di lantai — diangkat.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step sv-cob">
+    <div class="step-header" onclick="toggleStep(this.parentElement)">
+      <div class="step-num">٢</div>
+      <div class="step-info">
+        <div class="step-name">Bacaan Tasbih Sujud</div>
+        <div class="step-ar-sm">تَسْبِيحُ السُّجُودِ</div>
+        <span class="step-hukum sh-cob">Sunnah</span>
+      </div>
+      <div class="step-toggle">▼</div>
+    </div>
+    <div class="step-body">
+      <div class="step-inner">
+        <div class="arabic">سُبْحَانَ رَبِّيَ الْأَعْلَى</div>
+        <div class="latin">Subḥāna rabbiyal-a'lā.</div>
+        <div class="trans">"Maha Suci Rabbku Yang Maha Tinggi." (minimal 3×)</div>
+        <div style="height:8px;"></div>
+        <div class="arabic">اللَّهُمَّ اغْفِرْ لِي وَارْحَمْنِي وَاهْدِنِي وَعَافِنِي وَارْزُقْنِي</div>
+        <div class="latin">Allāhummagh-fir lī, warḥamnī, wahdinī, wa 'āfinī, warzuqnī.</div>
+        <div class="trans">"Ya Allah, ampunilah aku, rahmatilah aku, tunjukkanlah aku, sehatkanlah aku, dan berilah aku rezeki." (boleh ditambahkan)</div>
+        <div class="note">Sujud adalah posisi terdekat hamba dengan Allah. Nabi ﷺ bersabda: "Sedekat-dekat hamba kepada Rabbnya adalah saat ia bersujud, maka perbanyaklah doa (saat sujud)." — HR. Muslim (482). Perbanyak doa dalam sujud sunnah hukumnya.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step sv-verm">
+    <div class="step-header" onclick="toggleStep(this.parentElement)">
+      <div class="step-num">٣</div>
+      <div class="step-info">
+        <div class="step-name">Duduk antara Dua Sujud</div>
+        <div class="step-ar-sm">الْجُلُوسُ بَيْنَ السَّجْدَتَيْنِ</div>
+        <span class="step-hukum sh-verm">Rukun</span>
+      </div>
+      <div class="step-toggle">▼</div>
+    </div>
+    <div class="step-body">
+      <div class="step-inner">
+        <div class="arabic">رَبِّ اغْفِرْ لِي رَبِّ اغْفِرْ لِي</div>
+        <div class="latin">Rabbighfir lī, rabbighfir lī.</div>
+        <div class="trans">"Ya Rabbku, ampunilah aku, ya Rabbku ampunilah aku."</div>
+        <div style="height:8px;"></div>
+        <div class="arabic">اللَّهُمَّ اغْفِرْ لِي وَارْحَمْنِي وَاجْبُرْنِي وَاهْدِنِي وَارْزُقْنِي</div>
+        <div class="latin">Allāhummagh-fir lī, warḥamnī, wajburnī, wahdinī, warzuqnī.</div>
+        <div class="trans">"Ya Allah, ampunilah aku, rahmatilah aku, cukupkanlah aku, tunjukkanlah aku, dan berilah aku rezeki."</div>
+        <div class="note">Posisi duduk antara dua sujud: iftirasy (duduk di atas kaki kiri yang terlipat, kaki kanan ditegakkan ujung jarinya). Thuma'ninah adalah rukun. — HR. Abu Dawud (850) &amp; Tirmidzi (284)</div>
+      </div>
+    </div>
+  </div>
+  <div class="ornament"><span>❖ ✦ ❖</span></div>
+</div>
+
+<!-- ════ TASYAHHUD ════ -->
+<div class="section" id="sec-tasyahhud">
+  <div class="sec-header">
+    <div class="sec-badge">✦ Tasyahhud &amp; Salam</div>
+    <div class="sec-ar">التَّشَهُّدُ وَالصَّلَاةُ عَلَى النَّبِيِّ وَالسَّلَامُ</div>
+    <div class="sec-title">Tasyahhud, Shalawat &amp; Salam</div>
+    <div class="sec-div"></div>
+  </div>
+
+  <!-- Tasyahhud Awal -->
+  <div class="step sv-emr">
+    <div class="step-header" onclick="toggleStep(this.parentElement)">
+      <div class="step-num">١</div>
+      <div class="step-info">
+        <div class="step-name">Tasyahhud Awal (pada rakaat kedua)</div>
+        <div class="step-ar-sm">التَّشَهُّدُ الأَوَّلُ</div>
+        <span class="step-hukum sh-emr">Wajib (bukan rukun)</span>
+      </div>
+      <div class="step-toggle">▼</div>
+    </div>
+    <div class="step-body">
+      <div class="step-inner">
+        <div class="arabic">التَّحِيَّاتُ الْمُبَارَكَاتُ الصَّلَوَاتُ الطَّيِّبَاتُ لِلَّهِ السَّلَامُ عَلَيْكَ أَيُّهَا النَّبِيُّ وَرَحْمَةُ اللَّهِ وَبَرَكَاتُهُ السَّلَامُ عَلَيْنَا وَعَلَى عِبَادِ اللَّهِ الصَّالِحِينَ أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ اللَّهِ</div>
+        <div class="latin">At-taḥiyyātul-mubārakātuṣ-ṣalawātut-ṭayyibātu lillāh. As-salāmu 'alayka ayyuhan-nabiyyu wa raḥmatullāhi wa barakātuh. As-salāmu 'alaynā wa 'alā 'ibādillāhiṣ-ṣāliḥīn. Asyhadu allā ilāha illallāhu wa asyhadu anna Muḥammadan rasūlullāh.</div>
+        <div class="trans">"Segala penghormatan, keberkahan, shalawat, dan kebaikan hanyalah milik Allah. Semoga keselamatan, rahmat Allah, dan keberkahan-Nya terlimpah atasmu wahai Nabi. Semoga keselamatan terlimpah atas kami dan atas hamba-hamba Allah yang shalih. Aku bersaksi bahwa tidak ada ilah selain Allah dan aku bersaksi bahwa Muhammad adalah utusan Allah."</div>
+        <div class="note">Tasyahhud awal adalah wajib (bukan rukun) dalam shalat yang memiliki tasyahhud awal (Zhuhur, Ashar, Maghrib, Isya). Jika lupa dan sudah berdiri, tidak perlu kembali — cukup sujud sahwi. Posisi tangan: jari telunjuk kanan mengacung (isyarat) saat membaca syahadat. — HR. Muslim (402)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tasyahhud Akhir -->
+  <div class="step sv-verm">
+    <div class="step-header" onclick="toggleStep(this.parentElement)">
+      <div class="step-num">٢</div>
+      <div class="step-info">
+        <div class="step-name">Tasyahhud Akhir</div>
+        <div class="step-ar-sm">التَّشَهُّدُ الأَخِيرُ</div>
+        <span class="step-hukum sh-verm">Rukun</span>
+      </div>
+      <div class="step-toggle">▼</div>
+    </div>
+    <div class="step-body">
+      <div class="step-inner">
+        <div class="note" style="margin-top:0;padding-top:0;border-top:none;">Membaca tasyahhud yang sama seperti tasyahhud awal di rakaat terakhir, kemudian dilanjutkan dengan shalawat Ibrahimiyah (rukun tersendiri). Posisi duduk: tawarruk (kaki kiri dimasukkan ke bawah betis kanan, pinggul kiri menyentuh lantai). — HR. Muslim (402)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shalawat Ibrahimiyah -->
+  <div class="step sv-verm">
+    <div class="step-header" onclick="toggleStep(this.parentElement)">
+      <div class="step-num">٣</div>
+      <div class="step-info">
+        <div class="step-name">Shalawat Ibrahimiyah</div>
+        <div class="step-ar-sm">الصَّلَاةُ الإِبْرَاهِيمِيَّةُ</div>
+        <span class="step-hukum sh-verm">Rukun</span>
+      </div>
+      <div class="step-toggle">▼</div>
+    </div>
+    <div class="step-body">
+      <div class="step-inner">
+        <div class="arabic">اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ كَمَا صَلَّيْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ وَبَارِكْ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ كَمَا بَارَكْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ فِي الْعَالَمِينَ إِنَّكَ حَمِيدٌ مَجِيدٌ</div>
+        <div class="latin">Allāhumma ṣalli 'alā Muḥammadin wa 'alā āli Muḥammad, kamā ṣallayta 'alā Ibrāhīma wa 'alā āli Ibrāhīm. Wa bārik 'alā Muḥammadin wa 'alā āli Muḥammad, kamā bārakta 'alā Ibrāhīma wa 'alā āli Ibrāhīm, fil-'ālamīn. Innaka ḥamīdun majīd.</div>
+        <div class="trans">"Ya Allah, limpahkanlah shalawat kepada Muhammad dan keluarga Muhammad, sebagaimana Engkau telah melimpahkan shalawat kepada Ibrahim dan keluarga Ibrahim. Dan berkahilah Muhammad dan keluarga Muhammad, sebagaimana Engkau telah memberkahi Ibrahim dan keluarga Ibrahim di alam semesta. Sesungguhnya Engkau Maha Terpuji lagi Maha Mulia."</div>
+        <div class="note">Ini adalah rukun shalat yang ketiga belas: membaca shalawat atas Nabi ﷺ dalam tasyahhud akhir. Menurut Syafi'i, shalawat atas keluarga Nabi ﷺ juga wajib (bagian dari rukun). — HR. Bukhari (3370) &amp; Muslim (406)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Doa sebelum salam -->
+  <div class="step sv-cob">
+    <div class="step-header" onclick="toggleStep(this.parentElement)">
+      <div class="step-num">٤</div>
+      <div class="step-info">
+        <div class="step-name">Doa Sebelum Salam</div>
+        <div class="step-ar-sm">الدُّعَاءُ قَبْلَ السَّلَامِ</div>
+        <span class="step-hukum sh-cob">Sunnah</span>
+      </div>
+      <div class="step-toggle">▼</div>
+    </div>
+    <div class="step-body">
+      <div class="step-inner">
+        <div class="arabic">اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ عَذَابِ الْقَبْرِ وَمِنْ عَذَابِ جَهَنَّمَ وَمِنْ فِتْنَةِ الْمَحْيَا وَالْمَمَاتِ وَمِنْ شَرِّ فِتْنَةِ الْمَسِيحِ الدَّجَّالِ</div>
+        <div class="latin">Allāhumma innī a'ūdzu bika min 'adzābil-qabri, wa min 'adzābi jahannama, wa min fitnatil-maḥyā wal-mamāt, wa min syarri fitnatil-masīḥid-dajjāl.</div>
+        <div class="trans">"Ya Allah, sesungguhnya aku berlindung kepada-Mu dari azab kubur, dari azab neraka Jahannam, dari fitnah kehidupan dan kematian, dan dari keburukan fitnah Al-Masih Ad-Dajjal."</div>
+        <div class="note">Dibaca setelah shalawat Ibrahimiyah, sebelum salam. Nabi ﷺ mengajarkan ini kepada para sahabat dan memerintahkan mereka untuk berlindung dengan doa ini dalam setiap shalat. — HR. Bukhari (1377) &amp; Muslim (588)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Salam -->
+  <div class="step sv-verm">
+    <div class="step-header" onclick="toggleStep(this.parentElement)">
+      <div class="step-num">٥</div>
+      <div class="step-info">
+        <div class="step-name">Salam</div>
+        <div class="step-ar-sm">السَّلَامُ</div>
+        <span class="step-hukum sh-verm">Rukun — Salam Pertama</span>
+      </div>
+      <div class="step-toggle">▼</div>
+    </div>
+    <div class="step-body">
+      <div class="step-inner">
+        <div class="arabic">السَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللَّهِ</div>
+        <div class="latin">As-salāmu 'alaykum wa raḥmatullāh.</div>
+        <div class="trans">"Keselamatan dan rahmat Allah atas kalian."</div>
+        <div class="note">Salam wajib dilakukan minimal satu kali ke kanan — ini adalah rukun. Salam kedua ke kiri adalah sunnah. Menurut Syafi'i: salam adalah pemutus shalat — setelah salam, shalat dianggap selesai. Wajib dalam posisi tasyahhud, tidak boleh sambil berdiri atau bergerak. — HR. Bukhari (835) &amp; Muslim (582)</div>
+      </div>
+    </div>
+  </div>
+  <div class="ornament"><span>❖ ✦ ❖</span></div>
+</div>
+
+<!-- ════ PEMBATAL SHALAT ════ -->
+<div class="section" id="sec-batalkan">
+  <div class="sec-header">
+    <div class="sec-badge">✦ Pembatal Shalat</div>
+    <div class="sec-ar">مُبْطِلَاتُ الصَّلَاةِ</div>
+    <div class="sec-title">Hal-Hal yang Membatalkan Shalat</div>
+    <div class="sec-div"></div>
+  </div>
+  <div class="tbl-wrap">
+    <table class="tbl th-v">
+      <thead><tr>
+        <th style="width:32%">Pembatal</th>
+        <th style="width:40%">Penjelasan</th>
+        <th style="width:28%">Pengecualian</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td data-label="Pembatal">Hadats (kecil/besar)</td>
+          <td data-label="Penjelasan">Keluar angin, buang air, atau hal yang membatalkan wudhu secara sengaja maupun tidak sengaja.</td>
+          <td data-label="Pengecualian">Tidak ada — wajib berwudhu ulang.</td>
+        </tr>
+        <tr>
+          <td data-label="Pembatal">Terkena Najis</td>
+          <td data-label="Penjelasan">Jika najis mengenai badan, pakaian, atau tempat shalat dan tidak segera dihilangkan.</td>
+          <td data-label="Pengecualian">Jika najis jatuh lalu segera dilepas/dihilangkan, shalat tidak batal menurut sebagian ulama.</td>
+        </tr>
+        <tr>
+          <td data-label="Pembatal">Berbicara dengan Sengaja</td>
+          <td data-label="Penjelasan">Mengucapkan kata-kata selain bacaan shalat dengan sengaja — meskipun satu huruf yang bermakna.</td>
+          <td data-label="Pengecualian">Lupa atau tidak tahu: ada khilaf — menurut Syafi'i tidak membatalkan jika sedikit.</td>
+        </tr>
+        <tr>
+          <td data-label="Pembatal">Tertawa Terbahak</td>
+          <td data-label="Penjelasan">Tertawa sampai keluar suara (qahqahah). Senyum dan tawa kecil tanpa suara tidak membatalkan.</td>
+          <td data-label="Pengecualian">Senyum (tabassama) tidak membatalkan.</td>
+        </tr>
+        <tr>
+          <td data-label="Pembatal">Makan/Minum dengan Sengaja</td>
+          <td data-label="Penjelasan">Menelan makanan atau minuman apapun dalam shalat, meski sedikit. Dahak yang tertelan tanpa sengaja tidak membatalkan.</td>
+          <td data-label="Pengecualian">Sisa makanan di mulut yang tidak sengaja ditelan: ada khilaf.</td>
+        </tr>
+        <tr>
+          <td data-label="Pembatal">Gerakan Banyak &amp; Berurutan</td>
+          <td data-label="Penjelasan">Tiga gerakan besar berturut-turut tanpa keperluan shalat (menurut Syafi'i) membatalkan shalat.</td>
+          <td data-label="Pengecualian">Gerakan sedikit yang diperbolehkan (seperti menepuk bahu untuk menegur) tidak membatalkan.</td>
+        </tr>
+        <tr>
+          <td data-label="Pembatal">Niat Memutus Shalat</td>
+          <td data-label="Penjelasan">Berniat dalam hati untuk menghentikan shalat — meskipun belum melakukan gerakan apapun.</td>
+          <td data-label="Pengecualian">Ragu-ragu (tidak pasti) apakah akan memutus tidak membatalkan.</td>
+        </tr>
+        <tr>
+          <td data-label="Pembatal">Meninggalkan Rukun dengan Sengaja</td>
+          <td data-label="Penjelasan">Sengaja meninggalkan salah satu dari 13 rukun shalat tanpa alasan yang dibenarkan syariat.</td>
+          <td data-label="Pengecualian">Lupa: ada solusi sujud sahwi untuk beberapa kondisi.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="hl hl-c">
+    <div class="hl-label hll-c">✦ Sujud Sahwi — Sujud Karena Lupa</div>
+    <div class="hl-ar hlar-c">سَجْدَتَا السَّهْوِ</div>
+    <div class="hl-trans">Sujud sahwi dilakukan sebelum salam (menurut Syafi'i) jika ada: (1) Meninggalkan wajib karena lupa (tasyahhud awal, qunut Subuh, dll.), (2) Kelebihan rakaat karena lupa. Cara sujud sahwi: dua kali sujud seperti sujud biasa sebelum salam, dengan bacaan tasbih sujud. — HR. Bukhari (401) &amp; Muslim (570)</div>
+    <div class="hl-ref hlr-c">Minhaj At-Thalibin — Imam An-Nawawi · Bab Sujud Sahwi</div>
+  </div>
+  <div class="ornament"><span>❖ ✦ ❖</span></div>
+</div>
+
+<!-- ════ DZIKIR SETELAH SHALAT ════ -->
+<div class="section" id="sec-dzikir">
+  <div class="sec-header">
+    <div class="sec-badge">✦ Dzikir Setelah Shalat</div>
+    <div class="sec-ar">الأَذْكَارُ بَعْدَ الصَّلَاةِ</div>
+    <div class="sec-title">Dzikir &amp; Doa Setelah Shalat Fardhu</div>
+    <div class="sec-div"></div>
+  </div>
+
+  <div class="step sv-emr">
+    <div class="step-header" onclick="toggleStep(this.parentElement)">
+      <div class="step-num">١</div>
+      <div class="step-info">
+        <div class="step-name">Istighfar 3× &amp; Doa Setelah Salam</div>
+        <div class="step-ar-sm">الاِسْتِغْفَارُ بَعْدَ السَّلَامِ</div>
+        <span class="step-hukum sh-emr">Sunnah Muakkadah</span>
+      </div>
+      <div class="step-toggle">▼</div>
+    </div>
+    <div class="step-body">
+      <div class="step-inner">
+        <div class="arabic">أَسْتَغْفِرُ اللَّهَ ×3 ۝ اللَّهُمَّ أَنْتَ السَّلَامُ وَمِنْكَ السَّلَامُ تَبَارَكْتَ يَا ذَا الْجَلَالِ وَالْإِكْرَامِ</div>
+        <div class="latin">Astaghfirullāh (3×). Allāhumma antas-salām, wa minkas-salām, tabārakta yā dzal-jalāli wal-ikrām.</div>
+        <div class="trans">Aku memohon ampunan kepada Allah (3×). Ya Allah, Engkau adalah As-Salam dan dari-Mu keselamatan. Mahaberkat Engkau wahai Dzat yang memiliki keagungan dan kemuliaan.</div>
+        <div class="note">HR. Muslim (591) — dari Tsauban radhiyallahu 'anhu · Nabi ﷺ mengajarkan ini kepada Mu'adz sebagai dzikir wajib setelah setiap shalat.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step sv-emr">
+    <div class="step-header" onclick="toggleStep(this.parentElement)">
+      <div class="step-num">٢</div>
+      <div class="step-info">
+        <div class="step-name">Tasbih, Tahmid, &amp; Takbir 33-33-34</div>
+        <div class="step-ar-sm">التَّسْبِيحُ وَالتَّحْمِيدُ وَالتَّكْبِيرُ</div>
+        <span class="step-hukum sh-emr">Sunnah Muakkadah</span>
+      </div>
+      <div class="step-toggle">▼</div>
+    </div>
+    <div class="step-body">
+      <div class="step-inner">
+        <div class="arabic" style="font-size:1.6rem;">سُبْحَانَ اللَّهِ ×33 ۝ اَلْحَمْدُ لِلَّهِ ×33 ۝ اَللَّهُ أَكْبَرُ ×33</div>
+        <div class="arabic" style="font-size:1.1rem;margin-top:8px;">لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ</div>
+        <div class="latin">Subḥānallāh (33×) · Alḥamdulillāh (33×) · Allāhu Akbar (33×) · Lā ilāha illallāhu waḥdahu lā syarīka lah, lahul-mulku wa lahul-ḥamd, wa huwa 'alā kulli syay'in qadīr.</div>
+        <div class="trans">Maka genap 100. "Dosanya diampuni meskipun sebanyak buih lautan." — HR. Muslim (597)</div>
+        <div class="note">Boleh menggunakan tasbih (butiran penghitung) atau jari-jari tangan. Menggunakan ruas jari tangan kanan adalah sunnah. — HR. Abu Dawud (1502) &amp; Tirmidzi (3486)</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step sv-emr">
+    <div class="step-header" onclick="toggleStep(this.parentElement)">
+      <div class="step-num">٣</div>
+      <div class="step-info">
+        <div class="step-name">Ayat Kursi Setelah Shalat</div>
+        <div class="step-ar-sm">آيَةُ الْكُرْسِيِّ</div>
+        <span class="step-hukum sh-emr">Sunnah Muakkadah</span>
+      </div>
+      <div class="step-toggle">▼</div>
+    </div>
+    <div class="step-body">
+      <div class="step-inner">
+        <div class="arabic">اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ...</div>
+        <div class="trans">Baca Ayat Kursi lengkap (QS. Al-Baqarah: 255) setelah setiap shalat fardhu.</div>
+        <div class="note">"Barangsiapa membacanya setelah setiap shalat fardhu, tidak ada yang menghalanginya masuk surga kecuali kematian." — HR. An-Nasā'i (9928) &amp; Al-Baihaqi — Shahih menurut Ibnu Hibban.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step sv-emr">
+    <div class="step-header" onclick="toggleStep(this.parentElement)">
+      <div class="step-num">٤</div>
+      <div class="step-info">
+        <div class="step-name">Qunut Subuh</div>
+        <div class="step-ar-sm">قُنُوتُ الصُّبْحِ</div>
+        <span class="step-hukum sh-emr">Sunnah Muakkadah — Syafi'i</span>
+      </div>
+      <div class="step-toggle">▼</div>
+    </div>
+    <div class="step-body">
+      <div class="step-inner">
+        <div class="arabic">اللَّهُمَّ اهْدِنِي فِيمَنْ هَدَيْتَ وَعَافِنِي فِيمَنْ عَافَيْتَ وَتَوَلَّنِي فِيمَنْ تَوَلَّيْتَ وَبَارِكْ لِي فِيمَا أَعْطَيْتَ وَقِنِي شَرَّ مَا قَضَيْتَ فَإِنَّكَ تَقْضِي وَلَا يُقْضَى عَلَيْكَ إِنَّهُ لَا يَذِلُّ مَنْ وَالَيْتَ تَبَارَكْتَ رَبَّنَا وَتَعَالَيْتَ</div>
+        <div class="latin">Allāhummah-dinī fīman hadayt, wa 'āfinī fīman 'āfayt, wa tawallanī fīman tawallayt, wa bārik lī fīmā a'ṭayt, wa qinī syarra mā qaḍayt. Fa'innaka taqḍī wa lā yuqḍā 'alayk. Innahu lā yadzillu man wālayt. Tabārakta rabbanā wa ta'ālayt.</div>
+        <div class="trans">"Ya Allah, berilah aku petunjuk di antara orang yang telah Engkau beri petunjuk, berilah aku kesehatan di antara orang yang telah Engkau sehatkan, jadikanlah aku wali di antara orang yang Engkau jadikan wali, berkahilah aku dalam apa yang Engkau berikan, lindungilah aku dari keburukan yang Engkau tetapkan. Sesungguhnya Engkau menetapkan dan tidak ditetapkan atas-Mu. Sesungguhnya tidak hina orang yang Engkau jadikan wali. Mahaberkat Engkau ya Rabb kami dan Maha Tinggi."</div>
+        <div class="note">Qunut Subuh dibaca pada rakaat kedua shalat Subuh, setelah bangkit dari ruku' (i'tidal) sebelum sujud. Ini adalah pendapat kuat (mu'tamad) dalam madzhab Syafi'i, berbeda dari Hanafi dan sebagian Hanbali yang tidak menyunnahkannya. — HR. Abu Dawud (1425) &amp; Nasā'i (1745)</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ornament"><span>❖ ✦ ❖</span></div>
+
+  <div class="banner banner-v">
+    <div class="ban-ar bnar-lt">إِنَّ الصَّلَاةَ كَانَتْ عَلَى الْمُؤْمِنِينَ كِتَابًا مَّوْقُوتًا</div>
+    <div class="ban-id bnid-lt">"Sesungguhnya shalat itu adalah kewajiban yang ditentukan waktunya atas orang-orang yang beriman." — QS. An-Nisā': 103. Shalat bukan sekadar ritual — ia adalah percakapan langsung antara hamba dan Rabbnya, lima kali sehari, yang menjaga jiwa, hati, dan kehidupan seorang Muslim tetap terhubung kepada sumber segala kebaikan.</div>
+    <div class="ban-ref bnref-lt">QS. An-Nisā' (4): 103</div>
+  </div>
+</div>
+
+</div><!-- end wrap -->
+
+<!-- ════ PENUTUP ════ -->
+<div class="penutup">
+  <div class="penutup-inner">
+    <div class="penutup-ar">حَافِظُوا عَلَى الصَّلَوَاتِ وَالصَّلَاةِ الْوُسْطَى وَقُومُوا لِلَّهِ قَانِتِينَ</div>
+    <div class="penutup-div"></div>
+    <p class="penutup-p">"Peliharalah semua shalat dan shalat wustha (Ashar). Dan laksanakanlah (shalat) karena Allah dengan khusyuk." — QS. Al-Baqarah: 238. Semoga panduan ini menjadi bekal bagi kita untuk memperbaiki kualitas shalat — bukan hanya benar secara fiqh, namun juga khusyuk dan hadir hatinya di hadapan Allah Yang Maha Melihat setiap gerak dan niat kita.</p>
+    <div class="penutup-div"></div>
+    <div class="penutup-footer">
+      <div class="logo">تُنْتُونَ الصَّلَاةِ</div>
+      <div class="tag">وَاللّٰهُ أَعْلَمُ بِالصَّوَابِ · Semoga Bermanfaat</div>
+    </div>
+  </div>
+</div>
+
+<script>
+function showSec(id){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
+  const s=document.getElementById('sec-'+id);
+  if(s) s.classList.add('active');
+  const t=document.getElementById('tab-'+id);
+  if(t){t.classList.add('active');t.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});}
+  window.scrollTo({top:document.querySelector('.nav-wrap').offsetTop-4,behavior:'smooth'});
+}
+function toggleStep(card){
+  const isOpen=card.classList.contains('open');
+  card.closest('.section').querySelectorAll('.step.open').forEach(c=>{if(c!==card)c.classList.remove('open');});
+  card.classList.toggle('open',!isOpen);
+}
+</script>
+</body>
+</html>
