@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Fenomena Makhluk Halus di Indonesia — Tinjauan Syar'i & Perlindungan Islam</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap');
+
+:root {
+  --gold: #c9a227;
+  --gold-light: #f0d68a;
+  --sand: #e8d5b5;
+  --green-islam: #10b981;
+  --dark: #0a0e14;
+  --dark2: #111820;
+  --text-light: #e8e8e8;
+  --text-dim: #94a3b8;
+  --accent: #60a5fa;
+  --red-soft: #f87171;
+  --purple: #a78bfa;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(160deg, var(--dark) 0%, #1a1520 40%, #0f1720 100%);
+  color: var(--text-light);
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+  line-height: 1.7;
+}
+
+/* ===== BACKGROUND EFFECTS ===== */
+.bg-container {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.mist-particle {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(167,139,250,0.4), rgba(167,139,250,0));
+  animation: mistFloat linear infinite;
+  opacity: 0;
+  pointer-events: none;
+}
+
+@keyframes mistFloat {
+  0% { transform: translateY(100vh) translateX(0) scale(0); opacity: 0; }
+  15% { opacity: 0.4; }
+  85% { opacity: 0.15; }
+  100% { transform: translateY(-15vh) translateX(20px) scale(1); opacity: 0; }
+}
+
+.glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.08;
+  animation: orbPulse 14s ease-in-out infinite alternate;
+}
+
+@keyframes orbPulse {
+  0% { transform: translate(0,0) scale(1); opacity: 0.06; }
+  50% { transform: translate(20px,-15px) scale(1.15); opacity: 0.14; }
+  100% { transform: translate(-15px,20px) scale(0.95); opacity: 0.04; }
+}
+
+.dark-veil {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: radial-gradient(circle at 50% 50%, rgba(0,0,0,0.3), transparent 70%);
+  pointer-events: none;
+}
+
+/* ===== MAIN CONTENT ===== */
+.main-wrapper {
+  position: relative;
+  z-index: 1;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 20px 16px 60px;
+}
+
+/* Header */
+.header { text-align: center; padding: 40px 10px 25px; }
+
+.part-badge {
+  display: inline-block;
+  background: rgba(201,162,39,0.15);
+  color: var(--gold);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  border: 1px solid rgba(201,162,39,0.3);
+}
+
+.header h1 {
+  font-family: 'Amiri', serif;
+  font-size: 1.9rem;
+  color: var(--gold-light);
+  line-height: 1.4;
+  margin-bottom: 6px;
+}
+
+.header .subtitle {
+  font-size: 0.85rem;
+  color: var(--sand);
+  font-weight: 300;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+.bismillah {
+  font-family: 'Amiri', serif;
+  font-size: 1.8rem;
+  color: var(--gold-light);
+  text-align: center;
+  margin: 20px 0;
+  direction: rtl;
+  line-height: 2;
+  opacity: 0.9;
+}
+
+/* Divider */
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 25px 0;
+}
+.divider::before, .divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+}
+.divider span { color: var(--gold); font-size: 1.2rem; }
+
+/* Mukadimah */
+.info-box {
+  background: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+  border: 1px solid rgba(201,162,39,0.15);
+  border-radius: 12px;
+  padding: 18px 16px;
+  margin: 20px 0;
+  text-align: justify;
+  color: var(--sand);
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+.info-box strong { color: var(--gold-light); }
+
+/* Alert Box */
+.alert-box {
+  background: rgba(239,68,68,0.1);
+  border: 1px solid rgba(239,68,68,0.3);
+  border-left: 4px solid var(--red-soft);
+  border-radius: 10px;
+  padding: 16px;
+  margin: 18px 0;
+  color: #fca5a5;
+  font-size: 0.85rem;
+  line-height: 1.7;
+}
+.alert-box strong { color: #f87171; }
+
+/* Section Title */
+.section-title {
+  font-family: 'Amiri', serif;
+  font-size: 1.35rem;
+  color: var(--gold-light);
+  text-align: center;
+  margin: 30px 0 15px;
+  padding: 10px;
+  background: linear-gradient(135deg, rgba(201,162,39,0.1), rgba(201,162,39,0.02));
+  border-radius: 12px;
+  border: 1px solid rgba(201,162,39,0.15);
+  position: relative;
+}
+.section-title::after {
+  content: ''; display: block; width: 40px; height: 2px;
+  background: var(--gold); margin: 8px auto 0; border-radius: 2px;
+}
+
+/* Card */
+.dua-card {
+  background: linear-gradient(145deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+  border: 1px solid rgba(201,162,39,0.12);
+  border-radius: 16px;
+  padding: 22px 18px;
+  margin: 18px 0;
+  position: relative;
+  overflow: hidden;
+  animation: fadeInCard 0.8s ease-out both;
+}
+.dua-card::before {
+  content: ''; position: absolute; top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: linear-gradient(to bottom, var(--gold), var(--purple));
+  border-radius: 4px 0 0 4px;
+}
+
+@keyframes fadeInCard {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.dua-number {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 28px; height: 28px;
+  background: var(--gold); color: var(--dark);
+  border-radius: 50%; font-size: 0.75rem; font-weight: 700; margin-bottom: 12px;
+}
+
+.dua-category {
+  display: inline-block; font-size: 0.7rem; font-weight: 600;
+  color: var(--gold-light); background: rgba(201,162,39,0.12);
+  padding: 3px 10px; border-radius: 20px; margin-bottom: 14px;
+  letter-spacing: 1px; text-transform: uppercase;
+}
+
+.arabic-text {
+  font-family: 'Amiri', serif; font-size: 1.45rem;
+  direction: rtl; text-align: right; line-height: 2;
+  color: #fff; margin-bottom: 14px; padding: 10px 5px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.transliteration {
+  font-style: italic; color: var(--accent); font-size: 0.88rem;
+  line-height: 1.7; margin-bottom: 10px; text-align: justify;
+}
+
+.translation {
+  color: var(--sand); font-size: 0.9rem; line-height: 1.8;
+  text-align: justify; margin-bottom: 14px; padding: 10px 12px;
+  background: rgba(255,255,255,0.03); border-radius: 8px;
+  border-left: 3px solid var(--green-islam);
+}
+
+.source {
+  font-size: 0.75rem; color: var(--text-dim); line-height: 1.6;
+  padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.05);
+}
+.source strong { color: var(--gold-light); font-weight: 600; }
+
+.hadith-badge {
+  display: inline-block; font-size: 0.65rem;
+  background: rgba(16,185,129,0.15); color: var(--green-islam);
+  padding: 2px 8px; border-radius: 10px; margin-top: 6px; font-weight: 600;
+}
+
+.quran-badge {
+  display: inline-block; font-size: 0.65rem;
+  background: rgba(59,130,246,0.15); color: var(--accent);
+  padding: 2px 8px; border-radius: 10px; margin-top: 6px; font-weight: 600;
+}
+
+.warning-badge {
+  display: inline-block; font-size: 0.65rem;
+  background: rgba(239,68,68,0.15); color: var(--red-soft);
+  padding: 2px 8px; border-radius: 10px; margin-top: 6px; font-weight: 600;
+}
+
+/* Table Responsive */
+.table-wrapper {
+  overflow-x: auto; -webkit-overflow-scrolling: touch;
+  margin: 18px 0; border-radius: 12px;
+  border: 1px solid rgba(201,162,39,0.12); background: rgba(255,255,255,0.02);
+}
+
+table {
+  width: 100%; min-width: 320px; border-collapse: collapse; font-size: 0.82rem;
+}
+
+thead th {
+  background: rgba(201,162,39,0.12); color: var(--gold-light);
+  padding: 10px 8px; text-align: center; font-weight: 600;
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap;
+}
+
+tbody td {
+  padding: 10px 8px; border-bottom: 1px solid rgba(255,255,255,0.04);
+  text-align: justify; color: var(--sand); line-height: 1.6;
+}
+tbody tr:hover { background: rgba(255,255,255,0.02); }
+
+/* Disclaimer */
+.disclaimer {
+  background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.15);
+  border-radius: 10px; padding: 14px; margin: 20px 0;
+  font-size: 0.78rem; color: #fca5a5; text-align: justify; line-height: 1.7;
+}
+.disclaimer strong { color: #f87171; }
+
+/* Footer */
+.footer { text-align: center; padding: 30px 10px; margin-top: 30px; border-top: 1px solid rgba(201,162,39,0.15); }
+.footer p { font-size: 0.75rem; color: var(--text-dim); line-height: 1.8; }
+.footer .gold { color: var(--gold-light); }
+
+/* Scroll to top */
+.scroll-top {
+  position: fixed; bottom: 20px; right: 20px; width: 42px; height: 42px;
+  background: var(--gold); color: var(--dark); border: none; border-radius: 50%;
+  font-size: 1.2rem; cursor: pointer; z-index: 10; display: none;
+  align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(201,162,39,0.3);
+  transition: transform 0.3s;
+}
+.scroll-top:hover { transform: scale(1.1); }
+
+/* Responsive */
+@media (max-width: 480px) {
+  .header h1 { font-size: 1.5rem; }
+  .bismillah { font-size: 1.5rem; }
+  .arabic-text { font-size: 1.25rem; line-height: 1.9; }
+  .dua-card { padding: 18px 14px; }
+  .main-wrapper { padding: 15px 12px 50px; }
+  .section-title { font-size: 1.2rem; }
+}
+@media (min-width: 768px) {
+  .main-wrapper { padding: 30px 24px 80px; }
+  .arabic-text { font-size: 1.6rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- Background Effects -->
+<div class="bg-container">
+  <div class="dark-veil"></div>
+</div>
+
+<!-- Main Content -->
+<div class="main-wrapper">
+
+  <!-- Header -->
+  <header class="header">
+    <div class="part-badge">📖 AKIDAH & FENOMENA GAIB</div>
+    <h1>Fenomena Makhluk Halus di Indonesia</h1>
+    <div class="subtitle">Tinjauan Syar'i & Perlindungan Islam</div>
+  </header>
+
+  <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+  <div class="divider"><span>☾</span></div>
+
+  <!-- Mukadimah -->
+  <div class="info-box">
+    <p>
+      <strong>🕌 Mukadimah:</strong> Indonesia dikenal dengan beragam fenomena makhluk halus dalam budaya masyarakat: pocong, kuntilanak, genderuwo, tuyul, dan berbagai cerita mistis lainnya. Namun, <strong>bagaimana Islam memandang fenomena-fenomena ini?</strong> Naskah ini akan membahas secara syar'i: mana yang realitas berdasarkan dalil, mana yang khurafat (dongeng), mana yang sihir, dan bagaimana perlindungan yang diajarkan Rasulullah ﷺ. Semua pembahasan berdasarkan <strong>Al-Qur'an dan Hadis Shahih</strong>.
+    </p>
+  </div>
+
+  <!-- Alert Penting -->
+  <div class="alert-box">
+    <strong>⚠️ Peringatan Penting:</strong> Banyak fenomena "makhluk halus" di Indonesia bercampur antara: (1) Realitas jin yang memang ada, (2) Sihir dan tipu daya syaitan, (3) Khurafat dan takhayul yang tidak berdasar, (4) Gangguan psikologis/medis. Islam mengajarkan kita untuk <strong>tidak mudah percaya tanpa dalil</strong>, <strong>tidak takut kecuali kepada Allah</strong>, dan <strong>tidak melakukan syirik</strong> dalam mencari perlindungan.
+  </div>
+
+  <!-- ==================== SECTION 1 ==================== -->
+  <h2 class="section-title">🔍 1. Realitas Jin dalam Islam</h2>
+
+  <div class="dua-card">
+    <div class="dua-number">1</div>
+    <span class="dua-category">Jin Itu Nyata</span>
+    <div class="translation">
+      Islam mengakui keberadaan jin sebagai makhluk ciptaan Allah yang berakal dan memiliki kehendak bebas. Mereka diciptakan dari api, dapat melihat kita, namun kita tidak dapat melihat mereka dalam wujud aslinya. Jin dapat mengganggu manusia dengan izin Allah, namun mereka <strong>tidak memiliki kekuatan mutlak</strong> dan dapat dilawan dengan dzikir dan doa.
+    </div>
+    <div class="arabic-text">
+      إِنَّهُ يَرَاكُمْ هُوَ وَقَبِيلُهُ مِنْ حَيْثُ لَا تَرَوْنَهُمْ
+    </div>
+    <div class="source">
+      <strong>📚 Sumber:</strong> QS. Al-A'rāf (7): 27. "Sesungguhnya ia (syaitan) dan pengikut-pengikutnya melihat kamu dari suatu tempat yang kamu tidak bisa melihat mereka."
+      <br><span class="quran-badge">QS. Al-Araf: 27</span>
+    </div>
+  </div>
+
+  <div class="dua-card">
+    <div class="dua-number">2</div>
+    <span class="dua-category">Jin Tidak Mengetahui Ghaib</span>
+    <div class="translation">
+      Jin <strong>tidak mengetahui masa depan atau hal ghaib</strong>. Mereka hanya bisa mencuri dengar berita dari langit (sebelum dijaga ketat) dan mencampurnya dengan kebohongan. Banyak "dukun" atau "paranormal" yang mengaku bisa melihat masa depan sebenarnya hanya mendapat informasi dari jin yang mencuri dengar, lalu dicampur dengan dusta.
+    </div>
+    <div class="arabic-text">
+      قُل لَّا يَعْلَمُ مَن فِي السَّمَاوَاتِ وَالْأَرْضِ الْغَيْبَ إِلَّا اللَّهُ
+    </div>
+    <div class="source">
+      <strong>📚 Sumber:</strong> QS. An-Naml (27): 65. "Katakanlah: Tidak ada seorang pun di langit dan di bumi yang mengetahui perkara yang ghaib kecuali Allah."
+      <br><span class="quran-badge">QS. An-Naml: 65</span>
+    </div>
+  </div>
+
+  <!-- ==================== SECTION 2 ==================== -->
+  <div class="divider"><span>✦</span></div>
+  <h2 class="section-title">👻 2. Fenomena Populer di Indonesia</h2>
+
+  <div class="dua-card">
+    <div class="dua-number">3</div>
+    <span class="dua-category">Pocong & Kuntilanak</span>
+    <div class="translation">
+      <strong>Pandangan Islam:</strong> Tidak ada dalil syar'i yang menyebutkan adanya pocong atau kuntilanak sebagai makhluk tertentu. Ini kemungkinan besar adalah: (1) <strong>Khurafat</strong> (dongeng yang dipercaya tanpa dalil), (2) <strong>Tipu daya jin</strong> yang menyerupai bentuk tertentu untuk menakuti manusia, atau (3) <strong>Sihir</strong> yang dilakukan oleh dukun. Islam mengajarkan untuk tidak percaya pada cerita tanpa dalil dan berlindung kepada Allah.
+    </div>
+    <div class="alert-box" style="margin-top: 12px;">
+      <strong>📌 Kesimpulan:</strong> Tidak ada "arwah penasaran" dalam Islam. Roh orang mati tidak bisa kembali ke dunia. Yang ada adalah jin yang bisa menyerupai berbagai bentuk untuk menipu manusia.
+    </div>
+    <div class="source">
+      <strong>📚 Referensi:</strong> <em>Majmu' Fatawa Ibn Taymiyyah</em> · <em>Kitab At-Tauhid</em> (Syaikh Muhammad bin Abdul Wahhab)
+      <br><span class="warning-badge">✓ Bukan Ajaran Islam</span>
+    </div>
+  </div>
+
+  <div class="dua-card">
+    <div class="dua-number">4</div>
+    <span class="dua-category">Genderuwo & Tuyul</span>
+    <div class="translation">
+      <strong>Genderuwo:</strong> Diceritakan sebagai makhluk berbulu dan besar. Ini kemungkinan adalah <strong>jin yang menyerupai bentuk tertentu</strong>. Jin memang bisa menyerupai berbagai bentuk (manusia, hewan, dll) sebagai ujian bagi manusia.<br><br><strong>Tuyul:</strong> Dikatakan sebagai "anak jin" yang digunakan untuk mencuri. Ini adalah <strong>sihir dan kerjasama dengan jin</strong> yang hukumnya haram dan bisa mengeluarkan dari Islam (syirik). Menggunakan tuyul berarti meminta bantuan jin untuk berbuat zalim.
+    </div>
+    <div class="arabic-text">
+      وَأَنَّهُ كَانَ رِجَالٌ مِّنَ الْإِنسِ يَعُوذُونَ بِرِجَالٍ مِّنَ الْجِنِّ فَزَادُوهُمْ رَهَقًا
+    </div>
+    <div class="source">
+      <strong>📚 Sumber:</strong> QS. Al-Jinn (72): 6. "Dan bahwasanya ada beberapa orang laki-laki dari manusia meminta perlindungan kepada beberapa laki-laki dari jin, maka jin-jin itu menambah bagi mereka dosa dan kejahatan."
+      <br><span class="quran-badge">QS. Al-Jinn: 6</span>
+      <span class="warning-badge">✓ Sihir & Syirik</span>
+    </div>
+  </div>
+
+  <div class="dua-card">
+    <div class="dua-number">5</div>
+    <span class="dua-category">Sundel Bolong & Kolor Ijo</span>
+    <div class="translation">
+      Cerita tentang sundel bolong (wanita beranak dari punggung) dan kolor ijo (celana dalam hijau yang bisa terbang) adalah <strong>khurafat murni</strong> tanpa dasar dalil. Ini adalah dongeng yang dipercaya masyarakat dan sering digunakan untuk menakut-nakuti anak-anak atau menjelaskan fenomena yang tidak dipahami. Islam mengajarkan untuk <strong>tidak mempercayai cerita tanpa bukti syar'i</strong>.
+    </div>
+    <div class="source">
+      <strong>📚 Prinsip Islam:</strong> "Barangsiapa yang mengada-adakan sesuatu dalam urusan (agama) kami ini yang bukan darinya, maka ia tertolak." — HR. Bukhari (2697) & Muslim (1718)
+      <br><span class="hadith-badge">✓ Hadis Shahih</span>
+    </div>
+  </div>
+
+  <!-- ==================== SECTION 3 ==================== -->
+  <div class="divider"><span>✦</span></div>
+  <h2 class="section-title">🔮 3. Sihir, Dukun & Paranormal</h2>
+
+  <div class="dua-card">
+    <div class="dua-number">6</div>
+    <span class="dua-category">Hukum Mempercayai Dukun</span>
+    <div class="translation">
+      Datang kepada dukun, paranormal, atau orang yang mengaku bisa melihat jin/masa depan adalah <strong>berdosa besar</strong>. Jika membenarkan klaim mereka, bisa jatuh dalam <strong>kufur</strong>. Nabi ﷺ bersabda: "Barangsiapa yang mendatangi dukun lalu bertanya kepadanya tentang sesuatu, maka shalatnya tidak diterima selama empat puluh hari." Jika ia membenarkan apa yang dikatakan dukun, maka ia telah kafir.
+    </div>
+    <div class="arabic-text">
+      مَن أَتَى عَرَّافًا فَسَأَلَهُ عَن شَيءٍ لَم تُقبَلْ لَهُ صَلاةٌ أَربَعينَ لَيلَةً
+    </div>
+    <div class="source">
+      <strong>📚 Sumber:</strong> HR. Muslim (2230) dari Shafiyyah bint Abu 'Ubaid. Juga HR. Abu Dawud (3904), Tirmidzi (135)
+      <br><span class="hadith-badge">✓ Shahih Muslim</span>
+      <span class="warning-badge">✓ Dosa Besar</span>
+    </div>
+  </div>
+
+  <div class="dua-card">
+    <div class="dua-number">7</div>
+    <span class="dua-category">Sihir Itu Nyata</span>
+    <div class="translation">
+      Sihir (black magic) adalah <strong>realitas yang diakui Islam</strong>. Allah menyebutkan dalam Al-Qur'an tentang sihir yang dipelajari dari syaitan. Nabi ﷺ sendiri pernah disihir oleh seorang Yahudi. Namun, sihir <strong>tidak bisa membunuh atau membuat sakit tanpa izin Allah</strong>. Pengobatan sihir harus dengan <strong>Ruqyah Syar'iyyah</strong> (Al-Qur'an dan doa), bukan dengan mendatangi dukun.
+    </div>
+    <div class="arabic-text">
+      وَاتَّبَعُوا مَا تَتْلُو الشَّيَاطِينُ عَلَىٰ مُلْكِ سُلَيْمَانَ ۖ وَمَا كَفَرَ سُلَيْمَانُ وَلَٰكِنَّ الشَّيَاطِينَ كَفَرُوا يُعَلِّمُونَ النَّاسَ السِّحْرَ
+    </div>
+    <div class="source">
+      <strong>📚 Sumber:</strong> QS. Al-Baqarah (2): 102. "Dan mereka mengikuti apa yang dibaca oleh syaitan-syaitan pada masa kerajaan Sulaiman... syaitan-syaitan itu mengajarkan sihir kepada manusia."
+      <br><span class="quran-badge">QS. Al-Baqarah: 102</span>
+    </div>
+  </div>
+
+  <!-- ==================== SECTION 4 ==================== -->
+  <div class="divider"><span>✦</span></div>
+  <h2 class="section-title">👁️ 4. 'Ain (Pandangan Jahat)</h2>
+
+  <div class="dua-card">
+    <div class="dua-number">8</div>
+    <span class="dua-category">'Ain Itu Haq (Nyata)</span>
+    <div class="translation">
+      'Ain (pandangan mata yang jahat/dengki) adalah <strong>nyata dan berbahaya</strong>. Bisa menyebabkan sakit, kecelakaan, atau kematian dengan izin Allah. Nabi ﷺ bersabda: "'Ain itu haq (nyata). Seandainya ada sesuatu yang bisa mendahului takdir, niscaya 'ain akan mendahuluinya." Banyak fenomena "kesurupan" atau "gangguan" sebenarnya adalah efek dari 'ain yang tidak diobati dengan cara syar'i.
+    </div>
+    <div class="arabic-text">
+      الْعَيْنُ حَقٌّ وَلَوْ كَانَ شَيْءٌ سَابَقَ الْقَدَرَ سَبَقَتْهُ الْعَيْنُ
+    </div>
+    <div class="source">
+      <strong>📚 Sumber:</strong> HR. Muslim (2188) dari Abu Hurairah. Juga HR. Bukhari (5740)
+      <br><span class="hadith-badge">✓ Shahih Bukhari & Muslim</span>
+    </div>
+  </div>
+
+  <div class="dua-card">
+    <div class="dua-number">9</div>
+    <span class="dua-category">Pengobatan 'Ain</span>
+    <div class="translation">
+      Pengobatan 'Ain adalah dengan <strong>mandi atau berwudhu</strong> dari air bekas basuhan orang yang memandang (jika diketahui), lalu air tersebut disiramkan kepada yang terkena 'ain. Jika tidak diketahui, maka dibacakan <strong>Al-Fatihah, Al-Ikhlas, Al-Falaq, An-Nas</strong>, dan ayat-ayat ruqyah lainnya. Jangan sampai mencari pengobatan kepada dukun!
+    </div>
+    <div class="source">
+      <strong>📚 Sumber:</strong> <em>Kitab Az-Zad (Ibnul Qayyim)</em> · <em>Majmu' Fatawa Ibn Taymiyyah</em> · HR. Ahmad (21861) — Shahih
+      <br><span class="hadith-badge">✓ Cara Syar'i</span>
+    </div>
+  </div>
+
+  <!-- ==================== SECTION 5 ==================== -->
+  <div class="divider"><span>✦</span></div>
+  <h2 class="section-title">🛡️ 5. Perlindungan Syar'i</h2>
+
+  <div class="dua-card">
+    <div class="dua-number">10</div>
+    <span class="dua-category">Benteng Perlindungan Harian</span>
+    <div class="translation">
+      <strong>Pagi & Petang:</strong> Baca Ayat Kursi, Al-Ikhlas, Al-Falaq, An-Nas (3x masing-masing).<br>
+      <strong>Masuk Rumah:</strong> Baca Bismillah dan salam — syaitan tidak bisa masuk.<br>
+      <strong>Tidur:</strong> Baca Ayat Kursi, 2 ayat akhir Al-Baqarah, Al-Mulk.<br>
+      <strong>Ketika Takut:</strong> "A'ūżu bikalimātillāhit-tāmmāti min syarri mā khalaq."<br>
+      <strong>Umum:</strong> Perbanyak dzikir, shalat tepat waktu, baca Al-Qur'an, jauhi maksiat.
+    </div>
+    <div class="arabic-text">
+      أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ
+    </div>
+    <div class="transliteration">
+      "A'ūżu bikalimātillāhit-tāmmāti min syarri mā khalaq."
+    </div>
+    <div class="source">
+      <strong>📚 Sumber:</strong> HR. Muslim (2708). Nabi ﷺ bersabda: "Tidak ada sesuatu pun yang bisa mencelakakannya."
+      <br><span class="hadith-badge">✓ Shahih Muslim</span>
+    </div>
+  </div>
+
+  <div class="dua-card">
+    <div class="dua-number">11</div>
+    <span class="dua-category">Ruqyah Syar'iyyah</span>
+    <div class="translation">
+      Ruqyah syar'iyyah adalah pengobatan dengan <strong>Al-Qur'an dan doa-doa ma'tsur</strong> (dari Nabi ﷺ). Dibacakan oleh diri sendiri atau orang lain dengan syarat: (1) Menggunakan bahasa Arab atau yang dipahami, (2) Meyakini kesembuhan dari Allah, bukan dari bacaan, (3) Tidak ada unsur syirik. Ini adalah <strong>satu-satunya cara yang halal</strong> untuk mengobati gangguan jin, sihir, atau 'ain.
+    </div>
+    <div class="arabic-text">
+      وَنُنَزِّلُ مِنَ الْقُرْآنِ مَا هُوَ شِفَاءٌ وَرَحْمَةٌ لِّلْمُؤْمِنِينَ
+    </div>
+    <div class="source">
+      <strong>📚 Sumber:</strong> QS. Al-Isrā' (17): 82. "Dan Kami turunkan dari Al-Qur'an suatu yang menjadi penawar dan rahmat bagi orang-orang yang beriman."
+      <br><span class="quran-badge">QS. Al-Isra: 82</span>
+    </div>
+  </div>
+
+  <!-- Tables -->
+  <h2 class="section-title">📊 Fenomena vs Pandangan Islam</h2>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr><th>Fenomena</th><th>Status dalam Islam</th><th>Penjelasan</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Jin</td><td>✓ Nyata</td><td>Makhluk ciptaan Allah dari api, ada yang muslim & kafir</td></tr>
+        <tr><td>Sihir</td><td>✓ Nyata</td><td>Realitas, tapi haram dipelajari & dipraktikkan</td></tr>
+        <tr><td>'Ain</td><td>✓ Nyata</td><td>Pandangan jahat yang bisa membahayakan</td></tr>
+        <tr><td>Pocong/Kuntilanak</td><td>✗ Khurafat</td><td>Tidak ada dalil, kemungkinan tipu jin atau dongeng</td></tr>
+        <tr><td>Genderuwo</td><td>? Jin</td><td>Kemungkinan jin yang menyerupai bentuk tertentu</td></tr>
+        <tr><td>Tuyul</td><td>✗ Sihir</td><td>Kerjasama dengan jin untuk mencuri (haram & syirik)</td></tr>
+        <tr><td>Dukun/Paranormal</td><td>✗ Haram</td><td>Bekerjasama dengan jin, datang kepadanya dosa besar</td></tr>
+        <tr><td>Arwah Penance</td><td>✗ Khurafat</td><td>Roh tidak bisa kembali ke dunia</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="section-title">🛡️ Amalan Perlindungan Lengkap</h2>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr><th>Waktu</th><th>Amalan</th><th>Faedah</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Pagi & Petang</td><td>Ayat Kursi + 3 Qul (3x)</td><td>Perlindungan dari segala kejahatan</td></tr>
+        <tr><td>Masuk rumah</td><td>Bismillah + Salam</td><td>Syaitan tidak bisa masuk/menginap</td></tr>
+        <tr><td>Tidur</td><td>Ayat Kursi + 2 ayat akhir Al-Baqarah</td><td>Dijaga sepanjang malam</td></tr>
+        <tr><td>Ketika takut</td><td>A'ūżu bikalimātillāh...</td><td>Perlindungan dari kejahatan makhluk</td></tr>
+        <tr><td>Sehari-hari</td><td>Perbanyak dzikir & Al-Qur'an</td><td>Jin/syaitan menjauh dari yang berdzikir</td></tr>
+        <tr><td>Wudhu & Shalat</td><td>Tepat waktu & berjamaah</td><td>Benteng dari gangguan syaitan</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Disclaimer -->
+  <div class="disclaimer">
+    <strong>📌 Kesimpulan:</strong> (1) Jin, sihir, dan 'ain adalah <strong>nyata</strong> berdasarkan dalil. (2) Pocong, kuntilanak, sundel bolong kemungkinan besar <strong>khurafat atau tipu jin</strong>. (3) <strong>Jangan percaya dukun/paranormal</strong> — itu dosa besar. (4) <strong>Lindungi diri dengan dzikir & Al-Qur'an</strong>, bukan jimat atau ritual. (5) Jika ada gangguan, gunakan <strong>Ruqyah Syar'iyyah</strong>, bukan dukun. (6) <strong>Hanya Allah yang patut ditakuti</strong>, bukan makhluk.
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="divider"><span>☾</span></div>
+    <p>
+      <span class="gold">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</span><br><br>
+      <strong>Fenomena Makhluk Halus di Indonesia — Tinjauan Syar'i</strong><br>
+      Disusun berdasarkan Al-Qur'an & Hadis Shahih<br><br>
+      Semoga Allah melindungi kita dari syirik, khurafat, dan tipu daya syaitan.<br>
+      Memberikan kita tauhid yang murni dan perlindungan dengan dzikir-Nya.<br><br>
+      <span class="gold">اللَّهُمَّ إِنَّا نَعُوذُ بِكَ مِنَ الشِّرْكِ وَنَعُوذُ بِكَ مِنَ الْخُرَافَاتِ وَالْأَوْهَامِ</span><br><br>
+      <em>📖 Rujukan: Tafsir Ibn Katsir · Shahih Bukhari & Muslim · Majmu' Fatawa Ibn Taymiyyah · Zad al-Ma'ad (Ibn Qayyim) · Kitab At-Tauhid</em>
+    </p>
+  </footer>
+
+</div>
+
+<!-- Scroll to top button -->
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+  // ===== MIST PARTICLES =====
+  const bgContainer = document.querySelector('.bg-container');
+  const particleCount = 20;
+
+  for (let i = 0; i < particleCount; i++) {
+    const p = document.createElement('div');
+    p.classList.add('mist-particle');
+    const size = Math.random() * 6 + 3;
+    p.style.width = size + 'px';
+    p.style.height = size + 'px';
+    p.style.left = Math.random() * 100 + '%';
+    p.style.animationDuration = (Math.random() * 18 + 12) + 's';
+    p.style.animationDelay = Math.random() * 10 + 's';
+    bgContainer.appendChild(p);
+  }
+
+  for (let i = 0; i < 4; i++) {
+    const orb = document.createElement('div');
+    orb.classList.add('glow-orb');
+    const size = Math.random() * 200 + 100;
+    orb.style.width = size + 'px';
+    orb.style.height = size + 'px';
+    orb.style.top = Math.random() * 70 + '%';
+    orb.style.left = Math.random() * 80 + '%';
+    orb.style.background = ['var(--purple)', 'var(--gold)', 'rgba(96,165,250,0.2)', 'var(--dark2)'][i];
+    orb.style.animationDelay = (Math.random() * 6) + 's';
+    bgContainer.appendChild(orb);
+  }
+
+  // ===== SCROLL TO TOP =====
+  const scrollTopBtn = document.getElementById('scrollTop');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 400) {
+      scrollTopBtn.style.display = 'flex';
+    } else {
+      scrollTopBtn.style.display = 'none';
+    }
+  });
+
+  // ===== FADE IN CARDS ON SCROLL =====
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.animationPlayState = 'running';
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.dua-card').forEach(card => {
+    observer.observe(card);
+  });
+</script>
+
+</body>
+</html>
+
+
