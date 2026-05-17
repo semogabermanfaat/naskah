@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kitab Jin — Mengenal Alam Jin dalam Islam</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=Amiri:ital,wght@0,400;0,700;1,400&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+
+:root{
+  --abyss:    #000200;
+  --void:     #010401;
+  --dark:     #030806;
+  --deep:     #060e08;
+  --forest:   #0a1a0c;
+  --grove:    #0e2412;
+  --mist:     #122e16;
+  --shadow:   #0f1f12;
+  --jade:     #1a5c24;
+  --jade-lt:  #228030;
+  --jade-glow:#2aa038;
+  --emerald:  #00c84a;
+  --em-pale:  rgba(0,200,74,.08);
+  --em-dim:   rgba(0,200,74,.15);
+  --em-glow:  rgba(0,200,74,.25);
+  --mold:     #4a7a30;
+  --mold-lt:  #6a9a48;
+  --amber:    #c88010;
+  --amber-lt: #e8a020;
+  --amber-p:  rgba(200,128,16,.15);
+  --rust:     #a04020;
+  --rust-lt:  #c86030;
+  --rust-p:   rgba(160,64,32,.15);
+  --violet:   #7030a0;
+  --violet-lt:#a050d0;
+  --violet-p: rgba(112,48,160,.15);
+  --silver:   #8898a0;
+  --moon:     #a8c0b0;
+  --text:     rgba(168,200,176,.88);
+  --text-s:   rgba(128,168,136,.62);
+  --text-d:   rgba(88,128,96,.38);
+  --b-em:     rgba(0,200,74,.18);
+  --b-amber:  rgba(200,128,16,.18);
+  --b-rust:   rgba(160,64,32,.18);
+  --b-violet: rgba(112,48,160,.18);
+  --b-silver: rgba(136,152,160,.12);
+}
+
+html{scroll-behavior:smooth;}
+
+body{
+  background:var(--abyss);
+  font-family:'EB Garamond',Georgia,serif;
+  color:var(--text);
+  overflow-x:hidden;
+}
+
+/* ══ CANVAS - Mist & Particles ══ */
+#cvs{position:fixed;inset:0;z-index:0;pointer-events:none;}
+
+/* ══ HERO ══ */
+.hero{
+  min-height:100vh;position:relative;z-index:1;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:80px 24px 120px;overflow:hidden;
+}
+
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 50% 40% at 50% 45%,rgba(0,200,74,.06) 0%,transparent 70%),
+    radial-gradient(ellipse 80% 30% at 50% 100%,rgba(0,0,2,.95) 0%,transparent 60%);
+  pointer-events:none;
+}
+
+/* Candle glow 
+.candle-wrap{
+  position:absolute;
+  bottom:clamp(80px,12vw,140px);
+  left:50%;transform:translateX(-50%);
+  pointer-events:none;
+}
+.candle{
+  width:16px;height:clamp(60px,8vw,90px);
+  background:linear-gradient(180deg,#e8c090 0%,#c09060 60%,#804020 100%);
+  margin:0 auto;position:relative;
+}
+.candle::after{content:'';position:absolute;bottom:100%;left:50%;transform:translateX(-50%);
+  width:3px;height:20px;background:linear-gradient(180deg,rgba(255,200,80,.0),rgba(255,200,80,.9));
+  border-radius:50% 50% 0 0;animation:flicker 1.8s ease-in-out infinite alternate;}
+.flame{
+  position:absolute;bottom:calc(100% + 16px);left:50%;transform:translateX(-50%);
+  width:14px;height:24px;
+  background:radial-gradient(ellipse 60% 80% at 50% 70%,rgba(255,220,80,.9),rgba(255,140,20,.6),transparent);
+  border-radius:50% 50% 40% 40%;
+  animation:flicker 1.8s ease-in-out infinite alternate;
+  filter:blur(1px);
+}
+.flame-glow{
+  position:absolute;bottom:calc(100% + 0px);left:50%;transform:translateX(-50%);
+  width:60px;height:60px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,180,40,.18),transparent 70%);
+  animation:flicker 1.8s ease-in-out infinite alternate;
+}
+@keyframes flicker{
+  0%{opacity:.85;transform:translateX(-50%) scaleX(1);}
+  33%{opacity:1;transform:translateX(-50%) scaleX(.9) scaleY(1.05);}
+  66%{opacity:.9;transform:translateX(-50%) scaleX(1.1) scaleY(.95);}
+  100%{opacity:.95;transform:translateX(-50%) scaleX(.95);}
+}*/
+
+.hero-inner{position:relative;z-index:2;max-width:780px;}
+
+.hero-ar-big{
+  font-family:'Amiri',serif;
+  font-size:clamp(2rem,7vw,5.5rem);
+  color:var(--emerald);
+  text-shadow:0 0 30px rgba(0,200,74,.35),0 0 80px rgba(0,200,74,.12);
+  line-height:1.7;margin-bottom:12px;
+  animation:riseUp 2s ease both;
+}
+
+.hero-kicker{
+  font-family:'Syncopate',sans-serif;font-weight:400;
+  font-size:clamp(.5rem,1.2vw,.65rem);letter-spacing:8px;text-transform:uppercase;
+  color:var(--text-d);margin-bottom:18px;
+  animation:riseUp 2s ease both .2s;
+}
+
+.hero-title{
+  font-family:'EB Garamond',serif;font-weight:800;
+  font-size:clamp(2.5rem,8vw,6.5rem);
+  line-height:1.02;letter-spacing:-1px;
+  background:linear-gradient(160deg,var(--moon) 0%,var(--emerald) 40%,var(--mold-lt) 75%,var(--text-s) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  margin-bottom:8px;
+  animation:riseUp 2s ease both .06s;
+}
+
+.hero-sub{
+  font-family:'EB Garamond',serif;font-style:italic;
+  font-size:clamp(.9rem,2.5vw,1.5rem);
+  color:var(--text-s);margin-bottom:24px;letter-spacing:2px;
+  animation:riseUp 2s ease both .28s;
+}
+
+.hero-rule{
+  display:flex;align-items:center;gap:14px;justify-content:center;
+  margin:0 auto 26px;
+  animation:riseUp 2s ease both .38s;
+}
+.hero-rule span{width:80px;height:1px;background:linear-gradient(90deg,transparent,var(--b-em));}
+.hero-rule span:last-child{background:linear-gradient(90deg,var(--b-em),transparent);}
+.hero-rule em{color:var(--emerald);font-style:normal;letter-spacing:8px;font-size:.8rem;}
+
+.hero-verse{
+  max-width:580px;margin:0 auto;padding:22px 30px;
+  background:rgba(0,200,74,.04);border:1px solid var(--b-em);
+  animation:riseUp 2s ease both .5s;
+}
+.hv-ar{font-family:'Amiri',serif;font-size:clamp(1rem,2.5vw,1.4rem);color:var(--emerald);line-height:2.2;direction:rtl;margin-bottom:10px;}
+.hv-id{font-family:'EB Garamond',serif;font-style:italic;font-size:.85rem;color:var(--text-s);line-height:1.7;}
+
+@keyframes riseUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+
+/* ══ BODY ══ */
+.wrap{max-width:880px;margin:0 auto;padding:0 16px 80px;position:relative;z-index:1;}
+
+/* Chapter */
+.chap{margin:54px 0 0;display:flex;align-items:stretch;}
+.cs{width:5px;flex-shrink:0;}
+.cs-em{background:var(--jade-lt);}
+.cs-am{background:var(--amber);}
+.cs-ru{background:var(--rust-lt);}
+.cs-vi{background:var(--violet-lt);}
+.cs-si{background:var(--silver);}
+
+.cb{flex:1;padding:15px 20px;}
+.cb-em{background:var(--em-pale);border:1px solid var(--b-em);border-left:none;}
+.cb-am{background:var(--amber-p);border:1px solid var(--b-amber);border-left:none;}
+.cb-ru{background:var(--rust-p);border:1px solid var(--b-rust);border-left:none;}
+.cb-vi{background:var(--violet-p);border:1px solid var(--b-violet);border-left:none;}
+.cb-si{background:rgba(136,152,160,.06);border:1px solid var(--b-silver);border-left:none;}
+
+.ct{font-family:'Syncopate',sans-serif;font-size:.58rem;letter-spacing:5px;text-transform:uppercase;margin-bottom:6px;}
+.ct-em{color:var(--emerald);}
+.ct-am{color:var(--amber-lt);}
+.ct-ru{color:var(--rust-lt);}
+.ct-vi{color:var(--violet-lt);}
+.ct-si{color:var(--silver);}
+
+.car{font-family:'Amiri',serif;font-size:clamp(1.1rem,2.8vw,1.65rem);line-height:1.8;margin-bottom:4px;}
+.car-em{color:var(--emerald);}
+.car-am{color:var(--amber-lt);}
+.car-ru{color:var(--rust-lt);}
+.car-vi{color:var(--violet-lt);}
+.car-si{color:var(--silver);}
+
+.chtitle{font-family:'EB Garamond',serif;font-weight:700;font-size:clamp(1.1rem,2.8vw,1.75rem);line-height:1.2;color:var(--moon);}
+
+/* Section */
+.sec{padding:28px 0 24px;border-bottom:1px solid rgba(0,200,74,.06);}
+.sec:last-child{border-bottom:none;}
+
+/* Prose */
+.prose p{
+  font-size:clamp(.97rem,2.1vw,1.08rem);line-height:2.1;
+  color:var(--text);margin-bottom:15px;
+  text-align:justify;hyphens:auto;-webkit-hyphens:auto;
+}
+.prose p.lead{font-style:italic;font-size:clamp(1rem,2.2vw,1.12rem);line-height:1.92;text-align:justify;}
+.pl-em{color:var(--jade-glow);}
+.pl-am{color:var(--amber-lt);}
+.pl-ru{color:var(--rust-lt);}
+.pl-vi{color:var(--violet-lt);}
+
+.prose p:first-of-type:not(.lead)::first-letter{
+  font-family:'EB Garamond',serif;font-weight:800;
+  font-size:4.2em;line-height:.72;float:left;margin:8px 12px 0 0;
+}
+.fl-em p:first-of-type:not(.lead)::first-letter{color:var(--emerald);}
+.fl-am p:first-of-type:not(.lead)::first-letter{color:var(--amber-lt);}
+.fl-ru p:first-of-type:not(.lead)::first-letter{color:var(--rust-lt);}
+.fl-vi p:first-of-type:not(.lead)::first-letter{color:var(--violet-lt);}
+.fl-si p:first-of-type:not(.lead)::first-letter{color:var(--silver);}
+
+/* Dalil */
+.dalil{margin:22px 0;display:grid;grid-template-columns:4px 1fr;}
+.d-em{background:var(--em-pale);border:1px solid var(--b-em);}
+.d-am{background:var(--amber-p);border:1px solid var(--b-amber);}
+.d-ru{background:var(--rust-p);border:1px solid var(--b-rust);}
+.d-vi{background:var(--violet-p);border:1px solid var(--b-violet);}
+.d-si{background:rgba(136,152,160,.05);border:1px solid var(--b-silver);}
+.db-em{background:var(--jade-lt);}
+.db-am{background:var(--amber);}
+.db-ru{background:var(--rust-lt);}
+.db-vi{background:var(--violet-lt);}
+.db-si{background:var(--silver);}
+.dbody{padding:17px 20px 13px;}
+.dtag{font-family:'Syncopate',sans-serif;font-size:.58rem;letter-spacing:4px;text-transform:uppercase;margin-bottom:9px;display:flex;align-items:center;gap:10px;}
+.dtag::after{content:'';flex:1;height:1px;}
+.dt-em{color:var(--emerald);}
+.dt-em::after{background:linear-gradient(90deg,var(--b-em),transparent);}
+.dt-am{color:var(--amber-lt);}
+.dt-am::after{background:linear-gradient(90deg,var(--b-amber),transparent);}
+.dt-ru{color:var(--rust-lt);}
+.dt-ru::after{background:linear-gradient(90deg,var(--b-rust),transparent);}
+.dt-vi{color:var(--violet-lt);}
+.dt-vi::after{background:linear-gradient(90deg,var(--b-violet),transparent);}
+.dt-si{color:var(--silver);}
+.dt-si::after{background:linear-gradient(90deg,var(--b-silver),transparent);}
+.dar{font-family:'Amiri',serif;font-size:clamp(1.1rem,2.8vw,1.52rem);line-height:2.2;direction:rtl;text-align:right;margin-bottom:11px;padding-bottom:9px;}
+.dar-em{color:var(--emerald);border-bottom:1px dashed var(--b-em);}
+.dar-am{color:var(--amber-lt);border-bottom:1px dashed var(--b-amber);}
+.dar-ru{color:var(--rust-lt);border-bottom:1px dashed var(--b-rust);}
+.dar-vi{color:var(--violet-lt);border-bottom:1px dashed var(--b-violet);}
+.dar-si{color:var(--silver);border-bottom:1px dashed var(--b-silver);}
+.dtrans{font-style:italic;font-size:.92rem;line-height:1.82;color:var(--text-s);margin-bottom:7px;text-align:justify;}
+.dref{font-family:'Syncopate',sans-serif;font-size:.58rem;letter-spacing:2px;text-transform:uppercase;}
+.dref-em{color:var(--jade-lt);}
+.dref-am{color:var(--amber);}
+.dref-ru{color:var(--rust-lt);}
+.dref-vi{color:var(--violet-lt);}
+.dref-si{color:var(--silver);}
+
+/* Highlight */
+.hl{margin:20px 0;padding:17px 20px;}
+.hl-em{background:var(--em-pale);border:1px solid var(--b-em);border-left:4px solid var(--jade-lt);}
+.hl-am{background:var(--amber-p);border:1px solid var(--b-amber);border-left:4px solid var(--amber-lt);}
+.hl-ru{background:var(--rust-p);border:1px solid var(--b-rust);border-left:4px solid var(--rust-lt);}
+.hl-vi{background:var(--violet-p);border:1px solid var(--b-violet);border-left:4px solid var(--violet-lt);}
+.hl-label{font-family:'Syncopate',sans-serif;font-size:.58rem;letter-spacing:3px;text-transform:uppercase;margin-bottom:8px;}
+.hll-em{color:var(--emerald);}
+.hll-am{color:var(--amber-lt);}
+.hll-ru{color:var(--rust-lt);}
+.hll-vi{color:var(--violet-lt);}
+.hl-ar{font-family:'Amiri',serif;font-size:clamp(1.05rem,2.5vw,1.42rem);line-height:2;margin-bottom:8px;}
+.hlar-em{color:var(--emerald);}
+.hlar-am{color:var(--amber-lt);}
+.hlar-ru{color:var(--rust-lt);}
+.hlar-vi{color:var(--violet-lt);}
+.hl-trans{font-style:italic;font-size:.9rem;line-height:1.82;color:var(--text-s);text-align:justify;margin-bottom:6px;}
+.hl-ref{font-family:'Syncopate',sans-serif;font-size:.58rem;letter-spacing:2px;text-transform:uppercase;color:var(--text-d);}
+
+/* Cards */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:5px;margin:18px 0;}
+.card{padding:17px 15px;border:1px solid;background:rgba(0,0,0,.25);}
+.card-em{border-color:var(--b-em);}
+.card-am{border-color:var(--b-amber);}
+.card-ru{border-color:var(--b-rust);}
+.card-vi{border-color:var(--b-violet);}
+.card-si{border-color:var(--b-silver);}
+.card-icon{font-size:1.4rem;margin-bottom:7px;display:block;}
+.card-title{font-family:'EB Garamond',serif;font-weight:700;font-size:.97rem;margin-bottom:4px;}
+.ctit-em{color:var(--emerald);}
+.ctit-am{color:var(--amber-lt);}
+.ctit-ru{color:var(--rust-lt);}
+.ctit-vi{color:var(--violet-lt);}
+.ctit-si{color:var(--silver);}
+.card-desc{font-size:.83rem;line-height:1.72;font-style:italic;color:var(--text-s);text-align:justify;}
+.card-ref{font-family:'Syncopate',sans-serif;font-size:.55rem;letter-spacing:2px;text-transform:uppercase;margin-top:7px;display:block;color:var(--text-d);}
+
+/* Table */
+.tbl-wrap{margin:20px 0;overflow:hidden;}
+.tbl{width:100%;border-collapse:collapse;font-size:.87rem;table-layout:fixed;}
+.tbl.th-em thead tr{background:rgba(0,200,74,.1);border-bottom:1px solid var(--b-em);}
+.tbl.th-am thead tr{background:var(--amber-p);border-bottom:1px solid var(--b-amber);}
+.tbl.th-ru thead tr{background:var(--rust-p);border-bottom:1px solid var(--b-rust);}
+.tbl.th-vi thead tr{background:var(--violet-p);border-bottom:1px solid var(--b-violet);}
+.tbl thead th{padding:9px 12px;text-align:left;font-family:'Syncopate',sans-serif;font-size:.58rem;letter-spacing:3px;text-transform:uppercase;}
+.th-em th{color:var(--emerald);}
+.th-am th{color:var(--amber-lt);}
+.th-ru th{color:var(--rust-lt);}
+.th-vi th{color:var(--violet-lt);}
+.tbl tbody tr{border-bottom:1px solid rgba(0,200,74,.05);}
+.tbl tbody tr:nth-child(even){background:rgba(0,200,74,.02);}
+.tbl td{padding:10px 12px;line-height:1.68;color:var(--text-s);vertical-align:top;word-break:break-word;}
+.tbl td:first-child{font-weight:600;color:var(--moon);}
+.tbdg{display:inline-block;padding:2px 8px;font-family:'Syncopate',sans-serif;font-size:.53rem;letter-spacing:1.5px;text-transform:uppercase;white-space:nowrap;}
+.tbdg-em{background:var(--em-pale);color:var(--emerald);border:1px solid var(--b-em);}
+.tbdg-am{background:var(--amber-p);color:var(--amber-lt);border:1px solid var(--b-amber);}
+.tbdg-ru{background:var(--rust-p);color:var(--rust-lt);border:1px solid var(--b-rust);}
+.tbdg-vi{background:var(--violet-p);color:var(--violet-lt);border:1px solid var(--b-violet);}
+.tbdg-gray{background:rgba(136,152,160,.08);color:var(--silver);border:1px solid var(--b-silver);}
+@media(max-width:580px){
+  .tbl,.tbl thead,.tbl tbody,.tbl th,.tbl td,.tbl tr{display:block;width:100%;}
+  .tbl thead{display:none;}
+  .tbl tbody tr{border:1px solid rgba(0,200,74,.1);margin-bottom:7px;padding:10px 12px;}
+  .tbl td{padding:3px 0;border:none;display:grid;grid-template-columns:76px 1fr;gap:5px;}
+  .tbl td::before{content:attr(data-label);font-family:'Syncopate',sans-serif;font-size:.55rem;letter-spacing:2px;text-transform:uppercase;color:var(--emerald);padding-top:2px;}
+  .tbl.th-am td::before{color:var(--amber-lt);}
+  .tbl.th-ru td::before{color:var(--rust-lt);}
+  .tbl.th-vi td::before{color:var(--violet-lt);}
+  .tbl td:first-child{font-size:.93rem;}
+}
+
+/* Banner */
+.banner{margin:24px 0;padding:22px 26px;text-align:center;}
+.banner-em{background:var(--em-pale);border:1px solid var(--b-em);}
+.banner-dk{background:rgba(0,0,0,.5);border:1px solid var(--b-em);}
+.ban-ar{font-family:'Amiri',serif;font-size:clamp(1.1rem,2.8vw,1.52rem);line-height:2;margin-bottom:10px;}
+.bnar-em{color:var(--emerald);}
+.ban-id{font-style:italic;font-size:.9rem;line-height:1.8;color:var(--text-s);margin-bottom:6px;text-align:justify;}
+.ban-ref{font-family:'Syncopate',sans-serif;font-size:.58rem;letter-spacing:3px;text-transform:uppercase;color:var(--text-d);}
+
+/* Sep */
+.sep{text-align:center;padding:12px 0;position:relative;}
+.sep::before{content:'';position:absolute;top:50%;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(0,200,74,.15),transparent);}
+.sep span{position:relative;z-index:1;background:var(--abyss);padding:0 16px;font-family:'Amiri',serif;font-size:1rem;color:rgba(0,200,74,.2);letter-spacing:10px;}
+
+/* Penutup */
+.penutup{
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 0%,rgba(0,200,74,.06) 0%,transparent 70%),
+    linear-gradient(180deg,var(--forest) 0%,var(--dark) 50%,var(--void) 100%);
+  padding:64px 24px 72px;text-align:center;
+  position:relative;overflow:hidden;margin-top:56px;z-index:1;
+}
+.penutup::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--jade-lt),var(--emerald),var(--jade-lt),transparent);}
+.penutup-inner{max-width:560px;margin:0 auto;}
+.penutup-ar{font-family:'Amiri',serif;font-size:clamp(1.4rem,4vw,2.5rem);color:var(--emerald);line-height:2;text-shadow:0 0 20px rgba(0,200,74,.2);margin-bottom:14px;}
+.penutup-div{width:70px;height:1px;background:linear-gradient(90deg,transparent,var(--jade-lt),transparent);margin:16px auto;}
+.penutup-p{font-style:italic;font-size:clamp(.9rem,2vw,1.03rem);color:var(--text-s);line-height:1.95;margin-bottom:10px;text-align:justify;}
+.penutup-footer{margin-top:36px;padding-top:20px;border-top:1px solid rgba(0,200,74,.06);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+.penutup-footer .logo{font-family:'Amiri',serif;font-size:1.1rem;color:rgba(0,200,74,.25);}
+.penutup-footer .tag{font-family:'Syncopate',sans-serif;font-size:.52rem;letter-spacing:3px;text-transform:uppercase;color:rgba(168,200,176,.1);}
+
+@media(max-width:600px){
+  .wrap{padding:0 13px 60px;}
+  .hero{padding:56px 18px 100px;}
+  .cb{padding:11px 14px;}
+  .hl,.banner{padding:13px 13px;}
+  .penutup{padding:44px 16px 52px;}
+}
+</style>
+</head>
+<body>
+
+<canvas id="cvs"></canvas>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="candle-wrap">
+    <div class="flame-glow"></div>
+    <div class="flame"></div>
+    <div class="candle"></div>
+  </div>
+
+  <div class="hero-inner">
+    <div class="hero-ar-big">كِتَابُ الْجِنِّ</div>
+    <p class="hero-kicker">Akidah Islam · Makhluk Ghaib · Berdalil Al-Qur'an &amp; Hadis Shahih</p>
+    <h1 class="hero-title">Kitab Jin</h1>
+    <div class="hero-sub">Mengenal Alam Jin dalam Cahaya Ilmu &amp; Wahyu</div>
+    <div class="hero-rule"><span></span><em>✦ ❖ ✦</em><span></span></div>
+    <div class="hero-verse">
+      <div class="hv-ar">قُلْ أُوحِيَ إِلَيَّ أَنَّهُ اسْتَمَعَ نَفَرٌ مِّنَ الْجِنِّ فَقَالُوا إِنَّا سَمِعْنَا قُرْآنًا عَجَبًا ۝ يَهْدِي إِلَى الرُّشْدِ فَآمَنَّا بِهِ</div>
+      <div class="hv-id">"Katakanlah (Muhammad): Telah diwahyukan kepadaku bahwa sekumpulan jin telah mendengarkan (Al-Qur'an), lalu mereka berkata: Sungguh kami telah mendengarkan Al-Qur'an yang menakjubkan. Yang memberi petunjuk kepada kebenaran, lalu kami beriman kepadanya."<br><em style="color:var(--text-d);">— QS. Al-Jinn (72): 1–2</em></div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+
+<!-- ══ BAB I: DEFINISI & PENCIPTAAN ══ -->
+<div class="chap">
+  <div class="cs cs-em"></div>
+  <div class="cb cb-em">
+    <div class="ct ct-em">✦ Bab Pertama</div>
+    <div class="car car-em">تَعْرِيفُ الْجِنِّ وَأَصْلُ خَلْقِهِمْ</div>
+    <div class="chtitle">Definisi Jin &amp; Asal Penciptaannya</div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="prose fl-em">
+    <p class="lead pl-em">Jin adalah makhluk ghaib yang Allah ciptakan dari api — berbeda dengan manusia yang diciptakan dari tanah dan malaikat yang diciptakan dari cahaya. Mereka adalah makhluk nyata, bukan dongeng atau simbol — keberadaan mereka ditetapkan secara tegas dalam Al-Qur'an dan hadis shahih, dan termasuk dalam pokok-pokok keimanan seorang Muslim.</p>
+    <p>Kata "jin" (جِنّ) dalam bahasa Arab berasal dari akar kata "ijtinan" yang berarti tersembunyi atau terhalang dari pandangan. Inilah karakter terpenting jin: mereka ada, bergerak, dan berinteraksi dengan dunia — namun tidak terlihat oleh mata manusia biasa. Allah menciptakan mereka jauh sebelum Adam — QS. Al-Hijr: 27 menyebutkan jin diciptakan dari api yang menyengat (mārij min nār) sebelum manusia diciptakan.</p>
+    <p>Jin memiliki akal, kemampuan memilih antara baik dan buruk, dan bertanggung jawab atas perbuatan mereka. Karena itu, di antara mereka ada yang beriman dan ada yang kafir, ada yang shalih dan ada yang fasik. Mereka juga akan dibangkitkan dan dihisab pada Hari Kiamat seperti manusia.</p>
+  </div>
+
+  <div class="dalil d-em">
+    <div class="db-em"></div>
+    <div class="dbody">
+      <div class="dtag dt-em">📖 QS. Al-Hijr: 26–27 — Penciptaan Jin dari Api</div>
+      <div class="dar dar-em">وَلَقَدْ خَلَقْنَا الْإِنسَانَ مِن صَلْصَالٍ مِّنْ حَمَإٍ مَّسْنُونٍ ۝ وَالْجَانَّ خَلَقْنَاهُ مِن قَبْلُ مِن نَّارِ السَّمُومِ</div>
+      <div class="dtrans">"Dan sungguh, Kami telah menciptakan manusia (Adam) dari tanah liat kering dari lumpur hitam yang diberi bentuk. Dan Kami telah menciptakan jin sebelum itu dari api yang sangat panas."</div>
+      <div class="dref dref-em">QS. Al-Hijr (15): 26–27 — Jin diciptakan sebelum manusia, dari api yang menyengat</div>
+    </div>
+  </div>
+
+  <div class="dalil d-em">
+    <div class="db-em"></div>
+    <div class="dbody">
+      <div class="dtag dt-em">📜 HR. Muslim — Bahan Penciptaan Tiga Makhluk</div>
+      <div class="dar dar-em">خُلِقَتِ الْمَلَائِكَةُ مِنْ نُورٍ وَخُلِقَ الْجَانُّ مِنْ مَارِجٍ مِنْ نَارٍ وَخُلِقَ آدَمُ مِمَّا وُصِفَ لَكُمْ</div>
+      <div class="dtrans">"Malaikat diciptakan dari cahaya, jin diciptakan dari api yang menyala-nyala (marij min nar), dan Adam diciptakan dari apa yang telah diterangkan kepada kalian (tanah)."</div>
+      <div class="dref dref-em">HR. Muslim (2996) — dari Aisyah radhiyallahu 'anha</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ BAB II: SIFAT & KEMAMPUAN ══ -->
+<div class="chap">
+  <div class="cs cs-am"></div>
+  <div class="cb cb-am">
+    <div class="ct ct-am">✦ Bab Kedua</div>
+    <div class="car car-am">صِفَاتُ الْجِنِّ وَقُدْرَاتُهُمْ</div>
+    <div class="chtitle">Sifat-Sifat Jin &amp; Kemampuan Mereka</div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="prose fl-am">
+    <p class="lead pl-am">Jin memiliki sifat-sifat dan kemampuan yang sangat berbeda dari manusia. Al-Qur'an dan hadis memberikan gambaran yang jelas tentang hakikat mereka — meski banyak aspek dari kehidupan mereka yang tetap menjadi misteri di luar yang diwahyukan Allah.</p>
+  </div>
+
+  <div class="cards">
+    <div class="card card-am">
+      <span class="card-icon">👁️</span>
+      <div class="card-title ctit-am">Tidak Terlihat oleh Manusia</div>
+      <div class="card-desc">Jin dalam wujud aslinya tidak bisa dilihat oleh manusia biasa. Allah berfirman: "Sesungguhnya ia (iblis) dan kabilatnya melihat kamu dari suatu tempat yang kamu tidak bisa melihat mereka." — QS. Al-A'rāf: 27. Kemampuan melihat jin adalah anugerah khusus, bukan kemampuan umum.</div>
+      <span class="card-ref">QS. Al-A'rāf: 27</span>
+    </div>
+    <div class="card card-am">
+      <span class="card-icon">🔥</span>
+      <div class="card-title ctit-am">Berubah Wujud</div>
+      <div class="card-desc">Jin mampu menampakkan diri dalam berbagai bentuk — bisa seperti manusia, hewan, atau makhluk lain. Nabi ﷺ mengizinkan Abu Hurairah menangkap jin yang mencuri kurma, dan jin itu menampakkan diri sebagai manusia tua yang lemah. — HR. Bukhari (2311)</div>
+      <span class="card-ref">HR. Bukhari (2311)</span>
+    </div>
+    <div class="card card-am">
+      <span class="card-icon">⚡</span>
+      <div class="card-title ctit-am">Bergerak Sangat Cepat</div>
+      <div class="card-desc">Jin mampu bergerak dengan kecepatan yang jauh melampaui manusia. Dalam kisah Nabi Sulaiman, jin 'Ifrit menawarkan diri membawa singgasana Ratu Bilqis sebelum Sulaiman berdiri dari tempat duduknya. — QS. An-Naml: 39</div>
+      <span class="card-ref">QS. An-Naml: 39</span>
+    </div>
+    <div class="card card-am">
+      <span class="card-icon">🏗️</span>
+      <div class="card-title ctit-am">Mampu Bekerja Keras</div>
+      <div class="card-desc">Allah menundukkan jin untuk Nabi Sulaiman — mereka bekerja membangun gedung-gedung megah, membuat patung-patung, dan mengangkut barang-barang berat. — QS. Saba': 12–13. Kekuatan fisik mereka jauh melebihi manusia.</div>
+      <span class="card-ref">QS. Saba': 12–13</span>
+    </div>
+    <div class="card card-am">
+      <span class="card-icon">🌍</span>
+      <div class="card-title ctit-am">Menghuni Bumi Bersama Manusia</div>
+      <div class="card-desc">Jin dan manusia hidup di bumi yang sama, namun di dimensi yang berbeda. Mereka punya tempat tinggal, berkumpul, makan, minum, menikah, dan berketurunan — namun umumnya tidak berinteraksi secara terbuka dengan manusia.</div>
+      <span class="card-ref">QS. Al-Jinn: 11 · HR. Abu Dawud (5097)</span>
+    </div>
+    <div class="card card-am">
+      <span class="card-icon">👂</span>
+      <div class="card-title ctit-am">Menguping Langit (Dulu)</div>
+      <div class="card-desc">Sebelum Nabi Muhammad ﷺ diutus, jin-jin bisa mencuri dengar berita dari langit. Setelah diutusnya Nabi ﷺ, langit dijaga ketat dengan bintang-bintang pelempar. — QS. Al-Jinn: 8–9 · QS. Al-Hijr: 18</div>
+      <span class="card-ref">QS. Al-Jinn: 8–9</span>
+    </div>
+  </div>
+
+  <div class="hl hl-am">
+    <div class="hl-label hll-am">✦ Jenis-Jenis Jin — Berdasarkan Riwayat</div>
+    <div class="hl-trans">
+      Para ulama berdasarkan hadis membagi jin dalam beberapa jenis:<br><br>
+      <strong>1. Jann (الجانّ)</strong> — Jin dalam bentuk ular · <strong>2. 'Āmir (عَامِر)</strong> — Jin yang tinggal bersama manusia dalam rumah · <strong>3. Arwāh (أَرْوَاح)</strong> — Istilah umum untuk jin · <strong>4. Syayāṭīn (شَيَاطِين)</strong> — Jin yang kafir dan jahat yang menjadi musuh manusia · <strong>5. Mārid (مَارِد)</strong> — Jin yang sangat keras dan kuat, pembangkang · <strong>6. 'Ifrīt (عِفْرِيت)</strong> — Jin yang sangat kuat dan cerdik
+    </div>
+    <div class="hl-ref">HR. Abu Dawud (5257) · Tafsir Ibnu Katsir — QS. Al-Jinn · Al-Mufradat — Ar-Raghib Al-Asfahani</div>
+  </div>
+</div>
+
+<!-- ══ BAB III: JIN BERIMAN & KAFIR ══ -->
+<div class="chap">
+  <div class="cs cs-em"></div>
+  <div class="cb cb-em">
+    <div class="ct ct-em">✦ Bab Ketiga</div>
+    <div class="car car-em">الْجِنُّ الْمُؤْمِنُونَ وَالْكَافِرُونَ</div>
+    <div class="chtitle">Jin Beriman &amp; Jin Kafir — Surah Al-Jinn</div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="prose fl-em">
+    <p class="lead pl-em">Salah satu bukti terbesar keagungan Al-Qur'an adalah bahwa ia tidak hanya menyentuh hati manusia, tetapi juga menyentuh hati jin. Surah Al-Jinn (surah ke-72) mengabadikan peristiwa luar biasa: sekelompok jin mendengar bacaan Al-Qur'an dari Nabi ﷺ — dan mereka langsung beriman.</p>
+    <p>Peristiwa ini terjadi ketika Nabi ﷺ kembali dari Thaif dalam keadaan bersedih setelah penolakan penduduknya. Di perjalanan pulang menuju Makkah, beliau berhenti di Nakhlah dan melakukan shalat malam. Sekelompok jin lewat, mendengar Al-Qur'an, dan terpikat. Mereka lalu kembali kepada kaumnya sebagai da'i yang mengajak kepada Islam.</p>
+  </div>
+
+  <div class="dalil d-em">
+    <div class="db-em"></div>
+    <div class="dbody">
+      <div class="dtag dt-em">📖 QS. Al-Jinn: 1–4 — Pengakuan Jin atas Keagungan Al-Qur'an</div>
+      <div class="dar dar-em">إِنَّا سَمِعْنَا قُرْآنًا عَجَبًا ۝ يَهْدِي إِلَى الرُّشْدِ فَآمَنَّا بِهِ ۖ وَلَن نُّشْرِكَ بِرَبِّنَا أَحَدًا ۝ وَأَنَّهُ تَعَالَىٰ جَدُّ رَبِّنَا مَا اتَّخَذَ صَاحِبَةً وَلَا وَلَدًا ۝ وَأَنَّهُ كَانَ يَقُولُ سَفِيهُنَا عَلَى اللَّهِ شَطَطًا</div>
+      <div class="dtrans">"Sesungguhnya kami telah mendengarkan Al-Qur'an yang menakjubkan, yang memberi petunjuk kepada kebenaran, lalu kami beriman kepadanya. Dan kami sekali-kali tidak akan mempersekutukan seorang pun dengan Tuhan kami. Dan bahwasanya Maha Tinggi kebesaran Tuhan kami, Dia tidak beristri dan tidak pula beranak. Dan bahwasanya orang yang bodoh di antara kami selalu mengucapkan perkataan yang melampaui batas terhadap Allah."</div>
+      <div class="dref dref-em">QS. Al-Jinn (72): 1–4 — Pengakuan iman kelompok jin yang mendengar Al-Qur'an</div>
+    </div>
+  </div>
+
+  <div class="tbl-wrap">
+    <table class="tbl th-em">
+      <thead><tr>
+        <th style="width:25%">Aspek</th>
+        <th style="width:38%">Jin Beriman (Muslim)</th>
+        <th style="width:37%">Jin Kafir (Syaithan)</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td data-label="Aspek">Keyakinan</td>
+          <td data-label="Muslim" style="color:var(--text-s);">Beriman kepada Allah, para nabi, dan hari akhir. Ada yang mengikuti syariat Nabi ﷺ.</td>
+          <td data-label="Kafir" style="color:var(--text-s);">Mengingkari Allah atau menyekutukan-Nya. Pemimpin mereka adalah Iblis yang bersumpah menyesatkan manusia.</td>
+        </tr>
+        <tr>
+          <td data-label="Aspek">Sikap kepada Manusia</td>
+          <td data-label="Muslim" style="color:var(--text-s);">Tidak mengganggu manusia. Sebagian bahkan bisa menjadi teman yang baik dalam kebenaran.</td>
+          <td data-label="Kafir" style="color:var(--text-s);">Berusaha menyesatkan manusia, membisikkan was-was, menggoda kepada keburukan dan syirik.</td>
+        </tr>
+        <tr>
+          <td data-label="Aspek">Akhirat</td>
+          <td data-label="Muslim" style="color:var(--text-s);">Akan masuk surga jika amalnya baik. QS. Al-Jinn: 13 — yang beriman tidak takut kekurangan dan kezaliman.</td>
+          <td data-label="Kafir" style="color:var(--text-s);">Allah berfirman: "Sungguh Kami akan memenuhi neraka Jahannam dengan bangsa jin dan manusia semuanya." — QS. As-Sajdah: 13</td>
+        </tr>
+        <tr>
+          <td data-label="Aspek">Agama</td>
+          <td data-label="Muslim" style="color:var(--text-s);">Di antara mereka ada yang Muslim, Yahudi, Nasrani, Majusi — sebelum Islam datang kepada mereka.</td>
+          <td data-label="Kafir" style="color:var(--text-s);">Iblis dan bala tentaranya adalah musuh utama manusia yang tidak pernah berhenti menggoda. — QS. Yāsīn: 60</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══ BAB IV: IBLIS & SETAN ══ -->
+<div class="chap">
+  <div class="cs cs-ru"></div>
+  <div class="cb cb-ru">
+    <div class="ct ct-ru">✦ Bab Keempat — Terpenting</div>
+    <div class="car car-ru">إِبْلِيسُ وَالشَّيَاطِينُ</div>
+    <div class="chtitle">Iblis &amp; Setan — Musuh Abadi Manusia</div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="prose fl-ru">
+    <p class="lead pl-ru">Iblis adalah bapak dari seluruh setan — ia adalah jin yang paling sombong dan paling jahat. Kisahnya diabadikan dalam Al-Qur'an berulang kali sebagai pelajaran paling fundamental tentang bahaya kesombongan dan permusuhan terhadap Allah.</p>
+    <p>Iblis awalnya adalah makhluk yang sangat tekun beribadah hingga dimuliakan Allah dan diizinkan bersama para malaikat. Ketika Allah memerintahkan seluruh malaikat (dan Iblis yang hadir bersama mereka) untuk bersujud kepada Adam, Iblis menolak dengan sombong — merasa dirinya lebih mulia karena diciptakan dari api, sementara Adam dari tanah. Keengganan ini melahirkan murka Allah dan pengusiran abadi.</p>
+    <p>Sejak saat itu, Iblis bersumpah akan menyesatkan seluruh keturunan Adam hingga hari kiamat. Ia meminta kepada Allah agar diberi umur panjang — dan Allah mengizinkannya, sebagai ujian bagi manusia. Allah juga memberikan peringatan: jalan lurus (shirāth mustaqīm) adalah wilayah yang tidak bisa Iblis kuasai — hanya orang-orang yang menjauhi jalan lurus yang bisa ia sesatkan.</p>
+  </div>
+
+  <div class="dalil d-ru">
+    <div class="db-ru"></div>
+    <div class="dbody">
+      <div class="dtag dt-ru">📖 QS. Al-Hijr: 39–42 — Sumpah Iblis &amp; Jawaban Allah</div>
+      <div class="dar dar-ru">قَالَ رَبِّ بِمَا أَغْوَيْتَنِي لَأُزَيِّنَنَّ لَهُمْ فِي الْأَرْضِ وَلَأُغْوِيَنَّهُمْ أَجْمَعِينَ ۝ إِلَّا عِبَادَكَ مِنْهُمُ الْمُخْلَصِينَ ۝ قَالَ هَٰذَا صِرَاطٌ عَلَيَّ مُسْتَقِيمٌ ۝ إِنَّ عِبَادِي لَيْسَ لَكَ عَلَيْهِمْ سُلْطَانٌ إِلَّا مَنِ اتَّبَعَكَ مِنَ الْغَاوِينَ</div>
+      <div class="dtrans">"Iblis berkata: Tuhanku, karena Engkau telah menghukum aku sesat, sungguh aku akan jadikan (kejahatan) terasa indah bagi mereka di bumi dan aku akan sesatkan mereka semuanya. Kecuali hamba-Mu yang ikhlas di antara mereka. Allah berfirman: Ini adalah jalan yang lurus menuju-Ku. Sungguh, hamba-hamba-Ku tidak ada kekuasaan bagimu atas mereka, kecuali orang-orang sesat yang mengikutimu."</div>
+      <div class="dref dref-ru">QS. Al-Hijr (15): 39–42</div>
+    </div>
+  </div>
+
+  <div class="hl hl-ru">
+    <div class="hl-label hll-ru">✦ Cara-Cara Setan Menggoda Manusia</div>
+    <div class="hl-ar hlar-ru">لَآتِيَنَّهُم مِّن بَيْنِ أَيْدِيهِمْ وَمِنْ خَلْفِهِمْ وَعَنْ أَيْمَانِهِمْ وَعَن شَمَائِلِهِمْ</div>
+    <div class="hl-trans">"Kemudian pasti aku akan mendatangi mereka dari depan, dari belakang, dari kanan, dan dari kiri mereka." — QS. Al-A'rāf: 17. Setan juga: (1) Menghembuskan was-was (bisikan ragu) dalam hati, (2) Memerintahkan kepada yang keji dan mungkar, (3) Menghiasi perbuatan buruk agar terlihat indah, (4) Masuk ke dalam aliran darah manusia — HR. Bukhari (2038), (5) Menggoda saat marah, lalai, dan saat sendirian.</div>
+    <div class="hl-ref">QS. Al-A'rāf: 17 · HR. Bukhari (2038) — Setan mengalir dalam darah manusia seperti darah mengalir</div>
+  </div>
+
+  <div class="dalil d-ru">
+    <div class="db-ru"></div>
+    <div class="dbody">
+      <div class="dtag dt-ru">📜 HR. Bukhari — Setan Mengalir dalam Aliran Darah</div>
+      <div class="dar dar-ru">إِنَّ الشَّيْطَانَ يَجْرِي مِنَ ابْنِ آدَمَ مَجْرَى الدَّمِ</div>
+      <div class="dtrans">"Sesungguhnya setan mengalir pada diri anak Adam seperti mengalirnya darah." — Ini menunjukkan betapa dekatnya setan dengan manusia — ia selalu berusaha menyusup dan membisikkan kejahatan. Perlindungan satu-satunya adalah dzikir, doa, dan berlindung kepada Allah.</div>
+      <div class="dref dref-ru">HR. Bukhari (2038) &amp; Muslim (2175) — dari Shafiyyah binti Huyay</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ BAB V: PERLINDUNGAN DARI JIN & SETAN ══ -->
+<div class="chap">
+  <div class="cs cs-em"></div>
+  <div class="cb cb-em">
+    <div class="ct ct-em">✦ Bab Kelima</div>
+    <div class="car car-em">الْحِمَايَةُ مِنَ الْجِنِّ وَالشَّيَاطِينِ</div>
+    <div class="chtitle">Perlindungan dari Jin &amp; Setan — Senjata Seorang Muslim</div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="prose fl-em">
+    <p class="lead pl-em">Allah tidak membiarkan manusia tanpa perlindungan menghadapi setan. Al-Qur'an dan hadis dipenuhi dengan amalan-amalan yang menjadi benteng seorang Muslim dari gangguan jin dan setan. Senjata utama seorang Muslim bukan jimat atau mantra — melainkan dzikir, Al-Qur'an, dan doa yang diajarkan Nabi ﷺ.</p>
+  </div>
+
+  <div class="cards" style="grid-template-columns:repeat(auto-fit,minmax(230px,1fr));">
+    <div class="card card-em">
+      <span class="card-icon">📖</span>
+      <div class="card-title ctit-em">Ayat Kursi — Perlindungan Terkuat</div>
+      <div class="card-desc">"Barangsiapa membacanya saat pagi hari, ia dilindungi dari (gangguan) jin hingga sore. Dan saat petang, dilindungi hingga pagi." Nabi ﷺ juga mengajarkan Ayat Kursi sebelum tidur — setan tidak bisa mendekatinya. — HR. Bukhari (5010) · An-Nasā'i (9928)</div>
+      <span class="card-ref">HR. Bukhari (5010) · An-Nasā'i (9928)</span>
+    </div>
+    <div class="card card-em">
+      <span class="card-icon">🛡️</span>
+      <div class="card-title ctit-em">Al-Mu'awwidzatain — Dua Surah Pelindung</div>
+      <div class="card-desc">Membaca Al-Falaq dan An-Nas 3× pagi dan petang. Nabi ﷺ membacakannya saat sakit dan meniupkannya ke telapak tangan lalu mengusap tubuh. "Tidak ada yang berlindung dengan yang lebih baik dari keduanya." — HR. Abu Dawud (5082)</div>
+      <span class="card-ref">HR. Abu Dawud (5082) · Tirmidzi (3575)</span>
+    </div>
+    <div class="card card-em">
+      <span class="card-icon">🏠</span>
+      <div class="card-title ctit-em">Membaca Basmalah di Rumah</div>
+      <div class="card-desc">"Jika seseorang masuk ke rumahnya lalu menyebut nama Allah ketika masuk dan saat makan, maka setan berkata: Tidak ada tempat bermalam dan tidak ada makan malam bagi kalian. Jika tidak, maka setan berkata: Kalian mendapat tempat bermalam (dan makan)." — HR. Muslim (2018)</div>
+      <span class="card-ref">HR. Muslim (2018)</span>
+    </div>
+    <div class="card card-em">
+      <span class="card-icon">🕌</span>
+      <div class="card-title ctit-em">Shalat &amp; Dzikir — Pagar Tak Terlihat</div>
+      <div class="card-desc">Setan lari dari adzan — HR. Bukhari (608). Setan tidak masuk rumah yang dibacakan Al-Baqarah — HR. Muslim (780). Membaca "La ilaha illallah wahdahu" 100× sehari melindungi dari setan sepanjang hari — HR. Bukhari (3293).</div>
+      <span class="card-ref">HR. Bukhari (608) · Muslim (780)</span>
+    </div>
+    <div class="card card-em">
+      <span class="card-icon">😴</span>
+      <div class="card-title ctit-em">Doa-Doa Khusus</div>
+      <div class="card-desc">Sebelum masuk toilet: "Allāhumma innī a'ūdzu bika minal-khubutsi wal-khabā'its." · Sebelum hubungan suami-istri: "Allāhumma jannibnasy-syayṭān..." · Saat marah: ta'awwudz. · Saat mendengar suara setan: jangan balas, bacalah ta'awwudz.</div>
+      <span class="card-ref">HR. Bukhari (142) · Muslim (1434)</span>
+    </div>
+    <div class="card card-em">
+      <span class="card-icon">💚</span>
+      <div class="card-title ctit-em">Berlindung dari Was-Was</div>
+      <div class="card-desc">"Katakanlah: Aku berlindung kepada Rabb manusia, Raja manusia, Sembahan manusia, dari kejahatan (bisikan) setan yang biasa bersembunyi." — QS. An-Nās: 1–6. Membaca An-Nas saat merasa was-was adalah obat paling mujarab.</div>
+      <span class="card-ref">QS. An-Nās: 1–6</span>
+    </div>
+  </div>
+
+  <div class="banner banner-dk">
+    <div class="ban-ar bnar-em">إِنَّ كَيْدَ الشَّيْطَانِ كَانَ ضَعِيفًا</div>
+    <div class="ban-id">"Sesungguhnya tipu daya setan itu lemah." — QS. An-Nisa': 76. Meskipun setan selalu berusaha menyesatkan, kekuatannya sangat terbatas di hadapan seorang mukmin yang senantiasa berlindung kepada Allah, membaca dzikir, dan menjaga sholatnya. Setan hanya berkuasa atas mereka yang mengundangnya masuk melalui kelalaian dan kemaksiatan.</div>
+    <div class="ban-ref">QS. An-Nisā' (4): 76</div>
+  </div>
+</div>
+
+<!-- ══ BAB VI: GANGGUAN JIN & RUQYAH ══ -->
+<div class="chap">
+  <div class="cs cs-vi"></div>
+  <div class="cb cb-vi">
+    <div class="ct ct-vi">✦ Bab Keenam</div>
+    <div class="car car-vi">مَسُّ الْجِنِّ وَالرُّقْيَةُ الشَّرْعِيَّةُ</div>
+    <div class="chtitle">Gangguan Jin (Kesurupan) &amp; Ruqyah Syar'iyyah</div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="prose fl-vi">
+    <p class="lead pl-vi">Gangguan jin terhadap manusia adalah kenyataan yang ditetapkan dalam Al-Qur'an dan hadis — bukan takhayul atau dongeng. Namun Islam juga memberikan solusi yang jelas dan terhormat: ruqyah syar'iyyah — pengobatan dengan Al-Qur'an dan doa-doa yang diajarkan Nabi ﷺ.</p>
+    <p>Massu (مَسّ) atau kesurupan jin adalah kondisi di mana jin masuk ke dalam tubuh manusia dan menguasai atau mengganggunya. Al-Qur'an menyebutkan hal ini dalam QS. Al-Baqarah: 275. Para ulama berbeda pendapat tentang mekanismenya, namun mereka sepakat bahwa fenomena ini nyata ada dan solusinya adalah dengan dzikir, doa, dan ruqyah yang sesuai syariat.</p>
+    <p>Yang sangat penting untuk diingat: tidak semua gejala aneh atau perilaku tidak normal disebabkan oleh jin. Para ulama mengingatkan bahwa kebanyakan klaim "kesurupan" di masyarakat sebenarnya adalah penyakit psikologi atau medis yang perlu penanganan dokter. Seorang Muslim tidak boleh langsung melabel orang sakit sebagai "kesurupan" tanpa pemeriksaan yang memadai.</p>
+  </div>
+
+  <div class="dalil d-vi">
+    <div class="db-vi"></div>
+    <div class="dbody">
+      <div class="dtag dt-vi">📖 QS. Al-Baqarah: 275 — Penyebutan Massu dari Setan</div>
+      <div class="dar dar-vi">الَّذِينَ يَأْكُلُونَ الرِّبَا لَا يَقُومُونَ إِلَّا كَمَا يَقُومُ الَّذِي يَتَخَبَّطُهُ الشَّيْطَانُ مِنَ الْمَسِّ</div>
+      <div class="dtrans">"Orang-orang yang memakan riba tidak dapat berdiri melainkan seperti berdirinya orang yang kemasukan setan lantaran (tekanan) penyakit gila." — Ayat ini secara implisit membuktikan realitas massu (kesurupan) sebagai fenomena yang dikenal.</div>
+      <div class="dref dref-vi">QS. Al-Baqarah (2): 275 · Tafsir Ibnu Katsir</div>
+    </div>
+  </div>
+
+  <div class="tbl-wrap">
+    <table class="tbl th-vi">
+      <thead><tr>
+        <th style="width:30%">Aspek</th>
+        <th style="width:35%">Ruqyah Syar'iyyah ✓</th>
+        <th style="width:35%">Yang Harus Dihindari ✗</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td data-label="Aspek">Sumber Bacaan</td>
+          <td data-label="Syar'iyyah" style="color:var(--text-s);">Al-Qur'an, doa-doa dari hadis shahih, Asma'ul Husna</td>
+          <td data-label="Hindari" style="color:var(--rust-lt);">Mantra asing, jampi tidak diketahui artinya, simbol-simbol syirik</td>
+        </tr>
+        <tr>
+          <td data-label="Aspek">Keyakinan</td>
+          <td data-label="Syar'iyyah" style="color:var(--text-s);">Kesembuhan hanya dari Allah — ruqyah hanyalah sebab/ikhtiar</td>
+          <td data-label="Hindari" style="color:var(--rust-lt);">Meyakini dukun, paranormal, atau jin "baik" sebagai sumber kesembuhan</td>
+        </tr>
+        <tr>
+          <td data-label="Aspek">Peruqyah</td>
+          <td data-label="Syar'iyyah" style="color:var(--text-s);">Muslim yang taqwa, berilmu, tidak meminta bayaran berlebihan</td>
+          <td data-label="Hindari" style="color:var(--rust-lt);">Dukun, paranormal, orang yang meminta media aneh, "pelihara jin baik"</td>
+        </tr>
+        <tr>
+          <td data-label="Aspek">Media</td>
+          <td data-label="Syar'iyyah" style="color:var(--text-s);">Air (dibacakan Al-Qur'an), minyak zaitun, madu, habbatussauda</td>
+          <td data-label="Hindari" style="color:var(--rust-lt);">Jimat, susuk, wafak dengan lambang syirik, "benda keramat"</td>
+        </tr>
+        <tr>
+          <td data-label="Aspek">Metode</td>
+          <td data-label="Syar'iyyah" style="color:var(--text-s);">Membaca Al-Qur'an, meniupkan ke air/minyak, menepukkan tangan</td>
+          <td data-label="Hindari" style="color:var(--rust-lt);">Ritual yang mengandung syirik, memanggilkan jin lain untuk mengusir, sesajen</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="hl hl-vi">
+    <div class="hl-label hll-vi">✦ Ruqyah Mandiri — Yang Bisa Dilakukan Sendiri</div>
+    <div class="hl-ar hlar-vi">وَنُنَزِّلُ مِنَ الْقُرْآنِ مَا هُوَ شِفَاءٌ وَرَحْمَةٌ لِّلْمُؤْمِنِينَ</div>
+    <div class="hl-trans">"Dan Kami turunkan dari Al-Qur'an sesuatu yang menjadi penyembuh dan rahmat bagi orang-orang yang beriman." — QS. Al-Isrā': 82. Ruqyah terbaik adalah yang dilakukan sendiri: (1) Wudhu, (2) Shalat, (3) Baca Ayat Kursi + Al-Fatihah + Al-Mu'awwidzatain, (4) Tiupkan ke telapak tangan dan usap tubuh, (5) Minum air yang sudah dibacakan Al-Fatihah + Ayat Kursi + Al-Ikhlas + Al-Falaq + An-Nas, (6) Perbanyak istighfar dan taubat — karena dosa adalah pintu masuk setan.</div>
+    <div class="hl-ref">QS. Al-Isrā': 82 · HR. Bukhari (5016) · Metode yang diajarkan para ulama ruqyah</div>
+  </div>
+</div>
+
+<!-- ══ BAB VII: LARANGAN DALAM BERHUBUNGAN DENGAN JIN ══ -->
+<div class="chap">
+  <div class="cs cs-ru"></div>
+  <div class="cb cb-ru">
+    <div class="ct ct-ru">⚠ Bab Ketujuh — Peringatan</div>
+    <div class="car car-ru">مَا يُحَرَّمُ مِنَ التَّعَامُلِ مَعَ الْجِنِّ</div>
+    <div class="chtitle">Larangan-Larangan dalam Berhubungan dengan Jin</div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="prose fl-ru">
+    <p class="lead pl-ru">Islam menutup rapat-rapat pintu interaksi dengan jin yang di dalamnya terdapat unsur syirik, perdukunan, atau meminta pertolongan selain kepada Allah. Ini adalah salah satu batas paling tegas yang ditegakkan Islam — karena melanggarnya bisa merusak akidah dan mengundang kerusakan yang jauh lebih besar dari masalah yang ingin diselesaikan.</p>
+  </div>
+
+  <div class="tbl-wrap">
+    <table class="tbl th-ru">
+      <thead><tr>
+        <th style="width:28%">Yang Dilarang</th>
+        <th style="width:30%">Hukum</th>
+        <th style="width:42%">Dalil &amp; Penjelasan</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td data-label="Larangan">Perdukunan (Kahanah)</td>
+          <td data-label="Hukum"><span class="tbdg tbdg-ru">Haram — Kufur jika membenarkan</span></td>
+          <td data-label="Dalil" style="color:var(--text-s);">"Barangsiapa mendatangi dukun dan mempercayainya, ia telah kafir terhadap apa yang diturunkan kepada Muhammad ﷺ." — HR. Ahmad (9532). Dukun menggunakan bantuan jin syaithan dan memberikan informasi dari pencurian berita langit.</td>
+        </tr>
+        <tr>
+          <td data-label="Larangan">Minta Tolong kepada Jin</td>
+          <td data-label="Hukum"><span class="tbdg tbdg-ru">Haram — Syirik</span></td>
+          <td data-label="Dalil" style="color:var(--text-s);">QS. Al-Jinn: 6 — "Dan bahwasanya ada beberapa orang dari kalangan manusia meminta perlindungan kepada beberapa laki-laki dari jin, maka jin itu menambah dosa dan kesalahan bagi mereka."</td>
+        </tr>
+        <tr>
+          <td data-label="Larangan">Jimat &amp; Susuk</td>
+          <td data-label="Hukum"><span class="tbdg tbdg-ru">Haram</span></td>
+          <td data-label="Dalil" style="color:var(--text-s);">"Barangsiapa yang menggantungkan sesuatu (jimat), maka ia diserahkan kepada sesuatu itu." — HR. Ahmad (17458). Jimat yang mengandung unsur perdukunan atau permintaan tolong kepada jin adalah syirik.</td>
+        </tr>
+        <tr>
+          <td data-label="Larangan">Sihir (As-Sihr)</td>
+          <td data-label="Hukum"><span class="tbdg tbdg-ru">Dosa Besar — Kufur</span></td>
+          <td data-label="Dalil" style="color:var(--text-s);">"Jauhilah tujuh perkara yang membinasakan... sihir..." — HR. Bukhari (2766). Sihir termasuk tujuh dosa besar yang membinasakan. Praktik sihir melibatkan bekerja sama dengan setan dalam melakukan kemungkaran.</td>
+        </tr>
+        <tr>
+          <td data-label="Larangan">Memelihara Jin (Tasyikh)</td>
+          <td data-label="Hukum"><span class="tbdg tbdg-ru">Haram</span></td>
+          <td data-label="Dalil" style="color:var(--text-s);">Konsep "jin baik" yang dipelihara untuk membantu urusan adalah tipuan setan. Tidak ada jin yang mau membantu manusia secara cuma-cuma — selalu ada harga yang dibayar: ibadah kepada selain Allah.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="dalil d-ru">
+    <div class="db-ru"></div>
+    <div class="dbody">
+      <div class="dtag dt-ru">📖 QS. Al-Jinn: 6 — Bahaya Meminta Tolong kepada Jin</div>
+      <div class="dar dar-ru">وَأَنَّهُ كَانَ رِجَالٌ مِّنَ الْإِنسِ يَعُوذُونَ بِرِجَالٍ مِّنَ الْجِنِّ فَزَادُوهُمْ رَهَقًا</div>
+      <div class="dtrans">"Dan bahwasanya ada beberapa orang laki-laki dari kalangan manusia yang meminta perlindungan kepada beberapa laki-laki dari bangsa jin, maka jin itu menambah dosa dan kesalahan bagi mereka." — Setiap kali manusia "meminta tolong" kepada jin, bukannya masalah selesai — justru masalah baru yang lebih besar datang.</div>
+      <div class="dref dref-ru">QS. Al-Jinn (72): 6 — Peringatan keras dari Allah tentang meminta tolong kepada jin</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ BAB VIII: HIKMAH ══ -->
+<div class="chap">
+  <div class="cs cs-em"></div>
+  <div class="cb cb-em">
+    <div class="ct ct-em">✦ Bab Kedelapan — Penutup</div>
+    <div class="car car-em">حِكْمَةُ خَلْقِ الْجِنِّ وَفَوَائِدُ الْمَعْرِفَةِ بِهِمْ</div>
+    <div class="chtitle">Hikmah Penciptaan Jin &amp; Manfaat Mengenal Mereka</div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="prose fl-em">
+    <p class="lead pl-em">Allah tidak menciptakan sesuatu dengan sia-sia. Penciptaan jin, keberadaan mereka, dan penjelasan Al-Qur'an tentang mereka semuanya mengandung hikmah yang dalam — bagi manusia yang mau berpikir dan mengambil pelajaran.</p>
+    <p>Pertama, keberadaan jin dan setan adalah bagian dari ujian Allah kepada manusia. Tanpa godaan setan, tidak ada nilai pada keimanan dan ketaatan manusia. Seseorang yang beriman dan taat meskipun dirayu setan memiliki derajat keimanan yang jauh lebih tinggi dari yang tidak diuji sama sekali. Kedua, mengenal dunia jin dari sudut pandang Islam melindungi umat dari khurafat dan kesyirikan — karena kebodohan tentang jin membuat seseorang mudah tertipu oleh dukun dan praktisi perdukunan.</p>
+    <p>Ketiga, kisah jin-jin yang beriman (seperti dalam Surah Al-Jinn) adalah bukti universal kebenaran Islam — bahwa Islam bukan hanya untuk manusia, tetapi untuk seluruh makhluk berakal. Dan keempat, mempercayai keberadaan jin sebagaimana ditetapkan Al-Qur'an dan hadis adalah bagian dari keimanan yang sempurna kepada hal-hal ghaib yang Allah kabarkan.</p>
+  </div>
+
+  <div class="dalil d-em">
+    <div class="db-em"></div>
+    <div class="dbody">
+      <div class="dtag dt-em">📖 QS. Adz-Dzariyat: 56 — Tujuan Penciptaan Jin &amp; Manusia</div>
+      <div class="dar dar-em">وَمَا خَلَقْتُ الْجِنَّ وَالْإِنسَ إِلَّا لِيَعْبُدُونِ</div>
+      <div class="dtrans">"Dan Aku tidak menciptakan jin dan manusia melainkan supaya mereka beribadah kepada-Ku." — Jin dan manusia diciptakan dengan tujuan yang sama: beribadah kepada Allah. Ini menunjukkan kesetaraan taklif (beban kewajiban agama) antara keduanya — keduanya diwajibkan beribadah dan akan dihisab.</div>
+      <div class="dref dref-em">QS. Adz-Dzariyat (51): 56 — Tujuan penciptaan jin dan manusia adalah satu</div>
+    </div>
+  </div>
+
+  <div class="banner banner-em">
+    <div class="ban-ar bnar-em">وَلَقَدْ خَلَقْنَا الْإِنسَانَ وَنَعْلَمُ مَا تُوَسْوِسُ بِهِ نَفْسُهُ ۖ وَنَحْنُ أَقْرَبُ إِلَيْهِ مِنْ حَبْلِ الْوَرِيدِ</div>
+    <div class="ban-id">"Dan sesungguhnya Kami telah menciptakan manusia dan mengetahui apa yang dibisikkan oleh hatinya, dan Kami lebih dekat kepadanya daripada urat lehernya." — QS. Qāf: 16. Meskipun setan begitu dekat, Allah jauh lebih dekat. Meskipun setan terus berusaha, perlindungan Allah lebih kuat dari segalanya. Kunci keselamatan satu: senantiasa dekat dengan Allah melalui ibadah, dzikir, dan ketaatan.</div>
+    <div class="ban-ref">QS. Qāf (50): 16</div>
+  </div>
+</div>
+
+<div class="sep"><span>✦ ❖ ✦</span></div>
+
+</div><!-- end wrap -->
+
+<!-- ══ PENUTUP ══ -->
+<div class="penutup">
+  <div class="penutup-inner">
+    <div class="penutup-ar">أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ</div>
+    <div class="penutup-div"></div>
+    <p class="penutup-p">"Aku berlindung dengan kalimat-kalimat Allah yang sempurna dari kejahatan apa yang Dia ciptakan." — HR. Muslim (2709). Doa ini adalah penutup yang paling tepat untuk naskah tentang jin: pengakuan bahwa perlindungan sejati hanya dari Allah, dan kalimat-kalimat-Nya (Al-Qur'an dan doa-doa yang diajarkan Nabi ﷺ) adalah benteng yang tidak bisa ditembus oleh setan manapun.</p>
+    <p class="penutup-p" style="margin-top:10px;">Semoga dengan memahami alam jin dari sudut pandang ilmu dan wahyu — bukan dari takhayul dan cerita yang tidak berdalil — kita semakin kokoh imannya, semakin bertawakal kepada Allah, dan semakin jauh dari tipu daya setan yang selalu berusaha menyesatkan kita dari jalan yang lurus.</p>
+    <div class="penutup-div"></div>
+    <div class="penutup-footer">
+      <div class="logo">كِتَابُ الْجِنِّ</div>
+      <div class="tag">وَاللّٰهُ أَعْلَمُ بِالصَّوَابِ · Semoga Bermanfaat</div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ════════════════════════
+   CANVAS — Mist & Floating Particles
+════════════════════════ */
+const cvs=document.getElementById('cvs');
+const ctx=cvs.getContext('2d');
+let W,H;
+
+const particles=[];
+const mistClouds=[];
+
+function resize(){
+  W=cvs.width=window.innerWidth;
+  H=cvs.height=window.innerHeight;
+}
+
+function initParticles(){
+  particles.length=0;
+  /* Floating embers / sparks */
+  for(let i=0;i<80;i++){
+    const green=Math.random()<.5;
+    particles.push({
+      x:Math.random()*W,
+      y:Math.random()*H,
+      r:Math.random()*1.8+.3,
+      vx:(Math.random()-.5)*.3,
+      vy:-Math.random()*.4-.1,
+      a:Math.random()*.6+.1,
+      life:Math.random(),
+      maxLife:Math.random()*.8+.4,
+      green,
+      flicker:Math.random()*Math.PI*2,
+      flickSpeed:Math.random()*.03+.01,
+    });
+  }
+  /* Mist clouds */
+  mistClouds.length=0;
+  for(let i=0;i<8;i++){
+    mistClouds.push({
+      x:Math.random()*W,
+      y:H*.3+Math.random()*H*.6,
+      rx:150+Math.random()*300,
+      ry:40+Math.random()*100,
+      a:.015+Math.random()*.025,
+      vx:(Math.random()-.5)*.15,
+      phase:Math.random()*Math.PI*2,
+      speed:Math.random()*.005+.002,
+    });
+  }
+}
+
+let t=0;
+function draw(){
+  ctx.clearRect(0,0,W,H);
+  t+=.008;
+
+  /* Mist clouds */
+  mistClouds.forEach(m=>{
+    m.x+=m.vx;
+    if(m.x>W+m.rx) m.x=-m.rx;
+    if(m.x<-m.rx) m.x=W+m.rx;
+    const pulse=Math.sin(t*m.speed+m.phase)*.4+.6;
+    const g=ctx.createRadialGradient(m.x,m.y,0,m.x,m.y,m.rx);
+    g.addColorStop(0,`rgba(0,180,40,${m.a*pulse})`);
+    g.addColorStop(.5,`rgba(0,120,30,${m.a*pulse*.5})`);
+    g.addColorStop(1,'transparent');
+    ctx.beginPath();
+    ctx.ellipse(m.x,m.y,m.rx,m.ry,0,0,Math.PI*2);
+    ctx.fillStyle=g;ctx.fill();
+  });
+
+  /* Particles */
+  particles.forEach(p=>{
+    p.x+=p.vx;p.y+=p.vy;
+    p.life+=.004;
+    p.flicker+=p.flickSpeed;
+
+    /* Reset particle when offscreen or life ends */
+    if(p.y<-20||p.life>p.maxLife){
+      p.x=Math.random()*W;
+      p.y=H+10;
+      p.life=0;
+      p.vy=-Math.random()*.4-.1;
+    }
+
+    const lifeFrac=p.life/p.maxLife;
+    const fade=lifeFrac<.2?lifeFrac/.2:lifeFrac>.8?(1-lifeFrac)/.2:1;
+    const flicker=Math.sin(p.flicker)*.3+.7;
+    const alpha=p.a*fade*flicker;
+
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    if(p.green){
+      ctx.fillStyle=`rgba(0,${160+Math.random()*40},${60+Math.random()*30},${alpha})`;
+      if(p.r>1.2){ctx.shadowBlur=6;ctx.shadowColor=`rgba(0,200,74,${alpha*.6})`;}
+    }else{
+      ctx.fillStyle=`rgba(${160+Math.random()*60},${140+Math.random()*40},${80+Math.random()*40},${alpha*.4})`;
+      ctx.shadowBlur=0;
+    }
+    ctx.fill();
+    ctx.shadowBlur=0;
+  });
+
+  requestAnimationFrame(draw);
+}
+
+window.addEventListener('resize',()=>{resize();initParticles();});
+resize();initParticles();draw();
+</script>
+</body>
+</html>
+

@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ahlussunnah wal Jamaah — Manhaj Ulama Salaf</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Amiri:ital,wght@0,400;0,700;1,400&family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+
+:root{
+  --void:     #050400;
+  --onyx:     #0a0900;
+  --abyss:    #100e00;
+  --slate:    #151200;
+  --dark:     #1a1600;
+  --panel:    #1e1a00;
+  --gold:     #c8940a;
+  --gold-lt:  #e8b020;
+  --gold-pale:#3a2a00;
+  --gold-glow:rgba(200,148,10,.25);
+  --amber:    #d4a020;
+  --cream:    #e8d898;
+  --parch:    #d4c070;
+  --moon:     #f0e8c0;
+  --ivory:    #f8f0d0;
+  --rust:     #b84018;
+  --rust-lt:  #e06030;
+  --rust-p:   rgba(184,64,24,.15);
+  --jade:     #208858;
+  --jade-lt:  #30c080;
+  --jade-p:   rgba(32,136,88,.15);
+  --cobalt:   #2848a8;
+  --cobalt-lt:#4070d8;
+  --cobalt-p: rgba(40,72,168,.15);
+  --violet:   #6830a8;
+  --violet-p: rgba(104,48,168,.15);
+  --b-gold:   rgba(200,148,10,.22);
+  --b-rust:   rgba(184,64,24,.2);
+  --b-jade:   rgba(32,136,88,.2);
+  --b-cobalt: rgba(40,72,168,.18);
+  --b-violet: rgba(104,48,168,.18);
+  --text:     rgba(240,232,192,.9);
+  --text-s:   rgba(200,185,130,.65);
+  --text-d:   rgba(160,145,90,.45);
+}
+
+html{scroll-behavior:smooth;}
+
+body{
+  background:var(--onyx);
+  font-family:'Cormorant',Georgia,serif;
+  color:var(--text);
+  overflow-x:hidden;
+}
+
+/* Gold grain texture overlay */
+body::before{
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0.6 0.5 0 0 0.05 0.6 0.5 0 0 0.04 0 0 0 0 0 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+}
+
+/* ════════════════════════════
+   HERO — GRAND MANUSCRIPT
+════════════════════════════ */
+.hero{
+  min-height:100vh;
+  position:relative;z-index:1;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;padding:80px 24px 100px;
+  overflow:hidden;
+}
+
+/* Radial gold ambience */
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 40%,rgba(200,148,10,.1) 0%,transparent 65%),
+    radial-gradient(ellipse 100% 30% at 50% 0%,rgba(200,148,10,.06) 0%,transparent 60%),
+    radial-gradient(ellipse 100% 25% at 50% 100%,rgba(0,0,0,.8) 0%,transparent 80%);
+  pointer-events:none;
+}
+
+/* Geometric frame */
+.hero-frame{
+  position:absolute;
+  inset:clamp(16px,3vw,40px);
+  border:1px solid rgba(200,148,10,.18);
+  pointer-events:none;
+}
+.hero-frame::before,.hero-frame::after{
+  content:'';position:absolute;
+  width:clamp(40px,6vw,80px);height:clamp(40px,6vw,80px);
+  border:2px solid rgba(200,148,10,.35);
+}
+.hero-frame::before{top:-1px;left:-1px;border-right:none;border-bottom:none;}
+.hero-frame::after{bottom:-1px;right:-1px;border-left:none;border-top:none;}
+.hf-br,.hf-tl{
+  position:absolute;width:clamp(40px,6vw,80px);height:clamp(40px,6vw,80px);
+  border:2px solid rgba(200,148,10,.35);
+}
+.hf-br{bottom:-1px;left:-1px;border-right:none;border-top:none;}
+.hf-tl{top:-1px;right:-1px;border-left:none;border-bottom:none;}
+
+/* Large calligraphy watermark */
+.hero-watermark{
+  position:absolute;
+  top:50%;left:50%;transform:translate(-50%,-50%);
+  font-family:'Amiri',serif;
+  font-size:clamp(12rem,30vw,28rem);
+  line-height:.8;
+  color:rgba(200,148,10,.03);
+  pointer-events:none;
+  user-select:none;
+  white-space:nowrap;
+}
+
+.hero-inner{position:relative;z-index:2;max-width:800px;}
+
+.hero-seal{
+  width:clamp(56px,8vw,88px);
+  height:clamp(56px,8vw,88px);
+  border-radius:50%;
+  border:2px solid var(--b-gold);
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 20px;
+  background:rgba(200,148,10,.06);
+  animation:hraise 2s ease both;
+  box-shadow:0 0 20px rgba(200,148,10,.12);
+}
+.hero-seal span{font-family:'Amiri',serif;font-size:clamp(1.2rem,3vw,2rem);color:var(--gold);}
+
+.hero-kicker{
+  font-family:'Jost',sans-serif;font-weight:200;
+  font-size:clamp(.58rem,1.3vw,.72rem);letter-spacing:10px;text-transform:uppercase;
+  color:var(--text-d);margin-bottom:18px;
+  animation:hraise 2s ease both .2s;
+}
+
+.hero-ar{
+  font-family:'Amiri',serif;
+  font-size:clamp(1.8rem,6vw,5rem);
+  color:var(--gold-lt);line-height:1.7;margin-bottom:10px;
+  text-shadow:0 0 30px rgba(200,148,10,.3),0 0 80px rgba(200,148,10,.1);
+  animation:hraise 2s ease both .07s;
+}
+
+.hero-title{
+  font-family:'Cormorant',serif;font-weight:600;
+  font-size:clamp(1.1rem,3vw,2rem);
+  letter-spacing:4px;text-transform:uppercase;
+  color:var(--cream);margin-bottom:6px;
+  animation:hraise 2s ease both .28s;
+}
+
+.hero-rule{
+  display:flex;align-items:center;justify-content:center;gap:14px;
+  margin:16px auto;animation:hraise 2s ease both .38s;
+}
+.hero-rule span{width:80px;height:1px;background:linear-gradient(90deg,transparent,var(--b-gold));}
+.hero-rule span:last-child{background:linear-gradient(90deg,var(--b-gold),transparent);}
+.hero-rule em{color:var(--gold);font-style:normal;letter-spacing:8px;font-size:.8rem;}
+
+.hero-verse{
+  max-width:600px;margin:0 auto 0;
+  padding:22px 32px;
+  background:rgba(200,148,10,.04);
+  border:1px solid var(--b-gold);
+  animation:hraise 2s ease both .5s;
+}
+.hv-ar{font-family:'Amiri',serif;font-size:clamp(1rem,2.5vw,1.4rem);color:var(--gold-lt);line-height:2.2;direction:rtl;margin-bottom:10px;}
+.hv-id{font-family:'Cormorant',serif;font-style:italic;font-size:.85rem;color:var(--text-s);line-height:1.75;}
+
+@keyframes hraise{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+
+/* ════════════════════════════
+   BODY
+════════════════════════════ */
+.wrap{max-width:900px;margin:0 auto;padding:0 16px 80px;position:relative;z-index:1;}
+
+/* ── Chapter Headers ── */
+.chap{
+  margin:56px 0 0;
+  display:grid;grid-template-columns:auto 1fr;align-items:stretch;gap:0;
+}
+.chap-ornament{
+  width:clamp(52px,7vw,72px);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:16px 0;
+  border-right:1px solid;
+}
+.co-gold{background:rgba(200,148,10,.06);border-color:var(--b-gold);}
+.co-rust{background:var(--rust-p);border-color:var(--b-rust);}
+.co-jade{background:var(--jade-p);border-color:var(--b-jade);}
+.co-cobalt{background:var(--cobalt-p);border-color:var(--b-cobalt);}
+.co-violet{background:var(--violet-p);border-color:var(--b-violet);}
+.chap-orn-num{
+  font-family:'Cormorant',serif;font-weight:600;
+  font-size:clamp(1.2rem,2.5vw,1.8rem);
+  line-height:1;margin-bottom:4px;
+}
+.con-gold{color:var(--gold-lt);}
+.con-rust{color:var(--rust-lt);}
+.con-jade{color:var(--jade-lt);}
+.con-cobalt{color:var(--cobalt-lt);}
+.con-violet{color:#a060e0;}
+.chap-orn-icon{font-size:1rem;opacity:.5;}
+
+.chap-head{flex:1;padding:16px 22px;}
+.ch-gold{background:rgba(200,148,10,.05);border:1px solid var(--b-gold);border-left:none;}
+.ch-rust{background:var(--rust-p);border:1px solid var(--b-rust);border-left:none;}
+.ch-jade{background:var(--jade-p);border:1px solid var(--b-jade);border-left:none;}
+.ch-cobalt{background:var(--cobalt-p);border:1px solid var(--b-cobalt);border-left:none;}
+.ch-violet{background:var(--violet-p);border:1px solid var(--b-violet);border-left:none;}
+
+.chap-tag{font-family:'Jost',sans-serif;font-weight:400;font-size:.58rem;letter-spacing:5px;text-transform:uppercase;margin-bottom:6px;}
+.ct-gold{color:var(--gold);}
+.ct-rust{color:var(--rust-lt);}
+.ct-jade{color:var(--jade-lt);}
+.ct-cobalt{color:var(--cobalt-lt);}
+.ct-violet{color:#a060e0;}
+
+.chap-ar{font-family:'Amiri',serif;font-size:clamp(1.1rem,2.8vw,1.7rem);line-height:1.8;margin-bottom:4px;}
+.car-gold{color:var(--gold-lt);}
+.car-rust{color:var(--rust-lt);}
+.car-jade{color:var(--jade-lt);}
+.car-cobalt{color:var(--cobalt-lt);}
+.car-violet{color:#c090ff;}
+
+.chap-title{font-family:'Cormorant',serif;font-weight:700;font-size:clamp(1.1rem,2.8vw,1.75rem);line-height:1.2;color:var(--ivory);}
+
+/* ── Sections ── */
+.sec{padding:28px 0 24px;border-bottom:1px solid rgba(200,148,10,.1);}
+.sec:last-child{border-bottom:none;}
+
+/* ── Prose ── */
+.prose p{
+  font-size:clamp(.97rem,2.1vw,1.08rem);
+  line-height:2.1;color:var(--text);
+  margin-bottom:15px;
+  text-align:justify;hyphens:auto;-webkit-hyphens:auto;
+}
+.prose p.lead{
+  font-style:italic;font-size:clamp(1rem,2.2vw,1.12rem);
+  line-height:1.92;text-align:justify;
+}
+.pl-gold{color:var(--amber);}
+.pl-rust{color:var(--rust-lt);}
+.pl-jade{color:var(--jade-lt);}
+.pl-cobalt{color:var(--cobalt-lt);}
+.prose p:first-of-type:not(.lead)::first-letter{
+  font-family:'Cormorant',serif;font-weight:700;
+  font-size:4.2em;line-height:.72;float:left;margin:8px 12px 0 0;
+}
+.fl-gold p:first-of-type:not(.lead)::first-letter{color:var(--gold);}
+.fl-rust p:first-of-type:not(.lead)::first-letter{color:var(--rust-lt);}
+.fl-jade p:first-of-type:not(.lead)::first-letter{color:var(--jade-lt);}
+.fl-cobalt p:first-of-type:not(.lead)::first-letter{color:var(--cobalt-lt);}
+.fl-violet p:first-of-type:not(.lead)::first-letter{color:#a060e0;}
+
+/* ── Dalil ── */
+.dalil{margin:22px 0;display:grid;grid-template-columns:4px 1fr;}
+.dl-gold{background:rgba(200,148,10,.06);border:1px solid var(--b-gold);}
+.dl-rust{background:var(--rust-p);border:1px solid var(--b-rust);}
+.dl-jade{background:var(--jade-p);border:1px solid var(--b-jade);}
+.dl-cobalt{background:var(--cobalt-p);border:1px solid var(--b-cobalt);}
+.dl-violet{background:var(--violet-p);border:1px solid var(--b-violet);}
+.db-gold{background:var(--gold);}
+.db-rust{background:var(--rust-lt);}
+.db-jade{background:var(--jade-lt);}
+.db-cobalt{background:var(--cobalt-lt);}
+.db-violet{background:#a060e0;}
+
+.dbody{padding:18px 20px 14px;}
+.dtag{font-family:'Jost',sans-serif;font-weight:500;font-size:.6rem;letter-spacing:4px;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:10px;}
+.dtag::after{content:'';flex:1;height:1px;}
+.dtag-gold{color:var(--gold);}
+.dtag-gold::after{background:linear-gradient(90deg,var(--b-gold),transparent);}
+.dtag-rust{color:var(--rust-lt);}
+.dtag-rust::after{background:linear-gradient(90deg,var(--b-rust),transparent);}
+.dtag-jade{color:var(--jade-lt);}
+.dtag-jade::after{background:linear-gradient(90deg,var(--b-jade),transparent);}
+.dtag-cobalt{color:var(--cobalt-lt);}
+.dtag-cobalt::after{background:linear-gradient(90deg,var(--b-cobalt),transparent);}
+.dtag-violet{color:#a060e0;}
+.dtag-violet::after{background:linear-gradient(90deg,var(--b-violet),transparent);}
+
+.dar{font-family:'Amiri',serif;font-size:clamp(1.1rem,2.8vw,1.52rem);line-height:2.2;direction:rtl;text-align:right;margin-bottom:12px;padding-bottom:10px;}
+.dar-gold{color:var(--gold-lt);border-bottom:1px dashed var(--b-gold);}
+.dar-rust{color:var(--rust-lt);border-bottom:1px dashed var(--b-rust);}
+.dar-jade{color:var(--jade-lt);border-bottom:1px dashed var(--b-jade);}
+.dar-cobalt{color:var(--cobalt-lt);border-bottom:1px dashed var(--b-cobalt);}
+.dar-violet{color:#c090ff;border-bottom:1px dashed var(--b-violet);}
+
+.dtrans{font-style:italic;font-size:.92rem;line-height:1.82;color:var(--text-s);margin-bottom:7px;text-align:justify;}
+.dref{font-family:'Jost',sans-serif;font-weight:500;font-size:.62rem;letter-spacing:2px;text-transform:uppercase;}
+.dref-gold{color:var(--gold);}
+.dref-rust{color:var(--rust-lt);}
+.dref-jade{color:var(--jade-lt);}
+.dref-cobalt{color:var(--cobalt-lt);}
+.dref-violet{color:#a060e0;}
+
+/* ── Cards Grid ── */
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:6px;margin:20px 0;}
+.card{padding:18px 16px;border:1px solid;background:rgba(0,0,0,.3);}
+.card-gold{border-color:var(--b-gold);}
+.card-rust{border-color:var(--b-rust);}
+.card-jade{border-color:var(--b-jade);}
+.card-cobalt{border-color:var(--b-cobalt);}
+.card-violet{border-color:var(--b-violet);}
+.card-num{font-family:'Cormorant',serif;font-weight:700;font-size:2rem;line-height:1;margin-bottom:8px;}
+.cn-gold{color:rgba(200,148,10,.25);}
+.cn-rust{color:rgba(184,64,24,.25);}
+.cn-jade{color:rgba(32,136,88,.25);}
+.cn-cobalt{color:rgba(40,72,168,.25);}
+.card-icon{font-size:1.4rem;margin-bottom:8px;display:block;}
+.card-title{font-family:'Cormorant',serif;font-weight:700;font-size:.97rem;margin-bottom:5px;}
+.ct-gold{color:var(--gold-lt);}
+.ct-rust{color:var(--rust-lt);}
+.ct-jade{color:var(--jade-lt);}
+.ct-cobalt{color:var(--cobalt-lt);}
+.ct-violet{color:#c090ff;}
+.card-desc{font-size:.83rem;line-height:1.72;font-style:italic;color:var(--text-s);text-align:justify;}
+.card-ref{font-family:'Jost',sans-serif;font-weight:500;font-size:.58rem;letter-spacing:2px;text-transform:uppercase;margin-top:8px;display:block;color:var(--text-d);}
+
+/* ── Highlight ── */
+.hl{margin:20px 0;padding:18px 20px;}
+.hl-gold{background:rgba(200,148,10,.06);border:1px solid var(--b-gold);border-left:4px solid var(--gold);}
+.hl-rust{background:var(--rust-p);border:1px solid var(--b-rust);border-left:4px solid var(--rust-lt);}
+.hl-jade{background:var(--jade-p);border:1px solid var(--b-jade);border-left:4px solid var(--jade-lt);}
+.hl-cobalt{background:var(--cobalt-p);border:1px solid var(--b-cobalt);border-left:4px solid var(--cobalt-lt);}
+.hl-violet{background:var(--violet-p);border:1px solid var(--b-violet);border-left:4px solid #a060e0;}
+
+.hl-label{font-family:'Jost',sans-serif;font-weight:500;font-size:.6rem;letter-spacing:3px;text-transform:uppercase;margin-bottom:9px;}
+.hll-gold{color:var(--gold);}
+.hll-rust{color:var(--rust-lt);}
+.hll-jade{color:var(--jade-lt);}
+.hll-cobalt{color:var(--cobalt-lt);}
+.hll-violet{color:#a060e0;}
+
+.hl-ar{font-family:'Amiri',serif;font-size:clamp(1.05rem,2.5vw,1.42rem);line-height:2;margin-bottom:8px;}
+.hlar-gold{color:var(--gold-lt);}
+.hlar-rust{color:var(--rust-lt);}
+.hlar-jade{color:var(--jade-lt);}
+.hlar-cobalt{color:var(--cobalt-lt);}
+.hlar-violet{color:#c090ff;}
+
+.hl-trans{font-style:italic;font-size:.9rem;line-height:1.82;color:var(--text-s);margin-bottom:6px;text-align:justify;}
+.hl-ref{font-family:'Jost',sans-serif;font-weight:500;font-size:.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--text-d);}
+
+/* ── Table ── */
+.tbl-wrap{margin:20px 0;overflow:hidden;}
+.tbl{width:100%;border-collapse:collapse;font-size:.87rem;table-layout:fixed;}
+.tbl.th-gold thead tr{background:rgba(200,148,10,.15);border-bottom:1px solid var(--b-gold);}
+.tbl.th-rust thead tr{background:var(--rust-p);border-bottom:1px solid var(--b-rust);}
+.tbl.th-jade thead tr{background:var(--jade-p);border-bottom:1px solid var(--b-jade);}
+.tbl.th-cobalt thead tr{background:var(--cobalt-p);border-bottom:1px solid var(--b-cobalt);}
+.tbl thead th{padding:10px 14px;text-align:left;font-family:'Jost',sans-serif;font-size:.6rem;font-weight:500;letter-spacing:3px;text-transform:uppercase;}
+.th-gold thead th{color:var(--gold);}
+.th-rust thead th{color:var(--rust-lt);}
+.th-jade thead th{color:var(--jade-lt);}
+.th-cobalt thead th{color:var(--cobalt-lt);}
+.tbl tbody tr{border-bottom:1px solid rgba(200,148,10,.08);}
+.tbl tbody tr:nth-child(even){background:rgba(200,148,10,.03);}
+.tbl td{padding:10px 14px;line-height:1.68;vertical-align:top;word-break:break-word;color:var(--text-s);}
+.tbl td:first-child{font-weight:600;color:var(--cream);}
+.tbdg{display:inline-block;padding:2px 8px;font-family:'Jost',sans-serif;font-size:.57rem;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;white-space:nowrap;}
+.tbdg-gold{background:rgba(200,148,10,.12);color:var(--gold);border:1px solid var(--b-gold);}
+.tbdg-rust{background:var(--rust-p);color:var(--rust-lt);border:1px solid var(--b-rust);}
+.tbdg-jade{background:var(--jade-p);color:var(--jade-lt);border:1px solid var(--b-jade);}
+.tbdg-cobalt{background:var(--cobalt-p);color:var(--cobalt-lt);border:1px solid var(--b-cobalt);}
+.tbdg-gray{background:rgba(240,232,192,.06);color:var(--text-d);border:1px solid rgba(240,232,192,.1);}
+@media(max-width:580px){
+  .tbl,.tbl thead,.tbl tbody,.tbl th,.tbl td,.tbl tr{display:block;width:100%;}
+  .tbl thead{display:none;}
+  .tbl tbody tr{border:1px solid rgba(200,148,10,.12);margin-bottom:8px;padding:10px 12px;}
+  .tbl td{padding:4px 0;border:none;display:grid;grid-template-columns:80px 1fr;gap:6px;}
+  .tbl td::before{content:attr(data-label);font-family:'Jost',sans-serif;font-size:.57rem;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--gold);padding-top:2px;}
+  .tbl.th-rust td::before{color:var(--rust-lt);}
+  .tbl.th-jade td::before{color:var(--jade-lt);}
+  .tbl.th-cobalt td::before{color:var(--cobalt-lt);}
+}
+
+/* ── Banner ── */
+.banner{margin:24px 0;padding:24px 28px;text-align:center;}
+.banner-gold{background:rgba(200,148,10,.08);border:1px solid var(--b-gold);}
+.banner-dark{background:rgba(0,0,0,.5);border:1px solid var(--b-gold);}
+.ban-ar{font-family:'Amiri',serif;font-size:clamp(1.1rem,2.8vw,1.52rem);line-height:2;margin-bottom:10px;}
+.bnar-gold{color:var(--gold-lt);}
+.ban-id{font-style:italic;font-size:.9rem;line-height:1.8;margin-bottom:6px;text-align:justify;color:var(--text-s);}
+.ban-ref{font-family:'Jost',sans-serif;font-weight:500;font-size:.6rem;letter-spacing:3px;text-transform:uppercase;color:var(--text-d);}
+
+/* ── Separator ── */
+.sep{text-align:center;padding:14px 0;position:relative;}
+.sep::before{content:'';position:absolute;top:50%;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--b-gold),transparent);}
+.sep span{position:relative;z-index:1;background:var(--onyx);padding:0 16px;font-family:'Amiri',serif;font-size:1rem;color:rgba(200,148,10,.3);letter-spacing:10px;}
+
+/* ── Penutup ── */
+.penutup{
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 0%,rgba(200,148,10,.08) 0%,transparent 70%),
+    linear-gradient(180deg,rgba(26,22,0,.8) 0%,var(--void) 100%);
+  padding:72px 24px 80px;text-align:center;
+  position:relative;overflow:hidden;margin-top:60px;z-index:1;
+}
+.penutup::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--gold),var(--cream),var(--gold),transparent);}
+.penutup-inner{max-width:580px;margin:0 auto;}
+.penutup-ar{font-family:'Amiri',serif;font-size:clamp(1.4rem,4vw,2.6rem);color:var(--gold-lt);line-height:2;text-shadow:0 0 20px rgba(200,148,10,.25);margin-bottom:14px;}
+.penutup-div{width:80px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:18px auto;}
+.penutup-p{font-style:italic;font-size:clamp(.9rem,2vw,1.04rem);color:var(--text-s);line-height:1.95;margin-bottom:12px;text-align:justify;}
+.penutup-footer{margin-top:40px;padding-top:22px;border-top:1px solid rgba(200,148,10,.08);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+.penutup-footer .logo{font-family:'Amiri',serif;font-size:1.1rem;color:rgba(200,148,10,.3);}
+.penutup-footer .tag{font-family:'Jost',sans-serif;font-weight:300;font-size:.55rem;letter-spacing:3px;text-transform:uppercase;color:rgba(240,232,192,.1);}
+
+@media(max-width:600px){
+  .wrap{padding:0 14px 60px;}
+  .hero{padding:56px 20px 80px;}
+  .chap{grid-template-columns:1fr;}
+  .chap-ornament{display:none;}
+  .ch-gold,.ch-rust,.ch-jade,.ch-cobalt,.ch-violet{border-left:4px solid;}
+  .ch-gold{border-left-color:var(--gold);}
+  .ch-rust{border-left-color:var(--rust-lt);}
+  .ch-jade{border-left-color:var(--jade-lt);}
+  .ch-cobalt{border-left-color:var(--cobalt-lt);}
+  .ch-violet{border-left-color:#a060e0;}
+  .hl,.banner{padding:14px 14px;}
+  .penutup{padding:48px 18px 56px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ════ HERO ════ -->
+<section class="hero">
+  <div class="hero-frame">
+    <div class="hf-br"></div><div class="hf-tl"></div>
+  </div>
+  <div class="hero-watermark">السنة</div>
+
+  <div class="hero-inner">
+    <div class="hero-seal" style="animation:hraise 2s ease both;">
+      <span>ﷺ</span>
+    </div>
+    <div class="hero-kicker">Akidah Islam · Manhaj Ulama Salaf · Berdalil Al-Qur'an &amp; Sunnah</div>
+    <div class="hero-ar">أَهْلُ السُّنَّةِ وَالْجَمَاعَةِ</div>
+    <div class="hero-title">Ahlussunnah wal Jamaah</div>
+    <div class="hero-rule"><span></span><em>✦ ❖ ✦</em><span></span></div>
+    <div class="hero-verse">
+      <div class="hv-ar">مَنْ يَعِشْ مِنْكُمْ فَسَيَرَى اخْتِلَافًا كَثِيرًا فَعَلَيْكُمْ بِسُنَّتِي وَسُنَّةِ الْخُلَفَاءِ الرَّاشِدِينَ الْمَهْدِيِّينَ عَضُّوا عَلَيْهَا بِالنَّوَاجِذِ</div>
+      <div class="hv-id">"Barangsiapa di antara kalian yang hidup setelahku akan melihat banyak perselisihan. Maka wajib atas kalian berpegang kepada sunnahku dan sunnah para Khalifah Rasyidin yang mendapat petunjuk. Gigitlah ia dengan gigi geraham kalian."<br><em style="color:var(--text-d);">— HR. Abu Dawud (4607) &amp; Tirmidzi (2676) — Shahih</em></div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+
+<!-- ════════════════════════════
+   BAB I: DEFINISI ASWAJA
+════════════════════════════ -->
+<div class="chap">
+  <div class="chap-ornament co-gold">
+    <div class="chap-orn-num con-gold">I</div>
+    <div class="chap-orn-icon">✦</div>
+  </div>
+  <div class="chap-head ch-gold">
+    <div class="chap-tag ct-gold">✦ Bab Pertama</div>
+    <div class="chap-ar car-gold">تَعْرِيفُ أَهْلِ السُّنَّةِ وَالْجَمَاعَةِ</div>
+    <div class="chap-title">Definisi &amp; Pengertian Ahlussunnah wal Jamaah</div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="prose fl-gold">
+    <p class="lead pl-gold">Ahlussunnah wal Jamaah (اَهْلُ السُّنَّةِ وَالْجَمَاعَةِ) — disingkat Aswaja — adalah golongan yang berpegang teguh kepada Sunnah Nabi Muhammad ﷺ dan mengikuti jamaah para sahabat radhiyallahu 'anhum dalam seluruh perkara agama: akidah, ibadah, dan akhlak.</p>
+    <p>Kata <em>Ahlus-Sunnah</em> menunjukkan mereka yang berpegang kepada sunnah Nabi ﷺ dan menolak segala bid'ah dalam agama. Kata <em>wal-Jamā'ah</em> menunjukkan mereka yang mengikuti apa yang disepakati para sahabat dan ulama generasi pertama Islam — bukan kelompok-kelompok yang memisahkan diri dan mengikuti hawa nafsu serta akal semata.</p>
+    <p>Para ulama menyebutkan beberapa istilah yang semakna dengan Aswaja: <em>As-Salafiyyūn</em> (pengikut manhaj salaf), <em>Ahl al-Hadīts</em> (ahli hadis), <em>Ahl al-Atsar</em> (pengikut atsar), dan <em>Al-Firqah an-Nājiyah</em> (golongan yang selamat). Semua merujuk kepada satu identitas yang sama: mereka yang setia kepada manhaj Nabi ﷺ dan para sahabatnya.</p>
+  </div>
+
+  <div class="dalil dl-gold">
+    <div class="db-gold"></div>
+    <div class="dbody">
+      <div class="dtag dtag-gold">📜 HR. Abu Dawud — Hadis Firqah: 73 Golongan</div>
+      <div class="dar dar-gold">إِنَّ بَنِي إِسْرَائِيلَ افْتَرَقَتْ عَلَى ثِنْتَيْنِ وَسَبْعِينَ مِلَّةً وَتَفْتَرِقُ أُمَّتِي عَلَى ثَلَاثٍ وَسَبْعِينَ مِلَّةً كُلُّهُمْ فِي النَّارِ إِلَّا مِلَّةً وَاحِدَةً قَالُوا وَمَنْ هِيَ يَا رَسُولَ اللَّهِ قَالَ مَا أَنَا عَلَيْهِ وَأَصْحَابِي</div>
+      <div class="dtrans">"Sesungguhnya Bani Israil terpecah menjadi 72 golongan, dan umatku akan terpecah menjadi 73 golongan — semuanya di neraka kecuali satu." Mereka bertanya: "Siapakah yang satu itu wahai Rasulullah?" Beliau menjawab: "(Golongan yang berada di atas) apa yang aku dan para sahabatku berada di atasnya."</div>
+      <div class="dref dref-gold">HR. Abu Dawud (4596) &amp; Tirmidzi (2641) — Shahih · Ini adalah dalil paling fundamental tentang identitas Aswaja</div>
+    </div>
+  </div>
+
+  <div class="hl hl-gold">
+    <div class="hl-label hll-gold">✦ Tiga Pilar Identitas Aswaja</div>
+    <div class="hl-trans">
+      <strong>1. Al-Qur'an</strong> — Berpegang kepada Al-Qur'an sesuai pemahaman ulama salaf, bukan pemahaman hawa nafsu atau filsafat.<br><br>
+      <strong>2. As-Sunnah</strong> — Mengikuti hadis-hadis Nabi ﷺ yang shahih, baik dalam akidah maupun amal, dan menolak hadis dhaif/palsu sebagai sumber hukum dalam akidah.<br><br>
+      <strong>3. Manhaj Salaf</strong> — Mengikuti cara para sahabat, tabi'in, dan tabi'ut-tabi'in dalam memahami dan mengamalkan Islam — karena mereka adalah generasi yang paling dekat dengan Nabi ﷺ dan paling paham dengan maksud risalahnya.
+    </div>
+    <div class="hl-ref">QS. At-Tawbah: 100 — "Orang-orang yang terdahulu lagi pertama-tama (masuk Islam) dari kalangan muhajirin dan anshar serta orang yang mengikuti mereka dengan baik..."</div>
+  </div>
+</div>
+
+<!-- ════ BAB II: SEJARAH ════ -->
+<div class="chap">
+  <div class="chap-ornament co-rust">
+    <div class="chap-orn-num con-rust">II</div>
+    <div class="chap-orn-icon">📜</div>
+  </div>
+  <div class="chap-head ch-rust">
+    <div class="chap-tag ct-rust">✦ Bab Kedua</div>
+    <div class="chap-ar car-rust">نَشْأَةُ هَذَا الِاسْمِ وَتَارِيخُهُ</div>
+    <div class="chap-title">Sejarah Kemunculan Nama Ahlussunnah wal Jamaah</div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="prose fl-rust">
+    <p class="lead pl-rust">Nama "Ahlussunnah wal Jamaah" tidak muncul begitu saja — ia lahir dari konteks sejarah yang dramatis: perpecahan umat Islam setelah wafatnya Nabi ﷺ dan munculnya berbagai kelompok sesat yang menyimpang dari manhaj para sahabat.</p>
+    <p>Pada masa Nabi ﷺ dan para sahabat, tidak diperlukan nama khusus untuk membedakan diri karena Islam masih satu dan murni. Ketika mulai muncul kelompok-kelompok yang menyimpang — Khawarij (yang mengkafirkan pelaku dosa besar), Syi'ah (yang berlebihan dalam mengagungkan Ali), Qadariyyah (yang mengingkari takdir), dan Mu'tazilah (yang mendahulukan akal atas nash) — barulah para ulama merasakan perlunya identitas yang membedakan mereka yang lurus dari yang menyimpang.</p>
+    <p>Imam Ahmad bin Hanbal (164–241 H) rahimahullāh adalah salah satu tokoh yang paling berjasa dalam mempertahankan dan memperjelas batas-batas Aswaja — terutama dalam menghadapi fitnah Mu'tazilah tentang kemakhlukan Al-Qur'an. Kemudian Imam Abul Hasan Al-Asy'ari (260–324 H) dan Imam Abu Mansur Al-Maturidi (238–333 H) memformulasikan akidah Aswaja secara sistematis dalam menghadapi arus pemikiran rasionalis.</p>
+  </div>
+
+  <div class="tbl-wrap">
+    <table class="tbl th-rust">
+      <thead><tr>
+        <th style="width:22%">Periode</th>
+        <th style="width:28%">Tokoh/Peristiwa</th>
+        <th style="width:50%">Signifikansi</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td data-label="Periode">~35–40 H</td>
+          <td data-label="Tokoh">Munculnya Khawarij</td>
+          <td data-label="Signifikansi" style="color:var(--text-s);">Kelompok pertama yang memisahkan diri dan mengkafirkan sesama Muslim. Awal dari kebutuhan identitas Aswaja.</td>
+        </tr>
+        <tr>
+          <td data-label="Periode">~80–150 H</td>
+          <td data-label="Tokoh">Mu'tazilah & Qadariyyah</td>
+          <td data-label="Signifikansi" style="color:var(--text-s);">Mendahulukan akal atas nash, mengingkari takdir, dan menyatakan Al-Qur'an makhluk. Para ulama melawan dengan hadis.</td>
+        </tr>
+        <tr>
+          <td data-label="Periode">164–241 H</td>
+          <td data-label="Tokoh">Imam Ahmad bin Hanbal</td>
+          <td data-label="Signifikansi" style="color:var(--text-s);">Mempertahankan akidah salaf dalam fitnah khalqil-Qur'an. Didera dan dipenjara namun tidak bergeming.</td>
+        </tr>
+        <tr>
+          <td data-label="Periode">260–324 H</td>
+          <td data-label="Tokoh">Imam Al-Asy'ari</td>
+          <td data-label="Signifikansi" style="color:var(--text-s);">Mantan Mu'tazilah yang kembali kepada akidah salaf dan merumuskannya secara sistematis untuk melawan Mu'tazilah.</td>
+        </tr>
+        <tr>
+          <td data-label="Periode">238–333 H</td>
+          <td data-label="Tokoh">Imam Al-Maturidi</td>
+          <td data-label="Signifikansi" style="color:var(--text-s);">Memformulasikan akidah Aswaja versi Samarkand — mengikuti madzhab Hanafi dalam fiqh dengan akidah salaf.</td>
+        </tr>
+        <tr>
+          <td data-label="Periode">450–505 H</td>
+          <td data-label="Tokoh">Imam Al-Ghazali</td>
+          <td data-label="Signifikansi" style="color:var(--text-s);">Memperkuat fondasi akidah Aswaja melalui karya Ihya Ulumiddin dan Iqtishad fil-I'tiqad — menyatukan aspek fiqh, akidah, dan tasawuf.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ════ BAB III: AKIDAH ASWAJA ════ -->
+<div class="chap">
+  <div class="chap-ornament co-gold">
+    <div class="chap-orn-num con-gold">III</div>
+    <div class="chap-orn-icon">⚖️</div>
+  </div>
+  <div class="chap-head ch-gold">
+    <div class="chap-tag ct-gold">✦ Bab Ketiga — Inti</div>
+    <div class="chap-ar car-gold">عَقِيدَةُ أَهْلِ السُّنَّةِ وَالْجَمَاعَةِ</div>
+    <div class="chap-title">Pokok-Pokok Akidah Ahlussunnah wal Jamaah</div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="prose fl-gold">
+    <p class="lead pl-gold">Akidah Aswaja bukan hasil ijtihad manusia atau rekayasa para ulama — ia adalah akidah yang langsung bersumber dari Al-Qur'an dan hadis shahih, sebagaimana dipahami dan diamalkan oleh para sahabat dan generasi salaf yang salih. Ia adalah warisan yang dijaga, bukan inovasi yang dikreasi.</p>
+  </div>
+
+  <!-- Tauhid -->
+  <p style="font-family:'Jost',sans-serif;font-weight:500;font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin:0 0 12px;">1. Tauhid — Mengesakan Allah</p>
+
+  <div class="card-grid">
+    <div class="card card-gold">
+      <div class="card-num cn-gold">١</div>
+      <div class="card-title ct-gold">Tauhid Rububiyyah</div>
+      <div class="card-desc">Meyakini bahwa Allah satu-satunya Pencipta, Pengatur, dan Pemilik seluruh alam semesta. Tidak ada yang menciptakan, mengatur, atau memiliki alam ini kecuali Allah. Bahkan orang musyrik mengakui ini — namun tidak cukup untuk selamat.</div>
+      <span class="card-ref">QS. Az-Zumar: 38 · QS. Az-Zukhruf: 87</span>
+    </div>
+    <div class="card card-gold">
+      <div class="card-num cn-gold">٢</div>
+      <div class="card-title ct-gold">Tauhid Uluhiyyah</div>
+      <div class="card-desc">Meyakini dan mengamalkan bahwa hanya Allah yang berhak mendapat segala bentuk ibadah: shalat, doa, penyembelihan, nazar, tawakal, takut, harap, cinta, dll. Inilah inti dakwah para nabi. Yang menolak ini adalah musyrik.</div>
+      <span class="card-ref">QS. Al-Anbiyā': 25 · QS. Al-Baqarah: 21</span>
+    </div>
+    <div class="card card-gold">
+      <div class="card-num cn-gold">٣</div>
+      <div class="card-title ct-gold">Tauhid Asma' wa Sifat</div>
+      <div class="card-desc">Menetapkan semua nama dan sifat yang Allah tetapkan untuk diri-Nya dalam Al-Qur'an dan hadis shahih — tanpa tahrif (merubah makna), ta'thil (mengingkari), tamtsil (menyerupakan dengan makhluk), atau takyif (mempertanyakan hakikatnya).</div>
+      <span class="card-ref">QS. Asy-Syura: 11 · QS. Al-A'raf: 180</span>
+    </div>
+  </div>
+
+  <div class="dalil dl-gold">
+    <div class="db-gold"></div>
+    <div class="dbody">
+      <div class="dtag dtag-gold">📜 Prinsip Aswaja tentang Asma' wa Sifat</div>
+      <div class="dar dar-gold">لَيْسَ كَمِثْلِهِ شَيْءٌ ۖ وَهُوَ السَّمِيعُ الْبَصِيرُ</div>
+      <div class="dtrans">"Tidak ada sesuatupun yang serupa dengan Dia, dan Dia Maha Mendengar lagi Maha Melihat." — Ayat ini mengandung seluruh prinsip akidah Aswaja tentang sifat Allah: (1) penetapan sifat (Dia Mendengar dan Melihat) dan (2) penafian keserupaan dengan makhluk (tidak ada yang serupa). Inilah jalan tengah antara ta'thil (mengingkari sifat) dan tamtsil (menyerupakan).</div>
+      <div class="dref dref-gold">QS. Asy-Syura (42): 11 — Prinsip emas akidah Aswaja tentang sifat Allah</div>
+    </div>
+  </div>
+
+  <!-- Iman kepada yang ghaib -->
+  <p style="font-family:'Jost',sans-serif;font-weight:500;font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin:20px 0 12px;">2. Iman kepada Perkara Ghaib</p>
+
+  <div class="hl hl-gold">
+    <div class="hl-label hll-gold">✦ Prinsip: Taslim kepada Nash (Dalil)</div>
+    <div class="hl-ar hlar-gold">السَّمْعُ وَالطَّاعَةُ — الإِيمَانُ بِمَا جَاءَ بِهِ النَّبِيُّ ﷺ</div>
+    <div class="hl-trans">Aswaja beriman kepada semua perkara ghaib yang ditetapkan Al-Qur'an dan hadis shahih — tanpa mempertanyakan "bagaimana" atau "mengapa" sesuatu bisa terjadi. Ini meliputi: siksa kubur, ni'mat kubur, munkar-nakir, kebangkitan, mahsyar, hisab, mizan, shirath, syafaat Nabi ﷺ, surga, neraka, dan melihat Allah di surga. Semua ini diterima secara taslim (berserah penuh), bukan dita'wil dengan akal. Inilah yang membedakan Aswaja dari Mu'tazilah.</div>
+    <div class="hl-ref">HR. Muslim (181) — Nabi ﷺ: "Kalian akan melihat Rabb kalian seperti melihat bulan purnama" (literal, bukan majazi) · Kaidah Aswaja</div>
+  </div>
+
+  <!-- Qadar -->
+  <p style="font-family:'Jost',sans-serif;font-weight:500;font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin:20px 0 12px;">3. Akidah tentang Qadar</p>
+
+  <div class="tbl-wrap">
+    <table class="tbl th-gold">
+      <thead><tr>
+        <th style="width:25%">Aspek Qadar</th>
+        <th style="width:35%">Keyakinan Aswaja</th>
+        <th style="width:40%">Penolakan terhadap Kelompok Sesat</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td data-label="Aspek">Al-'Ilm</td>
+          <td data-label="Aswaja" style="color:var(--text-s);">Allah mengetahui segala sesuatu sebelum terjadi — dari azali hingga akhir zaman</td>
+          <td data-label="Penolakan" style="color:var(--text-s);">Menolak Mu'tazilah yang mengingkari ilmu azali Allah tentang perbuatan manusia</td>
+        </tr>
+        <tr>
+          <td data-label="Aspek">Al-Kitabah</td>
+          <td data-label="Aswaja" style="color:var(--text-s);">Allah menuliskan semua yang akan terjadi di Lauh Mahfuzh 50.000 tahun sebelum penciptaan langit-bumi</td>
+          <td data-label="Penolakan" style="color:var(--text-s);">HR. Muslim (2653) — Dalil penulisan qadar yang tidak bisa diingkari</td>
+        </tr>
+        <tr>
+          <td data-label="Aspek">Al-Masyi'ah</td>
+          <td data-label="Aswaja" style="color:var(--text-s);">Semua yang terjadi — baik dan buruk — adalah atas kehendak Allah. Tidak ada yang terjadi di luar kehendak-Nya</td>
+          <td data-label="Penolakan" style="color:var(--text-s);">Menolak Qadariyyah yang mengatakan manusia bebas total di luar kehendak Allah</td>
+        </tr>
+        <tr>
+          <td data-label="Aspek">Al-Khalq</td>
+          <td data-label="Aswaja" style="color:var(--text-s);">Allah menciptakan seluruh perbuatan makhluk — termasuk perbuatan manusia. Namun manusia punya kasb (usaha) yang nyata</td>
+          <td data-label="Penolakan" style="color:var(--text-s);">Menolak Jabariyyah (manusia terpaksa total) dan Qadariyyah (manusia bebas total) — Aswaja di tengah</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ════ BAB IV: PRINSIP-PRINSIP MANHAJ ════ -->
+<div class="chap">
+  <div class="chap-ornament co-jade">
+    <div class="chap-orn-num con-jade">IV</div>
+    <div class="chap-orn-icon">🌿</div>
+  </div>
+  <div class="chap-head ch-jade">
+    <div class="chap-tag ct-jade">✦ Bab Keempat</div>
+    <div class="chap-ar car-jade">مَنْهَجُ أَهْلِ السُّنَّةِ فِي التَّلَقِّي وَالتَّعَامُلِ</div>
+    <div class="chap-title">Prinsip-Prinsip Manhaj Aswaja dalam Mengambil Ilmu &amp; Beramal</div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="prose fl-jade">
+    <p class="lead pl-jade">Aswaja bukan hanya kumpulan keyakinan — ia adalah cara hidup, cara berpikir, dan cara beragama yang menyeluruh. Para ulama merumuskan manhaj (metode) yang membedakan Aswaja dari kelompok-kelompok yang menyimpang.</p>
+  </div>
+
+  <div class="card-grid" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr));">
+    <div class="card card-jade">
+      <span class="card-icon">📖</span>
+      <div class="card-title ct-jade">1. Mendahulukan Nash atas Akal</div>
+      <div class="card-desc">Jika ada dalil yang shahih dari Al-Qur'an atau hadis, akal tunduk kepadanya — bukan sebaliknya. Akal digunakan untuk memahami nash, bukan mengkoreksi atau menta'wilnya. Ini adalah perbedaan mendasar dengan Mu'tazilah dan para filosof.</div>
+      <span class="card-ref">QS. An-Nisa': 65 · Prinsip Imam Asy-Syafi'i</span>
+    </div>
+    <div class="card card-jade">
+      <span class="card-icon">⚖️</span>
+      <div class="card-title ct-jade">2. Wasathiyyah — Jalan Tengah</div>
+      <div class="card-desc">Aswaja selalu berada di tengah antara dua ekstrem yang salah. Dalam akidah: antara ta'thil (mengingkari sifat Allah) dan tamtsil (menyerupakan). Dalam masalah sahabat: antara Syi'ah yang berlebihan dan Khawarij yang mencaci.</div>
+      <span class="card-ref">QS. Al-Baqarah: 143 — "Kami menjadikan kalian umat pertengahan"</span>
+    </div>
+    <div class="card card-jade">
+      <span class="card-icon">🤝</span>
+      <div class="card-title ct-jade">3. Mengikuti Ulama Salaf</div>
+      <div class="card-desc">Generasi terbaik adalah sahabat, tabi'in, dan tabi'ut-tabi'in (3 generasi pertama). Memahami Al-Qur'an dan hadis wajib merujuk kepada cara mereka — bukan menafsirkan sendiri dengan akal atau perasaan semata.</div>
+      <span class="card-ref">HR. Bukhari (3651) — "Sebaik-baik manusia adalah generasiku..."</span>
+    </div>
+    <div class="card card-jade">
+      <span class="card-icon">🕊️</span>
+      <div class="card-title ct-jade">4. Menjauhi Bid'ah</div>
+      <div class="card-desc">Semua bid'ah (perkara baru dalam agama tanpa dalil) adalah sesat. Nabi ﷺ bersabda: "Semua bid'ah adalah sesat, dan semua kesesatan di neraka." — HR. Muslim (867). Aswaja ketat dalam menjaga kemurnian agama dari tambahan yang tidak ada dasarnya.</div>
+      <span class="card-ref">HR. Muslim (867) · HR. Abu Dawud (4607)</span>
+    </div>
+    <div class="card card-jade">
+      <span class="card-icon">👥</span>
+      <div class="card-title ct-jade">5. Menjaga Ukhuwwah &amp; Jamaah</div>
+      <div class="card-desc">Aswaja sangat menekankan persatuan umat dan ketaatan kepada pemimpin Muslim dalam perkara yang bukan maksiat. Tidak mudah mengkafirkan atau memvonis sesama Muslim — ini adalah pembeda dari Khawarij.</div>
+      <span class="card-ref">QS. Āli Imran: 103 · HR. Bukhari (7096)</span>
+    </div>
+    <div class="card card-jade">
+      <span class="card-icon">🔬</span>
+      <div class="card-title ct-jade">6. Menerima Ijma' &amp; Qiyas</div>
+      <div class="card-desc">Selain Al-Qur'an dan Sunnah, Aswaja menerima ijma' (kesepakatan ulama) dan qiyas (analogi yang benar) sebagai sumber hukum — sesuai kaidah usul fiqh yang telah mapan. Bukan ijtihad bebas tanpa batas.</div>
+      <span class="card-ref">QS. An-Nisa': 59 · Ijma' adalah hujjah yang qath'i</span>
+    </div>
+  </div>
+
+  <div class="dalil dl-jade">
+    <div class="db-jade"></div>
+    <div class="dbody">
+      <div class="dtag dtag-jade">📜 Imam Asy-Syafi'i tentang Manhaj Aswaja</div>
+      <div class="dar dar-jade">عَلَيْكَ بِآثَارِ مَنْ سَلَفَ وَإِنْ رَفَضَكَ النَّاسُ وَإِيَّاكَ وَآرَاءَ الرِّجَالِ وَإِنْ زَخْرَفُوا لَكَ الْقَوْلَ</div>
+      <div class="dtrans">"Berpeganglah kepada atsar (jejak) orang-orang yang terdahulu (salaf) meskipun orang-orang menolakmu, dan jauhilah pendapat-pendapat para tokoh meskipun mereka menghiasi perkataannya bagimu." — Imam Asy-Syafi'i rahimahullāh menegaskan prioritas atsar salaf di atas pendapat siapapun.</div>
+      <div class="dref dref-jade">Imam Asy-Syafi'i — Al-Umm · Diriwayatkan dalam berbagai kitab tabaqat</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════ BAB V: TIGA MADZHAB AKIDAH ASWAJA ════ -->
+<div class="chap">
+  <div class="chap-ornament co-cobalt">
+    <div class="chap-orn-num con-cobalt">V</div>
+    <div class="chap-orn-icon">🏛️</div>
+  </div>
+  <div class="chap-head ch-cobalt">
+    <div class="chap-tag ct-cobalt">✦ Bab Kelima</div>
+    <div class="chap-ar car-cobalt">ثَلَاثُ مَدَارِسَ فِي عَقِيدَةِ أَهْلِ السُّنَّةِ</div>
+    <div class="chap-title">Tiga Mazhab Akidah dalam Lingkungan Aswaja</div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="prose fl-cobalt">
+    <p class="lead pl-cobalt">Para ulama Aswaja terbagi dalam tiga mazhab/aliran akidah yang semuanya dianggap berada dalam lingkaran Ahlussunnah — meskipun memiliki perbedaan metodologi dalam menjelaskan akidah. Ketiga aliran ini bersatu dalam ushul (pokok-pokok) dan berbeda dalam thariqah (cara penjelasan).</p>
+  </div>
+
+  <div class="tbl-wrap">
+    <table class="tbl th-cobalt">
+      <thead><tr>
+        <th style="width:20%">Aliran</th>
+        <th style="width:22%">Pendiri</th>
+        <th style="width:30%">Karakteristik</th>
+        <th style="width:28%">Pengikut di Masa Kini</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td data-label="Aliran"><strong>Asy'ariyyah</strong></td>
+          <td data-label="Pendiri" style="color:var(--text-s);">Imam Abul Hasan Al-Asy'ari (260–324 H)</td>
+          <td data-label="Karakteristik" style="color:var(--text-s);">Menggunakan mantiq (logika) untuk membela akidah salaf sambil menolak ta'thil dan tamtsil. Banyak menta'wil sifat-sifat khabariyyah.</td>
+          <td data-label="Pengikut" style="color:var(--text-s);">Kebanyakan ulama Syafi'i dan Maliki, NU (Nahdlatul Ulama) di Indonesia</td>
+        </tr>
+        <tr>
+          <td data-label="Aliran"><strong>Maturidiyyah</strong></td>
+          <td data-label="Pendiri" style="color:var(--text-s);">Imam Abu Mansur Al-Maturidi (238–333 H)</td>
+          <td data-label="Karakteristik" style="color:var(--text-s);">Dekat dengan Asy'ariyyah namun dengan beberapa perbedaan dalam masalah-masalah kalam. Dominan di kawasan Hanafi.</td>
+          <td data-label="Pengikut" style="color:var(--text-s);">Mayoritas ulama Hanafi, Asia Tengah, anak benua India, Turki</td>
+        </tr>
+        <tr>
+          <td data-label="Aliran"><strong>Atsariyyah / Salafiyyah</strong></td>
+          <td data-label="Pendiri" style="color:var(--text-s);">Imam Ahmad bin Hanbal (164–241 H) · Ibnu Taimiyyah (661–728 H)</td>
+          <td data-label="Karakteristik" style="color:var(--text-s);">Menerima dan menetapkan sifat Allah secara literal tanpa ta'wil, tafwidh makna dengan isbat lafaz. Menghindari kalam sebisa mungkin.</td>
+          <td data-label="Pengikut" style="color:var(--text-s);">Mayoritas ulama Hanbali, gerakan Salafi modern, sebagian Muhammadiyah</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="hl hl-cobalt">
+    <div class="hl-label hll-cobalt">✦ Penting: Ketiga Aliran Ini Sama-sama Aswaja</div>
+    <div class="hl-trans">Para ulama besar dari ketiga aliran — Imam Al-Ghazali (Asy'ari), Imam An-Nasafi (Maturidi), dan Imam Ibnu Qudamah (Atsari) — semuanya mengakui bahwa perbedaan di antara mereka adalah perbedaan metodologi dalam menjelaskan akidah, bukan perbedaan dalam ushul (pokok-pokok) akidah itu sendiri. Mereka semua: (1) beriman kepada Allah dengan sifat-sifat-Nya, (2) menolak tasybih (penyerupaan) dan ta'thil (pengingkaran), (3) mengikuti sunnah Nabi ﷺ, (4) menghormati para sahabat. Yang memisahkan ketiganya dari Mu'tazilah, Khawarij, dan Syi'ah jauh lebih besar dari yang memisahkan mereka satu sama lain.</div>
+    <div class="hl-ref">Pernyataan para ulama lintas mazhab · Al-Aqidah Ath-Thahawiyyah — Imam Ath-Thahawi (229–321 H)</div>
+  </div>
+</div>
+
+<!-- ════ BAB VI: CIRI KHAS ASWAJA ════ -->
+<div class="chap">
+  <div class="chap-ornament co-gold">
+    <div class="chap-orn-num con-gold">VI</div>
+    <div class="chap-orn-icon">🌟</div>
+  </div>
+  <div class="chap-head ch-gold">
+    <div class="chap-tag ct-gold">✦ Bab Keenam</div>
+    <div class="chap-ar car-gold">سِمَاتُ أَهْلِ السُّنَّةِ وَخَصَائِصُهُمْ</div>
+    <div class="chap-title">Ciri-Ciri Khas Ahlussunnah wal Jamaah</div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="card-grid" style="grid-template-columns:repeat(auto-fit,minmax(230px,1fr));">
+    <div class="card card-gold">
+      <span class="card-icon">📚</span>
+      <div class="card-title ct-gold">Cinta kepada Sunnah</div>
+      <div class="card-desc">Aswaja mencintai, mengagungkan, dan membela hadis Nabi ﷺ. Mereka mengerahkan upaya besar untuk menjaga kesahihan hadis melalui ilmu rijal dan musthalahal-hadis — warisan ilmu yang tidak dimiliki peradaban lain.</div>
+    </div>
+    <div class="card card-gold">
+      <span class="card-icon">❤️</span>
+      <div class="card-title ct-gold">Cinta &amp; Hormat kepada Sahabat</div>
+      <div class="card-desc">Aswaja mencintai seluruh sahabat Nabi ﷺ dan menolak sikap yang memvonis atau mencaci salah seorang dari mereka. Keyakinan: keadilan seluruh sahabat (adalah ash-shahabah) adalah ijma' ulama.</div>
+      <span class="card-ref">QS. At-Tawbah: 100 · QS. Al-Fath: 18</span>
+    </div>
+    <div class="card card-gold">
+      <span class="card-icon">👑</span>
+      <div class="card-title ct-gold">Taat kepada Pemimpin Muslim</div>
+      <div class="card-desc">Aswaja mewajibkan ketaatan kepada pemimpin Muslim dalam perkara yang bukan maksiat — dan menolak pemberontakan bersenjata terhadap pemimpin yang zhalim sekalipun, kecuali ada kekufuran yang nyata. Ini berbeda dari manhaj Khawarij.</div>
+      <span class="card-ref">HR. Bukhari (7096) · HR. Muslim (1709)</span>
+    </div>
+    <div class="card card-gold">
+      <span class="card-icon">⚖️</span>
+      <div class="card-title ct-gold">Tidak Mengkafirkan Pelaku Dosa</div>
+      <div class="card-desc">Pelaku dosa besar yang tidak menghalalkannya tetap Muslim — tidak kafir. Ini adalah pembeda paling fundamental dari Khawarij. Aswaja: dosa besar mengurangi iman namun tidak menghilangkannya seluruhnya.</div>
+      <span class="card-ref">Al-Aqidah Ath-Thahawiyyah · Imam Ahmad bin Hanbal</span>
+    </div>
+    <div class="card card-gold">
+      <span class="card-icon">🙏</span>
+      <div class="card-title ct-gold">Mendoakan Pemimpin yang Salah</div>
+      <div class="card-desc">Jika pemimpin Muslim berbuat zalim, Aswaja mendoakan mereka agar Allah memperbaiki — bukan memboikot atau memberontak. Ini adalah sunnah ulama salaf dalam menghadapi penguasa yang menyimpang.</div>
+      <span class="card-ref">Imam Ahmad bin Hanbal · Ibnu Qudamah dalam Al-Lum'ah</span>
+    </div>
+    <div class="card card-gold">
+      <span class="card-icon">🕌</span>
+      <div class="card-title ct-gold">Menghormati Ulama Warisan Nabi ﷺ</div>
+      <div class="card-desc">Ulama adalah pewaris para nabi (HR. Abu Dawud 3641). Aswaja memuliakan ulama, mengambil ilmu dari mereka, dan tidak sembarangan membantah atau meremehkan mereka — meskipun tetap menolak kekeliruan siapapun jika bertentangan dengan nash.</div>
+      <span class="card-ref">HR. Abu Dawud (3641) — Shahih</span>
+    </div>
+  </div>
+</div>
+
+<!-- ════ BAB VII: PERBEDAAN DENGAN ALIRAN SESAT ════ -->
+<div class="chap">
+  <div class="chap-ornament co-rust">
+    <div class="chap-orn-num con-rust">VII</div>
+    <div class="chap-orn-icon">⚔️</div>
+  </div>
+  <div class="chap-head ch-rust">
+    <div class="chap-tag ct-rust">✦ Bab Ketujuh</div>
+    <div class="chap-ar car-rust">الفَرْقُ بَيْنَ أَهْلِ السُّنَّةِ وَأَهْلِ الأَهْوَاءِ</div>
+    <div class="chap-title">Perbedaan Aswaja dengan Aliran-Aliran yang Menyimpang</div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="prose fl-rust">
+    <p>Para ulama menetapkan bahwa mengenal penyimpangan (bid'ah dan kesesatan) adalah bagian dari ilmu agama — bukan untuk mencaci, melainkan agar umat bisa menjaga diri dan keluarganya dari ketergelinciran. Berikut adalah perbedaan pokok Aswaja dengan kelompok-kelompok yang menyimpang dari sunnah.</p>
+  </div>
+
+  <div class="tbl-wrap">
+    <table class="tbl th-rust">
+      <thead><tr>
+        <th style="width:18%">Kelompok</th>
+        <th style="width:35%">Penyimpangan Utama</th>
+        <th style="width:47%">Respons Aswaja</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td data-label="Kelompok"><strong>Khawarij</strong></td>
+          <td data-label="Penyimpangan" style="color:var(--text-s);">Mengkafirkan pelaku dosa besar · Membolehkan pemberontakan bersenjata · Ekstremisme dalam agama</td>
+          <td data-label="Respons" style="color:var(--text-s);">Aswaja: pelaku dosa besar tidak kafir · Pemberontakan terhadap pemimpin Muslim dilarang kecuali ada kufr bawah · Moderasi dalam beragama</td>
+        </tr>
+        <tr>
+          <td data-label="Kelompok"><strong>Mu'tazilah</strong></td>
+          <td data-label="Penyimpangan" style="color:var(--text-s);">Mendahulukan akal atas nash · Mengingkari sifat-sifat Allah · Meyakini Al-Qur'an makhluk · Mengingkari ru'yatullah</td>
+          <td data-label="Respons" style="color:var(--text-s);">Aswaja: nash di atas akal · Allah memiliki sifat yang hakiki · Al-Qur'an kalamullah bukan makhluk · Ru'yatullah adalah haq (nyata)</td>
+        </tr>
+        <tr>
+          <td data-label="Kelompok"><strong>Syi'ah Imamiyyah</strong></td>
+          <td data-label="Penyimpangan" style="color:var(--text-s);">Mencaci para sahabat (khususnya Abu Bakr, Umar, Utsman) · Berlebihan dalam mengagungkan imam · Keyakinan imam maksum</td>
+          <td data-label="Respons" style="color:var(--text-s);">Aswaja: semua sahabat adil dan mulia · Tidak ada yang maksum kecuali para nabi · Mencaci sahabat adalah tanda kemunafikan</td>
+        </tr>
+        <tr>
+          <td data-label="Kelompok"><strong>Qadariyyah / Jabariyyah</strong></td>
+          <td data-label="Penyimpangan" style="color:var(--text-s);">Qadariyyah: mengingkari qadar Allah atas perbuatan manusia · Jabariyyah: manusia tidak punya ikhtiar sama sekali</td>
+          <td data-label="Respons" style="color:var(--text-s);">Aswaja: qadar Allah mencakup segalanya, namun manusia punya kasb (usaha) yang nyata dan bertanggung jawab atasnya</td>
+        </tr>
+        <tr>
+          <td data-label="Kelompok"><strong>Murji'ah Ekstrem</strong></td>
+          <td data-label="Penyimpangan" style="color:var(--text-s);">Iman hanya keyakinan hati, amal tidak termasuk iman · Dosa tidak mengurangi iman</td>
+          <td data-label="Respons" style="color:var(--text-s);">Aswaja: iman = keyakinan hati + ucapan lisan + amal anggota badan · Bertambah dengan ketaatan dan berkurang dengan maksiat</td>
+        </tr>
+        <tr>
+          <td data-label="Kelompok"><strong>Sufi Panteisme (Wihdatul Wujud)</strong></td>
+          <td data-label="Penyimpangan" style="color:var(--text-s);">Allah menyatu dengan alam · "Aku adalah Allah" (ucapan Al-Hallaj) · Menghapus batas antara Khaliq dan makhluk</td>
+          <td data-label="Respons" style="color:var(--text-s);">Aswaja: Allah terpisah dan berbeda dari makhluk-Nya · Allah di atas Arsy · Wihdatul wujud adalah kekufuran menurut ijma' ulama</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="dalil dl-rust">
+    <div class="db-rust"></div>
+    <div class="dbody">
+      <div class="dtag dtag-rust">📜 Imam Ahmad tentang Kewajiban Mengenal Bid'ah</div>
+      <div class="dar dar-rust">مَنْ لَا يَعْرِفُ الشَّرَّ يُوشِكُ أَنْ يَقَعَ فِيهِ</div>
+      <div class="dtrans">"Barangsiapa yang tidak mengenal keburukan, hampir-hampir ia jatuh ke dalamnya." — Mengenal bid'ah dan kesesatan bukan untuk sekedar mencela, melainkan agar kita dan generasi kita bisa menghindari ketergelinciran.</div>
+      <div class="dref dref-rust">Ibnu Wadhdhah dalam Al-Bida' wan-Nahy 'Anha · Imam Ahmad rahimahullāh</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════ BAB VIII: ASWAJA DAN INDONESIA ════ -->
+<div class="chap">
+  <div class="chap-ornament co-jade">
+    <div class="chap-orn-num con-jade">VIII</div>
+    <div class="chap-orn-icon">🌙</div>
+  </div>
+  <div class="chap-head ch-jade">
+    <div class="chap-tag ct-jade">✦ Bab Kedelapan</div>
+    <div class="chap-ar car-jade">أَهْلُ السُّنَّةِ فِي إِنْدُونِيسِيَا</div>
+    <div class="chap-title">Aswaja di Indonesia — Konteks, Karakteristik &amp; Ulama</div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="prose fl-jade">
+    <p class="lead pl-jade">Islam masuk ke Indonesia melalui jalur perdagangan dan dakwah para ulama yang membawa tradisi keilmuan Aswaja. Para Walisongo dan ulama-ulama pesantren awal adalah pewaris dan pembawa manhaj Aswaja — dengan karakteristik yang menyesuaikan konteks budaya Nusantara tanpa mengkompromikan ushul (pokok-pokok) agama.</p>
+    <p>Di Indonesia, Aswaja paling kuat direpresentasikan oleh Nahdlatul Ulama (NU) yang berdiri pada 1926 sebagai respons terhadap berbagai arus pembaruan yang dinilai mengancam tradisi keilmuan pesantren. NU secara eksplisit mendeklarasikan diri sebagai organisasi Aswaja dengan berpegang kepada empat madzhab fiqh (Hanafi, Maliki, Syafi'i, Hanbali) dan akidah Asy'ariyyah-Maturidiyyah.</p>
+    <p>Muhammadiyah, meskipun secara prinsip juga mengklaim sebagai bagian dari Aswaja, memiliki karakteristik yang lebih dekat kepada Salafi/Atsari dalam manhaj akidah — menolak taqlid buta kepada madzhab dan lebih menekankan kembali langsung kepada Al-Qur'an dan hadis. Perbedaan antara NU dan Muhammadiyah lebih banyak pada masalah furūʿ (cabang) dan metodologi, bukan pada ushul akidah yang mendasar.</p>
+  </div>
+
+  <div class="tbl-wrap">
+    <table class="tbl th-jade">
+      <thead><tr>
+        <th style="width:22%">Organisasi</th>
+        <th style="width:25%">Manhaj Akidah</th>
+        <th style="width:25%">Fiqh</th>
+        <th style="width:28%">Karakteristik Khas</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td data-label="Organisasi"><strong>Nahdlatul Ulama (NU)</strong></td>
+          <td data-label="Akidah" style="color:var(--text-s);">Asy'ariyyah / Maturidiyyah</td>
+          <td data-label="Fiqh" style="color:var(--text-s);">Madzhab Syafi'i (dominan) · dengan rujukan 4 madzhab</td>
+          <td data-label="Karakter" style="color:var(--text-s);">Pesantren, tradisi kitab kuning, qunut subuh, tahlilan, maulid Nabi, ziarah kubur</td>
+        </tr>
+        <tr>
+          <td data-label="Organisasi"><strong>Muhammadiyah</strong></td>
+          <td data-label="Akidah" style="color:var(--text-s);">Atsariyyah / lebih dekat Salafi metodologi</td>
+          <td data-label="Fiqh" style="color:var(--text-s);">Ijtihad langsung ke Al-Qur'an &amp; Hadis · tarjih</td>
+          <td data-label="Karakter" style="color:var(--text-s);">Pembaruan, pendidikan modern, tidak qunut subuh, tidak tahlilan versi NU</td>
+        </tr>
+        <tr>
+          <td data-label="Organisasi"><strong>Persatuan Islam (Persis)</strong></td>
+          <td data-label="Akidah" style="color:var(--text-s);">Salafi Atsari</td>
+          <td data-label="Fiqh" style="color:var(--text-s);">Lebih literal kepada dalil, menghindari taqlid madzhab</td>
+          <td data-label="Karakter" style="color:var(--text-s);">Sangat ketat dalam mengikuti hadis secara literal, kritis terhadap tradisi yang dinilai tanpa dalil</td>
+        </tr>
+        <tr>
+          <td data-label="Organisasi"><strong>LDII &amp; Aliran Lain</strong></td>
+          <td data-label="Akidah" style="color:var(--text-s);">Di luar Aswaja</td>
+          <td data-label="Fiqh" style="color:var(--text-s);">Menyimpang dari manhaj ulama</td>
+          <td data-label="Karakter" style="color:var(--text-s);"><span class="tbdg tbdg-rust">Tidak termasuk Aswaja</span> — mengklaim hadis hanya dari jamaah mereka, dll.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="hl hl-jade">
+    <div class="hl-label hll-jade">✦ Para Ulama Nusantara Aswaja yang Berpengaruh</div>
+    <div class="hl-trans">
+      <strong>Walisongo</strong> — Para wali abad 14–16 M yang menyebarkan Islam Aswaja melalui pendekatan budaya bijaksana di tanah Jawa dan Nusantara.<br><br>
+      <strong>Syekh Nawawi Al-Bantani (1813–1897)</strong> — Ulama Banten yang menjadi guru besar di Makkah, karya-karyanya menjadi rujukan pesantren Nusantara hingga kini (Nihayatuz Zain, Maraqi Al-Ubudiyyah, dll.).<br><br>
+      <strong>KH. Hasyim Asy'ari (1875–1947)</strong> — Pendiri NU, ulama pesantren Tebuireng Jombang, murid Syekh Mahfuz Termas. Karya: Risalah Ahlussunnah wal Jamaah.<br><br>
+      <strong>Syekh Ahmad Khatib Al-Minangkabawi (1860–1916)</strong> — Imam Masjidil Haram, guru bagi para pendiri NU maupun Muhammadiyah. Simbol kesatuan keilmuan Nusantara.
+    </div>
+    <div class="hl-ref">Sejarah Islam Nusantara · Martin van Bruinessen — Kitab Kuning, Pesantren, dan Tarikat</div>
+  </div>
+</div>
+
+<!-- ════ BAB IX: HIKMAH BERPEGANG KEPADA ASWAJA ════ -->
+<div class="chap">
+  <div class="chap-ornament co-gold">
+    <div class="chap-orn-num con-gold">IX</div>
+    <div class="chap-orn-icon">✨</div>
+  </div>
+  <div class="chap-head ch-gold">
+    <div class="chap-tag ct-gold">✦ Bab Kesembilan — Penutup</div>
+    <div class="chap-ar car-gold">حِكْمَةُ الاِنْتِسَابِ إِلَى أَهْلِ السُّنَّةِ</div>
+    <div class="chap-title">Hikmah &amp; Urgensi Berpegang kepada Manhaj Aswaja</div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="prose fl-gold">
+    <p class="lead pl-gold">Di tengah zaman yang penuh fitnah, perpecahan, dan arus pemikiran yang silang-sengkarut, berpegang teguh kepada manhaj Aswaja bukan fanatisme golongan — ia adalah keselamatan. Karena Nabi ﷺ sendiri yang menunjukkan bahwa hanya satu golongan yang selamat: yang mengikuti apa yang beliau dan para sahabatnya berada di atasnya.</p>
+    <p>Manhaj Aswaja memberikan kompas yang jelas: Al-Qur'an, Sunnah, dan pemahaman para sahabat. Dengan kompas ini, seorang Muslim tidak akan tersesat oleh arus pemikiran liberal yang mengikis akidah, tidak akan terseret oleh ekstremisme Khawarij yang menumpahkan darah, tidak akan terperdaya oleh klaim-klaim Syi'ah yang mendistorsi sejarah, dan tidak akan tenggelam dalam kekaburan tasawuf yang menyimpang dari syariat.</p>
+    <p>Berpegang kepada Aswaja juga berarti berpegang kepada persatuan — karena Aswaja tidak pernah mengkafirkan sesama Muslim yang masih di dalam lingkaran Islam, tidak mudah memvonis bid'ah sebelum memastikan dengan ilmu yang benar, dan senantiasa menjaga ukhuwwah Islamiyyah sebagai amanah yang harus dijaga hingga hari kiamat.</p>
+  </div>
+
+  <div class="banner banner-gold">
+    <div class="ban-ar bnar-gold">فَإِنَّ دِينَ اللَّهِ لَا يَقُومُ إِلَّا بِالْجَمَاعَةِ وَمَنْ فَارَقَ الْجَمَاعَةَ قِيدَ شِبْرٍ فَقَدْ خَلَعَ رِبْقَةَ الإِسْلَامِ مِنْ عُنُقِهِ</div>
+    <div class="ban-id">"Sesungguhnya agama Allah tidak tegak kecuali dengan jamaah. Dan barangsiapa yang memisahkan diri dari jamaah (kaum Muslimin) seukuran sejengkal, maka ia telah melepaskan tali Islam dari lehernya." — Hadis ini mengajarkan pentingnya bersama jamaah ulama dan umat Islam, tidak memisahkan diri dengan pemikiran eksklusif yang mengkafirkan atau memvonis sesat semua yang berbeda.</div>
+    <div class="ban-ref">HR. Ahmad (16547) &amp; At-Thabrani — dari Ibnu Abbas radhiyallahu 'anhu — Hasan</div>
+  </div>
+
+  <div class="dalil dl-gold">
+    <div class="db-gold"></div>
+    <div class="dbody">
+      <div class="dtag dtag-gold">📜 HR. Muslim — Perintah Mengikuti Sunnah &amp; Sahabat</div>
+      <div class="dar dar-gold">عَلَيْكُمْ بِسُنَّتِي وَسُنَّةِ الْخُلَفَاءِ الرَّاشِدِينَ الْمَهْدِيِّينَ تَمَسَّكُوا بِهَا وَعَضُّوا عَلَيْهَا بِالنَّوَاجِذِ وَإِيَّاكُمْ وَمُحْدَثَاتِ الأُمُورِ فَإِنَّ كُلَّ بِدْعَةٍ ضَلَالَةٌ</div>
+      <div class="dtrans">"Wajib atas kalian berpegang kepada sunnahku dan sunnah para Khalifah Rasyidin yang mendapat petunjuk. Berpeganglah kepadanya dan gigitlah ia dengan gigi geraham kalian. Dan jauhilah perkara-perkara baru yang diada-adakan, karena sesungguhnya setiap bid'ah adalah sesat."</div>
+      <div class="dref dref-gold">HR. Abu Dawud (4607) &amp; Tirmidzi (2676) — Shahih · Wasiat Nabi ﷺ kepada seluruh umatnya</div>
+    </div>
+  </div>
+</div>
+
+<div class="sep"><span>✦ ❖ ✦</span></div>
+
+</div><!-- end wrap -->
+
+<!-- ════ PENUTUP ════ -->
+<div class="penutup">
+  <div class="penutup-inner">
+    <div class="penutup-ar">اللَّهُمَّ أَرِنَا الْحَقَّ حَقًّا وَارْزُقْنَا اتِّبَاعَهُ وَأَرِنَا الْبَاطِلَ بَاطِلًا وَارْزُقْنَا اجْتِنَابَهُ</div>
+    <div class="penutup-div"></div>
+    <p class="penutup-p">"Ya Allah, tunjukkanlah kepada kami yang benar itu benar dan anugerahkanlah kepada kami kemampuan untuk mengikutinya. Dan tunjukkanlah kepada kami yang batil itu batil dan anugerahkanlah kepada kami kemampuan untuk menjauhinya." — Doa yang senantiasa dipanjatkan para ulama Aswaja dalam setiap pengajian ilmu, sebagai pengakuan bahwa kebenaran hanya bisa dipegang dengan taufik dari Allah semata.</p>
+    <p class="penutup-p" style="margin-top:10px;">Semoga Allah menetapkan kita, keluarga kita, dan generasi setelah kita di atas jalan Ahlussunnah wal Jamaah — jalan yang lurus, yang diridhai, dan yang mengantarkan kepada kemenangan di dunia dan keselamatan di akhirat. Āmīn yā Rabbal 'Ālamīn.</p>
+    <div class="penutup-div"></div>
+    <div class="penutup-footer">
+      <div class="logo">أَهْلُ السُّنَّةِ وَالْجَمَاعَةِ</div>
+      <div class="tag">وَاللّٰهُ أَعْلَمُ بِالصَّوَابِ · Semoga Bermanfaat</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
