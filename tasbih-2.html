@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#000000">
+    <title>Tasbih Digital</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; user-select: none; }
+        body { background: #000; color: #fff; font-family: system-ui, sans-serif; height: 100dvh; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; cursor: pointer; }
+        .container { display: flex; flex-direction: column; align-items: center; justify-content: center; flex: 1; width: 100%; padding: 2rem; }
+        .label { font-size: 1rem; letter-spacing: 4px; color: #4ade80; opacity: 0.8; margin-bottom: 1rem; }
+        .count { font-size: clamp(6rem, 25vw, 12rem); font-weight: 200; color: #fff; line-height: 1; margin-bottom: 1.5rem; transition: transform 0.1s ease; }
+        .count.bump { transform: scale(1.08); }
+        .target { font-size: 0.9rem; color: #555; margin-bottom: 2rem; transition: color 0.3s; }
+        .target.done { color: #fbbf24; }
+        .controls { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+        .btn { background: none; border: 1px solid #333; color: #666; padding: 10px 20px; border-radius: 50px; font-size: 0.8rem; letter-spacing: 1px; cursor: pointer; transition: all 0.2s; }
+        .btn:active { border-color: #4ade80; color: #4ade80; transform: scale(0.95); }
+        .fs-btn { position: fixed; top: 16px; right: 16px; z-index: 20; background: none; border: none; padding: 12px; cursor: pointer; color: #444; }
+        .fs-btn svg { width: 24px; height: 24px; stroke: currentColor; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+        .milestone { position: fixed; top: 42%; left: 50%; transform: translate(-50%, -50%); font-size: 1.2rem; color: #fbbf24; opacity: 0; pointer-events: none; letter-spacing: 3px; white-space: nowrap; z-index: 30; }
+        .milestone.show { animation: milestoneAnim 1.2s ease-out forwards; }
+        @keyframes milestoneAnim { 0% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); } 20% { opacity: 1; transform: translate(-50%, -50%) scale(1.05); } 100% { opacity: 0; transform: translate(-50%, -70%) scale(1); } }
+        .alert-box { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background: #f87171; color: #000; padding: 10px 20px; border-radius: 8px; font-size: 0.8rem; font-weight: 600; z-index: 50; display: none; text-align: center; max-width: 90vw; }
+        .status-bar { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: rgba(20,20,20,0.9); border: 1px solid #333; padding: 8px 16px; border-radius: 20px; font-size: 0.75rem; color: #888; z-index: 20; display: flex; gap: 12px; align-items: center; }
+        .status-dot { width: 8px; height: 8px; border-radius: 50%; background: #444; }
+        .status-dot.active { background: #4ade80; box-shadow: 0 0 6px #4ade80; }
+    </style>
+</head>
+<body>
+    <div class="alert-box" id="alertBox">Notifikasi tidak jalan di mode offline. Gunakan link HTTPS atau aktifkan izin browser.</div>
+
+    <button id="fsBtn" class="fs-btn" aria-label="Fullscreen">
+        <svg viewBox="0 0 24 24"><path id="fsPath" d="M15 3h6v6 M9 21H3v-6 M21 3l-7 7 M3 21l7-7"/></svg>
+    </button>
+
+    <div class="container">
+        <div class="label"></div>
+        <div class="count" id="count">0</div>
+        <div class="target" id="target">Target: 33</div>
+        <div class="controls">
+            <button class="btn" id="resetBtn">Reset</button>
+            <button class="btn" id="targetBtn">Target</button>
+            <button class="btn" id="testNotifBtn">Tes Notif</button>
+        </div>
+    </div>
+
+    <div class="status-bar">
+        <span>Notifikasi Jam:</span>
+        <div class="status-dot" id="notifDot"></div>
+        <span id="notifText">Belum aktif</span>
+    </div>
+
+    <div class="milestone" id="milestone"></div>
+
+    <script>
+        let count = 0;
+        let target = 33;
+        const targets = [33, 34, 99, 100];
+        let notifReady = false;
+
+        const countEl = document.getElementById('count');
+        const targetEl = document.getElementById('target');
+        const milestoneEl = document.getElementById('milestone');
+        const fsBtn = document.getElementById('fsBtn');
+        const fsPath = document.getElementById('fsPath');
+        const testNotifBtn = document.getElementById('testNotifBtn');
+        const alertBox = document.getElementById('alertBox');
+        const notifDot = document.getElementById('notifDot');
+        const notifText = document.getElementById('notifText');
+
+        // Cek protokol
+        if (location.protocol === 'file:') {
+            alertBox.style.display = 'block';
+            setTimeout(() => alertBox.style.display = 'none', 6000);
+        }
+
+        if (localStorage.getItem('tasbihCount')) count = parseInt(localStorage.getItem('tasbihCount'));
+        if (localStorage.getItem('tasbihTarget')) target = parseInt(localStorage.getItem('tasbihTarget'));
+        updateDisplay();
+
+        function vibrate(ms = 30) { if (navigator.vibrate) navigator.vibrate(ms); }
+
+        function updateDisplay() {
+            countEl.textContent = count;
+            const isDone = count >= target;
+            targetEl.textContent = isDone ? `Target: ${target} ✓` : `Target: ${target}`;
+            targetEl.classList.toggle('done', isDone);
+        }
+
+        async function initNotifications() {
+            if (!('Notification' in window)) return;
+            
+            try {
+                const perm = await Notification.requestPermission();
+                if (perm === 'granted') {
+                    notifReady = true;
+                    notifDot.classList.add('active');
+                    notifText.textContent = 'Aktif';
+                    notifText.style.color = '#4ade80';
+                }
+            } catch (e) {
+                console.error('Notifikasi gagal:', e);
+            }
+        }
+
+        // Jalankan saat interaksi pertama
+        document.body.addEventListener('click', function initOnce() {
+            initNotifications();
+            document.body.removeEventListener('click', initOnce);
+        }, { once: true });
+
+        function sendWatchNotification(current, tgt, isDone) {
+            if (!notifReady) return;
+            
+            const title = isDone ? '✅ Selesai' : `📿 ${current}/${tgt}`;
+            const body = isDone ? 'Selesai': `${tgt - current} lagi`;
+
+            try {
+                new Notification(title, {
+                    body: body,
+                    tag: 'tasbih_watch',
+                    requireInteraction: false
+                });
+            } catch (e) {
+                console.warn('Gagal kirim notifikasi:', e);
+            }
+        }
+
+        function showMilestone(text) {
+            milestoneEl.textContent = text;
+            milestoneEl.className = 'milestone';
+            void milestoneEl.offsetWidth;
+            milestoneEl.classList.add('show');
+        }
+
+        // Event Listeners
+        fsBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (!document.fullscreenElement) document.documentElement.requestFullscreen().catch(()=>{});
+            else document.exitFullscreen().catch(()=>{});
+        });
+        document.addEventListener('fullscreenchange', () => {
+            fsPath.setAttribute('d', document.fullscreenElement ? 'M4 14h6v6 M14 4h6v6 M20 14l-6-6 M4 10l6-6' : 'M15 3h6v6 M9 21H3v-6 M21 3l-7 7 M3 21l7-7');
+        });
+
+        testNotifBtn.addEventListener('click', async (e) => {
+            e.stopPropagation();
+            vibrate(40);
+            if (!('Notification' in window)) {
+                alert('Browser tidak mendukung notifikasi');
+                return;
+            }
+            const perm = await Notification.requestPermission();
+            if (perm === 'granted') {
+                new Notification('📿 Tes Notifikasi Tasbih', { body: 'Jika ini muncul di jam, notifikasi berhasil!', tag: 'test' });
+                notifReady = true;
+                notifDot.classList.add('active');
+                notifText.textContent = 'Aktif';
+            }
+        });
+
+        document.body.addEventListener('click', function (e) {
+            if (e.target.closest('.btn, .fs-btn')) return;
+
+            if (count >= target) {
+                if (navigator.vibrate) navigator.vibrate([200, 100, 200, 100, 200]);
+                countEl.classList.add('bump');
+                setTimeout(() => countEl.classList.remove('bump'), 100);
+                return;
+            }
+
+            count++;
+            vibrate(30);
+            countEl.classList.add('bump');
+            setTimeout(() => countEl.classList.remove('bump'), 100);
+
+            if (count === target) {
+                showMilestone('ٱلْحَمْدُ لِلَّهِ');
+                if (navigator.vibrate) navigator.vibrate([200, 100, 200, 100, 200]);
+            }
+
+            updateDisplay();
+            sendWatchNotification(count, target, count >= target);
+            localStorage.setItem('tasbihCount', count);
+        });
+
+        document.getElementById('resetBtn').addEventListener('click', function () {
+            count = 0;
+            updateDisplay();
+            localStorage.setItem('tasbihCount', 0);
+            vibrate(50);
+        });
+
+        document.getElementById('targetBtn').addEventListener('click', function () {
+            const idx = targets.indexOf(target);
+            target = targets[(idx + 1) % targets.length];
+            updateDisplay();
+            vibrate(40);
+            localStorage.setItem('tasbihTarget', target);
+        });
+    </script>
+</body>
+</html>
+
