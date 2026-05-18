@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Tasbih Digital</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; user-select: none; }
+        body {
+            background: #000; color: #fff;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            height: 100dvh; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; overflow: hidden; cursor: pointer;
+        }
+        .container { display: flex; flex-direction: column; align-items: center; justify-content: center; flex: 1; width: 100%; padding: 2rem; }
+        .label { font-size: 1rem; letter-spacing: 4px; color: #4ade80; opacity: 0.8; margin-bottom: 1rem; }
+        .count { font-size: clamp(6rem, 25vw, 12rem); font-weight: 200; color: #ffffff; line-height: 1; margin-bottom: 1.5rem; transition: transform 0.1s ease; }
+        .count.bump { transform: scale(1.08); }
+        .target { font-size: 0.9rem; color: #555; margin-bottom: 3rem; transition: color 0.3s; }
+        .target.done { color: #fbbf24; }
+        .controls { display: flex; gap: 2rem; }
+        .btn { background: none; border: 1px solid #333; color: #666; padding: 12px 28px; border-radius: 50px; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: all 0.2s ease; }
+        .btn:active { border-color: #4ade80; color: #4ade80; transform: scale(0.95); }
+        .milestone { position: fixed; top: 42%; left: 50%; transform: translate(-50%, -50%); font-size: 1.2rem; color: #fbbf24; opacity: 0; pointer-events: none; letter-spacing: 3px; white-space: nowrap; }
+        .milestone.show { animation: milestoneAnim 1.2s ease-out forwards; }
+        @keyframes milestoneAnim { 0% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); } 20% { opacity: 1; transform: translate(-50%, -50%) scale(1.05); } 100% { opacity: 0; transform: translate(-50%, -70%) scale(1); } }
+        
+        /* Fullscreen Button Style */
+        .fs-btn {
+            position: fixed;
+            top: 16px; right: 16px;
+            z-index: 100;
+            background: none; border: none;
+            padding: 12px; cursor: pointer;
+            color: #444; transition: color 0.2s;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .fs-btn:active { color: #4ade80; transform: scale(0.95); }
+        .fs-btn svg { width: 24px; height: 24px; stroke: currentColor; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    </style>
+</head>
+<body>
+    <!-- Tombol Fullscreen -->
+    <button id="fsBtn" class="fs-btn" aria-label="Toggle Fullscreen">
+        <svg id="fsIcon" viewBox="0 0 24 24">
+            <!-- Ikon Enter Fullscreen -->
+            <path id="fsPath" d="M15 3h6v6 M9 21H3v-6 M21 3l-7 7 M3 21l7-7"/>
+        </svg>
+    </button>
+    <div class="container">
+        <div class="label"></div>
+        <div class="count" id="count">0</div>
+        <div class="target" id="target">Target: 33</div>
+        <div class="controls">
+            <button class="btn" id="resetBtn">Reset</button>
+            <button class="btn" id="targetBtn">Target</button>
+        </div>
+    </div>
+    <div class="milestone" id="milestone"></div>
+
+    <script>
+        let count = 0;
+        let target = 33;
+        const targets = [33, 34, 99, 100];
+
+        const countEl = document.getElementById('count');
+        const targetEl = document.getElementById('target');
+        const milestoneEl = document.getElementById('milestone');
+        const fsBtn = document.getElementById('fsBtn');
+        const fsPath = document.getElementById('fsPath');
+
+        // Paths untuk ikon: Maximize (Enter) vs Minimize (Exit)
+        const pathEnter = "M15 3h6v6 M9 21H3v-6 M21 3l-7 7 M3 21l7-7";
+        const pathExit = "M4 14h6v6 M14 4h6v6 M20 14l-6-6 M4 10l6-6";
+
+        if (localStorage.getItem('tasbihCount')) count = parseInt(localStorage.getItem('tasbihCount'));
+        if (localStorage.getItem('tasbihTarget')) target = parseInt(localStorage.getItem('tasbihTarget'));
+        updateDisplay();
+
+        function vibrate(ms = 30) {
+            if (navigator.vibrate) navigator.vibrate(ms);
+        }
+
+        function updateDisplay() {
+            countEl.textContent = count;
+            const isDone = count >= target;
+            targetEl.textContent = isDone ? `Target: ${target} ✓` : `Target: ${target}`;
+            targetEl.classList.toggle('done', isDone);
+        }
+
+        function showMilestone(text) {
+            milestoneEl.textContent = text;
+            milestoneEl.className = 'milestone';
+            void milestoneEl.offsetWidth;
+            milestoneEl.classList.add('show');
+        }
+
+        // Toggle Fullscreen Logic
+        function toggleFullscreen() {            vibrate(20); // Feedback tombol
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(err => {
+                    console.error(`Error attempting to enable fullscreen: ${err.message}`);
+                });
+            } else {
+                document.exitFullscreen().catch(err => {
+                    console.error(`Error attempting to exit fullscreen: ${err.message}`);
+                });
+            }
+        }
+
+        // Update ikon berdasarkan state fullscreen
+        function updateFsIcon() {
+            fsPath.setAttribute('d', document.fullscreenElement ? pathExit : pathEnter);
+        }
+
+        fsBtn.addEventListener('click', toggleFullscreen);
+        // Auto-update ikon jika user keluar fullscreen via gesture/keyboard
+        document.addEventListener('fullscreenchange', updateFsIcon);
+
+        // Main Click Handler
+        document.body.addEventListener('click', function (e) {
+            // Abaikan jika yang diklik adalah tombol atau area kontrol
+            if (e.target.closest('.btn, .fs-btn')) return;
+
+            // Jika target sudah tercapai
+            if (count >= target) {
+                if (navigator.vibrate) navigator.vibrate([200, 100, 200, 100, 200]);
+                countEl.classList.add('bump');
+                setTimeout(() => countEl.classList.remove('bump'), 100);
+                return;
+            }
+
+            // Counter normal
+            count++;
+            vibrate(30);
+            countEl.classList.add('bump');
+            setTimeout(() => countEl.classList.remove('bump'), 100);
+
+            if (count === target) {
+                showMilestone('ٱلْحَمْدُ لِلَّهِ');
+                if (navigator.vibrate) navigator.vibrate([200, 100, 200, 100, 200]);
+            }
+
+            updateDisplay();
+            localStorage.setItem('tasbihCount', count);
+        });
+
+        document.getElementById('resetBtn').addEventListener('click', function () {            count = 0;
+            updateDisplay();
+            localStorage.setItem('tasbihCount', 0);
+            vibrate(50);
+        });
+
+        document.getElementById('targetBtn').addEventListener('click', function () {
+            const idx = targets.indexOf(target);
+            target = targets[(idx + 1) % targets.length];
+            updateDisplay();
+            vibrate(40);
+            localStorage.setItem('tasbihTarget', target);
+        });
+    </script>
+</body>
+</html>
